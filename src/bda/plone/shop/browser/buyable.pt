@@ -1,3 +1,16 @@
-<div class="buyable">
-  Ich bin käuflich!!!!!!
+<div class="buyable" tal:condition="view/item_buyable">
+  
+  <span class="cart_item_uid"
+        style="display: none;"
+        tal:content="view/item_uid">12345678</span>
+  
+  <input type="text"
+         size="2"
+         value="1"
+         class="cart_item_count" />Stück
+  
+  <a href="" class="add_cart_item">in den Warenkorb</a>
+  
+  <a href="" class="update_cart_item">Warenkorb &auml;ndern</a>
+  
 </div>
