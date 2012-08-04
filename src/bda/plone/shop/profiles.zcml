@@ -1,0 +1,13 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
+
+  <include package="Products.GenericSetup" file="meta.zcml" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="bda.plone.shop"
+      directory="profiles/default"
+      description="bda.plone.shop"
+      provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+</configure>

@@ -27,6 +27,7 @@ setup(name='bda.plone.shop',
       install_requires=[
           'setuptools',
           'Plone',
+          'archetypes.schemaextender',
           'bda.plone.cart',
           'bda.plone.checkout',
           'bda.plone.payment',

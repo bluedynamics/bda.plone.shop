@@ -1,0 +1,12 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five">
+
+  <include package="archetypes.schemaextender" />
+  <include file="profiles.zcml" />
+  
+  <adapter
+    name="bda.plone.shop.buyable"
+    factory=".extender.BuyableExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+</configure>
