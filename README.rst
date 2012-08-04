@@ -1,5 +1,5 @@
-collective.shop
-===============
+bda.plone.shop
+==============
 
 Write me
 
