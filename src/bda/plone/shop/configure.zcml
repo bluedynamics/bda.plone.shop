@@ -3,6 +3,7 @@
 
   <include package="archetypes.schemaextender" />
   <include file="profiles.zcml" />
+  <include package=".browser" />
   
   <adapter
     name="bda.plone.shop.buyable"

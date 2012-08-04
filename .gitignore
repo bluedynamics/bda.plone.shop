@@ -1,3 +1,4 @@
+*.pyc
 .project
 .pydevproject
 .mr.developer.cfg
@@ -7,4 +8,5 @@ develop-eggs/
 devsrc/
 eggs/
 parts/
+var/
 src/bda.plone.shop.egg-info/

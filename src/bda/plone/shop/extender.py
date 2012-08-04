@@ -7,15 +7,23 @@ from archetypes.schemaextender.interfaces import (
 )
 from archetypes.schemaextender.field import ExtensionField
 from Products.Archetypes.utils import OrderedDict
-from Products.Archetypes.public import TextField
+from Products.Archetypes.public import (
+    StringField,
+    BooleanField,
+    FixedPointField,
+    BooleanWidget,
+    DecimalWidget,
+    SelectionWidget,
+)
 from Products.Archetypes.interfaces import IBaseObject
 from bda.plone.shop.interfaces import IShopExtensionLayer
 
 _ = MessageFactory('bda.plone.shop')
 
 
-class XTextField(ExtensionField, TextField):
-    pass
+class XStringField(ExtensionField, StringField): pass
+class XBooleanField(ExtensionField, BooleanField): pass
+class XFixedPointField(ExtensionField, FixedPointField): pass
 
 
 class ExtenderBase(object):
@@ -46,8 +54,26 @@ class BuyableExtender(ExtenderBase):
     layer = IShopExtensionLayer
 
     fields = [
-        XTextField(
-            name='fooooooooo',
-            schemata='Buyable',
+        XBooleanField(
+            name='item_buyable',
+            schemata='Shop',
+            widget=BooleanWidget(
+                label=_(u'label_item_buyable', u'Item buyable?'),
+            ),
+        ),
+        XFixedPointField(
+            name='item_price',
+            schemata='Shop',
+            widget=DecimalWidget(
+                label=_(u'label_item_price', u'Item price'),
+            ),
+        ),
+        XStringField(
+            name='item_vat',
+            schemata='Shop',
+            widget=SelectionWidget(
+                label=_(u'label_item_vat', u'Item VAT (in %)'),
+            ),
+            vocabulary=['10', '20'],
         ),
     ]
