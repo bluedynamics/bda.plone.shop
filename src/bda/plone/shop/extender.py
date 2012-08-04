@@ -18,6 +18,7 @@ from Products.Archetypes.public import (
 from Products.Archetypes.interfaces import IBaseObject
 from bda.plone.shop.interfaces import IShopExtensionLayer
 
+
 _ = MessageFactory('bda.plone.shop')
 
 
