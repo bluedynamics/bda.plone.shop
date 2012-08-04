@@ -37,4 +37,3 @@ setup(name='bda.plone.shop',
       target = plone
       """,
 )
-

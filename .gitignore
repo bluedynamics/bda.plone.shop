@@ -1,2 +1,9 @@
 .project
 .pydevproject
+.mr.developer.cfg
+bin/
+develop-eggs/
+devsrc/
+eggs/
+parts/
+src/bda.plone.shop.egg-info/
