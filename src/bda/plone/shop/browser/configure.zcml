@@ -6,6 +6,7 @@
     name="bda.plone.shop.buyable"
     manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
     permission="zope2.View"
+    for="..interfaces.IBuyable"
     class=".viewlets.BuyableViewlet"
     template="buyable.pt"
     layer="..interfaces.IShopExtensionLayer"

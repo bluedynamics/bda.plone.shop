@@ -1,18 +1,25 @@
 from plone.indexer import indexer
 from Products.Archetypes.interfaces import IBaseObject
+from .interfaces import IBuyable
 from .extender import field_value
 
 
-@indexer(IBaseObject)
+@indexer(IBuyable)
 def item_buyable(obj):
-    return field_value(obj, 'item_buyable')
+    return True
 
 
-@indexer(IBaseObject)
+@indexer(IBuyable)
 def item_price(obj):
-    return field_value(obj, 'item_price')
+    price = field_value(obj, 'item_price')
+    if not price:
+        return 0
+    return price
 
 
-@indexer(IBaseObject)
+@indexer(IBuyable)
 def item_vat(obj):
-    return float(field_value(obj, 'item_vat'))
+    try:
+        return float(field_value(obj, 'item_vat'))
+    except ValueError:
+        return 0

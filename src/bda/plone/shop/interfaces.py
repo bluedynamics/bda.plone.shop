@@ -20,7 +20,7 @@ class IBuyable(Interface):
     """
 
 
-class IBuyableData(Interface):
+class IBuyableAdapter(Interface):
     """Provide information relevant for being buyable.
     """
     price = Attribute(u"Item price as float")

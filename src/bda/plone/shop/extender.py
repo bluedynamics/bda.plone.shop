@@ -14,8 +14,9 @@ from Products.Archetypes.public import (
     BooleanWidget,
     SelectionWidget,
 )
-from Products.Archetypes.interfaces import IBaseObject
+#from Products.Archetypes.interfaces import IBaseObject
 from bda.plone.shop.interfaces import IShopExtensionLayer
+from .interfaces import IBuyable
 
 
 _ = MessageFactory('bda.plone.shop')
@@ -37,7 +38,7 @@ class XBooleanField(ExtensionField, BooleanField): pass
 class ExtenderBase(object):
     
     implements(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
-    adapts(IBaseObject)
+    adapts(IBuyable)
     
     def __init__(self, context):
         self.context = context
@@ -62,13 +63,6 @@ class BuyableExtender(ExtenderBase):
     layer = IShopExtensionLayer
 
     fields = [
-        XBooleanField(
-            name='item_buyable',
-            schemata='Shop',
-            widget=BooleanWidget(
-                label=_(u'label_item_buyable', u'Item buyable?'),
-            ),
-        ),
         XFloatField(
             name='item_price',
             schemata='Shop',

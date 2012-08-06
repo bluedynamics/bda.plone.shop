@@ -1,4 +1,4 @@
-<div class="buyable" tal:condition="view/item_buyable">
+<div class="buyable">
 
   <strong>Preis</strong>
   <span tal:content="view/item_price">1.0€</span>
