@@ -1,6 +1,10 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:five="http://namespaces.zope.org/five">
 
+  <class class="Products.Archetypes.BaseObject.BaseObject">
+    <implements interface=".interfaces.IPotentiallyBuyable" />
+  </class>   
+  
   <include package="archetypes.schemaextender" />
   <include file="profiles.zcml" />
   <include package=".browser" />

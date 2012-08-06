@@ -6,8 +6,22 @@ class IShopExtensionLayer(Interface):
     """
 
 
+class IPotentiallyBuyable(Interface):
+    """Mark item as potentially buyable.
+    
+    Considered for providing action in UI.
+    """
+
+
 class IBuyable(Interface):
-    """Interface for buyable item.
+    """Marker for buyable item.
+    
+    Item is buyable.
+    """
+
+
+class IBuyableData(Interface):
+    """Provide information relevant for being buyable.
     """
     price = Attribute(u"Item price as float")
     

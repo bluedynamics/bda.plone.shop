@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool"
+	xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+	<object name="object_buttons" meta_type="CMF Action Category">
+		<object name="enableBuyable" 
+		        meta_type="CMF Action"
+			    i18n:domain="bda.plone.shop">
+			<property name="title" i18n:translate="">
+				Enable Buyable
+			</property>
+			<property name="description" i18n:translate="">
+				Activate Buyable on Item
+			</property>
+			<property name="url_expr">
+				string:${object/absolute_url}/@@enable-buyable
+			</property>
+			<property name="icon_expr"></property>
+			<property name="available_expr">
+				object/@@is-possible-to-enable-buyable
+			</property>
+			<property name="permissions">
+				<element value="Manage portal" />
+			</property>
+			<property name="visible">True</property>
+		</object>
+		<object name="disableBuyable" 
+		        meta_type="CMF Action"
+			    i18n:domain="bda.plone.shop">
+			<property name="title" i18n:translate="">
+				Disables Buyable
+			</property>
+			<property name="description" i18n:translate="">
+				Deactivates Buyable on Item
+			</property>
+			<property name="url_expr">
+				string:${object/absolute_url}/@@disable-buyable
+			</property>
+			<property name="icon_expr"></property>
+			<property name="available_expr">
+				object/@@is-possible-to-disable-buyable
+			</property>
+			<property name="permissions">
+				<element value="Manage portal" />
+			</property>
+			<property name="visible">True</property>
+		</object>
+	</object>
+</object>

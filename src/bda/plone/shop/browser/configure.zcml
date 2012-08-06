@@ -1,13 +1,47 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:browser="http://namespaces.zope.org/browser">
   
+  <!-- viewlets -->
   <browser:viewlet
     name="bda.plone.shop.buyable"
     manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
     permission="zope2.View"
-    class=".BuyableViewlet"
+    class=".viewlets.BuyableViewlet"
     template="buyable.pt"
-    layer="bda.plone.shop.interfaces.IShopExtensionLayer"
+    layer="..interfaces.IShopExtensionLayer"
   />
+  
+  <!-- actions -->
+  <browser:page
+    name="enable-buyable" 
+    attribute="enableBuyable"
+    for="..interfaces.IPotentiallyBuyable"
+    class=".actions.ActionsView" 
+    permission="cmf.ManagePortal" 
+    layer="..interfaces.IShopExtensionLayer" />
+
+  <browser:page
+    name="disable-buyable"
+    attribute="disableBuyable"
+    for="..interfaces.IPotentiallyBuyable"
+    class=".actions.ActionsView" 
+    permission="cmf.ManagePortal" 
+    layer="..interfaces.IShopExtensionLayer" />
+
+  <browser:page
+    name="is-possible-to-enable-buyable"
+    attribute="isPossibleToEnableBuyable" 
+    for="*"
+    class=".actions.ActionsView" 
+    permission="cmf.ManagePortal"     
+    layer="..interfaces.IShopExtensionLayer" />
+
+  <browser:page
+    name="is-possible-to-disable-buyable"
+    attribute="isPossibleToDisableBuyable" 
+    for="*"
+    class=".actions.ActionsView" 
+    permission="cmf.ManagePortal" 
+    layer="..interfaces.IShopExtensionLayer" />
 
 </configure>
