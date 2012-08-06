@@ -58,10 +58,10 @@ class BuyableExtender(ExtenderBase):
 
     fields = [
         XFloatField(
-            name='item_price',
+            name='item_net',
             schemata='Shop',
             widget=FloatField._properties['widget'](
-                label=_(u'label_item_price', u'Item price'),
+                label=_(u'label_item_net', u'Item net price'),
             ),
         ),
         XStringField(
@@ -73,10 +73,10 @@ class BuyableExtender(ExtenderBase):
             vocabulary=['10', '20'],
         ),
         XBooleanField(
-            name='item_vat_included',
+            name='item_display_gross',
             schemata='Shop',
             widget=BooleanField._properties['widget'](
-                label=_(u'label_item_vat_included', u'VAT included'),
+                label=_(u'label_item_display_gross', u'Display Gross'),
             ),
             default=False,
         ),
@@ -99,8 +99,8 @@ class ATBuyableDataProvider(object):
         self.context = context
     
     @property
-    def price(self):
-        val = field_value(self.context, 'item_price')
+    def net(self):
+        val = field_value(self.context, 'item_net')
         if not val:
             return 0.0
         return float(val)
@@ -113,5 +113,5 @@ class ATBuyableDataProvider(object):
         return float(val)
     
     @property
-    def vat_included(self):
-        return field_value(self.context, 'item_vat_included')
+    def display_gross(self):
+        return field_value(self.context, 'item_display_gross')

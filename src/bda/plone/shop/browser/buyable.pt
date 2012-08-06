@@ -1,10 +1,21 @@
-<div class="buyable">
-
-  <strong>Preis</strong>
-  <span tal:content="view/item_price">1.0</span> €
+<div class="buyable"
+     i18n:domain="bda.plone.shop">
   
-  <strong>UST</strong>
-  <span tal:content="view/item_vat">20</span> %
+  <tal:net condition="not:view/display_gross">
+    <strong i18n:translate="net">Net</strong>
+    <span tal:replace="view/item_net">1.0</span>
+    <span tal:replace="view/currency">€</span>
+    <strong i18n:translate="vat">Vat</strong>
+    <span tal:replace="view/item_vat">20</span>%
+  </tal:net>
+  
+  <tal:gross condition="view/display_gross">
+    <strong i18n:translate="gross">Gross</strong>
+    <span tal:replace="view/item_gross">1.0</span>
+    <span tal:replace="view/currency">€</span>
+    <strong i18n:translate="vat">Vat</strong>
+    <span tal:replace="view/item_vat">20</span>%
+  </tal:gross>
   
   <span class="cart_item_uid"
         style="display: none;"
@@ -13,10 +24,15 @@
   <input type="text"
          size="2"
          value="1"
-         class="cart_item_count" />Stück
+         class="cart_item_count" />
+  <span i18n_translate="piece">piece</span>
   
-  <a href="" class="add_cart_item">in den Warenkorb</a>
+  <a href=""
+     class="add_cart_item"
+     i18n:translate="add_to_cart">add to cart</a>
   
-  <a href="" class="update_cart_item">Warenkorb &auml;ndern</a>
+  <a href=""
+     class="update_cart_item"
+     i18n:translate="update_cart">update cart</a>
   
 </div>

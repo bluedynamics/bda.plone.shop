@@ -9,6 +9,9 @@ class CartDataProvider(CartDataProviderBase):
     def catalog(self):
         return getToolByName(self.context, 'portal_catalog')
     
+    def data_for(self, brain):
+        return IBuyableDataProvider(brain.getObject())
+    
     def net(self, items):
         cat = self.catalog
         net = 0.0
@@ -16,8 +19,8 @@ class CartDataProvider(CartDataProviderBase):
             brain = cat(UID=uid)
             if not brain:
                 continue
-            data = IBuyableDataProvider(brain[0].getObject())
-            net += data.price * count
+            data = self.data_for(brain[0])
+            net += data.net * count
         return net
     
     def vat(self, items):
@@ -27,8 +30,8 @@ class CartDataProvider(CartDataProviderBase):
             brain = cat(UID=uid)
             if not brain:
                 continue
-            data = IBuyableDataProvider(brain[0].getObject())
-            vat += (data.price / 100.0) * data.vat * count
+            data = self.data_for(brain[0])
+            vat += (data.net / 100.0) * data.vat * count
         return vat
     
     def cart_items(self, items):
@@ -39,8 +42,10 @@ class CartDataProvider(CartDataProviderBase):
             if not brain:
                 continue
             title = brain[0].Title
-            data = IBuyableDataProvider(brain[0].getObject())
-            price = data.price * count
+            data = self.data_for(brain[0])
+            price = data.net * count
+            if data.display_gross:
+                price = price + price / 100 * data.vat
             url = self.context.absolute_url()
             ret.append(self.item(uid, title, count, price, url))
         return ret        

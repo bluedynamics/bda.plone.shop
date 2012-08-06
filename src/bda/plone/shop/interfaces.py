@@ -23,8 +23,9 @@ class IBuyable(Interface):
 class IBuyableDataProvider(Interface):
     """Provide information relevant for being buyable.
     """
-    price = Attribute(u"Item price as float")
+    net = Attribute(u"Item net price as float")
     
     vat = Attribute(u"Item vat as float")
     
-    vat_included = Attribute(u"Flag whether VAT is included")
+    display_gross = Attribute(u"Flag whether whether to display gross "
+                              u"instead of net")
