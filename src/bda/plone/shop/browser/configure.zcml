@@ -1,6 +1,11 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:browser="http://namespaces.zope.org/browser">
   
+  <!-- resources -->
+  <browser:resource
+    name="bda.plone.shop.css"
+    file="shop.css" />
+  
   <!-- viewlets -->
   <browser:viewlet
     name="bda.plone.shop.buyable"

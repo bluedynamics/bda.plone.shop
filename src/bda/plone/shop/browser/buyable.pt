@@ -5,7 +5,8 @@
     <strong i18n:translate="net">Net</strong>
     <span tal:replace="view/item_net">1.0</span>
     <span tal:replace="view/currency">€</span>
-    <strong i18n:translate="vat">Vat</strong>
+    <strong i18n:translate="vat"
+            class="vat_label">Vat</strong>
     <span tal:replace="view/item_vat">20</span>%
   </tal:net>
   
@@ -13,7 +14,8 @@
     <strong i18n:translate="gross">Gross</strong>
     <span tal:replace="view/item_gross">1.0</span>
     <span tal:replace="view/currency">€</span>
-    <strong i18n:translate="vat">Vat</strong>
+    <strong i18n:translate="vat"
+            class="vat_label">Vat</strong>
     <span tal:replace="view/item_vat">20</span>%
   </tal:gross>
   
@@ -25,6 +27,7 @@
          size="2"
          value="1"
          class="cart_item_count" />
+  
   <span i18n_translate="piece">piece</span>
   
   <a href=""

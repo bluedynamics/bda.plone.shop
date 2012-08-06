@@ -1,0 +1,15 @@
+div.buyable {
+    margin-top:0.3em;
+    margin-bottom:1em;
+    text-align:right;
+}
+div.buyable .vat_label {
+    margin-left:1em;
+}
+div.buyable input {
+    margin-left:1em;
+    font-size:90%;
+}
+div.buyable a {
+    margin-left:1em;
+}
