@@ -25,7 +25,8 @@ class CartDataProvider(CartDataProviderBase):
             brain = cat(UID=uid)
             if not brain:
                 continue
-            vat += float(brain[0].item_vat) * count
+            vat += (brain[0].item_price / 100.0) \
+                    * float(brain[0].item_vat) * count
         return vat
     
     def cart_items(self, items):

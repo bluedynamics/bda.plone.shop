@@ -21,6 +21,14 @@ from bda.plone.shop.interfaces import IShopExtensionLayer
 _ = MessageFactory('bda.plone.shop')
 
 
+def field_value(obj, field_name):
+    try:
+        acc = obj.getField(field_name).getAccessor(obj)
+        return acc()
+    except (KeyError, TypeError):
+        raise AttributeError
+
+
 class XStringField(ExtensionField, StringField): pass
 class XFloatField(ExtensionField, FloatField): pass
 class XBooleanField(ExtensionField, BooleanField): pass

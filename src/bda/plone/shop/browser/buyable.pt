@@ -1,4 +1,10 @@
 <div class="buyable" tal:condition="view/item_buyable">
+
+  <strong>Preis</strong>
+  <span tal:content="view/item_price">1.0€</span>
+  
+  <strong>UST</strong>
+  <span tal:content="view/item_vat">20%</span>
   
   <span class="cart_item_uid"
         style="display: none;"

@@ -1,13 +1,6 @@
 from plone.indexer import indexer
 from Products.Archetypes.interfaces import IBaseObject
-
-
-def field_value(obj, field_name):
-    try:
-        acc = obj.getField(field_name).getAccessor(obj)
-        return acc()
-    except (KeyError, TypeError):
-        raise AttributeError
+from .extender import field_value
 
 
 @indexer(IBaseObject)
