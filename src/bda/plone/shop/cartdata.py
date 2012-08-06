@@ -46,7 +46,7 @@ class CartDataProvider(CartDataProviderBase):
             price = data.net * count
             if data.display_gross:
                 price = price + price / 100 * data.vat
-            url = self.context.absolute_url()
+            url = brain[0].getURL()
             ret.append(self.item(uid, title, count, price, url))
         return ret        
     
