@@ -18,7 +18,7 @@
     attribute="enableBuyable"
     for="..interfaces.IPotentiallyBuyable"
     class=".actions.ActionsView" 
-    permission="cmf.ManagePortal" 
+    permission="cmf.ModifyPortalContent" 
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:page
@@ -26,7 +26,7 @@
     attribute="disableBuyable"
     for="..interfaces.IPotentiallyBuyable"
     class=".actions.ActionsView" 
-    permission="cmf.ManagePortal" 
+    permission="cmf.ModifyPortalContent" 
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:page
@@ -34,7 +34,7 @@
     attribute="isPossibleToEnableBuyable" 
     for="*"
     class=".actions.ActionsView" 
-    permission="cmf.ManagePortal"     
+    permission="cmf.ModifyPortalContent"     
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:page
@@ -42,7 +42,7 @@
     attribute="isPossibleToDisableBuyable" 
     for="*"
     class=".actions.ActionsView" 
-    permission="cmf.ManagePortal" 
+    permission="cmf.ModifyPortalContent" 
     layer="..interfaces.IShopExtensionLayer" />
 
 </configure>

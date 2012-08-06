@@ -10,22 +10,16 @@
   <include package=".browser" />
   
   <adapter
+    name="item_buyable"
+    factory=".indexer.item_buyable" />
+  
+  <adapter
     name="bda.plone.shop.buyable"
     factory=".extender.BuyableExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
   
-  <adapter 
-    name="item_buyable"
-    factory=".indexer.item_buyable" />
-  
-  <adapter 
-    name="item_price"
-    factory=".indexer.item_price" />
-  
-  <adapter 
-    name="item_vat"
-    factory=".indexer.item_vat" />
-  
   <adapter factory=".cartdata.CartDataProvider" />
+  
+  <adapter factory=".extender.ATBuyableDataProvider" />
 
 </configure>

@@ -1,5 +1,6 @@
 from Products.CMFCore.utils import getToolByName
 from bda.plone.cart import CartDataProviderBase
+from .interfaces import IBuyableDataProvider
 
 
 class CartDataProvider(CartDataProviderBase):
@@ -15,7 +16,8 @@ class CartDataProvider(CartDataProviderBase):
             brain = cat(UID=uid)
             if not brain:
                 continue
-            net += brain[0].item_price * count
+            data = IBuyableDataProvider(brains[0].getObject())
+            net += data.price * count
         return net
     
     def vat(self, items):
@@ -25,7 +27,8 @@ class CartDataProvider(CartDataProviderBase):
             brain = cat(UID=uid)
             if not brain:
                 continue
-            vat += (brain[0].item_price / 100.0) * brain[0].item_vat * count
+            data = IBuyableDataProvider(brains[0].getObject())
+            vat += (data.price / 100.0) * data.vat * count
         return vat
     
     def cart_items(self, items):
@@ -36,7 +39,8 @@ class CartDataProvider(CartDataProviderBase):
             if not brain:
                 continue
             title = brain[0].Title
-            price = brain[0].item_price * count
+            data = IBuyableDataProvider(brains[0].getObject())
+            price = data.price * count
             url = self.context.absolute_url()
             ret.append(self.item(uid, title, count, price, url))
         return ret        

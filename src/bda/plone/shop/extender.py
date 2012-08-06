@@ -11,23 +11,17 @@ from Products.Archetypes.public import (
     StringField,
     FloatField,
     BooleanField,
-    BooleanWidget,
     SelectionWidget,
 )
-#from Products.Archetypes.interfaces import IBaseObject
+from Products.Archetypes.interfaces import IBaseObject
 from bda.plone.shop.interfaces import IShopExtensionLayer
-from .interfaces import IBuyable
+from .interfaces import (
+    IBuyable,
+    IBuyableDataProvider,
+)
 
 
 _ = MessageFactory('bda.plone.shop')
-
-
-def field_value(obj, field_name):
-    try:
-        acc = obj.getField(field_name).getAccessor(obj)
-        return acc()
-    except (KeyError, TypeError):
-        raise AttributeError
 
 
 class XStringField(ExtensionField, StringField): pass
@@ -78,4 +72,43 @@ class BuyableExtender(ExtenderBase):
             ),
             vocabulary=['10', '20'],
         ),
+        XBooleanField(
+            name='item_vat_included',
+            schemata='Shop',
+            widget=BooleanField._properties['widget'](
+                label=_(u'label_item_vat_included', u'VAT included'),
+            ),
+            default=False,
+        ),
     ]
+
+
+def field_value(obj, field_name):
+    try:
+        acc = obj.getField(field_name).getAccessor(obj)
+        return acc()
+    except (KeyError, TypeError):
+        raise AttributeError
+
+
+class ATBuyableDataProvider(object):
+    implements(IBuyableDataProvider)
+    adapts(IBaseObject)
+    
+    @property
+    def price(self):
+        val = field_value('item_price')
+        if not val:
+            return 0.0
+        return float(val)
+    
+    @property
+    def vat(self):
+        val = field_value('item_vat')
+        if not val:
+            return 0.0
+        return float(val)
+    
+    @property
+    def vat_included(self):
+        return field_value('item_vat_included')
