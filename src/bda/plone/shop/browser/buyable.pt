@@ -1,10 +1,10 @@
 <div class="buyable">
 
   <strong>Preis</strong>
-  <span tal:content="view/item_price">1.0€</span>
+  <span tal:content="view/item_price">1.0</span> €
   
   <strong>UST</strong>
-  <span tal:content="view/item_vat">20%</span>
+  <span tal:content="view/item_vat">20</span> %
   
   <span class="cart_item_uid"
         style="display: none;"

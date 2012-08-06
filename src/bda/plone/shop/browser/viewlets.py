@@ -8,21 +8,17 @@ class BuyableViewlet(ViewletBase):
     """
     
     @property
-    def data(self):
-        return IBuyableDataProvider(self.context)
-    
-    @property
     def item_uid(self):
         return self.context.UID()
     
     @property
+    def data(self):
+        return IBuyableDataProvider(self.context)
+    
+    @property
     def item_price(self):
-        price = self.data.price
-        if price:
-            return '%s€' % price
+        return self.data.price
     
     @property
     def item_vat(self):
-        vat = self.data.vat
-        if vat:
-            return vat + '%'
+        return self.data.vat

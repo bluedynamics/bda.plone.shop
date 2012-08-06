@@ -16,7 +16,7 @@ class CartDataProvider(CartDataProviderBase):
             brain = cat(UID=uid)
             if not brain:
                 continue
-            data = IBuyableDataProvider(brains[0].getObject())
+            data = IBuyableDataProvider(brain[0].getObject())
             net += data.price * count
         return net
     
@@ -27,7 +27,7 @@ class CartDataProvider(CartDataProviderBase):
             brain = cat(UID=uid)
             if not brain:
                 continue
-            data = IBuyableDataProvider(brains[0].getObject())
+            data = IBuyableDataProvider(brain[0].getObject())
             vat += (data.price / 100.0) * data.vat * count
         return vat
     
@@ -39,7 +39,7 @@ class CartDataProvider(CartDataProviderBase):
             if not brain:
                 continue
             title = brain[0].Title
-            data = IBuyableDataProvider(brains[0].getObject())
+            data = IBuyableDataProvider(brain[0].getObject())
             price = data.price * count
             url = self.context.absolute_url()
             ret.append(self.item(uid, title, count, price, url))

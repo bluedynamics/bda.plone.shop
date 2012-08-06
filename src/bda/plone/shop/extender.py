@@ -95,20 +95,23 @@ class ATBuyableDataProvider(object):
     implements(IBuyableDataProvider)
     adapts(IBaseObject)
     
+    def __init__(self, context):
+        self.context = context
+    
     @property
     def price(self):
-        val = field_value('item_price')
+        val = field_value(self.context, 'item_price')
         if not val:
             return 0.0
         return float(val)
     
     @property
     def vat(self):
-        val = field_value('item_vat')
+        val = field_value(self.context, 'item_vat')
         if not val:
             return 0.0
         return float(val)
     
     @property
     def vat_included(self):
-        return field_value('item_vat_included')
+        return field_value(self.context, 'item_vat_included')
