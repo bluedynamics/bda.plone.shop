@@ -9,10 +9,9 @@ from archetypes.schemaextender.field import ExtensionField
 from Products.Archetypes.utils import OrderedDict
 from Products.Archetypes.public import (
     StringField,
+    FloatField,
     BooleanField,
-    FixedPointField,
     BooleanWidget,
-    DecimalWidget,
     SelectionWidget,
 )
 from Products.Archetypes.interfaces import IBaseObject
@@ -23,8 +22,8 @@ _ = MessageFactory('bda.plone.shop')
 
 
 class XStringField(ExtensionField, StringField): pass
+class XFloatField(ExtensionField, FloatField): pass
 class XBooleanField(ExtensionField, BooleanField): pass
-class XFixedPointField(ExtensionField, FixedPointField): pass
 
 
 class ExtenderBase(object):
@@ -34,7 +33,7 @@ class ExtenderBase(object):
     
     def __init__(self, context):
         self.context = context
-
+    
     def getFields(self):
         return self.fields
     
@@ -62,10 +61,10 @@ class BuyableExtender(ExtenderBase):
                 label=_(u'label_item_buyable', u'Item buyable?'),
             ),
         ),
-        XFixedPointField(
+        XFloatField(
             name='item_price',
             schemata='Shop',
-            widget=DecimalWidget(
+            widget=FloatField._properties['widget'](
                 label=_(u'label_item_price', u'Item price'),
             ),
         ),
