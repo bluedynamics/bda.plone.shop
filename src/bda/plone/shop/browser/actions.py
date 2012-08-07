@@ -1,12 +1,15 @@
 from zope.interface import Interface 
 from zope.interface import directlyProvides 
 from zope.interface import noLongerProvides
+from zope.i18nmessageid import MessageFactory
 from Products.Five.browser import BrowserView
-from Products.CMFPlone import PloneMessageFactory as _
 from ..interfaces import (
     IPotentiallyBuyable,
     IBuyable,
 )
+
+
+_ = MessageFactory('bda.plone.shop')
 
 
 class ActionsView(BrowserView):
@@ -17,7 +20,7 @@ class ActionsView(BrowserView):
                                                   idxs=['object_provides'], 
                                                   update_metadata=1)
         self.context.plone_utils.addPortalMessage(
-            _(u'Enabled Buyable.'))
+            _(u'enabled_buyable', u'Enabled Buyable.'))
         self.request.response.redirect(self.context.absolute_url())
 
     def disableBuyable(self):
@@ -26,7 +29,7 @@ class ActionsView(BrowserView):
                                                   idxs=['object_provides'], 
                                                   update_metadata=1)
         self.context.plone_utils.addPortalMessage(
-            _(u'Disabled Buyable.'))
+            _(u'disabled_buyable', u'Disabled Buyable.'))
         self.request.response.redirect(self.context.absolute_url())
         
     def isPossibleToEnableBuyable(self):

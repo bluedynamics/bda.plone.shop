@@ -1,9 +1,12 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:five="http://namespaces.zope.org/five">
+           xmlns:five="http://namespaces.zope.org/five"
+           xmlns:i18n="http://namespaces.zope.org/i18n">
+
+  <i18n:registerTranslations directory="locales" />
 
   <class class="Products.Archetypes.BaseObject.BaseObject">
     <implements interface=".interfaces.IPotentiallyBuyable" />
-  </class>   
+  </class>
   
   <include package="archetypes.schemaextender" />
   <include file="profiles.zcml" />

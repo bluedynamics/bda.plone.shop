@@ -28,7 +28,7 @@
          value="1"
          class="cart_item_count" />
   
-  <span i18n_translate="piece">Piece</span>
+  <span i18n:translate="piece">Piece</span>
   
   <tal:comment condition="view/comment_enabled">
     <input type="text"
@@ -36,7 +36,7 @@
            value=""
            class="cart_item_comment" />
   
-    <span i18n_translate="Comment">Comment</span>
+    <span i18n:translate="comment">Comment</span>
   </tal:comment>
   
   <a href=""
