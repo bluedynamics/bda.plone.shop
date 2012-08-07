@@ -47,8 +47,9 @@ class CartDataProvider(CartDataProviderBase):
             if data.display_gross:
                 price = price + price / 100 * data.vat
             url = brain[0].getURL()
-            ret.append(self.item(uid, title, count, price, url))
-        return ret        
+            description = brain[0].Description
+            ret.append(self.item(uid, title, count, price, url, description))
+        return ret
     
     def validate_count(self, uid, count):
         return True
