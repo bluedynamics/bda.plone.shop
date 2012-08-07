@@ -15,7 +15,7 @@ class CartDataProvider(CartDataProviderBase):
     def net(self, items):
         cat = self.catalog
         net = 0.0
-        for uid, count in items:
+        for uid, count, comment in items:
             brain = cat(UID=uid)
             if not brain:
                 continue
@@ -26,7 +26,7 @@ class CartDataProvider(CartDataProviderBase):
     def vat(self, items):
         cat = self.catalog
         vat = 0.0
-        for uid, count in items:
+        for uid, count, comment in items:
             brain = cat(UID=uid)
             if not brain:
                 continue
@@ -37,7 +37,7 @@ class CartDataProvider(CartDataProviderBase):
     def cart_items(self, items):
         cat = self.catalog
         ret = list()
-        for uid, count in items:
+        for uid, count, comment in items:
             brain = cat(UID=uid)
             if not brain:
                 continue
@@ -48,7 +48,8 @@ class CartDataProvider(CartDataProviderBase):
                 price = price + price / 100 * data.vat
             url = brain[0].getURL()
             description = brain[0].Description
-            ret.append(self.item(uid, title, count, price, url, description))
+            ret.append(self.item(uid, title, count, price,
+                                 url, comment, description))
         return ret
     
     def validate_count(self, uid, count):

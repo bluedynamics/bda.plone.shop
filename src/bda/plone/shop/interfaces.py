@@ -29,3 +29,6 @@ class IBuyableDataProvider(Interface):
     
     display_gross = Attribute(u"Flag whether whether to display gross "
                               u"instead of net")
+    
+    comment_enabled = Attribute(u"Flag whether customer comment can be added "
+                                u"when adding buyable to cart.")

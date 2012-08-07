@@ -80,6 +80,14 @@ class BuyableExtender(ExtenderBase):
             ),
             default=False,
         ),
+        XBooleanField(
+            name='item_comment_enabled',
+            schemata='Shop',
+            widget=BooleanField._properties['widget'](
+                label=_(u'label_item_comment_enabled', u'Comment enabled'),
+            ),
+            default=True,
+        ),
     ]
 
 
@@ -115,3 +123,7 @@ class ATBuyableDataProvider(object):
     @property
     def display_gross(self):
         return field_value(self.context, 'item_display_gross')
+    
+    @property
+    def comment_enabled(self):
+        return field_value(self.context, 'item_comment_enabled')

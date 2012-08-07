@@ -34,3 +34,7 @@ class BuyableViewlet(ViewletBase):
     @property
     def display_gross(self):
         return self.data.display_gross
+    
+    @property
+    def comment_enabled(self):
+        return self.data.comment_enabled

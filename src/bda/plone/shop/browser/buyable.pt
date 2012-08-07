@@ -28,14 +28,23 @@
          value="1"
          class="cart_item_count" />
   
-  <span i18n_translate="piece">piece</span>
+  <span i18n_translate="piece">Piece</span>
+  
+  <tal:comment condition="view/comment_enabled">
+    <input type="text"
+           size="20"
+           value=""
+           class="cart_item_comment" />
+  
+    <span i18n_translate="Comment">Comment</span>
+  </tal:comment>
   
   <a href=""
-     class="add_cart_item"
+     class="add_cart_item buyable_add_to_cart"
      i18n:translate="add_to_cart">add to cart</a>
   
   <a href=""
-     class="update_cart_item"
+     class="update_cart_item buyable_update_cart"
      i18n:translate="update_cart">update cart</a>
   
 </div>
