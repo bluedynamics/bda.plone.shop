@@ -4,5 +4,6 @@
   <dependencies>
     <dependency>profile-bda.plone.cart:default</dependency>
     <dependency>profile-bda.plone.checkout:default</dependency>
+    <dependency>profile-bda.plone.orders:default</dependency>
   </dependencies>
 </metadata>
