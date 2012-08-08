@@ -2,5 +2,5 @@
 <layers>
   <layer
     name="bda.plone.shop"
-    interface="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+    interface="bda.plone.shop.interfaces.IShopExtensionLayer" />
 </layers>
