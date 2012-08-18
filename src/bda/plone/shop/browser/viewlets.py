@@ -42,3 +42,7 @@ class BuyableViewlet(ViewletBase):
     @property
     def comment_required(self):
         return self.data.comment_required
+    
+    @property
+    def metaware(self):
+        return self.data.metaware

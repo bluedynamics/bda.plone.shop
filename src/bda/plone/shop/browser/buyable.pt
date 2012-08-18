@@ -26,7 +26,11 @@
   <input type="text"
          size="2"
          value="1"
-         class="cart_item_count" />
+         class="cart_item_count"
+         tal:define="css python: view.metaware and \
+                                 'cart_item_count metaware' or 
+                                 'cart_item_count';"
+         tal:attributes="class css" />
   
   <span i18n:translate="piece">Piece</span>
   
