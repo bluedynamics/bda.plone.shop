@@ -1,3 +1,4 @@
+from decimal import Decimal
 from Products.CMFCore.utils import getToolByName
 from bda.plone.cart import CartDataProviderBase
 from .interfaces import IBuyableDataProvider
@@ -14,24 +15,25 @@ class CartDataProvider(CartDataProviderBase):
     
     def net(self, items):
         cat = self.catalog
-        net = 0.0
+        net = Decimal(0)
         for uid, count, comment in items:
             brain = cat(UID=uid)
             if not brain:
                 continue
             data = self.data_for(brain[0])
-            net += data.net * count
+            net += Decimal(str(data.net)) * count
         return net
     
     def vat(self, items):
         cat = self.catalog
-        vat = 0.0
+        vat = Decimal(0)
         for uid, count, comment in items:
             brain = cat(UID=uid)
             if not brain:
                 continue
             data = self.data_for(brain[0])
-            vat += (data.net / 100.0) * data.vat * count
+            vat += (Decimal(str(data.net)) / Decimal(100)) \
+                   * Decimal(str(data.vat)) * count
         return vat
     
     def cart_items(self, items):
@@ -43,13 +45,15 @@ class CartDataProvider(CartDataProviderBase):
                 continue
             title = brain[0].Title
             data = self.data_for(brain[0])
-            price = data.net * count
+            price = Decimal(str(data.net)) * count
             if data.display_gross:
-                price = price + price / 100 * data.vat
+                price = price + price / Decimal(100) * Decimal(str(data.vat))
             url = brain[0].getURL()
             description = brain[0].Description
-            ret.append(self.item(uid, title, count, price,
-                                 url, comment, description))
+            comment_required = data.comment_required
+            metaware = data.metaware
+            ret.append(self.item(uid, title, count, price, url, comment,
+                                 description, comment_required, metaware))
         return ret
     
     def validate_count(self, uid, count):
