@@ -51,9 +51,10 @@ class CartDataProvider(CartDataProviderBase):
             url = brain[0].getURL()
             description = brain[0].Description
             comment_required = data.comment_required
-            metaware = data.metaware
+            quantity_unit_float = data.quantity_unit_float
             ret.append(self.item(uid, title, count, price, url, comment,
-                                 description, comment_required, metaware))
+                                 description, comment_required,
+                                 quantity_unit_float))
         return ret
     
     def validate_count(self, uid, count):

@@ -27,8 +27,8 @@
          size="2"
          value="1"
          class="cart_item_count"
-         tal:define="css python: view.metaware and \
-                                 'cart_item_count metaware' or 
+         tal:define="css python: view.quantity_unit_float and \
+                                 'cart_item_count quantity_unit_float' or 
                                  'cart_item_count';"
          tal:attributes="class css" />
   

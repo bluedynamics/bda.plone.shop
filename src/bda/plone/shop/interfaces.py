@@ -27,8 +27,6 @@ class IBuyableDataProvider(Interface):
     
     vat = Attribute(u"Item vat as float")
     
-    metaware = Attribute(u"Flag whether buyable amount can be decimal")
-    
     display_gross = Attribute(u"Flag whether whether to display gross "
                               u"instead of net")
     
@@ -36,4 +34,9 @@ class IBuyableDataProvider(Interface):
                                 u"when adding buyable to cart")
     
     comment_required = Attribute(u"Flag whether comment input is required in "
-                                 u"order to add buyable to cart.")
+                                 u"order to add buyable to cart")
+    
+    quantity_unit_float = Attribute(u"Flag whether quantity unit value is "
+                                    u"allowed as float")
+    
+    #quantity_label = Attribute(u"Quantity label")

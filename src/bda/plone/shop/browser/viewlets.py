@@ -44,5 +44,5 @@ class BuyableViewlet(ViewletBase):
         return self.data.comment_required
     
     @property
-    def metaware(self):
-        return self.data.metaware
+    def quantity_unit_float(self):
+        return self.data.quantity_unit_float

@@ -73,14 +73,6 @@ class BuyableExtender(ExtenderBase):
             vocabulary=['10', '20'],
         ),
         XBooleanField(
-            name='item_metaware',
-            schemata='Shop',
-            widget=BooleanField._properties['widget'](
-                label=_(u'label_item_metaware', u'Meta-Ware'),
-            ),
-            default=False,
-        ),
-        XBooleanField(
             name='item_display_gross',
             schemata='Shop',
             widget=BooleanField._properties['widget'](
@@ -101,6 +93,15 @@ class BuyableExtender(ExtenderBase):
             schemata='Shop',
             widget=BooleanField._properties['widget'](
                 label=_(u'label_item_comment_required', u'Comment required'),
+            ),
+            default=False,
+        ),
+        XBooleanField(
+            name='item_quantity_unit_float',
+            schemata='Shop',
+            widget=BooleanField._properties['widget'](
+                label=_(u'label_item_quantity_unit_float',
+                        u'Quantity as float'),
             ),
             default=False,
         ),
@@ -137,10 +138,6 @@ class ATBuyableDataProvider(object):
         return float(val)
     
     @property
-    def metaware(self):
-        return field_value(self.context, 'item_metaware')
-    
-    @property
     def display_gross(self):
         return field_value(self.context, 'item_display_gross')
     
@@ -151,3 +148,7 @@ class ATBuyableDataProvider(object):
     @property
     def comment_required(self):
         return field_value(self.context, 'item_comment_required')
+    
+    @property
+    def quantity_unit_float(self):
+        return field_value(self.context, 'item_quantity_unit_float')
