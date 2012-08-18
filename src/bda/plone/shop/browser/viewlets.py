@@ -38,3 +38,7 @@ class BuyableViewlet(ViewletBase):
     @property
     def comment_enabled(self):
         return self.data.comment_enabled
+    
+    @property
+    def comment_required(self):
+        return self.data.comment_required

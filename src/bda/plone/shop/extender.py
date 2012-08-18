@@ -73,6 +73,14 @@ class BuyableExtender(ExtenderBase):
             vocabulary=['10', '20'],
         ),
         XBooleanField(
+            name='item_metaware',
+            schemata='Shop',
+            widget=BooleanField._properties['widget'](
+                label=_(u'label_item_metaware', u'Meta-Ware'),
+            ),
+            default=False,
+        ),
+        XBooleanField(
             name='item_display_gross',
             schemata='Shop',
             widget=BooleanField._properties['widget'](
@@ -87,6 +95,14 @@ class BuyableExtender(ExtenderBase):
                 label=_(u'label_item_comment_enabled', u'Comment enabled'),
             ),
             default=True,
+        ),
+        XBooleanField(
+            name='item_comment_required',
+            schemata='Shop',
+            widget=BooleanField._properties['widget'](
+                label=_(u'label_item_comment_required', u'Comment required'),
+            ),
+            default=False,
         ),
     ]
 
@@ -121,9 +137,17 @@ class ATBuyableDataProvider(object):
         return float(val)
     
     @property
+    def metaware(self):
+        return field_value(self.context, 'item_metaware')
+    
+    @property
     def display_gross(self):
         return field_value(self.context, 'item_display_gross')
     
     @property
     def comment_enabled(self):
         return field_value(self.context, 'item_comment_enabled')
+    
+    @property
+    def comment_required(self):
+        return field_value(self.context, 'item_comment_required')

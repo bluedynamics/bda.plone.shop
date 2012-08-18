@@ -34,7 +34,11 @@
     <input type="text"
            size="20"
            value=""
-           class="cart_item_comment" />
+           class="cart_item_comment"
+           tal:define="css python: view.comment_required and \
+                                   'cart_item_comment required' or 
+                                   'cart_item_comment';"
+           tal:attributes="class css" />
   
     <span i18n:translate="comment">Comment</span>
   </tal:comment>
