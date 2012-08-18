@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-07 18:39+0000\n"
+"POT-Creation-Date: 2012-08-18 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,12 +31,12 @@ msgid "Enable Buyable"
 msgstr "Aktiviere Shop Artikel"
 
 #. Default: "add to cart"
-#: ./browser/buyable.pt:42
+#: ./browser/buyable.pt:50
 msgid "add_to_cart"
 msgstr "hinzufügen"
 
 #. Default: "Comment"
-#: ./browser/buyable.pt:39
+#: ./browser/buyable.pt:47
 msgid "comment"
 msgstr "Zusatz"
 
@@ -56,22 +56,32 @@ msgid "gross"
 msgstr "Brutto"
 
 #. Default: "Comment enabled"
-#: ./extender.py:87
+#: ./extender.py:85
 msgid "label_item_comment_enabled"
 msgstr "Zusatz Information erlaubt"
 
+#. Default: "Comment required"
+#: ./extender.py:93
+msgid "label_item_comment_required"
+msgstr "Zusatz Information erforderlich"
+
 #. Default: "Display Gross"
-#: ./extender.py:79
+#: ./extender.py:77
 msgid "label_item_display_gross"
 msgstr "Zeige Preis in Brutto"
 
 #. Default: "Item net price"
-#: ./extender.py:64
+#: ./extender.py:62
 msgid "label_item_net"
 msgstr "Netto Preis"
 
+#. Default: "Quantity as float"
+#: ./extender.py:101
+msgid "label_item_quantity_unit_float"
+msgstr "Dezimaleingabe bei Anzahl erlaubt"
+
 #. Default: "Item VAT (in %)"
-#: ./extender.py:71
+#: ./extender.py:69
 msgid "label_item_vat"
 msgstr "Umsatzsteuer (in %)"
 
@@ -81,12 +91,12 @@ msgid "net"
 msgstr "Netto"
 
 #. Default: "Piece"
-#: ./browser/buyable.pt:31
+#: ./browser/buyable.pt:35
 msgid "piece"
 msgstr "Stück"
 
 #. Default: "update cart"
-#: ./browser/buyable.pt:46
+#: ./browser/buyable.pt:54
 msgid "update_cart"
 msgstr "aktualisieren"
 
