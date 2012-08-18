@@ -14,11 +14,9 @@ from Products.Archetypes.public import (
     SelectionWidget,
 )
 from Products.Archetypes.interfaces import IBaseObject
+from bda.plone.cart.interfaces import ICartItemDataProvider
 from bda.plone.shop.interfaces import IShopExtensionLayer
-from .interfaces import (
-    IBuyable,
-    IBuyableDataProvider,
-)
+from .interfaces import IBuyable
 
 
 _ = MessageFactory('bda.plone.shop')
@@ -116,8 +114,8 @@ def field_value(obj, field_name):
         raise AttributeError
 
 
-class ATBuyableDataProvider(object):
-    implements(IBuyableDataProvider)
+class ATCartItemDataProvider(object):
+    implements(ICartItemDataProvider)
     adapts(IBaseObject)
     
     def __init__(self, context):

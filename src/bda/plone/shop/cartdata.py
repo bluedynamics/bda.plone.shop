@@ -1,7 +1,7 @@
 from decimal import Decimal
 from Products.CMFCore.utils import getToolByName
 from bda.plone.cart import CartDataProviderBase
-from .interfaces import IBuyableDataProvider
+from bda.plone.cart.interfaces import ICartItemDataProvider
 
 
 class CartDataProvider(CartDataProviderBase):
@@ -11,7 +11,7 @@ class CartDataProvider(CartDataProviderBase):
         return getToolByName(self.context, 'portal_catalog')
     
     def data_for(self, brain):
-        return IBuyableDataProvider(brain.getObject())
+        return ICartItemDataProvider(brain.getObject())
     
     def net(self, items):
         cat = self.catalog

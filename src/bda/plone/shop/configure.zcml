@@ -23,6 +23,6 @@
   
   <adapter factory=".cartdata.CartDataProvider" />
   
-  <adapter factory=".extender.ATBuyableDataProvider" />
+  <adapter factory=".extender.ATCartItemDataProvider" />
 
 </configure>

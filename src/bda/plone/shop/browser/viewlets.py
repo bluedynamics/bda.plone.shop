@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from plone.app.layout.viewlets.common import ViewletBase
-from ..interfaces import IBuyableDataProvider
+from bda.plone.cart.interfaces import ICartItemDataProvider
 
 
 class BuyableViewlet(ViewletBase):
@@ -9,7 +9,7 @@ class BuyableViewlet(ViewletBase):
     
     @property
     def data(self):
-        return IBuyableDataProvider(self.context)
+        return ICartItemDataProvider(self.context)
     
     @property
     def currency(self):
