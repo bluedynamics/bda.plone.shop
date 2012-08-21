@@ -28,8 +28,6 @@ setup(name='bda.plone.shop',
           'setuptools',
           'Plone',
           'archetypes.schemaextender',
-          'bda.plone.checkout',
-          'bda.plone.payment',
           'bda.plone.orders',
       ],
       entry_points="""
