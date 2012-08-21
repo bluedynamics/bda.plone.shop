@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-18 15:25+0000\n"
+"POT-Creation-Date: 2012-08-21 12:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,11 @@ msgstr ""
 msgid "enabled_buyable"
 msgstr ""
 
+#. Default: "Export Orders"
+#: ./browser/admin.pt:19
+msgid "exportorders"
+msgstr ""
+
 #. Default: "Gross"
 #: ./browser/buyable.pt:14
 msgid "gross"
@@ -90,9 +95,20 @@ msgstr ""
 msgid "net"
 msgstr ""
 
+#. Default: "Orders"
+#: ./browser/admin.pt:14
+msgid "orders"
+msgstr ""
+
 #. Default: "Piece"
 #: ./browser/buyable.pt:35
 msgid "piece"
+msgstr ""
+
+#. Default: "Shop Admin"
+#: ./browser/admin.pt:7
+#: ./browser/admin.py:18
+msgid "shop_admin"
 msgstr ""
 
 #. Default: "update cart"
