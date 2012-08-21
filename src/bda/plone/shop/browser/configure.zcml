@@ -1,5 +1,6 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:browser="http://namespaces.zope.org/browser">
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:plone="http://namespaces.plone.org/plone">
   
   <!-- resources -->
   <browser:resource
@@ -49,5 +50,12 @@
     class=".actions.ActionsView" 
     permission="cmf.ModifyPortalContent" 
     layer="..interfaces.IShopExtensionLayer" />
+  
+  <plone:portlet
+    name="portlets.ShopAdmin"
+    interface=".admin.IShopAdminPortlet"
+    assignment=".admin.ShopAdminAssignment"
+    renderer=".admin.ShopAdminRenderer"
+    addview=".admin.ShopAdminAddForm" />
 
 </configure>

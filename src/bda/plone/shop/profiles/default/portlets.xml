@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="bda.plone.shop">
+  <portlet 
+    addview="portlets.ShopAdmin"
+    title="Shop Admin Portlet"
+    description="A portlet which renders shop admin links.">
+    <for interface="plone.app.portlets.interfaces.IRightColumn" />
+  </portlet>
+  <assignment
+    manager="plone.rightcolumn"
+    category="context"
+    key="/"
+    type="portlets.ShopAdmin"
+    name="shop_admin" />
+</portlets>

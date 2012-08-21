@@ -1,0 +1,29 @@
+<tal:block condition="view/show"
+           i18n:domain="bda.plone.shop">
+
+  <dl class="portlet portletShopAdmin">
+    <dt class="portletHeader">
+      <span class="portletTopLeft"></span>
+      <span i18n:translate="shop_admin">Shop Admin</span>
+      <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem lastItem">
+      <ul>
+        <li>
+          <a href=""
+             tal:attributes="href string:${context/absolute_url}/@@orders"
+             i18n:translate="orders">Orders</a>
+        </li>
+        <li>
+          <a href=""
+             tal:attributes="href string:${context/absolute_url}/@@exportorders"
+             i18n:translate="exportorders">Export Orders</a>
+        </li>
+      </ul>
+      <span class="portletBottomLeft"></span>
+      <span class="portletBottomRight"></span>
+    </dd>
+  </dl>
+
+</tal:block>
