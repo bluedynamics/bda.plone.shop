@@ -4,6 +4,8 @@ from bda.plone.cart import CartDataProviderBase
 from bda.plone.cart.interfaces import ICartItemDataProvider
 
 
+SUMMARY_TOTAL_ONLY = False
+
 class CartDataProvider(CartDataProviderBase):
     
     @property
@@ -66,7 +68,7 @@ class CartDataProvider(CartDataProviderBase):
     
     @property
     def summary_total_only(self):
-        return False
+        return SUMMARY_TOTAL_ONLY
     
     @property
     def checkout_url(self):
