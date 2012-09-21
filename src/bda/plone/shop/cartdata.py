@@ -5,6 +5,8 @@ from bda.plone.cart.interfaces import ICartItemDataProvider
 
 
 SUMMARY_TOTAL_ONLY = False
+SHOP_CURRENCY = 'EUR'
+
 
 class CartDataProvider(CartDataProviderBase):
     
@@ -70,6 +72,10 @@ class CartDataProvider(CartDataProviderBase):
             'success': True,
             'error': '',
         }
+    
+    @property
+    def currency(self):
+        return SHOP_CURRENCY
     
     @property
     def disable_max_article(self):

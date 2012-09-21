@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from plone.app.layout.viewlets.common import ViewletBase
 from bda.plone.cart.interfaces import ICartItemDataProvider
+from bda.plone.cart.browser import DataProviderMixin
 
 
-class BuyableViewlet(ViewletBase):
+class BuyableViewlet(ViewletBase, DataProviderMixin):
     """Vielet rendering buyable information.
     """
     
@@ -13,7 +14,7 @@ class BuyableViewlet(ViewletBase):
     
     @property
     def currency(self):
-        return '€'
+        return self.data_provider.currency
     
     @property
     def item_uid(self):
