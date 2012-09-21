@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-21 12:09+0000\n"
+"POT-Creation-Date: 2012-09-21 15:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,35 +60,55 @@ msgstr "Export Bestellungen"
 msgid "gross"
 msgstr "Brutto"
 
+#. Default: "Kilo"
+#: ./extender.py:56
+msgid "kilo"
+msgstr "Kilo"
+
 #. Default: "Comment enabled"
-#: ./extender.py:85
+#: ./extender.py:95
 msgid "label_item_comment_enabled"
 msgstr "Zusatz Information erlaubt"
 
 #. Default: "Comment required"
-#: ./extender.py:93
+#: ./extender.py:103
 msgid "label_item_comment_required"
 msgstr "Zusatz Information erforderlich"
 
 #. Default: "Display Gross"
-#: ./extender.py:77
+#: ./extender.py:87
 msgid "label_item_display_gross"
 msgstr "Zeige Preis in Brutto"
 
 #. Default: "Item net price"
-#: ./extender.py:62
+#: ./extender.py:72
 msgid "label_item_net"
 msgstr "Netto Preis"
 
+#. Default: "Quantity label"
+#: ./extender.py:120
+msgid "label_item_quantity_label"
+msgstr "Einheit"
+
 #. Default: "Quantity as float"
-#: ./extender.py:101
+#: ./extender.py:111
 msgid "label_item_quantity_unit_float"
 msgstr "Dezimaleingabe bei Anzahl erlaubt"
 
 #. Default: "Item VAT (in %)"
-#: ./extender.py:69
+#: ./extender.py:79
 msgid "label_item_vat"
 msgstr "Umsatzsteuer (in %)"
+
+#. Default: "Liter"
+#: ./extender.py:57
+msgid "liter"
+msgstr "Liter"
+
+#. Default: "Meter"
+#: ./extender.py:55
+msgid "meter"
+msgstr "Meter"
 
 #. Default: "Net"
 #: ./browser/buyable.pt:5
@@ -100,10 +120,10 @@ msgstr "Netto"
 msgid "orders"
 msgstr "Bestellungen"
 
-#. Default: "Piece"
-#: ./browser/buyable.pt:35
-msgid "piece"
-msgstr "Stück"
+#. Default: "Quantity"
+#: ./extender.py:54
+msgid "quantity"
+msgstr "Anzahl"
 
 #. Default: "Shop Admin"
 #: ./browser/admin.pt:7

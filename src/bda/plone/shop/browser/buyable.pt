@@ -4,7 +4,7 @@
   <tal:net condition="not:view/display_gross">
     <strong i18n:translate="net">Net</strong>
     <span tal:replace="view/item_net">1.0</span>
-    <span tal:replace="view/currency">€</span>
+    <span tal:replace="view/currency">EUR</span>
     <strong i18n:translate="vat"
             class="vat_label">Vat</strong>
     <span tal:replace="view/item_vat">20</span>%
@@ -32,7 +32,7 @@
                                  'cart_item_count';"
          tal:attributes="class css" />
   
-  <span i18n:translate="piece">Piece</span>
+  <span tal:content="view/quantity_label">Quantity</span>
   
   <tal:comment condition="view/comment_enabled">
     <input type="text"

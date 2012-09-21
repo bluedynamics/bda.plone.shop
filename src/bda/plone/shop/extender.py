@@ -11,6 +11,7 @@ from Products.Archetypes.public import (
     StringField,
     FloatField,
     BooleanField,
+    StringWidget,
     SelectionWidget,
 )
 from Products.Archetypes.interfaces import IBaseObject
@@ -48,6 +49,15 @@ class ExtenderBase(object):
         return neworder
 
 
+VAT_VOCAB = ['10', '20']
+QUANTITY_LABEL_VOCAB = [
+    ('quantity', _('quantity', 'Quantity')),
+    ('meter', _('meter', 'Meter')),
+    ('kilo', _('kilo', 'Kilo')),
+    ('liter', _('liter', 'Liter')),
+]
+
+
 class BuyableExtender(ExtenderBase):
     """Schema extender for buyable contents
     """
@@ -68,7 +78,7 @@ class BuyableExtender(ExtenderBase):
             widget=SelectionWidget(
                 label=_(u'label_item_vat', u'Item VAT (in %)'),
             ),
-            vocabulary=['10', '20'],
+            vocabulary=VAT_VOCAB,
         ),
         XBooleanField(
             name='item_display_gross',
@@ -102,6 +112,14 @@ class BuyableExtender(ExtenderBase):
                         u'Quantity as float'),
             ),
             default=False,
+        ),
+        XStringField(
+            name='item_quantity_label',
+            schemata='Shop',
+            widget=SelectionWidget(
+                label=_(u'label_item_quantity_label', u'Quantity label'),
+            ),
+            vocabulary=QUANTITY_LABEL_VOCAB,
         ),
     ]
 
@@ -150,3 +168,7 @@ class ATCartItemDataProvider(object):
     @property
     def quantity_unit_float(self):
         return field_value(self.context, 'item_quantity_unit_float')
+    
+    @property
+    def quantity_label(self):
+        return field_value(self.context, 'item_quantity_label')
