@@ -59,8 +59,17 @@ class CartDataProvider(CartDataProviderBase):
                                  quantity_unit_float))
         return ret
     
+    def validate_set(self, uid):
+        return {
+            'success': True,
+            'error': 'Blahhh',
+        }
+    
     def validate_count(self, uid, count):
-        return True
+        return {
+            'success': True,
+            'error': '',
+        }
     
     @property
     def disable_max_article(self):
