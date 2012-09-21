@@ -62,7 +62,7 @@ class CartDataProvider(CartDataProviderBase):
     def validate_set(self, uid):
         return {
             'success': True,
-            'error': 'Blahhh',
+            'error': '',
         }
     
     def validate_count(self, uid, count):
