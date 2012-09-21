@@ -1,7 +1,12 @@
 from decimal import Decimal
+from zope.i18n import translate
+from zope.i18nmessageid import MessageFactory
 from Products.CMFCore.utils import getToolByName
 from bda.plone.cart import CartDataProviderBase
 from bda.plone.cart.interfaces import ICartItemDataProvider
+
+
+_ = MessageFactory('bda.plone.shop')
 
 
 SUMMARY_TOTAL_ONLY = False
@@ -56,9 +61,11 @@ class CartDataProvider(CartDataProviderBase):
             description = brain[0].Description
             comment_required = data.comment_required
             quantity_unit_float = data.quantity_unit_float
+            quantity_label = translate(_(data.quantity_label),
+                                       context=self.request)
             ret.append(self.item(uid, title, count, price, url, comment,
                                  description, comment_required,
-                                 quantity_unit_float))
+                                 quantity_unit_float, quantity_label))
         return ret
     
     def validate_set(self, uid):

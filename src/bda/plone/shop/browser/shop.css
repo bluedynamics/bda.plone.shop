@@ -19,7 +19,7 @@ a.buyable_add_to_cart:hover,
 a.buyable_add_to_cart:visited,
 a.buyable_update_cart:link,
 a.buyable_update_cart:active,
-a.buyable_update_cart:visited,
+a.buyable_update_cart:hover,
 a.buyable_update_cart:visited {
     background-color:#75ad0a;
     border-radius: 0.3em 0.3em 0.3em 0.3em;
@@ -30,4 +30,9 @@ a.buyable_update_cart:visited {
     text-align:center;
     text-decoration:none;
     cursor:pointer;
+}
+a.buyable_add_to_cart:hover,
+a.buyable_update_cart:hover {
+    background-color:#eeeeee;
+    color:#205C90 !important;
 }
