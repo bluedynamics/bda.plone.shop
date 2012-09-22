@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 from zope.i18n import translate
-from zope.i18nmessageid import MessageFactory
 from plone.app.layout.viewlets.common import ViewletBase
 from bda.plone.cart.interfaces import ICartItemDataProvider
 from bda.plone.cart.browser import DataProviderMixin
-
-
-_ = MessageFactory('bda.plone.shop')
 
 
 class BuyableViewlet(ViewletBase, DataProviderMixin):
@@ -54,5 +50,5 @@ class BuyableViewlet(ViewletBase, DataProviderMixin):
         return self.data.quantity_unit_float
     
     @property
-    def quantity_label(self):
-        return translate(_(self.data.quantity_label), context=self.request)
+    def quantity_unit(self):
+        return translate(self.data.quantity_unit, context=self.request)

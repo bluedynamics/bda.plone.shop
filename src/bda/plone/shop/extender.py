@@ -50,7 +50,7 @@ class ExtenderBase(object):
 
 
 VAT_VOCAB = ['10', '20']
-QUANTITY_LABEL_VOCAB = [
+QUANTITY_UNIT_VOCAB = [
     ('quantity', _('quantity', 'Quantity')),
     ('meter', _('meter', 'Meter')),
     ('kilo', _('kilo', 'Kilo')),
@@ -114,12 +114,12 @@ class BuyableExtender(ExtenderBase):
             default=False,
         ),
         XStringField(
-            name='item_quantity_label',
+            name='item_quantity_unit',
             schemata='Shop',
             widget=SelectionWidget(
-                label=_(u'label_item_quantity_label', u'Quantity label'),
+                label=_(u'label_item_quantity_unit', u'Quantity unit'),
             ),
-            vocabulary=QUANTITY_LABEL_VOCAB,
+            vocabulary=QUANTITY_UNIT_VOCAB,
         ),
     ]
 
@@ -170,5 +170,8 @@ class ATCartItemDataProvider(object):
         return field_value(self.context, 'item_quantity_unit_float')
     
     @property
-    def quantity_label(self):
-        return field_value(self.context, 'item_quantity_label')
+    def quantity_unit(self):
+        unit = field_value(self.context, 'item_quantity_unit')
+        for key, term in QUANTITY_UNIT_VOCAB:
+            if unit == key:
+                return term

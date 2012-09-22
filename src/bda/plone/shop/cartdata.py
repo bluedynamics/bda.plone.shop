@@ -9,7 +9,6 @@ from bda.plone.cart.interfaces import ICartItemDataProvider
 _ = MessageFactory('bda.plone.shop')
 
 
-SUMMARY_TOTAL_ONLY = False
 SHOP_CURRENCY = 'EUR'
 
 
@@ -61,11 +60,11 @@ class CartDataProvider(CartDataProviderBase):
             description = brain[0].Description
             comment_required = data.comment_required
             quantity_unit_float = data.quantity_unit_float
-            quantity_label = translate(_(data.quantity_label),
-                                       context=self.request)
+            quantity_unit = translate(_(data.quantity_unit),
+                                      context=self.request)
             ret.append(self.item(uid, title, count, price, url, comment,
                                  description, comment_required,
-                                 quantity_unit_float, quantity_label))
+                                 quantity_unit_float, quantity_unit))
         return ret
     
     def validate_set(self, uid):
@@ -90,7 +89,7 @@ class CartDataProvider(CartDataProviderBase):
     
     @property
     def summary_total_only(self):
-        return SUMMARY_TOTAL_ONLY
+        return False
     
     @property
     def checkout_url(self):

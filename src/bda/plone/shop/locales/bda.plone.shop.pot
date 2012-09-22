@@ -85,9 +85,9 @@ msgstr ""
 msgid "label_item_net"
 msgstr ""
 
-#. Default: "Quantity label"
+#. Default: "Quantity unit"
 #: ./extender.py:120
-msgid "label_item_quantity_label"
+msgid "label_item_quantity_unit"
 msgstr ""
 
 #. Default: "Quantity as float"
