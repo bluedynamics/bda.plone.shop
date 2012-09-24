@@ -12,7 +12,7 @@ _ = MessageFactory('bda.plone.shop')
 SHOP_CURRENCY = 'EUR'
 
 
-class CartDataProvider(CartDataProviderBase):
+class CartItemCalculator(object):
     
     @property
     def catalog(self):
@@ -43,9 +43,9 @@ class CartDataProvider(CartDataProviderBase):
             vat += (Decimal(str(data.net)) / Decimal(100)) \
                    * Decimal(str(data.vat)) * count
         return vat
-    
-    def shipping(self, items):
-        return Decimal(10)
+
+
+class CartDataProvider(CartItemCalculator, CartDataProviderBase):
     
     def cart_items(self, items):
         cat = self.catalog
@@ -96,7 +96,11 @@ class CartDataProvider(CartDataProviderBase):
     
     @property
     def include_shipping_costs(self):
-        return False
+        return True
+    
+    @property
+    def shipping_method(self):
+        return 'flat_rate'
     
     @property
     def checkout_url(self):

@@ -21,6 +21,8 @@
     factory=".extender.BuyableExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
   
+  <adapter name="flat_rate" factory=".shipping.FlatRate" />
+  
   <adapter factory=".cartdata.CartDataProvider" />
   
   <adapter factory=".extender.ATCartItemDataProvider" />
