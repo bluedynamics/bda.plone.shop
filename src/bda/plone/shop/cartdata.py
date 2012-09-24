@@ -44,6 +44,9 @@ class CartDataProvider(CartDataProviderBase):
                    * Decimal(str(data.vat)) * count
         return vat
     
+    def shipping(self, items):
+        return Decimal(10)
+    
     def cart_items(self, items):
         cat = self.catalog
         ret = list()
@@ -89,6 +92,10 @@ class CartDataProvider(CartDataProviderBase):
     
     @property
     def summary_total_only(self):
+        return False
+    
+    @property
+    def include_shipping_costs(self):
         return False
     
     @property
