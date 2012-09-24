@@ -16,54 +16,54 @@ msgstr ""
 
 #: ./profiles/default/actions.xml
 msgid "Activate Buyable on Item"
-msgstr "Activate Buyable on Item"
+msgstr ""
 
 #: ./profiles/default/actions.xml
 msgid "Deactivates Buyable on Item"
-msgstr "Deactivates Buyable on Item"
+msgstr ""
 
 #: ./profiles/default/actions.xml
 msgid "Disables Buyable"
-msgstr "Disables Buyable"
+msgstr ""
 
 #: ./profiles/default/actions.xml
 msgid "Enable Buyable"
-msgstr "Enable Buyable"
+msgstr ""
 
 #. Default: "add to cart"
 #: ./browser/buyable.pt:50
 msgid "add_to_cart"
-msgstr "add to cart"
+msgstr ""
 
 #. Default: "Comment"
 #: ./browser/buyable.pt:47
 msgid "comment"
-msgstr "Comment"
+msgstr ""
 
 #. Default: "Disabled Buyable."
 #: ./browser/actions.py:32
 msgid "disabled_buyable"
-msgstr "Disabled Buyable"
+msgstr ""
 
 #. Default: "Enabled Buyable."
 #: ./browser/actions.py:23
 msgid "enabled_buyable"
-msgstr "Enabled Buyable"
+msgstr ""
 
 #. Default: "Export Orders"
 #: ./browser/admin.pt:19
 msgid "exportorders"
-msgstr "Export Orders"
+msgstr ""
 
 #. Default: "Gross"
 #: ./browser/buyable.pt:14
 msgid "gross"
-msgstr "Gross"
+msgstr ""
 
 #. Default: "Kilo"
 #: ./extender.py:56
 msgid "kilo"
-msgstr "Kilo"
+msgstr ""
 
 #. Default: "Comment enabled"
 #: ./extender.py:95
@@ -73,71 +73,71 @@ msgstr ""
 #. Default: "Comment required"
 #: ./extender.py:103
 msgid "label_item_comment_required"
-msgstr "Comment enabled"
+msgstr ""
 
 #. Default: "Display Gross"
 #: ./extender.py:87
 msgid "label_item_display_gross"
-msgstr "Display Gross"
+msgstr ""
 
 #. Default: "Item net price"
 #: ./extender.py:72
 msgid "label_item_net"
-msgstr "Item net price"
+msgstr ""
 
 #. Default: "Quantity unit"
 #: ./extender.py:120
 msgid "label_item_quantity_unit"
-msgstr "Quantity unit"
+msgstr ""
 
 #. Default: "Quantity as float"
 #: ./extender.py:111
 msgid "label_item_quantity_unit_float"
-msgstr "Quantity as float"
+msgstr ""
 
 #. Default: "Item VAT (in %)"
 #: ./extender.py:79
 msgid "label_item_vat"
-msgstr "Item VAT (in %)"
+msgstr ""
 
 #. Default: "Liter"
 #: ./extender.py:57
 msgid "liter"
-msgstr "Liter"
+msgstr ""
 
 #. Default: "Meter"
 #: ./extender.py:55
 msgid "meter"
-msgstr "Meter"
+msgstr ""
 
 #. Default: "Net"
 #: ./browser/buyable.pt:5
 msgid "net"
-msgstr "Net"
+msgstr ""
 
 #. Default: "Orders"
 #: ./browser/admin.pt:14
 msgid "orders"
-msgstr "Orders"
+msgstr ""
 
 #. Default: "Quantity"
 #: ./extender.py:54
 msgid "quantity"
-msgstr "Quantity"
+msgstr ""
 
 #. Default: "Shop Admin"
 #: ./browser/admin.pt:7
 #: ./browser/admin.py:18
 msgid "shop_admin"
-msgstr "Shop Admin"
+msgstr ""
 
 #. Default: "update cart"
 #: ./browser/buyable.pt:54
 msgid "update_cart"
-msgstr "update cart"
+msgstr ""
 
 #. Default: "Vat"
 #: ./browser/buyable.pt:8
 msgid "vat"
-msgstr "Vat"
+msgstr ""
 
