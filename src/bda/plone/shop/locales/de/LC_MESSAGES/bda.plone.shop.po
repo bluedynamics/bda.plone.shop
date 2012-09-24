@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-09-21 15:50+0000\n"
+"POT-Creation-Date: 2012-09-24 14:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr "Erweitert Objekt um Shop Artikel Information"
 
 #: ./profiles/default/actions.xml
 msgid "Deactivates Buyable on Item"
-msgstr "Deaktiviert Shop Artikel Information auf Objekt"
+msgstr "Deaktiviert Shop Artikel Information auf dem Objekt"
 
 #: ./profiles/default/actions.xml
 msgid "Disables Buyable"
@@ -68,12 +68,12 @@ msgstr "Kilo"
 #. Default: "Comment enabled"
 #: ./extender.py:95
 msgid "label_item_comment_enabled"
-msgstr "Zusatz Information erlaubt"
+msgstr "Zusatzinformation erlaubt"
 
 #. Default: "Comment required"
 #: ./extender.py:103
 msgid "label_item_comment_required"
-msgstr "Zusatz Information erforderlich"
+msgstr "Zusatzinformation erforderlich"
 
 #. Default: "Display Gross"
 #: ./extender.py:87

@@ -16,7 +16,7 @@ CURRENT_PATH=`pwd`
 CATALOGNAME="bda.plone.shop"
 
 # List of languages
-LANGUAGES="en de fr"
+LANGUAGES="en de fr it"
 
 # Create locales folder structure for languages
 install -d locales
@@ -26,7 +26,7 @@ done
 
 # Assume i18ndude is installed with buildout
 # and this script is run under src/ folder with two nested namespaces in the package name (like collective.bla)
-I18NDUDE=../../../../../../bin/i18ndude
+I18NDUDE=../../../../bin/i18ndude
 
 if test ! -e $I18NDUDE; then
         echo "You must install i18ndude with buildout"
