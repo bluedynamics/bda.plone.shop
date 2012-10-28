@@ -1,4 +1,4 @@
-msgid ""
+﻿msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2012-09-24 14:11+0000\n"
@@ -16,49 +16,49 @@ msgstr ""
 
 #: ./profiles/default/actions.xml
 msgid "Activate Buyable on Item"
-msgstr "Erweitert Objekt um Shop Artikel Information"
+msgstr "Information complémentaire des produits dans le shop"
 
 #: ./profiles/default/actions.xml
 msgid "Deactivates Buyable on Item"
-msgstr "Deaktiviert Shop Artikel Information auf Objekt"
+msgstr "Déactiver information des produits dans le shop"
 
 #: ./profiles/default/actions.xml
 msgid "Disables Buyable"
-msgstr "Deaktiviere Shop Artikel"
+msgstr "Déactiver information des produits dans le shop"
 
 #: ./profiles/default/actions.xml
 msgid "Enable Buyable"
-msgstr "Aktiviere Shop Artikel"
+msgstr "Activer information des produits dans le shop"
 
 #. Default: "add to cart"
 #: ./browser/buyable.pt:50
 msgid "add_to_cart"
-msgstr "hinzufügen"
+msgstr "Ajouter"
 
 #. Default: "Comment"
 #: ./browser/buyable.pt:47
 msgid "comment"
-msgstr "Zusatz"
+msgstr "Complément"
 
 #. Default: "Disabled Buyable."
 #: ./browser/actions.py:32
 msgid "disabled_buyable"
-msgstr "Shop Artikel Information deaktiviert"
+msgstr "Déactiver information des articles dans le shop"
 
 #. Default: "Enabled Buyable."
 #: ./browser/actions.py:23
 msgid "enabled_buyable"
-msgstr "Shop Artikel Information hinzugefügt"
+msgstr "Activer information des articles dans le shop"
 
 #. Default: "Export Orders"
 #: ./browser/admin.pt:19
 msgid "exportorders"
-msgstr "Export Bestellungen"
+msgstr "Exporter commande"
 
 #. Default: "Gross"
 #: ./browser/buyable.pt:14
 msgid "gross"
-msgstr "Brutto"
+msgstr "Brut"
 
 #. Default: "Kilo"
 #: ./extender.py:56
@@ -68,22 +68,22 @@ msgstr ""
 #. Default: "Comment enabled"
 #: ./extender.py:95
 msgid "label_item_comment_enabled"
-msgstr "Zusatz Information erlaubt"
+msgstr "Information complémentaire autorisée"
 
 #. Default: "Comment required"
 #: ./extender.py:103
 msgid "label_item_comment_required"
-msgstr "Zusatz Information erforderlich"
+msgstr "Information complémentaire obligatoire"
 
 #. Default: "Display Gross"
 #: ./extender.py:87
 msgid "label_item_display_gross"
-msgstr "Zeige Preis in Brutto"
+msgstr "Prix brut"
 
 #. Default: "Item net price"
 #: ./extender.py:72
 msgid "label_item_net"
-msgstr "Netto Preis"
+msgstr "Prix net"
 
 #. Default: "Quantity unit"
 #: ./extender.py:120
@@ -93,51 +93,51 @@ msgstr ""
 #. Default: "Quantity as float"
 #: ./extender.py:111
 msgid "label_item_quantity_unit_float"
-msgstr "Dezimaleingabe bei Anzahl erlaubt"
+msgstr "Commande en fraction possible"
 
 #. Default: "Item VAT (in %)"
 #: ./extender.py:79
 msgid "label_item_vat"
-msgstr "Umsatzsteuer (in %)"
+msgstr "Impôt sur le chiffre d'affaire (en %)"
 
 #. Default: "Liter"
 #: ./extender.py:57
 msgid "liter"
-msgstr ""
+msgstr "Litre"
 
 #. Default: "Meter"
 #: ./extender.py:55
 msgid "meter"
-msgstr ""
+msgstr "Mètre"
 
 #. Default: "Net"
 #: ./browser/buyable.pt:5
 msgid "net"
-msgstr "Netto"
+msgstr "Net:"
 
 #. Default: "Orders"
 #: ./browser/admin.pt:14
 msgid "orders"
-msgstr "Bestellungen"
+msgstr "Commandes"
 
 #. Default: "Quantity"
 #: ./extender.py:54
 msgid "quantity"
-msgstr ""
+msgstr "Pièce"
 
 #. Default: "Shop Admin"
 #: ./browser/admin.pt:7
 #: ./browser/admin.py:18
 msgid "shop_admin"
-msgstr "Shop Administration"
+msgstr "Administrateur shop"
 
 #. Default: "update cart"
 #: ./browser/buyable.pt:54
 msgid "update_cart"
-msgstr "aktualisieren"
+msgstr "Actualiser "
 
 #. Default: "Vat"
 #: ./browser/buyable.pt:8
 msgid "vat"
-msgstr "USt"
+msgstr "TVA"
 
