@@ -1,7 +1,7 @@
-﻿msgid ""
+msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-09-24 14:11+0000\n"
+"POT-Creation-Date: 2012-11-07 16:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,11 +126,16 @@ msgstr "Commandes"
 msgid "quantity"
 msgstr "Pièce"
 
-#. Default: "Shop Admin"
-#: ./browser/admin.pt:7
+#. Default: "Shop Administration"
 #: ./browser/admin.py:18
+#, fuzzy
 msgid "shop_admin"
 msgstr "Administrateur shop"
+
+#. Default: "Shop Admin"
+#: ./browser/admin.pt:7
+msgid "shop_admin_heading"
+msgstr ""
 
 #. Default: "update cart"
 #: ./browser/buyable.pt:54

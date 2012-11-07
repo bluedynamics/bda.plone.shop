@@ -4,7 +4,7 @@
   <dl class="portlet portletShopAdmin">
     <dt class="portletHeader">
       <span class="portletTopLeft"></span>
-      <span i18n:translate="shop_admin">Shop Admin</span>
+      <span i18n:translate="shop_admin_heading">Shop Admin</span>
       <span class="portletTopRight"></span>
     </dt>
 
