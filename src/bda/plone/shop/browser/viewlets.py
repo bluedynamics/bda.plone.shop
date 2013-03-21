@@ -10,7 +10,7 @@ class BuyableViewlet(ViewletBase, DataProviderMixin):
     """Vielet rendering buyable information.
     """
 
-    render = ViewPageTemplateFile('buyable.pt')
+    index = ViewPageTemplateFile('buyable.pt')
 
     @property
     def data(self):
