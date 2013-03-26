@@ -3,7 +3,12 @@ Changelog
 
 unreleased 
 ----------
+
+- Allow the shop administration portlet in the left column too.
+  (fixes #2)
+  [fRiSi]
   
+    
 0.1
 ---
 

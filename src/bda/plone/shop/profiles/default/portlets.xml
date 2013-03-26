@@ -6,7 +6,6 @@
     addview="portlets.ShopAdmin"
     title="Shop Admin Portlet"
     description="A portlet which renders shop admin links.">
-    <for interface="plone.app.portlets.interfaces.IRightColumn" />
   </portlet>
   <assignment
     manager="plone.rightcolumn"
