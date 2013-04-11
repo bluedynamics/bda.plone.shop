@@ -117,6 +117,8 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
 class CartItemPreviewImage(CartItemPreviewAdapterBase):
 
+    preview_scale = "tile"
+
     @property
     def url(self):
         """ get url of preview image:
@@ -127,10 +129,11 @@ class CartItemPreviewImage(CartItemPreviewAdapterBase):
         scales = self.context.restrictedTraverse('@@images')
 
         if self.context.getField("image") is not None:
-            img_scale = scales.scale("image", scale="thumb")
+            img_scale = scales.scale("image", scale=self.preview_scale)
 
         if img_scale is None and HAS_CLI:
             if self.context.getField(IMAGE_FIELD_NAME) is not None:
-                img_scale = scales.scale(IMAGE_FIELD_NAME, scale="thumb")
+                img_scale = scales.scale(IMAGE_FIELD_NAME,
+                    scale=self.preview_scale)
 
         return img_scale and img_scale.url or ""
