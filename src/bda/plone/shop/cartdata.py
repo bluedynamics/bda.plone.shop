@@ -1,9 +1,16 @@
+from Products.CMFCore.utils import getToolByName
+from bda.plone.cart import CartDataProviderBase, CartItemPreviewAdapterBase
+from bda.plone.cart.interfaces import ICartItemDataProvider, \
+    ICartItemPreviewImage
 from decimal import Decimal
 from zope.i18n import translate
 from zope.i18nmessageid import MessageFactory
-from Products.CMFCore.utils import getToolByName
-from bda.plone.cart import CartDataProviderBase
-from bda.plone.cart.interfaces import ICartItemDataProvider
+
+try:
+    from collective.contentleadimage.config import IMAGE_FIELD_NAME
+    HAS_CLI = True
+except:
+    HAS_CLI = False
 
 
 _ = MessageFactory('bda.plone.shop')
@@ -13,14 +20,14 @@ SHOP_CURRENCY = 'EUR'
 
 
 class CartItemCalculator(object):
-    
+
     @property
     def catalog(self):
         return getToolByName(self.context, 'portal_catalog')
-    
+
     def data_for(self, brain):
         return ICartItemDataProvider(brain.getObject())
-    
+
     def net(self, items):
         cat = self.catalog
         net = Decimal(0)
@@ -31,7 +38,7 @@ class CartItemCalculator(object):
             data = self.data_for(brain[0])
             net += Decimal(str(data.net)) * count
         return net
-    
+
     def vat(self, items):
         cat = self.catalog
         vat = Decimal(0)
@@ -46,7 +53,7 @@ class CartItemCalculator(object):
 
 
 class CartDataProvider(CartItemCalculator, CartDataProviderBase):
-    
+
     def cart_items(self, items):
         cat = self.catalog
         ret = list()
@@ -64,43 +71,66 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             comment_required = data.comment_required
             quantity_unit_float = data.quantity_unit_float
             quantity_unit = translate(data.quantity_unit, context=self.request)
+            preview_image_url = ICartItemPreviewImage(brain[0].getObject()).url
             ret.append(self.item(uid, title, count, price, url, comment,
                                  description, comment_required,
-                                 quantity_unit_float, quantity_unit))
+                                 quantity_unit_float, quantity_unit,
+                                 preview_image_url))
         return ret
-    
+
     def validate_set(self, uid):
         return {
             'success': True,
             'error': '',
         }
-    
+
     def validate_count(self, uid, count):
         return {
             'success': True,
             'error': '',
         }
-    
+
     @property
     def currency(self):
         return SHOP_CURRENCY
-    
+
     @property
     def disable_max_article(self):
         return True
-    
+
     @property
     def summary_total_only(self):
         return False
-    
+
     @property
     def include_shipping_costs(self):
         return True
-    
+
     @property
     def shipping_method(self):
         return 'flat_rate'
-    
+
     @property
     def checkout_url(self):
         return '%s/@@checkout' % self.context.absolute_url()
+
+
+class CartItemPreviewImage(CartItemPreviewAdapterBase):
+
+    @property
+    def url(self):
+        """ get url of preview image:
+            1. try to read the 'image' field on the context
+            2. try to use collective.contentleadimage
+        """
+        img_scale = None
+        scales = self.context.restrictedTraverse('@@images')
+
+        if self.context.getField("image") is not None:
+            img_scale = scales.scale("image", scale="thumb")
+
+        if img_scale is None and HAS_CLI:
+            if self.context.getField(IMAGE_FIELD_NAME) is not None:
+                img_scale = scales.scale(IMAGE_FIELD_NAME, scale="thumb")
+
+        return img_scale and img_scale.url or ""

@@ -1,0 +1,11 @@
+Changelog
+=========
+
+1.0 (unreleased)
+----------------
+
+- Add adapter for cart item preview images
+  [petschki]
+
+- initial creation
+  [rnixx]
