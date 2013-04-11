@@ -1,15 +1,15 @@
 Changelog
 =========
 
-unreleased 
-----------
+1.0 (unreleased)
+----------------
+
+- Add adapter for cart item preview images
+  [petschki]
 
 - Allow the shop administration portlet in the left column too.
   (fixes #2)
   [fRiSi]
-  
-    
-0.1
----
 
-- initial release
+- initial creation
+  [rnixx]

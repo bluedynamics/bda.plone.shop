@@ -3,8 +3,7 @@ import os
 
 version = '1.0dev'
 shortdesc = "Shop"
-longdesc = (
-            open(os.path.join(os.path.dirname(__file__), 'README.rst')).read() 
+longdesc = (open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
             + '\n' +
             open('CHANGES.txt').read()
             + '\n')
