@@ -4,9 +4,25 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <!--
+    Set this interface on desired content class in order to enable content
+    action turning object into buyable.
+  -->
+  <!--
   <class class="Products.Archetypes.BaseObject.BaseObject">
-    <implements interface=".interfaces.IPotentiallyBuyable" />
+    <implements interface="bda.plone.shop.interfaces.IPotentiallyBuyable" />
   </class>
+  -->
+
+  <!--
+    Set this interface on desired content class in order to turn object
+    into buyable directly.
+  -->
+  <!--
+  <class class="Products.Archetypes.BaseObject.BaseObject">
+    <implements interface="bda.plone.shop.interfaces.IBuyable" />
+  </class>
+  -->
 
   <include package="archetypes.schemaextender" />
   <include file="profiles.zcml" />

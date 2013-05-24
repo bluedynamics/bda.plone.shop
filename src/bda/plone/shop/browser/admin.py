@@ -5,6 +5,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+
 _ = MessageFactory('bda.plone.shop')
 
 
@@ -20,7 +21,7 @@ class ShopAdminAssignment(base.Assignment):
 
 class ShopAdminRenderer(base.Renderer):
     render = ViewPageTemplateFile('admin.pt')
-    
+
     @property
     def show(self):
         return checkPermission('cmf.ModifyPortalContent', self.context)

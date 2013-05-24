@@ -1,6 +1,6 @@
 <div class="buyable"
      i18n:domain="bda.plone.shop">
-  
+
   <tal:net condition="not:view/display_gross">
     <strong i18n:translate="net">Net</strong>
     <span tal:replace="view/item_net">1.0</span>
@@ -9,7 +9,7 @@
             class="vat_label">Vat</strong>
     <span tal:replace="view/item_vat">20</span>%
   </tal:net>
-  
+
   <tal:gross condition="view/display_gross">
     <strong i18n:translate="gross">Gross</strong>
     <span tal:replace="view/item_gross">1.0</span>
@@ -18,11 +18,11 @@
             class="vat_label">Vat</strong>
     <span tal:replace="view/item_vat">20</span>%
   </tal:gross>
-  
+
   <span class="cart_item_uid"
         style="display: none;"
         tal:content="view/item_uid">12345678</span>
-  
+
   <input type="text"
          size="2"
          value="1"
@@ -31,9 +31,9 @@
                                  'cart_item_count quantity_unit_float' or 
                                  'cart_item_count';"
          tal:attributes="class css" />
-  
+
   <span tal:content="view/quantity_unit">Quantity</span>
-  
+
   <tal:comment condition="view/comment_enabled">
     <input type="text"
            size="20"
@@ -43,16 +43,15 @@
                                    'cart_item_comment required' or 
                                    'cart_item_comment';"
            tal:attributes="class css" />
-  
     <span i18n:translate="comment">Comment</span>
   </tal:comment>
-  
+
   <a href=""
      class="add_cart_item buyable_add_to_cart"
      i18n:translate="add_to_cart">add to cart</a>
-  
+
   <a href=""
      class="update_cart_item buyable_update_cart"
      i18n:translate="update_cart">update cart</a>
-  
+
 </div>

@@ -29,16 +29,16 @@ class XBooleanField(ExtensionField, BooleanField): pass
 
 
 class ExtenderBase(object):
-    
+
     implements(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
     adapts(IBuyable)
-    
+
     def __init__(self, context):
         self.context = context
-    
+
     def getFields(self):
         return self.fields
-    
+
     def getOrder(self, original):
         neworder = OrderedDict()
         keys = original.keys()
@@ -61,7 +61,7 @@ QUANTITY_UNIT_VOCAB = [
 class BuyableExtender(ExtenderBase):
     """Schema extender for buyable contents
     """
-    
+
     layer = IShopExtensionLayer
 
     fields = [
@@ -135,40 +135,40 @@ def field_value(obj, field_name):
 class ATCartItemDataProvider(object):
     implements(ICartItemDataProvider)
     adapts(IBaseObject)
-    
+
     def __init__(self, context):
         self.context = context
-    
+
     @property
     def net(self):
         val = field_value(self.context, 'item_net')
         if not val:
             return 0.0
         return float(val)
-    
+
     @property
     def vat(self):
         val = field_value(self.context, 'item_vat')
         if not val:
             return 0.0
         return float(val)
-    
+
     @property
     def display_gross(self):
         return field_value(self.context, 'item_display_gross')
-    
+
     @property
     def comment_enabled(self):
         return field_value(self.context, 'item_comment_enabled')
-    
+
     @property
     def comment_required(self):
         return field_value(self.context, 'item_comment_required')
-    
+
     @property
     def quantity_unit_float(self):
         return field_value(self.context, 'item_quantity_unit_float')
-    
+
     @property
     def quantity_unit(self):
         unit = field_value(self.context, 'item_quantity_unit')

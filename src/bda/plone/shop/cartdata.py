@@ -1,7 +1,12 @@
 from Products.CMFCore.utils import getToolByName
-from bda.plone.cart import CartDataProviderBase, CartItemPreviewAdapterBase
-from bda.plone.cart.interfaces import ICartItemDataProvider, \
-    ICartItemPreviewImage
+from bda.plone.cart import (
+    CartDataProviderBase,
+    CartItemPreviewAdapterBase,
+)
+from bda.plone.cart.interfaces import (
+    ICartItemDataProvider,
+    ICartItemPreviewImage,
+)
 from decimal import Decimal
 from zope.i18n import translate
 from zope.i18nmessageid import MessageFactory
@@ -121,19 +126,16 @@ class CartItemPreviewImage(CartItemPreviewAdapterBase):
 
     @property
     def url(self):
-        """ get url of preview image:
+        """Get url of preview image:
             1. try to read the 'image' field on the context
             2. try to use collective.contentleadimage
         """
         img_scale = None
         scales = self.context.restrictedTraverse('@@images')
-
         if self.context.getField("image") is not None:
             img_scale = scales.scale("image", scale=self.preview_scale)
-
         if img_scale is None and HAS_CLI:
             if self.context.getField(IMAGE_FIELD_NAME) is not None:
                 img_scale = scales.scale(IMAGE_FIELD_NAME,
-                    scale=self.preview_scale)
-
+                                         scale=self.preview_scale)
         return img_scale and img_scale.url or ""
