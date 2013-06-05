@@ -1,11 +1,29 @@
+==============
 bda.plone.shop
-##############
+==============
+
 
 Installation
 ============
 
 Depend your instance to ``bda.plone.shop`` and install it as addon
 in plone control panel.
+
+
+Development and testing
+=======================
+
+Checkout ``bda.plone.shop`` from
+``git://github.com/bluedynamics/bda.plone.shop.git`` and run contained buidlout
+like so::
+
+    ~$ python bootstrap.py -v 1.7
+    ~$ ./bin/buildout
+
+Enyble some object to be either potentialy buyable or buyable as described
+below.
+
+Start instance and create plone site with shop profile applied.
 
 
 Enable Content to be buyable
@@ -33,7 +51,6 @@ Create translations
 Contributors
 ============
 
+- Robert Niederreiter, Author
 
-Robert Niederreiter, Author
-
-Harald Frießnegger, Webmeisterei GmbH
+- Harald Frießnegger, Webmeisterei GmbH
