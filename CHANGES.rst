@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0 (unreleased)
-----------------
+1.0dev
+------
 
 - No longer set ``bda.plone.shop.interfaces.IPotentiallyBuyable`` on all
   archetypes objects by default. Must be done in integration package.
