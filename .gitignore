@@ -11,3 +11,5 @@ eggs/
 parts/
 var/
 src/bda.plone.shop.egg-info/
+
+.DS_Store

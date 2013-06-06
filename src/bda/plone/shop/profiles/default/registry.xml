@@ -1,0 +1,4 @@
+<registry>
+    <records interface="bda.plone.shop.interfaces.IBdaShopConfigurations">
+    </records>
+</registry>

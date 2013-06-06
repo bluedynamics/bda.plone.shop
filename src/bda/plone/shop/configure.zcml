@@ -1,7 +1,10 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:five="http://namespaces.zope.org/five"
+           xmlns:browser="http://namespaces.zope.org/browser"
+        xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
            xmlns:i18n="http://namespaces.zope.org/i18n">
-
+           
+    
   <i18n:registerTranslations directory="locales" />
 
   <!--
@@ -43,5 +46,20 @@
   <adapter factory=".cartdata.CartItemPreviewImage" />
 
   <adapter factory=".extender.ATCartItemDataProvider" />
+ 
+ 
+  <!-- 
+    This is for the control panel.
+  -->
+  
+  <adapter factory=".configlet.BdaShopControlPanelAdapter" />
+  
+  <browser:page
+    name="bdashop_controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".configlet.BdaShopControlPanel"
+    permission="cmf.ManagePortal"
+  />
+       
 
 </configure>

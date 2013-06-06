@@ -49,7 +49,7 @@ class ExtenderBase(object):
         return neworder
 
 
-VAT_VOCAB = ['0', '10', '20']
+VAT_VOCAB = ['0', '10', '20', '25']
 QUANTITY_UNIT_VOCAB = [
     ('quantity', _('quantity', 'Quantity')),
     ('meter', _('meter', 'Meter')),
