@@ -1,11 +1,19 @@
 <?xml version="1.0"?>
-<object name="portal_controlpanel"
+<object
+    name="portal_controlpanel"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="bda.plone.shop">
- <configlet title="Shop settings" action_id="bdashop" appId="bdashop"
-    category="Products" condition_expr=""
-    url_expr="string:${portal_url}/@@bdashop_controlpanel" visible="True"
-    i18n:attributes="title">
-  <permission>Manage portal</permission>
- </configlet>
+    i18n:domain="bda.plone.shop"
+    purge="False">
+
+    <configlet
+        title="Shop settings"
+        action_id="bdashop"
+        appId="bda.plone.shop"
+        category="Products"
+        url_expr="string:${portal_url}/@@bdashop_controlpanel" 
+        visible="True"
+        i18n:attributes="title">
+            <permission>Manage portal</permission>
+    </configlet>
+
 </object>

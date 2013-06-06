@@ -1,5 +1,5 @@
 <registry>
-    <records interface="bda.plone.shop.interfaces.IBdaShopConfigurations">
+    <records interface="bda.plone.shop.interfaces.IBdaShopSettings">
       <value key="shop_currency">EUR</value>
       <value key="shop_admin_email">some@email.com</value>
       <value key="shop_vat">20</value>

@@ -26,7 +26,7 @@ class IBuyable(Interface):
     Item is buyable.
     """
 
-class IBdaShopConfiguration(Interface):
+class IBdaShopSettings(Interface):
     """This interface defines the configlet (the control panel)."""
     
     shop_vat = schema.Int(title=_(u"label_shop_vat", default=u'VAT'),

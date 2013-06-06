@@ -52,14 +52,14 @@
     This is for the control panel.
   -->
   
-  <adapter factory=".configlet.BdaShopControlPanelAdapter" />
-  
-  <browser:page
-    name="bdashop_controlpanel"
-    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-    class=".configlet.BdaShopControlPanel"
-    permission="cmf.ManagePortal"
-  />
-       
+    <include package="plone.app.registry" />
+
+    <!-- Control panel -->
+    <browser:page
+        name="bdashop_controlpanel"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.BdaShopSettingsControlPanel"
+        permission="cmf.ManagePortal"
+        />
 
 </configure>
