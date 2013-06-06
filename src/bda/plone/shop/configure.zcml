@@ -1,5 +1,6 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:five="http://namespaces.zope.org/five"
+           xmlns:plone="http://namespaces.plone.org/plone"
            xmlns:i18n="http://namespaces.zope.org/i18n">
 
   <i18n:registerTranslations directory="locales" />
@@ -25,6 +26,7 @@
   -->
 
   <include package="archetypes.schemaextender" />
+  <include package="plone.behavior" file="meta.zcml" />
   <include file="profiles.zcml" />
   <include package=".browser" />
 
@@ -36,6 +38,13 @@
     name="bda.plone.shop.buyable"
     factory=".extender.BuyableExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+  <plone:behavior
+      title="Buyable Behavior"
+      description="Make content type buyable."
+      provides=".behaviors.IBuyableBehavior"
+      factory=".behaviors.IBuyableBehavior"
+      />
 
   <adapter name="flat_rate" factory=".shipping.FlatRate" />
 
