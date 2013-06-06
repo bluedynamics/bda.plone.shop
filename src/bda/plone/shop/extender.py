@@ -49,15 +49,6 @@ class ExtenderBase(object):
         return neworder
 
 
-VAT_VOCAB = ['0', '10', '20']
-QUANTITY_UNIT_VOCAB = [
-    ('quantity', _('quantity', 'Quantity')),
-    ('meter', _('meter', 'Meter')),
-    ('kilo', _('kilo', 'Kilo')),
-    ('liter', _('liter', 'Liter')),
-]
-
-
 class BuyableExtender(ExtenderBase):
     """Schema extender for buyable contents
     """
@@ -78,7 +69,7 @@ class BuyableExtender(ExtenderBase):
             widget=SelectionWidget(
                 label=_(u'label_item_vat', u'Item VAT (in %)'),
             ),
-            vocabulary=VAT_VOCAB,
+            vocabulary_factory='bda.plone.shop.vocabularies.VatVocabulary',
         ),
         XBooleanField(
             name='item_display_gross',
@@ -119,7 +110,7 @@ class BuyableExtender(ExtenderBase):
             widget=SelectionWidget(
                 label=_(u'label_item_quantity_unit', u'Quantity unit'),
             ),
-            vocabulary=QUANTITY_UNIT_VOCAB,
+            vocabulary_factory='bda.plone.shop.vocabularies.QuantityUnitVocabulary',
         ),
     ]
 
@@ -172,6 +163,9 @@ class ATCartItemDataProvider(object):
     @property
     def quantity_unit(self):
         unit = field_value(self.context, 'item_quantity_unit')
-        for key, term in QUANTITY_UNIT_VOCAB:
-            if unit == key:
-                return term
+        vocab = getUtility(
+            IVocabularyFactory,
+            'bda.plone.shop.vocabularies.QuantityUnitVocabulary')(self.context)
+        for term in vocab:
+            if unit == term.value:
+                return term.token
