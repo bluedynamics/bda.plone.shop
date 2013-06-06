@@ -30,7 +30,7 @@ class IBdaShopSettings(Interface):
     """This interface defines the configlet (the control panel)."""
     
     shop_vat = schema.Int(title=_(u"label_shop_vat", default=u'VAT'),
-                        description=_(u"help_shop_vat", default=u'Value added tax'),
+                        description=_(u"help_shop_vat", default=u'Value added tax in %'),
                         required=True,
                         default=20)                         
 

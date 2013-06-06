@@ -9,10 +9,6 @@ class BdaShopSettingsEditForm(controlpanel.RegistryEditForm):
     schema =  IBdaShopSettings
     label = _(u"Shop settings")
     description = _(u"""""")
-    
-    #shop_currency = ProxyFieldProperty(IBdaShopConfiguration['shop_currency'])
-    #shop_admin_email = ProxyFieldProperty(IBdaShopConfiguration['shop_admin_email'])
-    #shop_vat = ProxyFieldProperty(IBdaShopConfiguration['shop_vat'])
 
     def updateFields(self):
         super(BdaShopSettingsEditForm, self).updateFields()
@@ -24,9 +20,7 @@ class BdaShopSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
     form = BdaShopSettingsEditForm
 
 
-
-    
-
+  
 #registry = getUtility(IRegistry)
 #Now we fetch the AkismetSetting registry
 # something like this
