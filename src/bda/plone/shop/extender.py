@@ -1,5 +1,6 @@
 from zope.interface import implements
 from zope.component import adapts, getUtility
+from zope.schema.interfaces import IVocabularyFactory
 from zope.i18nmessageid import MessageFactory
 from archetypes.schemaextender.interfaces import (
     IOrderableSchemaExtender,

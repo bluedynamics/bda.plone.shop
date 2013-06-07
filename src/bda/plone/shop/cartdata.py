@@ -17,11 +17,11 @@ try:
 except:
     HAS_CLI = False
 
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
+from bda.plone.shop.interfaces import IBdaShopSettings
 
 _ = MessageFactory('bda.plone.shop')
-
-
-SHOP_CURRENCY = 'EUR'
 
 
 class CartItemCalculator(object):
@@ -97,8 +97,10 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
     @property
     def currency(self):
-        return SHOP_CURRENCY
-
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IBdaShopSettings)
+        return settings.shop_currency
+        
     @property
     def disable_max_article(self):
         return True
