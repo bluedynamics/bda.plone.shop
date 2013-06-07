@@ -1,5 +1,5 @@
 from zope.interface import implements
-from zope.component import adapts
+from zope.component import adapts, getUtility
 from zope.i18nmessageid import MessageFactory
 from archetypes.schemaextender.interfaces import (
     IOrderableSchemaExtender,
@@ -18,8 +18,6 @@ from Products.Archetypes.interfaces import IBaseObject
 from bda.plone.cart.interfaces import ICartItemDataProvider
 from bda.plone.shop.interfaces import IShopExtensionLayer
 from .interfaces import IBuyable
-
-
 _ = MessageFactory('bda.plone.shop')
 
 

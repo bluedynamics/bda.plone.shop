@@ -12,8 +12,7 @@ def VatVocabulary(context):
          ( '0%',  '0'), 
          ('10%', '10'), 
          ('20%', '20'),
-         ('25%', '25'),
-         ]
+         ('25%', '25')]
     return SimpleVocabulary.fromItems(items)
 
 directlyProvides(VatVocabulary, IVocabularyFactory)
