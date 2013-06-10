@@ -39,21 +39,30 @@
     factory=".extender.BuyableExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
+  <adapter
+    name="bda.plone.shop.stock"
+    factory=".extender.StockExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
   <plone:behavior
     title="Buyable Behavior"
     description="Make content type buyable."
     provides=".behaviors.IBuyableBehavior"
-    for="plone.dexterity.interfaces.IDexterityContent"
-    />
+    for="plone.dexterity.interfaces.IDexterityContent" />
+
+  <plone:behavior
+    title="Stock Behavior"
+    description="Manage stock of buyable item."
+    provides=".behaviors.IStockBehavior"
+    for="plone.dexterity.interfaces.IDexterityContent" />
 
   <utility
     component=".vocabularies.VatVocabulary"
-    name="bda.plone.shop.vocabularies.VatVocabulary"
-  />
+    name="bda.plone.shop.vocabularies.VatVocabulary" />
+
   <utility
     component=".vocabularies.QuantityUnitVocabulary"
-    name="bda.plone.shop.vocabularies.QuantityUnitVocabulary"
-  />
+    name="bda.plone.shop.vocabularies.QuantityUnitVocabulary" />
 
   <adapter name="flat_rate" factory=".shipping.FlatRate" />
 
@@ -62,5 +71,8 @@
 
   <adapter factory=".extender.ATCartItemDataProvider" />
   <adapter factory=".behaviors.DXCartItemDataProvider" />
+
+  <adapter factory=".extender.ATCartItemStock" />
+  <adapter factory=".behaviors.DXCartItemStock" />
 
 </configure>

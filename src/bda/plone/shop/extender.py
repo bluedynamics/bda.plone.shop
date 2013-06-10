@@ -20,11 +20,30 @@ from Products.Archetypes.public import (
 )
 from Products.Archetypes.interfaces import IBaseObject
 from bda.plone.cart.interfaces import ICartItemDataProvider
-from bda.plone.shop.interfaces import IShopExtensionLayer
-from .interfaces import IBuyable
+from bda.plone.stock.interfaces import ICartItemStock
+from .interfaces import (
+    IShopExtensionLayer,
+    IBuyable,
+)
 
 
 _ = MessageFactory('bda.plone.shop')
+
+
+def field_value(obj, field_name):
+    try:
+        acc = obj.getField(field_name).getAccessor(obj)
+        return acc()
+    except (KeyError, TypeError):
+        raise AttributeError
+
+
+def set_field_value(obj, field_name, value):
+    try:
+        field = obj.getField(field_name)
+        field.set(obj, value)
+    except (KeyError, TypeError):
+        raise AttributeError
 
 
 class XStringField(ExtensionField, StringField): pass
@@ -113,17 +132,10 @@ class BuyableExtender(ExtenderBase):
             widget=SelectionWidget(
                 label=_(u'label_item_quantity_unit', u'Quantity unit'),
             ),
-            vocabulary_factory='bda.plone.shop.vocabularies.QuantityUnitVocabulary',
+            vocabulary_factory=\
+                'bda.plone.shop.vocabularies.QuantityUnitVocabulary',
         ),
     ]
-
-
-def field_value(obj, field_name):
-    try:
-        acc = obj.getField(field_name).getAccessor(obj)
-        return acc()
-    except (KeyError, TypeError):
-        raise AttributeError
 
 
 @implementer(ICartItemDataProvider)
@@ -172,3 +184,51 @@ class ATCartItemDataProvider(object):
         for term in vocab:
             if unit == term.value:
                 return term.token
+
+
+class StockExtender(ExtenderBase):
+    """Schema extender for buyable item stock
+    """
+
+    layer = IShopExtensionLayer
+
+    fields = [
+        XFloatField(
+            name='item_available',
+            schemata='Shop',
+            widget=FloatField._properties['widget'](
+                label=_(u'label_item_available', u'Item stock available'),
+            ),
+        ),
+        XFloatField(
+            name='item_overbook',
+            schemata='Shop',
+            widget=FloatField._properties['widget'](
+                label=_(u'label_item_overbook', u'Item stock overbook'),
+            ),
+        ),
+    ]
+
+
+@implementer(ICartItemStock)
+@adapter(IBaseObject)
+class ATCartItemStock(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    def _get_available(self):
+        return field_value(self.context, 'item_available')
+
+    def _set_available(self, value):
+        set_field_value(self.context, 'item_available', value)
+
+    available = property(_get_available, _set_available)
+
+    def _get_overbook(self):
+        return field_value(self.context, 'item_overbook')
+
+    def _set_overbook(self, value):
+        set_field_value(self.context, 'item_overbook', value)
+
+    overbook = property(_get_overbook, _set_overbook)
