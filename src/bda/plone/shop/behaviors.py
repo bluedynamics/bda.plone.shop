@@ -1,7 +1,13 @@
 from zope import schema
+from zope.interface import (
+    implementer,
+    alsoProvides,
+)
+from zope.component import (
+    adapter,
+    getUtility,
+)
 from zope.i18nmessageid import MessageFactory
-from zope.interface import alsoProvides, implements
-from zope.component import getUtility, adapts
 from zope.schema.interfaces import IVocabularyFactory
 from plone.supermodel import model
 from plone.autoform.interfaces import IFormFieldProvider
@@ -63,9 +69,9 @@ class IBuyableBehavior(model.Schema):
 alsoProvides(IBuyableBehavior, IFormFieldProvider)
 
 
+@implementer(ICartItemDataProvider)
+@adapter(IDexterityContent)
 class DXCartItemDataProvider(object):
-    implements(ICartItemDataProvider)
-    adapts(IDexterityContent)
 
     def __init__(self, context):
         self.context = context

@@ -1,6 +1,10 @@
-from zope.interface import implements
-from zope.component import adapts
+from zope.interface import implementer
+from zope.component import (
+    adapter,
+    getUtility,
+)
 from zope.i18nmessageid import MessageFactory
+from zope.schema.interfaces import IVocabularyFactory
 from archetypes.schemaextender.interfaces import (
     IOrderableSchemaExtender,
     IBrowserLayerAwareExtender,
@@ -28,10 +32,9 @@ class XFloatField(ExtensionField, FloatField): pass
 class XBooleanField(ExtensionField, BooleanField): pass
 
 
+@implementer(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
+@adapter(IBuyable)
 class ExtenderBase(object):
-
-    implements(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
-    adapts(IBuyable)
 
     def __init__(self, context):
         self.context = context
@@ -123,9 +126,9 @@ def field_value(obj, field_name):
         raise AttributeError
 
 
+@implementer(ICartItemDataProvider)
+@adapter(IBaseObject)
 class ATCartItemDataProvider(object):
-    implements(ICartItemDataProvider)
-    adapts(IBaseObject)
 
     def __init__(self, context):
         self.context = context
