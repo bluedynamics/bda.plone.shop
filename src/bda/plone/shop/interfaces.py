@@ -43,3 +43,11 @@ class IBdaShopSettings(Interface):
                                    description=u"Choose the default currency", 
                                    values=["EUR", "USD", "INR", "CAD", "CHF", "GBP", "AUD", "NOK", "SEK", "DKK"], 
                                    default='EUR')
+
+    shop_show_checkout = schema.Bool(title=u"Show checkout link in portlet", 
+                                   description=u"", 
+                                   default=False)
+
+    shop_show_to_cart = schema.Bool(title=u"Show link to cart in portlet", 
+                                   description=u"", 
+                                   default=True)

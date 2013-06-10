@@ -19,10 +19,3 @@ class BdaShopSettingsEditForm(controlpanel.RegistryEditForm):
 class BdaShopSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
     form = BdaShopSettingsEditForm
 
-
-  
-#registry = getUtility(IRegistry)
-#Now we fetch the AkismetSetting registry
-# something like this
-#from bda.plone.shop.interfaces import IBdaShopSettings
-#settings = registry.forInterface(IBdaShopSettings)

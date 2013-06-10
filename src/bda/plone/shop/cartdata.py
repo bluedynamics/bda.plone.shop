@@ -102,6 +102,18 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         return settings.shop_currency
         
     @property
+    def shop_show_checkout(self):
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IBdaShopSettings)
+        return settings.shop_show_checkout
+            
+    @property
+    def shop_show_to_cart(self):
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IBdaShopSettings)
+        return settings.shop_show_to_cart
+        
+    @property
     def disable_max_article(self):
         return True
 
