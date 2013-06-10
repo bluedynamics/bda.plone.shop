@@ -4,5 +4,6 @@
   <dependencies>
     <dependency>profile-bda.plone.orders:default</dependency>
     <dependency>profile-plone.app.registry:default</dependency>
+    <dependency>profile-collective.z3cform.datagridfield:default</dependency>
   </dependencies>
 </metadata>

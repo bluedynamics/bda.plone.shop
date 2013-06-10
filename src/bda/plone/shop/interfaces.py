@@ -8,6 +8,11 @@ from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('bda.plone.shop')
 
 
+from collective.z3cform.widgets.token_input_widget import TokenInputFieldWidget
+
+
+
+
 class IShopExtensionLayer(Interface):
     """Browser layer for bda.plone.shop
     """
@@ -29,10 +34,13 @@ class IBuyable(Interface):
 class IBdaShopSettings(Interface):
     """This interface defines the configlet (the control panel)."""
     
-    shop_vat = schema.Int(title=_(u"label_shop_vat", default=u'VAT'),
+    shop_vat=schema.List(
                         description=_(u"help_shop_vat", default=u'Value added tax in %'),
+                        title=_(u"Vat Categories"),
                         required=True,
-                        default=20)                         
+                        value_type=DictRow(title="u"someghing", schema=ITableRowSchema),
+                        default=[])
+                     
 
     shop_admin_email = schema.ASCIILine(title=_(u"label_shop_admin_email", default=u'Shop admin Email. No typos please....'),
                               description=_(u"help_shop_admin_email", default=u''),

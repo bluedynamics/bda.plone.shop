@@ -33,6 +33,7 @@ setup(name='bda.plone.shop',
           'archetypes.schemaextender',
           'bda.plone.orders',
           'plone.app.registry',
+          'collective.z3cform.datagridfield'
       ],
       entry_points="""
       [z3c.autoinclude.plugin]
