@@ -74,5 +74,21 @@
 
   <adapter factory=".extender.ATCartItemStock" />
   <adapter factory=".behaviors.DXCartItemStock" />
+  
+  
+   
+  <!-- 
+    This is for the control panel.
+  -->
+  
+    <include package="plone.app.registry" />
+
+    <!-- Control panel -->
+    <browser:page
+        name="bdashop_controlpanel"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.BdaShopSettingsControlPanel"
+        permission="cmf.ManagePortal"
+        />
 
 </configure>
