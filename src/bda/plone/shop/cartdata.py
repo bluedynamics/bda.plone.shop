@@ -18,8 +18,11 @@ except:
     HAS_CLI = False
 
 
-_ = MessageFactory('bda.plone.shop')
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
+from bda.plone.shop.interfaces import IBdaShopSettings
 
+_ = MessageFactory('bda.plone.shop')
 
 class CartItemCalculator(object):
 
