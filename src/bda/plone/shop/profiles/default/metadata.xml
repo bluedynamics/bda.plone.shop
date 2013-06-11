@@ -3,5 +3,6 @@
   <version>1.0</version>
   <dependencies>
     <dependency>profile-bda.plone.orders:default</dependency>
+    <dependency>profile-plone.app.registry:default</dependency>
   </dependencies>
 </metadata>
