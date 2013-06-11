@@ -5,15 +5,15 @@
     i18n:domain="bda.plone.shop"
     purge="False">
 
-    <configlet
-        title="Shop settings"
-        action_id="bdashop"
-        appId="bda.plone.shop"
-        category="Products"
-        url_expr="string:${portal_url}/@@bdashop_controlpanel" 
-        visible="True"
-        i18n:attributes="title">
-            <permission>Manage portal</permission>
-    </configlet>
+  <configlet
+    title="Shop settings"
+    action_id="bdashop"
+    appId="bda.plone.shop"
+    category="Products"
+    url_expr="string:${portal_url}/@@shop_controlpanel" 
+    visible="True"
+    i18n:attributes="title">
+    <permission>Manage portal</permission>
+  </configlet>
 
 </object>

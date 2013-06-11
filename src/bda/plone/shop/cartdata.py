@@ -1,4 +1,14 @@
+from decimal import Decimal
+from zope.i18n import translate
+from zope.i18nmessageid import MessageFactory
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
+try:
+    from collective.contentleadimage.config import IMAGE_FIELD_NAME
+    HAS_CLI = True
+except:
+    HAS_CLI = False
 from bda.plone.cart import (
     CartDataProviderBase,
     CartItemPreviewAdapterBase,
@@ -7,22 +17,11 @@ from bda.plone.cart.interfaces import (
     ICartItemDataProvider,
     ICartItemPreviewImage,
 )
-from decimal import Decimal
-from zope.i18n import translate
-from zope.i18nmessageid import MessageFactory
+from .interfaces import IShopSettings
 
-try:
-    from collective.contentleadimage.config import IMAGE_FIELD_NAME
-    HAS_CLI = True
-except:
-    HAS_CLI = False
-
-
-from zope.component import getUtility
-from plone.registry.interfaces import IRegistry
-from bda.plone.shop.interfaces import IBdaShopSettings
 
 _ = MessageFactory('bda.plone.shop')
+
 
 class CartItemCalculator(object):
 
@@ -98,21 +97,21 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
     @property
     def currency(self):
         registry = getUtility(IRegistry)
-        settings = registry.forInterface(IBdaShopSettings)
+        settings = registry.forInterface(IShopSettings)
         return settings.shop_currency
-        
+
     @property
     def shop_show_checkout(self):
         registry = getUtility(IRegistry)
-        settings = registry.forInterface(IBdaShopSettings)
+        settings = registry.forInterface(IShopSettings)
         return settings.shop_show_checkout
-            
+
     @property
     def shop_show_to_cart(self):
         registry = getUtility(IRegistry)
-        settings = registry.forInterface(IBdaShopSettings)
+        settings = registry.forInterface(IShopSettings)
         return settings.shop_show_to_cart
-        
+
     @property
     def disable_max_article(self):
         return True

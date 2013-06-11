@@ -1,6 +1,5 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:five="http://namespaces.zope.org/five"
-           xmlns:browser="http://namespaces.zope.org/browser"
            xmlns:plone="http://namespaces.plone.org/plone"
            xmlns:i18n="http://namespaces.zope.org/i18n">
 
@@ -26,6 +25,7 @@
   </class>
   -->
 
+  <include package="plone.app.registry" />
   <include package="archetypes.schemaextender" />
   <include package="plone.behavior" file="meta.zcml" />
   <include file="profiles.zcml" />
@@ -75,21 +75,5 @@
 
   <adapter factory=".extender.ATCartItemStock" />
   <adapter factory=".behaviors.DXCartItemStock" />
-  
-  
-   
-  <!-- 
-    This is for the control panel.
-  -->
-  
-    <include package="plone.app.registry" />
-
-    <!-- Control panel -->
-    <browser:page
-        name="bdashop_controlpanel"
-        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".controlpanel.BdaShopSettingsControlPanel"
-        permission="cmf.ManagePortal"
-        />
 
 </configure>

@@ -57,4 +57,11 @@
     renderer=".admin.ShopAdminRenderer"
     addview=".admin.ShopAdminAddForm" />
 
+  <!-- controlpanel -->
+  <browser:page
+    name="shop_controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".controlpanel.ShopSettingsControlPanel"
+    permission="cmf.ManagePortal" />
+
 </configure>
