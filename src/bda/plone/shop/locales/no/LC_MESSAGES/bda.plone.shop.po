@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: norsk  oversetting bda shop\n"
+"POT-Creation-Date: 2012-11-07 16:41+0000\n"
+"PO-Revision-Date: 2013-06-10 11:21+0100\n"
+"Last-Translator: Espen Moe-Nilssen <espen@medialog.no>\n"
+"Language-Team: Espen Moe-Nilssen <espen@medialog.no>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: no\n"
+"Language-Name: Norsk\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"Language: nb_NO\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#: profiles/default/actions.xml
+msgid "Activate Buyable on Item"
+msgstr "Aktiver  handleprodukt Info på objektet"
+
+#: profiles/default/actions.xml
+msgid "Deactivates Buyable on Item"
+msgstr "Deaktivert handleprodukt info på objektet"
+
+#: profiles/default/actions.xml
+msgid "Disables Buyable"
+msgstr "Deaktiver (handle) artikkel"
+
+#: profiles/default/actions.xml
+msgid "Enable Buyable"
+msgstr "Aktiver (handle) artikkel"
+
+#. Default: "add to cart"
+#: browser/buyable.pt:50
+msgid "add_to_cart"
+msgstr "Legg i handlekurv"
+
+#. Default: "Comment"
+#: browser/buyable.pt:47
+msgid "comment"
+msgstr "Kommentar"
+
+#. Default: "Disabled Buyable."
+#: browser/actions.py:32
+msgid "disabled_buyable"
+msgstr "Produktinformasjon deaktivert"
+
+#. Default: "Enabled Buyable."
+#: browser/actions.py:23
+msgid "enabled_buyable"
+msgstr "Lagt til produktbeskrivelse"
+
+#. Default: "Export Orders"
+#: browser/admin.pt:19
+msgid "exportorders"
+msgstr "Eksporter ordre"
+
+#. Default: "Gross"
+#: browser/buyable.pt:14
+msgid "gross"
+msgstr "Brutto"
+
+#. Default: "Kilo"
+#: extender.py:56
+msgid "kilo"
+msgstr "Kilo"
+
+#. Default: "Comment enabled"
+#: extender.py:95
+msgid "label_item_comment_enabled"
+msgstr "Kommentarer aktivert"
+
+#. Default: "Comment required"
+#: extender.py:103
+msgid "label_item_comment_required"
+msgstr "Kommentar er påkrevd"
+
+#. Default: "Display Gross"
+#: extender.py:87
+msgid "label_item_display_gross"
+msgstr "Vis bruttopriser "
+
+#. Default: "Item net price"
+#: extender.py:72
+msgid "label_item_net"
+msgstr "Nettopris"
+
+#. Default: "Quantity unit"
+#: extender.py:120
+msgid "label_item_quantity_unit"
+msgstr "Stykk"
+
+#. Default: "Quantity as float"
+#: extender.py:111
+msgid "label_item_quantity_unit_float"
+msgstr "Antall (som helttall)"
+
+#. Default: "Item VAT (in %)"
+#: extender.py:79
+msgid "label_item_vat"
+msgstr "moms (i prosent)"
+
+#. Default: "Liter"
+#: extender.py:57
+msgid "liter"
+msgstr "Liter"
+
+#. Default: "Meter"
+#: extender.py:55
+msgid "meter"
+msgstr "Meter"
+
+#. Default: "Net"
+#: browser/buyable.pt:5
+msgid "net"
+msgstr "Netto"
+
+#. Default: "Orders"
+#: browser/admin.pt:14
+msgid "orders"
+msgstr "Bestillinger"
+
+#. Default: "Quantity"
+#: extender.py:54
+msgid "quantity"
+msgstr "Antall"
+
+#. Default: "Shop Administration"
+#: browser/admin.py:18
+msgid "shop_admin"
+msgstr "Webshop administrasjon"
+
+#. Default: "Shop Admin"
+#: browser/admin.pt:7
+msgid "shop_admin_heading"
+msgstr "Butikkadministrator"
+
+#. Default: "update cart"
+#: browser/buyable.pt:54
+msgid "update_cart"
+msgstr "Oppdater handlekurven"
+
+#. Default: "Vat"
+#: browser/buyable.pt:8
+msgid "vat"
+msgstr "moms"
