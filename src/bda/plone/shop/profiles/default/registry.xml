@@ -2,7 +2,12 @@
     <records interface="bda.plone.shop.interfaces.IBdaShopSettings">
       <value key="shop_currency">EUR</value>
       <value key="shop_admin_email">some@email.com</value>
-      <value key="shop_vat">[]</value>
+      <value key="shop_vat">
+        <element>0% 0</element>
+         <element>10% 10</element>
+        <element>20% 20</element>
+        <element>25% 25</element>
+      </value>
       <value key="shop_show_checkout">False</value>
       <value key="shop_show_to_cart">True</value>
       
