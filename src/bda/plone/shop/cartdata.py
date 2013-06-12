@@ -115,13 +115,13 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
     @property
     def shop_account_password(self):
         registry = getUtility(IRegistry)
-        settings = registry.forInterface(IBdaShopSettings)
+        settings = registry.forInterface(IShopSettings)
         return settings.shop_account_password
         
     @property
     def shop_account_id(self):
         registry = getUtility(IRegistry)
-        settings = registry.forInterface(IBdaShopSettings)
+        settings = registry.forInterface(IShopSettings)
         return settings.shop_account_id
 
     @property
