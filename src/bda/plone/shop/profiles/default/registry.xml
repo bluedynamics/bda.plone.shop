@@ -10,6 +10,7 @@
       </value>
       <value key="shop_show_checkout">False</value>
       <value key="shop_show_to_cart">True</value>
-      
+      <value key="shop_account_id"></value>
+      <value key="shop_account_password"></value>
     </records>
 </registry>

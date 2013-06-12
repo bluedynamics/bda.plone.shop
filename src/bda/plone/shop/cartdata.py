@@ -114,6 +114,18 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         return settings.shop_show_to_cart
         
     @property
+    def shop_account_password(self):
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IBdaShopSettings)
+        return settings.shop_account_password
+        
+    @property
+    def shop_account_id(self):
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IBdaShopSettings)
+        return settings.shop_account_id
+        
+    @property
     def disable_max_article(self):
         return True
 
