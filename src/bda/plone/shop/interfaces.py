@@ -37,6 +37,16 @@ class IShopSettings(Interface):
     """Shop controlpanel schema.
     """
 
+    shop_account_id = schema.ASCIILine(title=_(u"label_shop_account_id", default=u'Account ID'),
+        description=_(u"help_shop_account_id", default=u'The account ID at https://www.saferpay.com/ or similar service'),
+        required=False,
+        default="99867-94913159")    
+
+    shop_account_password = schema.ASCIILine(title=_(u"label_shop_account_password", default=u'Account Password'),
+        description=_(u"help_shop_account_password", default=u'The account password at https://www.saferpay.com/ or similar service'),
+        required=False,
+        default="XAjc3Kna")    
+                              
     shop_vat=schema.List(
         title=_(u"Specify all allowed vat settings, one per line. "
                 u"The required format is <name> <persentage>"),
