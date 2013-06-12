@@ -28,6 +28,15 @@ class IBuyable(Interface):
 
 class IBdaShopSettings(Interface):
     """This interface defines the configlet (the control panel)."""
+    shop_account_id = schema.ASCIILine(title=_(u"label_shop_account_id", default=u'Account ID'),
+                        description=_(u"help_shop_account_id", default=u'The account ID at https://www.saferpay.com/ or similar service'),
+                        required=False,
+                        default="99867-94913159")    
+                        
+    shop_account_password = schema.ASCIILine(title=_(u"label_shop_account_password", default=u'Account Password'),
+                              description=_(u"help_shop_account_password", default=u'The account password at https://www.saferpay.com/ or similar service'),
+                              required=False,
+                              default="XAjc3Kna")    
     
     shop_vat=schema.List(
                         description=_(u"help_shop_vat", default=u'Value added tax in %'),
@@ -55,3 +64,7 @@ class IBdaShopSettings(Interface):
     shop_show_to_cart = schema.Bool(title=u"Show link to cart in portlet", 
                                    description=u"", 
                                    default=True)
+                                   
+                                   
+                                   ACCOUNTID = "99867-94913159"
+PASSWORD = "XAjc3Kna"
