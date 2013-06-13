@@ -111,6 +111,12 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         registry = getUtility(IRegistry)
         settings = registry.forInterface(IShopSettings)
         return settings.shop_show_to_cart
+        
+    @property
+    def shop_show_currency_in_cart(self):
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IShopSettings)
+        return settings.shop_show_currency_in_cart
 
     @property
     def disable_max_article(self):
