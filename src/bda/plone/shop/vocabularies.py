@@ -9,7 +9,7 @@ from .interfaces import IShopSettings
 
 _ = MessageFactory('bda.plone.shop')
 
-#capitalizing should be done in css
+
 def QuantityUnitVocabulary(context):
     settings = getUtility(IRegistry).forInterface(IShopSettings)
     if not settings:
@@ -19,8 +19,10 @@ def QuantityUnitVocabulary(context):
         if not line:
             continue
         line = line.split()
+        # XXX: key / value
         items.append((line[0], line[0]))
     return SimpleVocabulary.fromItems(items)
+
 
 directlyProvides(QuantityUnitVocabulary, IVocabularyFactory)
 

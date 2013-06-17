@@ -29,12 +29,15 @@ class IBuyable(Interface):
 
 
 AVAILABLE_CURRENCIES = [
-    "EUR", "USD", "INR", "CAD", "CHF", "GBP", "AUD", "NOK", "SEK", "DKK", "YEN",
+    "EUR", "USD", "INR", "CAD", "CHF", "GBP",
+    "AUD", "NOK", "SEK", "DKK", "YEN",
 ]
+
 
 CART_CURRENCIES_ANSWERS = [
     "Yes", "No", "Symbol",
 ]
+
 
 class IShopSettings(Interface):
     """Shop controlpanel schema.
@@ -69,16 +72,18 @@ class IShopSettings(Interface):
         title=u"Show link to cart in portlet",
         description=u"",
         default=True)
-        
+
     shop_show_currency_in_cart = schema.Choice(
         title=u"Show the currency for items in portlet",
         description=u"",
         values=CART_CURRENCIES_ANSWERS)
-        
+
     shop_quantity_units=schema.List(
-        title=_(u"Specify all allowed quantity settins. "
+        title=_(u"Specify all allowed quantity settings. "
                 u"The required format is <name>. No spaces, please"),
-        description=_(u"help_shop_quantity_units", default=u'Quantity units (what the buyable items are measured in)'),
+        description=_(u"help_shop_quantity_units",
+                      default=u'Quantity units (what the buyable items '
+                              u'are measured in)'),
         required=True,
         value_type=schema.TextLine(),
         default=[])
