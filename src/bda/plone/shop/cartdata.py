@@ -57,11 +57,11 @@ class CartItemCalculator(object):
 
 
 class CartDataProvider(CartItemCalculator, CartDataProviderBase):
-
-    def init(self):
-        self.registry = getUtility(IRegistry)
-        self.settings = registry.forInterface(IShopSettings)
-        
+    
+    registry = getUtility(IRegistry)
+    settings = registry.forInterface(IShopSettings)
+   
+   
     def cart_items(self, items):
         cat = self.catalog
         ret = list()
@@ -100,27 +100,31 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
     @property
     def shop_show_checkout(self):
-        return self.settings.shop_show_checkout
+        return settings.shop_show_checkout
         
     @property
     def currency(self):
-        return self.settings.shop_currency
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IShopSettings)
+        return settings.shop_currency
 
     @property
     def shop_show_to_cart(self):
-        return self.settings.shop_show_to_cart
+        return settings.shop_show_to_cart
         
     @property
     def shop_show_currency_in_cart(self):
-        return self.settings.shop_show_currency_in_cart
+        return settings.shop_show_currency_in_cart
 
     @property
     def disable_max_article_count(self):
-        return self.settings.disable_max_article_count
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IShopSettings)
+        return settings.disable_max_article_count
         
     @property
     def summary_total_only(self):
-        return serlf.settings.summary_total_only
+        return settings.summary_total_only
         
     @property
     def include_shipping_costs(self):
