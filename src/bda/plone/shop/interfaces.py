@@ -36,6 +36,10 @@ CART_CURRENCIES_ANSWERS = [
     "Yes", "No", "Symbol",
 ]
 
+AVAILABLE_SHIPPING = [
+    "flat_rate",
+]
+
 class IShopSettings(Interface):
     """Shop controlpanel schema.
     """
@@ -59,6 +63,34 @@ class IShopSettings(Interface):
         title=u"Currency",
         description=u"Choose the default currency",
         values=AVAILABLE_CURRENCIES)
+        
+    shop_quantity_units=schema.List(
+        title=_(u"Specify all allowed quantity settins. "
+                u"The required format is <name>. No spaces, please"),
+        description=_(u"help_shop_quantity_units", default=u'Quantity units (what the buyable items are measured in)'),
+        required=True,
+        value_type=schema.TextLine(),
+        default=[])
+
+    disable_max_article_count = schema.Bool(
+        title=u"Disable max article",
+        description=u"",
+        default=True)
+        
+    summary_total_only = schema.Bool(
+        title=u"Summary, total only",
+        description=u"",
+        default=False)
+
+    include_shipping_costs = schema.Bool(
+        title=u"Include Shipping Costs",
+        description=u"",
+        default=True)
+
+    shipping_method = schema.Choice(
+        title=u"Shipping Method",
+        description=u"",
+        values=AVAILABLE_SHIPPING)
 
     shop_show_checkout = schema.Bool(
         title=u"Show checkout link in portlet",
@@ -75,10 +107,3 @@ class IShopSettings(Interface):
         description=u"",
         values=CART_CURRENCIES_ANSWERS)
         
-    shop_quantity_units=schema.List(
-        title=_(u"Specify all allowed quantity settins. "
-                u"The required format is <name>. No spaces, please"),
-        description=_(u"help_shop_quantity_units", default=u'Quantity units (what the buyable items are measured in)'),
-        required=True,
-        value_type=schema.TextLine(),
-        default=[])

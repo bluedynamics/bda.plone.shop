@@ -37,5 +37,4 @@ def VatVocabulary(context):
         items.append((line[0], line[1]))
     return SimpleVocabulary.fromItems(items)
 
-
 directlyProvides(VatVocabulary, IVocabularyFactory)
