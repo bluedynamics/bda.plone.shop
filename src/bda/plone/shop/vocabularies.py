@@ -15,7 +15,7 @@ def QuantityUnitVocabulary(context):
     if not settings:
         return
     items = []
-    for line in settings.shop_quantity_units:
+    for line in settings.quantity_units:
         if not line:
             continue
         line = line.split()

@@ -55,7 +55,7 @@ class IShopSettings(Interface):
     quantity_units = schema.List(
         title=_(u"Specify all allowed quantity settins. "
                 u"The required format is <name>. No spaces, please"),
-        description=_(u"help_shop_quantity_units",
+        description=_(u"help_quantity_units",
                       default=u'Quantity units (what the buyable items are '
                               u'measured in)'),
         required=True,
