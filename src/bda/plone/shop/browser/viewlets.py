@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+from zope.i18n import translate
+from plone.app.layout.viewlets.common import ViewletBase
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.cart.browser import DataProviderMixin
-from bda.plone.cart.interfaces import ICartItemDataProvider
-from plone.app.layout.viewlets.common import ViewletBase
-from zope.i18n import translate
+from bda.plone.cart.interfaces import (
+    ICartItemDataProvider,
+    ICartItemAvailability,
+)
 
 
 class BuyableViewlet(ViewletBase, DataProviderMixin):
@@ -15,6 +18,18 @@ class BuyableViewlet(ViewletBase, DataProviderMixin):
     @property
     def data(self):
         return ICartItemDataProvider(self.context)
+
+    @property
+    def availability(self):
+        return ICartItemAvailability(self.context)
+
+    @property
+    def availability_signal(self):
+        return self.availability.signal
+
+    @property
+    def availability_details(self):
+        return self.availability.details
 
     @property
     def currency(self):

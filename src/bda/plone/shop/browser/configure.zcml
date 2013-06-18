@@ -7,6 +7,10 @@
     name="bda.plone.shop.css"
     file="shop.css" />
 
+  <browser:resource
+    name="bda.plone.shop.js"
+    file="shop.js" />
+
   <!-- viewlets -->
   <browser:viewlet
     name="bda.plone.shop.buyable"
@@ -16,6 +20,9 @@
     class=".viewlets.BuyableViewlet"
     layer="..interfaces.IShopExtensionLayer"
   />
+
+  <!-- availability adapter -->
+  <adapter factory=".availability.CartItemAvailability" />
 
   <!-- actions -->
   <browser:page

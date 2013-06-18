@@ -36,7 +36,6 @@ setup(name='bda.plone.shop',
           'Plone',
           'archetypes.schemaextender',
           'bda.plone.orders',
-          'bda.plone.stock',
           'plone.app.registry',
       ],
       entry_points="""

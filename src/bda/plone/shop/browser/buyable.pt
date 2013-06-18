@@ -1,6 +1,18 @@
 <div class="buyable"
      i18n:domain="bda.plone.shop">
 
+  <div class="availability">
+    <strong i18n:translate="availability">Availability</strong>
+    <div class="signal green"
+         tal:attributes="class string:signal ${view/availability_signal}">
+      &nbsp;
+    </div>
+    <div class="availability_details"
+         tal:content="structure view/availability_details">
+      deliverable until 1.1.2013
+    </div>
+  </div>
+
   <tal:net condition="not:view/display_gross">
     <strong i18n:translate="net">Net</strong>
     <span tal:replace="view/item_net">1.0</span>

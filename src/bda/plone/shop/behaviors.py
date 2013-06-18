@@ -12,8 +12,10 @@ from zope.schema.interfaces import IVocabularyFactory
 from plone.supermodel import model
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
-from bda.plone.cart.interfaces import ICartItemDataProvider
-from bda.plone.stock.interfaces import ICartItemStock
+from bda.plone.cart.interfaces import (
+    ICartItemDataProvider,
+    ICartItemStock,
+)
 
 
 _ = MessageFactory('bda.plone.shop')

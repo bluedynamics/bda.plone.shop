@@ -19,8 +19,10 @@ from Products.Archetypes.public import (
     SelectionWidget,
 )
 from Products.Archetypes.interfaces import IBaseObject
-from bda.plone.cart.interfaces import ICartItemDataProvider
-from bda.plone.stock.interfaces import ICartItemStock
+from bda.plone.cart.interfaces import (
+    ICartItemDataProvider,
+    ICartItemStock,
+)
 from .interfaces import (
     IShopExtensionLayer,
     IBuyable,

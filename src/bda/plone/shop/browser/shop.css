@@ -3,6 +3,39 @@ div.buyable {
     margin-bottom:1em;
     text-align:right;
 }
+div.buyable div.availability {
+    float:left;
+    margin-top:0.2em;
+    position:relative;
+}
+div.buyable div.availability_details {
+    position:absolute;
+    top:2em;
+    left:0;
+    text-align:left;
+    background-color:#efefef;
+    border:#ccc 1px solid;
+    border-radius:6px;
+    padding:1em;
+    min-width:20em;
+    display:none;
+}
+div.buyable div.signal {
+    border:#ccc 1px solid;
+    border-radius:3px;
+    width:16px;
+    height:16px;
+    display:inline-block;
+}
+div.buyable .red {
+    background-color:red;
+}
+div.buyable .yellow {
+    background-color:yellow;
+}
+div.buyable .green {
+    background-color:green;
+}
 div.buyable .vat_label {
     margin-left:1em;
 }
