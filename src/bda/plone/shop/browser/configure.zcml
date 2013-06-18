@@ -11,6 +11,9 @@
     name="bda.plone.shop.js"
     file="shop.js" />
 
+  <!-- availability adapter -->
+  <adapter factory=".availability.CartItemAvailability" />
+
   <!-- viewlets -->
   <browser:viewlet
     name="bda.plone.shop.buyable"
@@ -21,8 +24,14 @@
     layer="..interfaces.IShopExtensionLayer"
   />
 
-  <!-- availability adapter -->
-  <adapter factory=".availability.CartItemAvailability" />
+  <!-- buyable controls -->
+  <browser:page
+    name="buyable_controls"
+    for="..interfaces.IBuyable"
+    class=".buyable.BuyableControls"
+    template="buyable.pt"
+    permission="zope2.View"
+    layer="..interfaces.IShopExtensionLayer" />
 
   <!-- actions -->
   <browser:page

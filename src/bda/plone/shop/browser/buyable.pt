@@ -1,6 +1,13 @@
-<div class="buyable"
+<div xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:ajax="http://namesspaces.bluedynamics.eu/ajax"
+     class="buyable"
      i18n:domain="bda.plone.shop"
-     tal:define="addable view/item_addable">
+     ajax:bind="cart_changed"
+     tal:define="addable view/item_addable;
+                 css string:cart_item_${context/UID}"
+     tal:attributes="ajax:target context/absolute_url;
+                     ajax:action string:buyable_controls:.${css}:replace;
+                     class string:buyable ${css}">
 
   <div class="availability">
     <strong i18n:translate="availability">Availability</strong>
