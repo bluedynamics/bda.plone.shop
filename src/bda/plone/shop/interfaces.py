@@ -4,6 +4,7 @@ from zope.interface import (
 )
 from zope import schema
 from zope.i18nmessageid import MessageFactory
+from bda.plone.cart.interfaces import ICartItem
 
 
 _ = MessageFactory('bda.plone.shop')
@@ -21,7 +22,7 @@ class IPotentiallyBuyable(Interface):
     """
 
 
-class IBuyable(Interface):
+class IBuyable(ICartItem):
     """Marker for buyable item.
 
     Item is buyable.

@@ -1,3 +1,8 @@
-<tal:availability_details>
-  <strong>Hallo du</strong>
+<tal:availability_details define="view options/view">
+
+  <tal:not_available condition="not:view/addable">
+    <strong>Not deliverable</strong>
+    <p>This item is not available at the moment</p>
+  </tal:not_available>
+
 </tal:availability_details>
