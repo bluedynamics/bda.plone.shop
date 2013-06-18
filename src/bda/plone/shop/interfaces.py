@@ -5,12 +5,6 @@ from zope.interface import (
 from zope import schema
 from zope.i18nmessageid import MessageFactory
 
-
-
-from plone.z3cform.fieldsets.group import GroupFactory
-
-
-
 _ = MessageFactory('bda.plone.shop')
 
 
