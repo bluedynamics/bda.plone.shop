@@ -62,7 +62,7 @@ class IShopSettings(Interface):
         value_type=schema.TextLine(),
         default=[])
 
-    disable_max_article_count = schema.Bool(
+    disable_max_article = schema.Bool(
         title=u"Disable max article",
         description=u"",
         default=True)

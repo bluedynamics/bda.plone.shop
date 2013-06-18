@@ -15,7 +15,7 @@
       <element>kilo</element>
       <element>liter</element>     
     </value>
-    <value key="disable_max_article_count">True</value>
+    <value key="disable_max_article">True</value>
     <value key="summary_total_only">False</value>
     <value key="include_shipping_costs">True</value>
     <value key="shipping_method">flat_rate</value>

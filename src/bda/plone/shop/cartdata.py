@@ -117,8 +117,8 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         return self._settings.show_currency
 
     @property
-    def disable_max_article_count(self):
-        return self._settings.disable_max_article_count
+    def disable_max_article(self):
+        return self._settings.disable_max_article
 
     @property
     def summary_total_only(self):
