@@ -43,9 +43,6 @@ div.buyable input {
     margin-left:1em;
     font-size:90%;
 }
-div.buyable a {
-    margin-left:1em;
-}
 a.buyable_add_to_cart:link,
 a.buyable_add_to_cart:active,
 a.buyable_add_to_cart:hover,
@@ -54,6 +51,7 @@ a.buyable_update_cart:link,
 a.buyable_update_cart:active,
 a.buyable_update_cart:hover,
 a.buyable_update_cart:visited {
+    margin-left:1em;
     background-color:#75ad0a;
     border-radius: 0.3em 0.3em 0.3em 0.3em;
     color:white !important;
@@ -68,4 +66,17 @@ a.buyable_add_to_cart:hover,
 a.buyable_update_cart:hover {
     background-color:#eeeeee;
     color:#75ad0a !important;
+}
+span.buyable_add_to_cart_disabled,
+span.buyable_update_cart_disabled {
+    margin-left:1em;
+    background-color:#eeeeee;
+    border-radius: 0.3em 0.3em 0.3em 0.3em;
+    color:white !important;
+    font-weight:bold;
+    display:inline-block;
+    padding:0.3em 0.75em;
+    text-align:center;
+    text-decoration:none;
+    cursor:normal;
 }

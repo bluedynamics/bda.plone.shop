@@ -1,5 +1,6 @@
 <div class="buyable"
-     i18n:domain="bda.plone.shop">
+     i18n:domain="bda.plone.shop"
+     tal:define="addable view/item_addable">
 
   <div class="availability">
     <strong i18n:translate="availability">Availability</strong>
@@ -42,7 +43,8 @@
          tal:define="css python: view.quantity_unit_float and \
                                  'cart_item_count quantity_unit_float' or 
                                  'cart_item_count';"
-         tal:attributes="class css" />
+         tal:attributes="class css;
+                         disabled python: not addable and 'disabled' or None" />
 
   <span tal:content="view/quantity_unit">Quantity</span>
 
@@ -54,16 +56,27 @@
            tal:define="css python: view.comment_required and \
                                    'cart_item_comment required' or 
                                    'cart_item_comment';"
-           tal:attributes="class css" />
+           tal:attributes="class css;
+                           disabled python: not addable and 'disabled' or None" />
     <span i18n:translate="comment">Comment</span>
   </tal:comment>
 
-  <a href=""
-     class="add_cart_item buyable_add_to_cart"
-     i18n:translate="add_to_cart">add to cart</a>
+  <tal:addable condition="addable">
+    <a href=""
+       class="add_cart_item buyable_add_to_cart"
+       i18n:translate="add_to_cart">add to cart</a>
 
-  <a href=""
-     class="update_cart_item buyable_update_cart"
-     i18n:translate="update_cart">update cart</a>
+    <a href=""
+       class="update_cart_item buyable_update_cart"
+       i18n:translate="update_cart">update cart</a>
+  </tal:addable>
+
+  <tal:not_addable condition="not:addable">
+    <span class="buyable_add_to_cart_disabled"
+          i18n:translate="add_to_cart">add to cart</span>
+
+    <span class="buyable_update_cart_disabled"
+          i18n:translate="update_cart">update cart</span>
+  </tal:not_addable>
 
 </div>
