@@ -19,7 +19,6 @@ from bda.plone.cart.interfaces import (
 )
 from .interfaces import IShopSettings
 
-
 _ = MessageFactory('bda.plone.shop')
 
 
@@ -57,7 +56,7 @@ class CartItemCalculator(object):
 
 
 class CartDataProvider(CartItemCalculator, CartDataProviderBase):
-
+    
     def cart_items(self, items):
         cat = self.catalog
         ret = list()
@@ -93,46 +92,44 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             'success': True,
             'error': '',
         }
-
-    @property
-    def currency(self):
+     
+    @property 
+    def settings(self):
         registry = getUtility(IRegistry)
         settings = registry.forInterface(IShopSettings)
-        return settings.shop_currency
-
+        return settings
+        
     @property
     def shop_show_checkout(self):
-        registry = getUtility(IRegistry)
-        settings = registry.forInterface(IShopSettings)
-        return settings.shop_show_checkout
+        return self.settings.shop_show_checkout
+        
+    @property
+    def currency(self):
+        return self.settings.shop_currency
 
     @property
     def shop_show_to_cart(self):
-        registry = getUtility(IRegistry)
-        settings = registry.forInterface(IShopSettings)
-        return settings.shop_show_to_cart
+        return self.settings.shop_show_to_cart
         
     @property
     def shop_show_currency_in_cart(self):
-        registry = getUtility(IRegistry)
-        settings = registry.forInterface(IShopSettings)
-        return settings.shop_show_currency_in_cart
+        return self.settings.shop_show_currency_in_cart
 
     @property
-    def disable_max_article(self):
-        return True
-
+    def disable_max_article_count(self):
+        return self.settings.disable_max_article_count
+        
     @property
     def summary_total_only(self):
-        return False
-
+        return self.settings.summary_total_only
+        
     @property
     def include_shipping_costs(self):
-        return True
-
+        return self.settings.include_shipping_costs
+        
     @property
     def shipping_method(self):
-        return 'flat_rate'
+        return self.settings.shipping_method   
 
     @property
     def checkout_url(self):
