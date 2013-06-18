@@ -113,7 +113,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         
     @property
     def shop_show_currency_in_cart(self):
-        return settings.shop_show_currency_in_cart
+        return self.settings.shop_show_currency_in_cart
 
     @property
     def disable_max_article_count(self):
