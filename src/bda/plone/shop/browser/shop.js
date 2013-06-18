@@ -1,18 +1,28 @@
 (function($) {
 
     $(document).ready(function() {
-        $('div.availability').bind('mouseover', function() {
-            var details = $('div.availability_details', $(this).parents());
-            if (!details.is(":visible")) {
-                details.show();
-            }
-        });
-        $('div.availability').bind('mouseout', function() {
-            var details = $('div.availability_details', $(this).parents());
-            if (details.is(":visible")) {
-                details.hide();
-            }
-        });
+        var binder = function(context) {
+            $('div.availability', context).unbind('mouseover')
+                                          .bind('mouseover', function() {
+                var details = $('div.availability_details', $(this).parents());
+                if (!details.is(":visible")) {
+                    details.show();
+                }
+            });
+            $('div.availability', context).unbind('mouseout')
+                                          .bind('mouseout', function() {
+                var details = $('div.availability_details', $(this).parents());
+                if (details.is(":visible")) {
+                    details.hide();
+                }
+            });
+        }
+        if (typeof(window['bdajax']) != "undefined") {
+            $.extend(bdajax.binders, {
+                buyable_controls_binder: binder
+            });
+        }
+        binder(document);
     });
 
 })(jQuery);
