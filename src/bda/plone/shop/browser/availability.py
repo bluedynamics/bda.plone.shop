@@ -1,6 +1,6 @@
 from zope.interface import implementer
 from zope.component import adapter
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.Five.browser.pagetemplatefile import PageTemplateFile
 from bda.plone.cart.interfaces import (
     ICartItemAvailability,
     ICartItemStock,
@@ -17,7 +17,7 @@ class CartItemAvailability(object):
     """Default cart item availability display behavior
     """
 
-    details_template = ViewPageTemplateFile('availability_details.pt')
+    details_template = PageTemplateFile('availability_details.pt')
 
     def __init__(self, context):
         self.context = context

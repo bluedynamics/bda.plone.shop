@@ -18,7 +18,7 @@ class BuyableViewlet(ViewletBase, DataProviderMixin):
 
     @property
     def _cart_data(self):
-        return get_data_provider(self.context)
+        return get_data_provider(self.context, self.request)
 
     @property
     def _item_data(self):
