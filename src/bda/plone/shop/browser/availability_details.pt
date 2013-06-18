@@ -1,8 +1,33 @@
-<tal:availability_details define="view options/view">
+<tal:availability_details
+   define="view options/view"
+   i18n:domain="bda.plone.shop">
 
-  <tal:not_available condition="not:view/addable">
-    <strong>Not deliverable</strong>
-    <p>This item is not available at the moment</p>
+  <tal:not_available condition="view/not_available">
+    <strong i18n:translate="not_available_title">Not deliverable</strong>
+    <p i18n:translate="not_available_message">
+      This item is not available at the moment
+    </p>
   </tal:not_available>
+
+  <tal:full_available condition="view/full_available">
+    <strong i18n:translate="full_available_title">Item available</strong>
+    <p i18n:translate="full_available_message">
+      Full available
+    </p>
+  </tal:full_available>
+
+  <tal:critical_available condition="view/critical_available">
+    <strong i18n:translate="critical_available_title">Item available</strong>
+    <p i18n:translate="critical_available_message">
+      Critical available
+    </p>
+  </tal:critical_available>
+
+  <tal:overbook_available condition="view/overbook_available">
+    <strong i18n:translate="overbook_available_title">Overbook available</strong>
+    <p i18n:translate="overbook_available_message">
+      Overbook available
+    </p>
+  </tal:overbook_available>
 
 </tal:availability_details>
