@@ -1,4 +1,4 @@
-from zope.interface import implements
+from zope.interface import implementer
 from zope.i18nmessageid import MessageFactory
 from zope.security import checkPermission
 from plone.portlets.interfaces import IPortletDataProvider
@@ -14,8 +14,8 @@ class IShopAdminPortlet(IPortletDataProvider):
     """
 
 
+@implementer(IShopAdminPortlet)
 class ShopAdminAssignment(base.Assignment):
-    implements(IShopAdminPortlet)
     title = _(u'shop_admin', default=u'Shop Administration')
 
 
