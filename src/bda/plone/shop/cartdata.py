@@ -19,6 +19,7 @@ from bda.plone.cart.interfaces import (
 )
 from .interfaces import IShopSettings
 
+
 _ = MessageFactory('bda.plone.shop')
 
 
@@ -56,7 +57,7 @@ class CartItemCalculator(object):
 
 
 class CartDataProvider(CartItemCalculator, CartDataProviderBase):
-    
+
     def cart_items(self, items):
         cat = self.catalog
         ret = list()
@@ -92,44 +93,44 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             'success': True,
             'error': '',
         }
-     
+
     @property 
-    def settings(self):
+    def _settings(self):
         registry = getUtility(IRegistry)
         settings = registry.forInterface(IShopSettings)
         return settings
-        
-    @property
-    def shop_show_checkout(self):
-        return self.settings.shop_show_checkout
-        
-    @property
-    def currency(self):
-        return self.settings.shop_currency
 
     @property
-    def shop_show_to_cart(self):
-        return self.settings.shop_show_to_cart
-        
+    def currency(self):
+        return self._settings.currency
+
     @property
-    def shop_show_currency_in_cart(self):
-        return self.settings.shop_show_currency_in_cart
+    def show_checkout(self):
+        return self._settings.show_checkout
+
+    @property
+    def show_to_cart(self):
+        return self._settings.show_to_cart
+
+    @property
+    def show_currency(self):
+        return self._settings.show_currency
 
     @property
     def disable_max_article_count(self):
-        return self.settings.disable_max_article_count
-        
+        return self._settings.disable_max_article_count
+
     @property
     def summary_total_only(self):
-        return self.settings.summary_total_only
-        
+        return self._settings.summary_total_only
+
     @property
     def include_shipping_costs(self):
-        return self.settings.include_shipping_costs
-        
+        return self._settings.include_shipping_costs
+
     @property
     def shipping_method(self):
-        return self.settings.shipping_method   
+        return self._settings.shipping_method
 
     @property
     def checkout_url(self):

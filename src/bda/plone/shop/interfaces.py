@@ -28,47 +28,31 @@ class IBuyable(Interface):
     """
 
 
-AVAILABLE_CURRENCIES = [
-    "EUR", "USD", "INR", "CAD", "CHF", "GBP",
-    "AUD", "NOK", "SEK", "DKK", "YEN",
-]
-
-
-CART_CURRENCIES_ANSWERS = [
-    "Yes", "No", "Symbol",
-]
-
-
-AVAILABLE_SHIPPING = [
-    "flat_rate",
-]
-
-
 class IShopSettings(Interface):
     """Shop controlpanel schema.
     """
 
-    shop_vat=schema.List(
+    vat = schema.List(
         title=_(u"Specify all allowed vat settings, one per line. "
                 u"The required format is <name> <persentage>"),
-        description=_(u"help_shop_vat", default=u'Value added tax in %'),
+        description=_(u"help_vat", default=u'Value added tax in %'),
         required=True,
         value_type=schema.TextLine(),
         default=[])
 
-    shop_admin_email = schema.ASCIILine(
-        title=_(u"label_shop_admin_email",
+    admin_email = schema.ASCIILine(
+        title=_(u"label_admin_email",
                 default=u'Shop admin Email. No typos please....'),
-        description=_(u"help_shop_admin_email", default=u''),
+        description=_(u"help_admin_email", default=u''),
         required=True,
         default="")
 
-    shop_currency = schema.Choice(
+    currency = schema.Choice(
         title=u"Currency",
         description=u"Choose the default currency",
-        values=AVAILABLE_CURRENCIES)
+        vocabulary='bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary')
 
-    shop_quantity_units=schema.List(
+    quantity_units = schema.List(
         title=_(u"Specify all allowed quantity settins. "
                 u"The required format is <name>. No spaces, please"),
         description=_(u"help_shop_quantity_units",
@@ -96,19 +80,21 @@ class IShopSettings(Interface):
     shipping_method = schema.Choice(
         title=u"Shipping Method",
         description=u"",
-        values=AVAILABLE_SHIPPING)
+        vocabulary=\
+            'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary')
 
-    shop_show_checkout = schema.Bool(
+    show_checkout = schema.Bool(
         title=u"Show checkout link in portlet",
         description=u"",
         default=False)
 
-    shop_show_to_cart = schema.Bool(
+    show_to_cart = schema.Bool(
         title=u"Show link to cart in portlet",
         description=u"",
         default=True)
 
-    shop_show_currency_in_cart = schema.Choice(
-        title=u"Show the currency for items in portlet",
+    show_currency = schema.Choice(
+        title=u"Show the currency for items",
         description=u"",
-        values=CART_CURRENCIES_ANSWERS)
+        vocabulary=\
+            'bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary')

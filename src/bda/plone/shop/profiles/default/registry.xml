@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <registry>
   <records interface="bda.plone.shop.interfaces.IShopSettings">
-    <value key="shop_currency">EUR</value>
-    <value key="shop_admin_email"></value>
-    <value key="shop_vat">
+    <value key="currency">EUR</value>
+    <value key="admin_email"></value>
+    <value key="vat">
       <element>0% 0</element>
       <element>10% 10</element>
       <element>20% 20</element>
       <element>25% 25</element>
     </value>
-    <value key="shop_quantity_units">
+    <value key="quantity_units">
       <element>quantity</element>
       <element>meter</element>
       <element>kilo</element>
@@ -19,11 +19,8 @@
     <value key="summary_total_only">False</value>
     <value key="include_shipping_costs">True</value>
     <value key="shipping_method">flat_rate</value>
-    <value key="shop_show_checkout">False</value>
-    <value key="shop_show_to_cart">True</value>
-    <value key="shop_show_currency_in_cart">Symbol</value>
+    <value key="show_checkout">False</value>
+    <value key="show_to_cart">True</value>
+    <value key="show_currency">symbol</value>
   </records>
 </registry>
-
-
-    

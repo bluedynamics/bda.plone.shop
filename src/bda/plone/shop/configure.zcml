@@ -65,6 +65,18 @@
     component=".vocabularies.QuantityUnitVocabulary"
     name="bda.plone.shop.vocabularies.QuantityUnitVocabulary" />
 
+  <utility
+    component=".vocabularies.AvailableCurrenciesVocabulary"
+    name="bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary" />
+
+  <utility
+    component=".vocabularies.CurrencyDisplayOptionsVocabulary"
+    name="bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary" />
+
+  <utility
+    component=".vocabularies.AvailableShippingMethodsVocabulary"
+    name="bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary" />
+
   <adapter name="flat_rate" factory=".shipping.FlatRate" />
 
   <adapter factory=".cartdata.CartDataProvider" />
