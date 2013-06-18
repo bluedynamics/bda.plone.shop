@@ -1,12 +1,5 @@
-from zope.interface import implementer
-from zope.component import adapter
 from Products.Five.browser.pagetemplatefile import PageTemplateFile
 from bda.plone.cart import CartItemAvailabilityBase
-from bda.plone.cart.interfaces import (
-    ICartItemAvailability,
-    ICartItemStock,
-)
-from ..interfaces import IBuyable
 
 
 class CartItemAvailability(CartItemAvailabilityBase):

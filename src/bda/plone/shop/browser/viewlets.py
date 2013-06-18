@@ -26,7 +26,7 @@ class BuyableViewlet(ViewletBase, DataProviderMixin):
 
     @property
     def _item_availability(self):
-        return get_item_availability(self.context)
+        return get_item_availability(self.context, self.request)
 
     @property
     def availability_signal(self):
