@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from zope.interface import directlyProvides
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
@@ -24,6 +23,7 @@ def QuantityUnitVocabulary(context):
         items.append((line[0], line[0]))
     return SimpleVocabulary.fromItems(items)
 
+
 directlyProvides(QuantityUnitVocabulary, IVocabularyFactory)
 
 
@@ -39,28 +39,26 @@ def VatVocabulary(context):
         items.append((line[0], line[1]))
     return SimpleVocabulary.fromItems(items)
 
+
 directlyProvides(VatVocabulary, IVocabularyFactory)
 
 
-AVAILABLE_CURRENCIES = {
-    'USD': u"$",
-    'EUR': u"€",
-    'INR': u"₹",
-    'CAD': u"$",
-    'CHF': u"CHF",
-    'GBP': u"£",
-    'AUD': u"$",
-    'NOK': u"Kr.",
-    'SEK': u"Kr.",
-    'DKK': u"K.",
-    'YEN': u"¥",
-}
-
 def AvailableCurrenciesVocabulary(context):
-    items = list()
-    for key, value in AVAILABLE_CURRENCIES.items():
-        items.append((value, key))
+    items = [
+        (_('EUR', default='Euro'), 'EUR'),
+        (_('USD', default='US Dollar'), 'USD'),
+        (_('INR', default='Indian Rupee'), 'INR'),
+        (_('CAD', default='Canadian Dollar'), 'CAD'),
+        (_('CHF', default='Swiss Franc'), 'CHF'),
+        (_('GBP', default='British Pound Sterling'), 'GBP'),
+        (_('AUD', default='Australian Dollar'), 'AUD'),
+        (_('NOK', default='Norwegian Krone'), 'NOK'),
+        (_('SEK', default='Swedish Krona'), 'SEK'),
+        (_('DKK', default='Danish Krone'), 'DKK'),
+        (_('YEN', default='Japanese Yen'), 'YEN'),
+    ]
     return SimpleVocabulary.fromItems(items)
+
 
 directlyProvides(AvailableCurrenciesVocabulary, IVocabularyFactory)
 
@@ -72,6 +70,7 @@ def AvailableShippingMethodsVocabulary(context):
     ]
     return SimpleVocabulary.fromItems(items)
 
+
 directlyProvides(AvailableShippingMethodsVocabulary, IVocabularyFactory)
 
 
@@ -82,5 +81,6 @@ def CurrencyDisplayOptionsVocabulary(context):
         (_('symbol', default='Symbol'), 'symbol'),
     ]
     return SimpleVocabulary.fromItems(items)
+
 
 directlyProvides(CurrencyDisplayOptionsVocabulary, IVocabularyFactory)
