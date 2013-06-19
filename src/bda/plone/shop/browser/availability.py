@@ -1,12 +1,12 @@
-from Products.Five.browser.pagetemplatefile import PageTemplateFile
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.cart import CartItemAvailabilityBase
 
 
 class CartItemAvailability(CartItemAvailabilityBase):
-    details_template = PageTemplateFile('availability_details.pt')
+    details_template = ViewPageTemplateFile('availability_details.pt')
 
     def details(self):
-        return self.details_template(view=self)
+        return self.details_template(self)
 
     @property
     def not_available(self):

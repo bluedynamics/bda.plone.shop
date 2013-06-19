@@ -1,5 +1,4 @@
 <tal:availability_details
-   define="view options/view"
    i18n:domain="bda.plone.shop">
 
   <tal:not_available condition="view/not_available">
