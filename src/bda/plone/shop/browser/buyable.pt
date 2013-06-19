@@ -23,7 +23,7 @@
 
   <tal:net condition="not:view/display_gross">
     <strong i18n:translate="net">Net</strong>
-    <span tal:replace="view/item_net">1.0</span>
+    <span tal:replace="python:'%0.2f' % view/item_net">1.00</span>
     <span tal:replace="view/currency">EUR</span>
     <strong i18n:translate="vat"
             class="vat_label">Vat</strong>
