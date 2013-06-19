@@ -50,6 +50,13 @@ class CartItemCalculator(object):
 
 class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
+    def _aggregate_count_for(self, aggregate_uid, items):
+        aggregated_count = 0
+        for uid, count, comment in items:
+            if aggregate_uid == uid:
+                aggregated_count += count
+        return aggregated_count
+
     def cart_items(self, items):
         cat = self.catalog
         ret = list()
@@ -68,10 +75,13 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             quantity_unit_float = data.quantity_unit_float
             quantity_unit = translate(data.quantity_unit, context=self.request)
             preview_image_url = ICartItemPreviewImage(brain[0].getObject()).url
+            aggregated_count = self._aggregate_count_for(uid, items)
+            valid_count = self.validate_count(uid, aggregated_count)['success']
+            no_longer_available = not valid_count
             ret.append(self.item(uid, title, count, price, url, comment,
                                  description, comment_required,
                                  quantity_unit_float, quantity_unit,
-                                 preview_image_url))
+                                 preview_image_url, no_longer_available))
         return ret
 
     @property 
