@@ -82,18 +82,6 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
                                  preview_image_url))
         return ret
 
-    def validate_set(self, uid):
-        return {
-            'success': True,
-            'error': '',
-        }
-
-    def validate_count(self, uid, count):
-        return {
-            'success': True,
-            'error': '',
-        }
-
     @property 
     def _settings(self):
         registry = getUtility(IRegistry)
