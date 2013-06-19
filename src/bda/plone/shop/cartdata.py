@@ -4,15 +4,7 @@ from zope.i18nmessageid import MessageFactory
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
-try:
-    from collective.contentleadimage.config import IMAGE_FIELD_NAME
-    HAS_CLI = True
-except:
-    HAS_CLI = False
-from bda.plone.cart import (
-    CartDataProviderBase,
-    CartItemPreviewAdapterBase,
-)
+from bda.plone.cart import CartDataProviderBase
 from bda.plone.cart.interfaces import (
     ICartItemDataProvider,
     ICartItemPreviewImage,
@@ -123,24 +115,3 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
     @property
     def checkout_url(self):
         return '%s/@@checkout' % self.context.absolute_url()
-
-
-class CartItemPreviewImage(CartItemPreviewAdapterBase):
-
-    preview_scale = "tile"
-
-    @property
-    def url(self):
-        """Get url of preview image:
-            1. try to read the 'image' field on the context
-            2. try to use collective.contentleadimage
-        """
-        img_scale = None
-        scales = self.context.restrictedTraverse('@@images')
-        if self.context.getField("image") is not None:
-            img_scale = scales.scale("image", scale=self.preview_scale)
-        if img_scale is None and HAS_CLI:
-            if self.context.getField(IMAGE_FIELD_NAME) is not None:
-                img_scale = scales.scale(IMAGE_FIELD_NAME,
-                                         scale=self.preview_scale)
-        return img_scale and img_scale.url or ""
