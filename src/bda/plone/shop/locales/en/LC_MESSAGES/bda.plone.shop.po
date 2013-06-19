@@ -1,9 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bda.plone.shop\n"
-"POT-Creation-Date: 2012-11-07 16:41+0000\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Peter Holzer <hpeter@agitator.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,134 +14,285 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: bda.plone.shop\n"
 
+#. Default: "Australian Dollar"
+#: ./vocabularies.py:54
+msgid "AUD"
+msgstr "Australian Dollar"
+
 #: ./profiles/default/actions.xml
 msgid "Activate Buyable on Item"
-msgstr ""
+msgstr "Activate Buyable on Item"
+
+#. Default: "Canadian Dollar"
+#: ./vocabularies.py:51
+msgid "CAD"
+msgstr "Canadian Dollar"
+
+#. Default: "Swiss Franc"
+#: ./vocabularies.py:52
+msgid "CHF"
+msgstr "Swiss Franc"
+
+#. Default: "Danish Krone"
+#: ./vocabularies.py:57
+msgid "DKK"
+msgstr "Danish Krone"
 
 #: ./profiles/default/actions.xml
 msgid "Deactivates Buyable on Item"
-msgstr ""
+msgstr "Deactivates Buyable on Item"
 
 #: ./profiles/default/actions.xml
 msgid "Disables Buyable"
-msgstr ""
+msgstr "Disables Buyable"
+
+#. Default: "Euro"
+#: ./vocabularies.py:48
+msgid "EUR"
+msgstr "Euro"
 
 #: ./profiles/default/actions.xml
 msgid "Enable Buyable"
-msgstr ""
+msgstr "Enable Buyable"
+
+#. Default: "British Pound Sterling"
+#: ./vocabularies.py:53
+msgid "GBP"
+msgstr "British Pound Sterling"
+
+#. Default: "Indian Rupee"
+#: ./vocabularies.py:50
+msgid "INR"
+msgstr "Indian Rupee"
+
+#. Default: "Norwegian Krone"
+#: ./vocabularies.py:55
+msgid "NOK"
+msgstr "Norwegian Krone"
+
+#. Default: "Swedish Krona"
+#: ./vocabularies.py:56
+msgid "SEK"
+msgstr "Swedish Krona"
+
+#: ./browser/controlpanel.py:11
+#: ./profiles/default/controlpanel.xml
+msgid "Shop settings"
+msgstr "Shop settings"
+
+#: ./interfaces.py:57
+msgid "Specify all allowed quantity settins. The required format is <name>. No spaces, please"
+msgstr "Specify all allowed quantity settins. The required format is <name>. No spaces, please"
+
+#: ./interfaces.py:37
+msgid "Specify all allowed vat settings, one per line. The required format is <name> <persentage>"
+msgstr "Specify all allowed vat settings, one per line. The required format is <name> <persentage>"
+
+#. Default: "US Dollar"
+#: ./vocabularies.py:49
+msgid "USD"
+msgstr "US Dollar"
+
+#. Default: "Japanese Yen"
+#: ./vocabularies.py:58
+msgid "YEN"
+msgstr "Japanese Yen"
 
 #. Default: "add to cart"
-#: ./browser/buyable.pt:50
+#: ./browser/buyable.pt:72
 msgid "add_to_cart"
-msgstr ""
+msgstr "add to cart"
+
+#. Default: "Availability"
+#: ./browser/buyable.pt:13
+msgid "availability"
+msgstr "Availability"
 
 #. Default: "Comment"
-#: ./browser/buyable.pt:47
+#: ./browser/buyable.pt:68
 msgid "comment"
-msgstr ""
+msgstr "Comment"
+
+#. Default: "Critical available"
+#: ./browser/availability_details.pt:21
+msgid "critical_available_message"
+msgstr "Critical available"
+
+#. Default: "Item available"
+#: ./browser/availability_details.pt:20
+msgid "critical_available_title"
+msgstr "Item available"
 
 #. Default: "Disabled Buyable."
 #: ./browser/actions.py:32
 msgid "disabled_buyable"
-msgstr ""
+msgstr "Disabled Buyable."
 
 #. Default: "Enabled Buyable."
 #: ./browser/actions.py:23
 msgid "enabled_buyable"
-msgstr ""
+msgstr "Enabled Buyable."
 
 #. Default: "Export Orders"
 #: ./browser/admin.pt:19
 msgid "exportorders"
-msgstr ""
+msgstr "Export Orders"
+
+#. Default: "Flat rate"
+#: ./vocabularies.py:69
+msgid "flat_rate"
+msgstr "Flat rate"
+
+#. Default: "Full available"
+#: ./browser/availability_details.pt:14
+msgid "full_available_message"
+msgstr "Full available"
+
+#. Default: "Item available"
+#: ./browser/availability_details.pt:13
+msgid "full_available_title"
+msgstr "Item available"
 
 #. Default: "Gross"
-#: ./browser/buyable.pt:14
+#: ./browser/buyable.pt:34
 msgid "gross"
+msgstr "Gross"
+
+#: ./interfaces.py:47
+msgid "help_admin_email"
 msgstr ""
 
-#. Default: "Kilo"
-#: ./extender.py:56
-msgid "kilo"
-msgstr ""
+#. Default: "Quantity units (what the buyable items are measured in)"
+#: ./interfaces.py:59
+msgid "help_quantity_units"
+msgstr "Quantity units (what the buyable items are measured in)"
+
+#. Default: "Value added tax in %"
+#: ./interfaces.py:39
+msgid "help_vat"
+msgstr "Value added tax in %"
+
+#. Default: "Shop admin Email. No typos please...."
+#: ./interfaces.py:45
+msgid "label_admin_email"
+msgstr "Shop admin Email. No typos please...."
+
+#. Default: "Item stock available"
+#: ./at.py:208
+#: ./dx.py:135
+msgid "label_item_available"
+msgstr "Item stock available"
 
 #. Default: "Comment enabled"
-#: ./extender.py:95
+#: ./at.py:116
+#: ./dx.py:58
 msgid "label_item_comment_enabled"
-msgstr ""
+msgstr "Comment enabled"
 
 #. Default: "Comment required"
-#: ./extender.py:103
+#: ./at.py:124
+#: ./dx.py:62
 msgid "label_item_comment_required"
-msgstr ""
+msgstr "Comment required"
 
 #. Default: "Display Gross"
-#: ./extender.py:87
+#: ./at.py:108
+#: ./dx.py:54
 msgid "label_item_display_gross"
-msgstr ""
+msgstr "Display Gross"
 
 #. Default: "Item net price"
-#: ./extender.py:72
+#: ./at.py:93
+#: ./dx.py:45
 msgid "label_item_net"
-msgstr ""
+msgstr "Item net price"
+
+#. Default: "Item stock overbook"
+#: ./at.py:215
+#: ./dx.py:139
+msgid "label_item_overbook"
+msgstr "Item stock overbook"
 
 #. Default: "Quantity unit"
-#: ./extender.py:120
+#: ./at.py:141
+#: ./dx.py:70
 msgid "label_item_quantity_unit"
-msgstr ""
+msgstr "Quantity unit"
 
 #. Default: "Quantity as float"
-#: ./extender.py:111
+#: ./at.py:132
+#: ./dx.py:66
 msgid "label_item_quantity_unit_float"
-msgstr ""
+msgstr "Quantity as float"
 
 #. Default: "Item VAT (in %)"
-#: ./extender.py:79
+#: ./at.py:100
+#: ./dx.py:49
 msgid "label_item_vat"
-msgstr ""
-
-#. Default: "Liter"
-#: ./extender.py:57
-msgid "liter"
-msgstr ""
-
-#. Default: "Meter"
-#: ./extender.py:55
-msgid "meter"
-msgstr ""
+msgstr "Item VAT (in %)"
 
 #. Default: "Net"
-#: ./browser/buyable.pt:5
+#: ./browser/buyable.pt:25
 msgid "net"
-msgstr ""
+msgstr "Net"
+
+#. Default: "No"
+#: ./vocabularies.py:80
+msgid "no"
+msgstr "No"
+
+#. Default: "This item is not available at the moment"
+#: ./browser/availability_details.pt:7
+msgid "not_available_message"
+msgstr "This item is not available at the moment"
+
+#. Default: "Not deliverable"
+#: ./browser/availability_details.pt:6
+msgid "not_available_title"
+msgstr "Not deliverable"
 
 #. Default: "Orders"
 #: ./browser/admin.pt:14
 msgid "orders"
-msgstr ""
+msgstr "Orders"
 
-#. Default: "Quantity"
-#: ./extender.py:54
-msgid "quantity"
-msgstr ""
+#. Default: "Overbook available"
+#: ./browser/availability_details.pt:28
+msgid "overbook_available_message"
+msgstr "Overbook available"
+
+#. Default: "Overbook available"
+#: ./browser/availability_details.pt:27
+msgid "overbook_available_title"
+msgstr "Overbook available"
 
 #. Default: "Shop Administration"
-#: ./browser/admin.py:18
+#: ./browser/admin.py:19
 msgid "shop_admin"
-msgstr ""
+msgstr "Shop Administration"
 
 #. Default: "Shop Admin"
 #: ./browser/admin.pt:7
 msgid "shop_admin_heading"
-msgstr ""
+msgstr "Shop Admin"
+
+#. Default: "Symbol"
+#: ./vocabularies.py:81
+msgid "symbol"
+msgstr "Symbol"
 
 #. Default: "update cart"
-#: ./browser/buyable.pt:54
+#: ./browser/buyable.pt:76
 msgid "update_cart"
-msgstr ""
+msgstr "update cart"
 
 #. Default: "Vat"
-#: ./browser/buyable.pt:8
+#: ./browser/buyable.pt:28
 msgid "vat"
-msgstr ""
+msgstr "Vat"
+
+#. Default: "Yes"
+#: ./vocabularies.py:79
+msgid "yes"
+msgstr "Yes"
 

@@ -26,7 +26,8 @@ done
 
 # Assume i18ndude is installed with buildout
 # and this script is run under src/ folder with two nested namespaces in the package name (like collective.bla)
-I18NDUDE=../../../../bin/i18ndude
+#I18NDUDE=../../../../bin/i18ndude
+I18NDUDE=../../../../../../bin/i18ndude
 
 if test ! -e $I18NDUDE; then
         echo "You must install i18ndude with buildout"
