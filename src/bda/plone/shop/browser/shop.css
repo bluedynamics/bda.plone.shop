@@ -30,6 +30,9 @@ div.buyable div.signal {
 div.buyable .red {
     background-color:red;
 }
+div.buyable .orange {
+    background-color:orange;
+}
 div.buyable .yellow {
     background-color:yellow;
 }
