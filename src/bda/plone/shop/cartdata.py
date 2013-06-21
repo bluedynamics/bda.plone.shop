@@ -54,28 +54,61 @@ class CartItemCalculator(object):
 class CartItemState(CartItemStateBase):
 
     def message(self, count):
+        stock = get_item_stock(self.context)
+        available = stock.available
+        overbook = stock.overbook
+        # no limitation
+        if available is None:
+            return ''
+        # read aggregated item count for cart item
         items = extractitems(readcookie(self.request))
         aggregated_count = aggregate_cart_item_count(self.context.UID(), items)
-        if not self.validate_count(aggregated_count):
-            message = _('alert_item_no_longer_available',
+        aggregated_count = float(aggregated_count)
+        count = float(count)
+        # number of reserved items
+        reserved = 0.0
+        if available <= 0:
+            reserved = aggregated_count
+        elif available - aggregated_count < 0:
+            reserved = abs(available - aggregated_count)
+        # number of items exceeded limit
+        exceed = 0.0
+        if overbook is not None:
+            if reserved > overbook:
+                exceed = reserved - overbook
+        # no reservations and no exceed
+        if not reserved and not exceed:
+            # no message
+            return ''
+        # total number items available
+        if available >= 0:
+            total_available = available + overbook
+        else:
+            total_available = overbook - available
+        # exceed
+        if exceed:
+            # partly exceed
+            if total_available > 0:
+                message = _(u'alert_item_number_exceed',
+                            default=u'Limit exceed by ${exceed} items',
+                            mapping={'exceed': exceed})
+                return translate(message, context=self.request)
+            # completely exceed
+            message = _(u'alert_item_no_longer_available',
                         default=u'Item is no longer available, please '
                                 u'remove from cart')
             return translate(message, context=self.request)
-        count = float(count)
-        stock = get_item_stock(self.context)
-        available = stock.available
-        if available is None:
-            return ''
-        if available > 0 and available - count < 0:
-            reserved = available - count
-            message = _(u'alert_item_number_reserved',
-                        default=u'${reserved} items reserved',
-                        mapping={'reserved': reserved})
-            return translate(message, context=self.request)
-        elif available <= 0:
-            reserved = count
-            message =  _(u'alert_item_reserved',
-                         default=u'Reservation')
+        # reservations
+        if reserved:
+            # some reservations message
+            if aggregated_count > count:
+                message = _(u'alert_item_some_reserved',
+                            default=u'Some items reserved')
+            # n reservations message
+            else:
+                message = _(u'alert_item_number_reserved',
+                            default=u'${reserved} items reserved',
+                            mapping={'reserved': reserved})
             return translate(message, context=self.request)
         return ''
 
