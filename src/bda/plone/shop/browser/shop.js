@@ -4,14 +4,14 @@
         var binder = function(context) {
             $('div.availability', context).unbind('mouseover')
                                           .bind('mouseover', function() {
-                var details = $('div.availability_details', $(this).parents());
+                var details = $('div.availability_details', $(this));
                 if (!details.is(":visible")) {
                     details.show();
                 }
             });
             $('div.availability', context).unbind('mouseout')
                                           .bind('mouseout', function() {
-                var details = $('div.availability_details', $(this).parents());
+                var details = $('div.availability_details', $(this));
                 if (details.is(":visible")) {
                     details.hide();
                 }

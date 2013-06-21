@@ -9,6 +9,7 @@ div.buyable div.availability {
     position:relative;
 }
 div.buyable div.availability_details {
+	z-index:1000;
     position:absolute;
     top:2em;
     left:0;
