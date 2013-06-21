@@ -80,6 +80,7 @@
   <adapter name="flat_rate" factory=".shipping.FlatRate" />
 
   <adapter factory=".cartdata.CartDataProvider" />
+  <adapter factory=".cartdata.CartItemState" />
 
   <adapter factory=".at.ATCartItemDataProvider" />
   <adapter factory=".at.ATCartItemStock" />
