@@ -51,98 +51,6 @@ class CartItemCalculator(object):
         return vat
 
 
-class CartItemState(CartItemStateBase):
-
-    @property
-    def aggregated_count(self):
-        items = extractitems(readcookie(self.request))
-        return aggregate_cart_item_count(self.context.UID(), items)
-
-    @property
-    def completely_exceeded_message(self):
-        message = _(u'alert_item_no_longer_available',
-                    default=u'Item is no longer available, please '
-                            u'remove from cart')
-        return translate(message, context=self.request)
-
-    @property
-    def some_reservations_message(self):
-        message = _(u'alert_item_some_reserved',
-                    default=u'Some items reserved')
-        return translate(message, context=self.request)
-
-    def partly_exceeded_message(self, exceed):
-        message = _(u'alert_item_number_exceed',
-                    default=u'Limit exceed by ${exceed} items',
-                    mapping={'exceed': exceed})
-        return translate(message, context=self.request)
-
-    def number_reservations_message(self, reserved):
-        message = _(u'alert_item_number_reserved',
-                    default=u'${reserved} items reserved',
-                    mapping={'reserved': reserved})
-        return translate(message, context=self.request)
-
-    def message(self, count):
-        stock = get_item_stock(self.context)
-        available = stock.available
-        overbook = stock.overbook
-        # no limitation
-        if available is None:
-            return ''
-        # read aggregated item count for cart item
-        aggregated_count = float(self.aggregated_count)
-        count = float(count)
-        # number of reserved items
-        reserved = 0.0
-        if available <= 0:
-            reserved = aggregated_count
-        elif available - aggregated_count < 0:
-            reserved = abs(available - aggregated_count)
-        # number of items exceeded limit
-        exceed = 0.0
-        if overbook is not None:
-            if reserved > overbook:
-                exceed = reserved - overbook
-        # no reservations and no exceed
-        if not reserved and not exceed:
-            # no message
-            return ''
-        # total number items available
-        if available >= 0:
-            total_available = available + overbook
-        else:
-            total_available = overbook - available
-        # exceed
-        if exceed:
-            # partly exceeded
-            if total_available > 0:
-                return self.partly_exceeded_message(exceed)
-            # completely exceeded
-            return self.completely_exceeded_message
-        # reservations
-        if reserved:
-            # some reservations message
-            if aggregated_count > count:
-                return self.some_reservations_message
-            # number reservations message
-            else:
-                return self.number_reservations_message(reserved)
-        return ''
-
-    def validate_count(self, count):
-        count = float(count)
-        stock = get_item_stock(self.context)
-        available = stock.available
-        overbook = stock.overbook
-        if available is None or overbook is None:
-            return True
-        available -= count
-        if available >= overbook * -1:
-            return True
-        return False
-
-
 class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
     def cart_items(self, items):
@@ -167,7 +75,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             preview_image_url = get_item_preview(obj).url
             item_state = get_item_state(obj, self.request)
             no_longer_available = not item_state.validate_count(count)
-            alert = item_state.message(count)
+            alert = item_state.alert(count)
             item = self.item(
                 uid, title, count, price, url, comment, description,
                 comment_required, quantity_unit_float, quantity_unit,
@@ -216,3 +124,63 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
     @property
     def checkout_url(self):
         return '%s/@@checkout' % self.context.absolute_url()
+
+
+class CartItemState(CartItemStateBase):
+
+    @property
+    def completely_exceeded_alert(self):
+        message = _(u'alert_item_no_longer_available',
+                    default=u'Item is no longer available, please '
+                            u'remove from cart')
+        return translate(message, context=self.request)
+
+    @property
+    def some_reservations_alert(self):
+        message = _(u'alert_item_some_reserved',
+                    default=u'Some items reserved')
+        return translate(message, context=self.request)
+
+    def partly_exceeded_alert(self, exceed):
+        message = _(u'alert_item_number_exceed',
+                    default=u'Limit exceed by ${exceed} items',
+                    mapping={'exceed': exceed})
+        return translate(message, context=self.request)
+
+    def number_reservations_alert(self, reserved):
+        message = _(u'alert_item_number_reserved',
+                    default=u'${reserved} items reserved',
+                    mapping={'reserved': reserved})
+        return translate(message, context=self.request)
+
+    def alert(self, count):
+        stock = get_item_stock(self.context)
+        available = stock.available
+        # no limitation
+        if available is None:
+            return ''
+        reserved = self.reserved
+        exceed = self.exceed
+        # no reservations and no exceed
+        if not reserved and not exceed:
+            # no message
+            return ''
+        # exceed
+        if exceed:
+            remaining_available = self.remaining_available
+            # partly exceeded
+            if remaining_available > 0:
+                return self.partly_exceeded_alert(exceed)
+            # completely exceeded
+            return self.completely_exceeded_alert
+        # reservations
+        if reserved:
+            aggregated_count = float(self.aggregated_count)
+            count = float(count)
+            # some reservations message
+            if aggregated_count > count:
+                return self.some_reservations_alert
+            # number reservations message
+            else:
+                return self.number_reservations_alert(reserved)
+        return ''
