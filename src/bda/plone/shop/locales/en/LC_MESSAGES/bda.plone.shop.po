@@ -95,6 +95,26 @@ msgstr "Japanese Yen"
 msgid "add_to_cart"
 msgstr "add to cart"
 
+#. Default: "Item is no longer available, please remove from cart"
+#: ./cartdata.py:133
+msgid "alert_item_no_longer_available"
+msgstr "Item is no longer available, please remove from cart"
+
+#. Default: "Limit exceed by ${exceed} items"
+#: ./cartdata.py:145
+msgid "alert_item_number_exceed"
+msgstr "Limit exceed by ${exceed} items"
+
+#. Default: "${reserved} items reserved"
+#: ./cartdata.py:151
+msgid "alert_item_number_reserved"
+msgstr "${reserved} items reserved"
+
+#. Default: "Some items reserved"
+#: ./cartdata.py:140
+msgid "alert_item_some_reserved"
+msgstr "Some items reserved"
+
 #. Default: "Availability"
 #: ./browser/buyable.pt:13
 msgid "availability"
@@ -105,15 +125,15 @@ msgstr "Availability"
 msgid "comment"
 msgstr "Comment"
 
-#. Default: "Critical available"
-#: ./browser/availability_details.pt:21
+#. Default: "Just ${available} items(s) left."
+#: ./browser/availability.py:54
 msgid "critical_available_message"
-msgstr "Critical available"
+msgstr "Just ${available} items(s) left."
 
-#. Default: "Item available"
-#: ./browser/availability_details.pt:20
+#. Default: "Low items available"
+#: ./browser/availability_details.pt:23
 msgid "critical_available_title"
-msgstr "Item available"
+msgstr "Low items available"
 
 #. Default: "Disabled Buyable."
 #: ./browser/actions.py:32
@@ -135,13 +155,13 @@ msgstr "Export Orders"
 msgid "flat_rate"
 msgstr "Flat rate"
 
-#. Default: "Full available"
-#: ./browser/availability_details.pt:14
+#. Default: "${available} items(s) available."
+#: ./browser/availability.py:46
 msgid "full_available_message"
-msgstr "Full available"
+msgstr "${available} items(s) available."
 
 #. Default: "Item available"
-#: ./browser/availability_details.pt:13
+#: ./browser/availability_details.pt:14
 msgid "full_available_title"
 msgstr "Item available"
 
@@ -319,30 +339,30 @@ msgstr "Net"
 msgid "no"
 msgstr "No"
 
-#. Default: "This item is not available at the moment"
-#: ./browser/availability_details.pt:7
+#. Default: "Item is sold out."
+#: ./browser/availability_details.pt:8
 msgid "not_available_message"
-msgstr "This item is not available at the moment"
+msgstr "Item is sold out."
 
-#. Default: "Not deliverable"
-#: ./browser/availability_details.pt:6
+#. Default: "Item not available"
+#: ./browser/availability_details.pt:5
 msgid "not_available_title"
-msgstr "Not deliverable"
+msgstr "Item not available"
 
 #. Default: "Orders"
 #: ./browser/admin.pt:14
 msgid "orders"
 msgstr "Orders"
 
-#. Default: "Overbook available"
-#: ./browser/availability_details.pt:28
+#. Default: "Item is sold out. You can pre-order ${reservable} items. As soon as item is available again, it gets delivered."
+#: ./browser/availability.py:64
 msgid "overbook_available_message"
-msgstr "Overbook available"
+msgstr "Item is sold out. You can pre-order ${reservable} items. As soon as item is available again, it gets delivered."
 
-#. Default: "Overbook available"
-#: ./browser/availability_details.pt:27
+#. Default: "Pre-order available"
+#: ./browser/availability_details.pt:32
 msgid "overbook_available_title"
-msgstr "Overbook available"
+msgstr "Pre-order available"
 
 #. Default: "Shop Administration"
 #: ./browser/admin.py:19

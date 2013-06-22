@@ -97,6 +97,26 @@ msgstr ""
 msgid "add_to_cart"
 msgstr "Legg i handlekurv"
 
+#. Default: "Item is no longer available, please remove from cart"
+#: ./cartdata.py:133
+msgid "alert_item_no_longer_available"
+msgstr ""
+
+#. Default: "Limit exceed by ${exceed} items"
+#: ./cartdata.py:145
+msgid "alert_item_number_exceed"
+msgstr ""
+
+#. Default: "${reserved} items reserved"
+#: ./cartdata.py:151
+msgid "alert_item_number_reserved"
+msgstr ""
+
+#. Default: "Some items reserved"
+#: ./cartdata.py:140
+msgid "alert_item_some_reserved"
+msgstr ""
+
 #. Default: "Availability"
 #: ./browser/buyable.pt:13
 msgid "availability"
@@ -107,13 +127,13 @@ msgstr ""
 msgid "comment"
 msgstr "Kommentar"
 
-#. Default: "Critical available"
-#: ./browser/availability_details.pt:21
+#. Default: "Just ${available} items(s) left."
+#: ./browser/availability.py:54
 msgid "critical_available_message"
 msgstr ""
 
-#. Default: "Item available"
-#: ./browser/availability_details.pt:20
+#. Default: "Low items available"
+#: ./browser/availability_details.pt:23
 msgid "critical_available_title"
 msgstr ""
 
@@ -137,13 +157,13 @@ msgstr "Eksporter ordre"
 msgid "flat_rate"
 msgstr ""
 
-#. Default: "Full available"
-#: ./browser/availability_details.pt:14
+#. Default: "${available} items(s) available."
+#: ./browser/availability.py:46
 msgid "full_available_message"
 msgstr ""
 
 #. Default: "Item available"
-#: ./browser/availability_details.pt:13
+#: ./browser/availability_details.pt:14
 msgid "full_available_title"
 msgstr ""
 
@@ -321,13 +341,13 @@ msgstr "Netto"
 msgid "no"
 msgstr ""
 
-#. Default: "This item is not available at the moment"
-#: ./browser/availability_details.pt:7
+#. Default: "Item is sold out."
+#: ./browser/availability_details.pt:8
 msgid "not_available_message"
 msgstr ""
 
-#. Default: "Not deliverable"
-#: ./browser/availability_details.pt:6
+#. Default: "Item not available"
+#: ./browser/availability_details.pt:5
 msgid "not_available_title"
 msgstr ""
 
@@ -336,13 +356,13 @@ msgstr ""
 msgid "orders"
 msgstr "Bestillinger"
 
-#. Default: "Overbook available"
-#: ./browser/availability_details.pt:28
+#. Default: "Item is sold out. You can pre-order ${reservable} items. As soon as item is available again, it gets delivered."
+#: ./browser/availability.py:64
 msgid "overbook_available_message"
 msgstr ""
 
-#. Default: "Overbook available"
-#: ./browser/availability_details.pt:27
+#. Default: "Pre-order available"
+#: ./browser/availability_details.pt:32
 msgid "overbook_available_title"
 msgstr ""
 
