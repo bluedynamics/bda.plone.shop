@@ -1,5 +1,9 @@
+from zope.i18nmessageid import MessageFactory
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.cart import CartItemAvailabilityBase
+
+
+_ = MessageFactory('bda.plone.shop')
 
 
 class CartItemAvailability(CartItemAvailabilityBase):
@@ -35,3 +39,31 @@ class CartItemAvailability(CartItemAvailabilityBase):
         if overbook is None:
             return True
         return available > self.overbook * -1
+
+    @property
+    def full_available_message(self):
+        # XXX: quantity unit float
+        message = _(u'full_available_message',
+                    default=u'${available} items(s) available.',
+                    mapping={'available': self.available})
+        return message
+
+    @property
+    def critical_available_message(self):
+        # XXX: quantity unit float
+        message = _(u'critical_available_message',
+                    default=u'Just ${available} items(s) left.',
+                    mapping={'available': self.available})
+        return message
+
+    @property
+    def overbook_available_message(self):
+        # XXX: quantity unit float
+        state = get_item_state(self.context, self.request)
+        reservable = self.stock.overbook - state.reserved
+        message = _(u'overbook_available_message',
+                    default=u'Item is sold out. You can pre-order '
+                            u'${reservable} items. As soon as item is '
+                            u'available again, it gets delivered.',
+                    mapping={'reservable': reservable})
+        return message
