@@ -23,11 +23,13 @@ from bda.plone.cart.interfaces import (
     ICartItemStock,
 )
 
+from .interfaces import (
+    IBuyable,
+)
 
 _ = MessageFactory('bda.plone.shop')
 
-
-class IBuyableBehavior(model.Schema):
+class IBuyableBehavior(model.Schema, IBuyable):
     """Basic event schema.
     """
 
@@ -122,6 +124,7 @@ class DXCartItemDataProvider(object):
             if unit == term.value:
                 return term.token
 
+alsoProvides(IBuyable)
 
 class IStockBehavior(model.Schema):
     """Basic event schema.
@@ -178,13 +181,12 @@ class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
             2. try to use collective.contentleadimage
         """
         # XXX: dexterity related default cart item preview image
-        #img_scale = None
-        #scales = self.context.restrictedTraverse('@@images')
-        #if self.context.getField("image") is not None:
-        #    img_scale = scales.scale("image", scale=self.preview_scale)
-        #if img_scale is None and HAS_CLI:
-        #    if self.context.getField(IMAGE_FIELD_NAME) is not None:
-        #        img_scale = scales.scale(IMAGE_FIELD_NAME,
-        #                                 scale=self.preview_scale)
-        #return img_scale and img_scale.url or ""
-        return ""
+        img_scale = None
+        scales = self.context.restrictedTraverse('@@images')
+        if self.context.image:
+            img_scale = scales.scale("image", scale=self.preview_scale)
+        if img_scale is None and HAS_CLI:
+            if self.context.getField(IMAGE_FIELD_NAME) is not None:
+                img_scale = scales.scale(IMAGE_FIELD_NAME,
+                                         scale=self.preview_scale)
+        return img_scale and img_scale.url or "" 
