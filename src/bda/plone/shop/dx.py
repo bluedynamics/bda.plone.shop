@@ -37,7 +37,8 @@ _ = MessageFactory('bda.plone.shop')
 class IBuyableBehavior(model.Schema, IBuyable):
     """Basic event schema.
     """
-
+    
+    #@property_set
     def _settings():
         registry = getUtility(IRegistry)
         settings = registry.forInterface(IShopSettings)
