@@ -31,20 +31,20 @@ from .interfaces import (
     IShopSettings,
 )
 
-
 _ = MessageFactory('bda.plone.shop')
 
 class IBuyableBehavior(model.Schema, IBuyable):
     """Basic event schema.
     """
     
-    #@property_set
-    def _settings():
+    def default_settings():
+    try:
         registry = getUtility(IRegistry)
         settings = registry.forInterface(IShopSettings)
-        return settings
+        return settings.item_display_gross
+    except:
+        return ''
     
-    import pdb; pdb.set_trace()
     
     model.fieldset('shop',
             label=u"Shop",
@@ -67,12 +67,13 @@ class IBuyableBehavior(model.Schema, IBuyable):
 
     item_display_gross = schema.Bool(
         title=_(u'label_item_display_gross', default=u'Display Gross'),
-        required=False)
+        required=False,
+        default=default_settings)
 
     item_comment_enabled = schema.Bool(
         title=_(u'label_item_comment_enabled', default='Comment enabled'),
         required=False,
-        default=_settings.default_item_comment_enabled)
+        default=False)
 
     item_comment_required = schema.Bool(
         title=_(u'label_item_comment_required', default='Comment required'),
