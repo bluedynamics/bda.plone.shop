@@ -50,12 +50,6 @@ class IShopSettings(Interface):
         required=True,
         default="")
 
-    currency = schema.Choice(
-        title=_(u"label_currency", default="Currency"),
-        description=_(u"help_currency",
-                      default=u"Choose the default currency"),
-        vocabulary='bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary')
-
     quantity_units = schema.List(
         title=_(u"label_quantity_units",
                 default=u"Specify all allowed quantity settings. "
@@ -110,24 +104,28 @@ class IShopSettings(Interface):
         description=_(u"help_show_currency", default=u""),
         vocabulary=\
             'bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary')
+            
+    currency = schema.Choice(
+        title=_(u"label_currency", default="Currency"),
+        description=_(u"help_currency",
+                      default=u"Choose the default currency"),
+        vocabulary='bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary')
                 
     default_item_net = schema.Float(
-        title=_(u'label_default_item_net', default=u'Item net price'),
+        title=_(u'label_default_item_net', default=u'Default Item net price'),
         required=False)
 
-    default_item_vat = schema.List(
-        title=_(u"label_default_vat", default=u'Value added tax in %'),
+    default_item_vat = schema.TextLine(
+        title=_(u"label_default_vat", default=u'Default Value added tax name'),
         description=_(u"help_default_vat",
                       default=u"Specify default vat name"),
-        value_type=schema.TextLine(),
         )
 
-    default_item_quantity_units = schema.List(
+    default_item_quantity_unit = schema.TextLine(
         title=_(u"label_default_quantity_units",
                 default=u"Specify default quantity name."),
         description=_(u"help_default_quantity_unit",
                       default=u'default measurement'),
-        value_type=schema.TextLine(),
         )
 
     default_item_display_gross = schema.Bool(

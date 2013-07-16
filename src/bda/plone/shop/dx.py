@@ -7,6 +7,9 @@ from zope.component import (
     adapter,
     getUtility,
 )
+
+from Products.CMFCore.utils import getToolByName
+from plone.registry.interfaces import IRegistry
 from zope.i18nmessageid import MessageFactory
 from zope.schema.interfaces import IVocabularyFactory
 from plone.supermodel import model
@@ -25,7 +28,9 @@ from bda.plone.cart.interfaces import (
 
 from .interfaces import (
     IBuyable,
+    IShopSettings,
 )
+
 
 _ = MessageFactory('bda.plone.shop')
 
@@ -33,6 +38,13 @@ class IBuyableBehavior(model.Schema, IBuyable):
     """Basic event schema.
     """
 
+    def _settings():
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IShopSettings)
+        return settings
+    
+    import pdb; pdb.set_trace()
+    
     model.fieldset('shop',
             label=u"Shop",
             fields=['item_net',
@@ -58,7 +70,8 @@ class IBuyableBehavior(model.Schema, IBuyable):
 
     item_comment_enabled = schema.Bool(
         title=_(u'label_item_comment_enabled', default='Comment enabled'),
-        required=False)
+        required=False,
+        default=_settings.default_item_comment_enabled)
 
     item_comment_required = schema.Bool(
         title=_(u'label_item_comment_required', default='Comment required'),
