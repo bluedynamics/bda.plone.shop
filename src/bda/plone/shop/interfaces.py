@@ -37,8 +37,7 @@ class IShopSettings(Interface):
         title=_(u"label_vat", default=u'Value added tax in %'),
         description=_(u"help_vat",
                       default=u"Specify all allowed vat settings, one per "
-                              u"line. The required format is <name> "
-                              u"<percentage>"),
+                              u"line. Format is <name> <percentage>"),
         required=True,
         value_type=schema.TextLine(),
         default=[])
@@ -115,17 +114,19 @@ class IShopSettings(Interface):
         title=_(u'label_default_item_net', default=u'Default Item net price'),
         required=False)
 
-    default_item_vat = schema.TextLine(
+    default_item_vat = schema.Choice(
         title=_(u"label_default_vat", default=u'Default Value added tax name'),
         description=_(u"help_default_vat",
                       default=u"Specify default vat name"),
+        vocabulary='bda.plone.shop.vocabularies.VatVocabulary',
         )
 
-    default_item_quantity_unit = schema.TextLine(
+    default_item_quantity_unit = schema.Choice(
         title=_(u"label_default_quantity_units",
                 default=u"Specify default quantity name."),
         description=_(u"help_default_quantity_unit",
                       default=u'default measurement'),
+        vocabulary='bda.plone.shop.vocabularies.QuantityUnitVocabulary',
         )
 
     default_item_display_gross = schema.Bool(
