@@ -95,25 +95,25 @@ msgstr "Japanischer Yen"
 msgid "add_to_cart"
 msgstr "hinzufügen"
 
-#. Default: "Item is no longer available, please remove from cart"
+#. Default: "No longer available, please remove from cart"
 #: ./cartdata.py:133
 msgid "alert_item_no_longer_available"
-msgstr "Artikel nicht länger verfügbar. Bitte entfernen Sie den Artikel aus dem Warenkorb"
+msgstr "Nicht länger verfügbar. Bitte aus dem Warenkorb entfernen"
 
-#. Default: "Limit exceed by ${exceed} items"
+#. Default: "Limit exceed by ${exceed} ${quantity_unit}"
 #: ./cartdata.py:145
 msgid "alert_item_number_exceed"
-msgstr "${exceed} dieses Artikels zu viel im Warenkorb"
+msgstr "${exceed} ${quantity_unit} zu viel im Warenkorb"
 
-#. Default: "${reserved} items reserved"
+#. Default: "${reserved} ${quantity_unit} reserved"
 #: ./cartdata.py:151
 msgid "alert_item_number_reserved"
-msgstr "${reserved} Artikel reserviert"
+msgstr "${reserved} ${quantity_unit} reserviert"
 
-#. Default: "Some items reserved"
+#. Default: "Partly reserved"
 #: ./cartdata.py:140
 msgid "alert_item_some_reserved"
-msgstr "Einige Artikel reserviert"
+msgstr "Teilweise Reserviert"
 
 #. Default: "Availability"
 #: ./browser/buyable.pt:13

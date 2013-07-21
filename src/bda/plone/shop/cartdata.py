@@ -131,25 +131,25 @@ class CartItemState(CartItemStateBase):
     @property
     def completely_exceeded_alert(self):
         message = _(u'alert_item_no_longer_available',
-                    default=u'Item is no longer available, please '
+                    default=u'No longer available, please '
                             u'remove from cart')
         return translate(message, context=self.request)
 
     @property
     def some_reservations_alert(self):
         message = _(u'alert_item_some_reserved',
-                    default=u'Some items reserved')
+                    default=u'Partly reserved')
         return translate(message, context=self.request)
 
-    def partly_exceeded_alert(self, exceed):
+    def partly_exceeded_alert(self, exceed, quantity_unit):
         message = _(u'alert_item_number_exceed',
-                    default=u'Limit exceed by ${exceed} items',
+                    default=u'Limit exceed by ${exceed} ${quantity_unit}',
                     mapping={'exceed': exceed})
         return translate(message, context=self.request)
 
-    def number_reservations_alert(self, reserved):
+    def number_reservations_alert(self, reserved, quantity_unit):
         message = _(u'alert_item_number_reserved',
-                    default=u'${reserved} items reserved',
+                    default=u'${reserved} ${quantity_unit} reserved',
                     mapping={'reserved': reserved})
         return translate(message, context=self.request)
 
@@ -165,12 +165,20 @@ class CartItemState(CartItemStateBase):
         if not reserved and not exceed:
             # no message
             return ''
+        item_data = get_item_data_provider(self.context)
+        quantity_unit = item_data.quantity_unit
+        quantity_unit_float = item_data.quantity_unit_float
+        def display_format(num):
+            if quantity_unit_float:
+                return num
+            return int(num)
         # exceed
         if exceed:
             remaining_available = self.remaining_available
             # partly exceeded
             if remaining_available > 0:
-                return self.partly_exceeded_alert(exceed)
+                return self.partly_exceeded_alert(
+                    display_format(exceed), quantity_unit)
             # completely exceeded
             return self.completely_exceeded_alert
         # reservations
@@ -182,5 +190,6 @@ class CartItemState(CartItemStateBase):
                 return self.some_reservations_alert
             # number reservations message
             else:
-                return self.number_reservations_alert(reserved)
+                return self.number_reservations_alert(
+                    display_format(reserved), quantity_unit)
         return ''

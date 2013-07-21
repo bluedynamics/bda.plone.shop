@@ -99,22 +99,22 @@ msgstr ""
 msgid "add_to_cart"
 msgstr ""
 
-#. Default: "Item is no longer available, please remove from cart"
+#. Default: "No longer available, please remove from cart"
 #: ./cartdata.py:133
 msgid "alert_item_no_longer_available"
 msgstr ""
 
-#. Default: "Limit exceed by ${exceed} items"
+#. Default: "Limit exceed by ${exceed} ${quantity_unit}"
 #: ./cartdata.py:145
 msgid "alert_item_number_exceed"
 msgstr ""
 
-#. Default: "${reserved} items reserved"
+#. Default: "${reserved} ${quantity_unit} reserved"
 #: ./cartdata.py:151
 msgid "alert_item_number_reserved"
 msgstr ""
 
-#. Default: "Some items reserved"
+#. Default: "Partly reserved"
 #: ./cartdata.py:140
 msgid "alert_item_some_reserved"
 msgstr ""
