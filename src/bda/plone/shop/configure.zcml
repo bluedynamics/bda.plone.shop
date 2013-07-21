@@ -1,7 +1,8 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:five="http://namespaces.zope.org/five"
            xmlns:plone="http://namespaces.plone.org/plone"
-           xmlns:i18n="http://namespaces.zope.org/i18n">
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+           xmlns:zcml="http://namespaces.zope.org/zcml">
 
   <i18n:registerTranslations directory="locales" />
 
@@ -82,12 +83,54 @@
   <adapter factory=".cartdata.CartDataProvider" />
   <adapter factory=".cartdata.CartItemState" />
 
-  <adapter factory=".at.ATCartItemDataProvider" />
-  <adapter factory=".at.ATCartItemStock" />
-  <adapter factory=".at.ATCartItemPreviewImage" />
+  <!-- AT -->
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATCartItemDataProvider" />
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATCartItemStock" />
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATCartItemPreviewImage" />
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_net"
+    factory=".at.default_item_net" />
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_vat"
+    factory=".at.default_item_vat" />
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_display_gross"
+    factory=".at.default_item_display_gross" />
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_comment_enabled"
+    factory=".at.item_comment_enabled" />
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_comment_required"
+    factory=".at.default_item_comment_required" />
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_quantity_unit_float"
+    factory=".at.default_item_quantity_unit_float" />
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_quantity_unit"
+    factory=".at.default_item_quantity_unit" />
 
-  <adapter factory=".dx.DXCartItemDataProvider" />
-  <adapter factory=".dx.DXCartItemStock" />
-  <adapter factory=".dx.DXCartItemPreviewImage" />
+  <!-- DX -->
+  <adapter
+    zcml:condition="installed plone.dexterity"
+    factory=".dx.DXCartItemDataProvider" />
+  <adapter
+    zcml:condition="installed plone.dexterity"
+    factory=".dx.DXCartItemStock" />
+  <adapter
+    zcml:condition="installed plone.dexterity"
+    factory=".dx.DXCartItemPreviewImage" />
 
 </configure>

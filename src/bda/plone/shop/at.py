@@ -18,7 +18,10 @@ from Products.Archetypes.public import (
     StringWidget,
     SelectionWidget,
 )
-from Products.Archetypes.interfaces import IBaseObject
+from Products.Archetypes.interfaces import (
+    IBaseObject,
+    IFieldDefaultProvider,
+)
 try:
     from collective.contentleadimage.config import IMAGE_FIELD_NAME
     HAS_CLI = True
@@ -33,6 +36,7 @@ from .interfaces import (
     IShopExtensionLayer,
     IBuyable,
 )
+from .utils import get_shop_settings
 
 
 _ = MessageFactory('bda.plone.shop')
@@ -79,6 +83,48 @@ class ExtenderBase(object):
         return neworder
 
 
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_item_net(context):
+    return lambda: get_shop_settings().default_item_net
+
+
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_item_vat(context):
+    return lambda: get_shop_settings().default_item_vat
+
+
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_item_display_gross(context):
+    return lambda: get_shop_settings().default_item_display_gross
+
+
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def item_comment_enabled(context):
+    return lambda: get_shop_settings().default_item_comment_enabled
+
+
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_item_comment_required(context):
+    return lambda: get_shop_settings().default_item_comment_required
+
+
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_item_quantity_unit_float(context):
+    return lambda: get_shop_settings().default_item_quantity_unit_float
+
+
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_item_quantity_unit(context):
+    return lambda: get_shop_settings().default_item_quantity_unit
+
+
 class BuyableExtender(ExtenderBase):
     """Schema extender for buyable contents
     """
@@ -107,7 +153,6 @@ class BuyableExtender(ExtenderBase):
             widget=BooleanField._properties['widget'](
                 label=_(u'label_item_display_gross', u'Display Gross'),
             ),
-            default=False,
         ),
         XBooleanField(
             name='item_comment_enabled',
@@ -115,7 +160,6 @@ class BuyableExtender(ExtenderBase):
             widget=BooleanField._properties['widget'](
                 label=_(u'label_item_comment_enabled', u'Comment enabled'),
             ),
-            default=True,
         ),
         XBooleanField(
             name='item_comment_required',
@@ -123,7 +167,6 @@ class BuyableExtender(ExtenderBase):
             widget=BooleanField._properties['widget'](
                 label=_(u'label_item_comment_required', u'Comment required'),
             ),
-            default=False,
         ),
         XBooleanField(
             name='item_quantity_unit_float',
@@ -132,7 +175,6 @@ class BuyableExtender(ExtenderBase):
                 label=_(u'label_item_quantity_unit_float',
                         u'Quantity as float'),
             ),
-            default=False,
         ),
         XStringField(
             name='item_quantity_unit',

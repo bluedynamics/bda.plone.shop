@@ -22,13 +22,12 @@
     <value key="show_checkout">False</value>
     <value key="show_to_cart">True</value>
     <value key="show_currency">symbol</value>
-    
-    <value key="default_item_net">100</value>
-    <value key="default_item_vat">25</value>
+    <value key="default_item_net">10</value>
+    <value key="default_item_vat">20</value>
     <value key="default_item_display_gross">False</value>
     <value key="default_item_quantity_unit">quantity</value>
-    <value key="default_item_comment_enabled">False</value>
-    <value key="default_item_quantity_unit_float">True</value>
+    <value key="default_item_comment_enabled">True</value>
+    <value key="default_item_quantity_unit_float">False</value>
     <value key="default_item_comment_required">False</value>
   </records>
 </registry>

@@ -1,8 +1,6 @@
 from decimal import Decimal
-from zope.component import getUtility
 from zope.i18n import translate
 from zope.i18nmessageid import MessageFactory
-from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from bda.plone.cart import (
     readcookie,
@@ -15,7 +13,7 @@ from bda.plone.cart import (
     CartDataProviderBase,
     CartItemStateBase,
 )
-from .interfaces import IShopSettings
+from .utils import get_shop_settings
 
 
 _ = MessageFactory('bda.plone.shop')
@@ -85,9 +83,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
     @property
     def _settings(self):
-        registry = getUtility(IRegistry)
-        settings = registry.forInterface(IShopSettings)
-        return settings
+        return get_shop_settings()
 
     @property
     def currency(self):

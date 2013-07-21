@@ -1,7 +1,4 @@
-from zope.interface import (
-    Interface,
-    Attribute,
-)
+from zope.interface import Interface
 from zope import schema
 from zope.i18nmessageid import MessageFactory
 from bda.plone.cart.interfaces import ICartItem
@@ -97,19 +94,19 @@ class IShopSettings(Interface):
                 default=u"Show link to cart in portlet"),
         description=_(u"help_show_to_cart", default=u""),
         default=True)  
-    
+
     show_currency = schema.Choice(
         title=_(u"label_show_currency", default=u"Show the currency for items"),
         description=_(u"help_show_currency", default=u""),
         vocabulary=\
             'bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary')
-            
+
     currency = schema.Choice(
         title=_(u"label_currency", default="Currency"),
         description=_(u"help_currency",
                       default=u"Choose the default currency"),
         vocabulary='bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary')
-                
+
     default_item_net = schema.Float(
         title=_(u'label_default_item_net', default=u'Default Item net price'),
         required=False)
@@ -118,49 +115,31 @@ class IShopSettings(Interface):
         title=_(u"label_default_vat", default=u'Default Value added tax name'),
         description=_(u"help_default_vat",
                       default=u"Specify default vat name"),
-        vocabulary='bda.plone.shop.vocabularies.VatVocabulary',
-        )
+        vocabulary='bda.plone.shop.vocabularies.VatVocabulary')
 
     default_item_quantity_unit = schema.Choice(
         title=_(u"label_default_quantity_units",
                 default=u"Specify default quantity name."),
         description=_(u"help_default_quantity_unit",
                       default=u'default measurement'),
-        vocabulary='bda.plone.shop.vocabularies.QuantityUnitVocabulary',
-        )
+        vocabulary='bda.plone.shop.vocabularies.QuantityUnitVocabulary')
 
     default_item_display_gross = schema.Bool(
-        title=_(u'label_default_item_display_gross', default=u'Display Gross by default'),
+        title=_(u'label_default_item_display_gross',
+                default=u'Display Gross by default'),
         required=False)
 
     default_item_comment_enabled = schema.Bool(
-        title=_(u'label_default_item_comment_enabled', default='Comment enabled by default'),
+        title=_(u'label_default_item_comment_enabled',
+                default='Comment enabled by default'),
         required=False)
 
     default_item_comment_required = schema.Bool(
-        title=_(u'label_default_item_comment_required', default='Comment required by default'),
+        title=_(u'label_default_item_comment_required',
+                default='Comment required by default'),
         required=False)
 
     default_item_quantity_unit_float = schema.Bool(
-        title=_(u'label_default_item_quantity_unit_float', default='Quantity as float as default'),
+        title=_(u'label_default_item_quantity_unit_float',
+                default='Quantity as float as default'),
         required=False)
-
-        
-        
-        
-        
-        
-        
-        
-
-
-
-        
-        
-        
-        
-        
-        
-        
-
-
