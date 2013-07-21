@@ -140,13 +140,15 @@ class CartItemState(CartItemStateBase):
     def partly_exceeded_alert(self, exceed, quantity_unit):
         message = _(u'alert_item_number_exceed',
                     default=u'Limit exceed by ${exceed} ${quantity_unit}',
-                    mapping={'exceed': exceed})
+                    mapping={'exceed': exceed,
+                             'quantity_unit': quantity_unit})
         return translate(message, context=self.request)
 
     def number_reservations_alert(self, reserved, quantity_unit):
         message = _(u'alert_item_number_reserved',
                     default=u'${reserved} ${quantity_unit} reserved',
-                    mapping={'reserved': reserved})
+                    mapping={'reserved': reserved,
+                             'quantity_unit': quantity_unit})
         return translate(message, context=self.request)
 
     def alert(self, count):
