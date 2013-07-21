@@ -2,11 +2,15 @@ from zope import schema
 from zope.interface import (
     implementer,
     alsoProvides,
+    provider,	
 )
 from zope.component import (
     adapter,
     getUtility,
+    queryUtility
 )
+
+from plone.registry.interfaces import IRegistry
 from zope.i18nmessageid import MessageFactory
 from zope.schema.interfaces import IVocabularyFactory
 from plone.supermodel import model
@@ -23,14 +27,49 @@ from bda.plone.cart.interfaces import (
     ICartItemStock,
 )
 
+from .interfaces import (
+    IBuyable,
+    IShopSettings,
+)
+
+from zope.schema.interfaces import IContextAwareDefaultFactory
 
 _ = MessageFactory('bda.plone.shop')
 
 
-class IBuyableBehavior(model.Schema):
+
+### default factories, taken from the control panel. Thank you Steve McMahon
+### next line is needed if we need context, not sure if we do.
+
+@provider(IContextAwareDefaultFactory)
+def default_item_net(context):
+    return queryUtility(IRegistry).forInterface(IShopSettings).default_item_net
+
+def default_item_vat():
+    return queryUtility(IRegistry).forInterface(IShopSettings).default_item_vat
+
+def default_item_display_gross():
+    return queryUtility(IRegistry).forInterface(IShopSettings).default_item_display_gross
+    
+def item_comment_enabled():
+    return queryUtility(IRegistry).forInterface(IShopSettings).default_item_comment_enabled
+
+def default_item_comment_required():
+    return queryUtility(IRegistry).forInterface(IShopSettings).default_item_comment_required
+
+def default_item_quantity_unit_float():
+    return queryUtility(IRegistry).forInterface(IShopSettings).default_item_quantity_unit_float
+    
+def  default_item_quantity_unit():
+    return queryUtility(IRegistry).forInterface(IShopSettings).default_item_quantity_unit
+    
+
+
+class IBuyableBehavior(model.Schema, IBuyable):
     """Basic event schema.
     """
 
+    
     model.fieldset('shop',
             label=u"Shop",
             fields=['item_net',
@@ -43,34 +82,47 @@ class IBuyableBehavior(model.Schema):
 
     item_net = schema.Float(
         title=_(u'label_item_net', default=u'Item net price'),
-        required=False)
+        required=False,
+        defaultFactory=default_item_net,
+    	)
 
     item_vat = schema.Choice(
         title=_(u'label_item_vat', default=u'Item VAT (in %)'),
         vocabulary='bda.plone.shop.vocabularies.VatVocabulary',
-        required=False)
+        required=False,
+        defaultFactory=default_item_vat,
+    	)
 
     item_display_gross = schema.Bool(
         title=_(u'label_item_display_gross', default=u'Display Gross'),
-        required=False)
+        required=False,
+        defaultFactory=default_item_display_gross,
+    	)
 
     item_comment_enabled = schema.Bool(
         title=_(u'label_item_comment_enabled', default='Comment enabled'),
-        required=False)
+        required=False,
+        defaultFactory=item_comment_enabled,
+    	)
 
     item_comment_required = schema.Bool(
         title=_(u'label_item_comment_required', default='Comment required'),
-        required=False)
+        required=False,
+        defaultFactory=default_item_comment_required,
+    	)
 
     item_quantity_unit_float = schema.Bool(
         title=_(u'label_item_quantity_unit_float', default='Quantity as float'),
-        required=False)
+        required=False,
+        defaultFactory=default_item_quantity_unit_float,
+    	)
 
     item_quantity_unit = schema.Choice(
         title=_(u'label_item_quantity_unit', default='Quantity unit'),
         vocabulary='bda.plone.shop.vocabularies.QuantityUnitVocabulary',
-        required=False)
-
+        required=False,
+        defaultFactory=default_item_quantity_unit,
+    	)
 
 alsoProvides(IBuyableBehavior, IFormFieldProvider)
 
@@ -122,6 +174,7 @@ class DXCartItemDataProvider(object):
             if unit == term.value:
                 return term.token
 
+alsoProvides(IBuyable)
 
 class IStockBehavior(model.Schema):
     """Basic event schema.
@@ -178,13 +231,12 @@ class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
             2. try to use collective.contentleadimage
         """
         # XXX: dexterity related default cart item preview image
-        #img_scale = None
-        #scales = self.context.restrictedTraverse('@@images')
-        #if self.context.getField("image") is not None:
-        #    img_scale = scales.scale("image", scale=self.preview_scale)
-        #if img_scale is None and HAS_CLI:
-        #    if self.context.getField(IMAGE_FIELD_NAME) is not None:
-        #        img_scale = scales.scale(IMAGE_FIELD_NAME,
-        #                                 scale=self.preview_scale)
-        #return img_scale and img_scale.url or ""
-        return ""
+        img_scale = None
+        scales = self.context.restrictedTraverse('@@images')
+        if self.context.image:
+            img_scale = scales.scale("image", scale=self.preview_scale)
+        if img_scale is None and HAS_CLI:
+            if self.context.getField(IMAGE_FIELD_NAME) is not None:
+                img_scale = scales.scale(IMAGE_FIELD_NAME,
+                                         scale=self.preview_scale)
+        return img_scale and img_scale.url or "" 
