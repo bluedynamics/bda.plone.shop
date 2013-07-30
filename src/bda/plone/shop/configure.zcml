@@ -37,22 +37,26 @@
     factory=".indexer.item_buyable" />
 
   <adapter
+    zcml:condition="installed Products.Archetypes"
     name="bda.plone.shop.buyable"
     factory=".at.BuyableExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
   <adapter
+    zcml:condition="installed Products.Archetypes"
     name="bda.plone.shop.stock"
     factory=".at.StockExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
   <plone:behavior
+    zcml:condition="installed plone.dexterity"
     title="Buyable Behavior"
     description="Make content type buyable."
     provides=".dx.IBuyableBehavior"
     for="plone.dexterity.interfaces.IDexterityContent" />
 
   <plone:behavior
+    zcml:condition="installed plone.dexterity"
     title="Stock Behavior"
     description="Manage stock of buyable item."
     provides=".dx.IStockBehavior"
