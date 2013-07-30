@@ -28,7 +28,8 @@
 
   <include package="plone.app.registry" />
   <include package="archetypes.schemaextender" />
-  <include package="plone.behavior" file="meta.zcml" />
+  <include package="plone.behavior" file="meta.zcml"
+           zcml:condition="installed plone.dexterity" />
   <include file="profiles.zcml" />
   <include package=".browser" />
 
