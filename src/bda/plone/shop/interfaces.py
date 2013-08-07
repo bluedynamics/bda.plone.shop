@@ -30,15 +30,6 @@ class IShopSettings(Interface):
     """Shop controlpanel schema.
     """
 
-    vat = schema.List(
-        title=_(u"label_vat", default=u'Value added tax in %'),
-        description=_(u"help_vat",
-                      default=u"Specify all allowed vat settings, one per "
-                              u"line. Format is <name> <percentage>"),
-        required=True,
-        value_type=schema.TextLine(),
-        default=[])
-
     admin_email = schema.ASCIILine(
         title=_(u"label_admin_email", default=u'Shop Admin E-Mail'),
         description=_(u"help_admin_email",
@@ -111,12 +102,6 @@ class IShopSettings(Interface):
         title=_(u'label_default_item_net', default=u'Default Item net price'),
         required=False)
 
-    default_item_vat = schema.Choice(
-        title=_(u"label_default_vat", default=u'Default Value added tax name'),
-        description=_(u"help_default_vat",
-                      default=u"Specify default vat name"),
-        vocabulary='bda.plone.shop.vocabularies.VatVocabulary')
-
     default_item_quantity_unit = schema.Choice(
         title=_(u"label_default_quantity_units",
                 default=u"Specify default quantity name."),
@@ -143,3 +128,23 @@ class IShopSettings(Interface):
         title=_(u'label_default_item_quantity_unit_float',
                 default='Quantity as float as default'),
         required=False)
+
+class IShopTaxSettings(Interface):
+    """Shop controlpanel schema.
+    """
+
+    vat = schema.List(
+        title=_(u"label_vat", default=u'Value added tax in %'),
+        description=_(u"help_vat",
+                      default=u"Specify all allowed vat settings, one per "
+                              u"line. Format is <name> <percentage>"),
+        required=True,
+        value_type=schema.TextLine(),
+        default=[])
+
+    default_item_vat = schema.Choice(
+        title=_(u"label_default_vat", default=u'Default Value added tax name'),
+        description=_(u"help_default_vat",
+                      default=u"Specify default vat name"),
+        vocabulary='bda.plone.shop.vocabularies.VatVocabulary')
+

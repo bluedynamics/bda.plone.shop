@@ -3,12 +3,6 @@
   <records interface="bda.plone.shop.interfaces.IShopSettings">
     <value key="currency">EUR</value>
     <value key="admin_email"></value>
-    <value key="vat">
-      <element>0% 0</element>
-      <element>10% 10</element>
-      <element>20% 20</element>
-      <element>25% 25</element>
-    </value>
     <value key="quantity_units">
       <element>quantity</element>
       <element>meter</element>
@@ -23,11 +17,19 @@
     <value key="show_to_cart">True</value>
     <value key="show_currency">symbol</value>
     <value key="default_item_net">10</value>
-    <value key="default_item_vat">20</value>
     <value key="default_item_display_gross">False</value>
     <value key="default_item_quantity_unit">quantity</value>
     <value key="default_item_comment_enabled">True</value>
     <value key="default_item_quantity_unit_float">False</value>
     <value key="default_item_comment_required">False</value>
+  </records>
+  <records interface="bda.plone.shop.interfaces.IShopTaxSettings">
+      <value key="vat">
+        <element>0% 0</element>
+        <element>10% 10</element>
+        <element>20% 20</element>
+        <element>25% 25</element>
+      </value>
+      <value key="default_item_vat">20</value>
   </records>
 </registry>
