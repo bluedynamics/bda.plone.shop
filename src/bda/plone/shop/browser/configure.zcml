@@ -17,7 +17,7 @@
   <!-- viewlets -->
   <browser:viewlet
     name="bda.plone.shop.buyable"
-    manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
     permission="zope2.View"
     for="..interfaces.IBuyable"
     class=".viewlets.BuyableViewlet"
