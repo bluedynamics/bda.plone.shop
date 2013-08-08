@@ -37,6 +37,7 @@ setup(name='bda.plone.shop',
           'archetypes.schemaextender',
           'bda.plone.orders',
           'plone.app.registry',
+          'plone.directives.form'
       ],
       entry_points="""
       [z3c.autoinclude.plugin]

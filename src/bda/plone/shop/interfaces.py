@@ -1,8 +1,9 @@
 from zope.interface import Interface
 from zope import schema
 from zope.i18nmessageid import MessageFactory
+from zope.interface import alsoProvides
 from bda.plone.cart.interfaces import ICartItem
-
+from plone.directives import form
 
 _ = MessageFactory('bda.plone.shop')
 
@@ -26,7 +27,13 @@ class IBuyable(ICartItem):
     """
 
 
-class IShopSettings(Interface):
+class IShopSettingsProvider(Interface):
+    """A marker interface for plone.registry configuration
+    interfaces
+    """
+
+
+class IShopSettings(form.Schema):
     """Shop controlpanel schema.
     """
 
@@ -129,9 +136,19 @@ class IShopSettings(Interface):
                 default='Quantity as float as default'),
         required=False)
 
-class IShopTaxSettings(Interface):
+class IShopTaxSettings(form.Schema):
     """Shop controlpanel schema.
     """
+
+    form.fieldset(
+        u'tax',
+        label=_(u'Tax Settings'),
+        fields=[
+            u'vat',
+            u'default_item_vat',
+            ],
+        )
+
 
     vat = schema.List(
         title=_(u"label_vat", default=u'Value added tax in %'),
@@ -148,3 +165,4 @@ class IShopTaxSettings(Interface):
                       default=u"Specify default vat name"),
         vocabulary='bda.plone.shop.vocabularies.VatVocabulary')
 
+alsoProvides(IShopTaxSettings, IShopSettingsProvider)

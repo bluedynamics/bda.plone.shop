@@ -1,20 +1,50 @@
 from zope.i18nmessageid import MessageFactory
 from plone.app.registry.browser import controlpanel
-from ..interfaces import IShopSettings, IShopTaxSettings
-from z3c.form import group, field
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
+from ..interfaces import IShopSettings
+from ..interfaces import IShopSettingsProvider
 
-from zope.component import adapts
-from zope.interface import Interface
-from zope.publisher.interfaces.browser import IDefaultBrowserLayer
-from plone.z3cform.fieldsets import extensible
+from zope.dottedname.resolve import resolve
+from zope.interface import alsoProvides
 
 _ = MessageFactory('bda.plone.shop')
 
 
-class TaxGroup(group.Group):
-    """docstring for TaxGroup"""
-    label = _(u'label_tax_group', default=u'Tax Settings')
-    fields = field.Fields(IShopTaxSettings)
+class ContextProxy(object):
+
+    def __init__(self, interfaces):
+        self.__interfaces = interfaces
+        alsoProvides(self, *interfaces)
+
+    def __setattr__(self, name, value):
+        if name.startswith('__') or name.startswith('_ContextProxy__'):
+            return object.__setattr__(self, name, value)
+
+        registry = getUtility(IRegistry)
+        for interface in self.__interfaces:
+            proxy = registry.forInterface(interface)
+            try:
+                getattr(proxy, name)
+            except AttributeError:
+                pass
+            else:
+                return setattr(proxy, name, value)
+        raise AttributeError(name)
+
+    def __getattr__(self, name):
+        if name.startswith('__') or name.startswith('_ContextProxy__'):
+            return object.__getattr__(self, name)
+
+        registry = getUtility(IRegistry)
+        for interface in self.__interfaces:
+            proxy = registry.forInterface(interface)
+            try:
+                return getattr(proxy, name)
+            except AttributeError:
+                pass
+
+        raise AttributeError(name)
 
 
 class ShopSettingsEditForm(controlpanel.RegistryEditForm):
@@ -22,10 +52,24 @@ class ShopSettingsEditForm(controlpanel.RegistryEditForm):
     label = _(u"Shop settings")
     description = _(u"")
 
+    def getContent(self):
+        interfaces = [self.schema]
+        interfaces.extend(self.additionalSchemata)
+        return ContextProxy(interfaces)
 
-    # groups = (
-    # 	TaxGroup,
-    # 	)
+    @property
+    def additionalSchemata(self):
+        registry = getUtility(IRegistry)
+        interface_names = set(record.interfaceName for record
+                              in registry.records.values())
+
+        for name in interface_names:
+            if not name:
+                continue
+
+            interface = resolve(name)
+            if IShopSettingsProvider.providedBy(interface):
+                yield interface
 
     def updateFields(self):
         super(ShopSettingsEditForm, self).updateFields()
@@ -33,22 +77,6 @@ class ShopSettingsEditForm(controlpanel.RegistryEditForm):
     def updateWidgets(self):
         super(ShopSettingsEditForm, self).updateWidgets()
 
-class TaxSettingsExtender(extensible.FormExtender):
-    """docstring for TaxSettingsExtender"""
-    adapts(Interface, IDefaultBrowserLayer, ShopSettingsEditForm)
-    fields = field.Fields(IShopTaxSettings)
-
-    def __init__(self, context, request, form):
-        self.context = context
-        self.request = request
-        self.form = form
-
-    def update(self):
-        # Add the fields defined in ICommentExtenderFields to the form.
-        self.add(IShopTaxSettings, prefix="")
-        # Move the website field to the top of the comment form.
-        # self.move('website', before='text', prefix="")
-        
 
 class ShopSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
     form = ShopSettingsEditForm
