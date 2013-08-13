@@ -215,10 +215,10 @@ msgstr "Kein Limit für die absolute Anzahl an Artikel im Warenkorb"
 msgid "help_include_shipping_costs"
 msgstr "Sollen die Versandkosten im Warenkorb angezeigt werden?"
 
-#. Default: "What the buyable items are measured in. The required format is [key value]."
+#. Default: "What the buyable items are measured in. One key per line."
 #: ./interfaces.py:128
 msgid "help_quantity_units"
-msgstr "In welcher Einheit die Artikel bemessen sind. Das erforderliche Format ist [key value]."
+msgstr "In welcher Einheit die Artikel bemessen sind. Ein Schlüsselbegriff pro Zeile."
 
 #: ./interfaces.py:186
 msgid "help_shipping_method"

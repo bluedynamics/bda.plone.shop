@@ -126,8 +126,7 @@ class IShopArticleSettings(form.Schema):
         title=_(u"label_quantity_units",
                 default=u"Quantity units"),
         description=_(u"help_quantity_units",
-                      default=u"What the buyable items are measured in. "
-                              u"The required format is [key value]."),
+                      default=u"What the buyable items are measured in. One key per line"),
         required=True,
         value_type=schema.TextLine(),
         default=[])

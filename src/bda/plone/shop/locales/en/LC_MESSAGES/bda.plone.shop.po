@@ -218,7 +218,7 @@ msgstr ""
 #. Default: "What the buyable items are measured in. The required format is [key value]."
 #: ./interfaces.py:128
 msgid "help_quantity_units"
-msgstr "What the buyable items are measured in. The required format is [key value]."
+msgstr "What the buyable items are measured in. One key per line."
 
 #: ./interfaces.py:186
 msgid "help_shipping_method"
