@@ -22,7 +22,7 @@ from bda.plone.cart.interfaces import (
 )
 from bda.plone.cart import CartItemPreviewAdapterBase
 from .interfaces import IBuyable
-from .utils import get_shop_settings
+from .utils import get_shop_settings, get_shop_article_settings, get_shop_tax_settings
 
 
 _ = MessageFactory('bda.plone.shop')
@@ -30,12 +30,12 @@ _ = MessageFactory('bda.plone.shop')
 
 @provider(IContextAwareDefaultFactory)
 def default_item_net(context):
-    return get_shop_settings().default_item_net
+    return get_shop_article_settings().default_item_net
 
 
 @provider(IContextAwareDefaultFactory)
 def default_item_vat(context):
-    return get_shop_settings().default_item_vat
+    return get_shop_tax_settings().default_item_vat
 
 
 @provider(IContextAwareDefaultFactory)
@@ -45,22 +45,22 @@ def default_item_display_gross(context):
 
 @provider(IContextAwareDefaultFactory)
 def item_comment_enabled(context):
-    return get_shop_settings().default_item_comment_enabled
+    return get_shop_article_settings().default_item_comment_enabled
 
 
 @provider(IContextAwareDefaultFactory)
 def default_item_comment_required(context):
-    return get_shop_settings().default_item_comment_required
+    return get_shop_article_settings().default_item_comment_required
 
 
 @provider(IContextAwareDefaultFactory)
 def default_item_quantity_unit_float(context):
-    return get_shop_settings().default_item_quantity_unit_float
+    return get_shop_article_settings().default_item_quantity_unit_float
 
 
 @provider(IContextAwareDefaultFactory)
 def default_item_quantity_unit(context):
-    return get_shop_settings().default_item_quantity_unit
+    return get_shop_article_settings().default_item_quantity_unit
 
 
 class IBuyableBehavior(model.Schema, IBuyable):
