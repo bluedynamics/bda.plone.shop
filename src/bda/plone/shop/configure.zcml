@@ -138,10 +138,5 @@
     zcml:condition="installed plone.dexterity"
     factory=".dx.DXCartItemPreviewImage" />
 
-<!-- controlpanel -->
-  <adapter
-    factory=".browser.controlpanel.TaxSettingsExtender"
-    provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
-
 
 </configure>
