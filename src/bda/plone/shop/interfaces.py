@@ -124,11 +124,10 @@ class IShopArticleSettings(form.Schema):
 
     quantity_units = schema.List(
         title=_(u"label_quantity_units",
-                default=u"Specify all allowed quantity settings. "
-                        u"The required format is <name>. No spaces, please"),
+                default=u"Quantity units"),
         description=_(u"help_quantity_units",
-                      default=u'Quantity units (what the buyable items are '
-                              u'measured in)'),
+                      default=u"What the buyable items are measured in. "
+                              u"The required format is [key value]."),
         required=True,
         value_type=schema.TextLine(),
         default=[])
