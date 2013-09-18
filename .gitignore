@@ -13,3 +13,4 @@ var/
 src/bda.plone.shop.egg-info/
 *.mo
 .DS_Store
+vpython
