@@ -23,6 +23,10 @@ msgstr "Australische Dollar"
 msgid "Activate Buyable on Item"
 msgstr "Erweitert Objekt um Shop Artikel Information"
 
+#: ./interfaces.py:114
+msgid "Article Settings"
+msgstr ""
+
 #. Default: "Canadian Dollar"
 #: ./vocabularies.py:49
 msgid "CAD"
@@ -32,6 +36,10 @@ msgstr "Kanadische Dollar"
 #: ./vocabularies.py:50
 msgid "CHF"
 msgstr "Schweizer Franken"
+
+#: ./interfaces.py:71
+msgid "Cart Settings"
+msgstr ""
 
 #. Default: "Danish Krone"
 #: ./vocabularies.py:55
@@ -75,10 +83,18 @@ msgstr "Norwegische Krone"
 msgid "SEK"
 msgstr "Schwedische Krone"
 
-#: ./browser/controlpanel.py:11
+#: ./interfaces.py:170
+msgid "Shipping Settings"
+msgstr ""
+
+#: ./browser/controlpanel.py:52
 #: ./profiles/default/controlpanel.xml
 msgid "Shop settings"
 msgstr "Shop Einstellungen"
+
+#: ./interfaces.py:199
+msgid "Tax Settings"
+msgstr ""
 
 #. Default: "US Dollar"
 #: ./vocabularies.py:47
@@ -171,117 +187,117 @@ msgid "gross"
 msgstr "Brutto"
 
 #. Default: "No typos please...."
-#: ./interfaces.py:44
+#: ./interfaces.py:42
 msgid "help_admin_email"
 msgstr "Absende Adresse des Shops"
 
 #. Default: "Choose the default currency"
-#: ./interfaces.py:106
+#: ./interfaces.py:54
 msgid "help_currency"
 msgstr "Wählen sie die Shop Währung"
 
 #. Default: "default measurement"
-#: ./interfaces.py:123
+#: ./interfaces.py:138
 msgid "help_default_quantity_unit"
 msgstr "Einheit"
 
 #. Default: "Specify default vat name"
-#: ./interfaces.py:116
+#: ./interfaces.py:217
 msgid "help_default_vat"
 msgstr "Wählen Sie die Standard USt"
 
 #. Default: "No total number of items in cart limit"
-#: ./interfaces.py:62
+#: ./interfaces.py:82
 msgid "help_disable_max_article"
 msgstr "Kein Limit für die absolute Anzahl an Artikel im Warenkorb"
 
-#: ./interfaces.py:76
+#: ./interfaces.py:180
 msgid "help_include_shipping_costs"
 msgstr "Sollen die Versandkosten im Warenkorb angezeigt werden?"
 
-#. Default: "Quantity units (what the buyable items are measured in)"
-#: ./interfaces.py:53
+#. Default: "What the buyable items are measured in. One key per line."
+#: ./interfaces.py:128
 msgid "help_quantity_units"
-msgstr "Einheiten"
+msgstr "In welcher Einheit die Artikel bemessen sind. Ein Schlüsselbegriff pro Zeile."
 
-#: ./interfaces.py:82
+#: ./interfaces.py:186
 msgid "help_shipping_method"
 msgstr "Wählen sie eine Versandart"
 
-#: ./interfaces.py:89
+#: ./interfaces.py:96
 msgid "help_show_checkout"
 msgstr "Soll ein direkter Link zum Checkout im Warenkorm angezeigt werden?"
 
-#: ./interfaces.py:100
+#: ./interfaces.py:60
 msgid "help_show_currency"
 msgstr "Soll die Währung im Warenkorb angezeigt werden?"
 
-#: ./interfaces.py:95
+#: ./interfaces.py:102
 msgid "help_show_to_cart"
 msgstr "Soll der Link zur Warenkorbübersicht im Warenkorb angezeigt werden?"
 
 #. Default: "Show only total value in cart summary"
-#: ./interfaces.py:69
+#: ./interfaces.py:89
 msgid "help_summary_total_only"
 msgstr "Zeige nur Gesamtsumme in der Warenkorbübersicht?"
 
 #. Default: "Specify all allowed vat settings, one per line. Format is <name> <percentage>"
-#: ./interfaces.py:35
+#: ./interfaces.py:208
 msgid "help_vat"
 msgstr "Verfügbare Umsatzsteuersätze, jede Zeile einer. Erwartetes Format ist <name> <percentage>"
 
 #. Default: "Shop Admin E-Mail"
-#: ./interfaces.py:43
+#: ./interfaces.py:41
 msgid "label_admin_email"
 msgstr "Admin E-Mail"
 
 #. Default: "Currency"
-#: ./interfaces.py:105
+#: ./interfaces.py:53
 msgid "label_currency"
 msgstr "Währung"
 
 #. Default: "Comment enabled by default"
-#: ./interfaces.py:133
+#: ./interfaces.py:147
 msgid "label_default_item_comment_enabled"
 msgstr "Kommentare standardmäßig erlaubt"
 
 #. Default: "Comment required by default"
-#: ./interfaces.py:138
+#: ./interfaces.py:152
 msgid "label_default_item_comment_required"
 msgstr "Kommentare standardmäßig erforderlich"
 
 #. Default: "Display Gross by default"
-#: ./interfaces.py:128
+#: ./interfaces.py:48
 msgid "label_default_item_display_gross"
 msgstr "Zeige Brutto standardmäßig aktiviert"
 
 #. Default: "Default Item net price"
-#: ./interfaces.py:111
+#: ./interfaces.py:143
 msgid "label_default_item_net"
 msgstr "Vorgabewert Netto Preis"
 
 #. Default: "Quantity as float as default"
-#: ./interfaces.py:143
+#: ./interfaces.py:157
 msgid "label_default_item_quantity_unit_float"
 msgstr "Einheit als Gleiktommazahl standardmäßig aktiviert"
 
 #. Default: "Specify default quantity name."
-#: ./interfaces.py:121
+#: ./interfaces.py:136
 msgid "label_default_quantity_units"
 msgstr "Vorgabewert Einheit"
 
 #. Default: "Default Value added tax name"
-#: ./interfaces.py:115
+#: ./interfaces.py:216
 msgid "label_default_vat"
 msgstr "Vorgabewert Umsatzsteuer"
 
 #. Default: "Disable max article"
-#: ./interfaces.py:61
+#: ./interfaces.py:81
 msgid "label_disable_max_article"
 msgstr "Keine Gesamtbeschränkung der Artikel im Warenkorb"
 
 #. Default: "Include Shipping Costs"
-#: ./interfaces.py:74
+#: ./interfaces.py:178
 msgid "label_include_shipping_costs"
 msgstr "Versandkosten inkludieren"
 
@@ -339,38 +355,38 @@ msgstr "Dezimaleingabe bei Anzahl erlaubt"
 msgid "label_item_vat"
 msgstr "Umsatzsteuer (in %)"
 
-#. Default: "Specify all allowed quantity settings. The required format is <name>. No spaces, please"
-#: ./interfaces.py:50
+#. Default: "Quantity units"
+#: ./interfaces.py:126
 msgid "label_quantity_units"
-msgstr "Erlaubte Artikel Einheiten. Erwartetes Format is <name>. Es sind keine Leerzeichen erlaubt"
+msgstr "Mengeneinheiten"
 
 #. Default: "Shipping Method"
-#: ./interfaces.py:81
+#: ./interfaces.py:185
 msgid "label_shipping_method"
 msgstr "Versandart"
 
 #. Default: "Show checkout link in portlet"
-#: ./interfaces.py:87
+#: ./interfaces.py:94
 msgid "label_show_checkout"
 msgstr "Direkten Checkout Link im Warenkorb Portlet anzeigen"
 
 #. Default: "Show the currency for items"
-#: ./interfaces.py:99
+#: ./interfaces.py:59
 msgid "label_show_currency"
 msgstr "Zeige Währungssymbol"
 
 #. Default: "Show link to cart in portlet"
-#: ./interfaces.py:93
+#: ./interfaces.py:100
 msgid "label_show_to_cart"
 msgstr "Zeige Link zu Warenkorb im Warenkorm Portlet anzeigen"
 
 #. Default: "Cart Summary total only"
-#: ./interfaces.py:67
+#: ./interfaces.py:87
 msgid "label_summary_total_only"
 msgstr "Zeige nur Gesamtbetrag in Warenkorb"
 
 #. Default: "Value added tax in %"
-#: ./interfaces.py:34
+#: ./interfaces.py:207
 msgid "label_vat"
 msgstr "Umsatzsteuer"
 

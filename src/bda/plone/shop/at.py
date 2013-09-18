@@ -36,7 +36,7 @@ from .interfaces import (
     IShopExtensionLayer,
     IBuyable,
 )
-from .utils import get_shop_settings
+from .utils import get_shop_settings, get_shop_article_settings, get_shop_tax_settings
 
 
 _ = MessageFactory('bda.plone.shop')
@@ -86,13 +86,13 @@ class ExtenderBase(object):
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)
 def default_item_net(context):
-    return lambda: get_shop_settings().default_item_net
+    return lambda: get_shop_article_settings().default_item_net
 
 
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)
 def default_item_vat(context):
-    return lambda: get_shop_settings().default_item_vat
+    return lambda: get_shop_tax_settings().default_item_vat
 
 
 @implementer(IFieldDefaultProvider)
@@ -104,25 +104,25 @@ def default_item_display_gross(context):
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)
 def item_comment_enabled(context):
-    return lambda: get_shop_settings().default_item_comment_enabled
+    return lambda: get_shop_article_settings().default_item_comment_enabled
 
 
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)
 def default_item_comment_required(context):
-    return lambda: get_shop_settings().default_item_comment_required
+    return lambda: get_shop_article_settings().default_item_comment_required
 
 
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)
 def default_item_quantity_unit_float(context):
-    return lambda: get_shop_settings().default_item_quantity_unit_float
+    return lambda: get_shop_article_settings().default_item_quantity_unit_float
 
 
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)
 def default_item_quantity_unit(context):
-    return lambda: get_shop_settings().default_item_quantity_unit
+    return lambda: get_shop_article_settings().default_item_quantity_unit
 
 
 class BuyableExtender(ExtenderBase):

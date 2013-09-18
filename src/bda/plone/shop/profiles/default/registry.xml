@@ -1,33 +1,41 @@
 <?xml version="1.0"?>
 <registry>
   <records interface="bda.plone.shop.interfaces.IShopSettings">
-    <value key="currency">EUR</value>
     <value key="admin_email"></value>
-    <value key="vat">
-      <element>0% 0</element>
-      <element>10% 10</element>
-      <element>20% 20</element>
-      <element>25% 25</element>
-    </value>
+    <value key="currency">EUR</value>
+    <value key="show_currency">symbol</value>
+    <value key="default_item_display_gross">False</value>
+  </records>
+  <records interface="bda.plone.shop.interfaces.IShopCartSettings">
+    <value key="disable_max_article">True</value>
+    <value key="summary_total_only">False</value>
+    <value key="show_checkout">False</value>
+    <value key="show_to_cart">True</value>
+  </records>
+  <records interface="bda.plone.shop.interfaces.IShopArticleSettings">
     <value key="quantity_units">
       <element>quantity</element>
       <element>meter</element>
       <element>kilo</element>
-      <element>liter</element>     
+      <element>liter</element>
     </value>
-    <value key="disable_max_article">True</value>
-    <value key="summary_total_only">False</value>
+    <value key="default_item_quantity_unit">quantity</value>
+    <value key="default_item_net">10</value>
+    <value key="default_item_comment_enabled">True</value>
+    <value key="default_item_comment_required">False</value>
+    <value key="default_item_quantity_unit_float">False</value>
+  </records>
+  <records interface="bda.plone.shop.interfaces.IShopShippingSettings">
     <value key="include_shipping_costs">True</value>
     <value key="shipping_method">flat_rate</value>
-    <value key="show_checkout">False</value>
-    <value key="show_to_cart">True</value>
-    <value key="show_currency">symbol</value>
-    <value key="default_item_net">10</value>
-    <value key="default_item_vat">20</value>
-    <value key="default_item_display_gross">False</value>
-    <value key="default_item_quantity_unit">quantity</value>
-    <value key="default_item_comment_enabled">True</value>
-    <value key="default_item_quantity_unit_float">False</value>
-    <value key="default_item_comment_required">False</value>
+  </records>
+  <records interface="bda.plone.shop.interfaces.IShopTaxSettings">
+      <value key="vat">
+        <element>0% 0</element>
+        <element>10% 10</element>
+        <element>20% 20</element>
+        <element>25% 25</element>
+      </value>
+      <value key="default_item_vat">20</value>
   </records>
 </registry>

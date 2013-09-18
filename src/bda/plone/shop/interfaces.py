@@ -1,8 +1,9 @@
 from zope.interface import Interface
 from zope import schema
 from zope.i18nmessageid import MessageFactory
+from zope.interface import alsoProvides
 from bda.plone.cart.interfaces import ICartItem
-
+from plone.directives import form
 
 _ = MessageFactory('bda.plone.shop')
 
@@ -26,18 +27,15 @@ class IBuyable(ICartItem):
     """
 
 
-class IShopSettings(Interface):
-    """Shop controlpanel schema.
+class IShopSettingsProvider(Interface):
+    """A marker interface for plone.registry configuration
+    interfaces
     """
 
-    vat = schema.List(
-        title=_(u"label_vat", default=u'Value added tax in %'),
-        description=_(u"help_vat",
-                      default=u"Specify all allowed vat settings, one per "
-                              u"line. Format is <name> <percentage>"),
-        required=True,
-        value_type=schema.TextLine(),
-        default=[])
+
+class IShopSettings(form.Schema):
+    """Shop controlpanel schema.
+    """
 
     admin_email = schema.ASCIILine(
         title=_(u"label_admin_email", default=u'Shop Admin E-Mail'),
@@ -46,16 +44,38 @@ class IShopSettings(Interface):
         required=True,
         default="")
 
-    quantity_units = schema.List(
-        title=_(u"label_quantity_units",
-                default=u"Specify all allowed quantity settings. "
-                        u"The required format is <name>. No spaces, please"),
-        description=_(u"help_quantity_units",
-                      default=u'Quantity units (what the buyable items are '
-                              u'measured in)'),
-        required=True,
-        value_type=schema.TextLine(),
-        default=[])
+    default_item_display_gross = schema.Bool(
+        title=_(u'label_default_item_display_gross',
+                default=u'Display Gross by default'),
+        required=False)
+
+    currency = schema.Choice(
+        title=_(u"label_currency", default="Currency"),
+        description=_(u"help_currency",
+                      default=u"Choose the default currency"),
+        vocabulary='bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary')
+
+    show_currency = schema.Choice(
+        title=_(u"label_show_currency", default=u"Show the currency for items"),
+        description=_(u"help_show_currency", default=u""),
+        vocabulary=
+        'bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary')
+
+
+class IShopCartSettings(form.Schema):
+    """Shop controlpanel schema for cart settings.
+    """
+
+    form.fieldset(
+        'cart',
+        label=_(u'Cart Settings'),
+        fields=[
+            'disable_max_article',
+            'summary_total_only',
+            'show_checkout',
+            'show_to_cart',
+            ],
+        )
 
     disable_max_article = schema.Bool(
         title=_(u"label_disable_max_article", default=u"Disable max article"),
@@ -70,19 +90,6 @@ class IShopSettings(Interface):
                       default=u"Show only total value in cart summary"),
         default=False)
 
-    include_shipping_costs = schema.Bool(
-        title=_(u"label_include_shipping_costs",
-                default=u"Include Shipping Costs"),
-        description=_(u"help_include_shipping_costs",
-                      default=u""),
-        default=True)
-
-    shipping_method = schema.Choice(
-        title=_(u"label_shipping_method", default=u"Shipping Method"),
-        description=_(u"help_shipping_method", default=u""),
-        vocabulary=\
-            'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary')
-
     show_checkout = schema.Bool(
         title=_(u"label_show_checkout",
                 default=u"Show checkout link in portlet"),
@@ -93,29 +100,36 @@ class IShopSettings(Interface):
         title=_(u"label_show_to_cart",
                 default=u"Show link to cart in portlet"),
         description=_(u"help_show_to_cart", default=u""),
-        default=True)  
+        default=True)
 
-    show_currency = schema.Choice(
-        title=_(u"label_show_currency", default=u"Show the currency for items"),
-        description=_(u"help_show_currency", default=u""),
-        vocabulary=\
-            'bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary')
+alsoProvides(IShopCartSettings, IShopSettingsProvider)
 
-    currency = schema.Choice(
-        title=_(u"label_currency", default="Currency"),
-        description=_(u"help_currency",
-                      default=u"Choose the default currency"),
-        vocabulary='bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary')
 
-    default_item_net = schema.Float(
-        title=_(u'label_default_item_net', default=u'Default Item net price'),
-        required=False)
+class IShopArticleSettings(form.Schema):
+    """Shop controlpanel schema for article settings.
+    """
 
-    default_item_vat = schema.Choice(
-        title=_(u"label_default_vat", default=u'Default Value added tax name'),
-        description=_(u"help_default_vat",
-                      default=u"Specify default vat name"),
-        vocabulary='bda.plone.shop.vocabularies.VatVocabulary')
+    form.fieldset(
+        'article',
+        label=_(u'Article Settings'),
+        fields=[
+            'quantity_units',
+            'default_item_net',
+            'default_item_quantity_unit',
+            'default_item_comment_enabled',
+            'default_item_comment_required',
+            'default_item_quantity_unit_float',
+            ],
+        )
+
+    quantity_units = schema.List(
+        title=_(u"label_quantity_units",
+                default=u"Quantity units"),
+        description=_(u"help_quantity_units",
+                      default=u"What the buyable items are measured in. One key per line."),
+        required=True,
+        value_type=schema.TextLine(),
+        default=[])
 
     default_item_quantity_unit = schema.Choice(
         title=_(u"label_default_quantity_units",
@@ -124,9 +138,8 @@ class IShopSettings(Interface):
                       default=u'default measurement'),
         vocabulary='bda.plone.shop.vocabularies.QuantityUnitVocabulary')
 
-    default_item_display_gross = schema.Bool(
-        title=_(u'label_default_item_display_gross',
-                default=u'Display Gross by default'),
+    default_item_net = schema.Float(
+        title=_(u'label_default_item_net', default=u'Default Item net price'),
         required=False)
 
     default_item_comment_enabled = schema.Bool(
@@ -143,3 +156,65 @@ class IShopSettings(Interface):
         title=_(u'label_default_item_quantity_unit_float',
                 default='Quantity as float as default'),
         required=False)
+
+alsoProvides(IShopArticleSettings, IShopSettingsProvider)
+
+
+class IShopShippingSettings(form.Schema):
+    """Shop controlpanel schema for article settings.
+    """
+
+    form.fieldset(
+        'shipping',
+        label=_(u'Shipping Settings'),
+        fields=[
+            'include_shipping_costs',
+            'shipping_method',
+            ],
+        )
+
+    include_shipping_costs = schema.Bool(
+        title=_(u"label_include_shipping_costs",
+                default=u"Include Shipping Costs"),
+        description=_(u"help_include_shipping_costs",
+                      default=u""),
+        default=True)
+
+    shipping_method = schema.Choice(
+        title=_(u"label_shipping_method", default=u"Shipping Method"),
+        description=_(u"help_shipping_method", default=u""),
+        vocabulary=
+        'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary')
+
+alsoProvides(IShopShippingSettings, IShopSettingsProvider)
+
+
+class IShopTaxSettings(form.Schema):
+    """Shop controlpanel schema for tax settings.
+    """
+
+    form.fieldset(
+        'tax',
+        label=_(u'Tax Settings'),
+        fields=[
+            'vat',
+            'default_item_vat',
+            ],
+        )
+
+    vat = schema.List(
+        title=_(u"label_vat", default=u'Value added tax in %'),
+        description=_(u"help_vat",
+                      default=u"Specify all allowed vat settings, one per "
+                              u"line. Format is <name> <percentage>"),
+        required=True,
+        value_type=schema.TextLine(),
+        default=[])
+
+    default_item_vat = schema.Choice(
+        title=_(u"label_default_vat", default=u'Default Value added tax name'),
+        description=_(u"help_default_vat",
+                      default=u"Specify default vat name"),
+        vocabulary='bda.plone.shop.vocabularies.VatVocabulary')
+
+alsoProvides(IShopTaxSettings, IShopSettingsProvider)

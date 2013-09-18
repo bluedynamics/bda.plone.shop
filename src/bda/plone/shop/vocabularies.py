@@ -2,14 +2,14 @@ from zope.interface import directlyProvides
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.i18nmessageid import MessageFactory
-from .utils import get_shop_settings
+from .utils import get_shop_settings, get_shop_tax_settings, get_shop_article_settings
 
 
 _ = MessageFactory('bda.plone.shop')
 
 
 def QuantityUnitVocabulary(context):
-    settings = get_shop_settings()
+    settings = get_shop_article_settings()
     if not settings:
         return
     items = []
@@ -26,7 +26,7 @@ directlyProvides(QuantityUnitVocabulary, IVocabularyFactory)
 
 
 def VatVocabulary(context):
-    settings = get_shop_settings()
+    settings = get_shop_tax_settings()
     if not settings:
         return
     items = []

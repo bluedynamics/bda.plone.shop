@@ -138,4 +138,5 @@
     zcml:condition="installed plone.dexterity"
     factory=".dx.DXCartItemPreviewImage" />
 
+
 </configure>
