@@ -39,6 +39,13 @@ setup(name='bda.plone.shop',
           'plone.app.registry',
           'plone.directives.form'
       ],
+      extras_require={
+          'test': [
+              'plone.app.testing',
+              'plone.app.contenttypes',
+              'bda.plone.shop',
+          ]
+      },
       entry_points="""
       [z3c.autoinclude.plugin]
       target = plone
