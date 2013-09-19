@@ -2,7 +2,11 @@ from zope.interface import directlyProvides
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.i18nmessageid import MessageFactory
-from .utils import get_shop_settings, get_shop_tax_settings, get_shop_article_settings
+from .utils import (
+    get_shop_settings,
+    get_shop_tax_settings,
+    get_shop_article_settings,
+)
 
 
 _ = MessageFactory('bda.plone.shop')

@@ -22,7 +22,11 @@ from bda.plone.cart.interfaces import (
 )
 from bda.plone.cart import CartItemPreviewAdapterBase
 from .interfaces import IBuyable
-from .utils import get_shop_settings, get_shop_article_settings, get_shop_tax_settings
+from .utils import (
+    get_shop_settings,
+    get_shop_article_settings,
+    get_shop_tax_settings,
+)
 
 
 _ = MessageFactory('bda.plone.shop')

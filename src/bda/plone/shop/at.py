@@ -36,7 +36,11 @@ from .interfaces import (
     IShopExtensionLayer,
     IBuyable,
 )
-from .utils import get_shop_settings, get_shop_article_settings, get_shop_tax_settings
+from .utils import (
+    get_shop_settings,
+    get_shop_article_settings,
+    get_shop_tax_settings,
+)
 
 
 _ = MessageFactory('bda.plone.shop')
