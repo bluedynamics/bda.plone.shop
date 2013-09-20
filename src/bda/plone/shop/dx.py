@@ -167,7 +167,7 @@ class DXCartItemDataProvider(object):
             'bda.plone.shop.vocabularies.QuantityUnitVocabulary')(self.context)
         for term in vocab:
             if unit == term.value:
-                return term.token
+                return term.title
 
 
 class IStockBehavior(model.Schema):
