@@ -4,6 +4,8 @@ from zope.i18nmessageid import MessageFactory
 from zope.interface import alsoProvides
 from bda.plone.cart.interfaces import ICartItem
 from plone.directives import form
+from z3c.form.browser.checkbox import CheckBoxFieldWidget
+
 
 _ = MessageFactory('bda.plone.shop')
 
@@ -59,7 +61,7 @@ class IShopSettings(form.Schema):
         title=_(u"label_show_currency", default=u"Show the currency for items"),
         description=_(u"help_show_currency", default=u""),
         vocabulary=
-        'bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary')
+            'bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary')
 
 
 class IShopCartSettings(form.Schema):
@@ -102,6 +104,7 @@ class IShopCartSettings(form.Schema):
         description=_(u"help_show_to_cart", default=u""),
         default=True)
 
+
 alsoProvides(IShopCartSettings, IShopSettingsProvider)
 
 
@@ -122,14 +125,18 @@ class IShopArticleSettings(form.Schema):
             ],
         )
 
+    form.widget(quantity_units=CheckBoxFieldWidget)
     quantity_units = schema.List(
         title=_(u"label_quantity_units",
-                default=u"Quantity units"),
+                default=u"Specify quantity units allowed in shop."),
         description=_(u"help_quantity_units",
-                      default=u"What the buyable items are measured in. One key per line."),
+                      default=u'Quantity units (what the buyable items are '
+                              u'measured in)'),
         required=True,
-        value_type=schema.TextLine(),
-        default=[])
+        missing_value=set(),
+        value_type=schema.Choice(
+            vocabulary=
+                'bda.plone.shop.vocabularies.AvailableQuantityUnitVocabulary'))
 
     default_item_quantity_unit = schema.Choice(
         title=_(u"label_default_quantity_units",
@@ -156,6 +163,7 @@ class IShopArticleSettings(form.Schema):
         title=_(u'label_default_item_quantity_unit_float',
                 default='Quantity as float as default'),
         required=False)
+
 
 alsoProvides(IShopArticleSettings, IShopSettingsProvider)
 
@@ -185,6 +193,7 @@ class IShopShippingSettings(form.Schema):
         description=_(u"help_shipping_method", default=u""),
         vocabulary=
         'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary')
+
 
 alsoProvides(IShopShippingSettings, IShopSettingsProvider)
 
@@ -216,5 +225,6 @@ class IShopTaxSettings(form.Schema):
         description=_(u"help_default_vat",
                       default=u"Specify default vat name"),
         vocabulary='bda.plone.shop.vocabularies.VatVocabulary')
+
 
 alsoProvides(IShopTaxSettings, IShopSettingsProvider)

@@ -12,17 +12,35 @@ from .utils import (
 _ = MessageFactory('bda.plone.shop')
 
 
+# This are the overall avaiable quantity units which then can be reduced in
+# control panel. If you need to provide more quantity units add it here or
+# patch this vocab
+AVAILABLE_QUANTITY_UNITS = {
+    'quantity': _('quantity', default='Quantity'),
+    'meter': _('meter', default='Meter'),
+    'kilo': _('kilo', default='Kilo'),
+    'liter': _('liter', default='Liter'),
+}
+
+
+def AvailableQuantityUnitVocabulary(context):
+    # vocab is used in shop settings control panel
+    return SimpleVocabulary.fromItems(AVAILABLE_QUANTITY_UNITS.items())
+
+
+directlyProvides(AvailableQuantityUnitVocabulary, IVocabularyFactory)
+
+
 def QuantityUnitVocabulary(context):
+    # vocab is used for buyable items
     settings = get_shop_article_settings()
     if not settings:
         return
     items = []
-    for line in settings.quantity_units:
-        if not line:
-            continue
-        line = line.split()
-        # XXX: key / value
-        items.append((line[0], line[0]))
+    for quantity_unit in settings.quantity_units:
+        items.append((AVAILABLE_QUANTITY_UNITS.get(quantity_unit,
+                                                   quantity_unit),
+                     quantity_unit))
     return SimpleVocabulary.fromItems(items)
 
 

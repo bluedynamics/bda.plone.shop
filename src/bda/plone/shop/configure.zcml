@@ -33,10 +33,44 @@
   <include file="profiles.zcml" />
   <include package=".browser" />
 
+  <!-- indexing -->
   <adapter
     name="item_buyable"
     factory=".indexer.item_buyable" />
 
+  <!-- default flat rate shipping -->
+  <adapter name="flat_rate" factory=".shipping.FlatRate" />
+
+  <!-- vocabularies -->
+  <utility
+    component=".vocabularies.AvailableQuantityUnitVocabulary"
+    name="bda.plone.shop.vocabularies.AvailableQuantityUnitVocabulary" />
+
+  <utility
+    component=".vocabularies.QuantityUnitVocabulary"
+    name="bda.plone.shop.vocabularies.QuantityUnitVocabulary" />
+
+  <utility
+    component=".vocabularies.VatVocabulary"
+    name="bda.plone.shop.vocabularies.VatVocabulary" />
+
+  <utility
+    component=".vocabularies.AvailableCurrenciesVocabulary"
+    name="bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary" />
+
+  <utility
+    component=".vocabularies.CurrencyDisplayOptionsVocabulary"
+    name="bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary" />
+
+  <utility
+    component=".vocabularies.AvailableShippingMethodsVocabulary"
+    name="bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary" />
+
+  <!-- cart related adapters -->
+  <adapter factory=".cartdata.CartDataProvider" />
+  <adapter factory=".cartdata.CartItemState" />
+
+  <!-- AT Extenders -->
   <adapter
     zcml:condition="installed Products.Archetypes"
     name="bda.plone.shop.buyable"
@@ -45,10 +79,59 @@
 
   <adapter
     zcml:condition="installed Products.Archetypes"
+    name="item_net"
+    factory=".at.default_item_net" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_vat"
+    factory=".at.default_item_vat" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_display_gross"
+    factory=".at.default_item_display_gross" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_comment_enabled"
+    factory=".at.item_comment_enabled" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_comment_required"
+    factory=".at.default_item_comment_required" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_quantity_unit_float"
+    factory=".at.default_item_quantity_unit_float" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="item_quantity_unit"
+    factory=".at.default_item_quantity_unit" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
     name="bda.plone.shop.stock"
     factory=".at.StockExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
+  <!-- cart related AT adapters -->
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATCartItemDataProvider" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATCartItemStock" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATCartItemPreviewImage" />
+
+  <!-- DX behaviors -->
   <plone:behavior
     zcml:condition="installed plone.dexterity"
     title="Buyable Behavior"
@@ -63,80 +146,17 @@
     provides=".dx.IStockBehavior"
     for="plone.dexterity.interfaces.IDexterityContent" />
 
-  <utility
-    component=".vocabularies.VatVocabulary"
-    name="bda.plone.shop.vocabularies.VatVocabulary" />
-
-  <utility
-    component=".vocabularies.QuantityUnitVocabulary"
-    name="bda.plone.shop.vocabularies.QuantityUnitVocabulary" />
-
-  <utility
-    component=".vocabularies.AvailableCurrenciesVocabulary"
-    name="bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary" />
-
-  <utility
-    component=".vocabularies.CurrencyDisplayOptionsVocabulary"
-    name="bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary" />
-
-  <utility
-    component=".vocabularies.AvailableShippingMethodsVocabulary"
-    name="bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary" />
-
-  <adapter name="flat_rate" factory=".shipping.FlatRate" />
-
-  <adapter factory=".cartdata.CartDataProvider" />
-  <adapter factory=".cartdata.CartItemState" />
-
-  <!-- AT -->
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    factory=".at.ATCartItemDataProvider" />
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    factory=".at.ATCartItemStock" />
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    factory=".at.ATCartItemPreviewImage" />
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_net"
-    factory=".at.default_item_net" />
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_vat"
-    factory=".at.default_item_vat" />
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_display_gross"
-    factory=".at.default_item_display_gross" />
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_comment_enabled"
-    factory=".at.item_comment_enabled" />
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_comment_required"
-    factory=".at.default_item_comment_required" />
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_quantity_unit_float"
-    factory=".at.default_item_quantity_unit_float" />
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_quantity_unit"
-    factory=".at.default_item_quantity_unit" />
-
-  <!-- DX -->
+  <!-- cart related DX adapters -->
   <adapter
     zcml:condition="installed plone.dexterity"
     factory=".dx.DXCartItemDataProvider" />
+
   <adapter
     zcml:condition="installed plone.dexterity"
     factory=".dx.DXCartItemStock" />
+
   <adapter
     zcml:condition="installed plone.dexterity"
     factory=".dx.DXCartItemPreviewImage" />
-
 
 </configure>
