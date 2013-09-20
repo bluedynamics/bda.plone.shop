@@ -1,6 +1,9 @@
 from zope.interface import directlyProvides
 from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.vocabulary import (
+    SimpleVocabulary,
+    SimpleTerm,
+)
 from zope.i18nmessageid import MessageFactory
 from .utils import (
     get_shop_settings,
@@ -25,7 +28,8 @@ AVAILABLE_QUANTITY_UNITS = {
 
 def AvailableQuantityUnitVocabulary(context):
     # vocab is used in shop settings control panel
-    return SimpleVocabulary.fromItems(AVAILABLE_QUANTITY_UNITS.items())
+    items = AVAILABLE_QUANTITY_UNITS.items()
+    return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 
 directlyProvides(AvailableQuantityUnitVocabulary, IVocabularyFactory)
@@ -36,12 +40,11 @@ def QuantityUnitVocabulary(context):
     settings = get_shop_article_settings()
     if not settings:
         return
-    items = []
+    terms = []
     for quantity_unit in settings.quantity_units:
-        items.append((AVAILABLE_QUANTITY_UNITS.get(quantity_unit,
-                                                   quantity_unit),
-                     quantity_unit))
-    return SimpleVocabulary.fromItems(items)
+        title = AVAILABLE_QUANTITY_UNITS.get(quantity_unit, quantity_unit)
+        terms.append(SimpleTerm(value=quantity_unit, title=title))
+    return SimpleVocabulary(terms)
 
 
 directlyProvides(QuantityUnitVocabulary, IVocabularyFactory)
@@ -65,19 +68,19 @@ directlyProvides(VatVocabulary, IVocabularyFactory)
 
 def AvailableCurrenciesVocabulary(context):
     items = [
-        (_('EUR', default='Euro'), 'EUR'),
-        (_('USD', default='US Dollar'), 'USD'),
-        (_('INR', default='Indian Rupee'), 'INR'),
-        (_('CAD', default='Canadian Dollar'), 'CAD'),
-        (_('CHF', default='Swiss Franc'), 'CHF'),
-        (_('GBP', default='British Pound Sterling'), 'GBP'),
-        (_('AUD', default='Australian Dollar'), 'AUD'),
-        (_('NOK', default='Norwegian Krone'), 'NOK'),
-        (_('SEK', default='Swedish Krona'), 'SEK'),
-        (_('DKK', default='Danish Krone'), 'DKK'),
-        (_('YEN', default='Japanese Yen'), 'YEN'),
+        ('EUR', _('EUR', default='Euro')),
+        ('USD', _('USD', default='US Dollar')),
+        ('INR', _('INR', default='Indian Rupee')),
+        ('CAD', _('CAD', default='Canadian Dollar')),
+        ('CHF', _('CHF', default='Swiss Franc')),
+        ('GBP', _('GBP', default='British Pound Sterling')),
+        ('AUD', _('AUD', default='Australian Dollar')),
+        ('NOK', _('NOK', default='Norwegian Krone')),
+        ('SEK', _('SEK', default='Swedish Krona')),
+        ('DKK', _('DKK', default='Danish Krone')),
+        ('YEN', _('YEN', default='Japanese Yen')),
     ]
-    return SimpleVocabulary.fromItems(items)
+    return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 
 directlyProvides(AvailableCurrenciesVocabulary, IVocabularyFactory)
@@ -86,9 +89,9 @@ directlyProvides(AvailableCurrenciesVocabulary, IVocabularyFactory)
 def AvailableShippingMethodsVocabulary(context):
     # XXX: from registered IShipping adapters
     items = [
-        (_('flat_rate', default='Flat rate'), 'flat_rate'),
+        ('flat_rate', _('flat_rate', default='Flat rate')),
     ]
-    return SimpleVocabulary.fromItems(items)
+    return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 
 directlyProvides(AvailableShippingMethodsVocabulary, IVocabularyFactory)
@@ -96,11 +99,11 @@ directlyProvides(AvailableShippingMethodsVocabulary, IVocabularyFactory)
 
 def CurrencyDisplayOptionsVocabulary(context):
     items = [
-        (_('yes', default='Yes'), 'yes'),
-        (_('no', default='No'), 'no'),
-        (_('symbol', default='Symbol'), 'symbol'),
+        ('yes', _('yes', default='Yes')),
+        ('no', _('no', default='No')),
+        ('symbol', _('symbol', default='Symbol')),
     ]
-    return SimpleVocabulary.fromItems(items)
+    return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 
 directlyProvides(CurrencyDisplayOptionsVocabulary, IVocabularyFactory)

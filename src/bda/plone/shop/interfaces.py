@@ -192,7 +192,7 @@ class IShopShippingSettings(form.Schema):
         title=_(u"label_shipping_method", default=u"Shipping Method"),
         description=_(u"help_shipping_method", default=u""),
         vocabulary=
-        'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary')
+            'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary')
 
 
 alsoProvides(IShopShippingSettings, IShopSettingsProvider)
