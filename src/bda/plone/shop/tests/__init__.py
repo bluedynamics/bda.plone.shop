@@ -1,7 +1,4 @@
-from zope.component import getUtility
 from zope.interface import alsoProvides
-from plone.registry.interfaces import IRegistry
-from plone.testing import z2
 from plone.app.testing import (
     IntegrationTesting,
     PLONE_FIXTURE,
