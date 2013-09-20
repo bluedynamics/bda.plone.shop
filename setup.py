@@ -43,6 +43,7 @@ setup(name='bda.plone.shop',
           'test': [
               'plone.app.testing',
               'plone.app.contenttypes',
+              'Products.ATContentTypes',
               'bda.plone.shop',
           ]
       },

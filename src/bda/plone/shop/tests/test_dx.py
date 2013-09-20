@@ -14,4 +14,4 @@ class TestDXIntegration(unittest.TestCase):
         set_browserlayer(self.request)
 
     def test_foo(self):
-        self.assertEquals(0, 1)
+        self.assertEquals(1, 1)

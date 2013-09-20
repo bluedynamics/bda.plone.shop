@@ -7,11 +7,13 @@ from plone.app.testing import (
     PLONE_FIXTURE,
     PloneSandboxLayer,
 )
+from Products.CMFPlone.utils import getFSVersionTuple
 from bda.plone.shop.interfaces import IShopExtensionLayer
-try:
-    from plone.app.upgrade import v50
+
+
+if getFSVersionTuple()[0] >= 5:
     PLONE5 = 1
-except ImportError:
+else:
     PLONE5 = 0
 
 
@@ -29,7 +31,8 @@ class ShopLayer(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         import bda.plone.shop
-        self.loadZCML(package=bda.plone.shop, context=configurationContext)
+        self.loadZCML(package=bda.plone.shop,
+                      context=configurationContext)
 
     def setUpPloneSite(self, portal):
         self.applyProfile(portal, 'bda.plone.shop:default')
@@ -48,8 +51,9 @@ class ShopATLayer(PloneSandboxLayer):
     defaultBases = (Shop_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
-        # XXX: provide AT shop item
-        pass
+        import Products.ATContentTypes
+        self.loadZCML(package=Products.ATContentTypes,
+                      context=configurationContext)
 
     def setUpPloneSite(self, portal):
         if PLONE5:
