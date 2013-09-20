@@ -13,7 +13,11 @@ from bda.plone.cart import (
     CartDataProviderBase,
     CartItemStateBase,
 )
-from .utils import get_shop_settings
+from .utils import (
+    get_shop_settings,
+    get_shop_cart_settings,
+    get_shop_shipping_settings,
+)
 
 
 _ = MessageFactory('bda.plone.shop')
@@ -82,40 +86,36 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         return ret
 
     @property
-    def _settings(self):
-        return get_shop_settings()
-
-    @property
     def currency(self):
-        return self._settings.currency
+        return get_shop_settings().currency
 
     @property
     def show_checkout(self):
-        return self._settings.show_checkout
+        return get_shop_cart_settings().show_checkout
 
     @property
     def show_to_cart(self):
-        return self._settings.show_to_cart
+        return get_shop_cart_settings().show_to_cart
 
     @property
     def show_currency(self):
-        return self._settings.show_currency
+        return get_shop_settings().show_currency
 
     @property
     def disable_max_article(self):
-        return self._settings.disable_max_article
+        return get_shop_cart_settings().disable_max_article
 
     @property
     def summary_total_only(self):
-        return self._settings.summary_total_only
+        return get_shop_cart_settings().summary_total_only
 
     @property
     def include_shipping_costs(self):
-        return self._settings.include_shipping_costs
+        return get_shop_shipping_settings().include_shipping_costs
 
     @property
     def shipping_method(self):
-        return self._settings.shipping_method
+        return get_shop_shipping_settings().shipping_method
 
     @property
     def checkout_url(self):

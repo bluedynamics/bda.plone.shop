@@ -4,6 +4,8 @@ from .interfaces import (
     IShopSettings,
     IShopTaxSettings,
     IShopArticleSettings,
+    IShopCartSettings,
+    IShopShippingSettings,
 )
 
 
@@ -17,3 +19,11 @@ def get_shop_tax_settings():
 
 def get_shop_article_settings():
     return getUtility(IRegistry).forInterface(IShopArticleSettings)
+
+
+def get_shop_cart_settings():
+    return getUtility(IRegistry).forInterface(IShopCartSettings)
+
+
+def get_shop_shipping_settings():
+    return getUtility(IRegistry).forInterface(IShopShippingSettings)
