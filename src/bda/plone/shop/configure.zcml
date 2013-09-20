@@ -51,6 +51,10 @@
     name="bda.plone.shop.vocabularies.QuantityUnitVocabulary" />
 
   <utility
+    component=".vocabularies.AvailableVatVocabulary"
+    name="bda.plone.shop.vocabularies.AvailableVatVocabulary" />
+
+  <utility
     component=".vocabularies.VatVocabulary"
     name="bda.plone.shop.vocabularies.VatVocabulary" />
 

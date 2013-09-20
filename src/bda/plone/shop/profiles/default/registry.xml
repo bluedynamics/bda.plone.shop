@@ -31,10 +31,10 @@
   </records>
   <records interface="bda.plone.shop.interfaces.IShopTaxSettings">
       <value key="vat">
-        <element>0% 0</element>
-        <element>10% 10</element>
-        <element>20% 20</element>
-        <element>25% 25</element>
+        <element>0</element>
+        <element>10</element>
+        <element>20</element>
+        <element>25</element>
       </value>
       <value key="default_item_vat">20</value>
   </records>

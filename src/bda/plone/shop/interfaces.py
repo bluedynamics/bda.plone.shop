@@ -211,14 +211,16 @@ class IShopTaxSettings(form.Schema):
             ],
         )
 
+    form.widget(vat=CheckBoxFieldWidget)
     vat = schema.List(
-        title=_(u"label_vat", default=u'Value added tax in %'),
+        title=_(u"label_vat", default=u'VAT in %'),
         description=_(u"help_vat",
-                      default=u"Specify all allowed vat settings, one per "
-                              u"line. Format is <name> <percentage>"),
+                      default=u"Specify all allowed vat settings"),
         required=True,
-        value_type=schema.TextLine(),
-        default=[])
+        missing_value=set(),
+        value_type=schema.Choice(
+            vocabulary=\
+                'bda.plone.shop.vocabularies.AvailableVatVocabulary'))
 
     default_item_vat = schema.Choice(
         title=_(u"label_default_vat", default=u'Default Value added tax name'),
