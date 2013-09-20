@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-13 09:28+0000\n"
+"POT-Creation-Date: 2013-09-20 08:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 
 #. Default: "Australian Dollar"
-#: ./vocabularies.py:52
+#: ./vocabularies.py:74
 msgid "AUD"
 msgstr ""
 
@@ -27,26 +27,26 @@ msgstr ""
 msgid "Activate Buyable on Item"
 msgstr ""
 
-#: ./interfaces.py:114
+#: ./interfaces.py:117
 msgid "Article Settings"
 msgstr ""
 
 #. Default: "Canadian Dollar"
-#: ./vocabularies.py:49
+#: ./vocabularies.py:71
 msgid "CAD"
 msgstr ""
 
 #. Default: "Swiss Franc"
-#: ./vocabularies.py:50
+#: ./vocabularies.py:72
 msgid "CHF"
 msgstr ""
 
-#: ./interfaces.py:71
+#: ./interfaces.py:73
 msgid "Cart Settings"
 msgstr ""
 
 #. Default: "Danish Krone"
-#: ./vocabularies.py:55
+#: ./vocabularies.py:77
 msgid "DKK"
 msgstr ""
 
@@ -59,7 +59,7 @@ msgid "Disables Buyable"
 msgstr ""
 
 #. Default: "Euro"
-#: ./vocabularies.py:46
+#: ./vocabularies.py:68
 msgid "EUR"
 msgstr ""
 
@@ -68,26 +68,26 @@ msgid "Enable Buyable"
 msgstr ""
 
 #. Default: "British Pound Sterling"
-#: ./vocabularies.py:51
+#: ./vocabularies.py:73
 msgid "GBP"
 msgstr ""
 
 #. Default: "Indian Rupee"
-#: ./vocabularies.py:48
+#: ./vocabularies.py:70
 msgid "INR"
 msgstr ""
 
 #. Default: "Norwegian Krone"
-#: ./vocabularies.py:53
+#: ./vocabularies.py:75
 msgid "NOK"
 msgstr ""
 
 #. Default: "Swedish Krona"
-#: ./vocabularies.py:54
+#: ./vocabularies.py:76
 msgid "SEK"
 msgstr ""
 
-#: ./interfaces.py:170
+#: ./interfaces.py:177
 msgid "Shipping Settings"
 msgstr ""
 
@@ -96,17 +96,17 @@ msgstr ""
 msgid "Shop settings"
 msgstr ""
 
-#: ./interfaces.py:199
+#: ./interfaces.py:207
 msgid "Tax Settings"
 msgstr ""
 
 #. Default: "US Dollar"
-#: ./vocabularies.py:47
+#: ./vocabularies.py:69
 msgid "USD"
 msgstr ""
 
 #. Default: "Japanese Yen"
-#: ./vocabularies.py:56
+#: ./vocabularies.py:78
 msgid "YEN"
 msgstr ""
 
@@ -171,7 +171,7 @@ msgid "exportorders"
 msgstr ""
 
 #. Default: "Flat rate"
-#: ./vocabularies.py:67
+#: ./vocabularies.py:89
 msgid "flat_rate"
 msgstr ""
 
@@ -191,207 +191,222 @@ msgid "gross"
 msgstr ""
 
 #. Default: "No typos please...."
-#: ./interfaces.py:42
+#: ./interfaces.py:44
 msgid "help_admin_email"
 msgstr ""
 
 #. Default: "Choose the default currency"
-#: ./interfaces.py:54
+#: ./interfaces.py:56
 msgid "help_currency"
 msgstr ""
 
 #. Default: "default measurement"
-#: ./interfaces.py:138
+#: ./interfaces.py:144
 msgid "help_default_quantity_unit"
 msgstr ""
 
 #. Default: "Specify default vat name"
-#: ./interfaces.py:217
+#: ./interfaces.py:225
 msgid "help_default_vat"
 msgstr ""
 
 #. Default: "No total number of items in cart limit"
-#: ./interfaces.py:82
+#: ./interfaces.py:84
 msgid "help_disable_max_article"
 msgstr ""
 
-#: ./interfaces.py:180
+#: ./interfaces.py:187
 msgid "help_include_shipping_costs"
 msgstr ""
 
-#. Default: "What the buyable items are measured in. The required format is [key value]."
-#: ./interfaces.py:128
+#. Default: "Quantity units (what the buyable items are measured in)"
+#: ./interfaces.py:132
 msgid "help_quantity_units"
 msgstr ""
 
-#: ./interfaces.py:186
+#: ./interfaces.py:193
 msgid "help_shipping_method"
 msgstr ""
 
-#: ./interfaces.py:96
+#: ./interfaces.py:98
 msgid "help_show_checkout"
 msgstr ""
 
-#: ./interfaces.py:60
+#: ./interfaces.py:62
 msgid "help_show_currency"
 msgstr ""
 
-#: ./interfaces.py:102
+#: ./interfaces.py:104
 msgid "help_show_to_cart"
 msgstr ""
 
 #. Default: "Show only total value in cart summary"
-#: ./interfaces.py:89
+#: ./interfaces.py:91
 msgid "help_summary_total_only"
 msgstr ""
 
 #. Default: "Specify all allowed vat settings, one per line. Format is <name> <percentage>"
-#: ./interfaces.py:208
+#: ./interfaces.py:216
 msgid "help_vat"
 msgstr ""
 
+#. Default: "Kilo"
+#: ./vocabularies.py:21
+msgid "kilo"
+msgstr ""
+
 #. Default: "Shop Admin E-Mail"
-#: ./interfaces.py:41
+#: ./interfaces.py:43
 msgid "label_admin_email"
 msgstr ""
 
 #. Default: "Currency"
-#: ./interfaces.py:53
+#: ./interfaces.py:55
 msgid "label_currency"
 msgstr ""
 
 #. Default: "Comment enabled by default"
-#: ./interfaces.py:147
+#: ./interfaces.py:153
 msgid "label_default_item_comment_enabled"
 msgstr ""
 
 #. Default: "Comment required by default"
-#: ./interfaces.py:152
+#: ./interfaces.py:158
 msgid "label_default_item_comment_required"
 msgstr ""
 
 #. Default: "Display Gross by default"
-#: ./interfaces.py:48
+#: ./interfaces.py:50
 msgid "label_default_item_display_gross"
 msgstr ""
 
 #. Default: "Default Item net price"
-#: ./interfaces.py:143
+#: ./interfaces.py:149
 msgid "label_default_item_net"
 msgstr ""
 
 #. Default: "Quantity as float as default"
-#: ./interfaces.py:157
+#: ./interfaces.py:163
 msgid "label_default_item_quantity_unit_float"
 msgstr ""
 
 #. Default: "Specify default quantity name."
-#: ./interfaces.py:136
+#: ./interfaces.py:142
 msgid "label_default_quantity_units"
 msgstr ""
 
 #. Default: "Default Value added tax name"
-#: ./interfaces.py:216
+#: ./interfaces.py:224
 msgid "label_default_vat"
 msgstr ""
 
 #. Default: "Disable max article"
-#: ./interfaces.py:81
+#: ./interfaces.py:83
 msgid "label_disable_max_article"
 msgstr ""
 
 #. Default: "Include Shipping Costs"
-#: ./interfaces.py:178
+#: ./interfaces.py:185
 msgid "label_include_shipping_costs"
 msgstr ""
 
 #. Default: "Item stock available"
-#: ./at.py:250
-#: ./dx.py:178
+#: ./at.py:254
+#: ./dx.py:182
 msgid "label_item_available"
 msgstr ""
 
 #. Default: "Comment enabled"
-#: ./at.py:161
-#: ./dx.py:97
+#: ./at.py:165
+#: ./dx.py:101
 msgid "label_item_comment_enabled"
 msgstr ""
 
 #. Default: "Comment required"
-#: ./at.py:168
-#: ./dx.py:102
+#: ./at.py:172
+#: ./dx.py:106
 msgid "label_item_comment_required"
 msgstr ""
 
 #. Default: "Display Gross"
-#: ./at.py:154
-#: ./dx.py:92
+#: ./at.py:158
+#: ./dx.py:96
 msgid "label_item_display_gross"
 msgstr ""
 
 #. Default: "Item net price"
-#: ./at.py:139
-#: ./dx.py:81
+#: ./at.py:143
+#: ./dx.py:85
 msgid "label_item_net"
 msgstr ""
 
 #. Default: "Item stock overbook"
-#: ./at.py:257
-#: ./dx.py:182
+#: ./at.py:261
+#: ./dx.py:186
 msgid "label_item_overbook"
 msgstr ""
 
 #. Default: "Quantity unit"
-#: ./at.py:183
-#: ./dx.py:112
+#: ./at.py:187
+#: ./dx.py:116
 msgid "label_item_quantity_unit"
 msgstr ""
 
 #. Default: "Quantity as float"
-#: ./at.py:175
-#: ./dx.py:107
+#: ./at.py:179
+#: ./dx.py:111
 msgid "label_item_quantity_unit_float"
 msgstr ""
 
 #. Default: "Item VAT (in %)"
-#: ./at.py:146
-#: ./dx.py:86
+#: ./at.py:150
+#: ./dx.py:90
 msgid "label_item_vat"
 msgstr ""
 
-#. Default: "Quantity units"
-#: ./interfaces.py:126
+#. Default: "Specify quantity units allowed in shop."
+#: ./interfaces.py:130
 msgid "label_quantity_units"
 msgstr ""
 
 #. Default: "Shipping Method"
-#: ./interfaces.py:185
+#: ./interfaces.py:192
 msgid "label_shipping_method"
 msgstr ""
 
 #. Default: "Show checkout link in portlet"
-#: ./interfaces.py:94
+#: ./interfaces.py:96
 msgid "label_show_checkout"
 msgstr ""
 
 #. Default: "Show the currency for items"
-#: ./interfaces.py:59
+#: ./interfaces.py:61
 msgid "label_show_currency"
 msgstr ""
 
 #. Default: "Show link to cart in portlet"
-#: ./interfaces.py:100
+#: ./interfaces.py:102
 msgid "label_show_to_cart"
 msgstr ""
 
 #. Default: "Cart Summary total only"
-#: ./interfaces.py:87
+#: ./interfaces.py:89
 msgid "label_summary_total_only"
 msgstr ""
 
 #. Default: "Value added tax in %"
-#: ./interfaces.py:207
+#: ./interfaces.py:215
 msgid "label_vat"
+msgstr ""
+
+#. Default: "Liter"
+#: ./vocabularies.py:22
+msgid "liter"
+msgstr ""
+
+#. Default: "Meter"
+#: ./vocabularies.py:20
+msgid "meter"
 msgstr ""
 
 #. Default: "Net"
@@ -400,7 +415,7 @@ msgid "net"
 msgstr ""
 
 #. Default: "No"
-#: ./vocabularies.py:78
+#: ./vocabularies.py:100
 msgid "no"
 msgstr ""
 
@@ -429,6 +444,11 @@ msgstr ""
 msgid "overbook_available_title"
 msgstr ""
 
+#. Default: "Quantity"
+#: ./vocabularies.py:19
+msgid "quantity"
+msgstr ""
+
 #. Default: "Shop Administration"
 #: ./browser/admin.py:19
 msgid "shop_admin"
@@ -440,7 +460,7 @@ msgid "shop_admin_heading"
 msgstr ""
 
 #. Default: "Symbol"
-#: ./vocabularies.py:79
+#: ./vocabularies.py:101
 msgid "symbol"
 msgstr ""
 
@@ -455,7 +475,7 @@ msgid "vat"
 msgstr ""
 
 #. Default: "Yes"
-#: ./vocabularies.py:77
+#: ./vocabularies.py:99
 msgid "yes"
 msgstr ""
 
