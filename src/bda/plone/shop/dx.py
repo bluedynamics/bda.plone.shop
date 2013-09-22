@@ -216,7 +216,6 @@ class DXCartItemStock(object):
 
 @adapter(IDexterityContent)
 class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
-
     preview_scale = "tile"
 
     @property

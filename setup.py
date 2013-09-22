@@ -5,7 +5,7 @@ from setuptools import (
 )
 
 
-version = '1.0dev'
+version = '0.2dev'
 shortdesc = "Shop"
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'CHANGES.rst')).read()
