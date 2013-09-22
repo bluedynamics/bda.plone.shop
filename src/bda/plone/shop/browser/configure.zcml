@@ -21,8 +21,7 @@
     permission="zope2.View"
     for="..interfaces.IBuyable"
     class=".viewlets.BuyableViewlet"
-    layer="..interfaces.IShopExtensionLayer"
-  />
+    layer="..interfaces.IShopExtensionLayer" />
 
   <!-- buyable controls -->
   <browser:page

@@ -3,7 +3,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class BuyableViewlet(ViewletBase):
-    """Vielet rendering buyable controls.
+    """Viewlet rendering buyable controls.
     """
 
     index = ViewPageTemplateFile('buyable_viewlet.pt')
