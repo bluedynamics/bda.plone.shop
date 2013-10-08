@@ -10,7 +10,8 @@
     action_id="bdashop"
     appId="bda.plone.shop"
     category="Products"
-    url_expr="string:${portal_url}/@@shop_controlpanel" 
+    url_expr="string:${portal_url}/@@shop_controlpanel"
+    icon_expr="string:${portal_url}/++resource++shop_icon.png"
     visible="True"
     i18n:attributes="title">
     <permission>Manage portal</permission>

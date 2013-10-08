@@ -4,7 +4,11 @@ Changelog
 0.3dev
 ------
 
-- no changes yet
+- add controlpanel icon.
+  [rnix]
+
+- set browserlayer for browser resources.
+  [rnix]
 
 
 0.2

@@ -5,11 +5,18 @@
   <!-- resources -->
   <browser:resource
     name="bda.plone.shop.css"
-    file="shop.css" />
+    file="shop.css"
+    layer="..interfaces.IShopExtensionLayer" />
 
   <browser:resource
     name="bda.plone.shop.js"
-    file="shop.js" />
+    file="shop.js"
+    layer="..interfaces.IShopExtensionLayer" />
+
+  <browser:resource
+    name="shop_icon.png"
+    file="shop_icon.png"
+    layer="..interfaces.IShopExtensionLayer" />
 
   <!-- availability adapter -->
   <adapter factory=".availability.CartItemAvailability" />
