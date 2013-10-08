@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.2dev
-------
+0.2
+---
 
 - Vocabulary and controlpanel improvements.
   [rnix]
