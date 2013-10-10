@@ -27,11 +27,12 @@ try:
     HAS_CLI = True
 except:
     HAS_CLI = False
-from bda.plone.cart import CartItemPreviewAdapterBase
+from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.cart.interfaces import (
     ICartItemDataProvider,
     ICartItemStock,
 )
+from bda.plone.cart import CartItemPreviewAdapterBase
 from .interfaces import (
     IShopExtensionLayer,
     IBuyable,
@@ -130,7 +131,7 @@ def default_item_quantity_unit(context):
 
 
 class BuyableExtender(ExtenderBase):
-    """Schema extender for buyable contents
+    """Schema extender for buyable items.
     """
 
     layer = IShopExtensionLayer
@@ -241,7 +242,7 @@ class ATCartItemDataProvider(object):
 
 
 class StockExtender(ExtenderBase):
-    """Schema extender for buyable item stock
+    """Schema extender for item stock.
     """
 
     layer = IShopExtensionLayer
@@ -286,6 +287,35 @@ class ATCartItemStock(object):
         set_field_value(self.context, 'item_overbook', value)
 
     overbook = property(_get_overbook, _set_overbook)
+
+
+class ShippingExtender(ExtenderBase):
+    """Schema extender for item shipping.
+    """
+
+    layer = IShopExtensionLayer
+
+    fields = [
+        XFloatField(
+            name='shipping_item_weight',
+            schemata='Shop',
+            widget=FloatField._properties['widget'](
+                label=_(u'label_shipping_item_weight', u'Item Weight'),
+            ),
+        ),
+    ]
+
+
+@implementer(IShippingItem)
+@adapter(IBaseObject)
+class ATShippingItem(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def weight(self):
+        return field_value(self.context, 'shipping_item_weight')
 
 
 @adapter(IBaseObject)

@@ -16,6 +16,7 @@ from zope.schema.interfaces import (
 from plone.supermodel import model
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
+from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.cart.interfaces import (
     ICartItemDataProvider,
     ICartItemStock,
@@ -68,7 +69,7 @@ def default_item_quantity_unit(context):
 
 
 class IBuyableBehavior(model.Schema, IBuyable):
-    """Basic event schema.
+    """Buyable behavior.
     """
 
     model.fieldset('shop',
@@ -171,7 +172,7 @@ class DXCartItemDataProvider(object):
 
 
 class IStockBehavior(model.Schema):
-    """Basic event schema.
+    """Stock behavior.
     """
 
     model.fieldset('shop',
@@ -212,6 +213,34 @@ class DXCartItemStock(object):
         self.context.item_overbook = value
 
     overbook = property(_get_overbook, _set_overbook)
+
+
+class IShippingBehavior(model.Schema):
+    """Shipping behavior.
+    """
+
+    model.fieldset('shop',
+            label=u"Shop",
+            fields=['shipping_item_weight'])
+
+    shipping_item_weight = schema.Float(
+        title=_(u'label_shipping_item_weight', default=u'Item Weight'),
+        required=False)
+
+
+alsoProvides(IShippingBehavior, IFormFieldProvider)
+
+
+@implementer(IShippingItem)
+@adapter(IDexterityContent)
+class DXShippingItem(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def weight(self):
+        return self.context.shipping_item_weight
 
 
 @adapter(IDexterityContent)

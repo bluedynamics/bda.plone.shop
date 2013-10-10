@@ -4,10 +4,13 @@ Changelog
 0.3dev
 ------
 
-- add controlpanel icon.
+- Implement ``bda.plone.shipping.IShippingItem`` for Dexterity and Archetypes.
   [rnix]
 
-- set browserlayer for browser resources.
+- Add controlpanel icon.
+  [rnix]
+
+- Set browserlayer for browser resources.
   [rnix]
 
 

@@ -123,6 +123,12 @@
     factory=".at.StockExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="bda.plone.shop.shipping"
+    factory=".at.ShippingExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
   <!-- cart related AT adapters -->
   <adapter
     zcml:condition="installed Products.Archetypes"
@@ -131,6 +137,10 @@
   <adapter
     zcml:condition="installed Products.Archetypes"
     factory=".at.ATCartItemStock" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATShippingItem" />
 
   <adapter
     zcml:condition="installed Products.Archetypes"
@@ -151,6 +161,13 @@
     provides=".dx.IStockBehavior"
     for="plone.dexterity.interfaces.IDexterityContent" />
 
+  <plone:behavior
+    zcml:condition="installed plone.dexterity"
+    title="Shipping Behavior"
+    description="Manage shipping information of item."
+    provides=".dx.IShippingBehavior"
+    for="plone.dexterity.interfaces.IDexterityContent" />
+
   <!-- cart related DX adapters -->
   <adapter
     zcml:condition="installed plone.dexterity"
@@ -159,6 +176,10 @@
   <adapter
     zcml:condition="installed plone.dexterity"
     factory=".dx.DXCartItemStock" />
+
+  <adapter
+    zcml:condition="installed plone.dexterity"
+    factory=".dx.DXShippingItem" />
 
   <adapter
     zcml:condition="installed plone.dexterity"
