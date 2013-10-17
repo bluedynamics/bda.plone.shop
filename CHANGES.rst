@@ -4,6 +4,9 @@ Changelog
 0.3dev
 ------
 
+- Consider ``quantity_unit_float`` in ``CartItemAvailability`` implementation.
+  [rnix]
+
 - Implement ``bda.plone.shipping.IShippingItem`` for Dexterity and Archetypes.
   [rnix]
 
