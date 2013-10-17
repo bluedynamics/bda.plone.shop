@@ -4,6 +4,9 @@ Changelog
 0.3dev
 ------
 
+- Display ``delivery_duration`` in availability details if defined.
+  [rnix]
+
 - Consider ``quantity_unit_float`` in ``CartItemAvailability`` implementation.
   [rnix]
 

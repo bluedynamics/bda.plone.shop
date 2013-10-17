@@ -142,7 +142,7 @@ msgid "comment"
 msgstr "Comment"
 
 #. Default: "Just ${available} items(s) left."
-#: ./browser/availability.py:60
+#: ./browser/availability.py:66
 msgid "critical_available_message"
 msgstr "Just ${available} items(s) left."
 
@@ -150,6 +150,11 @@ msgstr "Just ${available} items(s) left."
 #: ./browser/availability_details.pt:23
 msgid "critical_available_title"
 msgstr "Low items available"
+
+#. Default: "Delivery"
+#: ./browser/availability_details.pt:43
+msgid "delivery_duration_title"
+msgstr "Delivery"
 
 #. Default: "Disabled Buyable."
 #: ./browser/actions.py:32
@@ -172,7 +177,7 @@ msgid "flat_rate"
 msgstr "Flat rate"
 
 #. Default: "${available} items(s) available."
-#: ./browser/availability.py:52
+#: ./browser/availability.py:56
 msgid "full_available_message"
 msgstr "${available} items(s) available."
 
@@ -437,7 +442,7 @@ msgid "orders"
 msgstr "Orders"
 
 #. Default: "Item is sold out. You can pre-order ${reservable} items. As soon as item is available again, it gets delivered."
-#: ./browser/availability.py:74
+#: ./browser/availability.py:81
 msgid "overbook_available_message"
 msgstr "Item is sold out. You can pre-order ${reservable} items. As soon as item is available again, it gets delivered."
 

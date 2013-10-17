@@ -38,4 +38,14 @@
     </p>
   </tal:overbook_available>
 
+  <tal:delivery_duration define="delivery_duration view/delivery_duration"
+                         condition="delivery_duration">
+    <strong i18n:translate="delivery_duration_title">
+      Delivery
+    </strong>
+    <p tal:content="delivery_duration">
+      3 workdays
+    </p>
+  </tal:delivery_duration>
+
 </tal:availability_details>

@@ -2,6 +2,7 @@ from zope.i18nmessageid import MessageFactory
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.cart import (
     get_item_state,
+    get_item_delivery,
     get_item_data_provider,
     CartItemAvailabilityBase,
 )
@@ -83,3 +84,7 @@ class CartItemAvailability(CartItemAvailabilityBase):
                             u'available again, it gets delivered.',
                     mapping={'reservable': reservable})
         return message
+
+    @property
+    def delivery_duration(self):
+        return get_item_delivery(self.context).delivery_duration

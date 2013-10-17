@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-10-10 13:20+0000\n"
+"POT-Creation-Date: 2013-10-17 13:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -146,13 +146,18 @@ msgid "comment"
 msgstr ""
 
 #. Default: "Just ${available} items(s) left."
-#: ./browser/availability.py:60
+#: ./browser/availability.py:66
 msgid "critical_available_message"
 msgstr ""
 
 #. Default: "Low items available"
 #: ./browser/availability_details.pt:23
 msgid "critical_available_title"
+msgstr ""
+
+#. Default: "Delivery"
+#: ./browser/availability_details.pt:43
+msgid "delivery_duration_title"
 msgstr ""
 
 #. Default: "Disabled Buyable."
@@ -176,7 +181,7 @@ msgid "flat_rate"
 msgstr ""
 
 #. Default: "${available} items(s) available."
-#: ./browser/availability.py:52
+#: ./browser/availability.py:56
 msgid "full_available_message"
 msgstr ""
 
@@ -441,7 +446,7 @@ msgid "orders"
 msgstr ""
 
 #. Default: "Item is sold out. You can pre-order ${reservable} items. As soon as item is available again, it gets delivered."
-#: ./browser/availability.py:74
+#: ./browser/availability.py:81
 msgid "overbook_available_message"
 msgstr ""
 
