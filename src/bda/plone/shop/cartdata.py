@@ -2,6 +2,7 @@ from decimal import Decimal
 from zope.i18n import translate
 from zope.i18nmessageid import MessageFactory
 from Products.CMFCore.utils import getToolByName
+from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.cart import (
     readcookie,
     extractitems,
@@ -51,6 +52,19 @@ class CartItemCalculator(object):
             vat += (Decimal(str(data.net)) / Decimal(100)) \
                    * Decimal(str(data.vat)) * count
         return vat
+
+    def weight(self, items):
+        cat = self.catalog
+        weight = Decimal(0)
+        for uid, count, comment in items:
+            brain = cat(UID=uid)
+            if not brain:
+                continue
+            shipping = IShippingItem(brain[0].getObject())
+            item_weight = shipping.weight
+            if item_weight:
+                weight += Decimal(item_weight)
+        return weight
 
 
 class CartDataProvider(CartItemCalculator, CartDataProviderBase):

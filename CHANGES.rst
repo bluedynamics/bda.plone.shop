@@ -4,6 +4,9 @@ Changelog
 0.3dev
 ------
 
+- Add weight calculation in ``bda.plone.shop.cartdata.CartItemCalculator``.
+  [rnix]
+
 - Display ``delivery_duration`` in availability details if defined.
   [rnix]
 
