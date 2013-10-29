@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.3dev
-------
+0.3
+---
 
 - Add weight calculation in ``bda.plone.shop.cartdata.CartItemCalculator``.
   [rnix]
