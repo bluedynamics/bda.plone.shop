@@ -10,6 +10,8 @@ from .utils import (
     get_shop_tax_settings,
     get_shop_article_settings,
 )
+from bda.plone.shipping import Shippings
+
 
 
 _ = MessageFactory('bda.plone.shop')
@@ -113,10 +115,7 @@ directlyProvides(AvailableCurrenciesVocabulary, IVocabularyFactory)
 
 
 def AvailableShippingMethodsVocabulary(context):
-    # XXX: from registered IShipping adapters
-    items = [
-        ('flat_rate', _('flat_rate', default='Flat rate')),
-    ]
+    items = Shippings(context).vocab
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 
