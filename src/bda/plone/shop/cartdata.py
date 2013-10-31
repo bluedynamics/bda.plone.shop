@@ -63,7 +63,7 @@ class CartItemCalculator(object):
             shipping = IShippingItem(brain[0].getObject())
             item_weight = shipping.weight
             if item_weight:
-                weight += Decimal(item_weight)
+                weight += Decimal(item_weight) * count
         return weight
 
 
