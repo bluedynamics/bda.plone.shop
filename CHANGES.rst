@@ -1,6 +1,19 @@
 Changelog
 =========
 
+0.4dev
+------
+
+- Deprecate ``bda.plone.shop.extender`` and ``bda.plone.shop.behaviors``.
+  [rnix]
+
+- Obtain available shipping methods by listing registered adapters.
+  [fRiSi]
+
+- Take number in account when calculating weight.
+  [fRiSi]
+
+
 0.3
 ---
 
