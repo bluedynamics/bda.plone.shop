@@ -1,13 +1,10 @@
 from zope.interface import Interface
 from zope import schema
-from zope.i18nmessageid import MessageFactory
 from zope.interface import alsoProvides
 from bda.plone.cart.interfaces import ICartItem
 from plone.directives import form
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
-
-
-_ = MessageFactory('bda.plone.shop')
+from bda.plone.shop import message_factory as _
 
 
 class IShopExtensionLayer(Interface):

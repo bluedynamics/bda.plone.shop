@@ -4,17 +4,13 @@ from zope.schema.vocabulary import (
     SimpleVocabulary,
     SimpleTerm,
 )
-from zope.i18nmessageid import MessageFactory
 from .utils import (
     get_shop_settings,
     get_shop_tax_settings,
     get_shop_article_settings,
 )
 from bda.plone.shipping import Shippings
-
-
-
-_ = MessageFactory('bda.plone.shop')
+from bda.plone.shop import message_factory as _
 
 
 # This are the overall avaiable quantity units which then can be reduced in

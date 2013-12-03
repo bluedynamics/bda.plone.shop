@@ -1,12 +1,9 @@
 from zope.interface import implementer
-from zope.i18nmessageid import MessageFactory
 from zope.security import checkPermission
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
-
-_ = MessageFactory('bda.plone.shop')
+from bda.plone.shop import message_factory as _
 
 
 class IShopAdminPortlet(IPortletDataProvider):

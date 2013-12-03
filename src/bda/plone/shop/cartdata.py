@@ -1,6 +1,5 @@
 from decimal import Decimal
 from zope.i18n import translate
-from zope.i18nmessageid import MessageFactory
 from Products.CMFCore.utils import getToolByName
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.cart import (
@@ -19,9 +18,7 @@ from .utils import (
     get_shop_cart_settings,
     get_shop_shipping_settings,
 )
-
-
-_ = MessageFactory('bda.plone.shop')
+from bda.plone.shop import message_factory as _
 
 
 class CartItemCalculator(object):

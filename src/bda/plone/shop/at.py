@@ -3,7 +3,6 @@ from zope.component import (
     adapter,
     getUtility,
 )
-from zope.i18nmessageid import MessageFactory
 from zope.schema.interfaces import IVocabularyFactory
 from archetypes.schemaextender.interfaces import (
     IOrderableSchemaExtender,
@@ -42,9 +41,7 @@ from .utils import (
     get_shop_article_settings,
     get_shop_tax_settings,
 )
-
-
-_ = MessageFactory('bda.plone.shop')
+from bda.plone.shop import message_factory as _
 
 
 def field_value(obj, field_name):

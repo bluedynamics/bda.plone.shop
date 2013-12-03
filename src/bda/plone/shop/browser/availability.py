@@ -1,4 +1,3 @@
-from zope.i18nmessageid import MessageFactory
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.cart import (
     get_item_state,
@@ -6,9 +5,7 @@ from bda.plone.cart import (
     get_item_data_provider,
     CartItemAvailabilityBase,
 )
-
-
-_ = MessageFactory('bda.plone.shop')
+from bda.plone.shop import message_factory as _
 
 
 class CartItemAvailability(CartItemAvailabilityBase):
