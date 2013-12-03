@@ -4,6 +4,9 @@ Changelog
 0.4dev
 ------
 
+- Extend userdata with IDeliveryAddress schemata.
+  [thet]
+
 - Deprecate ``bda.plone.shop.extender`` and ``bda.plone.shop.behaviors``.
   [rnix]
 

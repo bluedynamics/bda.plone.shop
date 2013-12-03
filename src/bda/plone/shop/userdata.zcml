@@ -1,0 +1,24 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+           xmlns:zcml="http://namespaces.zope.org/zcml">
+
+  <!-- userdata adapters -->
+  <adapter
+    factory=".userdata.UserDataPanelExtender"
+    provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
+
+  <adapter
+    factory=".userdata.RegistrationPanelExtender"
+    provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
+
+  <adapter
+    factory=".userdata.AddUserFormExtender"
+    provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
+
+  <adapter
+      provides=".userdata.IDeliveryAddress"
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      factory=".userdata.UserDataSchemaAdapter"
+      />
+
+</configure>

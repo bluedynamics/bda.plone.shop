@@ -31,8 +31,10 @@
   <include package="plone.behavior" file="meta.zcml"
            zcml:condition="installed plone.dexterity" />
   <include package="bda.plone.orders" />
-  <include file="profiles.zcml" />
+
   <include package=".browser" />
+  <include file="profiles.zcml" />
+  <include file="userdata.zcml" />
 
   <!-- indexing -->
   <adapter
