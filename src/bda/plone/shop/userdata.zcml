@@ -2,6 +2,8 @@
            xmlns:i18n="http://namespaces.zope.org/i18n"
            xmlns:zcml="http://namespaces.zope.org/zcml">
 
+  <include package="collective.address" />
+  
   <!-- userdata adapters -->
   <adapter
     factory=".userdata.UserDataPanelExtender"
@@ -16,7 +18,7 @@
     provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
 
   <adapter
-      provides=".userdata.IDeliveryAddress"
+      provides=".userdata.IAddress"
       for="plone.app.layout.navigation.interfaces.INavigationRoot"
       factory=".userdata.UserDataSchemaAdapter"
       />

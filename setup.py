@@ -37,6 +37,7 @@ setup(name='bda.plone.shop',
           'archetypes.schemaextender',
           'bda.plone.orders',
           'plone.app.registry',
+          'collective.address',
           'plone.directives.form', # XXX: really here?
       ],
       extras_require={
