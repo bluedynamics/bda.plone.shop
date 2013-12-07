@@ -5,4 +5,13 @@
  <property name="city" type="string"></property>
  <property name="country" type="string"></property>
  <property name="phone" type="string"></property>
+
+ <property name="delivery_address" type="boolean"></property>
+ <property name="delivery_name" type="string"></property>
+ <property name="delivery_street" type="string"></property>
+ <property name="delivery_zip_code" type="string"></property>
+ <property name="delivery_city" type="string"></property>
+ <property name="delivery_country" type="string"></property>
+ <property name="delivery_phone" type="string"></property>
+
 </object>
