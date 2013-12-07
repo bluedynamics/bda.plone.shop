@@ -58,7 +58,7 @@ class IAddress(model.Schema):
                 default=u'Delivery address different'),
         description=_(u'help_accept',
                       default=u"Delivery address is different from payment."),
-        required=True,
+        required=False,
         constraint=validate_accept,
     )
 
