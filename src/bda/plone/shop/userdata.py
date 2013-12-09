@@ -1,4 +1,6 @@
+from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IShopExtensionLayer
+from plone.app.users.browser.account import AccountPanelSchemaAdapter
 from plone.app.users.browser.register import RegistrationForm, AddUserForm
 from plone.app.users.browser.userdatapanel import UserDataPanel
 from plone.supermodel import model
@@ -7,7 +9,6 @@ from z3c.form import field
 from zope import schema
 from zope.component import adapts
 from zope.interface import Interface
-from bda.plone.shop import message_factory as _
 
 
 def validate_accept(value):
@@ -18,21 +19,41 @@ def validate_accept(value):
 
 class IAddress(model.Schema):
     model.fieldset('main_address', _('main_address', u'Hauptadresse'),
-                   fields=['street', 'zip_code', 'city', 'country', 'phone'])
+                   fields=['firstname', 'lastname',
+                           'street', 'zip', 'city', 'country', 'phone',
+                           'alternative_delivery'])
     model.fieldset('delivery_address',
                    _('delivery_address', u'Zustelladresse'),
-                   fields=['delivery_street', 'delivery_zip_code',
+                   fields=['delivery_firstname', 'delivery_lastname',
+                           'delivery_company',
+                           'delivery_street', 'delivery_zip',
                            'delivery_city', 'delivery_country',
                            'delivery_phone'])
+    model.fieldset('legal',
+                   _('legal', u'Legal'),
+                   fields=['accept', ])
+
+    firstname = schema.TextLine(
+        title=_(u'label_firstname', default=u'First name'),
+        description=_(u'help_firstname',
+                      default=u"Fill in your given name."),
+        required=False,
+    )
+    lastname = schema.TextLine(
+        title=_(u'label_lastname', default=u'Last name'),
+        description=_(u'help_lastname',
+                      default=u"Fill in your surname or your family name."),
+        required=False,
+    )
 
     street = schema.TextLine(
         title=_(u'label_street', default=u'Street'),
         description=_(u'help_street', default=u''),
         required=False
     )
-    zip_code = schema.TextLine(
-        title=_(u'label_zip_code', default=u'Zip Code'),
-        description=_(u'help_zip_code', default=u''),
+    zip = schema.TextLine(
+        title=_(u'label_zip', default=u'Postal Code'),
+        description=_(u'help_zip', default=u''),
         required=False
     )
     city = schema.TextLine(
@@ -53,29 +74,43 @@ class IAddress(model.Schema):
         required=False,
     )
 
-    delivery_address = schema.Bool(
-        title=_(u'label_delivery_address',
-                default=u'Delivery address different'),
-        description=_(u'help_accept',
-                      default=u"Delivery address is different from payment."),
+    alternative_delivery = schema.Bool(
+        title=_(u'label_alternative_delivery',
+                default=u'Alternative delivery address'),
+        description=_(u'help_alternative_delivery',
+                      default=u"Delivery address is different from billing "
+                              u"address."),
         required=False,
         constraint=validate_accept,
     )
 
     # Delivery Address
-    delivery_name = schema.TextLine(
-        title=_(u'label_name', default=u'Name'),
-        description=_(u'help_name', default=u''),
-        required=False
+    delivery_firstname = schema.TextLine(
+        title=_(u'label_firstname', default=u'First name'),
+        description=_(u'help_firstname',
+                      default=u"Fill in your given name."),
+        required=False,
+    )
+    delivery_lastname = schema.TextLine(
+        title=_(u'label_lastname', default=u'Last name'),
+        description=_(u'help_lastname',
+                      default=u"Fill in your surname or your family name."),
+        required=False,
+    )
+    delivery_company = schema.TextLine(
+        title=_(u'label_company', default=u'Company'),
+        description=_(u'help_company',
+                      default=u"Company name, if available."),
+        required=False,
     )
     delivery_street = schema.TextLine(
         title=_(u'label_street', default=u'Street'),
         description=_(u'help_street', default=u''),
         required=False
     )
-    delivery_zip_code = schema.TextLine(
-        title=_(u'label_zip_code', default=u'Zip Code'),
-        description=_(u'help_zip_code', default=u''),
+    delivery_zip = schema.TextLine(
+        title=_(u'label_zip', default=u'Postal Code'),
+        description=_(u'help_zip', default=u''),
         required=False
     )
     delivery_city = schema.TextLine(
@@ -106,10 +141,16 @@ class IAddress(model.Schema):
     )
 
 
-
-from plone.app.users.browser.account import AccountPanelSchemaAdapter
 class UserDataSchemaAdapter(AccountPanelSchemaAdapter):
     schema = IAddress
+
+    @property
+    def fullname(self):
+        first = self._getProperty('firstname')
+        last = self._getProperty('lastname')
+        return u'%s%s' % (first and first or '',
+                          first and last and ' ' or '',
+                          last and last or '')
 
 
 class UserDataPanelExtender(extensible.FormExtender):
