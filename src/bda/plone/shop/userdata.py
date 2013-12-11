@@ -19,9 +19,9 @@ def validate_accept(value):
 
 class IAddress(model.Schema):
     model.fieldset('main_address', _('main_address', u'Hauptadresse'),
-                   fields=['firstname', 'lastname', 'email', 'phone',
+                   fields=['firstname', 'lastname', 'phone',
                            'company', 'street', 'zip', 'city', 'country',
-                           'alternative_delivery'])
+                           'delivery_alternative_delivery'])
     model.fieldset('delivery_address',
                    _('delivery_address', u'Zustelladresse'),
                    fields=['delivery_firstname', 'delivery_lastname',
@@ -49,6 +49,11 @@ class IAddress(model.Schema):
         title=_(u'label_lastname', default=u'Last name'),
         description=_(u'help_lastname',
                       default=u"Fill in your surname or your family name."),
+        required=False,
+    )
+    phone = schema.TextLine(
+        title=_(u'label_phone', default=u'Phone'),
+        description=_(u'help_phone'),
         required=False,
     )
     company = schema.TextLine(
@@ -79,7 +84,7 @@ class IAddress(model.Schema):
         vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
 
-    alternative_delivery = schema.Bool(
+    delivery_alternative_delivery = schema.Bool(
         title=_(u'label_alternative_delivery',
                 default=u'Alternative delivery address'),
         description=_(u'help_alternative_delivery',

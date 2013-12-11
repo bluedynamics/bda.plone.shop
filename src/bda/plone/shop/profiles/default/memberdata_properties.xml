@@ -13,7 +13,7 @@
  <property name="city" type="string"></property>
  <property name="country" type="string"></property>
 
- <property name="alternative_delivery" type="boolean"></property>
+ <property name="delivery_alternative_delivery" type="boolean"></property>
  <property name="delivery_firstname" type="string"></property>
  <property name="delivery_lastname" type="string"></property>
  <property name="delivery_company" type="boolean"></property>
