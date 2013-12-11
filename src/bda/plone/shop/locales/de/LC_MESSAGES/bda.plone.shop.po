@@ -486,3 +486,10 @@ msgstr "USt"
 msgid "yes"
 msgstr "Ja"
 
+#. Default: "Female"
+msgid "female"
+msgstr "Frau"
+
+#. Default: "Male"
+msgid "male"
+msgstr "Herr"

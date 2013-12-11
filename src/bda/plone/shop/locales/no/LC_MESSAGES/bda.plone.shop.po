@@ -488,3 +488,10 @@ msgstr "moms"
 msgid "yes"
 msgstr ""
 
+#. Default: "Female"
+msgid "female"
+msgstr "Fru"
+
+#. Default: "Male"
+msgid "male"
+msgstr "Her"

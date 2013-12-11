@@ -486,3 +486,10 @@ msgstr "Vat"
 msgid "yes"
 msgstr "Yes"
 
+#. Default: "Female"
+msgid "female"
+msgstr "Female"
+
+#. Default: "Male"
+msgid "male"
+msgstr "Male"

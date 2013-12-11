@@ -2,13 +2,16 @@
 <object name="portal_memberdata" meta_type="Plone Memberdata Tool">
  <property name="fullname" remove="True"></property>
 
+ <property name="gender" type="string"></property>
  <property name="firstname" type="string"></property>
  <property name="lastname" type="string"></property>
+ <property name="phone" type="string"></property>
+ <property name="company" type="string"></property>
+
  <property name="street" type="string"></property>
  <property name="zip" type="string"></property>
  <property name="city" type="string"></property>
  <property name="country" type="string"></property>
- <property name="phone" type="string"></property>
 
  <property name="alternative_delivery" type="boolean"></property>
  <property name="delivery_firstname" type="string"></property>

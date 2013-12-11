@@ -19,8 +19,8 @@ def validate_accept(value):
 
 class IAddress(model.Schema):
     model.fieldset('main_address', _('main_address', u'Hauptadresse'),
-                   fields=['firstname', 'lastname',
-                           'street', 'zip', 'city', 'country', 'phone',
+                   fields=['firstname', 'lastname', 'email', 'phone',
+                           'company', 'street', 'zip', 'city', 'country',
                            'alternative_delivery'])
     model.fieldset('delivery_address',
                    _('delivery_address', u'Zustelladresse'),
@@ -33,6 +33,12 @@ class IAddress(model.Schema):
                    _('legal', u'Legal'),
                    fields=['accept', ])
 
+    gender = schema.Choice(
+        title=_(u'label_gender', default=u'Gender'),
+        description=_(u'help_gender', default=u""),
+        required=False,
+        vocabulary='bda.plone.shop.vocabularies.GenderVocabulary'
+    )
     firstname = schema.TextLine(
         title=_(u'label_firstname', default=u'First name'),
         description=_(u'help_firstname',
@@ -43,6 +49,11 @@ class IAddress(model.Schema):
         title=_(u'label_lastname', default=u'Last name'),
         description=_(u'help_lastname',
                       default=u"Fill in your surname or your family name."),
+        required=False,
+    )
+    company = schema.TextLine(
+        title=_(u'label_company', default=u'Company'),
+        description=_(u'help_company'),
         required=False,
     )
 
@@ -65,13 +76,7 @@ class IAddress(model.Schema):
         title=_(u'label_country', default=u'Country'),
         description=_(u'help_country', default=u""),
         required=False,
-        vocabulary='collective.address.CountryVocabulary'
-    )
-    phone = schema.TextLine(
-        title=_(u'label_phone', default=u'Telephone number'),
-        description=_(u'help_phone',
-                      default=u"Leave your phone number so we can reach you."),
-        required=False,
+        vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
 
     alternative_delivery = schema.Bool(
@@ -122,7 +127,7 @@ class IAddress(model.Schema):
         title=_(u'label_country', default=u'Country'),
         description=_(u'help_country', default=u""),
         required=False,
-        vocabulary='collective.address.CountryVocabulary'
+        vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
     delivery_phone = schema.TextLine(
         title=_(u'label_phone', default=u'Telephone number'),

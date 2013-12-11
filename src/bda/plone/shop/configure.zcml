@@ -35,6 +35,7 @@
   <include package=".browser" />
   <include file="profiles.zcml" />
   <include file="userdata.zcml" />
+  <include file="vocabularies.zcml" />
 
   <!-- indexing -->
   <adapter
@@ -43,35 +44,6 @@
 
   <!-- default flat rate shipping -->
   <adapter name="flat_rate" factory=".shipping.FlatRate" />
-
-  <!-- vocabularies -->
-  <utility
-    component=".vocabularies.AvailableQuantityUnitVocabulary"
-    name="bda.plone.shop.vocabularies.AvailableQuantityUnitVocabulary" />
-
-  <utility
-    component=".vocabularies.QuantityUnitVocabulary"
-    name="bda.plone.shop.vocabularies.QuantityUnitVocabulary" />
-
-  <utility
-    component=".vocabularies.AvailableVatVocabulary"
-    name="bda.plone.shop.vocabularies.AvailableVatVocabulary" />
-
-  <utility
-    component=".vocabularies.VatVocabulary"
-    name="bda.plone.shop.vocabularies.VatVocabulary" />
-
-  <utility
-    component=".vocabularies.AvailableCurrenciesVocabulary"
-    name="bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary" />
-
-  <utility
-    component=".vocabularies.CurrencyDisplayOptionsVocabulary"
-    name="bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary" />
-
-  <utility
-    component=".vocabularies.AvailableShippingMethodsVocabulary"
-    name="bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary" />
 
   <!-- cart related adapters -->
   <adapter factory=".cartdata.CartDataProvider" />

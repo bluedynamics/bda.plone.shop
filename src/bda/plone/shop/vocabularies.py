@@ -1,16 +1,13 @@
-from zope.interface import directlyProvides
-from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import (
-    SimpleVocabulary,
-    SimpleTerm,
-)
-from .utils import (
-    get_shop_settings,
-    get_shop_tax_settings,
-    get_shop_article_settings,
-)
+from Products.CMFPlone.utils import safe_unicode
 from bda.plone.shipping import Shippings
 from bda.plone.shop import message_factory as _
+from bda.plone.shop.utils import get_shop_article_settings
+from bda.plone.shop.utils import get_shop_tax_settings
+from zope.interface import directlyProvides
+from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
+import pycountry
 
 
 # This are the overall avaiable quantity units which then can be reduced in
@@ -28,8 +25,6 @@ def AvailableQuantityUnitVocabulary(context):
     # vocab is used in shop settings control panel
     items = AVAILABLE_QUANTITY_UNITS.items()
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-
-
 directlyProvides(AvailableQuantityUnitVocabulary, IVocabularyFactory)
 
 
@@ -43,8 +38,6 @@ def QuantityUnitVocabulary(context):
         title = AVAILABLE_QUANTITY_UNITS.get(quantity_unit, quantity_unit)
         terms.append(SimpleTerm(value=quantity_unit, title=title))
     return SimpleVocabulary(terms)
-
-
 directlyProvides(QuantityUnitVocabulary, IVocabularyFactory)
 
 
@@ -63,8 +56,6 @@ def AvailableVatVocabulary(context):
     # vocab is used in shop settings control panel
     items = AVAILABLE_VAT_VALUES.items()
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-
-
 directlyProvides(AvailableVatVocabulary, IVocabularyFactory)
 
 
@@ -79,8 +70,6 @@ def VatVocabulary(context):
             title = AVAILABLE_VAT_VALUES.get(vat, vat)
             terms.append(SimpleTerm(value=vat, title=title))
     return SimpleVocabulary(terms)
-
-
 directlyProvides(VatVocabulary, IVocabularyFactory)
 
 
@@ -105,16 +94,12 @@ AVAILABLE_CURRENCIES = {
 def AvailableCurrenciesVocabulary(context):
     items = AVAILABLE_CURRENCIES.items()
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-
-
 directlyProvides(AvailableCurrenciesVocabulary, IVocabularyFactory)
 
 
 def AvailableShippingMethodsVocabulary(context):
     items = Shippings(context).vocab
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-
-
 directlyProvides(AvailableShippingMethodsVocabulary, IVocabularyFactory)
 
 
@@ -125,6 +110,37 @@ def CurrencyDisplayOptionsVocabulary(context):
         ('symbol', _('symbol', default='Symbol')),
     ]
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-
-
 directlyProvides(CurrencyDisplayOptionsVocabulary, IVocabularyFactory)
+
+
+def gender_vocabulary():
+    return [('-', ''),
+            ('male', _('male', 'Male')),
+            ('female', _('female', 'Female'))]
+
+
+def GenderVocabulary(context):
+    return SimpleVocabulary([SimpleTerm(value=k, title=v)
+                             for k, v in gender_vocabulary()])
+directlyProvides(GenderVocabulary, IVocabularyFactory)
+
+
+def country_vocabulary():
+    """Vocabulary for countries from ISO3166 source.
+    """
+    return [(it.numeric, safe_unicode(it.name)) for it in pycountry.countries]
+
+
+def CountryVocabulary(context):
+    """VocabularyFactory for countries from ISO3166 source.
+    """
+    return SimpleVocabulary([SimpleTerm(value=k, title=v)
+                             for k, v in country_vocabulary()])
+directlyProvides(CountryVocabulary, IVocabularyFactory)
+
+
+def get_pycountry_name(country_id):
+    if not country_id:
+        return None
+    country = pycountry.countries.get(numeric=country_id)
+    return country.name

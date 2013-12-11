@@ -487,3 +487,10 @@ msgstr "TVA"
 msgid "yes"
 msgstr ""
 
+#. Default: "Female"
+msgid "female"
+msgstr "Madame"
+
+#. Default: "Male"
+msgid "male"
+msgstr "Monsieur"

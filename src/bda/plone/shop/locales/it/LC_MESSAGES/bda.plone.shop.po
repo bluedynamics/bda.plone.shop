@@ -487,3 +487,10 @@ msgstr "IVA"
 msgid "yes"
 msgstr ""
 
+#. Default: "Female"
+msgid "female"
+msgstr "Signora"
+
+#. Default: "Male"
+msgid "male"
+msgstr "Signor"
