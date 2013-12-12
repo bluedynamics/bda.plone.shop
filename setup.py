@@ -36,6 +36,7 @@ setup(name='bda.plone.shop',
           'Plone',
           'archetypes.schemaextender',
           'bda.plone.orders',
+          'plone.api',
           'plone.app.registry',
           'plone.directives.form',  # XXX: really here?
       ],

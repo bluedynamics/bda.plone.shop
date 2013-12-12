@@ -24,4 +24,8 @@
   <!-- Adapter for member data retrieval in bda.plone.checkout -->
   <adapter factory=".userdata.CheckoutFormMemberPresets"/>
 
+  <subscriber
+      for="Products.PluggableAuthService.interfaces.events.IPrincipalCreatedEvent"
+      handler=".userrole.add_customer_role"/>
+
 </configure>
