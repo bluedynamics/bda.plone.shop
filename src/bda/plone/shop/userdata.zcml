@@ -5,20 +5,23 @@
   <!-- userdata adapters -->
   <adapter
     factory=".userdata.UserDataPanelExtender"
-    provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
+    provides="plone.z3cform.fieldsets.interfaces.IFormExtender"/>
 
   <adapter
     factory=".userdata.RegistrationPanelExtender"
-    provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
+    provides="plone.z3cform.fieldsets.interfaces.IFormExtender"/>
 
   <adapter
     factory=".userdata.AddUserFormExtender"
-    provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
+    provides="plone.z3cform.fieldsets.interfaces.IFormExtender"/>
 
   <adapter
       provides=".userdata.IAddress"
       for="plone.app.layout.navigation.interfaces.INavigationRoot"
       factory=".userdata.UserDataSchemaAdapter"
       />
+
+  <!-- Adapter for member data retrieval in bda.plone.checkout -->
+  <adapter factory=".userdata.CheckoutFormMemberPresets"/>
 
 </configure>

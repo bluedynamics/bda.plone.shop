@@ -1,5 +1,8 @@
+from Products.CMFPlone.utils import getToolByName
+from bda.plone.checkout.interfaces import ICheckoutFormPresets
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IShopExtensionLayer
+from node.utils import UNSET
 from plone.app.users.browser.account import AccountPanelSchemaAdapter
 from plone.app.users.browser.register import RegistrationForm, AddUserForm
 from plone.app.users.browser.userdatapanel import UserDataPanel
@@ -7,8 +10,10 @@ from plone.supermodel import model
 from plone.z3cform.fieldsets import extensible
 from z3c.form import field
 from zope import schema
+from zope.component import adapter
 from zope.component import adapts
 from zope.interface import Interface
+from zope.interface import implementer
 
 
 def validate_accept(value):
@@ -187,3 +192,31 @@ class AddUserFormExtender(extensible.FormExtender):
         # management form doesn't need this field
         fields = fields.omit('accept')
         self.add(fields, prefix="delivery")
+
+
+@implementer(ICheckoutFormPresets)
+@adapter(Interface, IShopExtensionLayer)
+class CheckoutFormMemberPresets(object):
+    """Adapter to retrieve member presets for checkout form.
+    """
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+        member = None
+        membership = getToolByName(self.context, 'portal_membership', None)
+        if membership and not membership.isAnonymousUser():
+            member = membership.getAuthenticatedMember()
+        self.member = member
+
+    def get_value(self, field_name):
+        """Always return UNSET.
+        """
+        default = UNSET
+        if self.member:
+            parts = field_name.split('.')
+            name = parts[-1]
+            if 'delivery_address' in parts:
+                name = 'delivery_%s' % name
+            default = self.member.getProperty(name, UNSET)
+        return default
