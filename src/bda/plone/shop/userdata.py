@@ -91,7 +91,6 @@ class IAddress(model.Schema):
                       default=u"Delivery address is different from billing "
                               u"address."),
         required=False,
-        constraint=validate_accept,
     )
 
     # Delivery Address
