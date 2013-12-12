@@ -489,11 +489,3 @@ msgstr ""
 #: ./vocabularies.py:128
 msgid "yes"
 msgstr ""
-
-#. Default: "Female"
-msgid "female"
-msgstr ""
-
-#. Default: "Male"
-msgid "male"
-msgstr ""

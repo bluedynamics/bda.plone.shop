@@ -38,7 +38,6 @@ setup(name='bda.plone.shop',
           'bda.plone.orders',
           'plone.app.registry',
           'plone.directives.form',  # XXX: really here?
-          'pycountry',
       ],
       extras_require={
           'test': [

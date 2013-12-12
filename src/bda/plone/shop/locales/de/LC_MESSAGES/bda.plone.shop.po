@@ -485,11 +485,3 @@ msgstr "USt"
 #: ./vocabularies.py:128
 msgid "yes"
 msgstr "Ja"
-
-#. Default: "Female"
-msgid "female"
-msgstr "Frau"
-
-#. Default: "Male"
-msgid "male"
-msgstr "Herr"
