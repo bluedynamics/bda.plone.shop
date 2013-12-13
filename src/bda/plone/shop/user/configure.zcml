@@ -1,6 +1,6 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:i18n="http://namespaces.zope.org/i18n"
-           xmlns:zcml="http://namespaces.zope.org/zcml">
+           xmlns:browser="http://namespaces.zope.org/browser">
 
   <!-- userdata adapters -->
   <adapter
@@ -27,5 +27,28 @@
   <subscriber
       for="Products.PluggableAuthService.interfaces.events.IPrincipalCreatedEvent"
       handler=".userrole.add_customer_role"/>
+
+  <!-- order views -->
+  <configure package="bda.plone.orders.browser"><!-- relative imports from bporders -->
+  <browser:page
+      for="*"
+      name="ordersdata"
+      class="bda.plone.shop.user.orders.UserOrdersData"
+      permission="zope2.View"
+      layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+  <browser:page
+      for="*"
+      name="orderstable"
+      template="orders.pt"
+      class="bda.plone.orders.browser.views.OrdersTable"
+      permission="zope2.View"
+      layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+  <browser:page
+      for="*"
+      name="orders"
+      template="view.pt"
+      permission="zope2.View"
+      layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+  </configure>
 
 </configure>
