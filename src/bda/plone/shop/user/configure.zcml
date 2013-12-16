@@ -49,6 +49,13 @@
       template="view.pt"
       permission="zope2.View"
       layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+  <browser:page
+      for="*"
+      name="order"
+      template="order.pt"
+      class="bda.plone.orders.browser.views.OrderView"
+      permission="zope2.View"
+      layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
   </configure>
 
 </configure>
