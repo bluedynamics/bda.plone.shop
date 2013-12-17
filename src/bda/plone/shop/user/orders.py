@@ -1,7 +1,9 @@
+from AccessControl import Unauthorized
 from bda.plone.orders import message_factory as _bpo
-from bda.plone.orders.browser.views import TableData
 from bda.plone.orders.browser.views import OrdersTable
+from bda.plone.orders.browser.views import TableData
 from bda.plone.orders.browser.views import Translate
+from bda.plone.shop import message_factory as _
 from plone.api import user as apiuser
 from repoze.catalog.query import Contains
 from repoze.catalog.query import Eq
@@ -12,6 +14,12 @@ class UserOrdersTable(OrdersTable):
 
     @property
     def columns(self):
+        if apiuser.is_anonymous():
+            # don't allow this for anonymous users
+            raise Unauthorized(
+                _('unauthorized_orders_view',
+                  default="You have to log in to access the orders view")
+            )
         return [{
             'id': 'actions',
             'label': _bpo('actions', 'Actions'),
@@ -69,6 +77,12 @@ class UserOrdersData(UserOrdersTable, TableData):
         if not user:
             return
         userid = user.getId()
+        if apiuser.is_anonymous() or not userid:
+            # don't allow this for anonymous users
+            raise Unauthorized(
+                _('unauthorized_orders_view',
+                  default="You have to log in to access the orders view")
+            )
         sort = self.sort()
         term = self.request.form['sSearch'].decode('utf-8')
         query = Eq('creator', userid)
