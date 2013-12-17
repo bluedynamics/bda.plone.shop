@@ -40,7 +40,7 @@
       for="*"
       name="orderstable"
       template="orders.pt"
-      class="bda.plone.orders.browser.views.OrdersTable"
+      class="bda.plone.shop.user.orders.UserOrdersTable"
       permission="zope2.View"
       layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
   <browser:page
