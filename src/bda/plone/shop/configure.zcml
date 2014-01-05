@@ -34,6 +34,7 @@
 
   <include package=".browser" />
   <include package=".user" />
+  <include file="permissions.zcml" />
   <include file="profiles.zcml" />
   <include file="vocabularies.zcml" />
 

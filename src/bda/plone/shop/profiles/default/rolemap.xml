@@ -3,7 +3,20 @@
   <roles>
     <role name="Customer"/>
     <role name="Vendor"/>
+    <role name="Shop Admin"/>
   </roles>
   <permissions>
+    <permission name="bda.plone.shop: View all orders" acquire="True">
+      <role name="Shop Admin" />
+    </permission>
+    <permission name="bda.plone.shop: View vendor orders" acquire="True">
+      <role name="Shop Admin" />
+      <role name="Vendor" />
+    </permission>
+    <permission name="bda.plone.shop: View my orders" acquire="True">
+      <role name="Shop Admin" />
+      <role name="Vendor" />
+      <role name="Customer" />
+    </permission>
   </permissions>
 </rolemap>
