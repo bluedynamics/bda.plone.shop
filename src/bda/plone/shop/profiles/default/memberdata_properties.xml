@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <object name="portal_memberdata" meta_type="Plone Memberdata Tool">
  <property name="fullname" remove="True"></property>
+ <property name="location" remove="True"></property>
 
  <property name="gender" type="string"></property>
  <property name="firstname" type="string"></property>

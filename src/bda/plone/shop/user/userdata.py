@@ -1,5 +1,6 @@
 from Products.CMFPlone.utils import getToolByName
 from bda.plone.checkout.interfaces import ICheckoutFormPresets
+from bda.plone.checkout.vocabularies import get_pycountry_name
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IShopExtensionLayer
 from node.utils import UNSET
@@ -165,6 +166,16 @@ class UserDataSchemaAdapter(AccountPanelSchemaAdapter):
         return u'%s%s' % (first and first or '',
                           first and last and ' ' or '',
                           last and last or '')
+
+    @property
+    def location(self):
+        street = self._getProperty('street')
+        zip = self._getProperty('zip')
+        city = self._getProperty('city')
+        country = self._getProperty('country')
+        country = country and get_pycountry_name(country) or ''
+        join_list = [street, '{0} {1}'.format(zip, city), country]
+        return ', '.join([it for it in join_list if it])
 
 
 class UserDataPanelExtender(extensible.FormExtender):
