@@ -265,6 +265,8 @@ class StockExtender(ExtenderBase):
 @implementer(ICartItemStock)
 @adapter(IBaseObject)
 class ATCartItemStock(object):
+    """Accessor Interface
+    """
 
     def __init__(self, context):
         self.context = context
