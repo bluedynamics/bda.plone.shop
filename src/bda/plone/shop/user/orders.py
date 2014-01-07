@@ -1,4 +1,6 @@
 from AccessControl import Unauthorized
+from Products.Five import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.orders import message_factory as _bpo
 from bda.plone.orders.browser.views import OrdersTable
 from bda.plone.orders.browser.views import TableData
@@ -11,6 +13,23 @@ from yafowil.utils import Tag
 
 
 class UserOrdersTable(OrdersTable):
+    table_template = ViewPageTemplateFile('templates/table.pt')
+
+    @property
+    def current_user(self):
+        user = apiuser.get_current()
+        if not user:
+            return None
+        return user.getId()
+
+    @property
+    def is_vendor(self):
+        # TODO
+        return True
+
+    @property
+    def url(self):
+        return self.request.getURL()
 
     @property
     def columns(self):
@@ -73,10 +92,12 @@ class UserOrdersData(UserOrdersTable, TableData):
     search_text_index = 'text'
 
     def query(self, soup):
+        import pdb; pdb.set_trace()
         user = apiuser.get_current()
         if not user:
             return
-        userid = user.getId()
+        userid = self.request.get('userid')
+        userid = userid or user.getId()
         if apiuser.is_anonymous() or not userid:
             # don't allow this for anonymous users
             raise Unauthorized(
@@ -94,3 +115,16 @@ class UserOrdersData(UserOrdersTable, TableData):
                         with_size=True)
         length = res.next()
         return length, res
+
+
+class UserOrdersView(BrowserView):
+
+    def __init__(self, context, request):
+
+        userid = request.form.get('user')
+        if userid:
+            # store on request to pass on through UserOrdersData
+            request.set('userid', userid)
+
+        self.context = context
+        self.request = request
