@@ -32,8 +32,8 @@
   <configure package="bda.plone.orders.browser"><!-- relative imports from bporders -->
   <browser:page
       for="*"
-      name="ordersdata"
-      class="bda.plone.shop.user.orders.UserOrdersData"
+      name="orders"
+      template="view.pt"
       permission="zope2.View"
       layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
   <browser:page
@@ -45,8 +45,8 @@
       layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
   <browser:page
       for="*"
-      name="orders"
-      template="view.pt"
+      name="ordersdata"
+      class="bda.plone.shop.user.orders.UserOrdersData"
       permission="zope2.View"
       layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
   <browser:page
