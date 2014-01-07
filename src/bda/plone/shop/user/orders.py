@@ -32,6 +32,13 @@ class UserOrdersTable(OrdersTable):
         return self.request.getURL()
 
     @property
+    def ajaxurl(self):
+        userid = self.request.form.get('userid')
+        userid_qs = userid and '?userid=%s' % userid or ''
+        return '%s/%s%s' % (
+            self.context.absolute_url(), '@@ordersdata', userid_qs)
+
+    @property
     def columns(self):
         if apiuser.is_anonymous():
             # don't allow this for anonymous users
@@ -96,7 +103,7 @@ class UserOrdersData(UserOrdersTable, TableData):
         user = apiuser.get_current()
         if not user:
             return
-        userid = self.request.get('userid')
+        userid = self.request.form.get('userid')
         userid = userid or user.getId()
         if apiuser.is_anonymous() or not userid:
             # don't allow this for anonymous users
@@ -115,16 +122,3 @@ class UserOrdersData(UserOrdersTable, TableData):
                         with_size=True)
         length = res.next()
         return length, res
-
-
-class UserOrdersView(BrowserView):
-
-    def __init__(self, context, request):
-
-        userid = request.form.get('user')
-        if userid:
-            # store on request to pass on through UserOrdersData
-            request.set('userid', userid)
-
-        self.context = context
-        self.request = request

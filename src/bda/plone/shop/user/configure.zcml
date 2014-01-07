@@ -46,7 +46,6 @@
   <browser:page
       for="*"
       name="orders"
-      class="bda.plone.shop.user.orders.UserOrdersView"
       template="view.pt"
       permission="zope2.View"
       layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
