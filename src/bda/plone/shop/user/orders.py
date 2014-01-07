@@ -33,7 +33,7 @@ class UserOrdersTable(OrdersTable):
 
     @property
     def ajaxurl(self):
-        userid = self.request.form.get('userid')
+        userid = self.request.form.get('user')
         userid_qs = userid and '?userid=%s' % userid or ''
         return '%s/%s%s' % (
             self.context.absolute_url(), '@@ordersdata', userid_qs)
@@ -99,7 +99,6 @@ class UserOrdersData(UserOrdersTable, TableData):
     search_text_index = 'text'
 
     def query(self, soup):
-        import pdb; pdb.set_trace()
         user = apiuser.get_current()
         if not user:
             return
