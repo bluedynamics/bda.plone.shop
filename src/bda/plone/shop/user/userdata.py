@@ -49,18 +49,18 @@ class IAddress(model.Schema):
         title=_(u'label_firstname', default=u'First name'),
         description=_(u'help_firstname',
                       default=u"Fill in your given name."),
-        required=False,
+        required=True,
     )
     lastname = schema.TextLine(
         title=_(u'label_lastname', default=u'Last name'),
         description=_(u'help_lastname',
                       default=u"Fill in your surname or your family name."),
-        required=False,
+        required=True,
     )
     phone = schema.TextLine(
         title=_(u'label_phone', default=u'Phone'),
         description=_(u'help_phone'),
-        required=False,
+        required=True,
     )
     company = schema.TextLine(
         title=_(u'label_company', default=u'Company'),
@@ -71,22 +71,22 @@ class IAddress(model.Schema):
     street = schema.TextLine(
         title=_(u'label_street', default=u'Street'),
         description=_(u'help_street', default=u''),
-        required=False
+        required=True
     )
     zip = schema.TextLine(
         title=_(u'label_zip', default=u'Postal Code'),
         description=_(u'help_zip', default=u''),
-        required=False
+        required=True
     )
     city = schema.TextLine(
         title=_(u'label_city', default=u'City'),
         description=_(u'help_city', default=u""),
-        required=False,
+        required=True,
     )
     country = schema.Choice(
         title=_(u'label_country', default=u'Country'),
         description=_(u'help_country', default=u""),
-        required=False,
+        required=True,
         vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
 
