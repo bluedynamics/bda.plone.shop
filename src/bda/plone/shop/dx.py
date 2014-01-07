@@ -16,6 +16,7 @@ from zope.schema.interfaces import (
 from plone.supermodel import model
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
+from bda.plone.orders.interfaces import IVendor
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.cart.interfaces import (
     ICartItemDataProvider,
@@ -241,6 +242,22 @@ class DXShippingItem(object):
     @property
     def weight(self):
         return self.context.shipping_item_weight
+
+
+class IVendorBehavior(model.Schema):
+    """Vendor behavior.
+    """
+
+
+alsoProvides(IVendorBehavior, IFormFieldProvider)
+
+
+@implementer(IVendor)
+@adapter(IDexterityContent)
+class DXVendor(object):
+
+    def __init__(self, context):
+        self.context = context
 
 
 @adapter(IDexterityContent)

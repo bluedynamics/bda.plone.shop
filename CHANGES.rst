@@ -4,6 +4,10 @@ Changelog
 0.4dev
 ------
 
+- Implement ``bda.plone.orders.interfaces.IVendor`` for AT and DX Based
+  content.
+  [rnix]
+
 - Deprecate ``bda.plone.shop.extender`` and ``bda.plone.shop.behaviors``.
   [rnix]
 

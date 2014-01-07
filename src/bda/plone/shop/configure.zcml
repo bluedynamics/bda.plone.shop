@@ -129,6 +129,12 @@
     factory=".at.ShippingExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="bda.plone.shop.vendor"
+    factory=".at.VendorExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
   <!-- cart related AT adapters -->
   <adapter
     zcml:condition="installed Products.Archetypes"
@@ -141,6 +147,10 @@
   <adapter
     zcml:condition="installed Products.Archetypes"
     factory=".at.ATShippingItem" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATVendor" />
 
   <adapter
     zcml:condition="installed Products.Archetypes"
@@ -168,6 +178,13 @@
     provides=".dx.IShippingBehavior"
     for="plone.dexterity.interfaces.IDexterityContent" />
 
+  <plone:behavior
+    zcml:condition="installed plone.dexterity"
+    title="Vendor Behavior"
+    description="Manage Vendor Information."
+    provides=".dx.IVendorBehavior"
+    for="plone.dexterity.interfaces.IDexterityContent" />
+
   <!-- cart related DX adapters -->
   <adapter
     zcml:condition="installed plone.dexterity"
@@ -180,6 +197,10 @@
   <adapter
     zcml:condition="installed plone.dexterity"
     factory=".dx.DXShippingItem" />
+
+  <adapter
+    zcml:condition="installed plone.dexterity"
+    factory=".dx.DXVendor" />
 
   <adapter
     zcml:condition="installed plone.dexterity"
