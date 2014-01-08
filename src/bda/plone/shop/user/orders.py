@@ -1,5 +1,4 @@
 from AccessControl import Unauthorized
-from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.orders import message_factory as _bpo
 from bda.plone.orders.browser.views import OrdersTable
@@ -24,8 +23,13 @@ class UserOrdersTable(OrdersTable):
 
     @property
     def is_vendor(self):
-        # TODO
-        return True
+        username = self.current_user
+        if username:
+            roles = apiuser.get_roles(username=username, obj=self.context)
+            # TODO: also allow admin
+            return 'Vendor' in roles
+        else:
+            return False
 
     @property
     def url(self):
