@@ -34,6 +34,21 @@ XXX--- buyable uid
 
 
 
+should orders be canceled on smtperrors?
+----------------------------------------
+2014-01-14 14:28:41 ERROR MailDataManager {'admin@admin.admin': (450, '4.1.2 <admin@admin.admin>: Recipient address rejected: Domain not found')}
+Traceback (most recent call last):
+  File "/home/thet-data/dotfiles-thet/home/.buildout/eggs/Products.CMFPlone-4.3.2-py2.7.egg/Products/CMFPlone/patches/sendmail.py", line 12, in _catch
+    return func(*args, **kwargs)
+  File "/home/thet-data/dotfiles-thet/home/.buildout/eggs/zope.sendmail-3.7.5-py2.7.egg/zope/sendmail/mailer.py", line 77, in send
+    connection.sendmail(fromaddr, toaddrs, message)
+  File "/usr/lib64/python2.7/smtplib.py", line 734, in sendmail
+    raise SMTPRecipientsRefused(senderrs)
+SMTPRecipientsRefused: {'admin@admin.admin': (450, '4.1.2 <admin@admin.admin>: Recipient address rejected: Domain not found')}
+
+
+
+
 Mandantenfähigkeit
 ==================
 
