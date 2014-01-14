@@ -21,15 +21,21 @@ class UserOrdersTable(OrdersTable):
             return None
         return user.getId()
 
+    def _check_permission(self, perm, userid=None):
+        perms = apiuser.get_permissions(obj=self.context, username=userid)
+        return perm in perms and perms[perm] or False
+
     @property
-    def is_vendor(self):
-        username = self.current_user
-        if username:
-            roles = apiuser.get_roles(username=username, obj=self.context)
-            # TODO: also allow admin
-            return 'Vendor' in roles
-        else:
-            return False
+    def allow_view_all_orders(self):
+        return self._check_permission('bda.plone.shop: View all orders')
+
+    @property
+    def allow_view_vendor_orders(self):
+        return self._check_permission('bda.plone.shop: View vendor orders')
+
+    @property
+    def allow_userfilter(self):
+        return self.allow_view_vendor_orders or self.allow_view_all_orders
 
     @property
     def url(self):
@@ -103,25 +109,35 @@ class UserOrdersData(UserOrdersTable, TableData):
     search_text_index = 'text'
 
     def query(self, soup):
-        user = apiuser.get_current()
-        if not user:
-            return
-        userid = self.request.form.get('userid')
-        userid = userid or user.getId()
-        if apiuser.is_anonymous() or not userid:
-            # don't allow this for anonymous users
-            raise Unauthorized(
-                _('unauthorized_orders_view',
-                  default="You have to log in to access the orders view")
-            )
+
+        query = None
+        if self.allow_view_all_orders or self.allow_view_vendor_orders:
+            userid = self.request.form.get('userid')
+        else:
+            user = apiuser.get_current()
+            userid = user.getId()
+            if apiuser.is_anonymous() or not userid:
+                # don't allow this for anonymous users
+                raise Unauthorized(
+                    _('unauthorized_orders_view',
+                      default="You have to log in to access the orders view")
+                )
+        if userid:
+            _query = Eq('creator', userid)
+            query = query and query & _query or _query
+
         sort = self.sort()
         term = self.request.form['sSearch'].decode('utf-8')
-        query = Eq('creator', userid)
         if term:
-            query = query & Contains(self.search_text_index, term)
-        res = soup.lazy(query,
-                        sort_index=sort['index'],
-                        reverse=sort['reverse'],
-                        with_size=True)
-        length = res.next()
-        return length, res
+            _query = Contains(self.search_text_index, term)
+            query = query and query & _query or _query
+
+        if query:
+            res = soup.lazy(query,
+                            sort_index=sort['index'],
+                            reverse=sort['reverse'],
+                            with_size=True)
+            length = res.next()
+            return length, res
+        else:
+            return self.all(soup)

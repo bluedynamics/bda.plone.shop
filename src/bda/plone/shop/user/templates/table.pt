@@ -3,8 +3,8 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="bda.plone.orders"
     tal:omit-tag="">
-<ul tal:condition="view/is_vendor">
-  <li><a href="." tal:attributes="href view/url">View all orders</a></li>
+<ul tal:condition="view/allow_userfilter">
+  <li><a href="." tal:attributes="href view/url" tal:condition="view/allow_view_all_orders">View all orders</a></li>
   <li><a href="?user=" tal:attributes="href string:${view/url}/?user=${view/current_user}">View own orders</a></li>
 </ul>
 
