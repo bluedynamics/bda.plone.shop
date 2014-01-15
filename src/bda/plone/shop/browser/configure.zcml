@@ -48,37 +48,72 @@
     layer="..interfaces.IShopExtensionLayer" />
 
   <!-- actions -->
+  <!-- enable buyable -->
   <browser:page
     name="enable-buyable"
-    attribute="enableBuyable"
+    attribute="enableFeature"
     for="..interfaces.IPotentiallyBuyable"
-    class=".actions.ActionsView"
+    class=".actions.BuyableAction"
     permission="cmf.ModifyPortalContent"
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:page
     name="disable-buyable"
-    attribute="disableBuyable"
+    attribute="disableFeature"
     for="..interfaces.IPotentiallyBuyable"
-    class=".actions.ActionsView"
+    class=".actions.BuyableAction"
     permission="cmf.ModifyPortalContent"
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:page
     name="is-possible-to-enable-buyable"
-    attribute="isPossibleToEnableBuyable"
+    attribute="isPossibleToEnableFeature"
     for="*"
-    class=".actions.ActionsView"
+    class=".actions.BuyableAction"
     permission="cmf.ModifyPortalContent"
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:page
     name="is-possible-to-disable-buyable"
-    attribute="isPossibleToDisableBuyable"
+    attribute="isPossibleToDisableFeature"
     for="*"
-    class=".actions.ActionsView"
+    class=".actions.BuyableAction"
     permission="cmf.ModifyPortalContent"
     layer="..interfaces.IShopExtensionLayer" />
+
+  <!-- enable subshop -->
+  <browser:page
+    name="enable-subshop"
+    attribute="enableFeature"
+    for="zope.container.interfaces.IContainer"
+    class=".actions.SubShopAction"
+    permission="cmf.ModifyPortalContent"
+    layer="..interfaces.IShopExtensionLayer" />
+
+  <browser:page
+    name="disable-subshop"
+    attribute="disableFeature"
+    for="zope.container.interfaces.IContainer"
+    class=".actions.SubShopAction"
+    permission="cmf.ModifyPortalContent"
+    layer="..interfaces.IShopExtensionLayer" />
+
+  <browser:page
+    name="is-possible-to-enable-subshop"
+    attribute="isPossibleToEnableFeature"
+    for="*"
+    class=".actions.SubShopAction"
+    permission="cmf.ModifyPortalContent"
+    layer="..interfaces.IShopExtensionLayer" />
+
+  <browser:page
+    name="is-possible-to-disable-subshop"
+    attribute="isPossibleToDisableFeature"
+    for="*"
+    class=".actions.SubShopAction"
+    permission="cmf.ModifyPortalContent"
+    layer="..interfaces.IShopExtensionLayer" />
+
 
   <plone:portlet
     name="portlets.ShopAdmin"
