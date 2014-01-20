@@ -5,10 +5,13 @@ from bda.plone.orders.browser.views import OrdersTable
 from bda.plone.orders.browser.views import TableData
 from bda.plone.orders.browser.views import Translate
 from bda.plone.shop import message_factory as _
-from plone.api import user as apiuser
 from repoze.catalog.query import Contains
+from repoze.catalog.query import Any
 from repoze.catalog.query import Eq
 from yafowil.utils import Tag
+import plone.api as ploneapi
+from plone.uuid.interfaces import IUUID
+from bda.plone.shop.utils import get_vendor_shops
 
 
 class UserOrdersTable(OrdersTable):
@@ -16,26 +19,24 @@ class UserOrdersTable(OrdersTable):
 
     @property
     def current_user(self):
-        user = apiuser.get_current()
+        user = ploneapi.user.get_current()
         if not user:
             return None
         return user.getId()
 
-    def _check_permission(self, perm, userid=None):
-        perms = apiuser.get_permissions(obj=self.context, username=userid)
+    @property
+    def is_shopadmin(self):
+        return 'Shop Admin' in ploneapi.user.get_roles()
+
+    @property
+    def is_vendor(self):
+        perm = 'bda.plone.shop: View vendor orders'
+        perms = ploneapi.user.get_permissions(obj=self.context)
         return perm in perms and perms[perm] or False
 
     @property
-    def allow_view_all_orders(self):
-        return self._check_permission('bda.plone.shop: View all orders')
-
-    @property
-    def allow_view_vendor_orders(self):
-        return self._check_permission('bda.plone.shop: View vendor orders')
-
-    @property
     def allow_userfilter(self):
-        return self.allow_view_vendor_orders or self.allow_view_all_orders
+        return self.is_shopadmin or self.is_vendor
 
     @property
     def url(self):
@@ -50,7 +51,7 @@ class UserOrdersTable(OrdersTable):
 
     @property
     def columns(self):
-        if apiuser.is_anonymous():
+        if ploneapi.user.is_anonymous():
             # don't allow this for anonymous users
             raise Unauthorized(
                 _('unauthorized_orders_view',
@@ -110,18 +111,28 @@ class UserOrdersData(UserOrdersTable, TableData):
 
     def query(self, soup):
 
+        if ploneapi.user.is_anonymous():
+            # don't allow this for anonymous users
+            raise Unauthorized(
+                _('unauthorized_orders_view',
+                  default="You have to log in to access the orders view")
+            )
+
         query = None
-        if self.allow_view_all_orders or self.allow_view_vendor_orders:
+
+        manageable_shops = get_vendor_shops()
+        if manageable_shops:
+            # CASE VENDOR
+            _query = Any('shop_uid', [IUUID(it) for it in manageable_shops])
+            query = query and query & _query or _query
+
+        if manageable_shops or self.is_shopadmin:
+            # CASE VENDOR OR ADMIN
             userid = self.request.form.get('userid')
         else:
-            user = apiuser.get_current()
-            userid = user.getId()
-            if apiuser.is_anonymous() or not userid:
-                # don't allow this for anonymous users
-                raise Unauthorized(
-                    _('unauthorized_orders_view',
-                      default="You have to log in to access the orders view")
-                )
+            # CASE USER
+            userid = ploneapi.user.get_current().getId()
+
         if userid:
             _query = Eq('creator', userid)
             query = query and query & _query or _query
@@ -132,6 +143,7 @@ class UserOrdersData(UserOrdersTable, TableData):
             _query = Contains(self.search_text_index, term)
             query = query and query & _query or _query
 
+        print query
         if query:
             res = soup.lazy(query,
                             sort_index=sort['index'],
