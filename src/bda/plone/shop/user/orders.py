@@ -5,13 +5,14 @@ from bda.plone.orders.browser.views import OrdersTable
 from bda.plone.orders.browser.views import TableData
 from bda.plone.orders.browser.views import Translate
 from bda.plone.shop import message_factory as _
-from repoze.catalog.query import Contains
+from bda.plone.shop.utils import get_vendor_shops
+from plone.uuid.interfaces import IUUID
 from repoze.catalog.query import Any
+from repoze.catalog.query import Contains
 from repoze.catalog.query import Eq
+from souper.soup import get_soup
 from yafowil.utils import Tag
 import plone.api as ploneapi
-from plone.uuid.interfaces import IUUID
-from bda.plone.shop.utils import get_vendor_shops
 
 
 class UserOrdersTable(OrdersTable):
@@ -153,3 +154,29 @@ class UserOrdersData(UserOrdersTable, TableData):
             return length, res
         else:
             return self.all(soup)
+
+
+def get_allowed_orders(context, vendor=None):
+    """Get all orders from bookings related to a shop, as the shop_uid is only
+    indexed on bda_plone_orders_bookings soup and not on
+    bda_plone_orders_orders.
+    """
+    """
+    >>> [it[1].attrs['shop_uid'] for it in soup.data.items()]
+    >>> [it.attrs['order_uid'] for it in soup.query(Eq('creator', 'test'))]
+
+    """
+    manageable_shops = get_vendor_shops(vendor)
+    # TODO: on upgrade, bookings don't have an shop_uid attr, which let this
+    # query always fail.
+    # don't know how to set a default for the indexer...
+    # bookings do not have a dedicated class but are created on the fly in:
+    # OrderCheckoutAdapter.create_bookings
+    # if they had a class, it would be easier to let them return a shop_uid
+    # attr on index time...
+    query = Any('shop_uid', [IUUID(it) for it in manageable_shops])
+    soup = get_soup('bda_plone_orders_bookings', context)
+    res = soup.query(query)
+    order_uids = [it.attrs['order_uid'] for it in res]
+    # TODO: make a set of order_uids
+    return order_uids
