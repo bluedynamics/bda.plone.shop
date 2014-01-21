@@ -160,20 +160,16 @@ def get_allowed_orders(context, vendor=None):
     """Get all orders from bookings related to a shop, as the shop_uid is only
     indexed on bda_plone_orders_bookings soup and not on
     bda_plone_orders_orders.
-    """
-    """
+
+    If you had a previous version of bda.plone.shop without mutli client
+    feature installed, please run the bda.plone.orders "Add shop_uid to booking
+    records" upgrade step.
+
     >>> [it[1].attrs['shop_uid'] for it in soup.data.items()]
     >>> [it.attrs['order_uid'] for it in soup.query(Eq('creator', 'test'))]
 
     """
     manageable_shops = get_vendor_shops(vendor)
-    # TODO: on upgrade, bookings don't have an shop_uid attr, which let this
-    # query always fail.
-    # don't know how to set a default for the indexer...
-    # bookings do not have a dedicated class but are created on the fly in:
-    # OrderCheckoutAdapter.create_bookings
-    # if they had a class, it would be easier to let them return a shop_uid
-    # attr on index time...
     query = Any('shop_uid', [IUUID(it) for it in manageable_shops])
     soup = get_soup('bda_plone_orders_bookings', context)
     res = soup.query(query)
