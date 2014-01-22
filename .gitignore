@@ -8,6 +8,9 @@ bin/
 develop-eggs/
 devsrc/
 eggs/
+include/
+lib/
+local/
 parts/
 var/
 src/bda.plone.shop.egg-info/

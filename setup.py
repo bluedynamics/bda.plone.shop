@@ -38,6 +38,7 @@ setup(name='bda.plone.shop',
           'bda.plone.orders',
           'plone.api',
           'plone.app.registry',
+          'plone.app.users',
           'plone.directives.form',  # XXX: really here?
       ],
       extras_require={

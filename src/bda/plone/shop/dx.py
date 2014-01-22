@@ -16,6 +16,7 @@ from plone.supermodel import model
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
 from bda.plone.shipping.interfaces import IShippingItem
+from bda.plone.orders.interfaces import INotificationText
 from bda.plone.cart.interfaces import (
     ICartItemDataProvider,
     ICartItemStock,
