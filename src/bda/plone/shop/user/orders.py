@@ -121,13 +121,13 @@ class UserOrdersData(UserOrdersTable, TableData):
 
         query = None
 
-        manageable_shops = get_vendor_shops()
-        if manageable_shops:
+        manageable_orders = get_allowed_orders(self.context)
+        if manageable_orders:
             # CASE VENDOR
-            _query = Any('shop_uid', [IUUID(it) for it in manageable_shops])
+            _query = Any('uid', manageable_orders)
             query = query and query & _query or _query
 
-        if manageable_shops or self.is_shopadmin:
+        if manageable_orders or self.is_shopadmin:
             # CASE VENDOR OR ADMIN
             userid = self.request.form.get('userid')
         else:
