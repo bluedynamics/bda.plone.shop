@@ -14,6 +14,9 @@ Changelog
   these as defaults for the checkout process.
   [thet]
 
+- Fix BrowserLayer order precedence.
+  [thet]
+
 - Deprecate ``bda.plone.shop.extender`` and ``bda.plone.shop.behaviors``.
   [rnix]
 
