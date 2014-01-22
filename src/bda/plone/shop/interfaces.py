@@ -1,6 +1,7 @@
 from zope.interface import Interface
 from zope import schema
 from zope.interface import alsoProvides
+from plone.supermodel import model
 from bda.plone.cart.interfaces import ICartItem
 from plone.directives import form
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
@@ -32,7 +33,7 @@ class IShopSettingsProvider(Interface):
     """
 
 
-class IShopSettings(form.Schema):
+class IShopSettings(model.Schema):
     """Shop controlpanel schema.
     """
 
@@ -61,11 +62,11 @@ class IShopSettings(form.Schema):
             'bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary')
 
 
-class IShopCartSettings(form.Schema):
+class IShopCartSettings(model.Schema):
     """Shop controlpanel schema for cart settings.
     """
 
-    form.fieldset(
+    model.fieldset(
         'cart',
         label=_(u'Cart Settings'),
         fields=[
@@ -105,11 +106,11 @@ class IShopCartSettings(form.Schema):
 alsoProvides(IShopCartSettings, IShopSettingsProvider)
 
 
-class IShopArticleSettings(form.Schema):
+class IShopArticleSettings(model.Schema):
     """Shop controlpanel schema for article settings.
     """
 
-    form.fieldset(
+    model.fieldset(
         'article',
         label=_(u'Article Settings'),
         fields=[
@@ -165,11 +166,11 @@ class IShopArticleSettings(form.Schema):
 alsoProvides(IShopArticleSettings, IShopSettingsProvider)
 
 
-class IShopShippingSettings(form.Schema):
+class IShopShippingSettings(model.Schema):
     """Shop controlpanel schema for article settings.
     """
 
-    form.fieldset(
+    model.fieldset(
         'shipping',
         label=_(u'Shipping Settings'),
         fields=[
@@ -195,11 +196,11 @@ class IShopShippingSettings(form.Schema):
 alsoProvides(IShopShippingSettings, IShopSettingsProvider)
 
 
-class IShopTaxSettings(form.Schema):
+class IShopTaxSettings(model.Schema):
     """Shop controlpanel schema for tax settings.
     """
 
-    form.fieldset(
+    model.fieldset(
         'tax',
         label=_(u'Tax Settings'),
         fields=[
