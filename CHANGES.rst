@@ -4,10 +4,6 @@ Changelog
 0.4
 ---
 
-- Implement ``bda.plone.orders.interfaces.IVendor`` for AT and DX Based
-  content.
-  [rnix]
-
 - Extend userdata with IDeliveryAddress schemata.
   [thet]
 

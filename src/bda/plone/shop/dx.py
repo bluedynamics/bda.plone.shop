@@ -15,7 +15,6 @@ from zope.schema.interfaces import (
 from plone.supermodel import model
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
-from bda.plone.orders.interfaces import IVendor
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.cart.interfaces import (
     ICartItemDataProvider,
@@ -241,22 +240,6 @@ class DXShippingItem(object):
         return self.context.shipping_item_weight
 
 
-class IVendorBehavior(model.Schema):
-    """Vendor behavior.
-    """
-
-
-alsoProvides(IVendorBehavior, IFormFieldProvider)
-
-
-@implementer(IVendor)
-@adapter(IDexterityContent)
-class DXVendor(object):
-
-    def __init__(self, context):
-        self.context = context
-
-
 @adapter(IDexterityContent)
 class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
     preview_scale = "tile"
@@ -270,4 +253,4 @@ class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
         if hasattr(self.context, 'image'):
             scales = self.context.restrictedTraverse('@@images')
             img_scale = scales.scale("image", scale=self.preview_scale)
-        return img_scale and img_scale.url or "" 
+        return img_scale and img_scale.url or ""

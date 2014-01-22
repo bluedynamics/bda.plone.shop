@@ -26,7 +26,6 @@ try:
     HAS_CLI = True
 except:
     HAS_CLI = False
-from bda.plone.orders.interfaces import IVendor
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.cart.interfaces import (
     ICartItemDataProvider,
@@ -314,25 +313,6 @@ class ATShippingItem(object):
     @property
     def weight(self):
         return field_value(self.context, 'shipping_item_weight')
-
-
-class VendorExtender(ExtenderBase):
-    """Schema extender for vendor.
-    """
-
-    layer = IShopExtensionLayer
-
-    fields = [
-    ]
-
-
-@implementer(IVendor)
-@adapter(IBaseObject)
-class ATVendor(object):
-
-    def __init__(self, context):
-        self.context = context
-
 
 
 @adapter(IBaseObject)
