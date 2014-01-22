@@ -27,6 +27,7 @@ try:
 except:
     HAS_CLI = False
 from bda.plone.shipping.interfaces import IShippingItem
+from bda.plone.orders.interfaces import INotificationText
 from bda.plone.cart.interfaces import (
     ICartItemDataProvider,
     ICartItemStock,
