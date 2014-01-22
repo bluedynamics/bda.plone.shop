@@ -6,14 +6,17 @@
     <role name="Shop Admin"/>
   </roles>
   <permissions>
-    <permission name="bda.plone.shop: View all orders" acquire="True">
+    <permission name="bda.plone.shop: Manage all shops" acquire="True">
+      <role name="Manager" />
       <role name="Shop Admin" />
     </permission>
-    <permission name="bda.plone.shop: View vendor orders" acquire="True">
+    <permission name="bda.plone.shop: Manage this shop" acquire="True">
+      <role name="Manager" />
       <role name="Shop Admin" />
       <role name="Vendor" />
     </permission>
-    <permission name="bda.plone.shop: View my orders" acquire="True">
+    <permission name="bda.plone.shop: Allow purchasing" acquire="True">
+      <role name="Manager" />
       <role name="Shop Admin" />
       <role name="Vendor" />
       <role name="Customer" />

@@ -2,18 +2,18 @@
   xmlns="http://namespaces.zope.org/zope">
 
   <permission
-      id="bda.plone.shop.ViewAllOrders"
-      title="bda.plone.shop: View all orders"
+      id="bda.plone.shop.ManageAllShops"
+      title="bda.plone.shop: Manage all shops"
       />
 
   <permission
-      id="bda.plone.shop.ViewVendorOrders"
-      title="bda.plone.shop: View vendor orders"
+      id="bda.plone.shop.ManageThisShop"
+      title="bda.plone.shop: Manage this shop"
       />
 
   <permission
-      id="bda.plone.shop.ViewMyOrders"
-      title="bda.plone.shop: View my orders"
+      id="bda.plone.shop.AllowPurchasing"
+      title="bda.plone.shop: Allow purchasing"
       />
 
 </configure>

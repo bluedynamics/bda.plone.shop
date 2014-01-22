@@ -27,11 +27,12 @@ class UserOrdersTable(OrdersTable):
 
     @property
     def is_shopadmin(self):
-        return 'Shop Admin' in ploneapi.user.get_roles()
+        roles = ploneapi.user.get_roles()
+        return 'Manager' in roles or 'Shop Admin' in roles
 
     @property
     def is_vendor(self):
-        perm = 'bda.plone.shop: View vendor orders'
+        perm = 'bda.plone.shop: Manage this shop'
         perms = ploneapi.user.get_permissions(obj=self.context)
         return perm in perms and perms[perm] or False
 
