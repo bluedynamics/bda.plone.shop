@@ -486,4 +486,3 @@ msgstr "IVA"
 #: ./vocabularies.py:128
 msgid "yes"
 msgstr ""
-

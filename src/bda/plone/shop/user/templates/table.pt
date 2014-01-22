@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="bda.plone.orders"
+    tal:omit-tag="">
+<ul tal:condition="view/allow_userfilter">
+  <li><a href="." tal:attributes="href view/url" tal:condition="view/is_shopadmin">View all orders</a></li>
+  <li><a href="?user=" tal:attributes="href string:${view/url}/?user=${view/current_user}">View own orders</a></li>
+</ul>
+
+<table tal:define="ajaxurl view/ajaxurl;
+                   columns view/columns"
+       tal:attributes="data-ajaxurl ajaxurl;
+                       id view/table_id">
+  <thead>
+    <tr>
+      <tal:loop repeat="colinfo columns">
+        <th tal:attributes="class python: 'datarow-' + colinfo['id'];">
+          <span tal:replace="python: colinfo['label']">Title</span>
+        </th>
+      </tal:loop>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td tal:attributes="columnspan: python:len(columns)"
+          i18n:translate="loading_please_wait">
+        Loading Data, please wait...
+      </td>
+    </tr>
+  </tbody>
+</table>
+</html>

@@ -485,4 +485,3 @@ msgstr "USt"
 #: ./vocabularies.py:128
 msgid "yes"
 msgstr "Ja"
-

@@ -1,0 +1,44 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five"
+           xmlns:plone="http://namespaces.plone.org/plone"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+           xmlns:zcml="http://namespaces.zope.org/zcml">
+
+  <!-- vocabularies -->
+  <utility
+    component=".vocabularies.AvailableQuantityUnitVocabulary"
+    name="bda.plone.shop.vocabularies.AvailableQuantityUnitVocabulary" />
+
+  <utility
+    component=".vocabularies.QuantityUnitVocabulary"
+    name="bda.plone.shop.vocabularies.QuantityUnitVocabulary" />
+
+  <utility
+    component=".vocabularies.AvailableVatVocabulary"
+    name="bda.plone.shop.vocabularies.AvailableVatVocabulary" />
+
+  <utility
+    component=".vocabularies.VatVocabulary"
+    name="bda.plone.shop.vocabularies.VatVocabulary" />
+
+  <utility
+    component=".vocabularies.AvailableCurrenciesVocabulary"
+    name="bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary" />
+
+  <utility
+    component=".vocabularies.CurrencyDisplayOptionsVocabulary"
+    name="bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary" />
+
+  <utility
+    component=".vocabularies.AvailableShippingMethodsVocabulary"
+    name="bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary" />
+
+  <utility
+    component=".vocabularies.GenderVocabulary"
+    name="bda.plone.shop.vocabularies.GenderVocabulary" />
+
+  <utility
+    component=".vocabularies.CountryVocabulary"
+    name="bda.plone.shop.vocabularies.CountryVocabulary" />
+
+</configure>

@@ -27,7 +27,7 @@ setup(name='bda.plone.shop',
       author_email='dev@bluedynamics.com',
       license='GNU General Public Licence',
       packages=find_packages('src'),
-      package_dir = {'': 'src'},
+      package_dir={'': 'src'},
       namespace_packages=['bda', 'bda.plone'],
       include_package_data=True,
       zip_safe=False,
@@ -36,16 +36,16 @@ setup(name='bda.plone.shop',
           'Plone',
           'archetypes.schemaextender',
           'bda.plone.orders',
+          'plone.api',
           'plone.app.registry',
-          'collective.address',
-          'plone.directives.form', # XXX: really here?
+          'plone.directives.form',  # XXX: really here?
       ],
       extras_require={
           'test': [
-              'plone.app.testing',
-              'plone.app.contenttypes',
               'Products.ATContentTypes',
               'bda.plone.shop',
+              'plone.app.contenttypes',
+              'plone.app.testing',
           ]
       },
       entry_points="""

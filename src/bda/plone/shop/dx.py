@@ -191,6 +191,8 @@ alsoProvides(IStockBehavior, IFormFieldProvider)
 @implementer(ICartItemStock)
 @adapter(IDexterityContent)
 class DXCartItemStock(object):
+    """Accessor Interface
+    """
 
     def __init__(self, context):
         self.context = context

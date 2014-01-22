@@ -1,15 +1,25 @@
 <?xml version="1.0"?>
 <object name="portal_memberdata" meta_type="Plone Memberdata Tool">
+ <property name="fullname" remove="True"></property>
+ <property name="location" remove="True"></property>
+
+ <property name="gender" type="string"></property>
+ <property name="firstname" type="string"></property>
+ <property name="lastname" type="string"></property>
+ <property name="phone" type="string"></property>
+ <property name="company" type="string"></property>
+
  <property name="street" type="string"></property>
- <property name="zip_code" type="string"></property>
+ <property name="zip" type="string"></property>
  <property name="city" type="string"></property>
  <property name="country" type="string"></property>
- <property name="phone" type="string"></property>
 
- <property name="delivery_address" type="boolean"></property>
- <property name="delivery_name" type="string"></property>
+ <property name="delivery_alternative_delivery" type="boolean"></property>
+ <property name="delivery_firstname" type="string"></property>
+ <property name="delivery_lastname" type="string"></property>
+ <property name="delivery_company" type="boolean"></property>
  <property name="delivery_street" type="string"></property>
- <property name="delivery_zip_code" type="string"></property>
+ <property name="delivery_zip" type="string"></property>
  <property name="delivery_city" type="string"></property>
  <property name="delivery_country" type="string"></property>
  <property name="delivery_phone" type="string"></property>

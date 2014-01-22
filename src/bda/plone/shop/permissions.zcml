@@ -1,0 +1,19 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope">
+
+  <permission
+      id="bda.plone.shop.ViewAllOrders"
+      title="bda.plone.shop: View all orders"
+      />
+
+  <permission
+      id="bda.plone.shop.ViewVendorOrders"
+      title="bda.plone.shop: View vendor orders"
+      />
+
+  <permission
+      id="bda.plone.shop.ViewMyOrders"
+      title="bda.plone.shop: View my orders"
+      />
+
+</configure>

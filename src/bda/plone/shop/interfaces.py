@@ -6,9 +6,10 @@ from bda.plone.cart.interfaces import ICartItem
 from plone.directives import form
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from bda.plone.shop import message_factory as _
+from bda.plone.orders.interfaces import IOrdersExtensionLayer
 
 
-class IShopExtensionLayer(Interface):
+class IShopExtensionLayer(IOrdersExtensionLayer):
     """Browser layer for bda.plone.shop
     """
 

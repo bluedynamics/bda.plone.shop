@@ -3,7 +3,7 @@
         meta_type="Plone Actions Tool"
         xmlns:i18n="http://xml.zope.org/namespaces/i18n">
   <object name="object_buttons" meta_type="CMF Action Category">
-    <object name="enableBuyable" 
+    <object name="enableBuyable"
             meta_type="CMF Action"
             i18n:domain="bda.plone.shop">
       <property name="title" i18n:translate="">
@@ -24,7 +24,7 @@
       </property>
       <property name="visible">True</property>
     </object>
-    <object name="disableBuyable" 
+    <object name="disableBuyable"
             meta_type="CMF Action"
             i18n:domain="bda.plone.shop">
       <property name="title" i18n:translate="">
@@ -45,5 +45,66 @@
       </property>
       <property name="visible">True</property>
     </object>
+
+    <object name="enableSubshop"
+            meta_type="CMF Action"
+            i18n:domain="bda.plone.shop">
+      <property name="title" i18n:translate="">
+          Enable Subshop
+      </property>
+      <property name="description" i18n:translate="">
+          Activate subshop on this context
+      </property>
+      <property name="url_expr">
+          string:${object/absolute_url}/@@enable-subshop
+      </property>
+      <property name="icon_expr"></property>
+      <property name="available_expr">
+          object/@@is-possible-to-enable-subshop
+      </property>
+      <property name="permissions">
+          <element value="Modify portal content" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+    <object name="disableSubshop"
+            meta_type="CMF Action"
+            i18n:domain="bda.plone.shop">
+      <property name="title" i18n:translate="">
+          Disable Subshop
+      </property>
+      <property name="description" i18n:translate="">
+          Deactivates subshop on Item
+      </property>
+      <property name="url_expr">
+          string:${object/absolute_url}/@@disable-subshop
+      </property>
+      <property name="icon_expr"></property>
+      <property name="available_expr">
+          object/@@is-possible-to-disable-subshop
+      </property>
+      <property name="permissions">
+          <element value="Modify portal content" />
+      </property>
+      <property name="visible">True</property>
+    </object>
   </object>
+
+
+  <object name="user" meta_type="CMF Action Category">
+    <object name="orders" meta_type="CMF Action" i18n:domain="bda.plone.shop">
+      <property name="title" i18n:translate="">Shop Orders</property>
+      <property name="description" i18n:translate=""></property>
+      <property
+      name="url_expr">string:${globals_view/navigationRootUrl}/@@orders</property>
+      <property name="link_target"></property>
+      <property name="icon_expr"></property>
+      <property name="available_expr">python:member is not None</property>
+      <property name="permissions">
+        <element value="View"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+  </object>
+
 </object>

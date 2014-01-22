@@ -4,7 +4,8 @@ Changelog
 0.4
 ---
 
-- Extend userdata with IDeliveryAddress schemata.
+- Allow portal member to store billing and delivery address information and use
+  these as defaults for the checkout process.
   [thet]
 
 - Deprecate ``bda.plone.shop.extender`` and ``bda.plone.shop.behaviors``.

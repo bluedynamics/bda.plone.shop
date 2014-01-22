@@ -485,4 +485,3 @@ msgstr "Vat"
 #: ./vocabularies.py:128
 msgid "yes"
 msgstr "Yes"
-

@@ -487,4 +487,3 @@ msgstr "moms"
 #: ./vocabularies.py:128
 msgid "yes"
 msgstr ""
-

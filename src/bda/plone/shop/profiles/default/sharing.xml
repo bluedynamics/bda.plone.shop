@@ -1,0 +1,8 @@
+<sharing xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+         i18n:domain="plone">
+    <role
+        id="Vendor"
+        title="Can manage shop orders"
+        i18n:attributes="title"
+        />
+</sharing>

@@ -16,8 +16,8 @@
                     details.hide();
                 }
             });
-        }
-        if (typeof(window['bdajax']) != "undefined") {
+        };
+        if (typeof(window.bdajax) !== "undefined") {
             $.extend(bdajax.binders, {
                 buyable_controls_binder: binder
             });
@@ -25,4 +25,4 @@
         binder(document);
     });
 
-})(jQuery);
+}(jQuery));
