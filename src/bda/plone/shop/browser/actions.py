@@ -1,11 +1,11 @@
-from Products.Five.browser import BrowserView
-from bda.plone.orders.interfaces import ISubShop
-from bda.plone.shop import message_factory as _
-from bda.plone.shop.interfaces import IBuyable
-from bda.plone.shop.interfaces import IPotentiallyBuyable
 from zope.container.interfaces import IContainer
 from zope.interface import directlyProvides
 from zope.interface import noLongerProvides
+from Products.Five.browser import BrowserView
+from bda.plone.orders.interfaces import ISubShop
+from ..interfaces import IBuyable
+from ..interfaces import IPotentiallyBuyable
+from .. import message_factory as _
 
 
 class EnableDisableFeature(BrowserView):

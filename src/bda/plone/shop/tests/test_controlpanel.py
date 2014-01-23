@@ -1,8 +1,6 @@
 import unittest2 as unittest
-from bda.plone.shop.tests import (
-    Shop_INTEGRATION_TESTING,
-    set_browserlayer,
-)
+from . import Shop_INTEGRATION_TESTING
+from . import set_browserlayer
 
 
 class TestControlpanel(unittest.TestCase):

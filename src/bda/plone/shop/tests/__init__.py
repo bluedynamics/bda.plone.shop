@@ -1,12 +1,10 @@
 from zope.interface import alsoProvides
 from plone.testing import z2
-from plone.app.testing import (
-    IntegrationTesting,
-    PLONE_FIXTURE,
-    PloneSandboxLayer,
-)
+from plone.app.testing import IntegrationTesting
+from plone.app.testing import PLONE_FIXTURE
+from plone.app.testing import PloneSandboxLayer
 from Products.CMFPlone.utils import getFSVersionTuple
-from bda.plone.shop.interfaces import IShopExtensionLayer
+from ..interfaces import IShopExtensionLayer
 
 try:
     import Products.DateRecurringIndex

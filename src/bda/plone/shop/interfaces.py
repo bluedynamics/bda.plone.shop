@@ -1,12 +1,12 @@
 from zope.interface import Interface
 from zope import schema
 from zope.interface import alsoProvides
-from plone.supermodel import model
-from bda.plone.cart.interfaces import ICartItem
-from plone.directives import form
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
-from bda.plone.shop import message_factory as _
+from plone.supermodel import model
+from plone.directives import form
+from bda.plone.cart.interfaces import ICartItem
 from bda.plone.orders.interfaces import IOrdersExtensionLayer
+from . import message_factory as _
 
 
 class IShopExtensionLayer(IOrdersExtensionLayer):

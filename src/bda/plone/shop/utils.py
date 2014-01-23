@@ -1,13 +1,12 @@
-from bda.plone.orders.interfaces import ISubShop
-from bda.plone.shop.interfaces import IShopArticleSettings
-from bda.plone.shop.interfaces import IShopCartSettings
-from bda.plone.shop.interfaces import IShopSettings
-from bda.plone.shop.interfaces import IShopShippingSettings
-from bda.plone.shop.interfaces import IShopTaxSettings
-from plone.registry.interfaces import IRegistry
-from zope.component import getUtility
-
 import plone.api as ploneapi
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
+from bda.plone.orders.interfaces import ISubShop
+from .interfaces import IShopArticleSettings
+from .interfaces import IShopCartSettings
+from .interfaces import IShopSettings
+from .interfaces import IShopShippingSettings
+from .interfaces import IShopTaxSettings
 
 
 def get_shop_settings():

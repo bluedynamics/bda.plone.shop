@@ -1,26 +1,18 @@
 from zope.interface import implementer
-from zope.component import (
-    adapter,
-    getUtility,
-)
+from zope.component import adapter
+from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
-from archetypes.schemaextender.interfaces import (
-    IOrderableSchemaExtender,
-    IBrowserLayerAwareExtender,
-)
+from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
+from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
 from archetypes.schemaextender.field import ExtensionField
 from Products.Archetypes.utils import OrderedDict
-from Products.Archetypes.public import (
-    StringField,
-    FloatField,
-    BooleanField,
-    StringWidget,
-    SelectionWidget,
-)
-from Products.Archetypes.interfaces import (
-    IBaseObject,
-    IFieldDefaultProvider,
-)
+from Products.Archetypes.public import StringField
+from Products.Archetypes.public import FloatField
+from Products.Archetypes.public import BooleanField
+from Products.Archetypes.public import StringWidget
+from Products.Archetypes.public import SelectionWidget
+from Products.Archetypes.interfaces import IBaseObject
+from Products.Archetypes.interfaces import IFieldDefaultProvider
 try:
     from collective.contentleadimage.config import IMAGE_FIELD_NAME
     HAS_CLI = True
@@ -28,21 +20,15 @@ except:
     HAS_CLI = False
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.orders.interfaces import INotificationText
-from bda.plone.cart.interfaces import (
-    ICartItemDataProvider,
-    ICartItemStock,
-)
+from bda.plone.cart.interfaces import ICartItemDataProvider
+from bda.plone.cart.interfaces import ICartItemStock
 from bda.plone.cart import CartItemPreviewAdapterBase
-from .interfaces import (
-    IShopExtensionLayer,
-    IBuyable,
-)
-from .utils import (
-    get_shop_settings,
-    get_shop_article_settings,
-    get_shop_tax_settings,
-)
-from bda.plone.shop import message_factory as _
+from .interfaces import IShopExtensionLayer
+from .interfaces import IBuyable
+from .utils import get_shop_settings
+from .utils import get_shop_article_settings
+from .utils import get_shop_tax_settings
+from . import message_factory as _
 
 
 def field_value(obj, field_name):
