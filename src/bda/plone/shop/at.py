@@ -1,28 +1,29 @@
-from zope.interface import implementer
-from zope.component import adapter
-from zope.component import getUtility
-from zope.schema.interfaces import IVocabularyFactory
-from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
-from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
 from archetypes.schemaextender.field import ExtensionField
-from Products.Archetypes.utils import OrderedDict
-from Products.Archetypes.public import StringField
-from Products.Archetypes.public import FloatField
-from Products.Archetypes.public import BooleanField
-from Products.Archetypes.public import StringWidget
-from Products.Archetypes.public import SelectionWidget
-from Products.Archetypes.interfaces import IBaseObject
-from Products.Archetypes.interfaces import IFieldDefaultProvider
+from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
+from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
 try:
     from collective.contentleadimage.config import IMAGE_FIELD_NAME
     HAS_CLI = True
 except:
     HAS_CLI = False
-from bda.plone.shipping.interfaces import IShippingItem
-from bda.plone.orders.interfaces import INotificationText
 from bda.plone.cart.interfaces import ICartItemDataProvider
 from bda.plone.cart.interfaces import ICartItemStock
 from bda.plone.cart import CartItemPreviewAdapterBase
+from bda.plone.orders.interfaces import INotificationText
+from bda.plone.shipping.interfaces import IShippingItem
+from Products.Archetypes.atapi import BooleanField
+from Products.Archetypes.atapi import FloatField
+from Products.Archetypes.atapi import SelectionWidget
+from Products.Archetypes.atapi import StringWidget
+from Products.Archetypes.atapi import StringField
+from Products.Archetypes.atapi import TextField
+from Products.Archetypes.interfaces import IBaseObject
+from Products.Archetypes.interfaces import IFieldDefaultProvider
+from Products.Archetypes.utils import OrderedDict
+from zope.component import adapter
+from zope.component import getUtility
+from zope.interface import implementer
+from zope.schema.interfaces import IVocabularyFactory
 from .interfaces import IShopExtensionLayer
 from .interfaces import IBuyable
 from .utils import get_shop_settings
@@ -50,6 +51,7 @@ def set_field_value(obj, field_name, value):
 class XStringField(ExtensionField, StringField): pass
 class XFloatField(ExtensionField, FloatField): pass
 class XBooleanField(ExtensionField, BooleanField): pass
+class XTextField(ExtensionField, TextField): pass
 
 
 @implementer(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
@@ -323,3 +325,14 @@ class ATCartItemPreviewImage(CartItemPreviewAdapterBase):
                 img_scale = scales.scale(IMAGE_FIELD_NAME,
                                          scale=self.preview_scale)
         return img_scale and img_scale.url or ""
+
+
+class NotificationTextExtender(ExtenderBase):
+    """Schema extender for notification text.
+    """
+
+    layer = IShopExtensionLayer
+
+    fields = [
+
+    ]

@@ -1,13 +1,14 @@
+from Acquisition import aq_parent
 from zope import schema
 from zope.interface import implementer
-from zope.interface import alsoProvides
 from zope.interface import provider
 from zope.component import adapter
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.interfaces import IContextAwareDefaultFactory
+from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 from plone.supermodel import model
-from plone.autoform.interfaces import IFormFieldProvider
+from plone.autoform.directives import widget
 from plone.dexterity.interfaces import IDexterityContent
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.orders.interfaces import INotificationText
@@ -108,11 +109,8 @@ class IBuyableBehavior(model.Schema, IBuyable):
         defaultFactory=default_item_quantity_unit)
 
 
-alsoProvides(IBuyableBehavior, IFormFieldProvider)
-
-
 @implementer(ICartItemDataProvider)
-@adapter(IDexterityContent)
+@adapter(IBuyableBehavior)
 class DXCartItemDataProvider(object):
 
     def __init__(self, context):
@@ -176,11 +174,8 @@ class IStockBehavior(model.Schema):
         required=False)
 
 
-alsoProvides(IStockBehavior, IFormFieldProvider)
-
-
 @implementer(ICartItemStock)
-@adapter(IDexterityContent)
+@adapter(IStockBehavior)
 class DXCartItemStock(object):
     """Accessor Interface
     """
@@ -218,9 +213,6 @@ class IShippingBehavior(model.Schema):
         required=False)
 
 
-alsoProvides(IShippingBehavior, IFormFieldProvider)
-
-
 @implementer(IShippingItem)
 @adapter(IDexterityContent)
 class DXShippingItem(object):
@@ -247,3 +239,45 @@ class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
             scales = self.context.restrictedTraverse('@@images')
             img_scale = scales.scale("image", scale=self.preview_scale)
         return img_scale and img_scale.url or ""
+
+
+class INotificationTextBehavior(model.Schema):
+
+    widget("order_text", WysiwygFieldWidget)
+    order_text = schema.TextLine(
+        title=_(
+            u"order_notification_text",
+            default=u"Order Notification Text"
+        ),
+        required=False
+    )
+
+    widget("overbook_text", WysiwygFieldWidget)
+    overbook_text = schema.TextLine(
+        title=_(
+            u"overbook_notification_text",
+            default=u"Overbook Notification Text"
+        ),
+        required=False
+    )
+
+
+@implementer(INotificationText)
+@adapter(INotificationTextBehavior)
+class DXItemNotificationText(object):
+
+    @property
+    def order_text(self):
+        if self.context.order_text:
+            return self.context.order_text
+        parent = queryAdapter(aq_parent(INotificationTextBehaviour))
+        if parent:
+            return parent.order_text
+
+    @property
+    def overbook_text(self):
+        if self.context.overbook_text:
+            return self.context.overbook_text
+        parent = queryAdapter(aq_parent(INotificationTextBehaviour))
+        if parent:
+            return parent.overbook_text
