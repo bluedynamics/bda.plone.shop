@@ -122,7 +122,7 @@ alsoProvides(IBuyableBehavior, IFormFieldProvider)
 
 
 @implementer(ICartItemDataProvider)
-@adapter(IDexterityContent)
+@adapter(IBuyableBehavior)
 class DXCartItemDataProvider(object):
 
     def __init__(self, context):
@@ -190,7 +190,7 @@ alsoProvides(IStockBehavior, IFormFieldProvider)
 
 
 @implementer(ICartItemStock)
-@adapter(IDexterityContent)
+@adapter(IStockBehavior)
 class DXCartItemStock(object):
     """Accessor Interface
     """
@@ -257,3 +257,7 @@ class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
             scales = self.context.restrictedTraverse('@@images')
             img_scale = scales.scale("image", scale=self.preview_scale)
         return img_scale and img_scale.url or ""
+
+@implementer(INotificationText)
+@adapter()
+class
