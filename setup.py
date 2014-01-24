@@ -38,13 +38,11 @@ setup(
         'plone.api',
         'plone.app.registry',
         'plone.app.users',
-        'plone.directives.form',  # XXX: really here?
     ],
     extras_require={
         'test': [
             'Products.ATContentTypes',
-            'bda.plone.shop',
-            'plone.app.contenttypes',
+            'plone.app.dexterity',
             'plone.app.testing',
         ]
     },

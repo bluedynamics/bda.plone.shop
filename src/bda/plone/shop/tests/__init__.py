@@ -6,12 +6,6 @@ from plone.app.testing import PloneSandboxLayer
 from Products.CMFPlone.utils import getFSVersionTuple
 from ..interfaces import IShopExtensionLayer
 
-try:
-    import Products.DateRecurringIndex
-    PAC_11 = True
-except ImportError:
-    PAC_11 = False
-
 if getFSVersionTuple()[0] >= 5:
     PLONE5 = 1
 else:
@@ -71,20 +65,12 @@ class ShopDXLayer(PloneSandboxLayer):
     defaultBases = (Shop_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
-        # case plone.app.contenttypes > 1.0
-        if PAC_11:
-            z2.installProduct(app, 'Products.DateRecurringIndex')
-        import plone.app.contenttypes
-        self.loadZCML(package=plone.app.contenttypes,
+        import plone.app.dexterity
+        self.loadZCML(package=plone.app.dexterity,
                       context=configurationContext)
 
     def setUpPloneSite(self, portal):
-        self.applyProfile(portal, 'plone.app.contenttypes:default')
-
-    def tearDownZope(self, app):
-        # case plone.app.contenttypes > 1.0
-        if PAC_11:
-            z2.uninstallProduct(app, 'Products.DateRecurringIndex')
+        self.applyProfile(portal, 'plone.app.dexterity:default')
 
 
 ShopDX_FIXTURE = ShopDXLayer()

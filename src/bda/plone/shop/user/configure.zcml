@@ -16,46 +16,51 @@
     provides="plone.z3cform.fieldsets.interfaces.IFormExtender"/>
 
   <adapter
-      provides=".userdata.IAddress"
-      for="plone.app.layout.navigation.interfaces.INavigationRoot"
-      factory=".userdata.UserDataSchemaAdapter"
-      />
+    provides=".userdata.IAddress"
+    for="plone.app.layout.navigation.interfaces.INavigationRoot"
+    factory=".userdata.UserDataSchemaAdapter"/>
 
   <!-- Adapter for member data retrieval in bda.plone.checkout -->
   <adapter factory=".userdata.CheckoutFormMemberPresets"/>
 
   <subscriber
-      for="Products.PluggableAuthService.interfaces.events.IPrincipalCreatedEvent"
-      handler=".userrole.add_customer_role"/>
+    for="Products.PluggableAuthService.interfaces.events.IPrincipalCreatedEvent"
+    handler=".userrole.add_customer_role"/>
 
   <!-- order views -->
-  <configure package="bda.plone.orders.browser"><!-- relative imports from bporders -->
+  <configure package="bda.plone.orders.browser">
+
+  <!-- relative imports from bda.plone.orders -->
   <browser:page
-      for="*"
-      name="orders"
-      template="view.pt"
-      permission="zope2.View"
-      layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+    for="*"
+    name="orders"
+    template="view.pt"
+    permission="zope2.View"
+    layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+
   <browser:page
-      for="*"
-      name="orderstable"
-      template="orders.pt"
-      class="bda.plone.shop.user.orders.UserOrdersTable"
-      permission="zope2.View"
-      layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+    for="*"
+    name="orderstable"
+    template="orders.pt"
+    class="bda.plone.shop.user.orders.UserOrdersTable"
+    permission="zope2.View"
+    layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+
   <browser:page
-      for="*"
-      name="ordersdata"
-      class="bda.plone.shop.user.orders.UserOrdersData"
-      permission="zope2.View"
-      layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+    for="*"
+    name="ordersdata"
+    class="bda.plone.shop.user.orders.UserOrdersData"
+    permission="zope2.View"
+    layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+
   <browser:page
-      for="*"
-      name="order"
-      template="order.pt"
-      class="bda.plone.orders.browser.views.OrderView"
-      permission="zope2.View"
-      layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+    for="*"
+    name="order"
+    template="order.pt"
+    class="bda.plone.orders.browser.views.OrderView"
+    permission="zope2.View"
+    layer="bda.plone.shop.interfaces.IShopExtensionLayer"/>
+
   </configure>
 
 </configure>

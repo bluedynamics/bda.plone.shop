@@ -9,29 +9,29 @@ TESTCASES
 - create member, check if it's in Customer role
 
 
+rnixx
+-----
 
-implementiert der robert:
 - darf anon benutzer einkaufen?
 - darf anon benutzer preise sehen?
 
 
-
-
 @@orders
+--------
+
 - perm. checks in code. eine view.
 - req. parameter mit username.
 
---- export auch angepasst
+- export auch angepasst
 
--- enable vendor action
---- vendor_uid ===> context uid ===> index in soup von booking.
-        if no vendor set, use Plone Site uid / 
+- enable vendor action
 
+- vendor_uid ===> context uid ===> index in soup von booking.
+        if no vendor set, use Plone Site uid /
 
-XXX--- folder mit FTI vendor
+- XXX: folder mit FTI vendor
 
-XXX--- buyable uid
-
+- XXX: buyable uid
 
 
 should orders be canceled on smtperrors?
@@ -47,8 +47,6 @@ Traceback (most recent call last):
 SMTPRecipientsRefused: {'admin@admin.admin': (450, '4.1.2 <admin@admin.admin>: Recipient address rejected: Domain not found')}
 
 
-
-
 Mandantenfähigkeit
 ==================
 
@@ -60,10 +58,6 @@ Mandantenfähigkeit
   - mandant-typ? shop-typ?
   - mandant-permission auf context, alle bestellungen innerhalb dieses pfads?
 
-
 - usecase - user bestellt bei verschiedenen mandanten.
   - unterschiedliche carts?
   - oder zusammengefasste bestellung?
-
-
-

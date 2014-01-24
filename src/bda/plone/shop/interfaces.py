@@ -3,7 +3,7 @@ from zope import schema
 from zope.interface import alsoProvides
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from plone.supermodel import model
-from plone.directives import form
+from plone.autoform.directives import widget
 from bda.plone.cart.interfaces import ICartItem
 from bda.plone.orders.interfaces import IOrdersExtensionLayer
 from . import message_factory as _
@@ -124,7 +124,7 @@ class IShopArticleSettings(model.Schema):
             ],
         )
 
-    form.widget(quantity_units=CheckBoxFieldWidget)
+    widget('quantity_units', CheckBoxFieldWidget)
     quantity_units = schema.List(
         title=_(u"label_quantity_units",
                 default=u"Specify quantity units allowed in shop."),
@@ -210,7 +210,7 @@ class IShopTaxSettings(model.Schema):
             ],
         )
 
-    form.widget(vat=CheckBoxFieldWidget)
+    widget('vat', CheckBoxFieldWidget)
     vat = schema.List(
         title=_(u"label_vat", default=u'VAT in %'),
         description=_(u"help_vat",
