@@ -11,7 +11,8 @@
     action turning object into buyable.
   -->
   <!--
-  <class class="Products.Archetypes.BaseObject.BaseObject">
+  <class zcml:condition="installed Products.Archetypes"
+         class="Products.Archetypes.BaseObject.BaseObject">
     <implements interface="bda.plone.shop.interfaces.IPotentiallyBuyable" />
   </class>
   -->
@@ -20,11 +21,11 @@
     Set this interface on desired content class in order to turn object
     into buyable directly.
   -->
-  <!--
-  <class class="Products.Archetypes.BaseObject.BaseObject">
+  <class zcml:condition="installed Products.Archetypes"
+         class="Products.Archetypes.BaseObject.BaseObject">
     <implements interface="bda.plone.shop.interfaces.IBuyable" />
   </class>
-  -->
+  <!--  -->
 
   <include package="plone.app.registry" />
   <include package="archetypes.schemaextender" />
@@ -104,6 +105,13 @@
     factory=".at.ShippingExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="bda.plone.shop.notificationtext"
+    factory=".at.NotificationTextExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+
   <!-- cart related AT adapters -->
   <adapter
     zcml:condition="installed Products.Archetypes"
@@ -124,23 +132,34 @@
   <!-- DX behaviors -->
   <plone:behavior
     zcml:condition="installed plone.dexterity"
-    title="Buyable Behavior"
-    description="Make content type buyable."
+    title="Shop: Buyable Behavior"
+    description="Makes content type buyable."
     provides=".dx.IBuyableBehavior"
+    factory=".dx.IBuyableBehavior"
     for="plone.dexterity.interfaces.IDexterityContent" />
 
   <plone:behavior
     zcml:condition="installed plone.dexterity"
-    title="Stock Behavior"
-    description="Manage stock of buyable item."
+    title="Shop: Stock Behavior"
+    description="Manages stock of buyable item."
     provides=".dx.IStockBehavior"
+    factory=".dx.IStockBehavior"
     for="plone.dexterity.interfaces.IDexterityContent" />
 
   <plone:behavior
     zcml:condition="installed plone.dexterity"
-    title="Shipping Behavior"
-    description="Manage shipping information of item."
+    title="Shop: Shipping Behavior"
+    description="Manages shipping information of item."
     provides=".dx.IShippingBehavior"
+    factory=".dx.IShippingBehavior"
+    for="plone.dexterity.interfaces.IDexterityContent" />
+
+  <plone:behavior
+    zcml:condition="installed plone.dexterity"
+    title="Shop: Order Notification Text Behavior"
+    description="Manages notification text of item for order."
+    provides=".dx.INotificationTextBehavior"
+    factory=".dx.INotificationTextBehavior"
     for="plone.dexterity.interfaces.IDexterityContent" />
 
   <!-- cart related DX adapters -->
@@ -159,5 +178,9 @@
   <adapter
     zcml:condition="installed plone.dexterity"
     factory=".dx.DXCartItemPreviewImage" />
+
+  <adapter
+    zcml:condition="installed plone.dexterity"
+    factory=".dx.DXNotificationText" />
 
 </configure>

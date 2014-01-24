@@ -6,9 +6,8 @@ from zope.component import adapter
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.interfaces import IContextAwareDefaultFactory
-from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
+from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
-from plone.autoform.directives import widget
 from plone.dexterity.interfaces import IDexterityContent
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.orders.interfaces import INotificationText
@@ -57,6 +56,7 @@ def default_item_quantity_unit(context):
     return get_shop_article_settings().default_item_quantity_unit
 
 
+@provider(IFormFieldProvider)
 class IBuyableBehavior(model.Schema, IBuyable):
     """Buyable behavior.
     """
@@ -157,6 +157,7 @@ class DXCartItemDataProvider(object):
                 return term.title
 
 
+@provider(IFormFieldProvider)
 class IStockBehavior(model.Schema):
     """Stock behavior.
     """
@@ -200,6 +201,7 @@ class DXCartItemStock(object):
     overbook = property(_get_overbook, _set_overbook)
 
 
+@provider(IFormFieldProvider)
 class IShippingBehavior(model.Schema):
     """Shipping behavior.
     """
@@ -241,36 +243,45 @@ class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
         return img_scale and img_scale.url or ""
 
 
+@provider(IFormFieldProvider)
 class INotificationTextBehavior(model.Schema):
 
-    widget("order_text", WysiwygFieldWidget)
-    order_text = schema.TextLine(
+    model.fieldset('shop',
+            label=u"Shop",
+            fields=[
+                'order_text',
+                'overbook_text',
+            ]
+    )
+
+    order_text = schema.Text(
         title=_(
-            u"order_notification_text",
+            u"label_order_notification_text",
             default=u"Order Notification Text"
         ),
         required=False
     )
 
-    widget("overbook_text", WysiwygFieldWidget)
-    overbook_text = schema.TextLine(
+    overbook_text = schema.Text(
         title=_(
-            u"overbook_notification_text",
+            u"label_overbook_notification_text",
             default=u"Overbook Notification Text"
         ),
         required=False
     )
 
-
 @implementer(INotificationText)
 @adapter(INotificationTextBehavior)
-class DXItemNotificationText(object):
+class DXNotificationText(object):
 
     @property
     def order_text(self):
         if self.context.order_text:
             return self.context.order_text
-        parent = queryAdapter(aq_parent(INotificationTextBehaviour))
+        parent = queryAdapter(
+            aq_parent(self.context),
+            INotificationTextBehaviour
+        )
         if parent:
             return parent.order_text
 
@@ -278,6 +289,9 @@ class DXItemNotificationText(object):
     def overbook_text(self):
         if self.context.overbook_text:
             return self.context.overbook_text
-        parent = queryAdapter(aq_parent(INotificationTextBehaviour))
+        parent = queryAdapter(
+            aq_parent(self.context),
+            INotificationTextBehaviour
+        )
         if parent:
             return parent.overbook_text
