@@ -4,13 +4,10 @@ from repoze.catalog.query import Any
 from repoze.catalog.query import Contains
 from repoze.catalog.query import Eq
 from souper.soup import get_soup
-from yafowil.utils import Tag
 from plone.uuid.interfaces import IUUID
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from bda.plone.orders import message_factory as _bpo
 from bda.plone.orders.browser.views import OrdersTable
 from bda.plone.orders.browser.views import TableData
-from bda.plone.orders.browser.views import Translate
 from ..utils import get_vendor_areas
 from .. import message_factory as _
 

@@ -182,6 +182,10 @@ class UserDataPanelExtender(extensible.FormExtender):
     adapts(Interface, IShopExtensionLayer, UserDataPanel)
 
     def update(self):
+        # Remove fields, where our schema has substitudes
+        self.remove('fullname')
+        self.remove('location')
+
         fields = field.Fields(IAddress)
         fields = fields.omit('accept')  # Users have already accepted.
         self.add(fields, prefix="delivery")
@@ -191,6 +195,10 @@ class RegistrationPanelExtender(extensible.FormExtender):
     adapts(Interface, IShopExtensionLayer, RegistrationForm)
 
     def update(self):
+        # Remove fields, where our schema has substitudes
+        self.remove('fullname')
+        self.remove('location')
+
         fields = field.Fields(IAddress)
         self.add(fields, prefix="delivery")
 
@@ -199,6 +207,10 @@ class AddUserFormExtender(extensible.FormExtender):
     adapts(Interface, IShopExtensionLayer, AddUserForm)
 
     def update(self):
+        # Remove fields, where our schema has substitudes
+        self.remove('fullname')
+        self.remove('location')
+
         fields = field.Fields(IAddress)
         # management form doesn't need this field
         fields = fields.omit('accept')
