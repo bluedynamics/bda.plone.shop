@@ -1,10 +1,8 @@
 from zope.i18n import translate
 from Products.Five import BrowserView
-from bda.plone.cart import (
-    get_data_provider,
-    get_item_data_provider,
-    get_item_availability,
-)
+from bda.plone.cart import get_data_provider
+from bda.plone.cart import get_item_data_provider
+from bda.plone.cart import get_item_availability
 from bda.plone.cart.browser import DataProviderMixin
 
 

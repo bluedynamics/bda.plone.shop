@@ -1,18 +1,18 @@
+import plone.api as ploneapi
 from AccessControl import Unauthorized
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from bda.plone.orders import message_factory as _bpo
-from bda.plone.orders.browser.views import OrdersTable
-from bda.plone.orders.browser.views import TableData
-from bda.plone.orders.browser.views import Translate
-from bda.plone.shop import message_factory as _
-from bda.plone.shop.utils import get_vendor_shops
-from plone.uuid.interfaces import IUUID
 from repoze.catalog.query import Any
 from repoze.catalog.query import Contains
 from repoze.catalog.query import Eq
 from souper.soup import get_soup
 from yafowil.utils import Tag
-import plone.api as ploneapi
+from plone.uuid.interfaces import IUUID
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from bda.plone.orders import message_factory as _bpo
+from bda.plone.orders.browser.views import OrdersTable
+from bda.plone.orders.browser.views import TableData
+from bda.plone.orders.browser.views import Translate
+from ..utils import get_vendor_shops
+from .. import message_factory as _
 
 
 class UserOrdersTable(OrdersTable):

@@ -1,20 +1,20 @@
-from Products.CMFPlone.utils import getToolByName
-from bda.plone.checkout.interfaces import ICheckoutFormPresets
-from bda.plone.checkout.vocabularies import get_pycountry_name
-from bda.plone.shop import message_factory as _
-from bda.plone.shop.interfaces import IShopExtensionLayer
+from zope import schema
+from zope.component import adapter
+from zope.component import adapts
+from zope.interface import Interface
+from zope.interface import implementer
 from node.utils import UNSET
+from Products.CMFPlone.utils import getToolByName
 from plone.app.users.browser.account import AccountPanelSchemaAdapter
 from plone.app.users.browser.register import RegistrationForm, AddUserForm
 from plone.app.users.browser.userdatapanel import UserDataPanel
 from plone.supermodel import model
 from plone.z3cform.fieldsets import extensible
 from z3c.form import field
-from zope import schema
-from zope.component import adapter
-from zope.component import adapts
-from zope.interface import Interface
-from zope.interface import implementer
+from bda.plone.checkout.interfaces import ICheckoutFormPresets
+from bda.plone.checkout.vocabularies import get_pycountry_name
+from ..interfaces import IShopExtensionLayer
+from .. import message_factory as _
 
 
 def validate_accept(value):

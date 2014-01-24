@@ -1,34 +1,24 @@
 from zope import schema
-from zope.interface import (
-    implementer,
-    alsoProvides,
-    provider,
-)
-from zope.component import (
-    adapter,
-    getUtility,
-)
-from zope.schema.interfaces import (
-    IVocabularyFactory,
-    IContextAwareDefaultFactory,
-)
+from zope.interface import implementer
+from zope.interface import alsoProvides
+from zope.interface import provider
+from zope.component import adapter
+from zope.component import getUtility
+from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.interfaces import IContextAwareDefaultFactory
 from plone.supermodel import model
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.orders.interfaces import INotificationText
-from bda.plone.cart.interfaces import (
-    ICartItemDataProvider,
-    ICartItemStock,
-)
+from bda.plone.cart.interfaces import ICartItemDataProvider
+from bda.plone.cart.interfaces import ICartItemStock
 from bda.plone.cart import CartItemPreviewAdapterBase
 from .interfaces import IBuyable
-from .utils import (
-    get_shop_settings,
-    get_shop_article_settings,
-    get_shop_tax_settings,
-)
-from bda.plone.shop import message_factory as _
+from .utils import get_shop_settings
+from .utils import get_shop_article_settings
+from .utils import get_shop_tax_settings
+from . import message_factory as _
 
 
 @provider(IContextAwareDefaultFactory)

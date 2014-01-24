@@ -3,7 +3,7 @@ from zope.security import checkPermission
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from bda.plone.shop import message_factory as _
+from .. import message_factory as _
 
 
 class IShopAdminPortlet(IPortletDataProvider):
