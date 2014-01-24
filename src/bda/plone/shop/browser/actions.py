@@ -2,7 +2,7 @@ from zope.container.interfaces import IContainer
 from zope.interface import directlyProvides
 from zope.interface import noLongerProvides
 from Products.Five.browser import BrowserView
-from bda.plone.orders.interfaces import ISubShop
+from bda.plone.orders.interfaces import IVendor
 from ..interfaces import IBuyable
 from ..interfaces import IPotentiallyBuyable
 from .. import message_factory as _
@@ -40,7 +40,6 @@ class EnableDisableFeature(BrowserView):
 
 
 class BuyableAction(EnableDisableFeature):
-
     FeatureIface = IBuyable
     PotentialFeatureIface = IPotentiallyBuyable
     enable_message = _(u'enabled_buyable', u'Enabled Buyable.')
@@ -48,8 +47,7 @@ class BuyableAction(EnableDisableFeature):
 
 
 class SubShopAction(EnableDisableFeature):
-
-    FeatureIface = ISubShop
+    FeatureIface = IVendor
     PotentialFeatureIface = IContainer
     enable_message = _(u'enabled_subshop', u'Enabled Subshop.')
     disable_message = _(u'disabled_subshop', u'Disabled Subshop.')

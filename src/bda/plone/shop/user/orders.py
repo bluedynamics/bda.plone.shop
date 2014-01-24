@@ -11,7 +11,7 @@ from bda.plone.orders import message_factory as _bpo
 from bda.plone.orders.browser.views import OrdersTable
 from bda.plone.orders.browser.views import TableData
 from bda.plone.orders.browser.views import Translate
-from ..utils import get_vendor_shops
+from ..utils import get_vendor_areas
 from .. import message_factory as _
 
 
@@ -121,7 +121,7 @@ def get_allowed_orders(context, vendor=None):
     >>> [it.attrs['order_uid'] for it in soup.query(Eq('creator', 'test'))]
 
     """
-    manageable_shops = get_vendor_shops(vendor)
+    manageable_shops = get_vendor_areas(vendor)
     query = Any('shop_uid', [IUUID(it) for it in manageable_shops])
     soup = get_soup('bda_plone_orders_bookings', context)
     res = soup.query(query)
