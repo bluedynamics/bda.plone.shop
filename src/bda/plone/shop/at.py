@@ -17,6 +17,7 @@ from Products.Archetypes.atapi import SelectionWidget
 from Products.Archetypes.atapi import StringWidget
 from Products.Archetypes.atapi import StringField
 from Products.Archetypes.atapi import TextField
+from Products.Archetypes.atapi import TextAreaWidget
 from Products.Archetypes.interfaces import IBaseObject
 from Products.Archetypes.interfaces import IFieldDefaultProvider
 from Products.Archetypes.utils import OrderedDict
@@ -334,5 +335,30 @@ class NotificationTextExtender(ExtenderBase):
     layer = IShopExtensionLayer
 
     fields = [
-
+        XTextField(
+            name='order_text',
+            schemata='Shop',
+            default_content_type="text/plain",
+            allowable_content_types=('text/plain',),
+            default_output_type="text/plain",
+            widget=TextAreaWidget(
+                label=_(
+                    u'label_order_notification_text',
+                    u'Order Notification Text'
+                ),
+            ),
+        ),
+        XTextField(
+            name='overbook_text',
+            schemata='Shop',
+            default_content_type="text/plain",
+            allowable_content_types=('text/plain',),
+            default_output_type="text/plain",
+            widget=TextAreaWidget(
+                label=_(
+                    u'label_overbook_notification_text',
+                    u'Overbooked Notification Text'
+                ),
+            ),
+        ),
     ]

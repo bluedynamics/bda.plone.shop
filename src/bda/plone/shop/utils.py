@@ -1,7 +1,5 @@
-import plone.api as ploneapi
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
-from bda.plone.orders.interfaces import IVendor
 from .interfaces import IShopArticleSettings
 from .interfaces import IShopCartSettings
 from .interfaces import IShopSettings
@@ -27,31 +25,3 @@ def get_shop_cart_settings():
 
 def get_shop_shipping_settings():
     return getUtility(IRegistry).forInterface(IShopShippingSettings)
-
-
-def get_all_vendors():
-    cat = ploneapi.portal.get_tool('portal_catalog')
-    query = {}
-    query['object_provides'] = IVendor.__identifier__
-    res = cat.searchResults(query)
-    res = [it.getObject() for it in res]
-    root = ploneapi.portal.get()
-    if not IVendor.providedBy(root):
-        res.append(root)
-    return res
-
-
-def get_vendor_areas(vendor=None):
-    if not vendor:
-        vendor = ploneapi.user.get_current()
-    all_vendors = get_all_vendors()
-    try:
-        vendor_shops = [
-            shop for shop in all_vendors
-            if ploneapi.user.get_permissions(user=vendor, obj=shop).get(
-                'bda.plone.shop: View vendor orders')
-        ]
-    except ploneapi.exc.UserNotFoundError:
-        # might be Zope root user
-        return []
-    return vendor_shops

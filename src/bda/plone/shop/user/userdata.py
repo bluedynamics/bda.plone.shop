@@ -67,7 +67,6 @@ class IAddress(model.Schema):
         description=_(u'help_company'),
         required=False,
     )
-
     street = schema.TextLine(
         title=_(u'label_street', default=u'Street'),
         description=_(u'help_street', default=u''),
@@ -89,7 +88,6 @@ class IAddress(model.Schema):
         required=True,
         vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
-
     delivery_alternative_delivery = schema.Bool(
         title=_(u'label_alternative_delivery',
                 default=u'Alternative delivery address'),
@@ -98,7 +96,6 @@ class IAddress(model.Schema):
                               u"address."),
         required=False,
     )
-
     # Delivery Address
     delivery_firstname = schema.TextLine(
         title=_(u'label_firstname', default=u'First name'),
@@ -145,7 +142,6 @@ class IAddress(model.Schema):
                       default=u"Leave your phone number so we can reach you."),
         required=False,
     )
-
     accept = schema.Bool(
         title=_(u'label_accept', default=u'Accept terms of use'),
         description=_(u'help_accept',
