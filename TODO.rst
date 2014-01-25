@@ -1,3 +1,25 @@
+unify naming:
+
+    shop_uid -> vendor_area_uid
+
+    is vendor really the right wording? then we need to rename vendor role to
+    seller, since it's assigned individual sellers.
+    vendors expect their area to be their shop, so ISubShop makes sense to me
+
+
+order view:
+    calculate sums from allowed bookings
+
+
+BUGS
+=========
+
+- checkout - six payment - canceling six payment process with "back" button
+  (some warnings are displayed by the browser...) -> the order is already
+  stored! in that case, the order needs to be cleared.
+
+
+
 TESTCASES
 =========
 
