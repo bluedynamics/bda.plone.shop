@@ -1,14 +1,8 @@
 Changelog
 =========
 
-0.4
----
-
-- Implement multi client functionality with Shop Admin, Vendor and Customer
-  role and restrict views and results to those, which the individual roles are
-  allowed to see.
-  TODO: not finished yet...
-  [thet]
+0.5dev
+------
 
 - Allow portal member to store billing and delivery address information and use
   these as defaults for the checkout process.
@@ -16,6 +10,10 @@ Changelog
 
 - Fix BrowserLayer order precedence.
   [thet]
+
+
+0.4
+---
 
 - Deprecate ``bda.plone.shop.extender`` and ``bda.plone.shop.behaviors``.
   [rnix]

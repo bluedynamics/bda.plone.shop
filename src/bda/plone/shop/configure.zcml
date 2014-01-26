@@ -21,11 +21,12 @@
     Set this interface on desired content class in order to turn object
     into buyable directly.
   -->
+  <!--
   <class zcml:condition="installed Products.Archetypes"
          class="Products.Archetypes.BaseObject.BaseObject">
     <implements interface="bda.plone.shop.interfaces.IBuyable" />
   </class>
-  <!--  -->
+  -->
 
   <include package="plone.app.registry" />
   <include package="archetypes.schemaextender" />

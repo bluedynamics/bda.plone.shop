@@ -3,8 +3,8 @@ from setuptools import setup
 from setuptools import find_packages
 
 
-version = '0.4'
-shortdesc = "Shop"
+version = '0.5dev'
+shortdesc = "Shop Solution for Plone"
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'CHANGES.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'LICENSE.rst')).read()

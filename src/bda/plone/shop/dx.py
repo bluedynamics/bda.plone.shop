@@ -61,15 +61,16 @@ class IBuyableBehavior(model.Schema, IBuyable):
     """Buyable behavior.
     """
 
-    model.fieldset('shop',
-            label=u"Shop",
-            fields=['item_net',
-                    'item_vat',
-                    'item_display_gross',
-                    'item_comment_enabled',
-                    'item_comment_required',
-                    'item_quantity_unit_float',
-                    'item_quantity_unit'])
+    model.fieldset(
+        'shop',
+        label=u"Shop",
+        fields=['item_net',
+                'item_vat',
+                'item_display_gross',
+                'item_comment_enabled',
+                'item_comment_required',
+                'item_quantity_unit_float',
+                'item_quantity_unit'])
 
     item_net = schema.Float(
         title=_(u'label_item_net', default=u'Item net price'),
@@ -162,9 +163,10 @@ class IStockBehavior(model.Schema):
     """Stock behavior.
     """
 
-    model.fieldset('shop',
-            label=u"Shop",
-            fields=['item_available', 'item_overbook'])
+    model.fieldset(
+        'shop',
+        label=u"Shop",
+        fields=['item_available', 'item_overbook'])
 
     item_available = schema.Float(
         title=_(u'label_item_available', default=u'Item stock available'),
@@ -206,9 +208,10 @@ class IShippingBehavior(model.Schema):
     """Shipping behavior.
     """
 
-    model.fieldset('shop',
-            label=u"Shop",
-            fields=['shipping_item_weight'])
+    model.fieldset(
+        'shop',
+        label=u"Shop",
+        fields=['shipping_item_weight'])
 
     shipping_item_weight = schema.Float(
         title=_(u'label_shipping_item_weight', default=u'Item Weight'),
@@ -216,7 +219,7 @@ class IShippingBehavior(model.Schema):
 
 
 @implementer(IShippingItem)
-@adapter(IDexterityContent)
+@adapter(IShippingBehavior)
 class DXShippingItem(object):
 
     def __init__(self, context):
@@ -246,29 +249,27 @@ class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
 @provider(IFormFieldProvider)
 class INotificationTextBehavior(model.Schema):
 
-    model.fieldset('shop',
-            label=u"Shop",
-            fields=[
-                'order_text',
-                'overbook_text',
-            ]
-    )
+    model.fieldset(
+        'shop',
+        label=u"Shop",
+        fields=[
+            'order_text',
+            'overbook_text'])
 
     order_text = schema.Text(
         title=_(
             u"label_order_notification_text",
             default=u"Order Notification Text"
         ),
-        required=False
-    )
+        required=False)
 
     overbook_text = schema.Text(
         title=_(
             u"label_overbook_notification_text",
             default=u"Overbook Notification Text"
         ),
-        required=False
-    )
+        required=False)
+
 
 @implementer(INotificationText)
 @adapter(INotificationTextBehavior)
