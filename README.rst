@@ -104,13 +104,13 @@ If you want to control the viewlets via ``@@manage-viewlets`` for the whole
 portal at once, use one of the following links directly (the portlet is not
 shown in @@manage-viewlets, if the context is not a buyable item):
 
-__ http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.abovecontentbody%3Abda.plone.shop.buyable
+http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.abovecontentbody%3Abda.plone.shop.buyable
 
-__ http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.abovecontentbody%3Abda.plone.shop.buyable
+http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.abovecontentbody%3Abda.plone.shop.buyable
 
-__ http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.belowcontentbody%3Abda.plone.shop.buyable
+http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.belowcontentbody%3Abda.plone.shop.buyable
 
-__ http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.belowcontentbody%3Abda.plone.shop.buyable
+http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.belowcontentbody%3Abda.plone.shop.buyable
 
 
 Cart item preview images
