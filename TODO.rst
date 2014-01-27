@@ -1,3 +1,9 @@
+Hannes Scratchpad
+-----------------
+
+    >>> [it[1].attrs['vendor_uid'] for it in soup.data.items()]
+    >>> [it.attrs['order_uid'] for it in soup.query(Eq('creator', 'test'))]
+
 
 unify naming
 ------------
