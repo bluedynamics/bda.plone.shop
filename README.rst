@@ -93,6 +93,26 @@ portal type via GenericSetup or use the Dexterity TTW Editor to assign the
 behaviors to existing content, or create new type(s) TTW from scratch.
 
 
+Hide/Show viewlets for buyable items
+------------------------------------
+
+The bda.plone.shop.buyable viewlet is registered twice for buyable items - once
+above the content body and once below. You can control the display via standard
+``viewlets.xml`` GenericSetup profile mechanisms or manually via the
+``@@manage-viewlets`` on individual buyable items.
+If you want to control the viewlets via ``@@manage-viewlets`` for the whole
+portal at once, use one of the following links directly (the portlet is not
+shown in @@manage-viewlets, if the context is not a buyable item):
+
+__ http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.abovecontentbody%3Abda.plone.shop.buyable
+
+__ http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.abovecontentbody%3Abda.plone.shop.buyable
+
+__ http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.belowcontentbody%3Abda.plone.shop.buyable
+
+__ http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.belowcontentbody%3Abda.plone.shop.buyable
+
+
 Cart item preview images
 ------------------------
 
