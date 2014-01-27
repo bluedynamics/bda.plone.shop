@@ -46,42 +46,42 @@
       <property name="visible">True</property>
     </object>
 
-    <object name="enableSubshop"
+    <object name="enableVendor"
             meta_type="CMF Action"
             i18n:domain="bda.plone.shop">
       <property name="title" i18n:translate="">
-          Enable Subshop
+          Enable Vendor Area
       </property>
       <property name="description" i18n:translate="">
-          Activate subshop on this context
+          Activate vendor area on this context
       </property>
       <property name="url_expr">
-          string:${object/absolute_url}/@@enable-subshop
+          string:${object/absolute_url}/@@enable-vendor
       </property>
       <property name="icon_expr"></property>
       <property name="available_expr">
-          object/@@is-possible-to-enable-subshop
+          object/@@is-possible-to-enable-vendor
       </property>
       <property name="permissions">
           <element value="Modify portal content" />
       </property>
       <property name="visible">True</property>
     </object>
-    <object name="disableSubshop"
+    <object name="disableVendor"
             meta_type="CMF Action"
             i18n:domain="bda.plone.shop">
       <property name="title" i18n:translate="">
-          Disable Subshop
+          Disable Vendor Area
       </property>
       <property name="description" i18n:translate="">
-          Deactivates subshop on Item
+          Deactivates vendor area on this context
       </property>
       <property name="url_expr">
-          string:${object/absolute_url}/@@disable-subshop
+          string:${object/absolute_url}/@@disable-vendor
       </property>
       <property name="icon_expr"></property>
       <property name="available_expr">
-          object/@@is-possible-to-disable-subshop
+          object/@@is-possible-to-disable-vendor
       </property>
       <property name="permissions">
           <element value="Modify portal content" />

@@ -81,36 +81,36 @@
     permission="cmf.ModifyPortalContent"
     layer="..interfaces.IShopExtensionLayer" />
 
-  <!-- enable subshop -->
+  <!-- enable vendor area -->
   <browser:page
-    name="enable-subshop"
+    name="enable-vendor"
     attribute="enableFeature"
     for="zope.container.interfaces.IContainer"
-    class=".actions.SubShopAction"
+    class=".actions.VendorAction"
     permission="cmf.ModifyPortalContent"
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:page
-    name="disable-subshop"
+    name="disable-vendor"
     attribute="disableFeature"
     for="zope.container.interfaces.IContainer"
-    class=".actions.SubShopAction"
+    class=".actions.VendorAction"
     permission="cmf.ModifyPortalContent"
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:page
-    name="is-possible-to-enable-subshop"
+    name="is-possible-to-enable-vendor"
     attribute="isPossibleToEnableFeature"
     for="*"
-    class=".actions.SubShopAction"
+    class=".actions.VendorAction"
     permission="cmf.ModifyPortalContent"
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:page
-    name="is-possible-to-disable-subshop"
+    name="is-possible-to-disable-vendor"
     attribute="isPossibleToDisableFeature"
     for="*"
-    class=".actions.SubShopAction"
+    class=".actions.VendorAction"
     permission="cmf.ModifyPortalContent"
     layer="..interfaces.IShopExtensionLayer" />
 

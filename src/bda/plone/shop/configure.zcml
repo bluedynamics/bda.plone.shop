@@ -10,12 +10,10 @@
     Set this interface on desired content class in order to enable content
     action turning object into buyable.
   -->
-  <!--
   <class zcml:condition="installed Products.Archetypes"
          class="Products.Archetypes.BaseObject.BaseObject">
     <implements interface="bda.plone.shop.interfaces.IPotentiallyBuyable" />
   </class>
-  -->
 
   <!--
     Set this interface on desired content class in order to turn object

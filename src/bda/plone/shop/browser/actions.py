@@ -46,8 +46,8 @@ class BuyableAction(EnableDisableFeature):
     disable_message = _(u'disabled_buyable', u'Disabled Buyable.')
 
 
-class SubShopAction(EnableDisableFeature):
+class VendorAction(EnableDisableFeature):
     feature_iface = IVendor
     potential_feature_iface = IContainer
-    enable_message = _(u'enabled_subshop', u'Enabled Subshop.')
-    disable_message = _(u'disabled_subshop', u'Disabled Subshop.')
+    enable_message = _(u'enabled_vendor', u'Enabled Vendor.')
+    disable_message = _(u'disabled_vendor', u'Disabled Vendor.')
