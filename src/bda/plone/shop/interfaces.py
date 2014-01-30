@@ -1,4 +1,5 @@
 from bda.plone.cart.interfaces import ICartItem
+from bda.plone.orders.interfaces import INotificationText
 from bda.plone.orders.interfaces import IOrdersExtensionLayer
 from plone.autoform.directives import widget
 from plone.supermodel import model
