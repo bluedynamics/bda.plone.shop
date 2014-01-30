@@ -1,11 +1,11 @@
-from zope.interface import Interface
-from zope import schema
-from zope.interface import provider
-from z3c.form.browser.checkbox import CheckBoxFieldWidget
-from plone.supermodel import model
-from plone.autoform.directives import widget
 from bda.plone.cart.interfaces import ICartItem
 from bda.plone.orders.interfaces import IOrdersExtensionLayer
+from plone.autoform.directives import widget
+from plone.supermodel import model
+from z3c.form.browser.checkbox import CheckBoxFieldWidget
+from zope import schema
+from zope.interface import Interface
+from zope.interface import provider
 from . import message_factory as _
 
 
