@@ -76,39 +76,46 @@ class IBuyableBehavior(model.Schema, IBuyable):
     item_net = schema.Float(
         title=_(u'label_item_net', default=u'Item net price'),
         required=False,
-        defaultFactory=default_item_net)
+        defaultFactory=default_item_net
+    )
 
     item_vat = schema.Choice(
         title=_(u'label_item_vat', default=u'Item VAT (in %)'),
         vocabulary='bda.plone.shop.vocabularies.VatVocabulary',
         required=False,
-        defaultFactory=default_item_vat)
+        defaultFactory=default_item_vat
+    )
 
     item_display_gross = schema.Bool(
         title=_(u'label_item_display_gross', default=u'Display Gross'),
         required=False,
-        defaultFactory=default_item_display_gross)
+        defaultFactory=default_item_display_gross
+    )
 
     item_comment_enabled = schema.Bool(
         title=_(u'label_item_comment_enabled', default='Comment enabled'),
         required=False,
-        defaultFactory=item_comment_enabled)
+        defaultFactory=item_comment_enabled
+    )
 
     item_comment_required = schema.Bool(
         title=_(u'label_item_comment_required', default='Comment required'),
         required=False,
-        defaultFactory=default_item_comment_required)
+        defaultFactory=default_item_comment_required
+    )
 
     item_quantity_unit_float = schema.Bool(
         title=_(u'label_item_quantity_unit_float', default='Quantity as float'),
         required=False,
-        defaultFactory=default_item_quantity_unit_float)
+        defaultFactory=default_item_quantity_unit_float
+    )
 
     item_quantity_unit = schema.Choice(
         title=_(u'label_item_quantity_unit', default='Quantity unit'),
         vocabulary='bda.plone.shop.vocabularies.QuantityUnitVocabulary',
         required=False,
-        defaultFactory=default_item_quantity_unit)
+        defaultFactory=default_item_quantity_unit
+    )
 
 
 @implementer(ICartItemDataProvider)
@@ -167,15 +174,18 @@ class IStockBehavior(model.Schema):
     model.fieldset(
         'shop',
         label=u"Shop",
-        fields=['item_available', 'item_overbook'])
+        fields=['item_available', 'item_overbook']
+    )
 
     item_available = schema.Float(
         title=_(u'label_item_available', default=u'Item stock available'),
-        required=False)
+        required=False
+    )
 
     item_overbook = schema.Float(
         title=_(u'label_item_overbook', default=u'Item stock overbook'),
-        required=False)
+        required=False
+    )
 
 
 @implementer(ICartItemStock)
@@ -212,11 +222,13 @@ class IShippingBehavior(model.Schema):
     model.fieldset(
         'shop',
         label=u"Shop",
-        fields=['shipping_item_weight'])
+        fields=['shipping_item_weight']
+    )
 
     shipping_item_weight = schema.Float(
         title=_(u'label_shipping_item_weight', default=u'Item Weight'),
-        required=False)
+        required=False
+    )
 
 
 @implementer(IShippingItem)
@@ -262,14 +274,16 @@ class INotificationTextBehavior(model.Schema):
             u"label_order_notification_text",
             default=u"Order Notification Text"
         ),
-        required=False)
+        required=False
+    )
 
     overbook_text = schema.Text(
         title=_(
             u"label_overbook_notification_text",
             default=u"Overbook Notification Text"
         ),
-        required=False)
+        required=False
+    )
 
 
 @implementer(INotificationText)  # adapter see zcml
