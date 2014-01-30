@@ -5,6 +5,8 @@ from plone.app.portlets.portlets import base
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from .. import message_factory as _
 
+import plone.api
+
 
 class IShopAdminPortlet(IPortletDataProvider):
     """A portlet rendering shop admin links.
@@ -22,6 +24,10 @@ class ShopAdminRenderer(base.Renderer):
     @property
     def show(self):
         return checkPermission('cmf.ModifyPortalContent', self.context)
+
+    @property
+    def current_user(self):
+        return plone.api.user.get_current().getId()
 
 
 class ShopAdminAddForm(base.NullAddForm):
