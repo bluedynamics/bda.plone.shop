@@ -34,7 +34,7 @@ class RegistryNotificationText(BubbleNotificationText):
     @property
     def order_text(self):
         registry = getUtility(IRegistry)
-        name = 'bda.plone.orders.interfaces.INotificationText.order_text'
+        name = 'bda.plone.shop.interfaces.INotificationTextSettings.order_text'
         order_text = registry.records.get(name, None)
         if order_text:
             return order_text
@@ -43,7 +43,7 @@ class RegistryNotificationText(BubbleNotificationText):
     @property
     def overbook_text(self):
         registry = getUtility(IRegistry)
-        name = 'bda.plone.orders.interfaces.INotificationText.overbook_text'
+        name = 'bda.plone.shop.interfaces.INotificationTextSettings.overbook_text'
         order_text = registry.records.get(name, None)
         if overbook_text:
             return overbook_text
