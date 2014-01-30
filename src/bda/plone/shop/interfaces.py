@@ -78,7 +78,7 @@ class IShopCartSettings(model.Schema):
 
     model.fieldset(
         'cart',
-        label=_(u'Cart Settings'),
+        label=_(u'Cart'),
         fields=[
             'disable_max_article',
             'summary_total_only',
@@ -134,7 +134,7 @@ class IShopArticleSettings(model.Schema):
 
     model.fieldset(
         'article',
-        label=_(u'Article Settings'),
+        label=_(u'Article'),
         fields=[
             'quantity_units',
             'default_item_net',
@@ -215,7 +215,7 @@ class IShopShippingSettings(model.Schema):
 
     model.fieldset(
         'shipping',
-        label=_(u'Shipping Settings'),
+        label=_(u'Shipping'),
         fields=[
             'include_shipping_costs',
             'shipping_method',
@@ -301,6 +301,29 @@ class INotificationTextSettings(model.Schema, INotificationText):
         title=_(
             u"label_overbook_notification_text",
             default=u"Overbook Notification Text"
+        ),
+        required=False
+    )
+
+
+@provider(IShopSettingsProvider)
+class IPaymentTextSettings(model.Schema):
+
+    model.fieldset(
+        'payment',
+        label=_(u'Payment'),
+        fields=[
+            'payment_text',
+        ],
+    )
+
+    # TODO: key value widget:
+    # - left payment type from bda.plone.payments.Payments
+    # - right text field with text for the type
+    payment_text = schema.Text(
+        title=_(
+            u"label_payment_text",
+            default=u"Payment Texts (TODO: Make dict-widget here)"
         ),
         required=False
     )
