@@ -21,13 +21,14 @@ AVAILABLE_QUANTITY_UNITS = {
 }
 
 
+@provider(IVocabularyFactory)
 def AvailableQuantityUnitVocabulary(context):
     # vocab is used in shop settings control panel
     items = AVAILABLE_QUANTITY_UNITS.items()
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-directlyProvides(AvailableQuantityUnitVocabulary, IVocabularyFactory)
 
 
+@provider(IVocabularyFactory)
 def QuantityUnitVocabulary(context):
     # vocab is used for buyable items
     settings = get_shop_article_settings()
@@ -38,7 +39,6 @@ def QuantityUnitVocabulary(context):
         title = AVAILABLE_QUANTITY_UNITS.get(quantity_unit, quantity_unit)
         terms.append(SimpleTerm(value=quantity_unit, title=title))
     return SimpleVocabulary(terms)
-directlyProvides(QuantityUnitVocabulary, IVocabularyFactory)
 
 
 # This are the overall avaiable VAT values which then can be reduced in
@@ -52,13 +52,14 @@ AVAILABLE_VAT_VALUES = {
 }
 
 
+@provider(IVocabularyFactory)
 def AvailableVatVocabulary(context):
     # vocab is used in shop settings control panel
     items = AVAILABLE_VAT_VALUES.items()
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-directlyProvides(AvailableVatVocabulary, IVocabularyFactory)
 
 
+@provider(IVocabularyFactory)
 def VatVocabulary(context):
     # vocab is used for buyable items
     settings = get_shop_tax_settings()
@@ -70,7 +71,6 @@ def VatVocabulary(context):
             title = AVAILABLE_VAT_VALUES.get(vat, vat)
             terms.append(SimpleTerm(value=vat, title=title))
     return SimpleVocabulary(terms)
-directlyProvides(VatVocabulary, IVocabularyFactory)
 
 
 # This are the overall avaiable currency values available in
