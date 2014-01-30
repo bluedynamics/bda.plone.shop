@@ -6,18 +6,18 @@ try:
     HAS_CLI = True
 except:
     HAS_CLI = False
+from bda.plone.cart import CartItemPreviewAdapterBase
 from bda.plone.cart.interfaces import ICartItemDataProvider
 from bda.plone.cart.interfaces import ICartItemStock
-from bda.plone.cart import CartItemPreviewAdapterBase
 from bda.plone.orders.interfaces import INotificationText
 from bda.plone.shipping.interfaces import IShippingItem
 from Products.Archetypes.atapi import BooleanField
 from Products.Archetypes.atapi import FloatField
 from Products.Archetypes.atapi import SelectionWidget
-from Products.Archetypes.atapi import StringWidget
 from Products.Archetypes.atapi import StringField
-from Products.Archetypes.atapi import TextField
+from Products.Archetypes.atapi import StringWidget
 from Products.Archetypes.atapi import TextAreaWidget
+from Products.Archetypes.atapi import TextField
 from Products.Archetypes.interfaces import IBaseObject
 from Products.Archetypes.interfaces import IFieldDefaultProvider
 from Products.Archetypes.utils import OrderedDict
@@ -25,12 +25,12 @@ from zope.component import adapter
 from zope.component import getUtility
 from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
-from .interfaces import IShopExtensionLayer
-from .interfaces import IBuyable
-from .utils import get_shop_settings
-from .utils import get_shop_article_settings
-from .utils import get_shop_tax_settings
 from . import message_factory as _
+from .interfaces import IBuyable
+from .interfaces import IShopExtensionLayer
+from .utils import get_shop_article_settings
+from .utils import get_shop_settings
+from .utils import get_shop_tax_settings
 
 
 def field_value(obj, field_name):
@@ -362,3 +362,32 @@ class NotificationTextExtender(ExtenderBase):
             ),
         ),
     ]
+
+
+@implementer(INotificationText)
+@adapter(IBaseObject)
+class DXNotificationText(object):
+
+    @property
+    def order_text(self):
+        order_text = self.context.getField('order_text').get(self.context)
+        if order_text:
+            return order_text
+        parent = queryAdapter(
+            aq_parent(self.context),
+            INotificationTextBehaviour
+        )
+        if parent:
+            return parent.order_text
+
+    @property
+    def overbook_text(self):
+        overbook_text = self.context.getField('overbook_text').get(self.context)
+        if overbook_text:
+            return overbook_text
+        parent = queryAdapter(
+            aq_parent(self.context),
+            INotificationTextBehaviour
+        )
+        if parent:
+            return parent.overbook_text
