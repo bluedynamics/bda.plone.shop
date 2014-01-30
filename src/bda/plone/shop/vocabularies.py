@@ -1,13 +1,13 @@
-from zope.interface import directlyProvides
-from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleTerm
-from zope.schema.vocabulary import SimpleVocabulary
 from bda.plone.checkout.vocabularies import country_vocabulary
 from bda.plone.checkout.vocabularies import gender_vocabulary
 from bda.plone.shipping import Shippings
+from zope.interface import provider
+from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
+from . import message_factory as _
 from .utils import get_shop_article_settings
 from .utils import get_shop_tax_settings
-from . import message_factory as _
 
 
 # This are the overall avaiable quantity units which then can be reduced in
@@ -91,18 +91,18 @@ AVAILABLE_CURRENCIES = {
 }
 
 
+@provider(IVocabularyFactory)
 def AvailableCurrenciesVocabulary(context):
     items = AVAILABLE_CURRENCIES.items()
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-directlyProvides(AvailableCurrenciesVocabulary, IVocabularyFactory)
 
-
+@provider(IVocabularyFactory)
 def AvailableShippingMethodsVocabulary(context):
     items = Shippings(context).vocab
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-directlyProvides(AvailableShippingMethodsVocabulary, IVocabularyFactory)
 
 
+@provider(IVocabularyFactory)
 def CurrencyDisplayOptionsVocabulary(context):
     items = [
         ('yes', _('yes', default='Yes')),
@@ -110,18 +110,16 @@ def CurrencyDisplayOptionsVocabulary(context):
         ('symbol', _('symbol', default='Symbol')),
     ]
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-directlyProvides(CurrencyDisplayOptionsVocabulary, IVocabularyFactory)
 
 
+@provider(IVocabularyFactory)
 def GenderVocabulary(context):
     return SimpleVocabulary([SimpleTerm(value=k, title=v)
                              for k, v in gender_vocabulary()])
-directlyProvides(GenderVocabulary, IVocabularyFactory)
 
-
+@provider(IVocabularyFactory)
 def CountryVocabulary(context):
     """VocabularyFactory for countries from ISO3166 source.
     """
     return SimpleVocabulary([SimpleTerm(value=k, title=v)
                              for k, v in country_vocabulary()])
-directlyProvides(CountryVocabulary, IVocabularyFactory)
