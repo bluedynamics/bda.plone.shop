@@ -50,6 +50,10 @@
   <adapter factory=".cartdata.CartDataProvider" />
   <adapter factory=".cartdata.CartItemState" />
 
+  <!-- NotificationText adapter -->
+  <adapter factory=".notificationtext.BubbleNotificationText" />
+  <adapter factory=".notificationtext.RegistryNotificationText" />
+
   <!-- AT Extenders -->
   <adapter
     zcml:condition="installed Products.Archetypes"
@@ -128,6 +132,11 @@
     zcml:condition="installed Products.Archetypes"
     factory=".at.ATCartItemPreviewImage" />
 
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    for=".interfaces.IBuyable"
+    factory=".at.ATNotificationText" />
+
   <!-- DX behaviors -->
   <plone:behavior
     zcml:condition="installed plone.dexterity"
@@ -180,6 +189,7 @@
 
   <adapter
     zcml:condition="installed plone.dexterity"
+    for=".behaviors.IBuyableBehavior"
     factory=".dx.DXNotificationText" />
 
 </configure>

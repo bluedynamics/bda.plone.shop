@@ -38,4 +38,8 @@
       </value>
       <value key="default_item_vat">20</value>
   </records>
+  <records interface="bda.plone.orders.interfaces.INotificationText">
+    <value key="order_text">Thanks for ordering.</value>
+    <value key="overbook_text">Thanks for reservation.</value>
+  </records>
 </registry>

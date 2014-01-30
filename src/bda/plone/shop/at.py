@@ -364,30 +364,19 @@ class NotificationTextExtender(ExtenderBase):
     ]
 
 
-@implementer(INotificationText)
-@adapter(IBuyable)
-class DXNotificationText(object):
+@implementer(INotificationText)  # adapter see zcml
+class ATNotificationText(object):
 
     @property
     def order_text(self):
         order_text = self.context.getField('order_text').get(self.context)
         if order_text:
             return order_text
-        parent = queryAdapter(
-            aq_parent(self.context),
-            INotificationTextBehaviour
-        )
-        if parent:
-            return parent.order_text
+        return super(ATNotificationText, self).order_text
 
     @property
     def overbook_text(self):
         overbook_text = self.context.getField('overbook_text').get(self.context)
         if overbook_text:
             return overbook_text
-        parent = queryAdapter(
-            aq_parent(self.context),
-            INotificationTextBehaviour
-        )
-        if parent:
-            return parent.overbook_text
+        return super(ATNotificationText, self).overbook_text
