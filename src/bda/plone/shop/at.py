@@ -365,7 +365,7 @@ class NotificationTextExtender(ExtenderBase):
 
 
 @implementer(INotificationText)
-@adapter(IBaseObject)
+@adapter(IBuyable)
 class DXNotificationText(object):
 
     @property
