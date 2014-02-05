@@ -18,7 +18,7 @@
         <li>
           <a href=""
              tal:attributes="href string:${context/absolute_url}/@@orders?ordersfilter.customer=${view/current_user}"
-             i18n:translate="own_orders">Own Orders</a>
+             i18n:translate="my_orders">My Orders</a>
         </li>
         <li>
           <a href=""
