@@ -219,6 +219,9 @@ class IShopShippingSettings(model.Schema):
         fields=[
             'include_shipping_costs',
             'shipping_method',
+            'flat_shipping_minimum',
+            'flat_shipping_limit',
+            'flat_shipping_cost',
         ],
     )
 
@@ -238,6 +241,25 @@ class IShopShippingSettings(model.Schema):
             'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary'
     )
 
+    flat_shipping_minimum = schema.Int(
+        title=_(u"label_flat_shipping_minimum", default=u"Flat shipping minimum"),
+        description=_(u"help_flat_shipping_minimum", 
+        default=u"Minimum cost of (flat) shipping"),
+        default=0
+    )
+    
+    flat_shipping_limit = schema.Int(
+        title=_(u"label_flat_shipping_limit", default=u"Flat shipping limit"),
+        description=_(u"help_flat_shipping_limit", 
+        default=u"Do not add shipping to orders bigger than this amount"),
+        default=200
+    )
+    
+    flat_shipping_cost = schema.Int(
+        title=_(u"label_flat_shipping_cost", default=u"Flat shipping item cost"),
+        description=_(u"help_flat_shipping_cost", default=u"How much each items cost to send. You can put 0 here"),
+        default=10
+    )
 
 @provider(IShopSettingsProvider)
 class IShopTaxSettings(model.Schema):

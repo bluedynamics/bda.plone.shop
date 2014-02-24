@@ -59,6 +59,14 @@ class CartItemCalculator(object):
                 weight += Decimal(item_weight) * count
         return weight
 
+    def item_count(self, items):
+        cat = self.catalog
+        item_count = Decimal(0)
+        for uid, count, comment in items:
+            item_count += count
+                        
+        return item_count
+
 
 class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
