@@ -249,7 +249,7 @@ class IShopShippingSettings(model.Schema):
     )
     
     flat_shipping_limit = schema.Int(
-        title=_(u"label_flat_shipping_limit", default=u"Flat shipping limit"),
+        title=_(u"label_flat_shipping_limit", default=u"Shipping limit"),
         description=_(u"help_flat_shipping_limit", 
         default=u"Do not add shipping to orders bigger than this amount"),
         default=200
