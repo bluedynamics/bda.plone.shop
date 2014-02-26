@@ -16,7 +16,7 @@ class FlatRate(FlatRateBase, CartItemCalculator):
         return Decimal(flat_shipping_minimum)
         
         
-class ItemRate(FlatRateBase, CartItemCalculator):
+class ItemRate(FlatRate):
 	sid = 'item_rate'
 	label = _('item_rate', 'Item Rate')
 	available = True
