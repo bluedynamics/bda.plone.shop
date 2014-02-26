@@ -46,6 +46,10 @@
   <!-- default flat rate shipping -->
   <adapter name="flat_rate" factory=".shipping.FlatRate" />
 
+  <!-- item rate shipping: propotional with number of items, 
+  	but with minimum and free settings -->
+  <adapter name="item_rate" factory=".shipping.ItemRate" />
+  
   <!-- cart related adapters -->
   <adapter factory=".cartdata.CartDataProvider" />
   <adapter factory=".cartdata.CartItemState" />
