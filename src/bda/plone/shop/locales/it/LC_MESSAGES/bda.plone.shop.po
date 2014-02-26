@@ -80,6 +80,14 @@ msgstr "Ensattiva le informazioni sull'articolo relative all'oggetto"
 msgid "Enable Vendor Area"
 msgstr ""
 
+#: ./interfaces.py:243
+msgid "Flat Shipping Settings"
+msgstr ""
+
+#: ./interfaces.py:268
+msgid "For Item Rate settings only: Extends the settings in Flat Shipping settings"
+msgstr ""
+
 #. Default: "British Pound Sterling"
 #: ./vocabularies.py:85
 msgid "GBP"
@@ -90,16 +98,20 @@ msgstr ""
 msgid "INR"
 msgstr ""
 
+#: ./interfaces.py:267
+msgid "Item Rate Shipping Settings"
+msgstr ""
+
 #. Default: "Norwegian Krone"
 #: ./vocabularies.py:87
 msgid "NOK"
 msgstr ""
 
-#: ./interfaces.py:308
+#: ./interfaces.py:324
 msgid "Notifications"
 msgstr ""
 
-#: ./interfaces.py:337
+#: ./interfaces.py:353
 msgid "Payment"
 msgstr ""
 
@@ -121,7 +133,7 @@ msgstr ""
 msgid "Shop settings"
 msgstr ""
 
-#: ./interfaces.py:272
+#: ./interfaces.py:288
 msgid "Tax Settings"
 msgstr ""
 
@@ -268,7 +280,7 @@ msgid "help_default_quantity_unit"
 msgstr ""
 
 #. Default: "Specify default vat name"
-#: ./interfaces.py:295
+#: ./interfaces.py:311
 msgid "help_default_vat"
 msgstr ""
 
@@ -283,12 +295,12 @@ msgid "help_firstname"
 msgstr ""
 
 #. Default: "Do not add shipping to orders bigger than this amount"
-#: ./interfaces.py:253
+#: ./interfaces.py:259
 msgid "help_flat_shipping_limit"
 msgstr ""
 
 #. Default: "Minimum cost of (flat) shipping"
-#: ./interfaces.py:246
+#: ./interfaces.py:252
 msgid "help_flat_shipping_minimum"
 msgstr ""
 
@@ -296,12 +308,12 @@ msgstr ""
 msgid "help_gender"
 msgstr ""
 
-#: ./interfaces.py:233
+#: ./interfaces.py:230
 msgid "help_include_shipping_costs"
 msgstr ""
 
 #. Default: "For Item Shipping: additional cost of sending each item"
-#: ./interfaces.py:260
+#: ./interfaces.py:276
 msgid "help_item_shipping_cost"
 msgstr ""
 
@@ -319,7 +331,7 @@ msgstr ""
 msgid "help_quantity_units"
 msgstr ""
 
-#: ./interfaces.py:239
+#: ./interfaces.py:236
 msgid "help_shipping_method"
 msgstr ""
 
@@ -345,7 +357,7 @@ msgid "help_summary_total_only"
 msgstr ""
 
 #. Default: "Specify all allowed vat settings"
-#: ./interfaces.py:282
+#: ./interfaces.py:298
 msgid "help_vat"
 msgstr ""
 
@@ -429,7 +441,7 @@ msgid "label_default_quantity_units"
 msgstr ""
 
 #. Default: "Default Value added tax name"
-#: ./interfaces.py:294
+#: ./interfaces.py:310
 msgid "label_default_vat"
 msgstr ""
 
@@ -443,13 +455,13 @@ msgstr ""
 msgid "label_firstname"
 msgstr ""
 
-#. Default: "Flat shipping limit"
-#: ./interfaces.py:252
+#. Default: "Shipping limit"
+#: ./interfaces.py:258
 msgid "label_flat_shipping_limit"
 msgstr ""
 
 #. Default: "Flat shipping minimum"
-#: ./interfaces.py:245
+#: ./interfaces.py:251
 msgid "label_flat_shipping_minimum"
 msgstr ""
 
@@ -459,7 +471,7 @@ msgid "label_gender"
 msgstr ""
 
 #. Default: "Include Shipping Costs"
-#: ./interfaces.py:229
+#: ./interfaces.py:226
 msgid "label_include_shipping_costs"
 msgstr ""
 
@@ -512,7 +524,7 @@ msgid "label_item_quantity_unit_float"
 msgstr "Inserimento decimali nella quantitŕ > facoltativo"
 
 #. Default: "Item Rate cost"
-#: ./interfaces.py:259
+#: ./interfaces.py:275
 msgid "label_item_shipping_cost"
 msgstr ""
 
@@ -530,19 +542,19 @@ msgstr ""
 #. Default: "Order Notification Text"
 #: ./at.py:345
 #: ./dx.py:273
-#: ./interfaces.py:316
+#: ./interfaces.py:332
 msgid "label_order_notification_text"
 msgstr ""
 
 #. Default: "Overbooked Notification Text"
 #: ./at.py:358
 #: ./dx.py:281
-#: ./interfaces.py:324
+#: ./interfaces.py:340
 msgid "label_overbook_notification_text"
 msgstr ""
 
 #. Default: "Payment Texts (TODO: Make dict-widget here)"
-#: ./interfaces.py:347
+#: ./interfaces.py:363
 msgid "label_payment_text"
 msgstr ""
 
@@ -563,7 +575,7 @@ msgid "label_shipping_item_weight"
 msgstr ""
 
 #. Default: "Shipping Method"
-#: ./interfaces.py:238
+#: ./interfaces.py:235
 msgid "label_shipping_method"
 msgstr ""
 
@@ -593,7 +605,7 @@ msgid "label_summary_total_only"
 msgstr ""
 
 #. Default: "VAT in %"
-#: ./interfaces.py:281
+#: ./interfaces.py:297
 msgid "label_vat"
 msgstr ""
 
