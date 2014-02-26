@@ -221,7 +221,7 @@ class IShopShippingSettings(model.Schema):
             'shipping_method',
             'flat_shipping_minimum',
             'flat_shipping_limit',
-            'flat_shipping_cost',
+            'item_shipping_cost',
         ],
     )
 
@@ -255,9 +255,10 @@ class IShopShippingSettings(model.Schema):
         default=200
     )
     
-    flat_shipping_cost = schema.Int(
-        title=_(u"label_flat_shipping_cost", default=u"Flat shipping item cost"),
-        description=_(u"help_flat_shipping_cost", default=u"How much each items cost to send. You can put 0 here"),
+    item_shipping_cost = schema.Int(
+        title=_(u"label_item_shipping_cost", default=u"Item Rate cost"),
+        description=_(u"help_item_shipping_cost", 
+        default=u"For Item Shipping: additional cost of sending each item"),
         default=10
     )
 

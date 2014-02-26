@@ -1,6 +1,15 @@
 Changelog
 =========
 
+[unreleased]
+------------
+- Added settings for Flat Shipping to control panel.
+  [espenm]
+  
+- Added ItemRate shipping method.
+  [espenm]
+
+
 0.5dev
 ------
 
