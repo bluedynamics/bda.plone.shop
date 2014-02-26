@@ -242,7 +242,7 @@ class IShopShippingSettings(model.Schema):
         'flat_shipping_settings',
         label=_(u'Flat Shipping Settings'),
         fields=[
-        	'flat_shipping_minimum',
+            'flat_shipping_minimum',
             'flat_shipping_limit',
         ],
     )
@@ -265,6 +265,7 @@ class IShopShippingSettings(model.Schema):
     model.fieldset(
         'item_rate_settings',
         label=_(u'Item Rate Shipping Settings'),
+        description=_(u"For Item Rate settings only: Extends the settings in Flat Shipping settings"),
         fields=[
             'item_shipping_cost',
         ],
