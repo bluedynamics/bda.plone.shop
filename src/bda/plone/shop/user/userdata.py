@@ -23,11 +23,13 @@ def validate_accept(value):
     return True
 
 
-class IAddress(model.Schema):
+class ICustomer(model.Schema):
+
     model.fieldset('main_address', _('main_address', u'Hauptadresse'),
                    fields=['firstname', 'lastname', 'phone',
                            'company', 'street', 'zip', 'city', 'country',
                            'delivery_alternative_delivery'])
+
     model.fieldset('delivery_address',
                    _('delivery_address', u'Zustelladresse'),
                    fields=['delivery_firstname', 'delivery_lastname',
@@ -35,6 +37,7 @@ class IAddress(model.Schema):
                            'delivery_street', 'delivery_zip',
                            'delivery_city', 'delivery_country',
                            'delivery_phone'])
+
     model.fieldset('legal',
                    _('legal', u'Legal'),
                    fields=['accept', ])
@@ -45,49 +48,58 @@ class IAddress(model.Schema):
         required=False,
         vocabulary='bda.plone.shop.vocabularies.GenderVocabulary'
     )
+
     firstname = schema.TextLine(
         title=_(u'label_firstname', default=u'First name'),
         description=_(u'help_firstname',
                       default=u"Fill in your given name."),
         required=True,
     )
+
     lastname = schema.TextLine(
         title=_(u'label_lastname', default=u'Last name'),
         description=_(u'help_lastname',
                       default=u"Fill in your surname or your family name."),
         required=True,
     )
+
     phone = schema.TextLine(
         title=_(u'label_phone', default=u'Phone'),
         description=_(u'help_phone'),
         required=True,
     )
+
     company = schema.TextLine(
         title=_(u'label_company', default=u'Company'),
         description=_(u'help_company'),
         required=False,
     )
+
     street = schema.TextLine(
         title=_(u'label_street', default=u'Street'),
         description=_(u'help_street', default=u''),
         required=True
     )
+
     zip = schema.TextLine(
         title=_(u'label_zip', default=u'Postal Code'),
         description=_(u'help_zip', default=u''),
         required=True
     )
+
     city = schema.TextLine(
         title=_(u'label_city', default=u'City'),
         description=_(u'help_city', default=u""),
         required=True,
     )
+
     country = schema.Choice(
         title=_(u'label_country', default=u'Country'),
         description=_(u'help_country', default=u""),
         required=True,
         vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
+
     delivery_alternative_delivery = schema.Bool(
         title=_(u'label_alternative_delivery',
                 default=u'Alternative delivery address'),
@@ -96,6 +108,7 @@ class IAddress(model.Schema):
                               u"address."),
         required=False,
     )
+
     # Delivery Address
     delivery_firstname = schema.TextLine(
         title=_(u'label_firstname', default=u'First name'),
@@ -103,45 +116,53 @@ class IAddress(model.Schema):
                       default=u"Fill in your given name."),
         required=False,
     )
+
     delivery_lastname = schema.TextLine(
         title=_(u'label_lastname', default=u'Last name'),
         description=_(u'help_lastname',
                       default=u"Fill in your surname or your family name."),
         required=False,
     )
+
     delivery_company = schema.TextLine(
         title=_(u'label_company', default=u'Company'),
         description=_(u'help_company',
                       default=u"Company name, if available."),
         required=False,
     )
+
     delivery_street = schema.TextLine(
         title=_(u'label_street', default=u'Street'),
         description=_(u'help_street', default=u''),
         required=False
     )
+
     delivery_zip = schema.TextLine(
         title=_(u'label_zip', default=u'Postal Code'),
         description=_(u'help_zip', default=u''),
         required=False
     )
+
     delivery_city = schema.TextLine(
         title=_(u'label_city', default=u'City'),
         description=_(u'help_city', default=u""),
         required=False,
     )
+
     delivery_country = schema.Choice(
         title=_(u'label_country', default=u'Country'),
         description=_(u'help_country', default=u""),
         required=False,
         vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
+
     delivery_phone = schema.TextLine(
         title=_(u'label_phone', default=u'Telephone number'),
         description=_(u'help_phone',
                       default=u"Leave your phone number so we can reach you."),
         required=False,
     )
+
     accept = schema.Bool(
         title=_(u'label_accept', default=u'Accept terms of use'),
         description=_(u'help_accept',
@@ -153,7 +174,7 @@ class IAddress(model.Schema):
 
 
 class UserDataSchemaAdapter(AccountPanelSchemaAdapter):
-    schema = IAddress
+    schema = ICustomer
 
     @property
     def fullname(self):
@@ -178,11 +199,10 @@ class UserDataPanelExtender(extensible.FormExtender):
     adapts(Interface, IShopExtensionLayer, UserDataPanel)
 
     def update(self):
-        # Remove fields, where our schema has substitudes
+        # Remove fields, where our schema has substitutes
         self.remove('fullname')
         self.remove('location')
-
-        fields = field.Fields(IAddress)
+        fields = field.Fields(ICustomer)
         fields = fields.omit('accept')  # Users have already accepted.
         self.add(fields, prefix="delivery")
 
@@ -191,11 +211,10 @@ class RegistrationPanelExtender(extensible.FormExtender):
     adapts(Interface, IShopExtensionLayer, RegistrationForm)
 
     def update(self):
-        # Remove fields, where our schema has substitudes
+        # Remove fields, where our schema has substitutes
         self.remove('fullname')
         self.remove('location')
-
-        fields = field.Fields(IAddress)
+        fields = field.Fields(ICustomer)
         self.add(fields, prefix="delivery")
 
 
@@ -203,11 +222,10 @@ class AddUserFormExtender(extensible.FormExtender):
     adapts(Interface, IShopExtensionLayer, AddUserForm)
 
     def update(self):
-        # Remove fields, where our schema has substitudes
+        # Remove fields, where our schema has substitutes
         self.remove('fullname')
         self.remove('location')
-
-        fields = field.Fields(IAddress)
+        fields = field.Fields(ICustomer)
         # management form doesn't need this field
         fields = fields.omit('accept')
         self.add(fields, prefix="delivery")

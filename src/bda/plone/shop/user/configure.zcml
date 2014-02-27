@@ -16,7 +16,7 @@
     provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
 
   <adapter
-    provides=".userdata.IAddress"
+    provides=".userdata.ICustomer"
     for="plone.app.layout.navigation.interfaces.INavigationRoot"
     factory=".userdata.UserDataSchemaAdapter" />
 
