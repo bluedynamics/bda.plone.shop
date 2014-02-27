@@ -1,6 +1,8 @@
 from bda.plone.cart.interfaces import ICartItem
 from bda.plone.orders.interfaces import INotificationText
 from bda.plone.orders.interfaces import IOrdersExtensionLayer
+from collective.z3cform.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield.registry import DictRow
 from plone.autoform.directives import widget
 from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
@@ -277,6 +279,20 @@ class IShopTaxSettings(model.Schema):
     )
 
 
+class ILanguageAwareTextRow(model.Schema):
+
+    lang = schema.Choice(
+        title=_(u'language', default=u'Language'),
+        vocabulary='plone.app.vocabularies.SupportedContentLanguages',
+        required=False
+    )
+
+    text = schema.Text(
+        title=_(u'text', default=u'Text'),
+        required=False
+    )
+
+
 @provider(IShopSettingsProvider)
 class INotificationTextSettings(model.Schema, INotificationText):
 
@@ -289,20 +305,26 @@ class INotificationTextSettings(model.Schema, INotificationText):
         ],
     )
 
-    order_text = schema.Text(
+    widget('order_text', DataGridFieldFactory, auto_append=False)
+    order_text = schema.List(
         title=_(
             u"label_order_notification_text",
             default=u"Order Notification Text"
         ),
-        required=False
+        value_type=DictRow(
+            title=_(u'order_text', default='Order Text'),
+            schema=ILanguageAwareTextRow),
     )
 
-    overbook_text = schema.Text(
+    widget('overbook_text', DataGridFieldFactory, auto_append=False)
+    overbook_text = schema.List(
         title=_(
             u"label_overbook_notification_text",
             default=u"Overbook Notification Text"
         ),
-        required=False
+        value_type=DictRow(
+            title=_(u'overbook_text', default='Overbook Text'),
+            schema=ILanguageAwareTextRow),
     )
 
 

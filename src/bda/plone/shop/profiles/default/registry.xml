@@ -39,8 +39,10 @@
       <value key="default_item_vat">20</value>
   </records>
   <records interface="bda.plone.shop.interfaces.INotificationTextSettings">
-    <value key="order_text">Thanks for ordering.</value>
-    <value key="overbook_text">Article was overbooked, thanks for reservation.</value>
+    <value key="order_text">
+    </value>
+    <value key="overbook_text">
+    </value>
   </records>
   <records interface="bda.plone.shop.interfaces.IPaymentTextSettings">
     <value key="payment_text"></value>

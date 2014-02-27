@@ -94,7 +94,7 @@ msgstr "Shop Einstellungen"
 
 #: ./interfaces.py:207
 msgid "Tax Settings"
-msgstr "Steuern Einstellungen"
+msgstr "Steuern"
 
 #. Default: "US Dollar"
 #: ./vocabularies.py:94

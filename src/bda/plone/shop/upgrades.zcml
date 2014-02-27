@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
+
+  <genericsetup:upgradeStep
+    source="1.0"
+    destination="2"
+    title="Alter notification text registry entry types"
+    description=""
+    profile="bda.plone.shop:default"
+    handler=".upgrades.update_notification_text_registry_entries" />
+
+</configure>

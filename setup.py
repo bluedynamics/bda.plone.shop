@@ -38,6 +38,7 @@ setup(
         'plone.api',
         'plone.app.registry',
         'plone.app.users',
+        'collective.z3cform.datagridfield',
     ],
     extras_require={
         'test': [
