@@ -1,6 +1,7 @@
 from bda.plone.checkout.vocabularies import country_vocabulary
 from bda.plone.checkout.vocabularies import gender_vocabulary
 from bda.plone.shipping import Shippings
+from bda.plone.payment import Payments
 from zope.interface import provider
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
@@ -96,6 +97,7 @@ def AvailableCurrenciesVocabulary(context):
     items = AVAILABLE_CURRENCIES.items()
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
+
 @provider(IVocabularyFactory)
 def AvailableShippingMethodsVocabulary(context):
     items = Shippings(context).vocab
@@ -117,9 +119,16 @@ def GenderVocabulary(context):
     return SimpleVocabulary([SimpleTerm(value=k, title=v)
                              for k, v in gender_vocabulary()])
 
+
 @provider(IVocabularyFactory)
 def CountryVocabulary(context):
     """VocabularyFactory for countries from ISO3166 source.
     """
     return SimpleVocabulary([SimpleTerm(value=k, title=v)
                              for k, v in country_vocabulary()])
+
+
+@provider(IVocabularyFactory)
+def PaymentVocabulary(context):
+    return SimpleVocabulary([SimpleTerm(value=k, title=v)
+                             for k, v in Payments(context).vocab])

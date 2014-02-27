@@ -305,7 +305,8 @@ class INotificationTextSettings(model.Schema, INotificationText):
         ],
     )
 
-    widget('order_text', DataGridFieldFactory, auto_append=False)
+    #widget('order_text', DataGridFieldFactory, auto_append=False)
+    widget('order_text', DataGridFieldFactory)
     order_text = schema.List(
         title=_(
             u"label_order_notification_text",
@@ -314,9 +315,11 @@ class INotificationTextSettings(model.Schema, INotificationText):
         value_type=DictRow(
             title=_(u'order_text', default='Order Text'),
             schema=ILanguageAwareTextRow),
+        required=False
     )
 
-    widget('overbook_text', DataGridFieldFactory, auto_append=False)
+    #widget('overbook_text', DataGridFieldFactory, auto_append=False)
+    widget('overbook_text', DataGridFieldFactory)
     overbook_text = schema.List(
         title=_(
             u"label_overbook_notification_text",
@@ -325,6 +328,27 @@ class INotificationTextSettings(model.Schema, INotificationText):
         value_type=DictRow(
             title=_(u'overbook_text', default='Overbook Text'),
             schema=ILanguageAwareTextRow),
+        required=False
+    )
+
+
+class ILanguageAndPaymentAwareTextRow(model.Schema):
+
+    payment = schema.Choice(
+        title=_(u'payment', default=u'Payment'),
+        vocabulary='bda.plone.shop.vocabularies.PaymentVocabulary',
+        required=False
+    )
+
+    lang = schema.Choice(
+        title=_(u'language', default=u'Language'),
+        vocabulary='plone.app.vocabularies.SupportedContentLanguages',
+        required=False
+    )
+
+    text = schema.Text(
+        title=_(u'text', default=u'Text'),
+        required=False
     )
 
 
@@ -339,13 +363,15 @@ class IPaymentTextSettings(model.Schema):
         ],
     )
 
-    # TODO: key value widget:
-    # - left payment type from bda.plone.payments.Payments
-    # - right text field with text for the type
-    payment_text = schema.Text(
+    #widget('payment_text', DataGridFieldFactory, auto_append=False)
+    widget('payment_text', DataGridFieldFactory)
+    payment_text = schema.List(
         title=_(
             u"label_payment_text",
-            default=u"Payment Texts (TODO: Make dict-widget here)"
+            default=u"Payment Texts"
         ),
+        value_type=DictRow(
+            title=_(u'payment_text', default='Payment Text'),
+            schema=ILanguageAndPaymentAwareTextRow),
         required=False
     )

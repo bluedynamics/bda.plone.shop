@@ -12,3 +12,5 @@ def update_notification_text_registry_entries(ctx=None):
     del registry.records[key]
     key = 'bda.plone.shop.interfaces.INotificationTextSettings.overbook_text'
     del registry.records[key]
+    key = 'bda.plone.shop.interfaces.IPaymentTextSettings.payment_text'
+    del registry.records[key]

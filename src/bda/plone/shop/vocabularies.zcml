@@ -41,4 +41,8 @@
     component=".vocabularies.CountryVocabulary"
     name="bda.plone.shop.vocabularies.CountryVocabulary" />
 
+  <utility
+    component=".vocabularies.PaymentVocabulary"
+    name="bda.plone.shop.vocabularies.PaymentVocabulary" />
+
 </configure>
