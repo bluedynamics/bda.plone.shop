@@ -51,7 +51,7 @@
   <adapter factory=".cartdata.CartDataProvider" />
   <adapter factory=".cartdata.CartItemState" />
 
-  <!-- NotificationText adapter -->
+  <!-- notification text adapter -->
   <adapter factory=".notificationtext.BubbleNotificationText" />
   <adapter factory=".notificationtext.RegistryNotificationText" />
 
@@ -135,7 +135,6 @@
 
   <adapter
     zcml:condition="installed Products.Archetypes"
-    for=".interfaces.IBuyable"
     factory=".at.ATNotificationText" />
 
   <!-- DX behaviors -->
@@ -186,7 +185,6 @@
 
   <adapter
     zcml:condition="installed plone.dexterity"
-    for=".behaviors.IBuyableBehavior"
     factory=".dx.DXNotificationText" />
 
 </configure>

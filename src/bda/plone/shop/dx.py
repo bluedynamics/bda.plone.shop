@@ -286,7 +286,6 @@ class INotificationTextBehavior(model.Schema):
     )
 
 
-@implementer(INotificationText)  # adapter see zcml
 @adapter(INotificationTextBehavior)
 class DXNotificationText(BubbleNotificationText):
 

@@ -5,6 +5,8 @@ from .interfaces import IShopCartSettings
 from .interfaces import IShopSettings
 from .interfaces import IShopShippingSettings
 from .interfaces import IShopTaxSettings
+from .interfaces import INotificationTextSettings
+from .interfaces import IPaymentTextSettings
 
 
 def get_shop_settings():
@@ -25,3 +27,11 @@ def get_shop_cart_settings():
 
 def get_shop_shipping_settings():
     return getUtility(IRegistry).forInterface(IShopShippingSettings)
+
+
+def get_shop_notification_settings():
+    return getUtility(IRegistry).forInterface(INotificationTextSettings)
+
+
+def get_shop_payment_settings():
+    return getUtility(IRegistry).forInterface(IPaymentTextSettings)

@@ -28,6 +28,7 @@ from zope.schema.interfaces import IVocabularyFactory
 from . import message_factory as _
 from .interfaces import IBuyable
 from .interfaces import IShopExtensionLayer
+from .notificationtext import BubbleNotificationText
 from .utils import get_shop_article_settings
 from .utils import get_shop_settings
 from .utils import get_shop_tax_settings
@@ -364,8 +365,8 @@ class NotificationTextExtender(ExtenderBase):
     ]
 
 
-@implementer(INotificationText)  # adapter see zcml
-class ATNotificationText(object):
+@adapter(IBaseObject)
+class ATNotificationText(BubbleNotificationText):
 
     @property
     def order_text(self):

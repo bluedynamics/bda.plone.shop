@@ -4,6 +4,12 @@ Changelog
 0.5dev
 ------
 
+- Implement ``bda.plone.orders.IPaymentText``
+  [rnix, jensens]
+
+- Implement ``bda.plone.orders.INotificationText``
+  [rnix, jensens]
+
 - Allow portal member to store billing and delivery address information and use
   these as defaults for the checkout process.
   [thet]
