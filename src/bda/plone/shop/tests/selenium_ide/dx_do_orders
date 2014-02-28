@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>dx_do_orders</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">dx_do_orders</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/Plone</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Shop</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Article Container 1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Article Sub Container 1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Article with Notification Text</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=add to cart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Article Sub Container 1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Article without Notification Text</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=add to cart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#breadcrumbs-1 &gt; a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Article Container 2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Article 3 with Notification Text</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=add to cart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f506c6f6e650a6e617669676174696f6e']/dl/dd/ul/li[2]/ul/li[2]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=add to cart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a.go_to_cart_action</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=checkout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=input-checkout-personal_data-gender</td>
+	<td>label=Male</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-personal_data-firstname</td>
+	<td>Max</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-personal_data-lastname</td>
+	<td>Mustermann</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-personal_data-email</td>
+	<td>rnix@squarewave.at</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-personal_data-phone</td>
+	<td>1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-personal_data-company</td>
+	<td>Squarewave</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-billing_address-street</td>
+	<td>Musterstrasse</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-billing_address-zip</td>
+	<td>1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-billing_address-city</td>
+	<td>Musterort</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=input-checkout-billing_address-country</td>
+	<td>label=Austria</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=input-checkout-delivery_address-alternative_delivery</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-delivery_address-firstname</td>
+	<td>Sepp</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-delivery_address-lastname</td>
+	<td>Mustermann</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-delivery_address-street</td>
+	<td>Sackgasse 1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-delivery_address-zip</td>
+	<td>4321</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-delivery_address-city</td>
+	<td>Sackort</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=input-checkout-delivery_address-country</td>
+	<td>label=Austria</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=input-checkout-payment_selection-payment-invoice</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-order_comment-comment</td>
+	<td>Order Comment</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=input-checkout-next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=input-checkout-accept_terms_and_conditions-accept</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=input-checkout-finish</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#breadcrumbs-1 &gt; a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Article Container 1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Article Sub Container 1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Article with Notification Text</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=add to cart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f506c6f6e650a6e617669676174696f6e']/dl/dd/ul/li/ul/li/ul/li[2]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=add to cart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f506c6f6e650a6e617669676174696f6e']/dl/dd/ul/li[2]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f506c6f6e650a6e617669676174696f6e']/dl/dd/ul/li[2]/ul/li/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=add to cart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f506c6f6e650a6e617669676174696f6e']/dl/dd/ul/li[2]/ul/li[2]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=add to cart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a.go_to_cart_action</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=checkout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=input-checkout-personal_data-gender</td>
+	<td>label=Male</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-personal_data-firstname</td>
+	<td>Max</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-personal_data-lastname</td>
+	<td>Mustermann</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-personal_data-email</td>
+	<td>rnix@squarewave.at</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-personal_data-phone</td>
+	<td>1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-personal_data-company</td>
+	<td>Squarewave</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-billing_address-street</td>
+	<td>Musterstrasse</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-billing_address-zip</td>
+	<td>1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-checkout-billing_address-city</td>
+	<td>Musterort</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=input-checkout-billing_address-country</td>
+	<td>label=Austria</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=input-checkout-payment_selection-payment-invoice</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=input-checkout-next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=input-checkout-accept_terms_and_conditions-accept</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=input-checkout-finish</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

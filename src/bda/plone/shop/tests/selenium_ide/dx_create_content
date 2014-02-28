@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>New Test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">New Test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/Plone</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a[title=&quot;Add new items inside this item&quot;] &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#folder &gt; span.subMenuTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=title</td>
+	<td>Shop</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=form.button.save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a[title=&quot;Add new items inside this item&quot;] &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#articlecontainer &gt; span.subMenuTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IDublinCore-title</td>
+	<td>Article Container 1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=form-buttons-save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a[title=&quot;Add new items inside this item&quot;] &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#articlecontainer &gt; span.subMenuTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IDublinCore-title</td>
+	<td>Article Sub Container 1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#fieldsetlegend-3 &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-INotificationTextBehavior-order_text</td>
+	<td>You have ordered an item from Article Subcontainer 1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-INotificationTextBehavior-overbook_text</td>
+	<td>You have reserved an item from Article Subcontainer 1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=form-buttons-save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a[title=&quot;Add new items inside this item&quot;] &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#article &gt; span.subMenuTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IDublinCore-title</td>
+	<td>Article with Notification Text</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#fieldsetlegend-3 &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-INotificationTextBehavior-order_text</td>
+	<td>Order notification text from Article 1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-INotificationTextBehavior-overbook_text</td>
+	<td>Order reservation text from Article 1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IStockBehavior-item_available</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IStockBehavior-item_overbook</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=form-buttons-save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Article Sub Container 1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a[title=&quot;Add new items inside this item&quot;] &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#article &gt; span.subMenuTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IDublinCore-title</td>
+	<td>Article without Notification Text</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#fieldsetlegend-3 &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IBuyableBehavior-item_net</td>
+	<td>20.0</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IStockBehavior-item_available</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IStockBehavior-item_overbook</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=form-buttons-save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#breadcrumbs-1 &gt; a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a[title=&quot;Add new items inside this item&quot;] &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#articlecontainer &gt; span.subMenuTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IDublinCore-title</td>
+	<td>Article Container 2</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#fieldsetlegend-3 &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-INotificationTextBehavior-order_text</td>
+	<td>Order text from Article Container 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-INotificationTextBehavior-overbook_text</td>
+	<td>Reservation Text from Article Container 2</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=form-buttons-save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a[title=&quot;Add new items inside this item&quot;] &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#article &gt; span.subMenuTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IDublinCore-title</td>
+	<td>Article 3 with Notification Text</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#fieldsetlegend-3 &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IBuyableBehavior-item_net</td>
+	<td>30.0</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-INotificationTextBehavior-order_text</td>
+	<td>Article 3 Order Text</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-INotificationTextBehavior-overbook_text</td>
+	<td>Article 3 Reservation Text</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IStockBehavior-item_available</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IStockBehavior-item_overbook</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=form-buttons-save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='portletwrapper-706c6f6e652e6c656674636f6c756d6e0a636f6e746578740a2f506c6f6e650a6e617669676174696f6e']/dl/dd/ul/li[2]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a[title=&quot;Add new items inside this item&quot;] &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#article &gt; span.subMenuTitle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IDublinCore-title</td>
+	<td>Article 4 without Notification Text</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#fieldsetlegend-3 &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IBuyableBehavior-item_net</td>
+	<td>40.0</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IStockBehavior-item_available</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-widgets-IStockBehavior-item_overbook</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=form-buttons-save</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
