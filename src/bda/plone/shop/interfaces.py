@@ -305,8 +305,7 @@ class INotificationTextSettings(model.Schema, INotificationText):
         ],
     )
 
-    #widget('order_text', DataGridFieldFactory, auto_append=False)
-    widget('order_text', DataGridFieldFactory)
+    widget('order_text', DataGridFieldFactory, auto_append=False)
     order_text = schema.List(
         title=_(
             u"label_order_notification_text",
@@ -318,8 +317,7 @@ class INotificationTextSettings(model.Schema, INotificationText):
         required=False
     )
 
-    #widget('overbook_text', DataGridFieldFactory, auto_append=False)
-    widget('overbook_text', DataGridFieldFactory)
+    widget('overbook_text', DataGridFieldFactory, auto_append=False)
     overbook_text = schema.List(
         title=_(
             u"label_overbook_notification_text",
@@ -363,8 +361,7 @@ class IPaymentTextSettings(model.Schema):
         ],
     )
 
-    #widget('payment_text', DataGridFieldFactory, auto_append=False)
-    widget('payment_text', DataGridFieldFactory)
+    widget('payment_text', DataGridFieldFactory, auto_append=False)
     payment_text = schema.List(
         title=_(
             u"label_payment_text",
