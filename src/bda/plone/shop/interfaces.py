@@ -218,6 +218,7 @@ class IShopShippingSettings(model.Schema):
         label=_(u'Shipping'),
         fields=[
             'include_shipping_costs',
+            'available_shipping_methods',
             'shipping_method',
         ],
     )
@@ -231,11 +232,19 @@ class IShopShippingSettings(model.Schema):
         default=True
     )
 
-    shipping_method = schema.Choice(
-        title=_(u"label_shipping_method", default=u"Shipping Method"),
-        description=_(u"help_shipping_method", default=u""),
-        vocabulary=
+    available_shipping_methods = schema.List(
+        value_type=schema.Choice(vocabulary=
             'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary'
+        ) ,
+        title=_(u"label_available_shipping_methods", default=u"Available Shipping Methods"),
+        description=_(u"help_available_shipping_methods", default=u""),
+    )
+    
+    shipping_method = schema.Choice(
+        title=_(u"label_default_shipping_method", default=u"Default Shipping Method"),
+        description=_(u"help_default_shipping_method", default=u""),
+        vocabulary=
+            'bda.plone.shop.vocabularies.EnabledShippingMethodsVocabulary'
     )
     
     model.fieldset(

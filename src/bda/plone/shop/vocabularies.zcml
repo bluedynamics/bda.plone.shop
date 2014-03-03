@@ -34,6 +34,10 @@
     name="bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary" />
 
   <utility
+    component=".vocabularies.EnabledShippingMethodsVocabulary"
+    name="bda.plone.shop.vocabularies.EnabledShippingMethodsVocabulary" />
+    
+  <utility
     component=".vocabularies.GenderVocabulary"
     name="bda.plone.shop.vocabularies.GenderVocabulary" />
 

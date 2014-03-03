@@ -7,6 +7,7 @@ from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 from . import message_factory as _
 from .utils import get_shop_article_settings
+from .utils import get_shop_shipping_settings
 from .utils import get_shop_tax_settings
 
 
@@ -96,11 +97,26 @@ def AvailableCurrenciesVocabulary(context):
     items = AVAILABLE_CURRENCIES.items()
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
+
 @provider(IVocabularyFactory)
 def AvailableShippingMethodsVocabulary(context):
     items = Shippings(context).vocab
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
+@provider(IVocabularyFactory)
+def EnabledShippingMethodsVocabulary(context):
+    items = Shippings(context).vocab
+    settings = get_shop_shipping_settings()
+    if not settings:
+        return
+    terms = []
+    
+    if settings.available_shipping_methods:
+        for k, v in items:
+            if k in settings.available_shipping_methods:
+                terms.append(SimpleTerm(value=k, title=v))
+    return SimpleVocabulary(terms)
+    
 
 @provider(IVocabularyFactory)
 def CurrencyDisplayOptionsVocabulary(context):

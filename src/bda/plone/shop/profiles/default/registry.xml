@@ -27,7 +27,10 @@
   </records>
   <records interface="bda.plone.shop.interfaces.IShopShippingSettings">
     <value key="include_shipping_costs">True</value>
-    <value key="shipping_method">flat_rate</value>
+    <value key="shipping_method"></value>
+    <value key="available_shipping_methods">
+ 		<element>flat_rate</element>
+    </value>
     <value key="flat_shipping_minimum">10</value>
     <value key="flat_shipping_limit">200</value>
     <value key="item_shipping_cost">0</value>

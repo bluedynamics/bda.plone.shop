@@ -133,6 +133,10 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         return get_shop_shipping_settings().shipping_method
 
     @property
+    def available_shipping_methods(self):
+        return get_shop_shipping_settings().available_shipping_methods
+
+    @property
     def checkout_url(self):
         return '%s/@@checkout' % self.context.absolute_url()
 
