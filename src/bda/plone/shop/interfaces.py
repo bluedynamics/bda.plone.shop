@@ -243,6 +243,7 @@ class IShopShippingSettings(model.Schema):
     shipping_method = schema.Choice(
         title=_(u"label_default_shipping_method", default=u"Default Shipping Method"),
         description=_(u"help_default_shipping_method", default=u""),
+        required=True,
         vocabulary=
             'bda.plone.shop.vocabularies.EnabledShippingMethodsVocabulary'
     )
