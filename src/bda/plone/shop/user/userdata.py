@@ -42,6 +42,7 @@ class ICustomer(model.Schema):
                    _('legal', u'Legal'),
                    fields=['accept', ])
 
+    # Personal Data
     gender = schema.Choice(
         title=_(u'label_gender', default=u'Gender'),
         description=_(u'help_gender', default=u""),
@@ -75,6 +76,7 @@ class ICustomer(model.Schema):
         required=False,
     )
 
+    # Billing Address
     street = schema.TextLine(
         title=_(u'label_street', default=u'Street'),
         description=_(u'help_street', default=u''),
@@ -100,6 +102,7 @@ class ICustomer(model.Schema):
         vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
 
+    # Delivery Address
     delivery_alternative_delivery = schema.Bool(
         title=_(u'label_alternative_delivery',
                 default=u'Alternative delivery address'),
@@ -109,7 +112,6 @@ class ICustomer(model.Schema):
         required=False,
     )
 
-    # Delivery Address
     delivery_firstname = schema.TextLine(
         title=_(u'label_firstname', default=u'First name'),
         description=_(u'help_firstname',
@@ -156,6 +158,7 @@ class ICustomer(model.Schema):
         vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
 
+    # XXX: Delivery Phone is not contained in default checkout form yet
     delivery_phone = schema.TextLine(
         title=_(u'label_phone', default=u'Telephone number'),
         description=_(u'help_phone',
@@ -163,6 +166,7 @@ class ICustomer(model.Schema):
         required=False,
     )
 
+    # Terms and Conditions
     accept = schema.Bool(
         title=_(u'label_accept', default=u'Accept terms of use'),
         description=_(u'help_accept',
@@ -247,8 +251,6 @@ class CheckoutFormMemberPresets(object):
         self.member = member
 
     def get_value(self, field_name):
-        """Always return UNSET.
-        """
         default = UNSET
         if self.member:
             parts = field_name.split('.')

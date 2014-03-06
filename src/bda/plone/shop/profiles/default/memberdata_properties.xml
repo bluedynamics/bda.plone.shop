@@ -17,7 +17,7 @@
  <property name="delivery_alternative_delivery" type="boolean"></property>
  <property name="delivery_firstname" type="string"></property>
  <property name="delivery_lastname" type="string"></property>
- <property name="delivery_company" type="boolean"></property>
+ <property name="delivery_company" type="string"></property>
  <property name="delivery_street" type="string"></property>
  <property name="delivery_zip" type="string"></property>
  <property name="delivery_city" type="string"></property>
