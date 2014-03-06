@@ -12,6 +12,9 @@ from .utils import get_shop_notification_settings
 @adapter(IContained)
 class BubbleNotificationText(object):
 
+    def __init__(self, context):
+        self.context = context
+
     @property
     def order_text(self):
         parent = queryAdapter(aq_parent(self.context), INotificationText)
