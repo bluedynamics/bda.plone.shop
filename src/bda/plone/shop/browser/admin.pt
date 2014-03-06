@@ -25,6 +25,11 @@
              tal:attributes="href string:${context/absolute_url}/@@exportorders"
              i18n:translate="exportorders">Export Orders</a>
         </li>
+        <li>
+          <a href=""
+             tal:attributes="href string:${context/absolute_url}/@@mailtemplates"
+             i18n:translate="mailtemplates">Notification Templates</a>
+        </li>
       </ul>
       <span class="portletBottomLeft"></span>
       <span class="portletBottomRight"></span>
