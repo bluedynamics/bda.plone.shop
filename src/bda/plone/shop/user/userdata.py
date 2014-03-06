@@ -35,8 +35,7 @@ class ICustomer(model.Schema):
                    fields=['delivery_firstname', 'delivery_lastname',
                            'delivery_company',
                            'delivery_street', 'delivery_zip',
-                           'delivery_city', 'delivery_country',
-                           'delivery_phone'])
+                           'delivery_city', 'delivery_country'])
 
     model.fieldset('legal',
                    _('legal', u'Legal'),
@@ -156,14 +155,6 @@ class ICustomer(model.Schema):
         description=_(u'help_country', default=u""),
         required=False,
         vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
-    )
-
-    # XXX: Delivery Phone is not contained in default checkout form yet
-    delivery_phone = schema.TextLine(
-        title=_(u'label_phone', default=u'Telephone number'),
-        description=_(u'help_phone',
-                      default=u"Leave your phone number so we can reach you."),
-        required=False,
     )
 
     # Terms and Conditions

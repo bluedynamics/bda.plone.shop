@@ -22,6 +22,5 @@
  <property name="delivery_zip" type="string"></property>
  <property name="delivery_city" type="string"></property>
  <property name="delivery_country" type="string"></property>
- <property name="delivery_phone" type="string"></property>
 
 </object>
