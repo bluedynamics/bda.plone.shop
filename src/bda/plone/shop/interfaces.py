@@ -231,11 +231,13 @@ class IShopShippingSettings(model.Schema):
         description=_(u"help_include_shipping_costs", default=u""),
         default=True
     )
-
+ 
     available_shipping_methods = schema.List(
         value_type=schema.Choice(vocabulary=
             'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary'
         ) ,
+        required=True,
+        min_length=1,
         title=_(u"label_available_shipping_methods", default=u"Available Shipping Methods"),
         description=_(u"help_available_shipping_methods", default=u""),
     )
