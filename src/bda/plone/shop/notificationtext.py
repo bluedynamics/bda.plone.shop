@@ -1,55 +1,102 @@
+from .utils import get_shop_notification_settings
 from Acquisition import aq_parent
-from bda.plone.orders.interfaces import INotificationText
 from Products.CMFCore.interfaces import ISiteRoot
+from bda.plone.orders.interfaces import IGlobalNotificationText
+from bda.plone.orders.interfaces import IItemNotificationText
 from zope.component import adapter
 from zope.component import queryAdapter
 from zope.interface import implementer
 from zope.location.interfaces import IContained
-from .utils import get_shop_notification_settings
 
 
-@implementer(INotificationText)
+@implementer(IItemNotificationText)
 @adapter(IContained)
-class BubbleNotificationText(object):
+class BubbleItemNotificationText(object):
 
     def __init__(self, context):
         self.context = context
 
     @property
     def order_text(self):
-        parent = queryAdapter(aq_parent(self.context), INotificationText)
+        parent = queryAdapter(aq_parent(self.context), IItemNotificationText)
         if parent:
             return parent.order_text
 
     @property
     def overbook_text(self):
-        parent = queryAdapter(aq_parent(self.context), INotificationText)
+        parent = queryAdapter(aq_parent(self.context), IItemNotificationText)
         if parent:
             return parent.overbook_text
 
 
-@adapter(ISiteRoot)
-class RegistryNotificationText(BubbleNotificationText):
+@implementer(IGlobalNotificationText)
+@adapter(IContained)
+class BubbleGlobalNotificationText(object):
 
-    def lookup_text(self, enum):
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def global_order_text(self):
+        parent = queryAdapter(aq_parent(self.context), IGlobalNotificationText)
+        if parent:
+            return parent.global_order_text
+
+    @property
+    def overbook_text(self):
+        parent = queryAdapter(aq_parent(self.context), IGlobalNotificationText)
+        if parent:
+            return parent.global_overbook_text
+
+
+class BaseRegistryNotificationText(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    def _lookup_text(self, field):
+        settings = get_shop_notification_settings()
+        enum = getattr(settings, field)
         portal_state = self.context.restrictedTraverse('@@plone_portal_state')
         lang = portal_state.language()
+        text = None
         for entry in enum:
             if entry['lang'] == lang:
                 return entry['text']
 
+@adapter(ISiteRoot)
+class RegistryItemNotificationText(BaseRegistryNotificationText,
+                                   BubbleItemNotificationText):
+
     @property
     def order_text(self):
-        settings = get_shop_notification_settings()
-        order_text = self.lookup_text(settings.order_text)
-        if order_text:
-            return order_text
-        return super(RegistryNotificationText, self).order_text
+        text = self._lookup_text('order_text')
+        if text:
+            return text
+        return super(RegistryItemNotificationText, self).order_text
 
     @property
     def overbook_text(self):
-        settings = get_shop_notification_settings()
-        overbook_text = self.lookup_text(settings.overbook_text)
-        if overbook_text:
-            return overbook_text
-        return super(RegistryNotificationText, self).overbook_text
+        text = self._lookup_text('overbook_text')
+        if text:
+            return text
+        return super(RegistryItemNotificationText, self).overbook_text
+
+
+@adapter(ISiteRoot)
+class RegistryGlobalNotificationText(BaseRegistryNotificationText,
+                                     BubbleGlobalNotificationText):
+
+    @property
+    def order_text(self):
+        text = self._lookup_text('global_order_text')
+        if text:
+            return text
+        return super(RegistryGlobalNotificationText, self).global_order_text
+
+    @property
+    def overbook_text(self):
+        text = self._lookup_text('global_overbook_text')
+        if text:
+            return text
+        return super(RegistryGlobalNotificationText, self).global_overbook_text

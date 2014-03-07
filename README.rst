@@ -38,7 +38,7 @@ adapters implementing the following interfaces::
 - ``bda.plone.cart.interfaces.ICartItemDataProvider``
 - ``bda.plone.cart.interfaces.ICartItemStock``
 - ``bda.plone.shipping.interfaces.IShippingItem``
-- ``bda.plone.orders.interfaces.INotificationText``
+- ``bda.plone.orders.interfaces.IItemNotificationText``
 
 There exists Archetypes and Dexterity related implementations of these
 adapters among with related Schema Extenders respective Dexterity Behaviors.
@@ -81,7 +81,7 @@ interface. These are:
 - ``bda.plone.shop.dx.IBuyableBehavior``
 - ``bda.plone.shop.dx.IStockBehavior``
 - ``bda.plone.shop.dx.IShippingBehavior``
-- ``bda.plone.shop.dx.INotificationTextBehavior``
+- ``bda.plone.shop.dx.IItemNotificationTextBehavior``
 
 The corresponding adapter implementations are registered for the referring
 behavior interfaces.

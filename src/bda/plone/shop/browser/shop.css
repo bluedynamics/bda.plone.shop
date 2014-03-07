@@ -85,24 +85,24 @@ span.buyable_update_cart_disabled {
     cursor:normal;
 }
 /* shop control panel */
-#formfield-form-widgets-INotificationTextSettings-order_text td,
-#formfield-form-widgets-INotificationTextSettings-overbook_text td,
+#formfield-form-widgets-IItemNotificationTextSettings-order_text td,
+#formfield-form-widgets-IItemNotificationTextSettings-overbook_text td,
 #formfield-form-widgets-IPaymentTextSettings-payment_text td {
     vertical-align:top;
 }
-#formfield-form-widgets-INotificationTextSettings-order_text select,
-#formfield-form-widgets-INotificationTextSettings-overbook_text select,
+#formfield-form-widgets-IItemNotificationTextSettings-order_text select,
+#formfield-form-widgets-IItemNotificationTextSettings-overbook_text select,
 #formfield-form-widgets-IPaymentTextSettings-payment_text select {
     width:100%;
 }
-#formfield-form-widgets-INotificationTextSettings-order_text .cell-1,
-#formfield-form-widgets-INotificationTextSettings-overbook_text .cell-1,
+#formfield-form-widgets-IItemNotificationTextSettings-order_text .cell-1,
+#formfield-form-widgets-IItemNotificationTextSettings-overbook_text .cell-1,
 #formfield-form-widgets-IPaymentTextSettings-payment_text .cell-1,
 #formfield-form-widgets-IPaymentTextSettings-payment_text .cell-2 {
     width:15%;
 }
-#formfield-form-widgets-INotificationTextSettings-order_text .cell-2,
-#formfield-form-widgets-INotificationTextSettings-overbook_text .cell-2 {
+#formfield-form-widgets-IItemNotificationTextSettings-order_text .cell-2,
+#formfield-form-widgets-IItemNotificationTextSettings-overbook_text .cell-2 {
     width:85%;
 }
 #formfield-form-widgets-IPaymentTextSettings-payment_text .cell-3 {

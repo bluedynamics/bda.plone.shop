@@ -39,6 +39,8 @@
       <value key="default_item_vat" purge="false">20</value>
   </records>
   <records interface="bda.plone.shop.interfaces.INotificationTextSettings">
+    <value key="global_order_text" purge="false"></value>
+    <value key="global_overbook_text" purge="false"></value>
     <value key="order_text" purge="false"></value>
     <value key="overbook_text" purge="false"></value>
   </records>

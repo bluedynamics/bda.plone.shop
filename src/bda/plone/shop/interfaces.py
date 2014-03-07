@@ -1,6 +1,8 @@
 from bda.plone.cart.interfaces import ICartItem
-from bda.plone.orders.interfaces import INotificationText
+from bda.plone.orders.interfaces import IGlobalNotificationText
+from bda.plone.orders.interfaces import IItemNotificationText
 from bda.plone.orders.interfaces import IOrdersExtensionLayer
+from bda.plone.shop import message_factory as _
 from collective.z3cform.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
 from plone.autoform.directives import widget
@@ -9,7 +11,6 @@ from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.interface import Interface
 from zope.interface import provider
-from . import message_factory as _
 
 
 class IShopExtensionLayer(IOrdersExtensionLayer):
@@ -294,12 +295,16 @@ class ILanguageAwareTextRow(model.Schema):
 
 
 @provider(IShopSettingsProvider)
-class INotificationTextSettings(model.Schema, INotificationText):
+class INotificationTextSettings(model.Schema,
+                                IGlobalNotificationText,
+                                IItemNotificationText):
 
     model.fieldset(
         'notifications',
         label=_(u'Notifications'),
         fields=[
+            'global_order_text',
+            'global_overbook_text',
             'order_text',
             'overbook_text',
         ],
@@ -309,7 +314,7 @@ class INotificationTextSettings(model.Schema, INotificationText):
     order_text = schema.List(
         title=_(
             u"label_order_notification_text",
-            default=u"Order Notification Text"
+            default=u"Per Item Order Notification Text"
         ),
         value_type=DictRow(
             title=_(u'order_text', default='Order Text'),
@@ -321,7 +326,31 @@ class INotificationTextSettings(model.Schema, INotificationText):
     overbook_text = schema.List(
         title=_(
             u"label_overbook_notification_text",
-            default=u"Overbook Notification Text"
+            default=u"Per Item Overbook Notification Text"
+        ),
+        value_type=DictRow(
+            title=_(u'overbook_text', default='Overbook Text'),
+            schema=ILanguageAwareTextRow),
+        required=False
+    )
+
+    widget('global_order_text', DataGridFieldFactory, auto_append=False)
+    global_order_text = schema.List(
+        title=_(
+            u"label_overall_order_notification_text",
+            default=u"Overall Order Notification Text"
+        ),
+        value_type=DictRow(
+            title=_(u'order_text', default='Order Text'),
+            schema=ILanguageAwareTextRow),
+        required=False
+    )
+
+    widget('global_overbook_text', DataGridFieldFactory, auto_append=False)
+    global_overbook_text = schema.List(
+        title=_(
+            u"label_overall overbook_notification_text",
+            default=u"Overall Overbook Notification Text"
         ),
         value_type=DictRow(
             title=_(u'overbook_text', default='Overbook Text'),

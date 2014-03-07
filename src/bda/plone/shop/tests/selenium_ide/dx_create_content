@@ -78,12 +78,12 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=form-widgets-INotificationTextBehavior-order_text</td>
+	<td>id=form-widgets-IItemNotificationTextBehavior-order_text</td>
 	<td>You have ordered an item from Article Subcontainer 1</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=form-widgets-INotificationTextBehavior-overbook_text</td>
+	<td>id=form-widgets-IItemNotificationTextBehavior-overbook_text</td>
 	<td>You have reserved an item from Article Subcontainer 1</td>
 </tr>
 <tr>
@@ -113,12 +113,12 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=form-widgets-INotificationTextBehavior-order_text</td>
+	<td>id=form-widgets-IItemNotificationTextBehavior-order_text</td>
 	<td>Order notification text from Article 1</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=form-widgets-INotificationTextBehavior-overbook_text</td>
+	<td>id=form-widgets-IItemNotificationTextBehavior-overbook_text</td>
 	<td>Order reservation text from Article 1</td>
 </tr>
 <tr>
@@ -208,12 +208,12 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=form-widgets-INotificationTextBehavior-order_text</td>
+	<td>id=form-widgets-IItemNotificationTextBehavior-order_text</td>
 	<td>Order text from Article Container 2</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=form-widgets-INotificationTextBehavior-overbook_text</td>
+	<td>id=form-widgets-IItemNotificationTextBehavior-overbook_text</td>
 	<td>Reservation Text from Article Container 2</td>
 </tr>
 <tr>
@@ -248,12 +248,12 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=form-widgets-INotificationTextBehavior-order_text</td>
+	<td>id=form-widgets-IItemNotificationTextBehavior-order_text</td>
 	<td>Article 3 Order Text</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=form-widgets-INotificationTextBehavior-overbook_text</td>
+	<td>id=form-widgets-IItemNotificationTextBehavior-overbook_text</td>
 	<td>Article 3 Reservation Text</td>
 </tr>
 <tr>

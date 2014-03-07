@@ -1,16 +1,10 @@
-from archetypes.schemaextender.field import ExtensionField
-from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
-from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
-try:
-    from collective.contentleadimage.config import IMAGE_FIELD_NAME
-    HAS_CLI = True
-except:
-    HAS_CLI = False
-from bda.plone.cart import CartItemPreviewAdapterBase
-from bda.plone.cart.interfaces import ICartItemDataProvider
-from bda.plone.cart.interfaces import ICartItemStock
-from bda.plone.orders.interfaces import INotificationText
-from bda.plone.shipping.interfaces import IShippingItem
+from .interfaces import IBuyable
+from .interfaces import IShopExtensionLayer
+from .notificationtext import BubbleGlobalNotificationText
+from .notificationtext import BubbleItemNotificationText
+from .utils import get_shop_article_settings
+from .utils import get_shop_settings
+from .utils import get_shop_tax_settings
 from Products.Archetypes.atapi import BooleanField
 from Products.Archetypes.atapi import FloatField
 from Products.Archetypes.atapi import SelectionWidget
@@ -21,17 +15,24 @@ from Products.Archetypes.atapi import TextField
 from Products.Archetypes.interfaces import IBaseObject
 from Products.Archetypes.interfaces import IFieldDefaultProvider
 from Products.Archetypes.utils import OrderedDict
+from archetypes.schemaextender.field import ExtensionField
+from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
+from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
+from bda.plone.cart import CartItemPreviewAdapterBase
+from bda.plone.cart.interfaces import ICartItemDataProvider
+from bda.plone.cart.interfaces import ICartItemStock
+from bda.plone.shipping.interfaces import IShippingItem
+from bda.plone.shop import message_factory as _
 from zope.component import adapter
 from zope.component import getUtility
 from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
-from . import message_factory as _
-from .interfaces import IBuyable
-from .interfaces import IShopExtensionLayer
-from .notificationtext import BubbleNotificationText
-from .utils import get_shop_article_settings
-from .utils import get_shop_settings
-from .utils import get_shop_tax_settings
+
+try:
+    from collective.contentleadimage.config import IMAGE_FIELD_NAME
+    HAS_CLI = True
+except:
+    HAS_CLI = False
 
 
 def field_value(obj, field_name):
@@ -329,7 +330,7 @@ class ATCartItemPreviewImage(CartItemPreviewAdapterBase):
         return img_scale and img_scale.url or ""
 
 
-class NotificationTextExtender(ExtenderBase):
+class ItemNotificationTextExtender(ExtenderBase):
     """Schema extender for notification text.
     """
 
@@ -364,20 +365,73 @@ class NotificationTextExtender(ExtenderBase):
         ),
     ]
 
+class GlobalNotificationTextExtender(ExtenderBase):
+    """Schema extender for global notification text.
+    """
+
+    layer = IShopExtensionLayer
+
+    fields = [
+        XTextField(
+            name='global_order_text',
+            schemata='Shop',
+            default_content_type="text/plain",
+            allowable_content_types=('text/plain',),
+            default_output_type="text/plain",
+            widget=TextAreaWidget(
+                label=_(
+                    u'label_global_order_notification_text',
+                    u'Overall Notification Text'
+                ),
+            ),
+        ),
+        XTextField(
+            name='global_overbook_text',
+            schemata='Shop',
+            default_content_type="text/plain",
+            allowable_content_types=('text/plain',),
+            default_output_type="text/plain",
+            widget=TextAreaWidget(
+                label=_(
+                    u'label_global_overbook_notification_text',
+                    u'Overall Overbooked Notification Text'
+                ),
+            ),
+        ),
+    ]
+
 
 @adapter(IBaseObject)
-class ATNotificationText(BubbleNotificationText):
+class ATItemNotificationText(BubbleItemNotificationText):
 
     @property
     def order_text(self):
-        order_text = self.context.getField('order_text').get(self.context)
-        if order_text:
-            return order_text
-        return super(ATNotificationText, self).order_text
+        text = self.context.getField('order_text').get(self.context)
+        if text:
+            return text
+        return super(ATItemNotificationText, self).order_text
 
     @property
     def overbook_text(self):
-        overbook_text = self.context.getField('overbook_text').get(self.context)
-        if overbook_text:
-            return overbook_text
-        return super(ATNotificationText, self).overbook_text
+        text = self.context.getField('overbook_text').get(self.context)
+        if text:
+            return text
+        return super(ATItemNotificationText, self).overbook_text
+
+
+@adapter(IBaseObject)
+class ATGlobalNotificationText(BubbleGlobalNotificationText):
+
+    @property
+    def order_text(self):
+        text = self.context.getField('global_order_text').get(self.context)
+        if text:
+            return text
+        return super(ATGlobalNotificationText, self).text
+
+    @property
+    def overbook_text(self):
+        text = self.context.getField('global_overbook_text').get(self.context)
+        if text:
+            return text
+        return super(ATGlobalNotificationText, self).global_overbook_text

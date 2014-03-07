@@ -52,8 +52,10 @@
   <adapter factory=".cartdata.CartItemState" />
 
   <!-- notification text adapter -->
-  <adapter factory=".notificationtext.BubbleNotificationText" />
-  <adapter factory=".notificationtext.RegistryNotificationText" />
+  <adapter factory=".notificationtext.BubbleItemNotificationText" />
+  <adapter factory=".notificationtext.RegistryItemNotificationText" />
+  <adapter factory=".notificationtext.BubbleGlobalNotificationText" />
+  <adapter factory=".notificationtext.RegistryGlobalNotificationText" />
 
   <!-- AT Extenders -->
   <adapter
@@ -111,8 +113,16 @@
 
   <adapter
     zcml:condition="installed Products.Archetypes"
-    name="bda.plone.shop.notificationtext"
-    factory=".at.NotificationTextExtender"
+    name="bda.plone.shop.itemnotificationtext"
+    for="bda.plone.shop.interfaces.IBuyable"
+    factory=".at.ItemNotificationTextExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="bda.plone.shop.globalnotificationtext"
+    for="bda.plone.orders.interfaces.IVendor"
+    factory=".at.GlobalNotificationTextExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
 
@@ -135,7 +145,11 @@
 
   <adapter
     zcml:condition="installed Products.Archetypes"
-    factory=".at.ATNotificationText" />
+    factory=".at.ATItemNotificationText" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATGlobalNotificationText" />
 
   <!-- DX behaviors -->
   <plone:behavior
@@ -161,9 +175,16 @@
 
   <plone:behavior
     zcml:condition="installed plone.dexterity"
-    title="Shop: Order Notification Text Behavior"
+    title="Shop: Per Item Order Notification Text Behavior"
     description="Manages notification text of item for order."
-    provides=".dx.INotificationTextBehavior"
+    provides=".dx.IItemNotificationTextBehavior"
+    for="plone.dexterity.interfaces.IDexterityContent" />
+
+  <plone:behavior
+    zcml:condition="installed plone.dexterity"
+    title="Shop: Overall Order Notification Text Behavior"
+    description="Manages notification text for whole order."
+    provides=".dx.IGlobalNotificationTextBehavior"
     for="plone.dexterity.interfaces.IDexterityContent" />
 
   <!-- cart related DX adapters -->
@@ -185,6 +206,10 @@
 
   <adapter
     zcml:condition="installed plone.dexterity"
-    factory=".dx.DXNotificationText" />
+    factory=".dx.DXItemNotificationText" />
+
+  <adapter
+    zcml:condition="installed plone.dexterity"
+    factory=".dx.DXGlobalNotificationText" />
 
 </configure>

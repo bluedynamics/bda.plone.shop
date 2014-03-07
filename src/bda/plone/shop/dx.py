@@ -1,9 +1,17 @@
+from .interfaces import IBuyable
+from .notificationtext import BubbleGlobalNotificationText
+from .notificationtext import BubbleItemNotificationText
+from .utils import get_shop_article_settings
+from .utils import get_shop_settings
+from .utils import get_shop_tax_settings
 from Acquisition import aq_parent
 from bda.plone.cart import CartItemPreviewAdapterBase
 from bda.plone.cart.interfaces import ICartItemDataProvider
 from bda.plone.cart.interfaces import ICartItemStock
-from bda.plone.orders.interfaces import INotificationText
+from bda.plone.orders.interfaces import IGlobalNotificationText
+from bda.plone.orders.interfaces import IItemNotificationText
 from bda.plone.shipping.interfaces import IShippingItem
+from bda.plone.shop import message_factory as _
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
 from plone.supermodel import model
@@ -14,12 +22,6 @@ from zope.interface import implementer
 from zope.interface import provider
 from zope.schema.interfaces import IContextAwareDefaultFactory
 from zope.schema.interfaces import IVocabularyFactory
-from . import message_factory as _
-from .interfaces import IBuyable
-from .notificationtext import BubbleNotificationText
-from .utils import get_shop_article_settings
-from .utils import get_shop_settings
-from .utils import get_shop_tax_settings
 
 
 @provider(IContextAwareDefaultFactory)
@@ -65,13 +67,16 @@ class IBuyableBehavior(model.Schema, IBuyable):
     model.fieldset(
         'shop',
         label=u"Shop",
-        fields=['item_net',
-                'item_vat',
-                'item_display_gross',
-                'item_comment_enabled',
-                'item_comment_required',
-                'item_quantity_unit_float',
-                'item_quantity_unit'])
+        fields=[
+            'item_net',
+            'item_vat',
+            'item_display_gross',
+            'item_comment_enabled',
+            'item_comment_required',
+            'item_quantity_unit_float',
+            'item_quantity_unit'
+        ]
+    )
 
     item_net = schema.Float(
         title=_(u'label_item_net', default=u'Item net price'),
@@ -260,7 +265,7 @@ class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
 
 
 @provider(IFormFieldProvider)
-class INotificationTextBehavior(model.Schema):
+class IItemNotificationTextBehavior(model.Schema):
 
     model.fieldset(
         'shop',
@@ -285,18 +290,60 @@ class INotificationTextBehavior(model.Schema):
         required=False
     )
 
+@provider(IFormFieldProvider)
+class IGlobalNotificationTextBehavior(model.Schema):
 
-@adapter(INotificationTextBehavior)
-class DXNotificationText(BubbleNotificationText):
+    model.fieldset(
+        'shop',
+        label=u"Shop",
+        fields=[
+            'global_order_text',
+            'global_overbook_text'])
+
+    global_order_text = schema.Text(
+        title=_(
+            u"label_global_order_notification_text",
+            default=u"Overall Order Notification Text"
+        ),
+        required=False
+    )
+
+    global_overbook_text = schema.Text(
+        title=_(
+            u"label_global_overbook_notification_text",
+            default=u"Overall Overbook Notification Text"
+        ),
+        required=False
+    )
+
+
+@adapter(IItemNotificationTextBehavior)
+class DXItemNotificationText(BubbleItemNotificationText):
 
     @property
     def order_text(self):
         if self.context.order_text:
             return self.context.order_text
-        return super(DXNotificationText, self).order_text
+        return super(DXItemNotificationText, self).order_text
 
     @property
     def overbook_text(self):
         if self.context.overbook_text:
             return self.context.overbook_text
-        return super(DXNotificationText, self).overbook_text
+        return super(DXItemNotificationText, self).overbook_text
+
+
+@adapter(IGlobalNotificationTextBehavior)
+class DXGlobalNotificationText(BubbleGlobalNotificationText):
+
+    @property
+    def global_order_text(self):
+        if self.context.global_order_text:
+            return self.context.global_order_text
+        return super(DXGlobalNotificationText, self).global_order_text
+
+    @property
+    def global_overbook_text(self):
+        if self.context.global_overbook_text:
+            return self.context.global_overbook_text
+        return super(DXGlobalNotificationText, self).global_overbook_text

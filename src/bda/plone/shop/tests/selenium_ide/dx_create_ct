@@ -63,7 +63,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=form-widgets-bda-plone-shop-dx-INotificationTextBehavior-0</td>
+	<td>id=form-widgets-bda-plone-shop-dx-IItemNotificationTextBehavior-0</td>
 	<td></td>
 </tr>
 <tr>
@@ -113,7 +113,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=form-widgets-bda-plone-shop-dx-INotificationTextBehavior-0</td>
+	<td>id=form-widgets-bda-plone-shop-dx-IItemNotificationTextBehavior-0</td>
 	<td></td>
 </tr>
 <tr>

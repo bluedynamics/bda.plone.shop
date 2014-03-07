@@ -7,7 +7,7 @@ Changelog
 - Implement ``bda.plone.orders.IPaymentText``
   [rnix, jensens]
 
-- Implement ``bda.plone.orders.INotificationText``
+- Implement ``bda.plone.orders.I[Item|Global]NotificationText``
   [rnix, jensens]
 
 - Allow portal member to store billing and delivery address information and use

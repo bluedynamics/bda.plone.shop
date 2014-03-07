@@ -43,22 +43,22 @@
 </tr>
 <tr>
 	<td>select</td>
-	<td>id=form-widgets-INotificationTextSettings-order_text-0-widgets-lang</td>
+	<td>id=form-widgets-IItemNotificationTextSettings-order_text-0-widgets-lang</td>
 	<td>label=English</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=form-widgets-INotificationTextSettings-order_text-0-widgets-text</td>
+	<td>id=form-widgets-IItemNotificationTextSettings-order_text-0-widgets-text</td>
 	<td>Thank you for your order</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>id=form-widgets-INotificationTextSettings-overbook_text-0-widgets-lang</td>
+	<td>id=form-widgets-IItemNotificationTextSettings-overbook_text-0-widgets-lang</td>
 	<td>label=English</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=form-widgets-INotificationTextSettings-overbook_text-0-widgets-text</td>
+	<td>id=form-widgets-IItemNotificationTextSettings-overbook_text-0-widgets-text</td>
 	<td>Thank you for your Reservation</td>
 </tr>
 <tr>
