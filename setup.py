@@ -45,8 +45,7 @@ setup(
             'Products.ATContentTypes',
             'plone.app.dexterity',
             'plone.app.testing [robot]',
-            'plone.app.robotframework',
-            'robotframework-debuglibrary',
+            'plone.app.robotframework [debug]',
             'plone.app.contenttypes',
         ]
     },
