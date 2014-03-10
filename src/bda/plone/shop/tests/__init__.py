@@ -5,8 +5,13 @@ from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
+from plone.app.testing import TEST_USER_ID
+from plone.app.testing import setRoles
 from plone.testing import z2
 from zope.interface import alsoProvides
+
+import plone.api
+
 
 if getFSVersionTuple()[0] >= 5:
     PLONE5 = 1
@@ -88,9 +93,83 @@ ShopDX_ROBOT_TESTING = FunctionalTesting(
     name="ShopDX:Robot")
 
 
-class ShopDXFullLayer(ShopDXLayer):
-    defaultBases = (Shop_FIXTURE,)
+class ShopDXFullLayer(PloneSandboxLayer):
+    defaultBases = (ShopDX_FIXTURE,)
+
+    def setUpZope(self, app, configurationContext):
+        z2.installProduct(app, 'Products.DateRecurringIndex')  # prepare
+
+        import plone.app.contenttypes
+        self.loadZCML(package=plone.app.contenttypes,
+                      context=configurationContext)
 
     def setUpPloneSite(self, portal):
-        super(ShopDXFullLayer, self).setUpPloneSite(portal)
-        # TODO: create user+content and use that layer in robot tests
+        self.applyProfile(portal, 'plone.app.contenttypes:default')
+
+        portal.portal_workflow.setDefaultChain("simple_publication_workflow")
+        setRoles(portal, TEST_USER_ID, ['Manager'])
+
+        plone.api.content.create(
+            container=portal,
+            type='Folder',
+            id='folder_1',
+        )
+        plone.api.content.create(
+            container=portal['folder_1'],
+            type='Document',
+            id='item_11',
+        )
+        plone.api.content.create(
+            container=portal['folder_1'],
+            type='Document',
+            id='item_12',
+        )
+
+        plone.api.content.create(
+            container=portal,
+            type='Folder',
+            id='folder_2',
+        )
+        plone.api.content.create(
+            container=portal['folder_2'],
+            type='Document',
+            id='item_21',
+        )
+        plone.api.content.create(
+            container=portal['folder_2'],
+            type='Document',
+            id='item_22',
+        )
+
+        plone.api.user.create(
+            email="customer1@test.com",
+            username="customer1",
+            password="customer1"
+        )
+        plone.api.user.create(
+            email="customer2@test.com",
+            username="customer2",
+            password="customer2"
+        )
+        plone.api.user.create(
+            email="vendor1@test.com",
+            username="vendor1",
+            password="vendor1"
+        )
+        plone.api.user.create(
+            email="vendor2@test.com",
+            username="vendor2",
+            password="vendor2"
+        )
+
+ShopDXFull_FIXTURE = ShopDXFullLayer()
+ShopDXFull_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(ShopDXFull_FIXTURE,),
+    name="ShopDX:Integration")
+ShopDXFull_ROBOT_TESTING = FunctionalTesting(
+    bases=(
+        ShopDXFull_FIXTURE,
+        AUTOLOGIN_LIBRARY_FIXTURE,
+        z2.ZSERVER_FIXTURE
+    ),
+    name="ShopDXFull:Robot")

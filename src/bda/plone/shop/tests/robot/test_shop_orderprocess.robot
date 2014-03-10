@@ -13,6 +13,8 @@ Test Teardown  Close all browsers
 
 *** Test Cases ***
 
+Scenario: Two users order some items in different vendor areas
+  Given a site owner
 
 *** Keywords ***
 

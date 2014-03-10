@@ -46,6 +46,7 @@ setup(
             'plone.app.dexterity',
             'plone.app.testing [robot]',
             'plone.app.robotframework',
+            'plone.app.contenttypes',
         ]
     },
     entry_points="""

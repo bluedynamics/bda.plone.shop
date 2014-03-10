@@ -1,4 +1,4 @@
-from bda.plone.shop.tests import ShopDX_ROBOT_TESTING
+from bda.plone.shop.tests import ShopDXFull_ROBOT_TESTING
 from plone.app.testing.interfaces import ROBOT_TEST_LEVEL
 from plone.testing import layered
 
@@ -11,6 +11,6 @@ def test_suite():
     suite.level = ROBOT_TEST_LEVEL
     suite.addTests([
         layered(robotsuite.RobotTestSuite('robot'),
-                layer=ShopDX_ROBOT_TESTING),
+                layer=ShopDXFull_ROBOT_TESTING),
     ])
     return suite
