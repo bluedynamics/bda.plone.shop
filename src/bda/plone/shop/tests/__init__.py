@@ -1,10 +1,12 @@
-from zope.interface import alsoProvides
-from plone.testing import z2
+from Products.CMFPlone.utils import getFSVersionTuple
+from bda.plone.shop.interfaces import IShopExtensionLayer
+from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
+from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
-from Products.CMFPlone.utils import getFSVersionTuple
-from ..interfaces import IShopExtensionLayer
+from plone.testing import z2
+from zope.interface import alsoProvides
 
 if getFSVersionTuple()[0] >= 5:
     PLONE5 = 1
@@ -77,3 +79,18 @@ ShopDX_FIXTURE = ShopDXLayer()
 ShopDX_INTEGRATION_TESTING = IntegrationTesting(
     bases=(ShopDX_FIXTURE,),
     name="ShopDX:Integration")
+ShopDX_ROBOT_TESTING = FunctionalTesting(
+    bases=(
+        ShopDX_FIXTURE,
+        AUTOLOGIN_LIBRARY_FIXTURE,
+        z2.ZSERVER_FIXTURE
+    ),
+    name="ShopDX:Robot")
+
+
+class ShopDXFullLayer(ShopDXLayer):
+    defaultBases = (Shop_FIXTURE,)
+
+    def setUpPloneSite(self, portal):
+        super(ShopDXFullLayer, self).setUpPloneSite(portal)
+        # TODO: create user+content and use that layer in robot tests

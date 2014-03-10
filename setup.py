@@ -44,7 +44,8 @@ setup(
         'test': [
             'Products.ATContentTypes',
             'plone.app.dexterity',
-            'plone.app.testing',
+            'plone.app.testing [robot]',
+            'plone.app.robotframework',
         ]
     },
     entry_points="""
