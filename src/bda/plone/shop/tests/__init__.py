@@ -1,4 +1,6 @@
 from Products.CMFPlone.utils import getFSVersionTuple
+from zope.component import getUtility
+from plone.dexterity.interfaces import IDexterityFTI
 from bda.plone.shop.interfaces import IShopExtensionLayer
 from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
 from plone.app.testing import FunctionalTesting
@@ -106,7 +108,12 @@ class ShopDXFullLayer(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         self.applyProfile(portal, 'plone.app.contenttypes:default')
 
-        portal.portal_workflow.setDefaultChain("simple_publication_workflow")
+        # Make Documents buyable by adding necessary behaviors to the FTI
+        getUtility(IDexterityFTI, name='Document').behaviors +=\
+            ('bda.plone.shop.dx.IBuyableBehavior',
+             'bda.plone.shop.dx.IStockBehavior', )
+
+        portal.portal_workflow.setDefaultChain("one_state_workflow")
         setRoles(portal, TEST_USER_ID, ['Manager'])
 
         # Create test content
