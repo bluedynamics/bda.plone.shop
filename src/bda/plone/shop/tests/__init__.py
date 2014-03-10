@@ -109,58 +109,23 @@ class ShopDXFullLayer(PloneSandboxLayer):
         portal.portal_workflow.setDefaultChain("simple_publication_workflow")
         setRoles(portal, TEST_USER_ID, ['Manager'])
 
-        plone.api.content.create(
-            container=portal,
-            type='Folder',
-            id='folder_1',
-        )
-        plone.api.content.create(
-            container=portal['folder_1'],
-            type='Document',
-            id='item_11',
-        )
-        plone.api.content.create(
-            container=portal['folder_1'],
-            type='Document',
-            id='item_12',
-        )
+        # Create test content
+        crc = plone.api.content.create
+        crc(container=portal, type='Folder', id='folder_1')
+        crc(container=portal['folder_1'], type='Document', id='item_11')
+        crc(container=portal['folder_1'], type='Document', id='item_12')
 
-        plone.api.content.create(
-            container=portal,
-            type='Folder',
-            id='folder_2',
-        )
-        plone.api.content.create(
-            container=portal['folder_2'],
-            type='Document',
-            id='item_21',
-        )
-        plone.api.content.create(
-            container=portal['folder_2'],
-            type='Document',
-            id='item_22',
-        )
+        crc(container=portal, type='Folder', id='folder_2')
+        crc(container=portal['folder_2'], type='Document', id='item_21')
+        crc(container=portal['folder_2'], type='Document', id='item_22')
 
-        plone.api.user.create(
-            email="customer1@test.com",
-            username="customer1",
-            password="customer1"
-        )
-        plone.api.user.create(
-            email="customer2@test.com",
-            username="customer2",
-            password="customer2"
-        )
-        plone.api.user.create(
-            email="vendor1@test.com",
-            username="vendor1",
-            password="vendor1"
-        )
-        plone.api.user.create(
-            email="vendor2@test.com",
-            username="vendor2",
-            password="vendor2"
-        )
+        # Create test users
+        cru = plone.api.user.create
+        cru(email="c1@test.com", username="customer1", password="customer1")
+        cru(email="c2@test.com", username="customer2", password="customer2")
+        cru(email="v1@test.com", username="vendor1", password="vendor1")
+        cru(email="vendor2@test.com", username="vendor2", password="vendor2")
+
 
 ShopDXFull_FIXTURE = ShopDXFullLayer()
 ShopDXFull_INTEGRATION_TESTING = IntegrationTesting(
