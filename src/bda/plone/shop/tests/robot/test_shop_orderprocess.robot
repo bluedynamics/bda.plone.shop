@@ -15,6 +15,7 @@ Test Teardown  Close all browsers
 
 Scenario: Two users order some items in different vendor areas
   Given a site owner
+  debug
 
 *** Keywords ***
 
