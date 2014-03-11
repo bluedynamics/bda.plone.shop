@@ -38,7 +38,21 @@ Scenario: Two users order some items in different vendor areas
   When adding item_22 in folder_2 to cart
   Then item number 4 in cart should have quantity 1
   When Checkout Order customer1
+  Then Order should be placed
+
+  Given a user customer2
+  When editing personal information for customer2
+  When adding item_21 in folder_2 to cart
+  Then item number 1 in cart should have quantity 1
+  When adding item_21 in folder_2 to cart
+  Then item number 1 in cart should have quantity 2
+  When adding item_22 in folder_2 to cart
+  Then item number 2 in cart should have quantity 1
+  When Checkout Order customer2
+  Then Order should be placed
+
   debug
+
 
 
 
@@ -98,7 +112,43 @@ Checkout Order customer1
   Page Should Contain  Cash
   Select Checkbox  css=#input-checkout-accept_terms_and_conditions-accept
   Click Button  css=#input-checkout-finish
-  Page Should Contain Order Received
+
+
+editing personal information for customer2
+  Go To  ${PLONE_URL}/@@personal-information
+  Input Text  css=#form-widgets-firstname  Marry
+  Input Text  css=#form-widgets-lastname  Poppins
+  Input Text  css=#form-widgets-email  marry@poppins.com
+  Input Text  css=#form-widgets-phone  +123
+  Input Text  css=#form-widgets-street  Galaxy North
+  Input Text  css=#form-widgets-zip  9999
+  Input Text  css=#form-widgets-city  high in the sky
+  Select From List By Value  css=#form-widgets-country  040
+  Click Button  css=#form-buttons-save
+
+Checkout Order customer2
+  Click Link  css=.go_to_cart_action
+  Click Link  css=.cart_checkout_button
+  Textfield Value Should Be  css=#input-checkout-personal_data-firstname  Marry
+  Textfield Value Should Be  css=#input-checkout-personal_data-lastname  Poppins
+  Textfield Value Should Be  css=#input-checkout-personal_data-phone  +123
+  Textfield Value Should Be  css=#input-checkout-billing_address-street  Galaxy North
+  Textfield Value Should Be  css=#input-checkout-billing_address-zip  9999
+  Textfield Value Should Be  css=#input-checkout-billing_address-city  high in the sky
+  List Selection Should Be  css=#input-checkout-billing_address-country  040
+  Select Radio Button  checkout.payment_selection.payment  cash
+  Click Button  css=#input-checkout-next
+  Page Should Contain  Your Order
+  Page Should Contain Element  css=.cart_item.cart_overview+.cart_item.cart_overview
+  Page Should Contain  Marry
+  Page Should Contain  Poppins
+  Page Should Contain  high in the sky
+  Page Should Contain  Cash
+  Select Checkbox  css=#input-checkout-accept_terms_and_conditions-accept
+  Click Button  css=#input-checkout-finish
+
+
+
 
 # Then
 
@@ -107,4 +157,7 @@ Vendor area is enabled
 
 User is added as Vendor
   Page Should Contain  Changes saved
+
+Order should be placed
+  Page Should Contain  Order Received
 
