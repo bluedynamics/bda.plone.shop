@@ -2,7 +2,7 @@ from Products.CMFPlone.utils import getFSVersionTuple
 from zope.component import getUtility
 from plone.dexterity.interfaces import IDexterityFTI
 from bda.plone.shop.interfaces import IShopExtensionLayer
-from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
+from plone.app.robotframework.testing import MOCK_MAILHOST_FIXTURE
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
@@ -90,7 +90,7 @@ ShopDX_INTEGRATION_TESTING = IntegrationTesting(
 ShopDX_ROBOT_TESTING = FunctionalTesting(
     bases=(
         ShopDX_FIXTURE,
-        AUTOLOGIN_LIBRARY_FIXTURE,
+        MOCK_MAILHOST_FIXTURE,
         z2.ZSERVER_FIXTURE
     ),
     name="ShopDX:Robot")
@@ -100,8 +100,6 @@ class ShopDXFullLayer(PloneSandboxLayer):
     defaultBases = (ShopDX_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
-        os.environ['ENABLE_PRINTING_MAILHOST'] = 'True'
-        z2.installProduct(app, 'Products.PrintingMailHost')
         z2.installProduct(app, 'Products.DateRecurringIndex')  # still needed
 
         import plone.app.contenttypes
@@ -123,17 +121,22 @@ class ShopDXFullLayer(PloneSandboxLayer):
              'bda.plone.shop.dx.IStockBehavior', )
 
         portal.portal_workflow.setDefaultChain("one_state_workflow")
+
         setRoles(portal, TEST_USER_ID, ['Manager'])
 
         # Create test content
         crc = plone.api.content.create
         crc(container=portal, type='Folder', id='folder_1')
-        crc(container=portal['folder_1'], type='Document', id='item_11')
-        crc(container=portal['folder_1'], type='Document', id='item_12')
+        crc(container=portal['folder_1'], type='Document', id='item_11',
+            title="item_11")
+        crc(container=portal['folder_1'], type='Document', id='item_12',
+            title="item_12")
 
         crc(container=portal, type='Folder', id='folder_2')
-        crc(container=portal['folder_2'], type='Document', id='item_21')
-        crc(container=portal['folder_2'], type='Document', id='item_22')
+        crc(container=portal['folder_2'], type='Document', id='item_21',
+            title="item_21")
+        crc(container=portal['folder_2'], type='Document', id='item_22',
+            title="item_22")
 
         # Create test users
         cru = plone.api.user.create
@@ -150,7 +153,7 @@ ShopDXFull_INTEGRATION_TESTING = IntegrationTesting(
 ShopDXFull_ROBOT_TESTING = FunctionalTesting(
     bases=(
         ShopDXFull_FIXTURE,
-        AUTOLOGIN_LIBRARY_FIXTURE,
+        MOCK_MAILHOST_FIXTURE,
         z2.ZSERVER_FIXTURE
     ),
     name="ShopDXFull:Robot")
