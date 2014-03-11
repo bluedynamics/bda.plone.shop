@@ -12,6 +12,7 @@ from plone.app.testing import setRoles
 from plone.testing import z2
 from zope.interface import alsoProvides
 
+import os
 import plone.api
 
 
@@ -99,11 +100,19 @@ class ShopDXFullLayer(PloneSandboxLayer):
     defaultBases = (ShopDX_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
-        z2.installProduct(app, 'Products.DateRecurringIndex')  # prepare
+        os.environ['ENABLE_PRINTING_MAILHOST'] = 'True'
+        z2.installProduct(app, 'Products.PrintingMailHost')
+        z2.installProduct(app, 'Products.DateRecurringIndex')  # still needed
 
         import plone.app.contenttypes
         self.loadZCML(package=plone.app.contenttypes,
                       context=configurationContext)
+
+        # Make Documents IBuyable
+        #import bda.plone.shop.tests
+        #self.loadZCML(package=bda.plone.shop.tests,
+        #              name='buyable_dx.zcml',
+        #              context=configurationContext)
 
     def setUpPloneSite(self, portal):
         self.applyProfile(portal, 'plone.app.contenttypes:default')
