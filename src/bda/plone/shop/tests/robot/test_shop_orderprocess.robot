@@ -14,6 +14,9 @@ Test Teardown  Close all browsers
 *** Test Cases ***
 
 Scenario: Two users order some items in different vendor areas
+
+# SETUP
+
   Given a site owner
 
   When Admin enables vendor area on folder_1
@@ -25,6 +28,9 @@ Scenario: Two users order some items in different vendor areas
   Then Vendor area is enabled
   When Admin adds user vendor2 to Vendors on folder_2
   Then User is added as Vendor
+
+
+# ORDERS
 
   Given a user customer1
   When adding item_11 in folder_1 to cart
@@ -40,6 +46,11 @@ Scenario: Two users order some items in different vendor areas
   When Checkout Order customer1
   Then Order should be placed
 
+  When checking orders
+  Then customer Pfister sees own but not Poppins orders
+  When checking order details
+  Then customer sees email mister@pfister.com and own bookings item_11 and item_22
+
   Given a user customer2
   When editing personal information for customer2
   When adding item_21 in folder_2 to cart
@@ -51,9 +62,27 @@ Scenario: Two users order some items in different vendor areas
   When Checkout Order customer2
   Then Order should be placed
 
-  debug
+  When checking orders
+  Then customer Poppins sees own but not Pfister orders
+  When checking order details
+  Then customer sees email marry@poppins.com and own bookings item_21 and item_22
 
+  
+# VENDORS
+  
+  Given a user vendor1
+  When checking orders
+  Then vendor1 sees allowed orders
+  When vendor1 checking customer1 order details
+  Then vendor1 sees customer1 allowed bookings
 
+  Given a user vendor2
+  When checking orders
+  Then vendor2 sees allowed orders
+  When vendor2 checking customer1 order details
+  Then vendor2 sees customer1 allowed bookings
+  When vendor2 checking customer2 order details
+  Then vendor2 sees customer2 allowed bookings
 
 
 *** Keywords ***
@@ -61,7 +90,7 @@ Scenario: Two users order some items in different vendor areas
 # Given
 
 a site owner
-  Enable autologin as  Manager
+  Login as site owner
 
 a user ${user}
   Log In  ${user}  ${user}
@@ -78,8 +107,8 @@ Admin enables vendor area on ${path}
 Admin adds user ${user} to Vendors on ${path}
   Go to  ${PLONE_URL}/${path}/@@sharing
   Page Should Contain  Sharing for
-  Input Text  id=sharing-user-group-search  vendor1
-  Select Checkbox  css=td[title='vendor1']+td+td+td input[name='entries.role_Vendor:records']
+  Input Text  id=sharing-user-group-search  ${user}
+  Select Checkbox  css=td[title='${user}']+td+td+td input[name='entries.role_Vendor:records']
   Click Button  id=sharing-save-button
 
 adding ${item} in ${path} to cart
@@ -147,7 +176,25 @@ Checkout Order customer2
   Select Checkbox  css=#input-checkout-accept_terms_and_conditions-accept
   Click Button  css=#input-checkout-finish
 
+checking orders
+  Click Link  css=#portal-personaltools a#user-name
+  Click Link  css=#portal-personaltools #personaltools-orders a
 
+checking order details
+  Click Link  css=#bdaploneorders tr:nth-of-type(1) a.contenttype-document[title="View Order"]
+
+
+vendor1 checking customer1 order details
+  # These selectors are quite weak. but the table doesn't offer better.
+  Click Link  css=#bdaploneorders tr:nth-of-type(1) a.contenttype-document[title="View Order"]
+
+vendor2 checking customer1 order details
+  # These selectors are quite weak. but the table doesn't offer better.
+  Click Link  css=#bdaploneorders tr:nth-of-type(2) a.contenttype-document[title="View Order"]
+
+vendor2 checking customer2 order details
+  # These selectors are quite weak. but the table doesn't offer better.
+  Click Link  css=#bdaploneorders tr:nth-of-type(1) a.contenttype-document[title="View Order"]
 
 
 # Then
@@ -160,4 +207,56 @@ User is added as Vendor
 
 Order should be placed
   Page Should Contain  Order Received
+
+customer ${customer_lastname} sees own but not ${other_lastname} orders
+  Page Should Contain  ${customer_lastname}
+  Page Should Not Contain  ${other_lastname}
+
+
+customer sees email ${email} and own bookings ${item1} and ${item2}
+  Page Should Contain  Order Details
+  Page Should Contain  ${email}
+  Page Should Contain  ${item1}
+  Page Should Contain  ${item2}
+
+
+vendor1 sees allowed orders
+  Page Should Contain  Mister
+  Page Should Contain  Pfister
+  Page Should Not Contain  Marry
+  Page Should Not Contain  Poppins
+
+vendor1 sees customer1 allowed bookings
+  Page Should Contain  Order Details
+  Page Should Contain  Mister
+  Page Should Contain  Pfister
+  Page Should Contain  item_11
+  Page Should Contain  item_12
+  Page Should Not Contain  item_21
+  Page Should Not Contain  item_22
+
+
+vendor2 sees allowed orders
+  Page Should Contain  Mister
+  Page Should Contain  Pfister
+  Page Should Contain  Marry
+  Page Should Contain  Poppins
+
+vendor2 sees customer1 allowed bookings
+  Page Should Contain  Order Details
+  Page Should Contain  Mister
+  Page Should Contain  Pfister
+  Page Should Not Contain  item_11
+  Page Should Not Contain  item_12
+  Page Should Contain  item_21
+  Page Should Contain  item_22
+
+vendor2 sees customer2 allowed bookings
+  Page Should Contain  Order Details
+  Page Should Contain  Marry
+  Page Should Contain  Poppins
+  Page Should Not Contain  item_11
+  Page Should Not Contain  item_12
+  Page Should Contain  item_21
+  Page Should Contain  item_22
 
