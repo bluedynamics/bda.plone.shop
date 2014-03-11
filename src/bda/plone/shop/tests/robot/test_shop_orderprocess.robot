@@ -98,6 +98,7 @@ Checkout Order customer1
   Page Should Contain  Cash
   Select Checkbox  css=#input-checkout-accept_terms_and_conditions-accept
   Click Button  css=#input-checkout-finish
+  Page Should Contain Order Received
 
 # Then
 
