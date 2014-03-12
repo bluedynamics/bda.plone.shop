@@ -96,30 +96,9 @@ ShopDX_ROBOT_TESTING = FunctionalTesting(
     name="ShopDX:Robot")
 
 
-class ShopDXFullLayer(PloneSandboxLayer):
-    defaultBases = (ShopDX_FIXTURE,)
+class ShopFullLayerBase(PloneSandboxLayer):
 
-    def setUpZope(self, app, configurationContext):
-        z2.installProduct(app, 'Products.DateRecurringIndex')  # still needed
-
-        import plone.app.contenttypes
-        self.loadZCML(package=plone.app.contenttypes,
-                      context=configurationContext)
-
-        # Make Documents IBuyable
-        #import bda.plone.shop.tests
-        #self.loadZCML(package=bda.plone.shop.tests,
-        #              name='buyable_dx.zcml',
-        #              context=configurationContext)
-
-    def setUpPloneSite(self, portal):
-        self.applyProfile(portal, 'plone.app.contenttypes:default')
-
-        # Make Documents buyable by adding necessary behaviors to the FTI
-        getUtility(IDexterityFTI, name='Document').behaviors +=\
-            ('bda.plone.shop.dx.IBuyableBehavior',
-             'bda.plone.shop.dx.IStockBehavior', )
-
+    def setup_content(self, portal):
         portal.portal_workflow.setDefaultChain("one_state_workflow")
 
         setRoles(portal, TEST_USER_ID, ['Manager'])
@@ -144,6 +123,54 @@ class ShopDXFullLayer(PloneSandboxLayer):
         cru(email="c2@test.com", username="customer2", password="customer2")
         cru(email="v1@test.com", username="vendor1", password="vendor1")
         cru(email="vendor2@test.com", username="vendor2", password="vendor2")
+
+
+class ShopATFullLayer(ShopFullLayerBase):
+    defaultBases = (ShopAT_FIXTURE,)
+
+    def setUpZope(self, app, configurationContext):
+        # Make Documents IBuyable
+        import bda.plone.shop.tests
+        self.loadZCML(package=bda.plone.shop.tests,
+                      name='buyable_at.zcml',
+                      context=configurationContext)
+
+    def setUpPloneSite(self, portal):
+        self.setup_content(portal)
+
+
+ShopATFull_FIXTURE = ShopATFullLayer()
+ShopATFull_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(ShopATFull_FIXTURE,),
+    name="ShopAT:Integration")
+ShopATFull_ROBOT_TESTING = FunctionalTesting(
+    bases=(
+        ShopATFull_FIXTURE,
+        MOCK_MAILHOST_FIXTURE,
+        z2.ZSERVER_FIXTURE
+    ),
+    name="ShopATFull:Robot")
+
+
+class ShopDXFullLayer(ShopFullLayerBase):
+    defaultBases = (ShopDX_FIXTURE,)
+
+    def setUpZope(self, app, configurationContext):
+        z2.installProduct(app, 'Products.DateRecurringIndex')  # still needed
+
+        import plone.app.contenttypes
+        self.loadZCML(package=plone.app.contenttypes,
+                      context=configurationContext)
+
+    def setUpPloneSite(self, portal):
+        self.applyProfile(portal, 'plone.app.contenttypes:default')
+
+        # Make Documents buyable by adding necessary behaviors to the FTI
+        getUtility(IDexterityFTI, name='Document').behaviors +=\
+            ('bda.plone.shop.dx.IBuyableBehavior',
+             'bda.plone.shop.dx.IStockBehavior', )
+
+        self.setup_content(portal)
 
 
 ShopDXFull_FIXTURE = ShopDXFullLayer()
