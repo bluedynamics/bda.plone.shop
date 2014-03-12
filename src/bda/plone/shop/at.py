@@ -406,14 +406,20 @@ class ATItemNotificationText(BubbleItemNotificationText):
 
     @property
     def order_text(self):
-        text = self.context.getField('order_text').get(self.context)
+        text = None
+        field = self.context.getField('order_text')
+        if field:
+            text = field.get(self.context)
         if text:
             return text
         return super(ATItemNotificationText, self).order_text
 
     @property
     def overbook_text(self):
-        text = self.context.getField('overbook_text').get(self.context)
+        text = None
+        field = self.context.getField('overbook_text')
+        if field:
+            text = field.get(self.context)
         if text:
             return text
         return super(ATItemNotificationText, self).overbook_text
