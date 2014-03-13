@@ -114,13 +114,19 @@
     permission="cmf.ModifyPortalContent"
     layer="..interfaces.IShopExtensionLayer" />
 
-
+  <!-- shop portlet -->
   <plone:portlet
     name="portlets.ShopAdmin"
     interface=".admin.IShopAdminPortlet"
     assignment=".admin.ShopAdminAssignment"
     renderer=".admin.ShopAdminRenderer"
     addview=".admin.ShopAdminAddForm" />
+
+  <!-- shop portlet administration link adapters -->
+  <adapter name="orders" factory=".admin.ShopAdminOrdersLink" />
+  <adapter name="myorders" factory=".admin.ShopAdminMyOrdersLink" />
+  <adapter name="exportorders" factory=".admin.ShopAdminExportOrdersLink" />
+  <adapter name="mailtemplates" factory=".admin.ShopAdminMailTemplatesLink" />
 
   <!-- controlpanel -->
   <browser:page

@@ -61,6 +61,7 @@ adapters implementing the following interfaces::
 - ``bda.plone.cart.interfaces.ICartItemStock``
 - ``bda.plone.shipping.interfaces.IShippingItem``
 - ``bda.plone.orders.interfaces.IItemNotificationText``
+- ``bda.plone.orders.interfaces.IGlobalNotificationText``
 
 There exists Archetypes and Dexterity related implementations of these
 adapters among with related Schema Extenders respective Dexterity Behaviors.
@@ -93,6 +94,8 @@ activation, set ``IBuyable`` interface directly on content class::
       <implements interface="bda.plone.shop.interfaces.IBuyable" />
     </class>
 
+XXX: AT notification text documentation.
+
 
 Dexterity
 ~~~~~~~~~
@@ -104,6 +107,7 @@ interface. These are:
 - ``bda.plone.shop.dx.IStockBehavior``
 - ``bda.plone.shop.dx.IShippingBehavior``
 - ``bda.plone.shop.dx.IItemNotificationTextBehavior``
+- ``bda.plone.shop.dx.IGlobalNotificationTextBehavior``
 
 The corresponding adapter implementations are registered for the referring
 behavior interfaces.
@@ -113,6 +117,10 @@ The ``IBuyable`` interface gets hooked on content via ``IBuyableBehavior``.
 In order to create buyable items with dexterity you need to either create a
 portal type via GenericSetup or use the Dexterity TTW Editor to assign the
 behaviors to existing content, or create new type(s) TTW from scratch.
+
+Notification related behaviors can be applied to any parent objects of buyable
+items as well, notification text values are aquired until plone root is
+reached.
 
 
 Hide/Show viewlets for buyable items
@@ -126,13 +134,10 @@ If you want to control the viewlets via ``@@manage-viewlets`` for the whole
 portal at once, use one of the following links directly (the portlet is not
 shown in @@manage-viewlets, if the context is not a buyable item):
 
-http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.abovecontentbody%3Abda.plone.shop.buyable
-
-http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.abovecontentbody%3Abda.plone.shop.buyable
-
-http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.belowcontentbody%3Abda.plone.shop.buyable
-
-http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.belowcontentbody%3Abda.plone.shop.buyable
+- http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.abovecontentbody%3Abda.plone.shop.buyable
+- http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.abovecontentbody%3Abda.plone.shop.buyable
+- http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.belowcontentbody%3Abda.plone.shop.buyable
+- http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.belowcontentbody%3Abda.plone.shop.buyable
 
 
 Cart item preview images

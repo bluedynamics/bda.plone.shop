@@ -4,6 +4,11 @@ Changelog
 0.5dev
 ------
 
+- Refactor Shop portlet and introduce
+  ``bda.plone.shop.browser.admin.IShopAdminLink`` which can be used to hook up
+  links to the shop portlet.
+  [rnix]
+
 - Implement ``bda.plone.orders.IPaymentText``
   [rnix, jensens]
 
