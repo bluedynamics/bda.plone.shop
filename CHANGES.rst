@@ -4,6 +4,11 @@ Changelog
 0.5dev
 ------
 
+- Set ``bda.plone.orders.permissions.DelegateVendorRole`` permission for
+  ``Site Administrator`` and ``Manager`` roles in
+  ``bda.plone.shop.browser.actions.VendorAction``.
+  [rnix]
+
 - Refactor Shop portlet and introduce
   ``bda.plone.shop.browser.admin.IShopAdminLink`` which can be used to hook up
   links to the shop portlet.
