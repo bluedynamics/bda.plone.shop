@@ -48,6 +48,7 @@ def QuantityUnitVocabulary(context):
 AVAILABLE_VAT_VALUES = {
     '0': '0%',
     '10': '10%',
+    '15': '15%',
     '20': '20%',
     '25': '25%',
 }
@@ -89,6 +90,7 @@ AVAILABLE_CURRENCIES = {
     'SEK': _('SEK', default='Swedish Krona'),
     'DKK': _('DKK', default='Danish Krone'),
     'YEN': _('YEN', default='Japanese Yen'),
+    'NZD': _('NZD', default='New Zealand Dollar'),
 }
 
 
