@@ -3,6 +3,7 @@ from zope.interface import directlyProvides
 from zope.interface import noLongerProvides
 from Products.Five.browser import BrowserView
 from bda.plone.orders.interfaces import IVendor
+from bda.plone.orders import permissions
 from ..interfaces import IBuyable
 from ..interfaces import IPotentiallyBuyable
 from .. import message_factory as _
@@ -51,3 +52,15 @@ class VendorAction(EnableDisableFeature):
     potential_feature_iface = IContainer
     enable_message = _(u'enabled_vendor', u'Enabled Vendor.')
     disable_message = _(u'disabled_vendor', u'Disabled Vendor.')
+
+    def enableFeature(self):
+        self.context.manage_permission(
+            permissions.DelegateVendorRole,
+            roles=['Manager', 'Site Administrator'],
+            acquire=0)
+        super(VendorAction, self).enableFeature()
+
+    def disableFeature(self):
+        self.context.manage_permission(
+            permissions.DelegateVendorRole, roles=[], acquire=0)
+        super(VendorAction, self).disableFeature()
