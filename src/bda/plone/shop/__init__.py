@@ -1,3 +1,4 @@
+from bda.plone.shop import permissions
 from zope.i18nmessageid import MessageFactory
 
 
