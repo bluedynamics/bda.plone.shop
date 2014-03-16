@@ -9,17 +9,14 @@ from plone.app.portlets.portlets import base
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from bda.plone.orders.interfaces import IVendor
+from bda.plone.orders.common import get_vendors_for
 from .. import message_factory as _
 
 import plone.api
 
 
-MANAGE_PORTAL = 'cmf.ManagePortal'
-MODIFY_CONTENT_PERMISSION = 'cmf.ModifyPortalContent'
 VIEW_ORDERS_PERMISSION = 'bda.plone.orders.ViewOrders'
-VENDOR_ORDERS_PERMISSION = 'bda.plone.order.VendorOrders'
-CUSTOMER_ORDERS_PERMISSION = 'bda.plone.orders.CustomerOrders'
-ALL_ORDERS_PERMISSION = 'bda.plone.orders.AllOrders'
+MANAGE_TEAMPLETS_PERMISSION = 'bda.plone.orders.ManageTemplates'
 
 
 class IShopAdminLink(Interface):
@@ -52,12 +49,14 @@ class ShopAdminLink(object):
 class ShopAdminOrdersLink(ShopAdminLink):
 
     def __init__(self, context):
-        permissions = [
-            MANAGE_PORTAL, ALL_ORDERS_PERMISSION, VENDOR_ORDERS_PERMISSION,
-        ]
+        permissions = [VIEW_ORDERS_PERMISSION]
         super(ShopAdminOrdersLink, self).__init__(
             context, view_permissions=permissions)
-        self.url = '%s/@@orders' % context.absolute_url()
+        # check if authenticated user is vendor
+        if self.display and not get_vendors_for():
+            self.display = False
+        site = plone.api.portal.get()
+        self.url = '%s/@@orders' % site.absolute_url()
         self.title = _('orders', default=u'Orders')
         self.order = 10
 
@@ -65,13 +64,11 @@ class ShopAdminOrdersLink(ShopAdminLink):
 class ShopAdminMyOrdersLink(ShopAdminLink):
 
     def __init__(self, context):
-        permissions = [
-            MANAGE_PORTAL, CUSTOMER_ORDERS_PERMISSION,
-        ]
+        permissions = [VIEW_ORDERS_PERMISSION]
         super(ShopAdminMyOrdersLink, self).__init__(
             context, view_permissions=permissions)
-        self.url = '%s/@@orders?ordersfilter.customer=%s' % (
-            context.absolute_url(), plone.api.user.get_current().getId())
+        site = plone.api.portal.get()
+        self.url = '%s/@@myorders' % site.absolute_url()
         self.title = _('my_orders', default=u'My Orders')
         self.order = 20
 
@@ -79,12 +76,11 @@ class ShopAdminMyOrdersLink(ShopAdminLink):
 class ShopAdminExportOrdersLink(ShopAdminLink):
 
     def __init__(self, context):
-        permissions = [
-            MANAGE_PORTAL, ALL_ORDERS_PERMISSION, VENDOR_ORDERS_PERMISSION,
-        ]
+        permissions = [VIEW_ORDERS_PERMISSION]
         super(ShopAdminExportOrdersLink, self).__init__(
             context, view_permissions=permissions)
-        self.url = '%s/@@exportorders' % context.absolute_url()
+        site = plone.api.portal.get()
+        self.url = '%s/@@exportorders' % site.absolute_url()
         self.title = _('exportorders', default=u'Export Orders')
         self.order = 30
 
@@ -92,9 +88,7 @@ class ShopAdminExportOrdersLink(ShopAdminLink):
 class ShopAdminMailTemplatesLink(ShopAdminLink):
 
     def __init__(self, context):
-        permissions = [
-            MANAGE_PORTAL, MODIFY_CONTENT_PERMISSION,
-        ]
+        permissions = [MANAGE_TEAMPLETS_PERMISSION]
         super(ShopAdminMailTemplatesLink, self).__init__(
             context, view_permissions=permissions)
         if self.display:
