@@ -33,7 +33,7 @@ setup(
     install_requires=[
         'setuptools',
         'Plone',
-        'archetypes.schemaextender',
+        'archetypes.schemaextender', # XXX: remove from install dependencies
         'bda.plone.orders',
         'plone.api',
         'plone.app.registry',
