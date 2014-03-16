@@ -116,7 +116,6 @@ class ShopAdminRenderer(base.Renderer):
     def show(self):
         return checkPermission(VIEW_ORDERS_PERMISSION, self.context)
 
-    @property
     def links(self):
         ret = list()
         for _, adapter in getAdapters((self.context,), IShopAdminLink):
