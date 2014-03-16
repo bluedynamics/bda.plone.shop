@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rolemap>
   <permissions>
-    <permission name="bda.plone.shop: Buy Item" acquire="True">
+    <permission name="bda.plone.shop: Buy Items" acquire="True">
       <role name="Manager" />
       <role name="Site Administrator" />
       <role name="Customer" />
