@@ -7,6 +7,7 @@ logger = logging.getLogger('bda.plone.shop UPGRADE')
 
 
 def update_notification_text_registry_entries(ctx=None):
+    # XXX
     registry = getUtility(IRegistry)
     key = 'bda.plone.shop.interfaces.INotificationTextSettings.order_text'
     del registry.records[key]
