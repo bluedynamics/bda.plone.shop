@@ -92,11 +92,11 @@
 
 
   <object name="user" meta_type="CMF Action Category">
-    <object name="orders" meta_type="CMF Action" i18n:domain="bda.plone.shop">
-      <property name="title" i18n:translate="">Shop Orders</property>
+    <object name="myorders" meta_type="CMF Action" i18n:domain="bda.plone.shop">
+      <property name="title" i18n:translate="">My Shop Orders</property>
       <property name="description" i18n:translate=""></property>
       <property
-      name="url_expr">string:${globals_view/navigationRootUrl}/@@orders</property>
+      name="url_expr">string:${globals_view/navigationRootUrl}/@@myorders</property>
       <property name="link_target"></property>
       <property name="icon_expr"></property>
       <property name="available_expr">python:member is not None</property>

@@ -44,6 +44,7 @@ Scenario: Two users order some items in different vendor areas
   When Checkout Order customer1
   Then Order should be placed
 
+  debug
   When checking orders
   Then customer Pfister sees own but not Poppins orders
   When checking order details
@@ -65,9 +66,9 @@ Scenario: Two users order some items in different vendor areas
   When checking order details
   Then customer sees email marry@poppins.com and own bookings item_21 and item_22
 
-  
+
 # VENDORS
-  
+
   Given a user vendor1
   When checking orders
   Then vendor1 sees allowed orders
@@ -106,15 +107,17 @@ Admin adds user ${user} to Vendors on ${path}
   Go to  ${PLONE_URL}/${path}/@@sharing
   Page Should Contain  Sharing for
   Input Text  id=sharing-user-group-search  ${user}
-  Select Checkbox  css=td[title='${user}']+td+td+td input[name='entries.role_Vendor:records']
+  Select Checkbox  css=td[title='${user}'] ~ td input[name='entries.role_Vendor:records']
   Click Button  id=sharing-save-button
 
 adding ${item} in ${path} to cart
   Go To  ${PLONE_URL}/${path}/${item}
+  Sleep  500ms  # wait for ajax request to finish
+  Sleep  1s  # wait for ajax request to succeed
   Click Link  css=.add_cart_item
 
 item number ${pos} in cart should have quantity ${num}
-  Sleep  1s  # wait for ajax request to succeed
+  Sleep  500ms  # wait for ajax request to succeed
   Wait Until Page Contains Element  css=#cart li.cart_item:nth-of-type(${pos})
   Textfield Value Should Be  css=#cart li.cart_item:nth-of-type(${pos}) .cart_item_count  ${num}
 
@@ -176,7 +179,7 @@ Checkout Order customer2
 
 checking orders
   Click Link  css=#portal-personaltools a#user-name
-  Click Link  css=#portal-personaltools #personaltools-orders a
+  Click Link  css=#portal-personaltools #personaltools-myorders a
 
 checking order details
   Click Link  css=#bdaploneorders tr:nth-of-type(1) a.contenttype-document[title="View Order"]
