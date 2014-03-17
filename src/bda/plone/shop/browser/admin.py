@@ -27,6 +27,7 @@ class IShopAdminLink(Interface):
     url = Attribute(u"Link URL")
     title = Attribute(u"Link title")
     order = Attribute(u"Link order in listing")
+    cssclass = Attribute(u"Css class for the link")
 
 
 @implementer(IShopAdminLink)
@@ -44,6 +45,7 @@ class ShopAdminLink(object):
                 break
         self.url = self.title = None
         self.order = 0
+        self.cssclass = None
 
 
 class ShopAdminOrdersLink(ShopAdminLink):
@@ -59,6 +61,7 @@ class ShopAdminOrdersLink(ShopAdminLink):
         self.url = '%s/@@orders' % site.absolute_url()
         self.title = _('orders', default=u'Orders')
         self.order = 10
+        self.cssclass = 'orders'
 
 
 class ShopAdminMyOrdersLink(ShopAdminLink):
@@ -71,6 +74,7 @@ class ShopAdminMyOrdersLink(ShopAdminLink):
         self.url = '%s/@@myorders' % site.absolute_url()
         self.title = _('my_orders', default=u'My Orders')
         self.order = 20
+        self.cssclass = 'myorders'
 
 
 class ShopAdminExportOrdersLink(ShopAdminLink):
@@ -83,6 +87,7 @@ class ShopAdminExportOrdersLink(ShopAdminLink):
         self.url = '%s/@@exportorders' % site.absolute_url()
         self.title = _('exportorders', default=u'Export Orders')
         self.order = 30
+        self.cssclass = 'export_orders'
 
 
 class ShopAdminMailTemplatesLink(ShopAdminLink):
@@ -97,6 +102,7 @@ class ShopAdminMailTemplatesLink(ShopAdminLink):
         self.url = '%s/@@mailtemplates' % context.absolute_url()
         self.title = _('mailtemplates', default=u'Notification Templates')
         self.order = 40
+        self.cssclass = 'mailtemplates'
 
 
 class IShopAdminPortlet(IPortletDataProvider):
