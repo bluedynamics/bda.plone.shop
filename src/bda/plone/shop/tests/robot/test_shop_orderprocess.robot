@@ -184,7 +184,7 @@ checking myorders
 
 checking orders
   debug
-  Click Link  css=.portletShopAdmin a.orders
+  Click Link  css=.portletShopAdmin li.orders a
 
 checking order details
   Click Link  css=#bdaploneorders tr:nth-of-type(1) a.contenttype-document[title="View Order"]
