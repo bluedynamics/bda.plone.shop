@@ -89,8 +89,8 @@ ShopDX_INTEGRATION_TESTING = IntegrationTesting(
     name="ShopDX:Integration")
 ShopDX_ROBOT_TESTING = FunctionalTesting(
     bases=(
-        ShopDX_FIXTURE,
         MOCK_MAILHOST_FIXTURE,
+        ShopDX_FIXTURE,
         z2.ZSERVER_FIXTURE
     ),
     name="ShopDX:Robot")
@@ -145,8 +145,8 @@ ShopATFull_INTEGRATION_TESTING = IntegrationTesting(
     name="ShopAT:Integration")
 ShopATFull_ROBOT_TESTING = FunctionalTesting(
     bases=(
-        ShopATFull_FIXTURE,
         MOCK_MAILHOST_FIXTURE,
+        ShopATFull_FIXTURE,
         z2.ZSERVER_FIXTURE
     ),
     name="ShopATFull:Robot")
@@ -179,8 +179,8 @@ ShopDXFull_INTEGRATION_TESTING = IntegrationTesting(
     name="ShopDX:Integration")
 ShopDXFull_ROBOT_TESTING = FunctionalTesting(
     bases=(
-        ShopDXFull_FIXTURE,
         MOCK_MAILHOST_FIXTURE,
+        ShopDXFull_FIXTURE,
         z2.ZSERVER_FIXTURE
     ),
     name="ShopDXFull:Robot")
