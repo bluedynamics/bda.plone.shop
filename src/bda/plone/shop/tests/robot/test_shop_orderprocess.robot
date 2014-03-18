@@ -46,8 +46,8 @@ Scenario: Two users order some items in different vendor areas
 
   When checking myorders
   Then customer Pfister sees own but not Poppins orders
-#  When checking order details
-#  Then customer sees email mister@pfister.com and own bookings item_11 and item_22
+  When checking order details
+  Then customer sees email mister@pfister.com and own bookings item_11 and item_22
 
   Given a user customer2
   When editing personal information for customer2
@@ -62,22 +62,20 @@ Scenario: Two users order some items in different vendor areas
 
   When checking myorders
   Then customer Poppins sees own but not Pfister orders
-#  When checking order details
-#  Then customer sees email marry@poppins.com and own bookings item_21 and item_22
+  When checking order details
+  Then customer sees email marry@poppins.com and own bookings item_21 and item_22
 
 
 # VENDORS
 
   Given a user vendor1
   When checking orders
-  debug
   Then vendor1 sees allowed orders
   When vendor1 checking customer1 order details
   Then vendor1 sees customer1 allowed bookings
 
   Given a user vendor2
   When checking orders
-  debug
   Then vendor2 sees allowed orders
   When vendor2 checking customer1 order details
   Then vendor2 sees customer1 allowed bookings
@@ -183,7 +181,6 @@ checking myorders
   Click Link  css=#portal-personaltools #personaltools-myorders a
 
 checking orders
-  debug
   Click Link  css=.portletShopAdmin li.orders a
 
 checking order details
