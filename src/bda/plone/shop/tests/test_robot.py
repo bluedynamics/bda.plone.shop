@@ -8,6 +8,7 @@ import unittest
 try:
     from plone.app.testing.interfaces import ROBOT_TEST_LEVEL
 except ImportError:
+    # don't fail if plone.app.testing < 4.2.4
     ROBOT_TEST_LEVEL = 5
 
 
