@@ -21,12 +21,14 @@ class BubbleItemNotificationText(object):
         parent = queryAdapter(aq_parent(self.context), IItemNotificationText)
         if parent:
             return parent.order_text
+        return ''
 
     @property
     def overbook_text(self):
         parent = queryAdapter(aq_parent(self.context), IItemNotificationText)
         if parent:
             return parent.overbook_text
+        return ''
 
 
 @implementer(IGlobalNotificationText)
@@ -41,12 +43,14 @@ class BubbleGlobalNotificationText(object):
         parent = queryAdapter(aq_parent(self.context), IGlobalNotificationText)
         if parent:
             return parent.global_order_text
+        return ''
 
     @property
-    def overbook_text(self):
+    def global_overbook_text(self):
         parent = queryAdapter(aq_parent(self.context), IGlobalNotificationText)
         if parent:
             return parent.global_overbook_text
+        return ''
 
 
 class BaseRegistryNotificationText(object):
@@ -59,10 +63,10 @@ class BaseRegistryNotificationText(object):
         enum = getattr(settings, field)
         portal_state = self.context.restrictedTraverse('@@plone_portal_state')
         lang = portal_state.language()
-        text = None
         for entry in enum:
             if entry['lang'] == lang:
                 return entry['text']
+
 
 @adapter(ISiteRoot)
 class RegistryItemNotificationText(BaseRegistryNotificationText,
