@@ -25,4 +25,4 @@
         binder(document);
     });
 
-}(jQuery));
+})(jQuery);
