@@ -128,7 +128,6 @@
     factory=".at.GlobalNotificationTextExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
-
   <!-- cart related AT adapters -->
   <adapter
     zcml:condition="installed Products.Archetypes"
