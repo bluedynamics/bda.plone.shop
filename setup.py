@@ -34,7 +34,6 @@ setup(
         'setuptools',
         'Plone',
         'archetypes.schemaextender', # XXX: remove from install dependencies
-        'bda.plone.orders',
         'bda.plone.discount',
         'plone.api',
         'plone.app.registry',
