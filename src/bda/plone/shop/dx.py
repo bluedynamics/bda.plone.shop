@@ -5,8 +5,8 @@ from .utils import get_shop_article_settings
 from .utils import get_shop_settings
 from .utils import get_shop_tax_settings
 from Acquisition import aq_parent
+from bda.plone.cart import CartItemDataProviderBase
 from bda.plone.cart import CartItemPreviewAdapterBase
-from bda.plone.cart.interfaces import ICartItemDataProvider
 from bda.plone.cart.interfaces import ICartItemStock
 from bda.plone.orders.interfaces import IGlobalNotificationText
 from bda.plone.orders.interfaces import IItemNotificationText
@@ -123,12 +123,8 @@ class IBuyableBehavior(model.Schema, IBuyable):
     )
 
 
-@implementer(ICartItemDataProvider)
 @adapter(IBuyableBehavior)
-class DXCartItemDataProvider(object):
-
-    def __init__(self, context):
-        self.context = context
+class DXCartItemDataProvider(CartItemDataProviderBase):
 
     @property
     def net(self):

@@ -18,6 +18,7 @@ from Products.Archetypes.utils import OrderedDict
 from archetypes.schemaextender.field import ExtensionField
 from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
 from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
+from bda.plone.cart import CartItemDataProviderBase
 from bda.plone.cart import CartItemPreviewAdapterBase
 from bda.plone.cart.interfaces import ICartItemDataProvider
 from bda.plone.cart.interfaces import ICartItemStock
@@ -182,12 +183,8 @@ class BuyableExtender(ExtenderBase):
     ]
 
 
-@implementer(ICartItemDataProvider)
 @adapter(IBaseObject)
-class ATCartItemDataProvider(object):
-
-    def __init__(self, context):
-        self.context = context
+class ATCartItemDataProvider(CartItemDataProviderBase):
 
     @property
     def net(self):
