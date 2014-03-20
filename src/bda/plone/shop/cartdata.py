@@ -31,7 +31,8 @@ class CartItemCalculator(object):
             if not brain:
                 continue
             data = get_item_data_provider(brain[0].getObject())
-            net += Decimal(str(data.net)) * count
+            price_net = data.net - data.discount_net
+            net += Decimal(str(price_net)) * count
         return net
 
     def vat(self, items):
@@ -42,7 +43,8 @@ class CartItemCalculator(object):
             if not brain:
                 continue
             data = get_item_data_provider(brain[0].getObject())
-            vat += (Decimal(str(data.net)) / Decimal(100)) \
+            price_net = data.net - data.discount_net
+            vat += (Decimal(str(price_net)) / Decimal(100)) \
                    * Decimal(str(data.vat)) * count
         return vat
 
@@ -73,7 +75,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             obj = brain.getObject()
             title = brain.Title
             data = get_item_data_provider(obj)
-            price = Decimal(str(data.net)) * count
+            price = Decimal(str(data.net - data.discount_net)) * count
             if data.display_gross:
                 price = price + price / Decimal(100) * Decimal(str(data.vat))
             url = brain.getURL()
