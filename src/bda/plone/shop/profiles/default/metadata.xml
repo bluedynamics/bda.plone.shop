@@ -4,7 +4,7 @@
   <dependencies>
     <dependency>profile-plone.app.registry:default</dependency>
     <dependency>profile-collective.z3cform.datagridfield:default</dependency>
-    <dependency>profile-bda.plone.discount:default</dependency>
+    <dependency>profile-bda.plone.orders:default</dependency>
     <!-- run yafowil.plone in order to register yafowil addon resources -->
     <dependency>profile-yafowil.plone:default</dependency>
   </dependencies>

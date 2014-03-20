@@ -32,7 +32,7 @@
   <include package="archetypes.schemaextender" />
   <include package="plone.behavior" file="meta.zcml"
            zcml:condition="installed plone.dexterity" />
-  <include package="bda.plone.discount" />
+  <include package="bda.plone.orders" />
 
   <include package=".browser" />
   <include package=".user" />

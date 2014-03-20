@@ -127,6 +127,8 @@
   <adapter name="myorders" factory=".admin.ShopAdminMyOrdersLink" />
   <adapter name="exportorders" factory=".admin.ShopAdminExportOrdersLink" />
   <adapter name="mailtemplates" factory=".admin.ShopAdminMailTemplatesLink" />
+  <adapter name="cart_discount" factory=".admin.ShopAdminCartDiscountLink" />
+  <adapter name="item_discount" factory=".admin.ShopAdminCartItemDiscountLink" />
 
   <!-- controlpanel -->
   <browser:page

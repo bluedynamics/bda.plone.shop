@@ -8,6 +8,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.interfaces import IPloneSiteRoot
+from bda.plone.discount.interfaces import IDiscountSettingsEnabled
 from bda.plone.orders.interfaces import IVendor
 from bda.plone.orders.common import get_vendors_for
 from .. import message_factory as _
@@ -17,6 +18,7 @@ import plone.api
 
 VIEW_ORDERS_PERMISSION = 'bda.plone.orders.ViewOrders'
 MANAGE_TEAMPLETS_PERMISSION = 'bda.plone.orders.ManageTemplates'
+MANAGE_DISCOUNT_PERMISSION = 'bda.plone.discount.ManageDiscount'
 
 
 class IShopAdminLink(Interface):
@@ -103,6 +105,35 @@ class ShopAdminMailTemplatesLink(ShopAdminLink):
         self.title = _('mailtemplates', default=u'Notification Templates')
         self.order = 40
         self.cssclass = 'mailtemplates'
+
+
+class ShopAdminCartDiscountLink(ShopAdminLink):
+
+    def __init__(self, context):
+        permissions = [MANAGE_DISCOUNT_PERMISSION]
+        super(ShopAdminCartDiscountLink, self).__init__(
+            context, view_permissions=permissions)
+        if self.display:
+            self.display = IPloneSiteRoot.providedBy(context)
+        self.url = '%s/@@cart_discount' % context.absolute_url()
+        self.title = _('cart_discount', default=u'Cart Discount')
+        self.order = 40
+        self.cssclass = 'cart_discount'
+
+
+class ShopAdminCartItemDiscountLink(ShopAdminLink):
+
+    def __init__(self, context):
+        permissions = [MANAGE_DISCOUNT_PERMISSION]
+        super(ShopAdminCartItemDiscountLink, self).__init__(
+            context, view_permissions=permissions)
+        if self.display:
+            self.display = IPloneSiteRoot.providedBy(context) \
+                or IDiscountSettingsEnabled.providedBy(context)
+        self.url = '%s/@@item_discount' % context.absolute_url()
+        self.title = _('item_discount', default=u'Item Discount')
+        self.order = 40
+        self.cssclass = 'item_discount'
 
 
 class IShopAdminPortlet(IPortletDataProvider):
