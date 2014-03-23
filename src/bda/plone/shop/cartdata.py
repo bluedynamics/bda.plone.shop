@@ -26,32 +26,32 @@ class CartItemCalculator(object):
     def net(self, items):
         cat = self.catalog
         net = Decimal(0)
-        for uid, count, comment in items:
+        for uid, count, _ in items:
             brain = cat(UID=uid)
             if not brain:
                 continue
             data = get_item_data_provider(brain[0].getObject())
-            price_net = data.net - data.discount_net
-            net += Decimal(str(price_net)) * count
+            discount_net = data.discount_net(count)
+            net += Decimal(str(data.net)) * count - discount_net
         return net
 
     def vat(self, items):
         cat = self.catalog
         vat = Decimal(0)
-        for uid, count, comment in items:
+        for uid, count, _ in items:
             brain = cat(UID=uid)
             if not brain:
                 continue
             data = get_item_data_provider(brain[0].getObject())
-            price_net = data.net - data.discount_net
-            vat += (Decimal(str(price_net)) / Decimal(100)) \
-                   * Decimal(str(data.vat)) * count
+            discount_net = data.discount_net(count)
+            price_net = Decimal(str(data.net)) - discount_net / count
+            vat += (price_net / Decimal(100)) * Decimal(str(data.vat)) * count
         return vat
 
     def weight(self, items):
         cat = self.catalog
         weight = Decimal(0)
-        for uid, count, comment in items:
+        for uid, count, _ in items:
             brain = cat(UID=uid)
             if not brain:
                 continue
@@ -75,7 +75,8 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             obj = brain.getObject()
             title = brain.Title
             data = get_item_data_provider(obj)
-            price = Decimal(str(data.net - data.discount_net)) * count
+            discount_net = data.discount_net(count)
+            price = Decimal(str(data.net)) * count - discount_net
             if data.display_gross:
                 price = price + price / Decimal(100) * Decimal(str(data.vat))
             url = brain.getURL()
