@@ -4,6 +4,9 @@ Changelog
 0.5dev
 ------
 
+- Integrate discount related stuff.
+  [rnix]
+
 - Set ``bda.plone.orders.permissions.DelegateVendorRole`` permission for
   ``Site Administrator`` and ``Manager`` roles in
   ``bda.plone.shop.browser.actions.VendorAction``.

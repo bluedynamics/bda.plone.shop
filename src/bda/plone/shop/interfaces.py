@@ -1,4 +1,5 @@
 from bda.plone.cart.interfaces import ICartItem
+from bda.plone.discount.interfaces import IDiscountSettingsEnabled
 from bda.plone.orders.interfaces import IGlobalNotificationText
 from bda.plone.orders.interfaces import IItemNotificationText
 from bda.plone.orders.interfaces import IOrdersExtensionLayer
@@ -25,7 +26,7 @@ class IPotentiallyBuyable(Interface):
     """
 
 
-class IBuyable(ICartItem):
+class IBuyable(ICartItem, IDiscountSettingsEnabled):
     """Marker for buyable item.
 
     Item is buyable.
