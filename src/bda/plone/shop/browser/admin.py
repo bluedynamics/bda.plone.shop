@@ -16,13 +16,14 @@ from .. import message_factory as _
 import plone.api
 
 
+BUY_ITEMS_PERMISSION = 'bda.plone.shop.BuyItems'
 VIEW_ORDERS_PERMISSION = 'bda.plone.orders.ViewOrders'
 MANAGE_TEAMPLETS_PERMISSION = 'bda.plone.orders.ManageTemplates'
 MANAGE_DISCOUNT_PERMISSION = 'bda.plone.discount.ManageDiscount'
 
 
-class IShopAdminLink(Interface):
-    """Adapter interface for providing links displayed in shop admin portlet.
+class IShopPortletLink(Interface):
+    """Adapter interface for providing links displayed in shop portlet.
     """
 
     display = Attribute(u"Flag whether to display this link")
@@ -32,10 +33,10 @@ class IShopAdminLink(Interface):
     cssclass = Attribute(u"Css class for the link")
 
 
-@implementer(IShopAdminLink)
+@implementer(IShopPortletLink)
 @adapter(Interface)
-class ShopAdminLink(object):
-    """Abstract shop administration link.
+class ShopPortletLink(object):
+    """Abstract shop portlet link.
     """
 
     def __init__(self, context, view_permissions=[VIEW_ORDERS_PERMISSION]):
@@ -50,11 +51,24 @@ class ShopAdminLink(object):
         self.cssclass = None
 
 
-class ShopAdminOrdersLink(ShopAdminLink):
+class ShopPortletMyOrdersLink(ShopPortletLink):
+
+    def __init__(self, context):
+        permissions = [BUY_ITEMS_PERMISSION]
+        super(ShopPortletMyOrdersLink, self).__init__(
+            context, view_permissions=permissions)
+        site = plone.api.portal.get()
+        self.url = '%s/@@myorders' % site.absolute_url()
+        self.title = _('my_orders', default=u'My Orders')
+        self.order = 20
+        self.cssclass = 'myorders'
+
+
+class ShopPortletOrdersLink(ShopPortletLink):
 
     def __init__(self, context):
         permissions = [VIEW_ORDERS_PERMISSION]
-        super(ShopAdminOrdersLink, self).__init__(
+        super(ShopPortletOrdersLink, self).__init__(
             context, view_permissions=permissions)
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
@@ -66,24 +80,11 @@ class ShopAdminOrdersLink(ShopAdminLink):
         self.cssclass = 'orders'
 
 
-class ShopAdminMyOrdersLink(ShopAdminLink):
+class ShopPortletExportOrdersLink(ShopPortletLink):
 
     def __init__(self, context):
         permissions = [VIEW_ORDERS_PERMISSION]
-        super(ShopAdminMyOrdersLink, self).__init__(
-            context, view_permissions=permissions)
-        site = plone.api.portal.get()
-        self.url = '%s/@@myorders' % site.absolute_url()
-        self.title = _('my_orders', default=u'My Orders')
-        self.order = 20
-        self.cssclass = 'myorders'
-
-
-class ShopAdminExportOrdersLink(ShopAdminLink):
-
-    def __init__(self, context):
-        permissions = [VIEW_ORDERS_PERMISSION]
-        super(ShopAdminExportOrdersLink, self).__init__(
+        super(ShopPortletExportOrdersLink, self).__init__(
             context, view_permissions=permissions)
         site = plone.api.portal.get()
         self.url = '%s/@@exportorders' % site.absolute_url()
@@ -92,11 +93,11 @@ class ShopAdminExportOrdersLink(ShopAdminLink):
         self.cssclass = 'export_orders'
 
 
-class ShopAdminMailTemplatesLink(ShopAdminLink):
+class ShopPortletMailTemplatesLink(ShopPortletLink):
 
     def __init__(self, context):
         permissions = [MANAGE_TEAMPLETS_PERMISSION]
-        super(ShopAdminMailTemplatesLink, self).__init__(
+        super(ShopPortletMailTemplatesLink, self).__init__(
             context, view_permissions=permissions)
         if self.display:
             self.display = IPloneSiteRoot.providedBy(context) \
@@ -107,11 +108,11 @@ class ShopAdminMailTemplatesLink(ShopAdminLink):
         self.cssclass = 'mailtemplates'
 
 
-class ShopAdminCartDiscountLink(ShopAdminLink):
+class ShopPortletCartDiscountLink(ShopPortletLink):
 
     def __init__(self, context):
         permissions = [MANAGE_DISCOUNT_PERMISSION]
-        super(ShopAdminCartDiscountLink, self).__init__(
+        super(ShopPortletCartDiscountLink, self).__init__(
             context, view_permissions=permissions)
         if self.display:
             self.display = IPloneSiteRoot.providedBy(context)
@@ -121,11 +122,11 @@ class ShopAdminCartDiscountLink(ShopAdminLink):
         self.cssclass = 'cart_discount'
 
 
-class ShopAdminCartItemDiscountLink(ShopAdminLink):
+class ShopPortletCartItemDiscountLink(ShopPortletLink):
 
     def __init__(self, context):
         permissions = [MANAGE_DISCOUNT_PERMISSION]
-        super(ShopAdminCartItemDiscountLink, self).__init__(
+        super(ShopPortletCartItemDiscountLink, self).__init__(
             context, view_permissions=permissions)
         if self.display:
             self.display = IPloneSiteRoot.providedBy(context) \
@@ -137,13 +138,13 @@ class ShopAdminCartItemDiscountLink(ShopAdminLink):
 
 
 class IShopAdminPortlet(IPortletDataProvider):
-    """A portlet rendering shop administration links.
+    """A portlet rendering shop portlet links.
     """
 
 
 @implementer(IShopAdminPortlet)
 class ShopAdminAssignment(base.Assignment):
-    title = _(u'shop_admin', default=u'Shop Administration')
+    title = _(u'shop_portlet', default=u'Shop Portlet')
 
 
 class ShopAdminRenderer(base.Renderer):
@@ -155,7 +156,7 @@ class ShopAdminRenderer(base.Renderer):
 
     def links(self):
         ret = list()
-        for _, adapter in getAdapters((self.context,), IShopAdminLink):
+        for _, adapter in getAdapters((self.context,), IShopPortletLink):
             ret.append(adapter)
         return sorted(ret, key=lambda x: x.order)
 
