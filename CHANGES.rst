@@ -4,6 +4,14 @@ Changelog
 0.5dev
 ------
 
+- Use the BuyItems permission for rendering the myorders link in the shop
+  portlet.
+  [thet]
+
+- Rename ShopAdminLink to ShopPortletLink, because the portlet is not only used
+  for admin purposes but also to display links for customers.
+  [thet]
+
 - Integrate discount related stuff.
   [rnix]
 
