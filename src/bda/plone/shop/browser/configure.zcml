@@ -123,12 +123,12 @@
     addview=".admin.ShopAdminAddForm" />
 
   <!-- shop portlet administration link adapters -->
-  <adapter name="orders" factory=".admin.ShopAdminOrdersLink" />
-  <adapter name="myorders" factory=".admin.ShopAdminMyOrdersLink" />
-  <adapter name="exportorders" factory=".admin.ShopAdminExportOrdersLink" />
-  <adapter name="mailtemplates" factory=".admin.ShopAdminMailTemplatesLink" />
-  <adapter name="cart_discount" factory=".admin.ShopAdminCartDiscountLink" />
-  <adapter name="item_discount" factory=".admin.ShopAdminCartItemDiscountLink" />
+  <adapter name="orders" factory=".admin.ShopPortletOrdersLink" />
+  <adapter name="myorders" factory=".admin.ShopPortletMyOrdersLink" />
+  <adapter name="exportorders" factory=".admin.ShopPortletExportOrdersLink" />
+  <adapter name="mailtemplates" factory=".admin.ShopPortletMailTemplatesLink" />
+  <adapter name="cart_discount" factory=".admin.ShopPortletCartDiscountLink" />
+  <adapter name="item_discount" factory=".admin.ShopPortletCartItemDiscountLink" />
 
   <!-- controlpanel -->
   <browser:page
