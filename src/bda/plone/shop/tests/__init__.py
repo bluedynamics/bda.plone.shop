@@ -12,7 +12,6 @@ from plone.app.testing import setRoles
 from plone.testing import z2
 from zope.interface import alsoProvides
 
-import os
 import plone.api
 
 
