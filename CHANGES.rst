@@ -4,6 +4,19 @@ Changelog
 0.5dev
 ------
 
+- Don't register the bda.plone.shop.buyable for IBelowContentBody but only for
+  IAboveContentBody to avoid displaying it twice. Integrators should register
+  it differently, if they want to display the viewlet somewhere else.
+  [thet]
+
+- Use the BuyItems permission for rendering the myorders link in the shop
+  portlet.
+  [thet]
+
+- Rename ShopAdminLink to ShopPortletLink, because the portlet is not only used
+  for admin purposes but also to display links for customers.
+  [thet]
+
 - Integrate discount related stuff.
   [rnix]
 
