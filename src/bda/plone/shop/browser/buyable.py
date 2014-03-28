@@ -1,4 +1,5 @@
 from zope.i18n import translate
+from decimal import Decimal
 from Products.Five import BrowserView
 from bda.plone.cart import get_data_provider
 from bda.plone.cart import get_item_data_provider
@@ -42,7 +43,9 @@ class BuyableControls(BrowserView, DataProviderMixin):
 
     @property
     def item_net(self):
-        return self._item_data.net
+        # XXX: discount display settings
+        return Decimal(self._item_data.net) - \
+            self._item_data.discount_net(Decimal(1))
 
     @property
     def item_vat(self):
