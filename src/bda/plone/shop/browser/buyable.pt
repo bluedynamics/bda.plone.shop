@@ -9,81 +9,89 @@
                      ajax:action string:buyable_controls:.${css}:replace;
                      class string:buyable ${css}">
 
-  <div class="availability">
-    <strong i18n:translate="availability">Availability</strong>
-    <div class="signal green"
-         tal:attributes="class string:signal ${view/availability_signal}">
-      &nbsp;
+  <tal:info condition="view/can_view_buyable_info">
+
+    <div class="availability">
+      <strong i18n:translate="availability">Availability</strong>
+      <div class="signal green"
+           tal:attributes="class string:signal ${view/availability_signal}">
+        &nbsp;
+      </div>
+      <div class="availability_details"
+           tal:content="structure view/availability_details">
+        deliverable until 1.1.2013
+      </div>
     </div>
-    <div class="availability_details"
-         tal:content="structure view/availability_details">
-      deliverable until 1.1.2013
-    </div>
-  </div>
 
-  <tal:net condition="not:view/display_gross">
-    <strong i18n:translate="net">Net</strong>
-    <span tal:replace="python:'%0.2f' % view.item_net">1.00</span>
-    <span tal:replace="view/currency">EUR</span>
-    <strong i18n:translate="vat"
-            class="vat_label">Vat</strong>
-    <span tal:replace="view/item_vat">20</span>%
-  </tal:net>
+    <tal:net condition="not:view/display_gross">
+      <strong i18n:translate="net">Net</strong>
+      <span tal:replace="python:'%0.2f' % view.item_net">1.00</span>
+      <span tal:replace="view/currency">EUR</span>
+      <strong i18n:translate="vat"
+              class="vat_label">Vat</strong>
+      <span tal:replace="view/item_vat">20</span>%
+    </tal:net>
 
-  <tal:gross condition="view/display_gross">
-    <strong i18n:translate="gross">Gross</strong>
-    <span tal:replace="python:'%0.2f' % view.item_gross">1.0</span>
-    <span tal:replace="view/currency">EUR</span>
-    <strong i18n:translate="vat"
-            class="vat_label">Vat</strong>
-    <span tal:replace="view/item_vat">20</span>%
-  </tal:gross>
+    <tal:gross condition="view/display_gross">
+      <strong i18n:translate="gross">Gross</strong>
+      <span tal:replace="python:'%0.2f' % view.item_gross">1.0</span>
+      <span tal:replace="view/currency">EUR</span>
+      <strong i18n:translate="vat"
+              class="vat_label">Vat</strong>
+      <span tal:replace="view/item_vat">20</span>%
+    </tal:gross>
 
-  <span class="cart_item_uid"
-        style="display: none;"
-        tal:content="view/item_uid">12345678</span>
+  </tal:info>
 
-  <input type="text"
-         size="2"
-         value="1"
-         class="cart_item_count"
-         tal:define="css python: view.quantity_unit_float and \
-                                 'cart_item_count quantity_unit_float' or 
-                                 'cart_item_count';"
-         tal:attributes="class css;
-                         disabled python: not addable and 'disabled' or None" />
+  <tal:buy condition="view/can_buy_items">
 
-  <span tal:content="view/quantity_unit">Quantity</span>
+    <span class="cart_item_uid"
+          style="display: none;"
+          tal:content="view/item_uid">12345678</span>
 
-  <tal:comment condition="view/comment_enabled">
     <input type="text"
-           size="20"
-           value=""
-           class="cart_item_comment"
-           tal:define="css python: view.comment_required and \
-                                   'cart_item_comment required' or 
-                                   'cart_item_comment';"
+           size="2"
+           value="1"
+           class="cart_item_count"
+           tal:define="css python: view.quantity_unit_float and \
+                                   'cart_item_count quantity_unit_float' or
+                                   'cart_item_count';"
            tal:attributes="class css;
                            disabled python: not addable and 'disabled' or None" />
-    <span i18n:translate="comment">Comment</span>
-  </tal:comment>
 
-  <tal:addable condition="addable">
-    <a href=""
-       class="add_cart_item buyable_add_to_cart"
-       i18n:translate="add_to_cart">add to cart</a>
+    <span tal:content="view/quantity_unit">Quantity</span>
 
-    <a href=""
-       class="update_cart_item buyable_update_cart"
-       i18n:translate="update_cart">update cart</a>
-  </tal:addable>
+    <tal:comment condition="view/comment_enabled">
+      <input type="text"
+             size="20"
+             value=""
+             class="cart_item_comment"
+             tal:define="css python: view.comment_required and \
+                                     'cart_item_comment required' or
+                                     'cart_item_comment';"
+             tal:attributes="class css;
+                             disabled python: not addable and 'disabled' or None" />
+      <span i18n:translate="comment">Comment</span>
+    </tal:comment>
 
-  <tal:not_addable condition="not:addable">
-    <span class="buyable_add_to_cart_disabled"
-          i18n:translate="add_to_cart">add to cart</span>
+    <tal:addable condition="addable">
+      <a href=""
+         class="add_cart_item buyable_add_to_cart"
+         i18n:translate="add_to_cart">add to cart</a>
 
-    <span class="buyable_update_cart_disabled"
-          i18n:translate="update_cart">update cart</span>
-  </tal:not_addable>
+      <a href=""
+         class="update_cart_item buyable_update_cart"
+         i18n:translate="update_cart">update cart</a>
+    </tal:addable>
+
+    <tal:not_addable condition="not:addable">
+      <span class="buyable_add_to_cart_disabled"
+            i18n:translate="add_to_cart">add to cart</span>
+
+      <span class="buyable_update_cart_disabled"
+            i18n:translate="update_cart">update cart</span>
+    </tal:not_addable>
+
+  </tal:buy>
 
 </div>

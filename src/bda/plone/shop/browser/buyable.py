@@ -1,3 +1,4 @@
+import plone.api
 from zope.i18n import translate
 from decimal import Decimal
 from Products.Five import BrowserView
@@ -5,6 +6,7 @@ from bda.plone.cart import get_data_provider
 from bda.plone.cart import get_item_data_provider
 from bda.plone.cart import get_item_availability
 from bda.plone.cart.browser import DataProviderMixin
+from bda.plone.shop import permissions
 
 
 class BuyableControls(BrowserView, DataProviderMixin):
@@ -20,6 +22,16 @@ class BuyableControls(BrowserView, DataProviderMixin):
     @property
     def _item_availability(self):
         return get_item_availability(self.context, self.request)
+
+    @property
+    def can_view_buyable_info(self):
+        user = plone.api.user.get_current()
+        return user.checkPermission(permissions.ViewBuyableInfo, self.context)
+
+    @property
+    def can_buy_items(self):
+        user = plone.api.user.get_current()
+        return user.checkPermission(permissions.BuyItems, self.context)
 
     @property
     def availability_signal(self):

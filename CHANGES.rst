@@ -4,17 +4,15 @@ Changelog
 0.5dev
 ------
 
-- Don't register the bda.plone.shop.buyable for IBelowContentBody but only for
-  IAboveContentBody to avoid displaying it twice. Integrators should register
-  it differently, if they want to display the viewlet somewhere else.
-  [thet]
+- Introduce ``bda.plone.shop.ViewBuyableInfo`` and ``bda.plone.shop.BuyItems``
+  permissions and consider in buyable controls. Now it can be controlled
+  whether users can see item pricing and whether they can buy items.
+  [rnix]
 
-- Use the BuyItems permission for rendering the myorders link in the shop
-  portlet.
-  [thet]
-
-- Rename ShopAdminLink to ShopPortletLink, because the portlet is not only used
-  for admin purposes but also to display links for customers.
+- Don't register ``bda.plone.shop.buyable`` viewlet for ``IBelowContentBody``
+  but only for ``IAboveContentBody`` to avoid displaying it twice. Integrators
+  should register it differently if they want to display the viewlet somewhere
+  else.
   [thet]
 
 - Integrate discount related stuff.
@@ -26,9 +24,9 @@ Changelog
   [rnix]
 
 - Refactor Shop portlet and introduce
-  ``bda.plone.shop.browser.admin.IShopAdminLink`` which can be used to hook up
-  links to the shop portlet.
-  [rnix]
+  ``bda.plone.shop.browser.admin.IShopPortletLink`` which can be used to hook
+  up links to the shop portlet.
+  [rnix, thet]
 
 - Implement ``bda.plone.orders.IPaymentText``
   [rnix, jensens]

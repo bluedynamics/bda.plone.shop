@@ -3,6 +3,10 @@
   i18n_domain="bda.plone.shop">
 
   <permission
+    id="bda.plone.shop.ViewBuyableInfo"
+    title="bda.plone.shop: View Buyable Info" />
+
+  <permission
     id="bda.plone.shop.BuyItems"
     title="bda.plone.shop: Buy Items" />
 
