@@ -26,13 +26,13 @@ def validate_accept(value):
 
 class ICustomer(model.Schema):
 
-    model.fieldset('main_address', _('main_address', u'Hauptadresse'),
+    model.fieldset('main_address', _('main_address', u'Main Address'),
                    fields=['firstname', 'lastname', 'phone',
                            'company', 'street', 'zip', 'city', 'country',
                            'delivery_alternative_delivery'])
 
     model.fieldset('delivery_address',
-                   _('delivery_address', u'Zustelladresse'),
+                   _('delivery_address', u'Delivery Address'),
                    fields=['delivery_firstname', 'delivery_lastname',
                            'delivery_company',
                            'delivery_street', 'delivery_zip',
@@ -45,7 +45,7 @@ class ICustomer(model.Schema):
     # Personal Data
     gender = schema.Choice(
         title=_(u'label_gender', default=u'Gender'),
-        description=_(u'help_gender', default=u""),
+        description=_(u'help_gender', default=u''),
         required=False,
         vocabulary='bda.plone.shop.vocabularies.GenderVocabulary'
     )
@@ -53,26 +53,26 @@ class ICustomer(model.Schema):
     firstname = schema.TextLine(
         title=_(u'label_firstname', default=u'First name'),
         description=_(u'help_firstname',
-                      default=u"Fill in your given name."),
+                      default=u'Fill in your given name.'),
         required=True,
     )
 
     lastname = schema.TextLine(
         title=_(u'label_lastname', default=u'Last name'),
         description=_(u'help_lastname',
-                      default=u"Fill in your surname or your family name."),
+                      default=u'Fill in your surname or your family name.'),
         required=True,
     )
 
     phone = schema.TextLine(
         title=_(u'label_phone', default=u'Phone'),
-        description=_(u'help_phone'),
+        description=_(u'help_phone', default=u''),
         required=True,
     )
 
     company = schema.TextLine(
         title=_(u'label_company', default=u'Company'),
-        description=_(u'help_company'),
+        description=_(u'help_company', default=u''),
         required=False,
     )
 
@@ -91,13 +91,13 @@ class ICustomer(model.Schema):
 
     city = schema.TextLine(
         title=_(u'label_city', default=u'City'),
-        description=_(u'help_city', default=u""),
+        description=_(u'help_city', default=u''),
         required=True,
     )
 
     country = schema.Choice(
         title=_(u'label_country', default=u'Country'),
-        description=_(u'help_country', default=u""),
+        description=_(u'help_country', default=u''),
         required=True,
         vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
@@ -115,21 +115,20 @@ class ICustomer(model.Schema):
     delivery_firstname = schema.TextLine(
         title=_(u'label_firstname', default=u'First name'),
         description=_(u'help_firstname',
-                      default=u"Fill in your given name."),
+                      default=u'Fill in your given name.'),
         required=False,
     )
 
     delivery_lastname = schema.TextLine(
         title=_(u'label_lastname', default=u'Last name'),
         description=_(u'help_lastname',
-                      default=u"Fill in your surname or your family name."),
+                      default=u'Fill in your surname or your family name.'),
         required=False,
     )
 
     delivery_company = schema.TextLine(
         title=_(u'label_company', default=u'Company'),
-        description=_(u'help_company',
-                      default=u"Company name, if available."),
+        description=_(u'help_company', default=u''),
         required=False,
     )
 
@@ -147,13 +146,13 @@ class ICustomer(model.Schema):
 
     delivery_city = schema.TextLine(
         title=_(u'label_city', default=u'City'),
-        description=_(u'help_city', default=u""),
+        description=_(u'help_city', default=u''),
         required=False,
     )
 
     delivery_country = schema.Choice(
         title=_(u'label_country', default=u'Country'),
-        description=_(u'help_country', default=u""),
+        description=_(u'help_country', default=u''),
         required=False,
         vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
@@ -162,8 +161,8 @@ class ICustomer(model.Schema):
     accept = schema.Bool(
         title=_(u'label_accept', default=u'Accept terms of use'),
         description=_(u'help_accept',
-                      default=u"Tick this box to indicate that you have found,"
-                      " read and accepted the terms of use for this site. "),
+                      default=u'Tick this box to indicate that you have found,'
+                      ' read and accepted the terms of use for this site.'),
         required=True,
         constraint=validate_accept,
     )
