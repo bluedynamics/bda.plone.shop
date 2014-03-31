@@ -9,7 +9,6 @@ from Products.Archetypes.atapi import BooleanField
 from Products.Archetypes.atapi import FloatField
 from Products.Archetypes.atapi import SelectionWidget
 from Products.Archetypes.atapi import StringField
-from Products.Archetypes.atapi import StringWidget
 from Products.Archetypes.atapi import TextAreaWidget
 from Products.Archetypes.atapi import TextField
 from Products.Archetypes.interfaces import IBaseObject
@@ -20,7 +19,6 @@ from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
 from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
 from bda.plone.cart import CartItemDataProviderBase
 from bda.plone.cart import CartItemPreviewAdapterBase
-from bda.plone.cart.interfaces import ICartItemDataProvider
 from bda.plone.cart.interfaces import ICartItemStock
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
@@ -185,6 +183,8 @@ class BuyableExtender(ExtenderBase):
 
 @adapter(IBaseObject)
 class ATCartItemDataProvider(CartItemDataProviderBase):
+    """Accessor Interface
+    """
 
     @property
     def net(self):
@@ -297,6 +297,8 @@ class ShippingExtender(ExtenderBase):
 @implementer(IShippingItem)
 @adapter(IBaseObject)
 class ATShippingItem(object):
+    """Accessor Interface
+    """
 
     def __init__(self, context):
         self.context = context
@@ -308,6 +310,8 @@ class ATShippingItem(object):
 
 @adapter(IBaseObject)
 class ATCartItemPreviewImage(CartItemPreviewAdapterBase):
+    """Accessor Interface
+    """
     preview_scale = "tile"
 
     @property
@@ -362,6 +366,7 @@ class ItemNotificationTextExtender(ExtenderBase):
         ),
     ]
 
+
 class GlobalNotificationTextExtender(ExtenderBase):
     """Schema extender for global notification text.
     """
@@ -400,7 +405,8 @@ class GlobalNotificationTextExtender(ExtenderBase):
 
 @adapter(IBaseObject)
 class ATItemNotificationText(BubbleItemNotificationText):
-
+    """Accessor Interface
+    """
     @property
     def order_text(self):
         text = None
@@ -424,7 +430,8 @@ class ATItemNotificationText(BubbleItemNotificationText):
 
 @adapter(IBaseObject)
 class ATGlobalNotificationText(BubbleGlobalNotificationText):
-
+    """Accessor Interface
+    """
     @property
     def order_text(self):
         text = self.context.getField('global_order_text').get(self.context)

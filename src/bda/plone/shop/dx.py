@@ -4,12 +4,9 @@ from .notificationtext import BubbleItemNotificationText
 from .utils import get_shop_article_settings
 from .utils import get_shop_settings
 from .utils import get_shop_tax_settings
-from Acquisition import aq_parent
 from bda.plone.cart import CartItemDataProviderBase
 from bda.plone.cart import CartItemPreviewAdapterBase
 from bda.plone.cart.interfaces import ICartItemStock
-from bda.plone.orders.interfaces import IGlobalNotificationText
-from bda.plone.orders.interfaces import IItemNotificationText
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
 from plone.autoform.interfaces import IFormFieldProvider
@@ -110,7 +107,8 @@ class IBuyableBehavior(model.Schema, IBuyable):
     )
 
     item_quantity_unit_float = schema.Bool(
-        title=_(u'label_item_quantity_unit_float', default='Quantity as float'),
+        title=_(
+            u'label_item_quantity_unit_float', default='Quantity as float'),
         required=False,
         defaultFactory=default_item_quantity_unit_float
     )
@@ -125,6 +123,8 @@ class IBuyableBehavior(model.Schema, IBuyable):
 
 @adapter(IBuyableBehavior)
 class DXCartItemDataProvider(CartItemDataProviderBase):
+    """Accessor Interface
+    """
 
     @property
     def net(self):
@@ -235,6 +235,8 @@ class IShippingBehavior(model.Schema):
 @implementer(IShippingItem)
 @adapter(IShippingBehavior)
 class DXShippingItem(object):
+    """Accessor Interface
+    """
 
     def __init__(self, context):
         self.context = context
@@ -246,6 +248,8 @@ class DXShippingItem(object):
 
 @adapter(IDexterityContent)
 class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
+    """Accessor Interface
+    """
     preview_scale = "tile"
 
     @property
@@ -286,6 +290,7 @@ class IItemNotificationTextBehavior(model.Schema):
         required=False
     )
 
+
 @provider(IFormFieldProvider)
 class IGlobalNotificationTextBehavior(model.Schema):
 
@@ -315,6 +320,8 @@ class IGlobalNotificationTextBehavior(model.Schema):
 
 @adapter(IItemNotificationTextBehavior)
 class DXItemNotificationText(BubbleItemNotificationText):
+    """Accessor Interface
+    """
 
     @property
     def order_text(self):
@@ -331,6 +338,8 @@ class DXItemNotificationText(BubbleItemNotificationText):
 
 @adapter(IGlobalNotificationTextBehavior)
 class DXGlobalNotificationText(BubbleGlobalNotificationText):
+    """Accessor Interface
+    """
 
     @property
     def global_order_text(self):
