@@ -82,7 +82,7 @@ class IShopCartSettings(model.Schema):
 
     model.fieldset(
         'cart',
-        label=_(u'Cart'),
+        label=_(u'Cart', default=u'Cart'),
         fields=[
             'disable_max_article',
             'summary_total_only',
@@ -138,7 +138,7 @@ class IShopArticleSettings(model.Schema):
 
     model.fieldset(
         'article',
-        label=_(u'Article'),
+        label=_(u'Article', default=u'Article'),
         fields=[
             'quantity_units',
             'default_item_net',
@@ -219,7 +219,7 @@ class IShopShippingSettings(model.Schema):
 
     model.fieldset(
         'shipping',
-        label=_(u'Shipping'),
+        label=_(u'Shipping', default=u'Shipping'),
         fields=[
             'include_shipping_costs',
             'shipping_method',
@@ -231,7 +231,8 @@ class IShopShippingSettings(model.Schema):
             u"label_include_shipping_costs",
             default=u"Include Shipping Costs"
         ),
-        description=_(u"help_include_shipping_costs", default=u""),
+        description=_(u"help_include_shipping_costs",
+                      default=u"Include Shipping Costs in Cart"),
         default=True
     )
 
@@ -302,7 +303,7 @@ class INotificationTextSettings(model.Schema,
 
     model.fieldset(
         'notifications',
-        label=_(u'Notifications'),
+        label=_(u'Notifications', default=u'Notifications'),
         fields=[
             'global_order_text',
             'global_overbook_text',
@@ -315,7 +316,7 @@ class INotificationTextSettings(model.Schema,
     order_text = schema.List(
         title=_(
             u"label_order_notification_text",
-            default=u"Per Item Order Notification Text"
+            default=u"Order Notification Text"
         ),
         value_type=DictRow(
             title=_(u'order_text', default='Order Text'),
@@ -327,7 +328,7 @@ class INotificationTextSettings(model.Schema,
     overbook_text = schema.List(
         title=_(
             u"label_overbook_notification_text",
-            default=u"Per Item Overbook Notification Text"
+            default=u"Overbooked Notification Text"
         ),
         value_type=DictRow(
             title=_(u'overbook_text', default='Overbook Text'),
@@ -339,7 +340,7 @@ class INotificationTextSettings(model.Schema,
     global_order_text = schema.List(
         title=_(
             u"label_overall_order_notification_text",
-            default=u"Overall Order Notification Text"
+            default=u"Overall Notification Text"
         ),
         value_type=DictRow(
             title=_(u'order_text', default='Order Text'),
@@ -351,7 +352,7 @@ class INotificationTextSettings(model.Schema,
     global_overbook_text = schema.List(
         title=_(
             u"label_overall overbook_notification_text",
-            default=u"Overall Overbook Notification Text"
+            default=u"Overall Overbooked Notification Text"
         ),
         value_type=DictRow(
             title=_(u'overbook_text', default='Overbook Text'),
@@ -385,7 +386,7 @@ class IPaymentTextSettings(model.Schema):
 
     model.fieldset(
         'payment',
-        label=_(u'Payment'),
+        label=_(u'Payment', default=u'Payment'),
         fields=[
             'payment_text',
         ],

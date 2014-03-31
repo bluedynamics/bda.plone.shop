@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
 <rolemap>
   <permissions>
+    <permission name="bda.plone.shop: View Buyable Info" acquire="True">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Reviewer" />
+      <role name="Editor" />
+      <role name="Customer" />
+      <role name="Authenticated" />
+    </permission>
     <permission name="bda.plone.shop: Buy Items" acquire="True">
       <role name="Manager" />
       <role name="Site Administrator" />

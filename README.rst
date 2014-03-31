@@ -187,6 +187,49 @@ Dexterity::
       factory=".youradater.MyDXCartItemPreviewImage" />
 
 
+Permissions
+-----------
+
+There exists ``bda.plone.shop.ViewBuyableInfo`` and ``bda.plone.shop.BuyItems``
+permission to control what parts of buyable data and controls get exposed to
+the user.
+
+
+bda.plone.shop.ViewBuyableInfo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This permission controls whether a user can view basic buyable information.
+These are item availability and item price. By default, this permission is set
+for roles:
+
+* Manager
+* Site Administrator
+* Reviewer
+* Editor
+* Customer
+* Authenticated
+
+In order to expose buyable information to all visitors by default,
+add ``Anonymous`` role via generic setup's ``rolemap.xml`` of your
+integration package.
+
+
+bda.plone.shop.BuyItems
+~~~~~~~~~~~~~~~~~~~~~~~
+
+This permission controls whether a user can actually add this item to shopping
+cart. By default, this permission is set for roles:
+
+* Manager
+* Site Administrator
+* Customer
+
+In order to enable non-customers or anonymous users to buy items, modify
+``rolemap.xml`` in your integration package as needed. Be aware that the shop
+is basically designed that anonymous users can buy items, but orders related
+features like viewing own orders are bound to ``Customer`` role.
+
+
 Create translations
 -------------------
 

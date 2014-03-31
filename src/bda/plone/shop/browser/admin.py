@@ -54,6 +54,9 @@ class ShopPortletLink(object):
 class ShopPortletMyOrdersLink(ShopPortletLink):
 
     def __init__(self, context):
+        # XXX: buy items permission is meant to control whether a user can buy
+        #      a specific item. Change check to whether a user is customer
+        #      somewhere in the portal, which is semantically the correct way.
         permissions = [BUY_ITEMS_PERMISSION]
         super(ShopPortletMyOrdersLink, self).__init__(
             context, view_permissions=permissions)

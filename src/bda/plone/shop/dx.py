@@ -285,7 +285,7 @@ class IItemNotificationTextBehavior(model.Schema):
     overbook_text = schema.Text(
         title=_(
             u"label_overbook_notification_text",
-            default=u"Overbook Notification Text"
+            default=u"Overbooked Notification Text"
         ),
         required=False
     )
@@ -304,7 +304,7 @@ class IGlobalNotificationTextBehavior(model.Schema):
     global_order_text = schema.Text(
         title=_(
             u"label_global_order_notification_text",
-            default=u"Overall Order Notification Text"
+            default=u"Overall Notification Text"
         ),
         required=False
     )
@@ -312,7 +312,7 @@ class IGlobalNotificationTextBehavior(model.Schema):
     global_overbook_text = schema.Text(
         title=_(
             u"label_global_overbook_notification_text",
-            default=u"Overall Overbook Notification Text"
+            default=u"Overall Overbooked Notification Text"
         ),
         required=False
     )
