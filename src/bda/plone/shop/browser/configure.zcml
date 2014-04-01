@@ -24,10 +24,11 @@
   <!-- viewlets -->
   <browser:viewlet
     name="bda.plone.shop.buyable"
+    for="..interfaces.IBuyable"
+    class="plone.app.layout.viewlets.common.ViewletBase"
+    template="buyable_viewlet.pt"
     manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
     permission="zope2.View"
-    for="..interfaces.IBuyable"
-    class=".viewlets.BuyableViewlet"
     layer="..interfaces.IShopExtensionLayer" />
 
   <!-- buyable controls -->
