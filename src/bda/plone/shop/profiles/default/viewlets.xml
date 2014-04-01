@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<object>
+  <order manager="plone.abovecontentbody" skinname="*">
+    <viewlet name="bda.plone.shop.buyable" insert-before="*" />
+  </order>
+</object>
