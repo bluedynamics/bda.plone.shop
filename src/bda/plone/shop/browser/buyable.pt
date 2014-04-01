@@ -11,7 +11,7 @@
 
   <tal:info condition="view/can_view_buyable_info">
 
-    <div class="availability">
+    <div class="availability" tal:condition="view/show_available">
       <strong i18n:translate="availability">Availability</strong>
       <div class="signal green"
            tal:attributes="class string:signal ${view/availability_signal}">

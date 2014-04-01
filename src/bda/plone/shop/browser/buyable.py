@@ -11,6 +11,8 @@ from bda.plone.shop import permissions
 
 class BuyableControls(BrowserView, DataProviderMixin):
 
+    show_available = True
+
     @property
     def _cart_data(self):
         return get_data_provider(self.context, self.request)
