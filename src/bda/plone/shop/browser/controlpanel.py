@@ -64,7 +64,13 @@ class ShopSettingsEditForm(controlpanel.RegistryEditForm):
             if not name:
                 continue
 
-            interface = resolve(name)
+            interface = None
+            try:
+                interface = resolve(name)
+            except ImportError:
+                # In case of leftover registry entries of uninstalled Products
+                continue
+
             if IShopSettingsProvider.providedBy(interface):
                 yield interface
 
