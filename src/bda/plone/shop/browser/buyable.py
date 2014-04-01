@@ -61,7 +61,7 @@ class BuyableControls(BrowserView, DataProviderMixin):
 
     @property
     def item_vat(self):
-        return self._item_data.vat
+        return Decimal(self._item_data.vat)
 
     @property
     def item_gross(self):
