@@ -14,6 +14,9 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: bda.plone.shop\n"
 
+msgid "price"
+msgstr "Price"
+
 #. Default: "Australian Dollar"
 #: ./vocabularies.py:88
 msgid "AUD"
