@@ -4,6 +4,19 @@ Changelog
 0.5dev
 ------
 
+- Changed markup and styles for the buyable_controls template, which is used
+  for the buyable viewlet.
+  [thet]
+
+- Create a show_available property for buyable_controls. When set to True, as
+  by default, the available information is shown for each buyable. This can be
+  turned off in a customized buyable class for shared stock buyables.
+  [thet]
+
+- Remove buyable viewlet class, as it did not have any customization in it.
+  This should not break backwards compatibility.
+  [thet]
+
 - Introduce ``bda.plone.shop.ViewBuyableInfo`` and ``bda.plone.shop.BuyItems``
   permissions and consider in buyable controls. Now it can be controlled
   whether users can see item pricing and whether they can buy items.
