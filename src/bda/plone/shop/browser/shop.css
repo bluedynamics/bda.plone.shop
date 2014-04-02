@@ -42,19 +42,17 @@ div.signal.green {
 }
 
 
-div.buyable .vat_label {
-    margin-left:1em;
-}
-div.buyable input {
-    margin-left:1em;
-    font-size:90%;
-}
-
 #content dl.buyable { margin-bottom: 0.5em; }
 #content .buyable dt { margin-left: 1em; }
 .buyable dt,
 .buyable dd {
     display: inline-block;
+}
+div.buyable input { font-size:90%; }
+
+div.buyable .vat_label {
+    /* BBB */
+    margin-left:1em;
 }
 
 a.buyable_add_to_cart:link,
