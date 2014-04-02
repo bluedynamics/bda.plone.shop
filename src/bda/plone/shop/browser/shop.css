@@ -40,6 +40,8 @@ div.signal.yellow {
 div.signal.green {
     background-color:green;
 }
+
+
 div.buyable .vat_label {
     margin-left:1em;
 }
@@ -47,6 +49,14 @@ div.buyable input {
     margin-left:1em;
     font-size:90%;
 }
+
+#content dl.buyable { margin-bottom: 0.5em; }
+#content .buyable dt { margin-left: 1em; }
+.buyable dt,
+.buyable dd {
+    display: inline-block;
+}
+
 a.buyable_add_to_cart:link,
 a.buyable_add_to_cart:active,
 a.buyable_add_to_cart:hover,
@@ -84,6 +94,7 @@ span.buyable_update_cart_disabled {
     text-decoration:none;
     cursor:normal;
 }
+
 /* shop control panel */
 #formfield-form-widgets-IItemNotificationTextSettings-order_text td,
 #formfield-form-widgets-IItemNotificationTextSettings-overbook_text td,
