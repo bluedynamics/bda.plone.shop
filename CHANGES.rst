@@ -4,6 +4,11 @@ Changelog
 0.5dev
 ------
 
+- Stick to ``AccessControl`` directly for checking buyable controls
+  permissions. ``<SpecialUser 'Anonymous User'>`` instance returned by
+  ``plone.api.user.get_current()`` not provides ``checkPermission`` function,
+  which makes it useless.
+
 - Introduce ``bda.plone.shop.ViewBuyableInfo`` and ``bda.plone.shop.BuyItems``
   permissions and consider in buyable controls. Now it can be controlled
   whether users can see item pricing and whether they can buy items.
