@@ -10,7 +10,6 @@ from bda.plone.shop import permissions
 
 
 class BuyableControls(BrowserView, DataProviderMixin):
-    show_available = True
 
     @property
     def _cart_data(self):
@@ -33,6 +32,10 @@ class BuyableControls(BrowserView, DataProviderMixin):
     def can_buy_items(self):
         sm = getSecurityManager()
         return sm.checkPermission(permissions.BuyItems, self.context)
+
+    @property
+    def show_available(self):
+        return self._item_availability.display
 
     @property
     def availability_signal(self):

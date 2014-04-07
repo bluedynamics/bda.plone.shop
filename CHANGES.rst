@@ -4,6 +4,10 @@ Changelog
 0.5dev
 ------
 
+- Implement display property of stock interface and consider it in buyable
+  controls.
+  [rnix]
+
 - Changed markup and styles for the buyable_controls template, which is used
   for the buyable viewlet.
   [thet]

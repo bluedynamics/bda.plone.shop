@@ -234,6 +234,14 @@ class StockExtender(ExtenderBase):
     layer = IShopExtensionLayer
 
     fields = [
+        XBooleanField(
+            name='item_display_stock',
+            schemata='Shop',
+            widget=FloatField._properties['widget'](
+                label=_(u'label_item_display_stock', u'Display item stock'),
+            ),
+            default=True,
+        ),
         XFloatField(
             name='item_available',
             schemata='Shop',
@@ -259,6 +267,10 @@ class ATCartItemStock(object):
 
     def __init__(self, context):
         self.context = context
+
+    @property
+    def display(self):
+        return field_value(self.context, 'item_display_stock')
 
     def _get_available(self):
         return field_value(self.context, 'item_available')

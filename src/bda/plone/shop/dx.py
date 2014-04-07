@@ -175,7 +175,13 @@ class IStockBehavior(model.Schema):
     model.fieldset(
         'shop',
         label=u"Shop",
-        fields=['item_available', 'item_overbook']
+        fields=['item_display_stock', 'item_available', 'item_overbook']
+    )
+
+    item_display_stock = schema.Bool(
+        title=_(u'label_item_display_stock', default=u'Display item stock'),
+        required=False,
+        default=True
     )
 
     item_available = schema.Float(
@@ -197,6 +203,10 @@ class DXCartItemStock(object):
 
     def __init__(self, context):
         self.context = context
+
+    @property
+    def display(self):
+        return self.context.item_display_stock
 
     def _get_available(self):
         return self.context.item_available

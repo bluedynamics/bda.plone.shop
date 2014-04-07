@@ -15,9 +15,6 @@ msgstr ""
 "Domain: bda.plone.shop\n"
 "X-Is-Fallback-For: it-ch it-it\n"
 
-msgid "price"
-msgstr "Prezzo"
-
 #. Default: "Australian Dollar"
 #: ./vocabularies.py:88
 msgid "AUD"
@@ -145,7 +142,7 @@ msgid "YEN"
 msgstr ""
 
 #. Default: "add to cart"
-#: ./browser/buyable.pt:78
+#: ./browser/buyable.pt:94
 msgid "add_to_cart"
 msgstr "Aggiungi"
 
@@ -180,7 +177,7 @@ msgid "cart_discount"
 msgstr ""
 
 #. Default: "Comment"
-#: ./browser/buyable.pt:74
+#: ./browser/buyable.pt:70
 msgid "comment"
 msgstr "commento"
 
@@ -240,7 +237,7 @@ msgid "full_available_title"
 msgstr ""
 
 #. Default: "Gross"
-#: ./browser/buyable.pt:36
+#: ./browser/buyable.pt:45
 msgid "gross"
 msgstr "Molto"
 
@@ -449,14 +446,14 @@ msgid "label_gender"
 msgstr ""
 
 #. Default: "Overall Notification Text"
-#: ./at.py:379
-#: ./dx.py:300
+#: ./at.py:396
+#: ./dx.py:315
 msgid "label_global_order_notification_text"
 msgstr ""
 
 #. Default: "Overall Overbooked Notification Text"
-#: ./at.py:392
-#: ./dx.py:308
+#: ./at.py:409
+#: ./dx.py:323
 msgid "label_global_overbook_notification_text"
 msgstr ""
 
@@ -466,56 +463,62 @@ msgid "label_include_shipping_costs"
 msgstr ""
 
 #. Default: "Item stock available"
-#: ./at.py:241
-#: ./dx.py:182
+#: ./at.py:249
+#: ./dx.py:188
 msgid "label_item_available"
 msgstr ""
 
 #. Default: "Comment enabled"
-#: ./at.py:156
-#: ./dx.py:101
+#: ./at.py:154
+#: ./dx.py:98
 msgid "label_item_comment_enabled"
 msgstr "Comment enabled"
 
 #. Default: "Comment required"
-#: ./at.py:163
-#: ./dx.py:107
+#: ./at.py:161
+#: ./dx.py:104
 msgid "label_item_comment_required"
 msgstr "Comment required"
 
 #. Default: "Display Gross"
-#: ./at.py:149
-#: ./dx.py:95
+#: ./at.py:147
+#: ./dx.py:92
 msgid "label_item_display_gross"
 msgstr "Display Gross"
 
+#. Default: "Display item stock"
+#: ./at.py:241
+#: ./dx.py:182
+msgid "label_item_display_stock"
+msgstr ""
+
 #. Default: "Item net price"
-#: ./at.py:134
-#: ./dx.py:82
+#: ./at.py:132
+#: ./dx.py:79
 msgid "label_item_net"
 msgstr "Prezzo netto"
 
 #. Default: "Item stock overbook"
-#: ./at.py:248
-#: ./dx.py:187
+#: ./at.py:256
+#: ./dx.py:193
 msgid "label_item_overbook"
 msgstr ""
 
 #. Default: "Quantity unit"
-#: ./at.py:178
-#: ./dx.py:119
+#: ./at.py:176
+#: ./dx.py:117
 msgid "label_item_quantity_unit"
 msgstr "Pezzo"
 
 #. Default: "Quantity as float"
-#: ./at.py:170
-#: ./dx.py:113
+#: ./at.py:168
+#: ./dx.py:110
 msgid "label_item_quantity_unit_float"
 msgstr "Inserimento decimali nella quantitŕ > facoltativo"
 
 #. Default: "Item VAT (in %)"
-#: ./at.py:141
-#: ./dx.py:88
+#: ./at.py:139
+#: ./dx.py:85
 msgid "label_item_vat"
 msgstr "IVA (in %)"
 
@@ -525,8 +528,8 @@ msgid "label_lastname"
 msgstr ""
 
 #. Default: "Order Notification Text"
-#: ./at.py:344
-#: ./dx.py:274
+#: ./at.py:360
+#: ./dx.py:288
 #: ./interfaces.py:317
 msgid "label_order_notification_text"
 msgstr ""
@@ -542,8 +545,8 @@ msgid "label_overall_order_notification_text"
 msgstr ""
 
 #. Default: "Overbooked Notification Text"
-#: ./at.py:357
-#: ./dx.py:282
+#: ./at.py:373
+#: ./dx.py:296
 #: ./interfaces.py:329
 msgid "label_overbook_notification_text"
 msgstr ""
@@ -564,8 +567,8 @@ msgid "label_quantity_units"
 msgstr ""
 
 #. Default: "Item Weight"
-#: ./at.py:291
-#: ./dx.py:230
+#: ./at.py:303
+#: ./dx.py:240
 msgid "label_shipping_item_weight"
 msgstr ""
 
@@ -645,7 +648,7 @@ msgid "my_orders"
 msgstr ""
 
 #. Default: "Net"
-#: ./browser/buyable.pt:27
+#: ./browser/buyable.pt:36
 msgid "net"
 msgstr "Netto"
 
@@ -699,6 +702,11 @@ msgstr ""
 msgid "payment_text"
 msgstr ""
 
+#. Default: "Price"
+#: ./browser/buyable.pt:32
+msgid "price"
+msgstr "Prezzo"
+
 #. Default: "Quantity"
 #: ./vocabularies.py:18
 msgid "quantity"
@@ -725,12 +733,12 @@ msgid "text"
 msgstr ""
 
 #. Default: "update cart"
-#: ./browser/buyable.pt:82
+#: ./browser/buyable.pt:97
 msgid "update_cart"
 msgstr "Aggiorna"
 
 #. Default: "Vat"
-#: ./browser/buyable.pt:30
+#: ./browser/buyable.pt:49
 msgid "vat"
 msgstr "IVA"
 
