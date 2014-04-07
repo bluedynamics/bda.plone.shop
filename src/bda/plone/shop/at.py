@@ -227,6 +227,12 @@ class ATCartItemDataProvider(CartItemDataProviderBase):
                 return term.title
 
 
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_item_display_stock(context):
+    return lambda: True
+
+
 class StockExtender(ExtenderBase):
     """Schema extender for item stock.
     """
@@ -237,10 +243,9 @@ class StockExtender(ExtenderBase):
         XBooleanField(
             name='item_display_stock',
             schemata='Shop',
-            widget=FloatField._properties['widget'](
+            widget=BooleanField._properties['widget'](
                 label=_(u'label_item_display_stock', u'Display item stock'),
             ),
-            default=True,
         ),
         XFloatField(
             name='item_available',

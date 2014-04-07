@@ -167,6 +167,11 @@ class DXCartItemDataProvider(CartItemDataProviderBase):
                 return term.title
 
 
+@provider(IContextAwareDefaultFactory)
+def default_item_display_stock(context):
+    return True
+
+
 @provider(IFormFieldProvider)
 class IStockBehavior(model.Schema):
     """Stock behavior.
@@ -181,7 +186,7 @@ class IStockBehavior(model.Schema):
     item_display_stock = schema.Bool(
         title=_(u'label_item_display_stock', default=u'Display item stock'),
         required=False,
-        default=True
+        defaultFactory=default_item_display_stock
     )
 
     item_available = schema.Float(
