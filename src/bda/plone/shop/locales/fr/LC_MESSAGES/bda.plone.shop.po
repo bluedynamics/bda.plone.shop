@@ -15,6 +15,9 @@ msgstr ""
 "Domain: bda.plone.shop\n"
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
+msgid "price"
+msgstr "Prix"
+
 #. Default: "Australian Dollar"
 #: ./vocabularies.py:88
 msgid "AUD"

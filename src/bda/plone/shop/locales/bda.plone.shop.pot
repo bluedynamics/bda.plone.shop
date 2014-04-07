@@ -18,6 +18,9 @@ msgstr ""
 msgid ""
 msgstr ""
 
+msgid "price"
+msgstr ""
+
 #. Default: "Australian Dollar"
 #: ./vocabularies.py:88
 msgid "AUD"

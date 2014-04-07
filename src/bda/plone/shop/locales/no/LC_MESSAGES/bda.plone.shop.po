@@ -16,6 +16,9 @@ msgstr ""
 "Language: nb_NO\n"
 "X-Generator: Poedit 1.5.5\n"
 
+msgid "price"
+msgstr "Pris"
+
 #. Default: "Australian Dollar"
 #: ./vocabularies.py:88
 msgid "AUD"

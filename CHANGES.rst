@@ -4,6 +4,19 @@ Changelog
 0.5dev
 ------
 
+- Changed markup and styles for the buyable_controls template, which is used
+  for the buyable viewlet.
+  [thet]
+
+- Create a show_available property for buyable_controls. When set to True, as
+  by default, the available information is shown for each buyable. This can be
+  turned off in a customized buyable class for shared stock buyables.
+  [thet]
+
+- Remove buyable viewlet class, as it did not have any customization in it.
+  This should not break backwards compatibility.
+  [thet]
+
 - Stick to ``AccessControl`` directly for checking buyable controls
   permissions. ``<SpecialUser 'Anonymous User'>`` instance returned by
   ``plone.api.user.get_current()`` not provides ``checkPermission`` function,
