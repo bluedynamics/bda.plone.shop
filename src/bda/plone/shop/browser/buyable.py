@@ -1,4 +1,4 @@
-import plone.api
+from AccessControl import getSecurityManager
 from zope.i18n import translate
 from decimal import Decimal
 from Products.Five import BrowserView
@@ -10,7 +10,6 @@ from bda.plone.shop import permissions
 
 
 class BuyableControls(BrowserView, DataProviderMixin):
-
     show_available = True
 
     @property
@@ -27,13 +26,13 @@ class BuyableControls(BrowserView, DataProviderMixin):
 
     @property
     def can_view_buyable_info(self):
-        user = plone.api.user.get_current()
-        return user.checkPermission(permissions.ViewBuyableInfo, self.context)
+        sm = getSecurityManager()
+        return sm.checkPermission(permissions.ViewBuyableInfo, self.context)
 
     @property
     def can_buy_items(self):
-        user = plone.api.user.get_current()
-        return user.checkPermission(permissions.BuyItems, self.context)
+        sm = getSecurityManager()
+        return sm.checkPermission(permissions.BuyItems, self.context)
 
     @property
     def availability_signal(self):
@@ -88,3 +87,8 @@ class BuyableControls(BrowserView, DataProviderMixin):
     @property
     def quantity_unit(self):
         return translate(self._item_data.quantity_unit, context=self.request)
+
+    def __call__(self, *args):
+        if '_' in self.request.form:
+            self.request.response.setHeader('X-Theme-Disabled', 'True')
+        return super(BuyableControls, self).__call__()
