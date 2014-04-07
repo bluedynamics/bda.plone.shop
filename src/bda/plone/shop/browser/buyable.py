@@ -87,3 +87,8 @@ class BuyableControls(BrowserView, DataProviderMixin):
     @property
     def quantity_unit(self):
         return translate(self._item_data.quantity_unit, context=self.request)
+
+    def __call__(self, *args):
+        if '_' in self.request.form:
+            self.request.response.setHeader('X-Theme-Disabled', 'True')
+        return super(BuyableControls, self).__call__()
