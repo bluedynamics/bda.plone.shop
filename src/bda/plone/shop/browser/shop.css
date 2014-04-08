@@ -40,21 +40,24 @@ div.signal.yellow {
 div.signal.green {
     background-color:green;
 }
-
-
-#content dl.buyable { margin-bottom: 0.5em; }
-#content .buyable dt { margin-left: 1em; }
-.buyable dt,
-.buyable dd {
+div.buyable dl.details {
+    margin-bottom:0.5em;
     display: inline-block;
 }
-div.buyable input { font-size:90%; }
-
-div.buyable .vat_label {
-    /* BBB */
-    margin-left:1em;
+div.buyable dl.details dt {
+    margin-left:0.5em;
 }
-
+div.buyable dl.details dt,
+div.buyable dl.details dd {
+    display: inline-block;
+}
+div.buyable dl.details input {
+    font-size:90%;
+}
+div.buyable .vat_label {
+    /* B/C */
+    margin-left:0.5em;
+}
 a.buyable_add_to_cart:link,
 a.buyable_add_to_cart:active,
 a.buyable_add_to_cart:hover,
@@ -63,13 +66,14 @@ a.buyable_update_cart:link,
 a.buyable_update_cart:active,
 a.buyable_update_cart:hover,
 a.buyable_update_cart:visited {
-    margin-left:1em;
+    margin-left:0.35em;
     background-color:#75ad0a;
-    border-radius: 0.3em 0.3em 0.3em 0.3em;
+    border-radius:0.3em 0.3em 0.3em 0.3em;
     color:white !important;
     font-weight:bold;
+    font-size:82%;
     display:inline-block;
-    padding:0.3em 0.75em;
+    padding:0 0.4em;
     text-align:center;
     text-decoration:none;
     cursor:pointer;
@@ -81,13 +85,14 @@ a.buyable_update_cart:hover {
 }
 span.buyable_add_to_cart_disabled,
 span.buyable_update_cart_disabled {
-    margin-left:1em;
+    margin-left:0.35em;
     background-color:#eeeeee;
-    border-radius: 0.3em 0.3em 0.3em 0.3em;
+    border-radius:0.3em 0.3em 0.3em 0.3em;
     color:white !important;
     font-weight:bold;
+    font-size:82%;
     display:inline-block;
-    padding:0.3em 0.75em;
+    padding:0 0.4em;
     text-align:center;
     text-decoration:none;
     cursor:normal;
