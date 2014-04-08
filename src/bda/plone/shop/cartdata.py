@@ -113,6 +113,10 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         return get_shop_settings().show_currency
 
     @property
+    def hide_cart_if_empty(self):
+        return get_shop_cart_settings().hide_cart_if_empty
+
+    @property
     def disable_max_article(self):
         return get_shop_cart_settings().disable_max_article
 

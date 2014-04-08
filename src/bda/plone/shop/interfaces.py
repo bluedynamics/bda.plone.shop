@@ -84,11 +84,21 @@ class IShopCartSettings(model.Schema):
         'cart',
         label=_(u'Cart', default=u'Cart'),
         fields=[
+            'hide_cart_if_empty',
             'disable_max_article',
             'summary_total_only',
             'show_checkout',
             'show_to_cart',
         ],
+    )
+
+    hide_cart_if_empty = schema.Bool(
+        title=_(u"label_hide_cart_if_empty", default=u"Hide Cart if empty"),
+        description=_(
+            u"help_hide_cart_if_empty",
+            default=u"Hide cart if no items contained"
+        ),
+        default=False
     )
 
     disable_max_article = schema.Bool(

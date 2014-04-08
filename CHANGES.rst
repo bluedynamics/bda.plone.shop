@@ -4,6 +4,9 @@ Changelog
 0.5dev
 ------
 
+- Integrate hide_cart_if_empty property of cart data interface.
+  [rnix]
+
 - Implement display property of stock interface and consider it in buyable
   controls.
   [rnix]

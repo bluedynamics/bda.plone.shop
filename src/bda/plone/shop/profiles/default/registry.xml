@@ -7,6 +7,7 @@
     <value key="default_item_display_gross" purge="false">False</value>
   </records>
   <records interface="bda.plone.shop.interfaces.IShopCartSettings">
+    <value key="hide_cart_if_empty" purge="false">False</value>
     <value key="disable_max_article" purge="false">True</value>
     <value key="summary_total_only" purge="false">False</value>
     <value key="show_checkout" purge="false">False</value>
