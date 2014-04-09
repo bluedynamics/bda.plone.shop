@@ -194,6 +194,9 @@ There exists ``bda.plone.shop.ViewBuyableInfo`` and ``bda.plone.shop.BuyItems``
 permission to control what parts of buyable data and controls get exposed to
 the user.
 
+In general, custom shop deployments are likely to configure the permission and
+role settings according to their use cases.
+
 
 bda.plone.shop.ViewBuyableInfo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -208,6 +211,10 @@ for roles:
 * Editor
 * Customer
 * Authenticated
+
+This permission is also granted to the Authenticated role, to cover the use
+case, where authenticated users should see price informations, but not buy
+items.
 
 In order to expose buyable information to all visitors by default,
 add ``Anonymous`` role via generic setup's ``rolemap.xml`` of your
