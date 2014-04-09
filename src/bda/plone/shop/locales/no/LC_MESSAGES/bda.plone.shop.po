@@ -148,22 +148,22 @@ msgid "add_to_cart"
 msgstr "Legg i handlekurv"
 
 #. Default: "No longer available, please remove from cart"
-#: ./cartdata.py:144
+#: ./cartdata.py:141
 msgid "alert_item_no_longer_available"
 msgstr ""
 
 #. Default: "Limit exceed by ${exceed} ${quantity_unit}"
-#: ./cartdata.py:156
+#: ./cartdata.py:153
 msgid "alert_item_number_exceed"
 msgstr ""
 
 #. Default: "${reserved} ${quantity_unit} reserved"
-#: ./cartdata.py:163
+#: ./cartdata.py:160
 msgid "alert_item_number_reserved"
 msgstr ""
 
 #. Default: "Partly reserved"
-#: ./cartdata.py:151
+#: ./cartdata.py:148
 msgid "alert_item_some_reserved"
 msgstr ""
 
@@ -452,14 +452,14 @@ msgid "label_gender"
 msgstr ""
 
 #. Default: "Overall Notification Text"
-#: ./at.py:401
-#: ./dx.py:320
+#: ./at.py:415
+#: ./dx.py:331
 msgid "label_global_order_notification_text"
 msgstr ""
 
 #. Default: "Overall Overbooked Notification Text"
-#: ./at.py:414
-#: ./dx.py:328
+#: ./at.py:426
+#: ./dx.py:339
 msgid "label_global_overbook_notification_text"
 msgstr ""
 
@@ -474,62 +474,68 @@ msgid "label_include_shipping_costs"
 msgstr ""
 
 #. Default: "Item stock available"
-#: ./at.py:254
-#: ./dx.py:193
+#: ./at.py:269
+#: ./dx.py:204
 msgid "label_item_available"
 msgstr ""
 
+#. Default: "Max count of this item in cart"
+#: ./at.py:147
+#: ./dx.py:93
+msgid "label_item_cart_count_limit"
+msgstr ""
+
 #. Default: "Comment enabled"
-#: ./at.py:154
-#: ./dx.py:98
+#: ./at.py:162
+#: ./dx.py:105
 msgid "label_item_comment_enabled"
 msgstr "Kommentarer aktivert"
 
 #. Default: "Comment required"
-#: ./at.py:161
-#: ./dx.py:104
+#: ./at.py:170
+#: ./dx.py:111
 msgid "label_item_comment_required"
 msgstr "Kommentar er påkrevd"
 
 #. Default: "Display Gross"
-#: ./at.py:147
-#: ./dx.py:92
+#: ./at.py:155
+#: ./dx.py:99
 msgid "label_item_display_gross"
 msgstr "Vis bruttopriser "
 
 #. Default: "Display item stock"
-#: ./at.py:247
-#: ./dx.py:187
+#: ./at.py:261
+#: ./dx.py:198
 msgid "label_item_display_stock"
 msgstr ""
 
 #. Default: "Item net price"
 #: ./at.py:132
-#: ./dx.py:79
+#: ./dx.py:80
 msgid "label_item_net"
 msgstr "Nettopris"
 
 #. Default: "Item stock overbook"
-#: ./at.py:261
-#: ./dx.py:198
+#: ./at.py:277
+#: ./dx.py:209
 msgid "label_item_overbook"
 msgstr ""
 
 #. Default: "Quantity unit"
-#: ./at.py:176
-#: ./dx.py:117
+#: ./at.py:186
+#: ./dx.py:124
 msgid "label_item_quantity_unit"
 msgstr "Stykk"
 
 #. Default: "Quantity as float"
-#: ./at.py:168
-#: ./dx.py:110
+#: ./at.py:178
+#: ./dx.py:117
 msgid "label_item_quantity_unit_float"
 msgstr "Antall (som helttall)"
 
 #. Default: "Item VAT (in %)"
 #: ./at.py:139
-#: ./dx.py:85
+#: ./dx.py:86
 msgid "label_item_vat"
 msgstr "moms (i prosent)"
 
@@ -539,8 +545,8 @@ msgid "label_lastname"
 msgstr ""
 
 #. Default: "Order Notification Text"
-#: ./at.py:365
-#: ./dx.py:293
+#: ./at.py:383
+#: ./dx.py:304
 #: ./interfaces.py:327
 msgid "label_order_notification_text"
 msgstr ""
@@ -556,8 +562,8 @@ msgid "label_overall_order_notification_text"
 msgstr ""
 
 #. Default: "Overbooked Notification Text"
-#: ./at.py:378
-#: ./dx.py:301
+#: ./at.py:394
+#: ./dx.py:312
 #: ./interfaces.py:339
 msgid "label_overbook_notification_text"
 msgstr ""
@@ -578,8 +584,8 @@ msgid "label_quantity_units"
 msgstr ""
 
 #. Default: "Item Weight"
-#: ./at.py:308
-#: ./dx.py:245
+#: ./at.py:325
+#: ./dx.py:256
 msgid "label_shipping_item_weight"
 msgstr ""
 

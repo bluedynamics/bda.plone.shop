@@ -8,10 +8,13 @@ Changelog
   `zope.component.interfaces.ISite`. That's needed for Lineage compatibility.
   [thet]
 
-- Integrate hide_cart_if_empty property of cart data interface.
+- Integrate ``cart_count_limit`` property of cart item data interface.
   [rnix]
 
-- Implement display property of stock interface and consider it in buyable
+- Integrate ``hide_cart_if_empty`` property of cart data interface.
+  [rnix]
+
+- Implement ``display`` property of stock interface and consider it in buyable
   controls.
   [rnix]
 
