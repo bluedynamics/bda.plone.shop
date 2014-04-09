@@ -7,7 +7,7 @@ from zope.security import checkPermission
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFPlone.interfaces import IPloneSiteRoot
+from zope.component.interfaces import ISite
 from bda.plone.discount.interfaces import IDiscountSettingsEnabled
 from bda.plone.orders.interfaces import IVendor
 from bda.plone.orders.common import get_vendors_for
@@ -103,7 +103,7 @@ class ShopPortletMailTemplatesLink(ShopPortletLink):
         super(ShopPortletMailTemplatesLink, self).__init__(
             context, view_permissions=permissions)
         if self.display:
-            self.display = IPloneSiteRoot.providedBy(context) \
+            self.display = ISite.providedBy(context) \
                 or IVendor.providedBy(context)
         self.url = '%s/@@mailtemplates' % context.absolute_url()
         self.title = _('mailtemplates', default=u'Notification Templates')
@@ -118,7 +118,7 @@ class ShopPortletCartDiscountLink(ShopPortletLink):
         super(ShopPortletCartDiscountLink, self).__init__(
             context, view_permissions=permissions)
         if self.display:
-            self.display = IPloneSiteRoot.providedBy(context)
+            self.display = ISite.providedBy(context)
         self.url = '%s/@@cart_discount' % context.absolute_url()
         self.title = _('cart_discount', default=u'Cart Discount')
         self.order = 40
@@ -132,7 +132,7 @@ class ShopPortletCartItemDiscountLink(ShopPortletLink):
         super(ShopPortletCartItemDiscountLink, self).__init__(
             context, view_permissions=permissions)
         if self.display:
-            self.display = IPloneSiteRoot.providedBy(context) \
+            self.display = ISite.providedBy(context) \
                 or IDiscountSettingsEnabled.providedBy(context)
         self.url = '%s/@@item_discount' % context.absolute_url()
         self.title = _('item_discount', default=u'Item Discount')

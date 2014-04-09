@@ -4,6 +4,10 @@ Changelog
 0.5dev
 ------
 
+- Change browser view and adapter regitrations from IPloneSiteRoot to
+  `zope.component.interfaces.ISite`. That's needed for Lineage compatibility.
+  [thet]
+
 - Integrate hide_cart_if_empty property of cart data interface.
   [rnix]
 

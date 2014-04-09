@@ -126,7 +126,7 @@
   <!-- controlpanel -->
   <browser:page
     name="shop_controlpanel"
-    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    for="zope.component.interfaces.ISite"
     class=".controlpanel.ShopSettingsControlPanel"
     permission="cmf.ManagePortal" />
 
