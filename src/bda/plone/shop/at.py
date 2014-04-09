@@ -129,36 +129,46 @@ class BuyableExtender(ExtenderBase):
             name='item_net',
             schemata='Shop',
             widget=FloatField._properties['widget'](
-                label=_(u'label_item_net', u'Item net price'),
+                label=_(u'label_item_net', default=u'Item net price'),
             ),
         ),
         XStringField(
             name='item_vat',
             schemata='Shop',
             widget=SelectionWidget(
-                label=_(u'label_item_vat', u'Item VAT (in %)'),
+                label=_(u'label_item_vat', default=u'Item VAT (in %)'),
             ),
             vocabulary_factory='bda.plone.shop.vocabularies.VatVocabulary',
+        ),
+        XFloatField(
+            name='item_cart_count_limit',
+            schemata='Shop',
+            widget=FloatField._properties['widget'](
+                label=_(u'label_item_cart_count_limit',
+                        default=u'Max count of this item in cart'),
+            ),
         ),
         XBooleanField(
             name='item_display_gross',
             schemata='Shop',
             widget=BooleanField._properties['widget'](
-                label=_(u'label_item_display_gross', u'Display Gross'),
+                label=_(u'label_item_display_gross', default=u'Display Gross'),
             ),
         ),
         XBooleanField(
             name='item_comment_enabled',
             schemata='Shop',
             widget=BooleanField._properties['widget'](
-                label=_(u'label_item_comment_enabled', u'Comment enabled'),
+                label=_(u'label_item_comment_enabled',
+                        default=u'Comment enabled'),
             ),
         ),
         XBooleanField(
             name='item_comment_required',
             schemata='Shop',
             widget=BooleanField._properties['widget'](
-                label=_(u'label_item_comment_required', u'Comment required'),
+                label=_(u'label_item_comment_required',
+                        default=u'Comment required'),
             ),
         ),
         XBooleanField(
@@ -166,14 +176,14 @@ class BuyableExtender(ExtenderBase):
             schemata='Shop',
             widget=BooleanField._properties['widget'](
                 label=_(u'label_item_quantity_unit_float',
-                        u'Quantity as float'),
+                        default=u'Quantity as float'),
             ),
         ),
         XStringField(
             name='item_quantity_unit',
             schemata='Shop',
             widget=SelectionWidget(
-                label=_(u'label_item_quantity_unit', u'Quantity unit'),
+                label=_(u'label_item_quantity_unit', default=u'Quantity unit'),
             ),
             vocabulary_factory=\
                 'bda.plone.shop.vocabularies.QuantityUnitVocabulary',
@@ -199,6 +209,10 @@ class ATCartItemDataProvider(CartItemDataProviderBase):
         if not val:
             return 0.0
         return float(val)
+
+    @property
+    def cart_count_limit(self):
+        return field_value(self.context, 'item_cart_count_limit')
 
     @property
     def display_gross(self):
@@ -244,21 +258,24 @@ class StockExtender(ExtenderBase):
             name='item_display_stock',
             schemata='Shop',
             widget=BooleanField._properties['widget'](
-                label=_(u'label_item_display_stock', u'Display item stock'),
+                label=_(u'label_item_display_stock',
+                        default=u'Display item stock'),
             ),
         ),
         XFloatField(
             name='item_available',
             schemata='Shop',
             widget=FloatField._properties['widget'](
-                label=_(u'label_item_available', u'Item stock available'),
+                label=_(u'label_item_available',
+                        default=u'Item stock available'),
             ),
         ),
         XFloatField(
             name='item_overbook',
             schemata='Shop',
             widget=FloatField._properties['widget'](
-                label=_(u'label_item_overbook', u'Item stock overbook'),
+                label=_(u'label_item_overbook',
+                        default=u'Item stock overbook'),
             ),
         ),
     ]
@@ -305,7 +322,8 @@ class ShippingExtender(ExtenderBase):
             name='shipping_item_weight',
             schemata='Shop',
             widget=FloatField._properties['widget'](
-                label=_(u'label_shipping_item_weight', u'Item Weight'),
+                label=_(u'label_shipping_item_weight',
+                        default=u'Item Weight'),
             ),
         ),
     ]
@@ -362,10 +380,8 @@ class ItemNotificationTextExtender(ExtenderBase):
             allowable_content_types=('text/plain',),
             default_output_type="text/plain",
             widget=TextAreaWidget(
-                label=_(
-                    u'label_order_notification_text',
-                    u'Order Notification Text'
-                ),
+                label=_(u'label_order_notification_text',
+                        default=u'Order Notification Text'),
             ),
         ),
         XTextField(
@@ -375,10 +391,8 @@ class ItemNotificationTextExtender(ExtenderBase):
             allowable_content_types=('text/plain',),
             default_output_type="text/plain",
             widget=TextAreaWidget(
-                label=_(
-                    u'label_overbook_notification_text',
-                    u'Overbooked Notification Text'
-                ),
+                label=_(u'label_overbook_notification_text',
+                        default=u'Overbooked Notification Text'),
             ),
         ),
     ]
@@ -398,10 +412,8 @@ class GlobalNotificationTextExtender(ExtenderBase):
             allowable_content_types=('text/plain',),
             default_output_type="text/plain",
             widget=TextAreaWidget(
-                label=_(
-                    u'label_global_order_notification_text',
-                    u'Overall Notification Text'
-                ),
+                label=_(u'label_global_order_notification_text',
+                        default=u'Overall Notification Text'),
             ),
         ),
         XTextField(
@@ -411,10 +423,8 @@ class GlobalNotificationTextExtender(ExtenderBase):
             allowable_content_types=('text/plain',),
             default_output_type="text/plain",
             widget=TextAreaWidget(
-                label=_(
-                    u'label_global_overbook_notification_text',
-                    u'Overall Overbooked Notification Text'
-                ),
+                label=_(u'label_global_overbook_notification_text',
+                        default=u'Overall Overbooked Notification Text'),
             ),
         ),
     ]

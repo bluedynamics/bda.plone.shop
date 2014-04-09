@@ -2,9 +2,6 @@ from decimal import Decimal
 from zope.i18n import translate
 from Products.CMFCore.utils import getToolByName
 from bda.plone.shipping.interfaces import IShippingItem
-from bda.plone.cart import readcookie
-from bda.plone.cart import extractitems
-from bda.plone.cart import aggregate_cart_item_count
 from bda.plone.cart import get_item_data_provider
 from bda.plone.cart import get_item_stock
 from bda.plone.cart import get_item_state

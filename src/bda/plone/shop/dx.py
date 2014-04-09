@@ -67,6 +67,7 @@ class IBuyableBehavior(model.Schema, IBuyable):
         fields=[
             'item_net',
             'item_vat',
+            'item_cart_count_limit',
             'item_display_gross',
             'item_comment_enabled',
             'item_comment_required',
@@ -86,6 +87,12 @@ class IBuyableBehavior(model.Schema, IBuyable):
         vocabulary='bda.plone.shop.vocabularies.VatVocabulary',
         required=False,
         defaultFactory=default_item_vat
+    )
+
+    item_cart_count_limit = schema.Float(
+        title=_(u'label_item_cart_count_limit',
+                default=u'Max count of this item in cart'),
+        required=False
     )
 
     item_display_gross = schema.Bool(
@@ -139,6 +146,10 @@ class DXCartItemDataProvider(CartItemDataProviderBase):
         if not val:
             return 0.0
         return float(val)
+
+    @property
+    def cart_count_limit(self):
+        return self.context.item_cart_count_limit
 
     @property
     def display_gross(self):
