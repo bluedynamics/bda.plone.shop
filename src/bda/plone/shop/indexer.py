@@ -1,5 +1,5 @@
 from plone.indexer import indexer
-from .interfaces import IBuyable
+from bda.plone.shop.interfaces import IBuyable
 
 
 @indexer(IBuyable)

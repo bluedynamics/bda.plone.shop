@@ -8,10 +8,10 @@ from bda.plone.cart import get_item_state
 from bda.plone.cart import get_item_preview
 from bda.plone.cart import CartDataProviderBase
 from bda.plone.cart import CartItemStateBase
-from .utils import get_shop_settings
-from .utils import get_shop_cart_settings
-from .utils import get_shop_shipping_settings
-from . import message_factory as _
+from bda.plone.shop.utils import get_shop_settings
+from bda.plone.shop.utils import get_shop_cart_settings
+from bda.plone.shop.utils import get_shop_shipping_settings
+from bda.plone.shop import message_factory as _
 
 
 class CartItemCalculator(object):
@@ -92,6 +92,13 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
                 preview_image_url, no_longer_available, alert)
             ret.append(item)
         return ret
+
+    def validate_set(self, uid):
+        """
+        XXX: check buy item permission
+        XXX: check buyable publication range
+        """
+        return {'success': True, 'error': ''}
 
     @property
     def currency(self):

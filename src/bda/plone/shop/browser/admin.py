@@ -11,7 +11,7 @@ from zope.component.interfaces import ISite
 from bda.plone.discount.interfaces import IDiscountSettingsEnabled
 from bda.plone.orders.interfaces import IVendor
 from bda.plone.orders.common import get_vendors_for
-from .. import message_factory as _
+from bda.plone.shop import message_factory as _
 
 import plone.api
 

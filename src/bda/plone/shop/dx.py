@@ -1,14 +1,15 @@
-from .interfaces import IBuyable
-from .notificationtext import BubbleGlobalNotificationText
-from .notificationtext import BubbleItemNotificationText
-from .utils import get_shop_article_settings
-from .utils import get_shop_settings
-from .utils import get_shop_tax_settings
 from bda.plone.cart import CartItemDataProviderBase
 from bda.plone.cart import CartItemPreviewAdapterBase
 from bda.plone.cart.interfaces import ICartItemStock
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
+from bda.plone.shop.interfaces import IBuyable
+from bda.plone.shop.interfaces import IBuyablePeriod
+from bda.plone.shop.notificationtext import BubbleGlobalNotificationText
+from bda.plone.shop.notificationtext import BubbleItemNotificationText
+from bda.plone.shop.utils import get_shop_article_settings
+from bda.plone.shop.utils import get_shop_settings
+from bda.plone.shop.utils import get_shop_tax_settings
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
 from plone.supermodel import model
@@ -378,3 +379,46 @@ class DXGlobalNotificationText(BubbleGlobalNotificationText):
         if self.context.global_overbook_text:
             return self.context.global_overbook_text
         return super(DXGlobalNotificationText, self).global_overbook_text
+
+
+@provider(IFormFieldProvider)
+class IBuyablePeriodBehavior(model.Schema):
+    """Buyable period behavior.
+    """
+
+    model.fieldset(
+        'shop',
+        label=u"Shop",
+        fields=[
+            'buyable_effective',
+            'buyable_expires'
+        ]
+    )
+
+    buyable_effective = schema.Datetime(
+        title=_(u'label_buyable_effective_date',
+                default=u'Buyable effective date'),
+        required=False
+    )
+
+    buyable_expires = schema.Datetime(
+        title=_(u'label_buyable_expiration_date',
+                default=u'Buyable expiration date'),
+        required=False
+    )
+
+
+@implementer(IBuyablePeriod)
+@adapter(IBuyablePeriodBehavior)
+class DXBuyablePeriod(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def effective(self):
+        return self.context.buyable_effective
+
+    @property
+    def expires(self):
+        return self.context.buyable_expires

@@ -3,7 +3,7 @@ from bda.plone.cart import get_item_state
 from bda.plone.cart import get_item_delivery
 from bda.plone.cart import get_item_data_provider
 from bda.plone.cart import CartItemAvailabilityBase
-from .. import message_factory as _
+from bda.plone.shop import message_factory as _
 
 
 class CartItemAvailability(CartItemAvailabilityBase):

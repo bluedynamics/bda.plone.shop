@@ -14,8 +14,8 @@ from plone.z3cform.fieldsets import extensible
 from z3c.form import field
 from bda.plone.checkout.interfaces import ICheckoutFormPresets
 from bda.plone.checkout.vocabularies import get_pycountry_name
-from ..interfaces import IShopExtensionLayer
-from .. import message_factory as _
+from bda.plone.shop.interfaces import IShopExtensionLayer
+from bda.plone.shop import message_factory as _
 
 
 def validate_accept(value):

@@ -132,6 +132,12 @@
     factory=".at.GlobalNotificationTextExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="bda.plone.shop.buyableperiod"
+    factory=".at.BuyablePeriodExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
   <!-- cart related AT adapters -->
   <adapter
     zcml:condition="installed Products.Archetypes"
@@ -156,6 +162,11 @@
   <adapter
     zcml:condition="installed Products.Archetypes"
     factory=".at.ATGlobalNotificationText" />
+
+  <!-- buyable related AT adapters -->
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATBuyablePeriod" />
 
   <!-- DX behaviors -->
   <plone:behavior
@@ -193,6 +204,13 @@
     provides=".dx.IGlobalNotificationTextBehavior"
     for="plone.dexterity.interfaces.IDexterityContent" />
 
+  <plone:behavior
+    zcml:condition="installed plone.dexterity"
+    title="Shop: Buyable Period Behavior"
+    description="Define buyable period for item."
+    provides=".dx.IBuyablePeriodBehavior"
+    for="plone.dexterity.interfaces.IDexterityContent" />
+
   <!-- cart related DX adapters -->
   <adapter
     zcml:condition="installed plone.dexterity"
@@ -217,5 +235,10 @@
   <adapter
     zcml:condition="installed plone.dexterity"
     factory=".dx.DXGlobalNotificationText" />
+
+  <!-- buyable related DX adapters -->
+  <adapter
+    zcml:condition="installed plone.dexterity"
+    factory=".dx.DXBuyablePeriod" />
 
 </configure>

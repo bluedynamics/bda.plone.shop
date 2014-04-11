@@ -1,16 +1,11 @@
-from .interfaces import IBuyable
-from .interfaces import IShopExtensionLayer
-from .notificationtext import BubbleGlobalNotificationText
-from .notificationtext import BubbleItemNotificationText
-from .utils import get_shop_article_settings
-from .utils import get_shop_settings
-from .utils import get_shop_tax_settings
 from Products.Archetypes.atapi import BooleanField
 from Products.Archetypes.atapi import FloatField
 from Products.Archetypes.atapi import SelectionWidget
 from Products.Archetypes.atapi import StringField
 from Products.Archetypes.atapi import TextAreaWidget
 from Products.Archetypes.atapi import TextField
+from Products.Archetypes.atapi import DateTimeField
+from Products.Archetypes.atapi import CalendarWidget
 from Products.Archetypes.interfaces import IBaseObject
 from Products.Archetypes.interfaces import IFieldDefaultProvider
 from Products.Archetypes.utils import OrderedDict
@@ -22,6 +17,14 @@ from bda.plone.cart import CartItemPreviewAdapterBase
 from bda.plone.cart.interfaces import ICartItemStock
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
+from bda.plone.shop.interfaces import IShopExtensionLayer
+from bda.plone.shop.interfaces import IBuyable
+from bda.plone.shop.interfaces import IBuyablePeriod
+from bda.plone.shop.notificationtext import BubbleGlobalNotificationText
+from bda.plone.shop.notificationtext import BubbleItemNotificationText
+from bda.plone.shop.utils import get_shop_article_settings
+from bda.plone.shop.utils import get_shop_settings
+from bda.plone.shop.utils import get_shop_tax_settings
 from zope.component import adapter
 from zope.component import getUtility
 from zope.interface import implementer
@@ -54,6 +57,7 @@ class XStringField(ExtensionField, StringField): pass
 class XFloatField(ExtensionField, FloatField): pass
 class XBooleanField(ExtensionField, BooleanField): pass
 class XTextField(ExtensionField, TextField): pass
+class XDateTimeField(ExtensionField, DateTimeField): pass
 
 
 @implementer(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
@@ -472,3 +476,43 @@ class ATGlobalNotificationText(BubbleGlobalNotificationText):
         if text:
             return text
         return super(ATGlobalNotificationText, self).global_overbook_text
+
+
+class BuyablePeriodExtender(ExtenderBase):
+    """Schema extender for buyable period.
+    """
+
+    layer = IShopExtensionLayer
+
+    fields = [
+        XDateTimeField(
+            'buyable_effective',
+            widget=CalendarWidget(
+                label=_(u'label_buyable_effective_date',
+                        default=u'Buyable effective date'),
+            ),
+        ),
+        XDateTimeField(
+            'buyable_expires',
+            widget=CalendarWidget(
+                label=_(u'label_buyable_expiration_date',
+                        default=u'Buyable expiration date'),
+            ),
+        ),
+    ]
+
+
+@implementer(IBuyablePeriod)
+@adapter(IBaseObject)
+class ATBuyablePeriod(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def effective(self):
+        return field_value(self.context, 'buyable_effective')
+
+    @property
+    def expires(self):
+        return field_value(self.context, 'buyable_expires')

@@ -1,6 +1,6 @@
 from decimal import Decimal
 from bda.plone.shipping import FlatRate as FlatRateBase
-from .cartdata import CartItemCalculator
+from bda.plone.shop.cartdata import CartItemCalculator
 
 
 FREE_SHIPPING_LIMIT = 200

@@ -11,6 +11,7 @@ from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.interface import Interface
+from zope.interface import Attribute
 from zope.interface import provider
 
 
@@ -31,6 +32,15 @@ class IBuyable(ICartItem, IDiscountSettingsEnabled):
 
     Item is buyable.
     """
+
+
+class IBuyablePeriod(Interface):
+    """Define period in which an item is buyable.
+    """
+
+    effective = Attribute(u"Buyable effective date")
+
+    expires = Attribute(u"Buyable expires date")
 
 
 class IShopSettingsProvider(Interface):

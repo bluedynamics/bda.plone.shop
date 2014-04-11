@@ -67,6 +67,7 @@ adapters implementing the following interfaces::
 - ``bda.plone.shipping.interfaces.IShippingItem``
 - ``bda.plone.orders.interfaces.IItemNotificationText``
 - ``bda.plone.orders.interfaces.IGlobalNotificationText``
+- ``bda.plone.shop.interfaces.IBuyablePeriod``
 
 There exists Archetypes and Dexterity related implementations of these
 adapters among with related Schema Extenders respective Dexterity Behaviors.
@@ -113,6 +114,7 @@ interface. These are:
 - ``bda.plone.shop.dx.IShippingBehavior``
 - ``bda.plone.shop.dx.IItemNotificationTextBehavior``
 - ``bda.plone.shop.dx.IGlobalNotificationTextBehavior``
+- ``bda.plone.shop.dx.IBuyablePeriodBehavior``
 
 The corresponding adapter implementations are registered for the referring
 behavior interfaces.

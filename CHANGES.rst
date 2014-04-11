@@ -4,6 +4,9 @@ Changelog
 0.5dev
 ------
 
+- Introduce ``IBuyablePeriod`` interface.
+  [rnix]
+
 - Change browser view and adapter regitrations from IPloneSiteRoot to
   `zope.component.interfaces.ISite`. That's needed for Lineage compatibility.
   [thet]

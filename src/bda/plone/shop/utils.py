@@ -1,12 +1,12 @@
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
-from .interfaces import IShopArticleSettings
-from .interfaces import IShopCartSettings
-from .interfaces import IShopSettings
-from .interfaces import IShopShippingSettings
-from .interfaces import IShopTaxSettings
-from .interfaces import INotificationTextSettings
-from .interfaces import IPaymentTextSettings
+from bda.plone.shop.interfaces import IShopArticleSettings
+from bda.plone.shop.interfaces import IShopCartSettings
+from bda.plone.shop.interfaces import IShopSettings
+from bda.plone.shop.interfaces import IShopShippingSettings
+from bda.plone.shop.interfaces import IShopTaxSettings
+from bda.plone.shop.interfaces import INotificationTextSettings
+from bda.plone.shop.interfaces import IPaymentTextSettings
 
 
 def get_shop_settings():
