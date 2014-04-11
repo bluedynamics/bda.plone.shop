@@ -33,7 +33,7 @@ class BuyableControls(BrowserView, DataProviderMixin):
 
     @property
     def can_buy_items(self):
-        buyable_period = queryAdapter(buyable, IBuyablePeriod)
+        buyable_period = queryAdapter(self.context, IBuyablePeriod)
         if buyable_period:
             now = datetime.now()
             effective = buyable_period.effective
