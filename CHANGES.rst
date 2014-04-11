@@ -4,7 +4,11 @@ Changelog
 0.5dev
 ------
 
-- Introduce ``IBuyablePeriod`` interface.
+- Introduce ``IBuyablePeriod`` interface, Implement for AT and DX and include
+  checks in buyable controls and cart validation.
+  [rnix]
+
+- Implement ``validate_set`` on cart data provider.
   [rnix]
 
 - Change browser view and adapter regitrations from IPloneSiteRoot to
