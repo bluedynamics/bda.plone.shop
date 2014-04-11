@@ -1,16 +1,22 @@
 from decimal import Decimal
+from datetime import datetime
 from zope.i18n import translate
+from zope.component import queryAdapter
+from AccessControl import getSecurityManager
 from Products.CMFCore.utils import getToolByName
 from bda.plone.shipping.interfaces import IShippingItem
+from bda.plone.cart import get_object_by_uid
 from bda.plone.cart import get_item_data_provider
 from bda.plone.cart import get_item_stock
 from bda.plone.cart import get_item_state
 from bda.plone.cart import get_item_preview
 from bda.plone.cart import CartDataProviderBase
 from bda.plone.cart import CartItemStateBase
+from bda.plone.shop.interfaces import IBuyablePeriod
 from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_cart_settings
 from bda.plone.shop.utils import get_shop_shipping_settings
+from bda.plone.shop import permissions
 from bda.plone.shop import message_factory as _
 
 
@@ -94,10 +100,38 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         return ret
 
     def validate_set(self, uid):
-        """
-        XXX: check buy item permission
-        XXX: check buyable publication range
-        """
+        # basically this checks should only trigger error messages if someone
+        # tries to do something nasty.
+        # XXX: remove item from cookie if validation failes and item already
+        #      contained in cart. This can happen due to login/logout or local
+        #      role changes.
+        buyable = get_object_by_uid(self.context, uid)
+        # check whether user can buy item
+        sm = getSecurityManager()
+        if not sm.checkPermission(permissions.BuyItems, buyable):
+            message = _(u'permission_not_granted_to_buy_item',
+                    default=u'Permission to buy ${title} not granted.',
+                    mapping={'title': buyable.Title()})
+            message = translate(message, context=self.request)
+            return {'success': False, 'error': message}
+        # check buyable period
+        buyable_period = queryAdapter(buyable, IBuyablePeriod)
+        if buyable_period:
+            now = datetime.now()
+            # effective date not reached yet
+            effective = buyable_period.effective
+            if effective and now < effective:
+                message = _('item_not_buyable_yet',
+                            default=u'Item not buyable yet')
+                message = translate(message, context=self.request)
+                return {'success': False, 'error': message}
+            # expires date exceed
+            expires = buyable_period.expires
+            if expires and now > expires:
+                message = _('item_no_longer_buyable',
+                            default=u'Item no longer buyable')
+                message = translate(message, context=self.request)
+                return {'success': False, 'error': message}
         return {'success': True, 'error': ''}
 
     @property

@@ -1,12 +1,15 @@
-from AccessControl import getSecurityManager
-from zope.i18n import translate
 from decimal import Decimal
+from datetime import datetime
+from zope.i18n import translate
+from zope.component import queryAdapter
+from AccessControl import getSecurityManager
 from Products.Five import BrowserView
 from bda.plone.cart import get_data_provider
 from bda.plone.cart import get_item_data_provider
 from bda.plone.cart import get_item_availability
 from bda.plone.cart.browser import DataProviderMixin
 from bda.plone.shop import permissions
+from bda.plone.shop.interfaces import IBuyablePeriod
 
 
 class BuyableControls(BrowserView, DataProviderMixin):
@@ -30,6 +33,15 @@ class BuyableControls(BrowserView, DataProviderMixin):
 
     @property
     def can_buy_items(self):
+        buyable_period = queryAdapter(buyable, IBuyablePeriod)
+        if buyable_period:
+            now = datetime.now()
+            effective = buyable_period.effective
+            if effective and now < effective:
+                return False
+            expires = buyable_period.expires
+            if expires and now > expires:
+                return False
         sm = getSecurityManager()
         return sm.checkPermission(permissions.BuyItems, self.context)
 

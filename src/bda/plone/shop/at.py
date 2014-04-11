@@ -1,3 +1,4 @@
+from datetime import datetime
 from Products.Archetypes.atapi import BooleanField
 from Products.Archetypes.atapi import FloatField
 from Products.Archetypes.atapi import SelectionWidget
@@ -511,8 +512,14 @@ class ATBuyablePeriod(object):
 
     @property
     def effective(self):
-        return field_value(self.context, 'buyable_effective')
+        effective = field_value(self.context, 'buyable_effective')
+        if effective:
+            effective = datetime.fromtimestamp(effective.timeTime())
+        return effective
 
     @property
     def expires(self):
-        return field_value(self.context, 'buyable_expires')
+        expires = field_value(self.context, 'buyable_expires')
+        if expires:
+            expires = datetime.fromtimestamp(expires.timeTime())
+        return expires
