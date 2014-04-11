@@ -5,6 +5,7 @@ from zope.component import queryAdapter
 from AccessControl import getSecurityManager
 from Products.CMFCore.utils import getToolByName
 from bda.plone.shipping.interfaces import IShippingItem
+from bda.plone.cart import remove_item_from_cart
 from bda.plone.cart import get_object_by_uid
 from bda.plone.cart import get_item_data_provider
 from bda.plone.cart import get_item_stock
@@ -102,13 +103,11 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
     def validate_set(self, uid):
         # basically this checks should only trigger error messages if someone
         # tries to do something nasty.
-        # XXX: remove item from cookie if validation failes and item already
-        #      contained in cart. This can happen due to login/logout or local
-        #      role changes.
         buyable = get_object_by_uid(self.context, uid)
         # check whether user can buy item
         sm = getSecurityManager()
         if not sm.checkPermission(permissions.BuyItems, buyable):
+            remove_item_from_cart(self.request, uid)
             message = _(u'permission_not_granted_to_buy_item',
                     default=u'Permission to buy ${title} not granted.',
                     mapping={'title': buyable.Title()})
@@ -121,6 +120,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             # effective date not reached yet
             effective = buyable_period.effective
             if effective and now < effective:
+                remove_item_from_cart(self.request, uid)
                 message = _('item_not_buyable_yet',
                             default=u'Item not buyable yet')
                 message = translate(message, context=self.request)
@@ -128,6 +128,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             # expires date exceed
             expires = buyable_period.expires
             if expires and now > expires:
+                remove_item_from_cart(self.request, uid)
                 message = _('item_no_longer_buyable',
                             default=u'Item no longer buyable')
                 message = translate(message, context=self.request)
