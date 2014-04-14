@@ -487,14 +487,16 @@ class BuyablePeriodExtender(ExtenderBase):
 
     fields = [
         XDateTimeField(
-            'buyable_effective',
+            name='buyable_effective',
+            schemata='Shop',
             widget=CalendarWidget(
                 label=_(u'label_buyable_effective_date',
                         default=u'Buyable effective date'),
             ),
         ),
         XDateTimeField(
-            'buyable_expires',
+            name='buyable_expires',
+            schemata='Shop',
             widget=CalendarWidget(
                 label=_(u'label_buyable_expiration_date',
                         default=u'Buyable expiration date'),

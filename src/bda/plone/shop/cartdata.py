@@ -72,12 +72,28 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
     def cart_items(self, items):
         cat = self.catalog
         ret = list()
+        sm = getSecurityManager()
         for uid, count, comment in items:
             brain = cat(UID=uid)
             if not brain:
+                remove_item_from_cart(self.request, uid)
                 continue
             brain = brain[0]
             obj = brain.getObject()
+            if not sm.checkPermission(permissions.BuyItems, obj):
+                remove_item_from_cart(self.request, uid)
+                continue
+            buyable_period = queryAdapter(obj, IBuyablePeriod)
+            if buyable_period:
+                now = datetime.now()
+                effective = buyable_period.effective
+                if effective and now < effective:
+                    remove_item_from_cart(self.request, uid)
+                    continue
+                expires = buyable_period.expires
+                if expires and now > expires:
+                    remove_item_from_cart(self.request, uid)
+                    continue
             title = brain.Title
             data = get_item_data_provider(obj)
             discount_net = data.discount_net(count)
@@ -101,8 +117,6 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         return ret
 
     def validate_set(self, uid):
-        # basically this checks should only trigger error messages if someone
-        # tries to do something nasty.
         buyable = get_object_by_uid(self.context, uid)
         # check whether user can buy item
         sm = getSecurityManager()
@@ -112,7 +126,11 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
                     default=u'Permission to buy ${title} not granted.',
                     mapping={'title': buyable.Title()})
             message = translate(message, context=self.request)
-            return {'success': False, 'error': message}
+            return {
+                'success': False,
+                'error': message,
+                'update': True,
+            }
         # check buyable period
         buyable_period = queryAdapter(buyable, IBuyablePeriod)
         if buyable_period:
@@ -124,7 +142,11 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
                 message = _('item_not_buyable_yet',
                             default=u'Item not buyable yet')
                 message = translate(message, context=self.request)
-                return {'success': False, 'error': message}
+                return {
+                    'success': False,
+                    'error': message,
+                    'update': True,
+                }
             # expires date exceed
             expires = buyable_period.expires
             if expires and now > expires:
@@ -132,8 +154,15 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
                 message = _('item_no_longer_buyable',
                             default=u'Item no longer buyable')
                 message = translate(message, context=self.request)
-                return {'success': False, 'error': message}
-        return {'success': True, 'error': ''}
+                return {
+                    'success': False,
+                    'error': message,
+                    'update': True,
+                }
+        return {
+            'success': True,
+            'error': '',
+        }
 
     @property
     def currency(self):
