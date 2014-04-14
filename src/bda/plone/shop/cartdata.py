@@ -123,8 +123,8 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         if not sm.checkPermission(permissions.BuyItems, buyable):
             remove_item_from_cart(self.request, uid)
             message = _(u'permission_not_granted_to_buy_item',
-                    default=u'Permission to buy ${title} not granted.',
-                    mapping={'title': buyable.Title()})
+                        default=u'Permission to buy ${title} not granted.',
+                        mapping={'title': buyable.Title()})
             message = translate(message, context=self.request)
             return {
                 'success': False,
