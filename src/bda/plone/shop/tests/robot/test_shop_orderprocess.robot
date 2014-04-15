@@ -177,8 +177,7 @@ Checkout Order customer2
   Click Button  css=#input-checkout-finish
 
 checking myorders
-  Click Link  css=#portal-personaltools a#user-name
-  Click Link  css=#portal-personaltools #personaltools-myorders a
+  Click Link  css=.portlet .myorders a
 
 checking orders
   Click Link  css=.portletShopAdmin li.orders a
