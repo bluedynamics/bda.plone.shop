@@ -81,7 +81,6 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
                 continue
             brain = brain[0]
             obj = brain.getObject()
-            acc = ICartItemDataProvider(obj)
             if not sm.checkPermission(permissions.BuyItems, obj):
                 remove_item_from_cart(self.request, uid)
                 continue
@@ -96,8 +95,8 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
                 if expires and now > expires:
                     remove_item_from_cart(self.request, uid)
                     continue
-            title = acc.title
             data = get_item_data_provider(obj)
+            title = data.title
             discount_net = data.discount_net(count)
             price = (Decimal(str(data.net)) - discount_net) * count
             if data.display_gross:
