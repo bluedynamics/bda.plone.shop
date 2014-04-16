@@ -13,6 +13,7 @@ from bda.plone.cart import get_item_state
 from bda.plone.cart import get_item_preview
 from bda.plone.cart import CartDataProviderBase
 from bda.plone.cart import CartItemStateBase
+from bda.plone.cart.interfaces import ICartItemDataProvider
 from bda.plone.shop.interfaces import IBuyablePeriod
 from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_cart_settings
@@ -80,6 +81,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
                 continue
             brain = brain[0]
             obj = brain.getObject()
+            acc = ICartItemDataProvider(obj)
             if not sm.checkPermission(permissions.BuyItems, obj):
                 remove_item_from_cart(self.request, uid)
                 continue
@@ -94,7 +96,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
                 if expires and now > expires:
                     remove_item_from_cart(self.request, uid)
                     continue
-            title = brain.Title
+            title = acc.title
             data = get_item_data_provider(obj)
             discount_net = data.discount_net(count)
             price = (Decimal(str(data.net)) - discount_net) * count

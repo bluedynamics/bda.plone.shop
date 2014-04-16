@@ -4,6 +4,11 @@ Changelog
 0.5dev
 ------
 
+- Let CartDataProvider get the cart items title via an ICartItemDataProvider
+  accessor to allow customizations. This can be used to give more context on
+  the cart item, e.g. for a buyable within another content item.
+  [thet]
+
 - Introduce ``IBuyablePeriod`` interface, Implement for AT and DX and include
   checks in buyable controls and cart validation.
   [rnix]
