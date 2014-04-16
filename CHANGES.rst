@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.5dev
-------
+0.5
+---
 
 - Introduce ``IBuyablePeriod`` interface, Implement for AT and DX and include
   checks in buyable controls and cart validation.
