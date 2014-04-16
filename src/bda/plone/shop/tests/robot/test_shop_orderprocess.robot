@@ -156,6 +156,7 @@ editing personal information for customer2
   Click Button  css=#form-buttons-save
 
 Checkout Order customer2
+  Click Link  css=#portaltab-index_html a
   Click Link  css=.go_to_cart_action
   Click Link  css=.cart_checkout_button
   Textfield Value Should Be  css=#input-checkout-personal_data-firstname  Marry
