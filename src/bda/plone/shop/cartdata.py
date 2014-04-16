@@ -13,7 +13,6 @@ from bda.plone.cart import get_item_state
 from bda.plone.cart import get_item_preview
 from bda.plone.cart import CartDataProviderBase
 from bda.plone.cart import CartItemStateBase
-from bda.plone.cart.interfaces import ICartItemDataProvider
 from bda.plone.shop.interfaces import IBuyablePeriod
 from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_cart_settings
