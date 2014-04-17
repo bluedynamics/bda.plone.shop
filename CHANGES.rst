@@ -4,6 +4,10 @@ Changelog
 0.6dev
 ------
 
+- Display original price and discounted price in buyable controls if discount
+  for item applies.
+  [rnix]
+
 - Let CartDataProvider get the cart items title via an ICartItemDataProvider
   accessor to allow customizations. This can be used to give more context on
   the cart item, e.g. for a buyable within another content item.

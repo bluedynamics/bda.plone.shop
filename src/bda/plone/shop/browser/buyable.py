@@ -70,8 +70,11 @@ class BuyableControls(BrowserView, DataProviderMixin):
         return self.context.UID()
 
     @property
+    def item_net_original(self):
+        return Decimal(self._item_data.net)
+
+    @property
     def item_net(self):
-        # XXX: discount display settings
         return Decimal(self._item_data.net) - \
             self._item_data.discount_net(Decimal(1))
 
@@ -80,8 +83,14 @@ class BuyableControls(BrowserView, DataProviderMixin):
         return Decimal(self._item_data.vat)
 
     @property
+    def item_gross_original(self):
+        net = self.item_net_original
+        return net + net / 100 * self.item_vat
+
+    @property
     def item_gross(self):
-        return self.item_net + self.item_net / 100 * self.item_vat
+        net = self.item_net
+        return net + net / 100 * self.item_vat
 
     @property
     def display_gross(self):

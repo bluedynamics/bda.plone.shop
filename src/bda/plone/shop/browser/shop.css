@@ -58,6 +58,11 @@ div.buyable .vat_label {
     /* B/C */
     margin-left:0.5em;
 }
+div.buyable dd.price.original {
+    color:#ae0000;
+    text-decoration:line-through;
+    padding-right:0.2em;
+}
 a.buyable_add_to_cart:link,
 a.buyable_add_to_cart:active,
 a.buyable_add_to_cart:hover,

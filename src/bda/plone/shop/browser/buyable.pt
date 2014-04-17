@@ -28,19 +28,33 @@
   <dl class="details">
     <tal:info condition="view/can_view_buyable_info">
 
-      <tal:net condition="not:view/display_gross">
+      <tal:net condition="not:view/display_gross"
+               define="price_original view/item_net_original;
+                       price view/item_net">
         <dt class="price" i18n:translate="price">Price</dt>
-        <dd class="price">
+        <dd class="price original"
+            tal:condition="python:price_original != price">
+          <span tal:replace="python:'%0.2f' % price_original">1.00</span>
+          <span tal:replace="view/currency">EUR</span>
+        </dd>
+        <dd class="price discount">
           <span tal:replace="python:'%0.2f' % view.item_net">1.00</span>
           <span tal:replace="view/currency">EUR</span>
           (<span i18n:translate="net">Net</span>)
         </dd>
       </tal:net>
 
-      <tal:gross condition="view/display_gross">
+      <tal:gross condition="view/display_gross"
+               define="price_original view/item_gross_original;
+                       price view/item_gross">
         <dt class="price" i18n:translate="price">Price</dt>
-        <dd class="price">
-          <span tal:replace="python:'%0.2f' % view.item_gross">1.0</span>
+        <dd class="price original"
+            tal:condition="python:price_original != price">
+          <span tal:replace="python:'%0.2f' % price_original">1.0</span>
+          <span tal:replace="view/currency">EUR</span>
+        </dd>
+        <dd class="price discount">
+          <span tal:replace="python:'%0.2f' % price">1.0</span>
           <span tal:replace="view/currency">EUR</span>
           (<span i18n:translate="gross">Gross</span>)
         </dd>
