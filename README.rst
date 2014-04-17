@@ -11,6 +11,15 @@ Installation
 Depend your instance to ``bda.plone.shop`` and install it as addon
 in plone control panel.
 
+`bda.plone.shop` won't work on stock Plone 4.3.X buildouts because it
+requires some packages in more recent versions:
+
+* `plone.app.workflow` >= 2.2.1
+
+* `plone.app.users` >= 2.0.2
+
+See the Troubleshooting_ section for more information.
+
 
 Development and testing
 =======================
@@ -276,6 +285,33 @@ respectively.
 .. _`bda.plone.order`: https://github.com/bluedynamics/bda.plone.order
      
 
+Troubleshooting
+===============
+
+
+In case you can't add or change the texts in the `Payment Texts`
+section of ``@@shop_controlpanel`` you might need
+``collective.z3cform.datagridfield`` > 0.16
+
+
+If you're missing widgets in the ``@@item_discount`` form
+(eg. the Autocomplete for users or groups),
+you might want to reinstall (or re-run the GS import steps) of the
+`yafowil.plone` (see its README__ for more information).
+
+.. __: https://github.com/bluedynamics/yafowil.plone
+
+
+If the autocomplete widget (in ``@@item_discount``) is not working
+you can try to disable
+``++resource++yafowil.widget.autocomplete/jquery-ui-1.8.18.autocomplete.min.js``
+in ``portal_javascripts``.
+
+
+In case you're having trouble with the forms, check if you're having
+recent versions of `yafowil` >= 2.1 and yafowil related packages.
+
+
 
 Create translations
 ===================
@@ -296,3 +332,4 @@ Contributors
 - Espen Moe-Nilssen
 - Johannes Raggam
 - Jure Cerjak
+

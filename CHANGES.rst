@@ -1,6 +1,12 @@
 Changelog
 =========
 
+dev
+---
+
+- Add documentation for customizing and installation.
+  [fRiSi]
+
 0.6
 ---
 
