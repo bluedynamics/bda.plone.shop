@@ -6,14 +6,14 @@ Webshop Solution for Plone.
 
 
 Installation
-------------
+============
 
 Depend your instance to ``bda.plone.shop`` and install it as addon
 in plone control panel.
 
 
 Development and testing
------------------------
+=======================
 
 Checkout ``bda.plone.shop`` from
 ``git://github.com/bluedynamics/bda.plone.shop.git`` and run contained buidlout
@@ -27,7 +27,7 @@ Start instance and create Plone site with shop profile applied.
 
 
 Running tests
-~~~~~~~~~~~~~
+-------------
 
 If you have run the buildout, you can run all tests like so::
 
@@ -54,7 +54,7 @@ http://developer.plone.org/reference_manuals/external/plone.app.robotframework/h
 
 
 Enable Content to be buyable
-----------------------------
+============================
 
 Content which represent buyable items must implement
 ``bda.plone.shop.interfaces.IBuyable``.
@@ -74,7 +74,7 @@ adapters among with related Schema Extenders respective Dexterity Behaviors.
 
 
 Archetypes
-~~~~~~~~~~
+----------
 
 The Archetypes related implementation consists of Schema Extenders for each
 required interfaces which all are bound to ``IBuyable`` and the corresponding
@@ -104,7 +104,7 @@ XXX: AT notification text documentation.
 
 
 Dexterity
-~~~~~~~~~
+---------
 
 The Dexterity related implementation consists of Behaviors for each
 interface. These are:
@@ -131,7 +131,7 @@ reached.
 
 
 Hide/Show viewlets for buyable items
-------------------------------------
+====================================
 
 The bda.plone.shop.buyable viewlet is registered twice for buyable items - once
 above the content body and once below. You can control the display via standard
@@ -148,7 +148,7 @@ shown in @@manage-viewlets, if the context is not a buyable item):
 
 
 Cart item preview images
-------------------------
+========================
 
 The cart can render preview images for the cart items in case when
 
@@ -190,7 +190,7 @@ Dexterity::
 
 
 Permissions
------------
+===========
 
 There exists ``bda.plone.shop.ViewBuyableInfo`` and ``bda.plone.shop.BuyItems``
 permission to control what parts of buyable data and controls get exposed to
@@ -201,7 +201,7 @@ role settings according to their use cases.
 
 
 bda.plone.shop.ViewBuyableInfo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 This permission controls whether a user can view basic buyable information.
 These are item availability and item price. By default, this permission is set
@@ -224,7 +224,7 @@ integration package.
 
 
 bda.plone.shop.BuyItems
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 This permission controls whether a user can actually add this item to shopping
 cart. By default, this permission is set for roles:
@@ -239,8 +239,62 @@ is basically designed that anonymous users can buy items, but orders related
 features like viewing own orders are bound to ``Customer`` role.
 
 
+Customizing the shop
+====================
+
+We know that every web-shop has different needs.
+This is why `bda.plone.shop` has been designed with maximum flexibility in mind.
+
+In general, `bda.plone.shop` is customized by either changing settings
+in the (always growing) control-panel, or by patching variables/classes.
+
+
+Integrators might want to add a ``patchShop`` method to
+the ``initialize`` method of a Zope2 package and make sure it's called
+at startup time using the following zcml snippet::
+
+    def initialize(context):
+        """Initializer called when used as a Zope 2 product.
+        """
+        patchShop()
+        
+    
+    <configure
+      xmlns="http://namespaces.zope.org/zope"
+      xmlns:five="http://namespaces.zope.org/five">
+    
+      <five:registerPackage package="." initialize=".initialize" />
+    
+    </configure>
+
+In ``patchShop`` you typically import a constants from `bda.plone.shop`
+related packages and redefine them.
+
+For example you can customize the standard shipping costs and the
+limit for free shipping like this::
+
+
+    def patchShop():
+        
+        from bda.plone.shop.shipping import FLAT_SHIPPING_COST
+        from bda.plone.shop.shipping import FREE_SHIPPING_LIMIT
+        
+        FLAT_SHIPPING_COST = 5
+        FREE_SHIPPING_LIMIT = 500
+           
+           
+Please see `bda.plone.checkout`_ or `bda.plone.order`_ for information
+how to customize the checkout form or the notification emails
+respectively.
+
+.. _`bda.plone.checkout`: https://github.com/bluedynamics/bda.plone.checkout
+
+.. _`bda.plone.order`: https://github.com/bluedynamics/bda.plone.order
+     
+
+
 Create translations
--------------------
+===================
 
 ::
 
@@ -249,7 +303,7 @@ Create translations
 
 
 Contributors
-------------
+============
 
 - Robert Niederreiter (Author)
 - Peter Holzer
