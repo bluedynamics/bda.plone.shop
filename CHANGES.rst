@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.6dev
-------
+0.6
+---
 
 - Display original price and discounted price in buyable controls if discount
   for item applies.
