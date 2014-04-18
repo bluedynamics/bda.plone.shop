@@ -60,6 +60,13 @@ class IShopSettings(model.Schema):
         default=""
     )
 
+    admin_name = schema.ASCIILine(
+        title=_(u"label_admin_name", default=u'Shop Admin Name'),
+        description=_(u"help_admin_name", default=u'Name used for Shop E-Mails.'),
+        required=True,
+        default=""
+    )
+    
     default_item_display_gross = schema.Bool(
         title=_(
             u'label_default_item_display_gross',

@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
+
+  <include file="profiles.zcml" />
+  
+  <genericsetup:upgradeStep
+    source="1.0"
+    destination="2"
+    title="Alter notification text registry entry types"
+    description=""
+    profile="bda.plone.shop:default"
+    handler=".update_notification_text_registry_entries" />
+
+  <genericsetup:upgradeSteps
+      source="2"
+      destination="3"
+      profile="bda.plone.shop:default">
+
+        <genericsetup:upgradeDepends
+            title="GS Profile: add shop admin name"
+            import_profile="bda.plone.shop.upgrades:2_to_3"
+            run_deps="True"/>
+              
+  </genericsetup:upgradeSteps>
+  
+  
+</configure>

@@ -1,6 +1,13 @@
 Changelog
 =========
 
+dev
+---
+
+- Add `Shop Admin Name` to control panel setting so it can be used for
+  sending E-Mails in `bda.plone.orders`
+  [fRiSi]
+
 0.6
 ---
 
