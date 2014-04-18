@@ -1,0 +1,16 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    i18n_domain="bda.plone.shop">
+
+	<gs:registerProfile
+		name="2_to_3"
+		title="Upgrade policy GS profile to 3"
+		directory="profiles/2_to_3"
+		description=""
+		provides="Products.GenericSetup.interfaces.EXTENSION"
+		for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+		/>
+
+                                
+</configure>
