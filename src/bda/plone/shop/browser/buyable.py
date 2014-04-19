@@ -70,6 +70,10 @@ class BuyableControls(BrowserView, DataProviderMixin):
         return self.context.UID()
 
     @property
+    def item_vat(self):
+        return Decimal(self._item_data.vat)
+
+    @property
     def item_net_original(self):
         return Decimal(self._item_data.net)
 
@@ -79,18 +83,14 @@ class BuyableControls(BrowserView, DataProviderMixin):
             self._item_data.discount_net(Decimal(1))
 
     @property
-    def item_vat(self):
-        return Decimal(self._item_data.vat)
-
-    @property
     def item_gross_original(self):
         net = self.item_net_original
-        return net + net / 100 * self.item_vat
+        return net + net / Decimal(100) * self.item_vat
 
     @property
     def item_gross(self):
         net = self.item_net
-        return net + net / 100 * self.item_vat
+        return net + net / Decimal(100) * self.item_vat
 
     @property
     def display_gross(self):
@@ -111,6 +111,9 @@ class BuyableControls(BrowserView, DataProviderMixin):
     @property
     def quantity_unit(self):
         return translate(self._item_data.quantity_unit, context=self.request)
+
+    def not_eq(self, v_1, v_2):
+        return v_1.quantize(Decimal('1.000')) != v_2.quantize(Decimal('1.000'))
 
     def __call__(self, *args):
         if '_' in self.request.form:

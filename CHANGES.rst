@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.7dev
+------
+
+- Fix displaying of discounted price. Original price only gets displayed if
+  it deferrs from discounted one.
+  [rnix]
+
+
 0.6
 ---
 
