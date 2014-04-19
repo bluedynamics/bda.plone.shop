@@ -1,11 +1,16 @@
 Changelog
 =========
 
-dev
----
+0.7dev
+------
+
+- Fix displaying of discounted price. Original price only gets displayed if
+  it deferrs from discounted one.
+  [rnix]
 
 - Add documentation for customizing and installation.
   [fRiSi]
+
 
 0.6
 ---
