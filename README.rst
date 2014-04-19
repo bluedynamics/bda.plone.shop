@@ -8,15 +8,15 @@ Webshop Solution for Plone.
 Installation
 ============
 
-Depend your instance to ``bda.plone.shop`` and install it as addon
-in plone control panel.
+Depend your instance to ``bda.plone.shop`` and install it as addon in plone
+control panel.
 
-`bda.plone.shop` won't work on stock Plone 4.3.X buildouts because it
+``bda.plone.shop`` won't work on stock Plone 4.3.x installations because it
 requires some packages in more recent versions:
 
-* `plone.app.workflow` >= 2.2.1
+* ``plone.app.workflow`` >= 2.2.1
 
-* `plone.app.users` >= 2.0.2
+* ``plone.app.users`` >= 2.0.2
 
 See the Troubleshooting_ section for more information.
 
@@ -139,7 +139,6 @@ items as well, notification text values are aquired until plone root is
 reached.
 
 
-
 Cart item preview images
 ========================
 
@@ -235,47 +234,42 @@ features like viewing own orders are bound to ``Customer`` role.
 Customizing the shop
 ====================
 
-We know that every web-shop has different needs.
-This is why `bda.plone.shop` has been designed with maximum flexibility in mind.
+We know that every web-shop has different needs. This is why ``bda.plone.shop``
+has been designed with maximum flexibility in mind.
 
-In general, `bda.plone.shop` is customized by either changing settings
+In general, ``bda.plone.shop`` is customized by either changing settings
 in the (always growing) control-panel, or by patching variables/classes.
 
-
-Integrators might want to add a ``patchShop`` method to
-the ``initialize`` method of a Zope2 package and make sure it's called
-at startup time using the following zcml snippet::
+Integrators might want to add a ``patchShop`` method to the ``initialize``
+method of a Zope2 package::
 
     def initialize(context):
         """Initializer called when used as a Zope 2 product.
         """
         patchShop()
-        
-    
+
+...and make sure it's called at startup time using the zcml::
+
     <configure
       xmlns="http://namespaces.zope.org/zope"
       xmlns:five="http://namespaces.zope.org/five">
-    
+
       <five:registerPackage package="." initialize=".initialize" />
-    
+
     </configure>
 
-In ``patchShop`` you typically import a constants from `bda.plone.shop`
+In ``patchShop`` you typically import a constants from ``bda.plone.shop``
 related packages and redefine them.
 
 For example you can customize the standard shipping costs and the
 limit for free shipping like this::
 
-
     def patchShop():
-        
-        from bda.plone.shop.shipping import FLAT_SHIPPING_COST
-        from bda.plone.shop.shipping import FREE_SHIPPING_LIMIT
-        
-        FLAT_SHIPPING_COST = 5
-        FREE_SHIPPING_LIMIT = 500
-           
-           
+        from bda.plone.shop import shipping
+
+        shipping.FLAT_SHIPPING_COST = 5
+        shipping.FREE_SHIPPING_LIMIT = 500
+
 Please see `bda.plone.checkout`_ or `bda.plone.order`_ for information
 how to customize the checkout form or the notification emails
 respectively.
@@ -283,34 +277,28 @@ respectively.
 .. _`bda.plone.checkout`: https://github.com/bluedynamics/bda.plone.checkout
 
 .. _`bda.plone.order`: https://github.com/bluedynamics/bda.plone.order
-     
+
 
 Troubleshooting
 ===============
 
-
-In case you can't add or change the texts in the `Payment Texts`
+In case you can't add or change the texts in the ``Payment Texts``
 section of ``@@shop_controlpanel`` you might need
 ``collective.z3cform.datagridfield`` > 0.16
 
-
-If you're missing widgets in the ``@@item_discount`` form
-(eg. the Autocomplete for users or groups),
-you might want to reinstall (or re-run the GS import steps) of the
-`yafowil.plone` (see its README__ for more information).
+If you're missing widgets in the ``@@item_discount`` form (eg. the Autocomplete
+for users or groups), you might want to reinstall (or re-run the GS import
+steps) of the ``yafowil.plone`` (see its README__ for more information).
 
 .. __: https://github.com/bluedynamics/yafowil.plone
 
-
-If the autocomplete widget (in ``@@item_discount``) is not working
-you can try to disable
+If the autocomplete widget (in ``@@item_discount``) is not working you can try
+to disable
 ``++resource++yafowil.widget.autocomplete/jquery-ui-1.8.18.autocomplete.min.js``
 in ``portal_javascripts``.
 
-
 In case you're having trouble with the forms, check if you're having
-recent versions of `yafowil` >= 2.1 and yafowil related packages.
-
+recent versions of ``yafowil`` >= 2.1 and yafowil related packages.
 
 
 Create translations
@@ -332,4 +320,3 @@ Contributors
 - Espen Moe-Nilssen
 - Johannes Raggam
 - Jure Cerjak
-
