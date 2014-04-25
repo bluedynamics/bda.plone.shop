@@ -42,7 +42,7 @@ class DefaultShipping(ShippingBase, CartItemCalculator):
         # item shipping costs set, calculate for contained cart items
         if item_shipping_cost > Decimal(0):
             for item in items:
-                shipping_costs += self.item_net(item) + self.item_vat(item)
+                shipping_costs += item_shipping_cost * item[1]
         # item shipping costs exceed flat shipping costs
         if shipping_costs > flat_shipping_cost:
             return shipping_costs
