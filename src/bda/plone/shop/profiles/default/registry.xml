@@ -28,17 +28,23 @@
   </records>
   <records interface="bda.plone.shop.interfaces.IShopShippingSettings">
     <value key="include_shipping_costs" purge="false">True</value>
-    <value key="shipping_method" purge="false">flat_rate</value>
+    <value key="available_shipping_methods" purge="false">
+      <element>default_shipping</element>
+    </value>
+    <value key="shipping_method" purge="false">default_shipping</value>
+    <value key="free_shipping_limit" purge="false">200.0</value>
+    <value key="flat_shipping_cost" purge="false">10.0</value>
+    <value key="item_shipping_cost" purge="false">0.0</value>
   </records>
   <records interface="bda.plone.shop.interfaces.IShopTaxSettings">
-      <value key="vat" purge="false">
-        <element>0</element>
-        <element>10</element>
-        <element>15</element>
-        <element>20</element>
-        <element>25</element>
-      </value>
-      <value key="default_item_vat" purge="false">20</value>
+    <value key="vat" purge="false">
+      <element>0</element>
+      <element>10</element>
+      <element>15</element>
+      <element>20</element>
+      <element>25</element>
+    </value>
+    <value key="default_item_vat" purge="false">20</value>
   </records>
   <records interface="bda.plone.shop.interfaces.INotificationTextSettings">
     <value key="global_order_text" purge="false"></value>

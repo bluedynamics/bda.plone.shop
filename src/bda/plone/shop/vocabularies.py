@@ -5,6 +5,7 @@ from bda.plone.payment import Payments
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.utils import get_shop_article_settings
 from bda.plone.shop.utils import get_shop_tax_settings
+from bda.plone.shop.utils import get_shop_shipping_settings
 from zope.interface import provider
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
@@ -102,7 +103,18 @@ def AvailableCurrenciesVocabulary(context):
 
 @provider(IVocabularyFactory)
 def AvailableShippingMethodsVocabulary(context):
-    items = Shippings(context).vocab
+    shippings = Shippings(context).shippings
+    items = [(shipping.sid, shipping.label) for shipping in shippings]
+    return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
+
+
+@provider(IVocabularyFactory)
+def ShippingMethodsVocabulary(context):
+    try:
+        items = Shippings(context).vocab
+    except KeyError:
+        # happens before GS upgrade 2_to_3, remove with 1.0
+        return AvailableShippingMethodsVocabulary(context)
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 
