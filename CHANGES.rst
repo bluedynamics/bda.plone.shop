@@ -4,6 +4,9 @@ Changelog
 0.7dev
 ------
 
+- Consider shipping method from cookie in cart data provider if present.
+  [rnix]
+
 - Extend ``CartItemCalculator`` by ``item_net``, ``item_vat`` and
   ``item_weight`` functions.
   [rnix]

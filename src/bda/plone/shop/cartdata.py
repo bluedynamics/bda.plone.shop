@@ -246,6 +246,11 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
     @property
     def shipping_method(self):
+        # read from cookie and return if present
+        shipping_method = self.request.cookies.get('shipping_method')
+        if shipping_method:
+            return shipping_method
+        # return default shipping method
         return get_shop_shipping_settings().shipping_method
 
     @property
