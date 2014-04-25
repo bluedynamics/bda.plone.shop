@@ -1,3 +1,10 @@
+TESTING SHOP WORKFLOW
+
+Two users order some items in different vendor areas
+
+Each vendor should onle see the items in the orders, for which he has vendor
+rights. Admin should see all.
+
 *** Settings ***
 
 Resource  plone/app/robotframework/selenium.robot
@@ -81,6 +88,14 @@ Scenario: Two users order some items in different vendor areas
   Then vendor2 sees customer1 allowed bookings
   When vendor2 checking customer2 order details
   Then vendor2 sees customer2 allowed bookings
+
+  Given a site owner
+  When checking orders
+  Then admin sees all orders
+  When admin checking customer1 order details
+  Then admin sees customer1 all bookings
+  When admin checking customer2 order details
+  Then admin sees customer2 all bookings
 
 
 *** Keywords ***
@@ -199,6 +214,15 @@ vendor2 checking customer2 order details
   # These selectors are quite weak. but the table doesn't offer better.
   Click Link  css=#bdaploneorders tr:nth-of-type(1) a.contenttype-document[title="View Order"]
 
+admin checking customer1 order details
+  # These selectors are quite weak. but the table doesn't offer better.
+  Click Link  css=#bdaploneorders tr:nth-of-type(2) a.contenttype-document[title="View Order"]
+
+admin checking customer2 order details
+  # These selectors are quite weak. but the table doesn't offer better.
+  Click Link  css=#bdaploneorders tr:nth-of-type(1) a.contenttype-document[title="View Order"]
+
+
 
 # Then
 
@@ -263,3 +287,27 @@ vendor2 sees customer2 allowed bookings
   Page Should Contain  item_21
   Page Should Contain  item_22
 
+
+admin sees all orders
+  Page Should Contain  Mister
+  Page Should Contain  Pfister
+  Page Should Contain  Marry
+  Page Should Contain  Poppins
+
+admin sees customer1 all bookings
+  Page Should Contain  Order Details
+  Page Should Contain  Mister
+  Page Should Contain  Pfister
+  Page Should Contain  item_11
+  Page Should Contain  item_12
+  Page Should Contain  item_21
+  Page Should Contain  item_22
+
+admin sees customer2 all bookings
+  Page Should Contain  Order Details
+  Page Should Contain  Marry
+  Page Should Contain  Poppins
+  Page Should Contain  item_11
+  Page Should Contain  item_12
+  Page Should Contain  item_21
+  Page Should Contain  item_22
