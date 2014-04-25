@@ -103,9 +103,11 @@ Scenario: Two users order some items in different vendor areas
 # Given
 
 a site owner
+  Log out
   Login as site owner
 
 a user ${user}
+  Log out
   Log In  ${user}  ${user}
 
 
@@ -307,7 +309,7 @@ admin sees customer2 all bookings
   Page Should Contain  Order Details
   Page Should Contain  Marry
   Page Should Contain  Poppins
-  Page Should Contain  item_11
-  Page Should Contain  item_12
+  Page Should Not Contain  item_11
+  Page Should Not Contain  item_12
   Page Should Contain  item_21
   Page Should Contain  item_22
