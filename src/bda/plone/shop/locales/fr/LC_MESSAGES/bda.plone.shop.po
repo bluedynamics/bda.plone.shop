@@ -16,7 +16,7 @@ msgstr ""
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
 #. Default: "Australian Dollar"
-#: ./vocabularies.py:88
+#: ./vocabularies.py:89
 msgid "AUD"
 msgstr ""
 
@@ -34,12 +34,12 @@ msgid "Article"
 msgstr ""
 
 #. Default: "Canadian Dollar"
-#: ./vocabularies.py:85
+#: ./vocabularies.py:86
 msgid "CAD"
 msgstr ""
 
 #. Default: "Swiss Franc"
-#: ./vocabularies.py:86
+#: ./vocabularies.py:87
 msgid "CHF"
 msgstr ""
 
@@ -49,7 +49,7 @@ msgid "Cart"
 msgstr ""
 
 #. Default: "Danish Krone"
-#: ./vocabularies.py:91
+#: ./vocabularies.py:92
 msgid "DKK"
 msgstr ""
 
@@ -70,7 +70,7 @@ msgid "Disables Buyable"
 msgstr "Déactiver information des produits dans le shop"
 
 #. Default: "Euro"
-#: ./vocabularies.py:82
+#: ./vocabularies.py:83
 msgid "EUR"
 msgstr ""
 
@@ -83,37 +83,37 @@ msgid "Enable Vendor Area"
 msgstr ""
 
 #. Default: "British Pound Sterling"
-#: ./vocabularies.py:87
+#: ./vocabularies.py:88
 msgid "GBP"
 msgstr ""
 
 #. Default: "Indian Rupee"
-#: ./vocabularies.py:84
+#: ./vocabularies.py:85
 msgid "INR"
 msgstr ""
 
 #. Default: "Norwegian Krone"
-#: ./vocabularies.py:89
+#: ./vocabularies.py:90
 msgid "NOK"
 msgstr ""
 
 #. Default: "New Zealand Dollar"
-#: ./vocabularies.py:93
+#: ./vocabularies.py:94
 msgid "NZD"
 msgstr ""
 
 #. Default: "Notifications"
-#: ./interfaces.py:326
+#: ./interfaces.py:375
 msgid "Notifications"
 msgstr ""
 
 #. Default: "Payment"
-#: ./interfaces.py:409
+#: ./interfaces.py:458
 msgid "Payment"
 msgstr ""
 
 #. Default: "Swedish Krona"
-#: ./vocabularies.py:90
+#: ./vocabularies.py:91
 msgid "SEK"
 msgstr ""
 
@@ -127,42 +127,42 @@ msgstr ""
 msgid "Shop settings"
 msgstr ""
 
-#: ./interfaces.py:274
+#: ./interfaces.py:323
 msgid "Tax Settings"
 msgstr ""
 
 #. Default: "US Dollar"
-#: ./vocabularies.py:83
+#: ./vocabularies.py:84
 msgid "USD"
 msgstr ""
 
 #. Default: "Japanese Yen"
-#: ./vocabularies.py:92
+#: ./vocabularies.py:93
 msgid "YEN"
 msgstr ""
 
 #. Default: "add to cart"
-#: ./browser/buyable.pt:94
+#: ./browser/buyable.pt:108
 msgid "add_to_cart"
 msgstr "Ajouter"
 
 #. Default: "No longer available, please remove from cart"
-#: ./cartdata.py:182
+#: ./cartdata.py:260
 msgid "alert_item_no_longer_available"
 msgstr ""
 
 #. Default: "Limit exceed by ${exceed} ${quantity_unit}"
-#: ./cartdata.py:194
+#: ./cartdata.py:272
 msgid "alert_item_number_exceed"
 msgstr ""
 
 #. Default: "${reserved} ${quantity_unit} reserved"
-#: ./cartdata.py:201
+#: ./cartdata.py:279
 msgid "alert_item_number_reserved"
 msgstr ""
 
 #. Default: "Partly reserved"
-#: ./cartdata.py:189
+#: ./cartdata.py:267
 msgid "alert_item_some_reserved"
 msgstr ""
 
@@ -177,7 +177,7 @@ msgid "cart_discount"
 msgstr ""
 
 #. Default: "Comment"
-#: ./browser/buyable.pt:70
+#: ./browser/buyable.pt:84
 msgid "comment"
 msgstr "Complément"
 
@@ -189,6 +189,11 @@ msgstr ""
 #. Default: "Low items available"
 #: ./browser/availability_details.pt:23
 msgid "critical_available_title"
+msgstr ""
+
+#. Default: "Default Shipping"
+#: ./shipping.py:28
+msgid "default_shipping"
 msgstr ""
 
 #. Default: "Delivery Address"
@@ -226,6 +231,11 @@ msgstr ""
 msgid "exportorders"
 msgstr "Exporter commande"
 
+#. Default: "Flat Rate"
+#: ./shipping.py:63
+msgid "flat_rate"
+msgstr ""
+
 #. Default: "${available} items(s) available."
 #: ./browser/availability.py:51
 msgid "full_available_message"
@@ -237,7 +247,7 @@ msgid "full_available_title"
 msgstr ""
 
 #. Default: "Gross"
-#: ./browser/buyable.pt:45
+#: ./browser/buyable.pt:59
 msgid "gross"
 msgstr "Brut"
 
@@ -254,6 +264,11 @@ msgstr ""
 #. Default: "Delivery address is different from billing address."
 #: ./user/userdata.py:109
 msgid "help_alternative_delivery"
+msgstr ""
+
+#. Default: "Available shipping methods in checkout"
+#: ./interfaces.py:266
+msgid "help_available_shipping_methods"
 msgstr ""
 
 #: ./user/userdata.py:94
@@ -279,7 +294,7 @@ msgid "help_default_quantity_unit"
 msgstr ""
 
 #. Default: "Specify default vat name"
-#: ./interfaces.py:297
+#: ./interfaces.py:346
 msgid "help_default_vat"
 msgstr ""
 
@@ -293,6 +308,16 @@ msgstr ""
 msgid "help_firstname"
 msgstr ""
 
+#. Default: "Flat shipping cost"
+#: ./interfaces.py:298
+msgid "help_flat_shipping_cost"
+msgstr ""
+
+#. Default: "Do not add shipping costs to orders with price bigger than limit"
+#: ./interfaces.py:289
+msgid "help_free_shipping_limit"
+msgstr ""
+
 #: ./user/userdata.py:48
 msgid "help_gender"
 msgstr ""
@@ -303,8 +328,13 @@ msgid "help_hide_cart_if_empty"
 msgstr ""
 
 #. Default: "Include Shipping Costs in Cart"
-#: ./interfaces.py:254
+#: ./interfaces.py:258
 msgid "help_include_shipping_costs"
+msgstr ""
+
+#. Default: "Shipping cost per item in cart. If flat shipping cost set and item shipping cost below flat shipping cost, flat shipping cost is used"
+#: ./interfaces.py:306
+msgid "help_item_shipping_cost"
 msgstr ""
 
 #. Default: "Fill in your surname or your family name."
@@ -321,7 +351,8 @@ msgstr ""
 msgid "help_quantity_units"
 msgstr ""
 
-#: ./interfaces.py:261
+#. Default: "Default shipping method in checkout"
+#: ./interfaces.py:279
 msgid "help_shipping_method"
 msgstr ""
 
@@ -347,7 +378,7 @@ msgid "help_summary_total_only"
 msgstr ""
 
 #. Default: "Specify all allowed vat settings"
-#: ./interfaces.py:284
+#: ./interfaces.py:333
 msgid "help_vat"
 msgstr ""
 
@@ -361,17 +392,17 @@ msgid "item_discount"
 msgstr ""
 
 #. Default: "Item no longer buyable"
-#: ./cartdata.py:131
+#: ./cartdata.py:202
 msgid "item_no_longer_buyable"
 msgstr ""
 
 #. Default: "Item not buyable yet"
-#: ./cartdata.py:124
+#: ./cartdata.py:190
 msgid "item_not_buyable_yet"
 msgstr ""
 
 #. Default: "Kilo"
-#: ./vocabularies.py:20
+#: ./vocabularies.py:21
 msgid "kilo"
 msgstr ""
 
@@ -390,14 +421,19 @@ msgstr ""
 msgid "label_alternative_delivery"
 msgstr ""
 
+#. Default: "Available Shipping Methods"
+#: ./interfaces.py:264
+msgid "label_available_shipping_methods"
+msgstr ""
+
 #. Default: "Buyable effective date"
-#: ./at.py:492
+#: ./at.py:493
 #: ./dx.py:399
 msgid "label_buyable_effective_date"
 msgstr ""
 
 #. Default: "Buyable expiration date"
-#: ./at.py:499
+#: ./at.py:501
 #: ./dx.py:405
 msgid "label_buyable_expiration_date"
 msgstr ""
@@ -453,7 +489,7 @@ msgid "label_default_quantity_units"
 msgstr ""
 
 #. Default: "Default Value added tax name"
-#: ./interfaces.py:296
+#: ./interfaces.py:345
 msgid "label_default_vat"
 msgstr ""
 
@@ -465,6 +501,16 @@ msgstr ""
 #. Default: "First name"
 #: ./user/userdata.py:54
 msgid "label_firstname"
+msgstr ""
+
+#. Default: "Flat shipping cost"
+#: ./interfaces.py:297
+msgid "label_flat_shipping_cost"
+msgstr ""
+
+#. Default: "Free Shipping Limit"
+#: ./interfaces.py:288
+msgid "label_free_shipping_limit"
 msgstr ""
 
 #. Default: "Gender"
@@ -490,7 +536,7 @@ msgid "label_hide_cart_if_empty"
 msgstr ""
 
 #. Default: "Include Shipping Costs"
-#: ./interfaces.py:250
+#: ./interfaces.py:254
 msgid "label_include_shipping_costs"
 msgstr ""
 
@@ -554,6 +600,11 @@ msgstr ""
 msgid "label_item_quantity_unit_float"
 msgstr "Commande en fraction possible"
 
+#. Default: "Item shipping cost"
+#: ./interfaces.py:305
+msgid "label_item_shipping_cost"
+msgstr ""
+
 #. Default: "Item VAT (in %)"
 #: ./at.py:144
 #: ./dx.py:87
@@ -568,29 +619,29 @@ msgstr ""
 #. Default: "Order Notification Text"
 #: ./at.py:388
 #: ./dx.py:305
-#: ./interfaces.py:337
+#: ./interfaces.py:386
 msgid "label_order_notification_text"
 msgstr ""
 
 #. Default: "Overall Overbooked Notification Text"
-#: ./interfaces.py:373
+#: ./interfaces.py:422
 msgid "label_overall overbook_notification_text"
 msgstr ""
 
 #. Default: "Overall Notification Text"
-#: ./interfaces.py:361
+#: ./interfaces.py:410
 msgid "label_overall_order_notification_text"
 msgstr ""
 
 #. Default: "Overbooked Notification Text"
 #: ./at.py:399
 #: ./dx.py:313
-#: ./interfaces.py:349
+#: ./interfaces.py:398
 msgid "label_overbook_notification_text"
 msgstr ""
 
 #. Default: "Payment Texts"
-#: ./interfaces.py:417
+#: ./interfaces.py:466
 msgid "label_payment_text"
 msgstr ""
 
@@ -611,7 +662,7 @@ msgid "label_shipping_item_weight"
 msgstr ""
 
 #. Default: "Shipping Method"
-#: ./interfaces.py:260
+#: ./interfaces.py:277
 msgid "label_shipping_method"
 msgstr ""
 
@@ -641,7 +692,7 @@ msgid "label_summary_total_only"
 msgstr ""
 
 #. Default: "VAT in %"
-#: ./interfaces.py:283
+#: ./interfaces.py:332
 msgid "label_vat"
 msgstr ""
 
@@ -651,7 +702,7 @@ msgid "label_zip"
 msgstr ""
 
 #. Default: "Language"
-#: ./interfaces.py:308
+#: ./interfaces.py:357
 msgid "language"
 msgstr ""
 
@@ -661,7 +712,7 @@ msgid "legal"
 msgstr ""
 
 #. Default: "Liter"
-#: ./vocabularies.py:21
+#: ./vocabularies.py:22
 msgid "liter"
 msgstr ""
 
@@ -676,7 +727,7 @@ msgid "main_address"
 msgstr ""
 
 #. Default: "Meter"
-#: ./vocabularies.py:19
+#: ./vocabularies.py:20
 msgid "meter"
 msgstr ""
 
@@ -686,12 +737,12 @@ msgid "my_orders"
 msgstr ""
 
 #. Default: "Net"
-#: ./browser/buyable.pt:36
+#: ./browser/buyable.pt:43
 msgid "net"
 msgstr "Net:"
 
 #. Default: "No"
-#: ./vocabularies.py:113
+#: ./vocabularies.py:125
 msgid "no"
 msgstr ""
 
@@ -706,7 +757,7 @@ msgid "not_available_title"
 msgstr ""
 
 #. Default: "Order Text"
-#: ./interfaces.py:342
+#: ./interfaces.py:391
 msgid "order_text"
 msgstr ""
 
@@ -726,32 +777,32 @@ msgid "overbook_available_title"
 msgstr ""
 
 #. Default: "Overbook Text"
-#: ./interfaces.py:354
+#: ./interfaces.py:403
 msgid "overbook_text"
 msgstr ""
 
 #. Default: "Payment"
-#: ./interfaces.py:387
+#: ./interfaces.py:436
 msgid "payment"
 msgstr ""
 
 #. Default: "Payment Text"
-#: ./interfaces.py:422
+#: ./interfaces.py:471
 msgid "payment_text"
 msgstr ""
 
 #. Default: "Permission to buy ${title} not granted."
-#: ./cartdata.py:112
+#: ./cartdata.py:173
 msgid "permission_not_granted_to_buy_item"
 msgstr ""
 
 #. Default: "Price"
-#: ./browser/buyable.pt:32
+#: ./browser/buyable.pt:34
 msgid "price"
 msgstr "Prix"
 
 #. Default: "Quantity"
-#: ./vocabularies.py:18
+#: ./vocabularies.py:19
 msgid "quantity"
 msgstr ""
 
@@ -766,27 +817,27 @@ msgid "shop_portlet"
 msgstr ""
 
 #. Default: "Symbol"
-#: ./vocabularies.py:114
+#: ./vocabularies.py:126
 msgid "symbol"
 msgstr ""
 
 #. Default: "Text"
-#: ./interfaces.py:314
+#: ./interfaces.py:363
 msgid "text"
 msgstr ""
 
 #. Default: "update cart"
-#: ./browser/buyable.pt:97
+#: ./browser/buyable.pt:111
 msgid "update_cart"
 msgstr "Actualiser "
 
 #. Default: "Vat"
-#: ./browser/buyable.pt:49
+#: ./browser/buyable.pt:63
 msgid "vat"
 msgstr "TVA"
 
 #. Default: "Yes"
-#: ./vocabularies.py:112
+#: ./vocabularies.py:124
 msgid "yes"
 msgstr ""
 
