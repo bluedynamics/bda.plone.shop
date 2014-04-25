@@ -50,9 +50,9 @@ To run the robot tests do::
     ./bin/test --all -s bda.plone.shop -t robot
 
 For development, it might be more convenient to start a test server and run
-robot tests individually, like so::
+robot tests individually, like so (-d to start Zope in DEBUG-MODE)::
 
-    ./bin/robot-server bda.plone.shop.tests.ShopDXFull_ROBOT_TESTING
+    ./bin/robot-server bda.plone.shop.tests.ShopDXFull_ROBOT_TESTING -d
     ./bin/robot src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
 
 In the robot test you can place the debug statement to access a robot shell to
