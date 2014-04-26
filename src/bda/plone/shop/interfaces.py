@@ -62,7 +62,8 @@ class IShopSettings(model.Schema):
 
     admin_name = schema.ASCIILine(
         title=_(u"label_admin_name", default=u'Shop Admin Name'),
-        description=_(u"help_admin_name", default=u'Name used for Shop E-Mails.'),
+        description=_(u"help_admin_name",
+                      default=u'Name used for Shop E-Mails.'),
         required=True,
         default=""
     )
