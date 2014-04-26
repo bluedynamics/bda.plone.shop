@@ -33,7 +33,7 @@
                        price view/item_net">
         <dt class="price" i18n:translate="price">Price</dt>
         <dd class="price original"
-            tal:condition="python:price_original != price">
+            tal:condition="python:view.not_eq(price_original, price)">
           <span tal:replace="python:'%0.2f' % price_original">1.00</span>
           <span tal:replace="view/currency">EUR</span>
         </dd>
@@ -49,7 +49,7 @@
                        price view/item_gross">
         <dt class="price" i18n:translate="price">Price</dt>
         <dd class="price original"
-            tal:condition="python:price_original != price">
+            tal:condition="python:view.not_eq(price_original, price)">
           <span tal:replace="python:'%0.2f' % price_original">1.0</span>
           <span tal:replace="view/currency">EUR</span>
         </dd>

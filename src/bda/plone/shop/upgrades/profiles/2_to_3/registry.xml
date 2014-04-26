@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<registry>
+  <records interface="bda.plone.shop.interfaces.IShopShippingSettings">
+    <value key="include_shipping_costs" purge="false">True</value>
+    <value key="available_shipping_methods" purge="false">
+      <element>default_shipping</element>
+    </value>
+    <value key="shipping_method" purge="false">default_shipping</value>
+    <value key="free_shipping_limit" purge="false">200.0</value>
+    <value key="flat_shipping_cost" purge="false">10.0</value>
+    <value key="item_shipping_cost" purge="false">0.0</value>
+  </records>
+</registry>

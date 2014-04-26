@@ -12,7 +12,17 @@
     profile="bda.plone.shop:default"
     handler=".update_notification_text_registry_entries" />
 
+  <genericsetup:upgradeSteps
+    source="2"
+    destination="3"
+    profile="bda.plone.shop:default">
 
+    <genericsetup:upgradeDepends
+      title="GS Profile: add default shipping settings"
+      import_profile="bda.plone.shop.upgrades:2_to_3"
+      run_deps="True" />
+
+  </genericsetup:upgradeSteps>
 
   <genericsetup:upgradeSteps
     source="3"
@@ -22,7 +32,7 @@
     <genericsetup:upgradeDepends
       title="GS Profile: add shop admin name"
       import_profile="bda.plone.shop.upgrades:3_to_4"
-      run_deps="True"/>
+      run_deps="True" />
 
   </genericsetup:upgradeSteps>
 

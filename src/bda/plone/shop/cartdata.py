@@ -22,12 +22,29 @@ from bda.plone.shop import message_factory as _
 
 
 class CartItemCalculator(object):
+    """Object for calculating cart item related data.
+    """
 
     @property
     def catalog(self):
         return getToolByName(self.context, 'portal_catalog')
 
+    def item_net(self, item):
+        """Net price of item.
+        """
+        cat = self.catalog
+        uid, count, _ = item
+        brain = cat(UID=uid)
+        if not brain:
+            return Decimal(0)
+        data = get_item_data_provider(brain[0].getObject())
+        discount_net = data.discount_net(count)
+        item_net = Decimal(str(data.net)) - discount_net
+        return item_net * count
+
     def net(self, items):
+        """Overall net of items.
+        """
         cat = self.catalog
         net = Decimal(0)
         for uid, count, _ in items:
@@ -40,7 +57,22 @@ class CartItemCalculator(object):
             net += item_net * count
         return net
 
+    def item_vat(self, item):
+        """VAT of item.
+        """
+        cat = self.catalog
+        uid, count, _ = item
+        brain = cat(UID=uid)
+        if not brain:
+            return Decimal(0)
+        data = get_item_data_provider(brain[0].getObject())
+        discount_net = data.discount_net(count)
+        item_net = Decimal(str(data.net)) - discount_net
+        return (item_net / Decimal(100)) * Decimal(str(data.vat)) * count
+
     def vat(self, items):
+        """Overall VAT of items.
+        """
         cat = self.catalog
         vat = Decimal(0)
         for uid, count, _ in items:
@@ -53,7 +85,23 @@ class CartItemCalculator(object):
             vat += (item_net / Decimal(100)) * Decimal(str(data.vat)) * count
         return vat
 
+    def item_weight(self, item):
+        """Weight of item.
+        """
+        cat = self.catalog
+        uid, count, _ = item
+        brain = cat(UID=uid)
+        if not brain:
+            return Decimal(0)
+        shipping = IShippingItem(brain[0].getObject())
+        item_weight = shipping.weight
+        if item_weight:
+            return Decimal(item_weight) * count
+        return Decimal(0)
+
     def weight(self, items):
+        """Overall weight of items.
+        """
         cat = self.catalog
         weight = Decimal(0)
         for uid, count, _ in items:
@@ -198,6 +246,11 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
     @property
     def shipping_method(self):
+        # read from cookie and return if present
+        shipping_method = self.request.cookies.get('shipping_method')
+        if shipping_method:
+            return shipping_method
+        # return default shipping method
         return get_shop_shipping_settings().shipping_method
 
     @property

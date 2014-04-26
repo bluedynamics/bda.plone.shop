@@ -1,12 +1,34 @@
 Changelog
 =========
 
-dev
----
+0.7dev
+------
 
-- Add `Shop Admin Name` to control panel setting so it can be used for
-  sending E-Mails in `bda.plone.orders`
+- Add ``Shop Admin Name`` to control panel setting so it can be used for
+  sending E-Mails in ``bda.plone.orders``
   [fRiSi]
+
+- Consider shipping method from cookie in cart data provider if present.
+  [rnix]
+
+- Extend ``CartItemCalculator`` by ``item_net``, ``item_vat`` and
+  ``item_weight`` functions.
+  [rnix]
+
+- Deprecate ``FlatRate`` shipping.
+  [rnix]
+
+- Add ``DefaultShipping`` and corresponding control panel settings. GS upgrade
+  2_to_3 must be applied.
+  [rnix]
+
+- Fix displaying of discounted price. Original price only gets displayed if
+  it deferrs from discounted one.
+  [rnix]
+
+- Add documentation for customizing and installation.
+  [fRiSi]
+
 
 0.6
 ---

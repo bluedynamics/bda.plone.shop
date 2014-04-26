@@ -46,7 +46,10 @@
     name="item_buyable"
     factory=".indexer.item_buyable" />
 
-  <!-- default flat rate shipping -->
+  <!-- default shipping -->
+  <adapter name="default_shipping" factory=".shipping.DefaultShipping" />
+
+  <!-- flat rate shipping (B/C, default shipping offers same functionality) -->
   <adapter name="flat_rate" factory=".shipping.FlatRate" />
 
   <!-- cart related adapters -->

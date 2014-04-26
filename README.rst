@@ -6,14 +6,23 @@ Webshop Solution for Plone.
 
 
 Installation
-------------
+============
 
-Depend your instance to ``bda.plone.shop`` and install it as addon
-in plone control panel.
+Depend your instance to ``bda.plone.shop`` and install it as addon in plone
+control panel.
+
+``bda.plone.shop`` won't work on stock Plone 4.3.x installations because it
+requires some packages in more recent versions:
+
+* ``plone.app.workflow`` >= 2.2.1
+
+* ``plone.app.users`` >= 2.0.2
+
+See the Troubleshooting_ section for more information.
 
 
 Development and testing
------------------------
+=======================
 
 Checkout ``bda.plone.shop`` from
 ``git://github.com/bluedynamics/bda.plone.shop.git`` and run contained buidlout
@@ -27,7 +36,7 @@ Start instance and create Plone site with shop profile applied.
 
 
 Running tests
-~~~~~~~~~~~~~
+-------------
 
 If you have run the buildout, you can run all tests like so::
 
@@ -41,9 +50,9 @@ To run the robot tests do::
     ./bin/test --all -s bda.plone.shop -t robot
 
 For development, it might be more convenient to start a test server and run
-robot tests individually, like so::
+robot tests individually, like so (-d to start Zope in DEBUG-MODE)::
 
-    ./bin/robot-server bda.plone.shop.tests.ShopDXFull_ROBOT_TESTING
+    ./bin/robot-server bda.plone.shop.tests.ShopDXFull_ROBOT_TESTING -d
     ./bin/robot src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
 
 In the robot test you can place the debug statement to access a robot shell to
@@ -54,7 +63,7 @@ http://developer.plone.org/reference_manuals/external/plone.app.robotframework/h
 
 
 Enable Content to be buyable
-----------------------------
+============================
 
 Content which represent buyable items must implement
 ``bda.plone.shop.interfaces.IBuyable``.
@@ -74,7 +83,7 @@ adapters among with related Schema Extenders respective Dexterity Behaviors.
 
 
 Archetypes
-~~~~~~~~~~
+----------
 
 The Archetypes related implementation consists of Schema Extenders for each
 required interfaces which all are bound to ``IBuyable`` and the corresponding
@@ -104,7 +113,7 @@ XXX: AT notification text documentation.
 
 
 Dexterity
-~~~~~~~~~
+---------
 
 The Dexterity related implementation consists of Behaviors for each
 interface. These are:
@@ -130,25 +139,8 @@ items as well, notification text values are aquired until plone root is
 reached.
 
 
-Hide/Show viewlets for buyable items
-------------------------------------
-
-The bda.plone.shop.buyable viewlet is registered twice for buyable items - once
-above the content body and once below. You can control the display via standard
-``viewlets.xml`` GenericSetup profile mechanisms or manually via the
-``@@manage-viewlets`` on individual buyable items.
-If you want to control the viewlets via ``@@manage-viewlets`` for the whole
-portal at once, use one of the following links directly (the portlet is not
-shown in @@manage-viewlets, if the context is not a buyable item):
-
-- http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.abovecontentbody%3Abda.plone.shop.buyable
-- http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.abovecontentbody%3Abda.plone.shop.buyable
-- http://YOUR_PORTALS_URL/@@manage-viewlets?show=plone.belowcontentbody%3Abda.plone.shop.buyable
-- http://YOUR_PORTALS_URL/@@manage-viewlets?hide=plone.belowcontentbody%3Abda.plone.shop.buyable
-
-
 Cart item preview images
-------------------------
+========================
 
 The cart can render preview images for the cart items in case when
 
@@ -190,7 +182,7 @@ Dexterity::
 
 
 Permissions
------------
+===========
 
 There exists ``bda.plone.shop.ViewBuyableInfo`` and ``bda.plone.shop.BuyItems``
 permission to control what parts of buyable data and controls get exposed to
@@ -201,7 +193,7 @@ role settings according to their use cases.
 
 
 bda.plone.shop.ViewBuyableInfo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 This permission controls whether a user can view basic buyable information.
 These are item availability and item price. By default, this permission is set
@@ -224,7 +216,7 @@ integration package.
 
 
 bda.plone.shop.BuyItems
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 This permission controls whether a user can actually add this item to shopping
 cart. By default, this permission is set for roles:
@@ -239,8 +231,78 @@ is basically designed that anonymous users can buy items, but orders related
 features like viewing own orders are bound to ``Customer`` role.
 
 
+Customizing the shop
+====================
+
+We know that every web-shop has different needs. This is why ``bda.plone.shop``
+has been designed with maximum flexibility in mind.
+
+In general, ``bda.plone.shop`` is customized by either changing settings
+in the (always growing) control-panel, or by patching variables/classes.
+
+Integrators might want to add a ``patchShop`` method to the ``initialize``
+method of a Zope2 package::
+
+    def initialize(context):
+        """Initializer called when used as a Zope 2 product.
+        """
+        patchShop()
+
+...and make sure it's called at startup time using the zcml::
+
+    <configure
+      xmlns="http://namespaces.zope.org/zope"
+      xmlns:five="http://namespaces.zope.org/five">
+
+      <five:registerPackage package="." initialize=".initialize" />
+
+    </configure>
+
+In ``patchShop`` you typically import a constants from ``bda.plone.shop``
+related packages and redefine them.
+
+For example you can customize the standard shipping costs and the
+limit for free shipping like this::
+
+    def patchShop():
+        from bda.plone.shop import shipping
+
+        shipping.FLAT_SHIPPING_COST = 5
+        shipping.FREE_SHIPPING_LIMIT = 500
+
+Please see `bda.plone.checkout`_ or `bda.plone.order`_ for information
+how to customize the checkout form or the notification emails
+respectively.
+
+.. _`bda.plone.checkout`: https://github.com/bluedynamics/bda.plone.checkout
+
+.. _`bda.plone.order`: https://github.com/bluedynamics/bda.plone.order
+
+
+Troubleshooting
+===============
+
+In case you can't add or change the texts in the ``Payment Texts``
+section of ``@@shop_controlpanel`` you might need
+``collective.z3cform.datagridfield`` > 0.16
+
+If you're missing widgets in the ``@@item_discount`` form (eg. the Autocomplete
+for users or groups), you might want to reinstall (or re-run the GS import
+steps) of the ``yafowil.plone`` (see its README__ for more information).
+
+.. __: https://github.com/bluedynamics/yafowil.plone
+
+If the autocomplete widget (in ``@@item_discount``) is not working you can try
+to disable
+``++resource++yafowil.widget.autocomplete/jquery-ui-1.8.18.autocomplete.min.js``
+in ``portal_javascripts``.
+
+In case you're having trouble with the forms, check if you're having
+recent versions of ``yafowil`` >= 2.1 and yafowil related packages.
+
+
 Create translations
--------------------
+===================
 
 ::
 
@@ -249,7 +311,7 @@ Create translations
 
 
 Contributors
-------------
+============
 
 - Robert Niederreiter (Author)
 - Peter Holzer

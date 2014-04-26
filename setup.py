@@ -3,7 +3,7 @@ from setuptools import setup
 from setuptools import find_packages
 
 
-version = '0.6'
+version = '0.7dev'
 shortdesc = "Shop Solution for Plone"
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'CHANGES.rst')).read()
@@ -33,20 +33,21 @@ setup(
     install_requires=[
         'setuptools',
         'Plone',
-        'archetypes.schemaextender', # XXX: remove from install dependencies
+        'archetypes.schemaextender',  # XXX: remove from install dependencies
         'bda.plone.orders',
         'plone.api',
         'plone.app.registry',
         'plone.app.users',
         'collective.z3cform.datagridfield',
+        'bda.plone.discount',
     ],
     extras_require={
         'test': [
             'Products.ATContentTypes',
-            'plone.app.dexterity',
-            'plone.app.testing [robot]',
-            'plone.app.robotframework [debug]',
             'plone.app.contenttypes',
+            'plone.app.dexterity',
+            'plone.app.robotframework [debug]',
+            'plone.app.testing [robot]',
         ]
     },
     entry_points="""

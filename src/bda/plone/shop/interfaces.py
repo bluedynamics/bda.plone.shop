@@ -249,7 +249,11 @@ class IShopShippingSettings(model.Schema):
         label=_(u'Shipping', default=u'Shipping'),
         fields=[
             'include_shipping_costs',
+            'available_shipping_methods',
             'shipping_method',
+            'free_shipping_limit',
+            'flat_shipping_cost',
+            'item_shipping_cost',
         ],
     )
 
@@ -263,11 +267,56 @@ class IShopShippingSettings(model.Schema):
         default=True
     )
 
+    available_shipping_methods = schema.List(
+        title=_(u"label_available_shipping_methods",
+                default=u"Available Shipping Methods"),
+        description=_(u"help_available_shipping_methods",
+                      default=u"Available shipping methods in checkout"),
+        required=True,
+        min_length=1,
+        value_type=schema.Choice(
+            vocabulary=
+                'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary'
+        )
+    )
+
     shipping_method = schema.Choice(
-        title=_(u"label_shipping_method", default=u"Shipping Method"),
-        description=_(u"help_shipping_method", default=u""),
+        title=_(u"label_shipping_method",
+                default=u"Shipping Method"),
+        description=_(u"help_shipping_method",
+                      default=u"Default shipping method in checkout"),
         vocabulary=
-            'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary'
+            'bda.plone.shop.vocabularies.ShippingMethodsVocabulary'
+    )
+
+    # default shipping related settings
+
+    free_shipping_limit = schema.Float(
+        title=_(u"label_free_shipping_limit", default=u"Free Shipping Limit"),
+        description=_(u"help_free_shipping_limit",
+                      default=u"Do not add shipping costs to orders "
+                              u"with price bigger than limit"),
+        required=True,
+        default=200.0
+    )
+
+    flat_shipping_cost = schema.Float(
+        title=_(u"label_flat_shipping_cost", default=u"Flat shipping cost"),
+        description=_(u"help_flat_shipping_cost",
+                      default=u"Flat shipping cost"),
+        required=True,
+        default=10.0
+    )
+
+    item_shipping_cost = schema.Float(
+        title=_(u"label_item_shipping_cost", default=u"Item shipping cost"),
+        description=_(u"help_item_shipping_cost",
+                      default=u"Shipping cost per item in cart. If flat "
+                              u"shipping cost set and item shipping cost "
+                              u"below flat shipping cost, flat shipping cost "
+                              u"is used"),
+        required=True,
+        default=0.0
     )
 
 
