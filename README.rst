@@ -55,6 +55,10 @@ robot tests individually, like so (-d to start Zope in DEBUG-MODE)::
     ./bin/robot-server bda.plone.shop.tests.ShopDXFull_ROBOT_TESTING -d
     ./bin/robot src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
 
+To automatically land in the debug shell on test-failure, use::
+    
+    ./bin/robot-debug src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
+
 In the robot test you can place the debug statement to access a robot shell to
 try things out.
 
