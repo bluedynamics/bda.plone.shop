@@ -42,6 +42,33 @@ class CartItemCalculator(object):
         item_net = Decimal(str(data.net)) - discount_net
         return item_net * count
 
+    def item_vat(self, item):
+        """VAT of item.
+        """
+        cat = self.catalog
+        uid, count, _ = item
+        brain = cat(UID=uid)
+        if not brain:
+            return Decimal(0)
+        data = get_item_data_provider(brain[0].getObject())
+        discount_net = data.discount_net(count)
+        item_net = Decimal(str(data.net)) - discount_net
+        return (item_net / Decimal(100)) * Decimal(str(data.vat)) * count
+
+    def item_weight(self, item):
+        """Weight of item.
+        """
+        cat = self.catalog
+        uid, count, _ = item
+        brain = cat(UID=uid)
+        if not brain:
+            return Decimal(0)
+        shipping = IShippingItem(brain[0].getObject())
+        item_weight = shipping.weight
+        if item_weight:
+            return Decimal(item_weight) * count
+        return Decimal(0)
+
     def net(self, items):
         """Overall net of items.
         """
@@ -57,19 +84,6 @@ class CartItemCalculator(object):
             net += item_net * count
         return net
 
-    def item_vat(self, item):
-        """VAT of item.
-        """
-        cat = self.catalog
-        uid, count, _ = item
-        brain = cat(UID=uid)
-        if not brain:
-            return Decimal(0)
-        data = get_item_data_provider(brain[0].getObject())
-        discount_net = data.discount_net(count)
-        item_net = Decimal(str(data.net)) - discount_net
-        return (item_net / Decimal(100)) * Decimal(str(data.vat)) * count
-
     def vat(self, items):
         """Overall VAT of items.
         """
@@ -84,20 +98,6 @@ class CartItemCalculator(object):
             item_net = Decimal(str(data.net)) - discount_net
             vat += (item_net / Decimal(100)) * Decimal(str(data.vat)) * count
         return vat
-
-    def item_weight(self, item):
-        """Weight of item.
-        """
-        cat = self.catalog
-        uid, count, _ = item
-        brain = cat(UID=uid)
-        if not brain:
-            return Decimal(0)
-        shipping = IShippingItem(brain[0].getObject())
-        item_weight = shipping.weight
-        if item_weight:
-            return Decimal(item_weight) * count
-        return Decimal(0)
 
     def weight(self, items):
         """Overall weight of items.
@@ -117,52 +117,54 @@ class CartItemCalculator(object):
 
 class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
-    def cart_items(self, items):
-        cat = self.catalog
-        ret = list()
-        sm = getSecurityManager()
-        for uid, count, comment in items:
-            brain = cat(UID=uid)
-            if not brain:
-                remove_item_from_cart(self.request, uid)
-                continue
-            brain = brain[0]
-            obj = brain.getObject()
-            if not sm.checkPermission(permissions.BuyItems, obj):
-                remove_item_from_cart(self.request, uid)
-                continue
-            buyable_period = queryAdapter(obj, IBuyablePeriod)
-            if buyable_period:
-                now = datetime.now()
-                effective = buyable_period.effective
-                if effective and now < effective:
-                    remove_item_from_cart(self.request, uid)
-                    continue
-                expires = buyable_period.expires
-                if expires and now > expires:
-                    remove_item_from_cart(self.request, uid)
-                    continue
-            data = get_item_data_provider(obj)
-            title = data.title
-            discount_net = data.discount_net(count)
-            price = (Decimal(str(data.net)) - discount_net) * count
-            if data.display_gross:
-                price = price + price / Decimal(100) * Decimal(str(data.vat))
-            url = brain.getURL()
-            description = brain.Description
-            comment_required = data.comment_required
-            quantity_unit_float = data.quantity_unit_float
-            quantity_unit = translate(data.quantity_unit, context=self.request)
-            preview_image_url = get_item_preview(obj).url
-            item_state = get_item_state(obj, self.request)
-            no_longer_available = not item_state.validate_count(count)
-            alert = item_state.alert(count)
-            item = self.item(
-                uid, title, count, price, url, comment, description,
-                comment_required, quantity_unit_float, quantity_unit,
-                preview_image_url, no_longer_available, alert)
-            ret.append(item)
-        return ret
+    @property
+    def currency(self):
+        return get_shop_settings().currency
+
+    @property
+    def hide_cart_if_empty(self):
+        return get_shop_cart_settings().hide_cart_if_empty
+
+    @property
+    def disable_max_article(self):
+        return get_shop_cart_settings().disable_max_article
+
+    @property
+    def summary_total_only(self):
+        return get_shop_cart_settings().summary_total_only
+
+    @property
+    def include_shipping_costs(self):
+        return get_shop_shipping_settings().include_shipping_costs
+
+    @property
+    def shipping_method(self):
+        # read from cookie and return if present
+        shipping_method = self.request.cookies.get('shipping_method')
+        if shipping_method:
+            return shipping_method
+        # return default shipping method
+        return get_shop_shipping_settings().shipping_method
+
+    @property
+    def checkout_url(self):
+        return '%s/@@checkout' % self.context.absolute_url()
+
+    @property
+    def cart_url(self):
+        return '%s/@@cart' % self.context.absolute_url()
+
+    @property
+    def show_to_cart(self):
+        return get_shop_cart_settings().show_to_cart
+
+    @property
+    def show_checkout(self):
+        return get_shop_cart_settings().show_checkout
+
+    @property
+    def show_currency(self):
+        return get_shop_settings().show_currency
 
     def validate_set(self, uid):
         buyable = get_object_by_uid(self.context, uid)
@@ -212,50 +214,52 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             'error': '',
         }
 
-    @property
-    def currency(self):
-        return get_shop_settings().currency
-
-    @property
-    def show_checkout(self):
-        return get_shop_cart_settings().show_checkout
-
-    @property
-    def show_to_cart(self):
-        return get_shop_cart_settings().show_to_cart
-
-    @property
-    def show_currency(self):
-        return get_shop_settings().show_currency
-
-    @property
-    def hide_cart_if_empty(self):
-        return get_shop_cart_settings().hide_cart_if_empty
-
-    @property
-    def disable_max_article(self):
-        return get_shop_cart_settings().disable_max_article
-
-    @property
-    def summary_total_only(self):
-        return get_shop_cart_settings().summary_total_only
-
-    @property
-    def include_shipping_costs(self):
-        return get_shop_shipping_settings().include_shipping_costs
-
-    @property
-    def shipping_method(self):
-        # read from cookie and return if present
-        shipping_method = self.request.cookies.get('shipping_method')
-        if shipping_method:
-            return shipping_method
-        # return default shipping method
-        return get_shop_shipping_settings().shipping_method
-
-    @property
-    def checkout_url(self):
-        return '%s/@@checkout' % self.context.absolute_url()
+    def cart_items(self, items):
+        cat = self.catalog
+        ret = list()
+        sm = getSecurityManager()
+        for uid, count, comment in items:
+            brain = cat(UID=uid)
+            if not brain:
+                remove_item_from_cart(self.request, uid)
+                continue
+            brain = brain[0]
+            obj = brain.getObject()
+            if not sm.checkPermission(permissions.BuyItems, obj):
+                remove_item_from_cart(self.request, uid)
+                continue
+            buyable_period = queryAdapter(obj, IBuyablePeriod)
+            if buyable_period:
+                now = datetime.now()
+                effective = buyable_period.effective
+                if effective and now < effective:
+                    remove_item_from_cart(self.request, uid)
+                    continue
+                expires = buyable_period.expires
+                if expires and now > expires:
+                    remove_item_from_cart(self.request, uid)
+                    continue
+            data = get_item_data_provider(obj)
+            title = data.title
+            discount_net = data.discount_net(count)
+            price = (Decimal(str(data.net)) - discount_net) * count
+            if data.display_gross:
+                price = price + price / Decimal(100) * Decimal(str(data.vat))
+            url = brain.getURL()
+            description = brain.Description
+            comment_required = data.comment_required
+            quantity_unit_float = data.quantity_unit_float
+            quantity_unit = translate(data.quantity_unit, context=self.request)
+            preview_image_url = get_item_preview(obj).url
+            item_state = get_item_state(obj, self.request)
+            no_longer_available = not item_state.validate_count(count)
+            alert = item_state.alert(count)
+            item = self.item(
+                uid, title, count, price, url, comment, description,
+                comment_required, quantity_unit_float, quantity_unit,
+                preview_image_url, no_longer_available, alert)
+            ret.append(item)
+        return ret
 
 
 class CartItemState(CartItemStateBase):
