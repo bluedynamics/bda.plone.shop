@@ -59,6 +59,7 @@ AVAILABLE_VAT_VALUES = {
 def AvailableVatVocabulary(context):
     # vocab is used in shop settings control panel
     items = AVAILABLE_VAT_VALUES.items()
+    items = sorted(items, key=lambda x: x[0])
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 

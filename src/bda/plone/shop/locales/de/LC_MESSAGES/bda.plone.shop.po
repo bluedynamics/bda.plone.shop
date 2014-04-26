@@ -300,7 +300,7 @@ msgstr "Einheit"
 #. Default: "Specify default vat name"
 #: ./interfaces.py:354
 msgid "help_default_vat"
-msgstr "Wählen Sie die Standard USt"
+msgstr "Wählen Sie den Standard Umasatzsteuersatz"
 
 #. Default: "No total number of items in cart limit"
 #: ./interfaces.py:124
