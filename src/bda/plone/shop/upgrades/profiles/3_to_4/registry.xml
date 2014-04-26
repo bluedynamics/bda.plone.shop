@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<registry>
+  <records interface="bda.plone.shop.interfaces.IShopSettings">
+    <value key="admin_name" purge="false"></value>
+  </records>
+</registry>

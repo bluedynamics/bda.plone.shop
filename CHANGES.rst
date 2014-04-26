@@ -4,6 +4,10 @@ Changelog
 0.7dev
 ------
 
+- Add ``Shop Admin Name`` to control panel setting so it can be used for
+  sending E-Mails in ``bda.plone.orders``
+  [fRiSi]
+
 - Consider shipping method from cookie in cart data provider if present.
   [rnix]
 

@@ -10,4 +10,12 @@
    provides="Products.GenericSetup.interfaces.EXTENSION"
    for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot" />
 
+  <gs:registerProfile
+    name="3_to_4"
+    title="Upgrade policy GS profile to 4"
+    directory="profiles/3_to_4"
+    description=""
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot" />
+
 </configure>
