@@ -362,7 +362,7 @@ msgstr "Wählen sie eine Versandart"
 
 #: ./interfaces.py:148
 msgid "help_show_checkout"
-msgstr "Soll ein direkter Link zum Checkout im Warenkorm angezeigt werden?"
+msgstr "Soll ein direkter Link zum Checkout im Warenkorb angezeigt werden?"
 
 #: ./interfaces.py:90
 msgid "help_show_currency"
@@ -688,7 +688,7 @@ msgstr "Zeige Währungssymbol"
 #. Default: "Show link to cart in portlet"
 #: ./interfaces.py:153
 msgid "label_show_to_cart"
-msgstr "Zeige Link zu Warenkorb im Warenkorm Portlet anzeigen"
+msgstr "Zeige Link zu Warenkorb im Warenkorb Portlet anzeigen"
 
 #. Default: "Street"
 #: ./user/userdata.py:81
