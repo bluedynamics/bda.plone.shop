@@ -56,11 +56,14 @@
   <adapter factory=".cartdata.CartDataProvider" />
   <adapter factory=".cartdata.CartItemState" />
 
+  <!-- notification settings adapter -->
+  <adapter factory=".mailnotify.NotificationSettings" />
+
   <!-- notification text adapter -->
-  <adapter factory=".notificationtext.BubbleItemNotificationText" />
-  <adapter factory=".notificationtext.RegistryItemNotificationText" />
-  <adapter factory=".notificationtext.BubbleGlobalNotificationText" />
-  <adapter factory=".notificationtext.RegistryGlobalNotificationText" />
+  <adapter factory=".mailnotify.BubbleItemNotificationText" />
+  <adapter factory=".mailnotify.RegistryItemNotificationText" />
+  <adapter factory=".mailnotify.BubbleGlobalNotificationText" />
+  <adapter factory=".mailnotify.RegistryGlobalNotificationText" />
 
   <!-- AT Extenders -->
   <adapter

@@ -21,8 +21,8 @@ from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IShopExtensionLayer
 from bda.plone.shop.interfaces import IBuyable
 from bda.plone.shop.interfaces import IBuyablePeriod
-from bda.plone.shop.notificationtext import BubbleGlobalNotificationText
-from bda.plone.shop.notificationtext import BubbleItemNotificationText
+from bda.plone.shop.mailnotify import BubbleGlobalNotificationText
+from bda.plone.shop.mailnotify import BubbleItemNotificationText
 from bda.plone.shop.utils import get_shop_article_settings
 from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_tax_settings

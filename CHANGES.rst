@@ -4,8 +4,14 @@ Changelog
 0.7dev
 ------
 
-- Add ``Shop Admin Name`` to control panel setting so it can be used for
-  sending E-Mails in ``bda.plone.orders``
+- Implement ``bda.plone.orders.interfaces.INotificationSettings`` in
+  ``bda.plone.shop.mailnotify``.
+  [rnix]
+
+- Rename ``bda.plone.shop.notificationtext`` to ``bda.plone.shop.mailnotify``.
+  [rnix]
+
+- Add ``Shop Admin Name`` to control panel setting.
   [fRiSi]
 
 - Consider shipping method from cookie in cart data provider if present.

@@ -1,12 +1,35 @@
 from Acquisition import aq_parent
 from Products.CMFCore.interfaces import ISiteRoot
+from bda.plone.orders.interfaces import INotificationSettings
 from bda.plone.orders.interfaces import IGlobalNotificationText
 from bda.plone.orders.interfaces import IItemNotificationText
+from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_notification_settings
 from zope.component import adapter
 from zope.component import queryAdapter
 from zope.interface import implementer
+from zope.interface import Interface
 from zope.location.interfaces import IContained
+
+
+@implementer(INotificationSettings)
+@adapter(Interface)
+class NotificationSettings(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def admin_email(self):
+        props = getToolByName(context, 'portal_properties')
+        return get_shop_settings().admin_email or \
+            props.site_properties.email_from_address
+
+    @property
+    def admin_name(self):
+        props = getToolByName(context, 'portal_properties')
+        return get_shop_settings().admin_name or \
+            props.site_properties.email_from_name
 
 
 @implementer(IItemNotificationText)
