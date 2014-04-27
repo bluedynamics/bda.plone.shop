@@ -3,6 +3,7 @@ from bda.plone.shop import message_factory as _
 from bda.plone.shop.cartdata import CartItemCalculator
 from bda.plone.shop.utils import get_shop_shipping_settings
 from decimal import Decimal
+from zope.i18nmessageid import Message
 from zope.deprecation import deprecated
 
 
@@ -23,21 +24,137 @@ class ShippingBase(Shipping):
         return self.sid == self.settings.shipping_method
 
 
-class DefaultShipping(ShippingBase, CartItemCalculator):
+class DefaultShipping(ShippingBase):
     sid = 'default_shipping'
     label = _('default_shipping', 'Default Shipping')
 
-    def calculate(self, items):
-        """XXX: calculation from net price. Currently shipping gets calculated
-        from gross only.
-        """
+    @property
+    def description(self):
         settings = self.settings
-        free_shipping_limit = Decimal(settings.free_shipping_limit)
-        # cart price exceeds free shipping limit, no shipping costs
-        if self.net(items) + self.vat(items) > free_shipping_limit:
+        shipping_from_gross = settings.shipping_from_gross
+        free_shipping_limit = Decimal(str(settings.free_shipping_limit))
+        flat_shipping_cost = Decimal(str(settings.flat_shipping_cost))
+        item_shipping_cost = Decimal(str(settings.item_shipping_cost))
+        shipping_vat = Decimal(str(settings.shipping_vat))
+        # no shipping costs
+        if not flat_shipping_cost and not item_shipping_cost:
+            return _(u"free_shipping", default=u"Free Shipping")
+        # no free shipping
+        if not free_shipping_limit:
+            # flat and item costs defined
+            if flat_shipping_cost and item_shipping_cost:
+                # from gross
+                if shipping_from_gross:
+                    msg = _(u"no_free_shipping_flat_and_item_gross",
+                            default=u"Minimum shipping ${flat} or ${item} per"
+                                    u"item in cart")
+                # from net
+                else:
+                    msg = _(u"no_free_shipping_flat_and_item_net",
+                            default=u"Minimum shipping ${flat} or ${item} "
+                                    u"per item in cart")
+                return Message(msg, mapping={
+                    'flat': flat_shipping_cost,
+                    'item': item_shipping_cost,
+                })
+            # flat costs only
+            if flat_shipping_cost and not item_shipping_cost:
+                # from gross
+                if shipping_from_gross:
+                    msg = _(u"no_free_shipping_flat_only_gross",
+                            default=u"Flat shipping ${flat}")
+                # from net
+                else:
+                    msg = _(u"no_free_shipping_flat_only_net",
+                            default=u"Flat shipping ${flat}")
+                return Message(msg, mapping={
+                    'flat': flat_shipping_cost,
+                })
+            # item costs only
+            if not flat_shipping_cost and item_shipping_cost:
+                # from gross
+                if shipping_from_gross:
+                    msg = _(u"no_free_shipping_item_only_gross",
+                            default=u"Shipping ${item} per item in cart")
+                # from net
+                else:
+                    msg = _(u"no_free_shipping_item_only_net",
+                            default=u"Shipping ${item} per item in cart")
+                return Message(msg, mapping={
+                    'item': item_shipping_cost,
+                })
+        # free shipping above limit
+        # flat and item costs defined
+        if flat_shipping_cost and item_shipping_cost:
+            # from gross
+            if shipping_from_gross:
+                msg = _(u"free_shipping_limit_flat_and_item_gross",
+                        default=u"Minimum shipping ${flat} or ${item} per"
+                                u"item in cart. Free shipping if purchase "
+                                u"price above ${limit}")
+            # from net
+            else:
+                msg = _(u"free_shipping_limit_flat_and_item_net",
+                        default=u"Minimum shipping ${flat} or ${item} "
+                                u"per item in cart. Free shipping if "
+                                u"purchase price above ${limit}")
+            return Message(msg, mapping={
+                'flat': flat_shipping_cost,
+                'item': item_shipping_cost,
+                'limit': free_shipping_limit,
+            })
+        # flat costs only
+        if flat_shipping_cost and not item_shipping_cost:
+            # from gross
+            if shipping_from_gross:
+                msg = _(u"free_shipping_limit_flat_only_gross",
+                        default=u"Flat shipping ${flat}. Free shipping "
+                                u"if purchase price above ${limit}")
+            # from net
+            else:
+                msg = _(u"free_shipping_limit_flat_only_net",
+                        default=u"Flat shipping ${flat}. Free "
+                                u"shipping if purchase price above "
+                                u"${limit}")
+            return Message(msg, mapping={
+                'flat': flat_shipping_cost,
+                'limit': free_shipping_limit,
+            })
+        # item costs only
+        if not flat_shipping_cost and item_shipping_cost:
+            # from gross
+            if shipping_from_gross:
+                msg = _(u"free_shipping_limit_item_only_gross",
+                        default=u"Shipping ${item} per item in cart. "
+                                u"Free shipping if purchase price above "
+                                u"${limit}")
+            # from net
+            else:
+                msg = _(u"free_shipping_limit_item_only_net",
+                        default=u"Shipping ${item} per item in cart. "
+                                u"Free shipping if purchase price above "
+                                u"${limit}")
+            return Message(msg, mapping={
+                'item': item_shipping_cost,
+                'limit': free_shipping_limit,
+            })
+
+    def net(self, items):
+        settings = self.settings
+        calc = CartItemCalculator(self.context)
+        shipping_from_gross = settings.shipping_from_gross
+        free_shipping_limit = Decimal(str(settings.free_shipping_limit))
+        # calculate shipping from gross
+        if shipping_from_gross:
+            purchase_price = calc.net(items) + calc.vat(items)
+        # calculate shipping from net
+        else:
+            purchase_price = calc.net(items)
+        # purchase price exceeds free shipping limit, no shipping costs
+        if purchase_price > free_shipping_limit:
             return Decimal(0)
-        flat_shipping_cost = Decimal(settings.flat_shipping_cost)
-        item_shipping_cost = Decimal(settings.item_shipping_cost)
+        flat_shipping_cost = Decimal(str(settings.flat_shipping_cost))
+        item_shipping_cost = Decimal(str(settings.item_shipping_cost))
         shipping_costs = Decimal(0)
         # item shipping costs set, calculate for contained cart items
         if item_shipping_cost > Decimal(0):
@@ -49,6 +166,11 @@ class DefaultShipping(ShippingBase, CartItemCalculator):
         # flat shipping costs apply
         return Decimal(flat_shipping_cost)
 
+    def vat(self, items):
+        settings = self.settings
+        shipping_vat = Decimal(str(settings.shipping_vat))
+        return self.net(items) / Decimal(100) * shipping_vat
+
 
 ###############################################################################
 # B/C - will be removed in ``bda.plone.shop`` 1.0
@@ -58,12 +180,13 @@ FREE_SHIPPING_LIMIT = 200
 FLAT_SHIPPING_COST = 10
 
 
-class FlatRate(ShippingBase, CartItemCalculator):
+class FlatRate(ShippingBase):
     sid = 'flat_rate'
     label = _('flat_rate', 'Flat Rate')
 
     def calculate(self, items):
-        if self.net(items) + self.vat(items) > Decimal(FREE_SHIPPING_LIMIT):
+        calc = CartItemCalculator(self.context)
+        if calc.net(items) + calc.vat(items) > Decimal(FREE_SHIPPING_LIMIT):
             return Decimal(0)
         return Decimal(FLAT_SHIPPING_COST)
 

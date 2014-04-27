@@ -1,5 +1,6 @@
 from Acquisition import aq_parent
 from Products.CMFCore.interfaces import ISiteRoot
+from Products.CMFCore.utils import getToolByName
 from bda.plone.orders.interfaces import INotificationSettings
 from bda.plone.orders.interfaces import IGlobalNotificationText
 from bda.plone.orders.interfaces import IItemNotificationText
@@ -21,13 +22,13 @@ class NotificationSettings(object):
 
     @property
     def admin_email(self):
-        props = getToolByName(context, 'portal_properties')
+        props = getToolByName(self.context, 'portal_properties')
         return get_shop_settings().admin_email or \
             props.site_properties.email_from_address
 
     @property
     def admin_name(self):
-        props = getToolByName(context, 'portal_properties')
+        props = getToolByName(self.context, 'portal_properties')
         return get_shop_settings().admin_name or \
             props.site_properties.email_from_name
 

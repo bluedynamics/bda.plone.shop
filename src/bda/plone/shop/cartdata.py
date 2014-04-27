@@ -25,6 +25,9 @@ class CartItemCalculator(object):
     """Object for calculating cart item related data.
     """
 
+    def __init__(self, context):
+        self.context = context
+
     @property
     def catalog(self):
         return getToolByName(self.context, 'portal_catalog')
@@ -116,6 +119,10 @@ class CartItemCalculator(object):
 
 
 class CartDataProvider(CartItemCalculator, CartDataProviderBase):
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
 
     @property
     def currency(self):

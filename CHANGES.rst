@@ -21,11 +21,14 @@ Changelog
   ``item_weight`` functions.
   [rnix]
 
+- Add ``DefaultShipping`` and corresponding control panel settings. GS upgrade
+  2_to_3 must be applied.
+  [rnix]
+
 - Deprecate ``FlatRate`` shipping.
   [rnix]
 
-- Add ``DefaultShipping`` and corresponding control panel settings. GS upgrade
-  2_to_3 must be applied.
+- Adopt shipping implementation to ``bda.plone.shipping`` >= 0.4.
   [rnix]
 
 - Fix displaying of discounted price. Original price only gets displayed if
