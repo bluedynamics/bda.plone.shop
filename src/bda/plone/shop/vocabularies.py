@@ -65,10 +65,13 @@ def AvailableVatVocabulary(context):
 
 @provider(IVocabularyFactory)
 def VatVocabulary(context):
-    # vocab is used for buyable items
-    settings = get_shop_tax_settings()
-    if not settings:
-        return
+    # vocab is used for buyable items.
+    try:
+        settings = get_shop_tax_settings()
+    except KeyError:
+        # happens on initial GS profile application
+        return AvailableVatVocabulary(context)
+    settings.vat
     terms = []
     if settings.vat:
         for vat in settings.vat:
