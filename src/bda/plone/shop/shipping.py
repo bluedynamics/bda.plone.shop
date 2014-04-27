@@ -46,8 +46,8 @@ class DefaultShipping(ShippingBase):
             # flat and item costs defined
             if flat_shipping_cost and item_shipping_cost:
                 msg = _(u"no_free_shipping_flat_and_item",
-                        default=u"Minimum shipping ${currency} ${flat} or "
-                                u"${currency} ${item} per item in cart")
+                        default=u"Minimum ${currency} ${flat} or ${currency} "
+                                u"${item} per item in cart")
                 return Message(msg, mapping={
                     'flat': flat_shipping_cost,
                     'item': item_shipping_cost,
@@ -56,7 +56,7 @@ class DefaultShipping(ShippingBase):
             # flat costs only
             if flat_shipping_cost and not item_shipping_cost:
                 msg = _(u"no_free_shipping_flat_only",
-                        default=u"Flat shipping ${currency} ${flat}")
+                        default=u"Flat ${currency} ${flat}")
                 return Message(msg, mapping={
                     'flat': flat_shipping_cost,
                     'currency': currency,
@@ -64,8 +64,7 @@ class DefaultShipping(ShippingBase):
             # item costs only
             if not flat_shipping_cost and item_shipping_cost:
                 msg = _(u"no_free_shipping_item_only",
-                        default=u"Shipping ${currency} ${item} per item "
-                                u"in cart")
+                        default=u"${currency} ${item} per item in cart")
                 return Message(msg, mapping={
                     'item': item_shipping_cost,
                     'currency': currency,
@@ -76,14 +75,14 @@ class DefaultShipping(ShippingBase):
             # from gross
             if shipping_limit_from_gross:
                 msg = _(u"free_shipping_limit_flat_and_item_gross",
-                        default=u"Minimum shipping ${currency} ${flat} or "
+                        default=u"Minimum ${currency} ${flat} or "
                                 u"${currency} ${item} per item in cart. Free "
                                 u"shipping if gross purchase price above "
                                 u"${currency} ${limit}")
             # from net
             else:
                 msg = _(u"free_shipping_limit_flat_and_item_net",
-                        default=u"Minimum shipping ${currency} ${flat} or "
+                        default=u"Minimum ${currency} ${flat} or "
                                 u"${currency} ${item} per item in cart. Free "
                                 u"shipping if net purchase price above "
                                 u"${currency} ${limit}")
@@ -98,13 +97,13 @@ class DefaultShipping(ShippingBase):
             # from gross
             if shipping_limit_from_gross:
                 msg = _(u"free_shipping_limit_flat_only_gross",
-                        default=u"Flat shipping ${currency} ${flat}. Free "
+                        default=u"Flat ${currency} ${flat}. Free "
                                 u"shipping if gross purchase price above "
                                 u"${currency} ${limit}")
             # from net
             else:
                 msg = _(u"free_shipping_limit_flat_only_net",
-                        default=u"Flat shipping ${currency} ${flat}. Free "
+                        default=u"Flat ${currency} ${flat}. Free "
                                 u"shipping if net purchase price above "
                                 u"${currency} ${limit}")
             return Message(msg, mapping={
@@ -117,13 +116,13 @@ class DefaultShipping(ShippingBase):
             # from gross
             if shipping_limit_from_gross:
                 msg = _(u"free_shipping_limit_item_only_gross",
-                        default=u"Shipping ${currency} ${item} per item in "
+                        default=u"${currency} ${item} per item in "
                                 u"cart. Free shipping if gross purchase "
                                 u"price above ${currency} ${limit}")
             # from net
             else:
                 msg = _(u"free_shipping_limit_item_only_net",
-                        default=u"Shipping ${currency} ${item} per item in "
+                        default=u"${currency} ${item} per item in "
                                 u"cart. Free shipping if net purchase "
                                 u"price above ${currency} ${limit}")
             return Message(msg, mapping={

@@ -231,7 +231,7 @@ msgid "exportorders"
 msgstr "Export Orders"
 
 #. Default: "Flat Rate"
-#: ./shipping.py:178
+#: ./shipping.py:177
 msgid "flat_rate"
 msgstr "Flat Rate"
 
@@ -240,35 +240,35 @@ msgstr "Flat Rate"
 msgid "free_shipping"
 msgstr "Free Shipping"
 
-#. Default: "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:78
+#. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
+#: ./shipping.py:77
 msgid "free_shipping_limit_flat_and_item_gross"
-msgstr "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
+msgstr "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
 
-#. Default: "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:85
+#. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
+#: ./shipping.py:84
 msgid "free_shipping_limit_flat_and_item_net"
-msgstr "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
+msgstr "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
 
-#. Default: "Flat shipping ${currency} ${flat}. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:100
+#. Default: "Flat ${currency} ${flat}. Free shipping if gross purchase price above ${currency} ${limit}"
+#: ./shipping.py:99
 msgid "free_shipping_limit_flat_only_gross"
-msgstr "Flat shipping ${currency} ${flat}. Free shipping if gross purchase price above ${currency} ${limit}"
+msgstr "Flat ${currency} ${flat}. Free shipping if gross purchase price above ${currency} ${limit}"
 
-#. Default: "Flat shipping ${currency} ${flat}. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:106
+#. Default: "Flat ${currency} ${flat}. Free shipping if net purchase price above ${currency} ${limit}"
+#: ./shipping.py:105
 msgid "free_shipping_limit_flat_only_net"
-msgstr "Flat shipping ${currency} ${flat}. Free shipping if net purchase price above ${currency} ${limit}"
+msgstr "Flat ${currency} ${flat}. Free shipping if net purchase price above ${currency} ${limit}"
 
-#. Default: "Shipping ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:119
+#. Default: "${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
+#: ./shipping.py:118
 msgid "free_shipping_limit_item_only_gross"
-msgstr "Shipping ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
+msgstr "${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
 
-#. Default: "Shipping ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:125
+#. Default: "${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
+#: ./shipping.py:124
 msgid "free_shipping_limit_item_only_net"
-msgstr "Shipping ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
+msgstr "${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
 
 #. Default: "${available} items(s) available."
 #: ./browser/availability.py:51
@@ -810,20 +810,20 @@ msgstr "Net"
 msgid "no"
 msgstr "No"
 
-#. Default: "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart"
+#. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart"
 #: ./shipping.py:48
 msgid "no_free_shipping_flat_and_item"
-msgstr "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart"
+msgstr "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart"
 
-#. Default: "Flat shipping ${currency} ${flat}"
+#. Default: "Flat ${currency} ${flat}"
 #: ./shipping.py:58
 msgid "no_free_shipping_flat_only"
-msgstr "Flat shipping ${currency} ${flat}"
+msgstr "Flat ${currency} ${flat}"
 
-#. Default: "Shipping ${currency} ${item} per item in cart"
+#. Default: "${currency} ${item} per item in cart"
 #: ./shipping.py:66
 msgid "no_free_shipping_item_only"
-msgstr "Shipping ${currency} ${item} per item in cart"
+msgstr "${currency} ${item} per item in cart"
 
 #. Default: "Item is sold out."
 #: ./browser/availability_details.pt:8

@@ -231,7 +231,7 @@ msgid "exportorders"
 msgstr "Export Bestellungen"
 
 #. Default: "Flat Rate"
-#: ./shipping.py:178
+#: ./shipping.py:177
 msgid "flat_rate"
 msgstr "Fixbetrag"
 
@@ -240,35 +240,35 @@ msgstr "Fixbetrag"
 msgid "free_shipping"
 msgstr "Kostenloser Versand"
 
-#. Default: "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:78
+#. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
+#: ./shipping.py:77
 msgid "free_shipping_limit_flat_and_item_gross"
-msgstr "Mindestens ${flat} ${currency} Versandkosten oder ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
+msgstr "Mindestens ${flat} ${currency} oder ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
-#. Default: "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:85
+#. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
+#: ./shipping.py:84
 msgid "free_shipping_limit_flat_and_item_net"
-msgstr "Mindestens ${flat} ${currency} Versandkosten oder ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
+msgstr "Mindestens ${flat} ${currency} oder ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
-#. Default: "Flat shipping ${currency} ${flat}. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:100
+#. Default: "Flat ${currency} ${flat}. Free shipping if gross purchase price above ${currency} ${limit}"
+#: ./shipping.py:99
 msgid "free_shipping_limit_flat_only_gross"
-msgstr "Fixbetrag Versandkosten ${flat} ${currency}. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
+msgstr "Fixbetrag ${flat} ${currency}. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
-#. Default: "Flat shipping ${currency} ${flat}. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:106
+#. Default: "Flat ${currency} ${flat}. Free shipping if net purchase price above ${currency} ${limit}"
+#: ./shipping.py:105
 msgid "free_shipping_limit_flat_only_net"
-msgstr "Fixbetrag Versandkosten ${flat} ${currency}. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
+msgstr "Fixbetrag ${flat} ${currency}. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
-#. Default: "Shipping ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:119
+#. Default: "${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
+#: ./shipping.py:118
 msgid "free_shipping_limit_item_only_gross"
-msgstr "Versandkosten ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
+msgstr "${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
-#. Default: "Shipping ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:125
+#. Default: "${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
+#: ./shipping.py:124
 msgid "free_shipping_limit_item_only_net"
-msgstr "Versandkosten ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
+msgstr "${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
 #. Default: "${available} items(s) available."
 #: ./browser/availability.py:51
@@ -810,20 +810,20 @@ msgstr "Netto"
 msgid "no"
 msgstr "Nein"
 
-#. Default: "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart"
+#. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart"
 #: ./shipping.py:48
 msgid "no_free_shipping_flat_and_item"
-msgstr "Mindestens ${flat} ${currency} Versandkosten oder ${item} ${currency} pro Artikel im Warenkorb"
+msgstr "Mindestens ${flat} ${currency} oder ${item} ${currency} pro Artikel im Warenkorb"
 
-#. Default: "Flat shipping ${currency} ${flat}"
+#. Default: "Flat ${currency} ${flat}"
 #: ./shipping.py:58
 msgid "no_free_shipping_flat_only"
-msgstr "Fixbetrag Versandkosten ${flat} ${currency}"
+msgstr "Fixbetrag ${flat} ${currency}"
 
-#. Default: "Shipping ${currency} ${item} per item in cart"
+#. Default: "${currency} ${item} per item in cart"
 #: ./shipping.py:66
 msgid "no_free_shipping_item_only"
-msgstr "Versandkosten ${item} ${currency} pro Artikel im Warenkorb"
+msgstr "${item} ${currency} pro Artikel im Warenkorb"
 
 #. Default: "Item is sold out."
 #: ./browser/availability_details.pt:8
