@@ -38,10 +38,12 @@ class DefaultShipping(ShippingBase):
         flat_shipping_cost = Decimal(str(settings.flat_shipping_cost))
         item_shipping_cost = Decimal(str(settings.item_shipping_cost))
         shipping_vat = Decimal(str(settings.shipping_vat))
+        def gross(val):
+            return val + (val / Decimal(100) * shipping_vat)
         # no shipping costs
         if not flat_shipping_cost and not item_shipping_cost:
             return _(u"free_shipping", default=u"Free Shipping")
-        # no free shipping
+        # no free shipping limit
         if not free_shipping_limit:
             # flat and item costs defined
             if flat_shipping_cost and item_shipping_cost:
@@ -49,8 +51,8 @@ class DefaultShipping(ShippingBase):
                         default=u"Minimum ${currency} ${flat} or ${currency} "
                                 u"${item} per item in cart")
                 return Message(msg, mapping={
-                    'flat': flat_shipping_cost,
-                    'item': item_shipping_cost,
+                    'flat': gross(flat_shipping_cost),
+                    'item': gross(item_shipping_cost),
                     'currency': currency,
                 })
             # flat costs only
@@ -58,7 +60,7 @@ class DefaultShipping(ShippingBase):
                 msg = _(u"no_free_shipping_flat_only",
                         default=u"Flat ${currency} ${flat}")
                 return Message(msg, mapping={
-                    'flat': flat_shipping_cost,
+                    'flat': gross(flat_shipping_cost),
                     'currency': currency,
                 })
             # item costs only
@@ -66,7 +68,7 @@ class DefaultShipping(ShippingBase):
                 msg = _(u"no_free_shipping_item_only",
                         default=u"${currency} ${item} per item in cart")
                 return Message(msg, mapping={
-                    'item': item_shipping_cost,
+                    'item': gross(item_shipping_cost),
                     'currency': currency,
                 })
         # free shipping above limit
@@ -87,8 +89,8 @@ class DefaultShipping(ShippingBase):
                                 u"shipping if net purchase price above "
                                 u"${currency} ${limit}")
             return Message(msg, mapping={
-                'flat': flat_shipping_cost,
-                'item': item_shipping_cost,
+                'flat': gross(flat_shipping_cost),
+                'item': gross(item_shipping_cost),
                 'limit': free_shipping_limit,
                 'currency': currency,
             })
@@ -107,7 +109,7 @@ class DefaultShipping(ShippingBase):
                                 u"shipping if net purchase price above "
                                 u"${currency} ${limit}")
             return Message(msg, mapping={
-                'flat': flat_shipping_cost,
+                'flat': gross(flat_shipping_cost),
                 'limit': free_shipping_limit,
                 'currency': currency,
             })
@@ -126,7 +128,7 @@ class DefaultShipping(ShippingBase):
                                 u"cart. Free shipping if net purchase "
                                 u"price above ${currency} ${limit}")
             return Message(msg, mapping={
-                'item': item_shipping_cost,
+                'item': gross(item_shipping_cost),
                 'limit': free_shipping_limit,
                 'currency': currency,
             })
@@ -143,7 +145,7 @@ class DefaultShipping(ShippingBase):
         else:
             purchase_price = calc.net(items)
         # purchase price exceeds free shipping limit, no shipping costs
-        if purchase_price > free_shipping_limit:
+        if free_shipping_limit and purchase_price > free_shipping_limit:
             return Decimal(0)
         flat_shipping_cost = Decimal(str(settings.flat_shipping_cost))
         item_shipping_cost = Decimal(str(settings.item_shipping_cost))
@@ -152,11 +154,15 @@ class DefaultShipping(ShippingBase):
         if item_shipping_cost > Decimal(0):
             for item in items:
                 shipping_costs += item_shipping_cost * item[1]
-        # item shipping costs exceed flat shipping costs
-        if shipping_costs > flat_shipping_cost:
-            return shipping_costs
-        # flat shipping costs apply
-        return Decimal(flat_shipping_cost)
+        # consider flat shipping cost if set
+        if flat_shipping_cost:
+            # item shipping costs exceed flat shipping costs
+            if shipping_costs > flat_shipping_cost:
+                return shipping_costs
+            # flat shipping costs apply
+            return Decimal(flat_shipping_cost)
+        # return calculated shipping costs
+        return shipping_costs
 
     def vat(self, items):
         settings = self.settings

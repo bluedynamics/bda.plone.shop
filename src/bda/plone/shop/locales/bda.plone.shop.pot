@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-04-27 18:45+0000\n"
+"POT-Creation-Date: 2014-04-27 19:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,12 +106,12 @@ msgid "NZD"
 msgstr ""
 
 #. Default: "Notifications"
-#: ./interfaces.py:404
+#: ./interfaces.py:405
 msgid "Notifications"
 msgstr ""
 
 #. Default: "Payment"
-#: ./interfaces.py:487
+#: ./interfaces.py:488
 msgid "Payment"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgstr ""
 msgid "Shop settings"
 msgstr ""
 
-#: ./interfaces.py:352
+#: ./interfaces.py:353
 msgid "Tax Settings"
 msgstr ""
 
@@ -235,42 +235,42 @@ msgid "exportorders"
 msgstr ""
 
 #. Default: "Flat Rate"
-#: ./shipping.py:177
+#: ./shipping.py:184
 msgid "flat_rate"
 msgstr ""
 
 #. Default: "Free Shipping"
-#: ./shipping.py:43
+#: ./shipping.py:45
 msgid "free_shipping"
 msgstr ""
 
 #. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:77
+#: ./shipping.py:79
 msgid "free_shipping_limit_flat_and_item_gross"
 msgstr ""
 
 #. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:84
+#: ./shipping.py:86
 msgid "free_shipping_limit_flat_and_item_net"
 msgstr ""
 
 #. Default: "Flat ${currency} ${flat}. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:99
+#: ./shipping.py:101
 msgid "free_shipping_limit_flat_only_gross"
 msgstr ""
 
 #. Default: "Flat ${currency} ${flat}. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:105
+#: ./shipping.py:107
 msgid "free_shipping_limit_flat_only_net"
 msgstr ""
 
 #. Default: "${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:118
+#: ./shipping.py:120
 msgid "free_shipping_limit_item_only_gross"
 msgstr ""
 
 #. Default: "${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:124
+#: ./shipping.py:126
 msgid "free_shipping_limit_item_only_net"
 msgstr ""
 
@@ -337,7 +337,7 @@ msgid "help_default_quantity_unit"
 msgstr ""
 
 #. Default: "Specify default vat name"
-#: ./interfaces.py:375
+#: ./interfaces.py:376
 msgid "help_default_vat"
 msgstr ""
 
@@ -352,11 +352,11 @@ msgid "help_firstname"
 msgstr ""
 
 #. Default: "Net flat shipping cost"
-#: ./interfaces.py:327
+#: ./interfaces.py:328
 msgid "help_flat_shipping_cost"
 msgstr ""
 
-#. Default: "Do not add shipping costs to orders with price bigger than limit. If limit is gross or net depends on 'Calculate shipping limit from gross' setting"
+#. Default: "Do not add shipping costs to orders with price bigger than limit. If limit applies to gross or net purchase price depends on 'Calculate shipping limit from gross' setting"
 #: ./interfaces.py:308
 msgid "help_free_shipping_limit"
 msgstr ""
@@ -376,7 +376,7 @@ msgid "help_include_shipping_costs"
 msgstr ""
 
 #. Default: "Net shipping cost per item in cart. If flat shipping cost set and item shipping cost below flat shipping cost, flat shipping cost is used"
-#: ./interfaces.py:335
+#: ./interfaces.py:336
 msgid "help_item_shipping_cost"
 msgstr ""
 
@@ -395,7 +395,7 @@ msgid "help_quantity_units"
 msgstr ""
 
 #. Default: "If set to False, shipping limit gets calculated from net price instead of gross."
-#: ./interfaces.py:320
+#: ./interfaces.py:321
 msgid "help_shipping_limit_from_gross"
 msgstr ""
 
@@ -431,7 +431,7 @@ msgid "help_summary_total_only"
 msgstr ""
 
 #. Default: "Specify all allowed vat settings"
-#: ./interfaces.py:362
+#: ./interfaces.py:363
 msgid "help_vat"
 msgstr ""
 
@@ -547,7 +547,7 @@ msgid "label_default_quantity_units"
 msgstr ""
 
 #. Default: "Default Value added tax name"
-#: ./interfaces.py:374
+#: ./interfaces.py:375
 msgid "label_default_vat"
 msgstr ""
 
@@ -562,7 +562,7 @@ msgid "label_firstname"
 msgstr ""
 
 #. Default: "Flat shipping cost"
-#: ./interfaces.py:326
+#: ./interfaces.py:327
 msgid "label_flat_shipping_cost"
 msgstr ""
 
@@ -659,7 +659,7 @@ msgid "label_item_quantity_unit_float"
 msgstr ""
 
 #. Default: "Item shipping cost"
-#: ./interfaces.py:334
+#: ./interfaces.py:335
 msgid "label_item_shipping_cost"
 msgstr ""
 
@@ -677,29 +677,29 @@ msgstr ""
 #. Default: "Order Notification Text"
 #: ./at.py:388
 #: ./dx.py:305
-#: ./interfaces.py:415
+#: ./interfaces.py:416
 msgid "label_order_notification_text"
 msgstr ""
 
 #. Default: "Overall Overbooked Notification Text"
-#: ./interfaces.py:451
+#: ./interfaces.py:452
 msgid "label_overall overbook_notification_text"
 msgstr ""
 
 #. Default: "Overall Notification Text"
-#: ./interfaces.py:439
+#: ./interfaces.py:440
 msgid "label_overall_order_notification_text"
 msgstr ""
 
 #. Default: "Overbooked Notification Text"
 #: ./at.py:399
 #: ./dx.py:313
-#: ./interfaces.py:427
+#: ./interfaces.py:428
 msgid "label_overbook_notification_text"
 msgstr ""
 
 #. Default: "Payment Texts"
-#: ./interfaces.py:495
+#: ./interfaces.py:496
 msgid "label_payment_text"
 msgstr ""
 
@@ -720,7 +720,7 @@ msgid "label_shipping_item_weight"
 msgstr ""
 
 #. Default: "Calculate shipping limit from gross"
-#: ./interfaces.py:318
+#: ./interfaces.py:319
 msgid "label_shipping_limit_from_gross"
 msgstr ""
 
@@ -760,7 +760,7 @@ msgid "label_summary_total_only"
 msgstr ""
 
 #. Default: "VAT in %"
-#: ./interfaces.py:361
+#: ./interfaces.py:362
 msgid "label_vat"
 msgstr ""
 
@@ -770,7 +770,7 @@ msgid "label_zip"
 msgstr ""
 
 #. Default: "Language"
-#: ./interfaces.py:386
+#: ./interfaces.py:387
 msgid "language"
 msgstr ""
 
@@ -815,17 +815,17 @@ msgid "no"
 msgstr ""
 
 #. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart"
-#: ./shipping.py:48
+#: ./shipping.py:50
 msgid "no_free_shipping_flat_and_item"
 msgstr ""
 
 #. Default: "Flat ${currency} ${flat}"
-#: ./shipping.py:58
+#: ./shipping.py:60
 msgid "no_free_shipping_flat_only"
 msgstr ""
 
 #. Default: "${currency} ${item} per item in cart"
-#: ./shipping.py:66
+#: ./shipping.py:68
 msgid "no_free_shipping_item_only"
 msgstr ""
 
@@ -840,7 +840,7 @@ msgid "not_available_title"
 msgstr ""
 
 #. Default: "Order Text"
-#: ./interfaces.py:420
+#: ./interfaces.py:421
 msgid "order_text"
 msgstr ""
 
@@ -860,17 +860,17 @@ msgid "overbook_available_title"
 msgstr ""
 
 #. Default: "Overbook Text"
-#: ./interfaces.py:432
+#: ./interfaces.py:433
 msgid "overbook_text"
 msgstr ""
 
 #. Default: "Payment"
-#: ./interfaces.py:465
+#: ./interfaces.py:466
 msgid "payment"
 msgstr ""
 
 #. Default: "Payment Text"
-#: ./interfaces.py:500
+#: ./interfaces.py:501
 msgid "payment_text"
 msgstr ""
 
@@ -905,7 +905,7 @@ msgid "symbol"
 msgstr ""
 
 #. Default: "Text"
-#: ./interfaces.py:392
+#: ./interfaces.py:393
 msgid "text"
 msgstr ""
 

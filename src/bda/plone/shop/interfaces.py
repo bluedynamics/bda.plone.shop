@@ -307,9 +307,10 @@ class IShopShippingSettings(model.Schema):
         title=_(u"label_free_shipping_limit", default=u"Free Shipping Limit"),
         description=_(u"help_free_shipping_limit",
                       default=u"Do not add shipping costs to orders "
-                              u"with price bigger than limit. If limit is "
-                              u"gross or net depends on 'Calculate shipping "
-                              u"limit from gross' setting"),
+                              u"with price bigger than limit. If limit "
+                              u"applies to gross or net purchase price "
+                              u"depends on 'Calculate shipping limit from "
+                              u"gross' setting"),
         required=True,
         default=200.0
     )
