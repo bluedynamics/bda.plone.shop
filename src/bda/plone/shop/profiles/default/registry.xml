@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <registry>
+
   <records interface="bda.plone.shop.interfaces.IShopSettings">
     <value key="admin_email" purge="false"></value>
     <value key="admin_name" purge="false"></value>
@@ -7,6 +8,7 @@
     <value key="show_currency" purge="false">symbol</value>
     <value key="default_item_display_gross" purge="false">False</value>
   </records>
+
   <records interface="bda.plone.shop.interfaces.IShopCartSettings">
     <value key="hide_cart_if_empty" purge="false">False</value>
     <value key="disable_max_article" purge="false">True</value>
@@ -14,6 +16,7 @@
     <value key="show_checkout" purge="false">False</value>
     <value key="show_to_cart" purge="false">True</value>
   </records>
+
   <records interface="bda.plone.shop.interfaces.IShopArticleSettings">
     <value key="quantity_units" purge="false">
       <element>quantity</element>
@@ -27,6 +30,7 @@
     <value key="default_item_comment_required" purge="false">False</value>
     <value key="default_item_quantity_unit_float" purge="false">False</value>
   </records>
+
   <records interface="bda.plone.shop.interfaces.IShopShippingSettings">
     <value key="include_shipping_costs" purge="false">True</value>
     <value key="available_shipping_methods" purge="false">
@@ -39,6 +43,7 @@
     <value key="flat_shipping_cost" purge="false">10.0</value>
     <value key="item_shipping_cost" purge="false">0.0</value>
   </records>
+
   <records interface="bda.plone.shop.interfaces.IShopTaxSettings">
     <value key="vat" purge="false">
       <element>0</element>
@@ -49,13 +54,16 @@
     </value>
     <value key="default_item_vat" purge="false">20</value>
   </records>
+
   <records interface="bda.plone.shop.interfaces.INotificationTextSettings">
     <value key="global_order_text" purge="false"></value>
     <value key="global_overbook_text" purge="false"></value>
     <value key="order_text" purge="false"></value>
     <value key="overbook_text" purge="false"></value>
   </records>
+
   <records interface="bda.plone.shop.interfaces.IPaymentTextSettings">
     <value key="payment_text" purge="false"></value>
   </records>
+
 </registry>
