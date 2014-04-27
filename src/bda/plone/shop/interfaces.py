@@ -253,7 +253,7 @@ class IShopShippingSettings(model.Schema):
             'available_shipping_methods',
             'shipping_method',
             'shipping_vat',
-            'shipping_from_gross',
+            'shipping_limit_from_gross',
             'free_shipping_limit',
             'flat_shipping_cost',
             'item_shipping_cost',
@@ -301,14 +301,6 @@ class IShopShippingSettings(model.Schema):
         vocabulary='bda.plone.shop.vocabularies.VatVocabulary'
     )
 
-    shipping_from_gross = schema.Bool(
-        title=_(u"label_shipping_from_gross",
-                default=u"Calculate shipping limit from gross"),
-        description=_(u"help_shipping_from_gross",
-                      default=u"If set to False, shipping limit gets "
-                              u"calculated from net price instead of gross.")
-    )
-
     # default shipping related settings
 
     free_shipping_limit = schema.Float(
@@ -316,10 +308,18 @@ class IShopShippingSettings(model.Schema):
         description=_(u"help_free_shipping_limit",
                       default=u"Do not add shipping costs to orders "
                               u"with price bigger than limit. If limit is "
-                              u"gross or net depends on shipping_from_gross "
-                              u"setting"),
+                              u"gross or net depends on 'Calculate shipping "
+                              u"limit from gross' setting"),
         required=True,
         default=200.0
+    )
+
+    shipping_limit_from_gross = schema.Bool(
+        title=_(u"label_shipping_limit_from_gross",
+                default=u"Calculate shipping limit from gross"),
+        description=_(u"help_shipping_limit_from_gross",
+                      default=u"If set to False, shipping limit gets "
+                              u"calculated from net price instead of gross.")
     )
 
     flat_shipping_cost = schema.Float(

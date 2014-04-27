@@ -33,7 +33,7 @@ class DefaultShipping(ShippingBase):
     def description(self):
         settings = self.settings
         currency = get_shop_settings().currency
-        shipping_from_gross = settings.shipping_from_gross
+        shipping_limit_from_gross = settings.shipping_limit_from_gross
         free_shipping_limit = Decimal(str(settings.free_shipping_limit))
         flat_shipping_cost = Decimal(str(settings.flat_shipping_cost))
         item_shipping_cost = Decimal(str(settings.item_shipping_cost))
@@ -74,7 +74,7 @@ class DefaultShipping(ShippingBase):
         # flat and item costs defined
         if flat_shipping_cost and item_shipping_cost:
             # from gross
-            if shipping_from_gross:
+            if shipping_limit_from_gross:
                 msg = _(u"free_shipping_limit_flat_and_item_gross",
                         default=u"Minimum shipping ${currency} ${flat} or "
                                 u"${currency} ${item} per item in cart. Free "
@@ -96,7 +96,7 @@ class DefaultShipping(ShippingBase):
         # flat costs only
         if flat_shipping_cost and not item_shipping_cost:
             # from gross
-            if shipping_from_gross:
+            if shipping_limit_from_gross:
                 msg = _(u"free_shipping_limit_flat_only_gross",
                         default=u"Flat shipping ${currency} ${flat}. Free "
                                 u"shipping if gross purchase price above "
@@ -115,7 +115,7 @@ class DefaultShipping(ShippingBase):
         # item costs only
         if not flat_shipping_cost and item_shipping_cost:
             # from gross
-            if shipping_from_gross:
+            if shipping_limit_from_gross:
                 msg = _(u"free_shipping_limit_item_only_gross",
                         default=u"Shipping ${currency} ${item} per item in "
                                 u"cart. Free shipping if gross purchase "
@@ -135,10 +135,10 @@ class DefaultShipping(ShippingBase):
     def net(self, items):
         settings = self.settings
         calc = CartItemCalculator(self.context)
-        shipping_from_gross = settings.shipping_from_gross
+        shipping_limit_from_gross = settings.shipping_limit_from_gross
         free_shipping_limit = Decimal(str(settings.free_shipping_limit))
         # calculate shipping from gross
-        if shipping_from_gross:
+        if shipping_limit_from_gross:
             purchase_price = calc.net(items) + calc.vat(items)
         # calculate shipping from net
         else:

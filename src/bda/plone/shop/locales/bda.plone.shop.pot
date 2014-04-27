@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-04-27 17:20+0000\n"
+"POT-Creation-Date: 2014-04-27 17:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -356,8 +356,8 @@ msgstr ""
 msgid "help_flat_shipping_cost"
 msgstr ""
 
-#. Default: "Do not add shipping costs to orders with price bigger than limit. If limit is gross or net depends on shipping_from_gross setting"
-#: ./interfaces.py:316
+#. Default: "Do not add shipping costs to orders with price bigger than limit. If limit is gross or net depends on 'Calculate shipping limit from gross' setting"
+#: ./interfaces.py:308
 msgid "help_free_shipping_limit"
 msgstr ""
 
@@ -395,8 +395,8 @@ msgid "help_quantity_units"
 msgstr ""
 
 #. Default: "If set to False, shipping limit gets calculated from net price instead of gross."
-#: ./interfaces.py:307
-msgid "help_shipping_from_gross"
+#: ./interfaces.py:320
+msgid "help_shipping_limit_from_gross"
 msgstr ""
 
 #. Default: "Default shipping method in checkout"
@@ -567,7 +567,7 @@ msgid "label_flat_shipping_cost"
 msgstr ""
 
 #. Default: "Free Shipping Limit"
-#: ./interfaces.py:315
+#: ./interfaces.py:307
 msgid "label_free_shipping_limit"
 msgstr ""
 
@@ -713,15 +713,15 @@ msgstr ""
 msgid "label_quantity_units"
 msgstr ""
 
-#. Default: "Calculate shipping limit from gross"
-#: ./interfaces.py:305
-msgid "label_shipping_from_gross"
-msgstr ""
-
 #. Default: "Item Weight"
 #: ./at.py:330
 #: ./dx.py:257
 msgid "label_shipping_item_weight"
+msgstr ""
+
+#. Default: "Calculate shipping limit from gross"
+#: ./interfaces.py:318
+msgid "label_shipping_limit_from_gross"
 msgstr ""
 
 #. Default: "Shipping Method"

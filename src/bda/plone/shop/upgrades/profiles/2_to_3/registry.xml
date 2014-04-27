@@ -7,7 +7,7 @@
     </value>
     <value key="shipping_method" purge="false">default_shipping</value>
     <value key="shipping_vat" purge="false">20</value>
-    <value key="shipping_from_gross" purge="false">True</value>
+    <value key="shipping_limit_from_gross" purge="false">True</value>
     <value key="free_shipping_limit" purge="false">200.0</value>
     <value key="flat_shipping_cost" purge="false">10.0</value>
     <value key="item_shipping_cost" purge="false">0.0</value>
