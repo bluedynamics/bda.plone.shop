@@ -15,7 +15,7 @@ msgstr ""
 "Domain: bda.plone.shop\n"
 
 #. Default: "Australian Dollar"
-#: ./vocabularies.py:90
+#: ./vocabularies.py:93
 msgid "AUD"
 msgstr "Australian Dollar"
 
@@ -33,12 +33,12 @@ msgid "Article"
 msgstr "Article"
 
 #. Default: "Canadian Dollar"
-#: ./vocabularies.py:87
+#: ./vocabularies.py:90
 msgid "CAD"
 msgstr "Canadian Dollar"
 
 #. Default: "Swiss Franc"
-#: ./vocabularies.py:88
+#: ./vocabularies.py:91
 msgid "CHF"
 msgstr "Swiss Franc"
 
@@ -48,7 +48,7 @@ msgid "Cart"
 msgstr "Cart"
 
 #. Default: "Danish Krone"
-#: ./vocabularies.py:93
+#: ./vocabularies.py:96
 msgid "DKK"
 msgstr "Danish Krone"
 
@@ -69,7 +69,7 @@ msgid "Disables Buyable"
 msgstr "Disables Buyable"
 
 #. Default: "Euro"
-#: ./vocabularies.py:84
+#: ./vocabularies.py:87
 msgid "EUR"
 msgstr "Euro"
 
@@ -82,22 +82,22 @@ msgid "Enable Vendor Area"
 msgstr "Enable Vendor Area"
 
 #. Default: "British Pound Sterling"
-#: ./vocabularies.py:89
+#: ./vocabularies.py:92
 msgid "GBP"
 msgstr "British Pound Sterling"
 
 #. Default: "Indian Rupee"
-#: ./vocabularies.py:86
+#: ./vocabularies.py:89
 msgid "INR"
 msgstr "Indian Rupee"
 
 #. Default: "Norwegian Krone"
-#: ./vocabularies.py:91
+#: ./vocabularies.py:94
 msgid "NOK"
 msgstr "Norwegian Krone"
 
 #. Default: "New Zealand Dollar"
-#: ./vocabularies.py:95
+#: ./vocabularies.py:98
 msgid "NZD"
 msgstr "New Zealand Dollar"
 
@@ -112,7 +112,7 @@ msgid "Payment"
 msgstr "Payment"
 
 #. Default: "Swedish Krona"
-#: ./vocabularies.py:92
+#: ./vocabularies.py:95
 msgid "SEK"
 msgstr "Swedish Krona"
 
@@ -131,12 +131,12 @@ msgid "Tax Settings"
 msgstr "Tax Settings"
 
 #. Default: "US Dollar"
-#: ./vocabularies.py:85
+#: ./vocabularies.py:88
 msgid "USD"
 msgstr "US Dollar"
 
 #. Default: "Japanese Yen"
-#: ./vocabularies.py:94
+#: ./vocabularies.py:97
 msgid "YEN"
 msgstr "Japanese Yen"
 
@@ -191,7 +191,7 @@ msgid "critical_available_title"
 msgstr "Low items available"
 
 #. Default: "Default Shipping"
-#: ./shipping.py:30
+#: ./shipping.py:31
 msgid "default_shipping"
 msgstr "Default Shipping"
 
@@ -231,44 +231,44 @@ msgid "exportorders"
 msgstr "Export Orders"
 
 #. Default: "Flat Rate"
-#: ./shipping.py:184
+#: ./shipping.py:187
 msgid "flat_rate"
 msgstr "Flat Rate"
 
 #. Default: "Free Shipping"
-#: ./shipping.py:45
+#: ./shipping.py:49
 msgid "free_shipping"
 msgstr "Free Shipping"
 
-#. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:79
+#. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
+#: ./shipping.py:83
 msgid "free_shipping_limit_flat_and_item_gross"
-msgstr "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
+msgstr "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
 
-#. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:86
+#. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
+#: ./shipping.py:90
 msgid "free_shipping_limit_flat_and_item_net"
-msgstr "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
+msgstr "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
 
-#. Default: "Flat ${currency} ${flat}. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:101
+#. Default: "Flat ${flat} ${currency}. Free shipping if gross purchase price above ${limit} ${currency}"
+#: ./shipping.py:105
 msgid "free_shipping_limit_flat_only_gross"
-msgstr "Flat ${currency} ${flat}. Free shipping if gross purchase price above ${currency} ${limit}"
+msgstr "Flat ${flat} ${currency}. Free shipping if gross purchase price above ${limit} ${currency}"
 
-#. Default: "Flat ${currency} ${flat}. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:107
+#. Default: "Flat ${flat} ${currency}. Free shipping if net purchase price above ${limit} ${currency}"
+#: ./shipping.py:111
 msgid "free_shipping_limit_flat_only_net"
-msgstr "Flat ${currency} ${flat}. Free shipping if net purchase price above ${currency} ${limit}"
+msgstr "Flat ${flat} ${currency}. Free shipping if net purchase price above ${limit} ${currency}"
 
-#. Default: "${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
-#: ./shipping.py:120
+#. Default: "${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
+#: ./shipping.py:124
 msgid "free_shipping_limit_item_only_gross"
-msgstr "${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
+msgstr "${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
 
-#. Default: "${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
-#: ./shipping.py:126
+#. Default: "${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
+#: ./shipping.py:130
 msgid "free_shipping_limit_item_only_net"
-msgstr "${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
+msgstr "${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
 
 #. Default: "${available} items(s) available."
 #: ./browser/availability.py:51
@@ -806,24 +806,24 @@ msgid "net"
 msgstr "Net"
 
 #. Default: "No"
-#: ./vocabularies.py:126
+#: ./vocabularies.py:129
 msgid "no"
 msgstr "No"
 
-#. Default: "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart"
-#: ./shipping.py:50
+#. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart"
+#: ./shipping.py:54
 msgid "no_free_shipping_flat_and_item"
-msgstr "Minimum ${currency} ${flat} or ${currency} ${item} per item in cart"
+msgstr "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart"
 
-#. Default: "Flat ${currency} ${flat}"
-#: ./shipping.py:60
+#. Default: "Flat ${flat} ${currency}"
+#: ./shipping.py:64
 msgid "no_free_shipping_flat_only"
-msgstr "Flat ${currency} ${flat}"
+msgstr "Flat ${flat} ${currency}"
 
-#. Default: "${currency} ${item} per item in cart"
-#: ./shipping.py:68
+#. Default: "${item} ${currency} per item in cart"
+#: ./shipping.py:72
 msgid "no_free_shipping_item_only"
-msgstr "${currency} ${item} per item in cart"
+msgstr "${item} ${currency} per item in cart"
 
 #. Default: "Item is sold out."
 #: ./browser/availability_details.pt:8
@@ -896,7 +896,7 @@ msgid "shop_portlet"
 msgstr "Shop Portlet"
 
 #. Default: "Symbol"
-#: ./vocabularies.py:127
+#: ./vocabularies.py:130
 msgid "symbol"
 msgstr "Symbol"
 
@@ -916,7 +916,7 @@ msgid "vat"
 msgstr "Vat"
 
 #. Default: "Yes"
-#: ./vocabularies.py:125
+#: ./vocabularies.py:128
 msgid "yes"
 msgstr "Yes"
 
