@@ -119,7 +119,7 @@ msgstr "Schwedische Krone"
 #. Default: "Shipping"
 #: ./interfaces.py:250
 msgid "Shipping"
-msgstr "Zustellung"
+msgstr "Versand"
 
 #: ./browser/controlpanel.py:49
 #: ./profiles/default/controlpanel.xml
@@ -193,12 +193,12 @@ msgstr "Wenige Artikel verfügbar"
 #. Default: "Default Shipping"
 #: ./shipping.py:30
 msgid "default_shipping"
-msgstr "Standard Zustellung"
+msgstr "Standard"
 
 #. Default: "Delivery Address"
 #: ./user/userdata.py:35
 msgid "delivery_address"
-msgstr "Zustelladresse"
+msgstr "Lieferadresse"
 
 #. Default: "Delivery"
 #: ./browser/availability_details.pt:43
@@ -238,37 +238,37 @@ msgstr "Fixbetrag"
 #. Default: "Free Shipping"
 #: ./shipping.py:43
 msgid "free_shipping"
-msgstr "Kostenlose Zustellung"
+msgstr "Kostenloser Versand"
 
 #. Default: "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
 #: ./shipping.py:78
 msgid "free_shipping_limit_flat_and_item_gross"
-msgstr "Mindestens ${flat} ${currency} Zustellkosten oder ${item} ${currency} pro Artikel im Warenkorb. Kostenlose Zustellung wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
+msgstr "Mindestens ${flat} ${currency} Versandkosten oder ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
 #. Default: "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
 #: ./shipping.py:85
 msgid "free_shipping_limit_flat_and_item_net"
-msgstr "Mindestens ${flat} ${currency} Zustellkosten oder ${item} ${currency} pro Artikel im Warenkorb. Kostenlose Zustellung wenn der Warenwert ${limit} ${currency} Netto übersteigt"
+msgstr "Mindestens ${flat} ${currency} Versandkosten oder ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
 #. Default: "Flat shipping ${currency} ${flat}. Free shipping if gross purchase price above ${currency} ${limit}"
 #: ./shipping.py:100
 msgid "free_shipping_limit_flat_only_gross"
-msgstr "Fixbetrag Zustellkosten ${flat} ${currency}. Kostenlose Zustellung wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
+msgstr "Fixbetrag Versandkosten ${flat} ${currency}. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
 #. Default: "Flat shipping ${currency} ${flat}. Free shipping if net purchase price above ${currency} ${limit}"
 #: ./shipping.py:106
 msgid "free_shipping_limit_flat_only_net"
-msgstr "Fixbetrag Zustellkosten ${flat} ${currency}. Kostenlose Zustellung wenn der Warenwert ${limit} ${currency} Netto übersteigt"
+msgstr "Fixbetrag Versandkosten ${flat} ${currency}. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
 #. Default: "Shipping ${currency} ${item} per item in cart. Free shipping if gross purchase price above ${currency} ${limit}"
 #: ./shipping.py:119
 msgid "free_shipping_limit_item_only_gross"
-msgstr "Zustellkosten ${item} ${currency} pro Artikel im Warenkorb. Kostenlose Zustellung wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
+msgstr "Versandkosten ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
 #. Default: "Shipping ${currency} ${item} per item in cart. Free shipping if net purchase price above ${currency} ${limit}"
 #: ./shipping.py:125
 msgid "free_shipping_limit_item_only_net"
-msgstr "Zustellkosten ${item} ${currency} pro Artikel im Warenkorb. Kostenlose Zustellung wenn der Warenwert ${limit} ${currency} Netto übersteigt"
+msgstr "Versandkosten ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
 #. Default: "${available} items(s) available."
 #: ./browser/availability.py:51
@@ -308,7 +308,7 @@ msgstr "Lieferadresse weicht von Rechnungsadresse ab."
 #. Default: "Available shipping methods in checkout"
 #: ./interfaces.py:276
 msgid "help_available_shipping_methods"
-msgstr "Verfügbare Zustellmethoden in der Kassa"
+msgstr "Verfügbare Versand Arten für Bestellungen"
 
 #: ./user/userdata.py:94
 msgid "help_city"
@@ -350,12 +350,12 @@ msgstr "Geben Sie hier Ihren Vornamen an."
 #. Default: "Net flat shipping cost"
 #: ./interfaces.py:327
 msgid "help_flat_shipping_cost"
-msgstr "Fixbetrag Zustellkosten Netto"
+msgstr "Fixbetrag Versandkosten Netto"
 
 #. Default: "Do not add shipping costs to orders with price bigger than limit. If limit is gross or net depends on 'Calculate shipping limit from gross' setting"
 #: ./interfaces.py:308
 msgid "help_free_shipping_limit"
-msgstr "Zustellkosten entfallen wenn der Warenwert im Warenkorb dieses Limit übersteigt. Ob Dieser Limit für Netto order Brutto gilt, hängt von der 'Berechnung Limit kostenfreie Zustellung vom Brutto Warenwert' Einstellung ab"
+msgstr "Versandkosten entfallen wenn der Warenwert im Warenkorb dieses Limit übersteigt. Ob Dieser Limit für Netto order Brutto gilt, hängt von der 'Berechnung Limit kostenfreier Versand vom Brutto Warenwert' Einstellung ab"
 
 #: ./user/userdata.py:48
 msgid "help_gender"
@@ -374,7 +374,7 @@ msgstr "Sollen die Versandkosten im Warenkorb angezeigt werden?"
 #. Default: "Net shipping cost per item in cart. If flat shipping cost set and item shipping cost below flat shipping cost, flat shipping cost is used"
 #: ./interfaces.py:335
 msgid "help_item_shipping_cost"
-msgstr "Zustellkosten pro Artikel im Warenkorb. Wenn ein Fixbetrag definiert ist und Artikel Zustellkosten niedriger sind als der Fixbetrag, wird der Fixbetrag verwendet"
+msgstr "Versandkosten pro Artikel im Warenkorb. Wenn ein Fixbetrag definiert ist und Artikel Versandkosten niedriger sind als der Fixbetrag, wird der Fixbetrag verwendet"
 
 #. Default: "Fill in your surname or your family name."
 #: ./user/userdata.py:62
@@ -393,7 +393,7 @@ msgstr "Einheit in welcher die Artikel bemessen sind."
 #. Default: "If set to False, shipping limit gets calculated from net price instead of gross."
 #: ./interfaces.py:320
 msgid "help_shipping_limit_from_gross"
-msgstr "Wenn nicht gesetzt, wird das Limit für die kostenfreie Zustellung vom Netto Preis berechnet."
+msgstr "Wenn nicht gesetzt, wird das Limit für den kostenfreien Versand vom Netto Warenwert berechnet."
 
 #. Default: "Default shipping method in checkout"
 #: ./interfaces.py:289
@@ -403,7 +403,7 @@ msgstr "Wählen sie eine Versandart"
 #. Default: "VAT used to calculate shipping costs"
 #: ./interfaces.py:297
 msgid "help_shipping_vat"
-msgstr "Umsatzsteuer die zur Berechnung der Zustellkosten verwendet wird"
+msgstr "Umsatzsteuer die zur Berechnung der Versandkosten verwendet wird"
 
 #: ./interfaces.py:148
 msgid "help_show_checkout"
@@ -478,7 +478,7 @@ msgstr "Alternative Lieferadresse"
 #. Default: "Available Shipping Methods"
 #: ./interfaces.py:274
 msgid "label_available_shipping_methods"
-msgstr "Verfügbare Zustellmethoden"
+msgstr "Verfügbare Versand Arten"
 
 #. Default: "Buyable effective date"
 #: ./at.py:493
@@ -560,12 +560,12 @@ msgstr "Vorname"
 #. Default: "Flat shipping cost"
 #: ./interfaces.py:326
 msgid "label_flat_shipping_cost"
-msgstr "Fixbetrag Zustellkosten"
+msgstr "Fixbetrag Versandkosten"
 
 #. Default: "Free Shipping Limit"
 #: ./interfaces.py:307
 msgid "label_free_shipping_limit"
-msgstr "Limit Fixkosten Zustellung"
+msgstr "Limit Fixkosten Versand"
 
 #. Default: "Gender"
 #: ./user/userdata.py:47
@@ -657,7 +657,7 @@ msgstr "Dezimaleingabe bei Anzahl erlaubt"
 #. Default: "Item shipping cost"
 #: ./interfaces.py:334
 msgid "label_item_shipping_cost"
-msgstr "Zustellkosten pro Artikel"
+msgstr "Versandkosten pro Artikel"
 
 #. Default: "Item VAT (in %)"
 #: ./at.py:144
@@ -718,7 +718,7 @@ msgstr "Gewicht"
 #. Default: "Calculate shipping limit from gross"
 #: ./interfaces.py:318
 msgid "label_shipping_limit_from_gross"
-msgstr "Berechnung Limit kostenfreie Zustellung vom Brutto Warenwert"
+msgstr "Berechnung Limit kostenfreier Versand vom Brutto Warenwert"
 
 #. Default: "Shipping Method"
 #: ./interfaces.py:287
@@ -728,7 +728,7 @@ msgstr "Versandart"
 #. Default: "Shipping VAT"
 #: ./interfaces.py:296
 msgid "label_shipping_vat"
-msgstr "Zustellkosten Umsatzsteuer"
+msgstr "Versandkosten Umsatzsteuer"
 
 #. Default: "Show checkout link in portlet"
 #: ./interfaces.py:144
@@ -813,17 +813,17 @@ msgstr "Nein"
 #. Default: "Minimum shipping ${currency} ${flat} or ${currency} ${item} per item in cart"
 #: ./shipping.py:48
 msgid "no_free_shipping_flat_and_item"
-msgstr "Mindestens ${flat} ${currency} Zustellkosten oder ${item} ${currency} pro Artikel im Warenkorb"
+msgstr "Mindestens ${flat} ${currency} Versandkosten oder ${item} ${currency} pro Artikel im Warenkorb"
 
 #. Default: "Flat shipping ${currency} ${flat}"
 #: ./shipping.py:58
 msgid "no_free_shipping_flat_only"
-msgstr "Fixbetrag Zustellkosten ${flat} ${currency}"
+msgstr "Fixbetrag Versandkosten ${flat} ${currency}"
 
 #. Default: "Shipping ${currency} ${item} per item in cart"
 #: ./shipping.py:66
 msgid "no_free_shipping_item_only"
-msgstr "Zustellkosten ${item} ${currency} pro Artikel im Warenkorb"
+msgstr "Versandkosten ${item} ${currency} pro Artikel im Warenkorb"
 
 #. Default: "Item is sold out."
 #: ./browser/availability_details.pt:8
