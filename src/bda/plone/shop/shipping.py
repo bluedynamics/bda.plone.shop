@@ -1,3 +1,4 @@
+from bda.plone.cart.browser import CURRENCY_LITERALS
 from bda.plone.shipping import Shipping
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.cartdata import CartItemCalculator
@@ -33,6 +34,9 @@ class DefaultShipping(ShippingBase):
     def description(self):
         settings = self.settings
         currency = get_shop_settings().currency
+        show_currency = get_shop_settings().show_currency
+        if show_currency == 'symbol':
+            currency = CURRENCY_LITERALS[currency]
         shipping_limit_from_gross = settings.shipping_limit_from_gross
         free_shipping_limit = Decimal(str(settings.free_shipping_limit))
         flat_shipping_cost = Decimal(str(settings.flat_shipping_cost))
