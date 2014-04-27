@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-04-27 16:34+0000\n"
+"POT-Creation-Date: 2014-04-27 17:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -394,7 +394,7 @@ msgstr ""
 msgid "help_quantity_units"
 msgstr ""
 
-#. Default: "If set to False, shipping costs get calculatedfrom net price instead of gross."
+#. Default: "If set to False, shipping limit gets calculated from net price instead of gross."
 #: ./interfaces.py:307
 msgid "help_shipping_from_gross"
 msgstr ""
@@ -713,7 +713,7 @@ msgstr ""
 msgid "label_quantity_units"
 msgstr ""
 
-#. Default: "Calculate shipping from gross"
+#. Default: "Calculate shipping limit from gross"
 #: ./interfaces.py:305
 msgid "label_shipping_from_gross"
 msgstr ""

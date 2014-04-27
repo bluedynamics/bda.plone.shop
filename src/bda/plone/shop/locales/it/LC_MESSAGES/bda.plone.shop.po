@@ -391,7 +391,7 @@ msgstr ""
 msgid "help_quantity_units"
 msgstr ""
 
-#. Default: "If set to False, shipping costs get calculatedfrom net price instead of gross."
+#. Default: "If set to False, shipping limit gets calculated from net price instead of gross."
 #: ./interfaces.py:307
 msgid "help_shipping_from_gross"
 msgstr ""
@@ -710,7 +710,7 @@ msgstr ""
 msgid "label_quantity_units"
 msgstr ""
 
-#. Default: "Calculate shipping from gross"
+#. Default: "Calculate shipping limit from gross"
 #: ./interfaces.py:305
 msgid "label_shipping_from_gross"
 msgstr ""

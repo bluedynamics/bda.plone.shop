@@ -305,7 +305,7 @@ class IShopShippingSettings(model.Schema):
         title=_(u"label_shipping_from_gross",
                 default=u"Calculate shipping limit from gross"),
         description=_(u"help_shipping_from_gross",
-                      default=u"If set to False, shipping limit get "
+                      default=u"If set to False, shipping limit gets "
                               u"calculated from net price instead of gross.")
     )
 
