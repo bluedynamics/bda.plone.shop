@@ -1,5 +1,6 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
+           xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+           i18n_domain="bda.plone.shop">
 
   <include package="Products.GenericSetup" file="meta.zcml" />
 
