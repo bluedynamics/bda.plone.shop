@@ -303,10 +303,10 @@ class IShopShippingSettings(model.Schema):
 
     shipping_from_gross = schema.Bool(
         title=_(u"label_shipping_from_gross",
-                default=u"Calculate shipping from gross"),
+                default=u"Calculate shipping limit from gross"),
         description=_(u"help_shipping_from_gross",
-                      default=u"If set to False, shipping costs get calculated"
-                              u"from net price instead of gross.")
+                      default=u"If set to False, shipping limit get "
+                              u"calculated from net price instead of gross.")
     )
 
     # default shipping related settings
