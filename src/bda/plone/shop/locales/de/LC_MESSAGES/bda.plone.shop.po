@@ -308,7 +308,7 @@ msgstr "Lieferadresse weicht von Rechnungsadresse ab."
 #. Default: "Available shipping methods in checkout"
 #: ./interfaces.py:276
 msgid "help_available_shipping_methods"
-msgstr "Verfügbare Versand Arten für Bestellungen"
+msgstr "Verfügbare Versandarten für Bestellungen"
 
 #: ./user/userdata.py:94
 msgid "help_city"
@@ -355,7 +355,7 @@ msgstr "Fixbetrag Versandkosten Netto"
 #. Default: "Do not add shipping costs to orders with price bigger than limit. If limit is gross or net depends on 'Calculate shipping limit from gross' setting"
 #: ./interfaces.py:308
 msgid "help_free_shipping_limit"
-msgstr "Versandkosten entfallen wenn der Warenwert im Warenkorb dieses Limit übersteigt. Ob Dieser Limit für Netto order Brutto gilt, hängt von der 'Berechnung Limit kostenfreier Versand vom Brutto Warenwert' Einstellung ab"
+msgstr "Versandkosten entfallen wenn der Warenwert im Warenkorb dieses Limit übersteigt. Ob dieser Limit vom Netto- oder Bruttowarenwert gilt, hängt von der 'Berechnung Limit kostenfreier Versand vom Bruttowarenwert' Einstellung ab"
 
 #: ./user/userdata.py:48
 msgid "help_gender"
@@ -374,7 +374,7 @@ msgstr "Sollen die Versandkosten im Warenkorb angezeigt werden?"
 #. Default: "Net shipping cost per item in cart. If flat shipping cost set and item shipping cost below flat shipping cost, flat shipping cost is used"
 #: ./interfaces.py:335
 msgid "help_item_shipping_cost"
-msgstr "Versandkosten pro Artikel im Warenkorb. Wenn ein Fixbetrag definiert ist und Artikel Versandkosten niedriger sind als der Fixbetrag, wird der Fixbetrag verwendet"
+msgstr "Versandkosten pro Artikel im Warenkorb Netto. Wenn ein Fixbetrag definiert ist und Artikelversandkosten niedriger sind als der Fixbetrag, wird der Fixbetrag verwendet"
 
 #. Default: "Fill in your surname or your family name."
 #: ./user/userdata.py:62
@@ -393,12 +393,12 @@ msgstr "Einheit in welcher die Artikel bemessen sind."
 #. Default: "If set to False, shipping limit gets calculated from net price instead of gross."
 #: ./interfaces.py:320
 msgid "help_shipping_limit_from_gross"
-msgstr "Wenn nicht gesetzt, wird das Limit für den kostenfreien Versand vom Netto Warenwert berechnet."
+msgstr "Wenn nicht gesetzt, wird das Limit für den kostenfreien Versand vom Nettowarenwert berechnet."
 
 #. Default: "Default shipping method in checkout"
 #: ./interfaces.py:289
 msgid "help_shipping_method"
-msgstr "Wählen sie eine Versandart"
+msgstr "Wählen sie die Standard Versandart für Bestellungen"
 
 #. Default: "VAT used to calculate shipping costs"
 #: ./interfaces.py:297
@@ -478,7 +478,7 @@ msgstr "Alternative Lieferadresse"
 #. Default: "Available Shipping Methods"
 #: ./interfaces.py:274
 msgid "label_available_shipping_methods"
-msgstr "Verfügbare Versand Arten"
+msgstr "Verfügbare Versandarten"
 
 #. Default: "Buyable effective date"
 #: ./at.py:493
@@ -565,7 +565,7 @@ msgstr "Fixbetrag Versandkosten"
 #. Default: "Free Shipping Limit"
 #: ./interfaces.py:307
 msgid "label_free_shipping_limit"
-msgstr "Limit Fixkosten Versand"
+msgstr "Limit kostenfreier Versand"
 
 #. Default: "Gender"
 #: ./user/userdata.py:47
@@ -718,12 +718,12 @@ msgstr "Gewicht"
 #. Default: "Calculate shipping limit from gross"
 #: ./interfaces.py:318
 msgid "label_shipping_limit_from_gross"
-msgstr "Berechnung Limit kostenfreier Versand vom Brutto Warenwert"
+msgstr "Berechnung Limit kostenfreier Versand vom Bruttowarenwert"
 
 #. Default: "Shipping Method"
 #: ./interfaces.py:287
 msgid "label_shipping_method"
-msgstr "Versandart"
+msgstr "Standard Versandart"
 
 #. Default: "Shipping VAT"
 #: ./interfaces.py:296
