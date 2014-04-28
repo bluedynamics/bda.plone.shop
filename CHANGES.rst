@@ -4,6 +4,10 @@ Changelog
 0.7dev
 ------
 
+- Add admin portlet link for ``@@exportorders_contextual`` to export orders on
+  this item.
+  [thet]
+
 - Implement ``bda.plone.orders.interfaces.INotificationSettings`` in
   ``bda.plone.shop.mailnotify``.
   [rnix]
