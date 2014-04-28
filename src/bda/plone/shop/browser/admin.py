@@ -96,6 +96,19 @@ class ShopPortletExportOrdersLink(ShopPortletLink):
         self.cssclass = 'export_orders'
 
 
+class ShopPortletExportOrdersItemLink(ShopPortletLink):
+
+    def __init__(self, context):
+        permissions = [VIEW_ORDERS_PERMISSION]
+        super(ShopPortletExportOrdersItemLink, self).__init__(
+            context, view_permissions=permissions)
+        self.url = '%s/@@exportorders_contextual' % self.context.absolute_url()
+        self.title = _(
+            'exportorders_item', default=u'Export Orders on this Item')
+        self.order = 40
+        self.cssclass = 'export_orders_item'
+
+
 class ShopPortletMailTemplatesLink(ShopPortletLink):
 
     def __init__(self, context):
@@ -107,7 +120,7 @@ class ShopPortletMailTemplatesLink(ShopPortletLink):
                 or IVendor.providedBy(context)
         self.url = '%s/@@mailtemplates' % context.absolute_url()
         self.title = _('mailtemplates', default=u'Notification Templates')
-        self.order = 40
+        self.order = 50
         self.cssclass = 'mailtemplates'
 
 
@@ -121,7 +134,7 @@ class ShopPortletCartDiscountLink(ShopPortletLink):
             self.display = ISite.providedBy(context)
         self.url = '%s/@@cart_discount' % context.absolute_url()
         self.title = _('cart_discount', default=u'Cart Discount')
-        self.order = 40
+        self.order = 60
         self.cssclass = 'cart_discount'
 
 
@@ -136,7 +149,7 @@ class ShopPortletCartItemDiscountLink(ShopPortletLink):
                 or IDiscountSettingsEnabled.providedBy(context)
         self.url = '%s/@@item_discount' % context.absolute_url()
         self.title = _('item_discount', default=u'Item Discount')
-        self.order = 40
+        self.order = 70
         self.cssclass = 'item_discount'
 
 
