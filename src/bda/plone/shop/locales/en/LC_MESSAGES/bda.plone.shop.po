@@ -579,22 +579,22 @@ msgstr "Gender"
 
 #. Default: "Default notification text for items in order confirmation mail"
 #: ./interfaces.py:416
-msgid "label_global_site_item_notification_text"
+msgid "label_site_item_notification_text"
 msgstr ""
 
 #. Default: "Default notification text for items in order confirmation mail if item out of stock."
 #: ./interfaces.py:429
-msgid "label_global_site_item_overbook_notification_text"
+msgid "label_site_item_overbook_notification_text"
 msgstr ""
 
 #. Default: "Overall notification text for order confirmation mail"
 #: ./interfaces.py:442
-msgid "label_global_site_order_notification_text"
+msgid "label_site_global_notification_text"
 msgstr ""
 
 #. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
 #: ./interfaces.py:454
-msgid "label_global_site_order_overbook_notification_text"
+msgid "label_site_global_overbook_notification_text"
 msgstr ""
 
 #. Default: "Hide Cart if empty"
