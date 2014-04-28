@@ -386,7 +386,8 @@ class ItemNotificationTextExtender(ExtenderBase):
             default_output_type="text/plain",
             widget=TextAreaWidget(
                 label=_(u'label_order_notification_text',
-                        default=u'Order Notification Text'),
+                        default=u"Notification text for this item in order "
+                                u"confirmation mail"),
             ),
         ),
         XTextField(
@@ -397,7 +398,8 @@ class ItemNotificationTextExtender(ExtenderBase):
             default_output_type="text/plain",
             widget=TextAreaWidget(
                 label=_(u'label_overbook_notification_text',
-                        default=u'Overbooked Notification Text'),
+                        default=u"Notification text for this item in order "
+                                u"confirmation mail if item out of stock"),
             ),
         ),
     ]
@@ -418,7 +420,9 @@ class GlobalNotificationTextExtender(ExtenderBase):
             default_output_type="text/plain",
             widget=TextAreaWidget(
                 label=_(u'label_global_order_notification_text',
-                        default=u'Overall Notification Text'),
+                        default=u"Additional overall notification text for "
+                                u"order confirmation mail if this item "
+                                u"in cart"),
             ),
         ),
         XTextField(
@@ -429,7 +433,9 @@ class GlobalNotificationTextExtender(ExtenderBase):
             default_output_type="text/plain",
             widget=TextAreaWidget(
                 label=_(u'label_global_overbook_notification_text',
-                        default=u'Overall Overbooked Notification Text'),
+                        default=u"Additional overall notification text for "
+                                u"order confirmation mail if this item "
+                                u"in cart and out of stock"),
             ),
         ),
     ]

@@ -108,7 +108,7 @@ msgid "Notifications"
 msgstr ""
 
 #. Default: "Payment"
-#: ./interfaces.py:488
+#: ./interfaces.py:491
 msgid "Payment"
 msgstr ""
 
@@ -487,14 +487,14 @@ msgid "label_available_shipping_methods"
 msgstr ""
 
 #. Default: "Buyable effective date"
-#: ./at.py:493
-#: ./dx.py:399
+#: ./at.py:499
+#: ./dx.py:403
 msgid "label_buyable_effective_date"
 msgstr ""
 
 #. Default: "Buyable expiration date"
-#: ./at.py:501
-#: ./dx.py:405
+#: ./at.py:507
+#: ./dx.py:409
 msgid "label_buyable_expiration_date"
 msgstr ""
 
@@ -578,15 +578,15 @@ msgstr ""
 msgid "label_gender"
 msgstr ""
 
-#. Default: "Overall Notification Text"
-#: ./at.py:420
-#: ./dx.py:332
+#. Default: "Additional overall notification text for order confirmation mail if this item in cart"
+#: ./at.py:422
+#: ./dx.py:334
 msgid "label_global_order_notification_text"
 msgstr ""
 
-#. Default: "Overall Overbooked Notification Text"
-#: ./at.py:431
-#: ./dx.py:340
+#. Default: "Additional overall notification text for order confirmation mail if this item in cart and out of stock"
+#: ./at.py:435
+#: ./dx.py:343
 msgid "label_global_overbook_notification_text"
 msgstr ""
 
@@ -676,32 +676,30 @@ msgstr "IVA (in %)"
 msgid "label_lastname"
 msgstr ""
 
-#. Default: "Order Notification Text"
+#. Default: "Notification text for this item in order confirmation mail"
 #: ./at.py:388
 #: ./dx.py:305
-#: ./interfaces.py:416
 msgid "label_order_notification_text"
 msgstr ""
 
-#. Default: "Overall Overbooked Notification Text"
-#: ./interfaces.py:452
+#. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
+#: ./interfaces.py:454
 msgid "label_overall overbook_notification_text"
 msgstr ""
 
-#. Default: "Overall Notification Text"
-#: ./interfaces.py:440
+#. Default: "Overall notification text for order confirmation mail"
+#: ./interfaces.py:442
 msgid "label_overall_order_notification_text"
 msgstr ""
 
-#. Default: "Overbooked Notification Text"
-#: ./at.py:399
-#: ./dx.py:313
-#: ./interfaces.py:428
+#. Default: "Notification text for this item in order confirmation mail if item out of stock"
+#: ./at.py:400
+#: ./dx.py:314
 msgid "label_overbook_notification_text"
 msgstr ""
 
 #. Default: "Payment Texts"
-#: ./interfaces.py:496
+#: ./interfaces.py:499
 msgid "label_payment_text"
 msgstr ""
 
@@ -749,6 +747,16 @@ msgstr ""
 #. Default: "Show link to cart in portlet"
 #: ./interfaces.py:153
 msgid "label_show_to_cart"
+msgstr ""
+
+#. Default: "Default notification text for items in order confirmation mail"
+#: ./interfaces.py:416
+msgid "label_site_order_notification_text"
+msgstr ""
+
+#. Default: "Default notification text for items in order confirmation mail if item out of stock."
+#: ./interfaces.py:429
+msgid "label_site_overbook_notification_text"
 msgstr ""
 
 #. Default: "Street"
@@ -842,7 +850,7 @@ msgid "not_available_title"
 msgstr ""
 
 #. Default: "Order Text"
-#: ./interfaces.py:421
+#: ./interfaces.py:422
 msgid "order_text"
 msgstr ""
 
@@ -862,17 +870,17 @@ msgid "overbook_available_title"
 msgstr ""
 
 #. Default: "Overbook Text"
-#: ./interfaces.py:433
+#: ./interfaces.py:435
 msgid "overbook_text"
 msgstr ""
 
 #. Default: "Payment"
-#: ./interfaces.py:466
+#: ./interfaces.py:469
 msgid "payment"
 msgstr ""
 
 #. Default: "Payment Text"
-#: ./interfaces.py:501
+#: ./interfaces.py:504
 msgid "payment_text"
 msgstr ""
 

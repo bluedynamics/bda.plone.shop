@@ -414,8 +414,9 @@ class INotificationTextSettings(model.Schema,
     widget('order_text', DataGridFieldFactory)
     order_text = schema.List(
         title=_(
-            u"label_order_notification_text",
-            default=u"Order Notification Text"
+            u"label_site_order_notification_text",
+            default=u"Default notification text for items in order "
+                    u"confirmation mail"
         ),
         value_type=DictRow(
             title=_(u'order_text', default='Order Text'),
@@ -426,8 +427,9 @@ class INotificationTextSettings(model.Schema,
     widget('overbook_text', DataGridFieldFactory)
     overbook_text = schema.List(
         title=_(
-            u"label_overbook_notification_text",
-            default=u"Overbooked Notification Text"
+            u"label_site_overbook_notification_text",
+            default=u"Default notification text for items in order "
+                    u"confirmation mail if item out of stock."
         ),
         value_type=DictRow(
             title=_(u'overbook_text', default='Overbook Text'),
@@ -439,7 +441,7 @@ class INotificationTextSettings(model.Schema,
     global_order_text = schema.List(
         title=_(
             u"label_overall_order_notification_text",
-            default=u"Overall Notification Text"
+            default=u"Overall notification text for order confirmation mail"
         ),
         value_type=DictRow(
             title=_(u'order_text', default='Order Text'),
@@ -451,7 +453,8 @@ class INotificationTextSettings(model.Schema,
     global_overbook_text = schema.List(
         title=_(
             u"label_overall overbook_notification_text",
-            default=u"Overall Overbooked Notification Text"
+            default=u"Overall notification text for order confirmation mail "
+                    u"if order contains items out of stock"
         ),
         value_type=DictRow(
             title=_(u'overbook_text', default='Overbook Text'),
