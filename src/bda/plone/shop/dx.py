@@ -303,7 +303,7 @@ class IItemNotificationTextBehavior(model.Schema):
 
     order_text = schema.Text(
         title=_(
-            u"label_order_notification_text",
+            u"label_item_notification_text",
             default=u"Notification text for this item in order confirmation "
                     u"mail"
         ),
@@ -312,7 +312,7 @@ class IItemNotificationTextBehavior(model.Schema):
 
     overbook_text = schema.Text(
         title=_(
-            u"label_overbook_notification_text",
+            u"label_item_overbook_notification_text",
             default=u"Notification text for this item in order confirmation "
                     u"mail if item out of stock"
         ),
@@ -332,7 +332,7 @@ class IGlobalNotificationTextBehavior(model.Schema):
 
     global_order_text = schema.Text(
         title=_(
-            u"label_global_order_notification_text",
+            u"label_item_global_notification_text",
             default=u"Additional overall notification text for order "
                     u"confirmation mail if this item in cart"
         ),
@@ -341,7 +341,7 @@ class IGlobalNotificationTextBehavior(model.Schema):
 
     global_overbook_text = schema.Text(
         title=_(
-            u"label_global_overbook_notification_text",
+            u"label_item_global_overbook_notification_text",
             default=u"Additional overall notification text for order "
                     u"confirmation mail if this item in cart and out of stock"
         ),

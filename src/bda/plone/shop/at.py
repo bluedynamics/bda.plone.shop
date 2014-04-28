@@ -385,7 +385,7 @@ class ItemNotificationTextExtender(ExtenderBase):
             allowable_content_types=('text/plain',),
             default_output_type="text/plain",
             widget=TextAreaWidget(
-                label=_(u'label_order_notification_text',
+                label=_(u'label_item_notification_text',
                         default=u"Notification text for this item in order "
                                 u"confirmation mail"),
             ),
@@ -397,7 +397,7 @@ class ItemNotificationTextExtender(ExtenderBase):
             allowable_content_types=('text/plain',),
             default_output_type="text/plain",
             widget=TextAreaWidget(
-                label=_(u'label_overbook_notification_text',
+                label=_(u'label_item_overbook_notification_text',
                         default=u"Notification text for this item in order "
                                 u"confirmation mail if item out of stock"),
             ),
@@ -419,7 +419,7 @@ class GlobalNotificationTextExtender(ExtenderBase):
             allowable_content_types=('text/plain',),
             default_output_type="text/plain",
             widget=TextAreaWidget(
-                label=_(u'label_global_order_notification_text',
+                label=_(u'label_item_global_notification_text',
                         default=u"Additional overall notification text for "
                                 u"order confirmation mail if this item "
                                 u"in cart"),
@@ -432,7 +432,7 @@ class GlobalNotificationTextExtender(ExtenderBase):
             allowable_content_types=('text/plain',),
             default_output_type="text/plain",
             widget=TextAreaWidget(
-                label=_(u'label_global_overbook_notification_text',
+                label=_(u'label_item_global_overbook_notification_text',
                         default=u"Additional overall notification text for "
                                 u"order confirmation mail if this item "
                                 u"in cart and out of stock"),

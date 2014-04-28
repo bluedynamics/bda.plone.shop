@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-04-28 16:50+0000\n"
+"POT-Creation-Date: 2014-04-28 17:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -581,18 +581,6 @@ msgstr ""
 msgid "label_gender"
 msgstr ""
 
-#. Default: "Additional overall notification text for order confirmation mail if this item in cart"
-#: ./at.py:422
-#: ./dx.py:334
-msgid "label_global_order_notification_text"
-msgstr ""
-
-#. Default: "Additional overall notification text for order confirmation mail if this item in cart and out of stock"
-#: ./at.py:435
-#: ./dx.py:343
-msgid "label_global_overbook_notification_text"
-msgstr ""
-
 #. Default: "Default notification text for items in order confirmation mail"
 #: ./interfaces.py:416
 msgid "label_global_site_item_notification_text"
@@ -659,16 +647,40 @@ msgstr ""
 msgid "label_item_display_stock"
 msgstr ""
 
+#. Default: "Additional overall notification text for order confirmation mail if this item in cart"
+#: ./at.py:422
+#: ./dx.py:334
+msgid "label_item_global_notification_text"
+msgstr ""
+
+#. Default: "Additional overall notification text for order confirmation mail if this item in cart and out of stock"
+#: ./at.py:435
+#: ./dx.py:343
+msgid "label_item_global_overbook_notification_text"
+msgstr ""
+
 #. Default: "Item net price"
 #: ./at.py:137
 #: ./dx.py:81
 msgid "label_item_net"
 msgstr ""
 
+#. Default: "Notification text for this item in order confirmation mail"
+#: ./at.py:388
+#: ./dx.py:305
+msgid "label_item_notification_text"
+msgstr ""
+
 #. Default: "Item stock overbook"
 #: ./at.py:282
 #: ./dx.py:210
 msgid "label_item_overbook"
+msgstr ""
+
+#. Default: "Notification text for this item in order confirmation mail if item out of stock"
+#: ./at.py:400
+#: ./dx.py:314
+msgid "label_item_overbook_notification_text"
 msgstr ""
 
 #. Default: "Quantity unit"
@@ -697,18 +709,6 @@ msgstr ""
 #. Default: "Last name"
 #: ./user/userdata.py:61
 msgid "label_lastname"
-msgstr ""
-
-#. Default: "Notification text for this item in order confirmation mail"
-#: ./at.py:388
-#: ./dx.py:305
-msgid "label_order_notification_text"
-msgstr ""
-
-#. Default: "Notification text for this item in order confirmation mail if item out of stock"
-#: ./at.py:400
-#: ./dx.py:314
-msgid "label_overbook_notification_text"
 msgstr ""
 
 #. Default: "Payment Texts"
