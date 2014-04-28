@@ -277,6 +277,7 @@ class DXShippingItem(object):
 class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
     """Accessor Interface
     """
+
     preview_scale = "tile"
 
     @property

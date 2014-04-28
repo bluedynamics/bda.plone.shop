@@ -751,12 +751,12 @@ msgstr "Allgemeiner Benachrichtigungstext für Bestätigungsmail wenn Warenkorb 
 #. Default: "Default notification text for items in order confirmation mail"
 #: ./interfaces.py:416
 msgid "label_site_item_notification_text"
-msgstr "Standard Text Bestätigungsmail für Artikel im Warenkorb"
+msgstr "Benachrichtigungstext für Bestätigungsmail für Artikel im Warenkorb"
 
 #. Default: "Default notification text for items in order confirmation mail if item out of stock."
 #: ./interfaces.py:429
 msgid "label_site_item_overbook_notification_text"
-msgstr "Standard Text Bestätigungsmail für Artikel im Warenkorb wenn Artikel nicht lagernd"
+msgstr "Benachrichtigungstext für Bestätigungsmail für Artikel im Warenkorb, die nicht lagernd"
 
 #. Default: "Street"
 #: ./user/userdata.py:81

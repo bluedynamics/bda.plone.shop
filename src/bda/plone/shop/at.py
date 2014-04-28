@@ -352,6 +352,7 @@ class ATShippingItem(object):
 class ATCartItemPreviewImage(CartItemPreviewAdapterBase):
     """Accessor Interface
     """
+
     preview_scale = "tile"
 
     @property
@@ -445,6 +446,7 @@ class GlobalNotificationTextExtender(ExtenderBase):
 class ATItemNotificationText(BubbleItemNotificationText):
     """Accessor Interface
     """
+
     @property
     def order_text(self):
         text = None
@@ -470,16 +472,25 @@ class ATItemNotificationText(BubbleItemNotificationText):
 class ATGlobalNotificationText(BubbleGlobalNotificationText):
     """Accessor Interface
     """
+
     @property
     def order_text(self):
-        text = self.context.getField('global_order_text').get(self.context)
+        text = None
+        field = self.context.getField('global_order_text')
+        if field:
+            text = field.get(self.context)
         if text:
             return text
-        return super(ATGlobalNotificationText, self).text
+        return super(ATGlobalNotificationText, self).global_order_text
 
     @property
     def overbook_text(self):
-        text = self.context.getField('global_overbook_text').get(self.context)
+        text = None
+        field = self.context.getField('global_overbook_text')
+        if field:
+            text = field.get(self.context)
+        if text:
+            return text
         if text:
             return text
         return super(ATGlobalNotificationText, self).global_overbook_text

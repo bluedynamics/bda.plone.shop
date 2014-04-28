@@ -77,7 +77,7 @@ class BubbleGlobalNotificationText(object):
         return ''
 
 
-class BaseRegistryNotificationText(object):
+class SiteRegistryNotificationText(object):
 
     def __init__(self, context):
         self.context = context
@@ -93,7 +93,7 @@ class BaseRegistryNotificationText(object):
 
 
 @adapter(ISiteRoot)
-class RegistryItemNotificationText(BaseRegistryNotificationText,
+class RegistryItemNotificationText(SiteRegistryNotificationText,
                                    BubbleItemNotificationText):
 
     @property
@@ -112,7 +112,7 @@ class RegistryItemNotificationText(BaseRegistryNotificationText,
 
 
 @adapter(ISiteRoot)
-class RegistryGlobalNotificationText(BaseRegistryNotificationText,
+class RegistryGlobalNotificationText(SiteRegistryNotificationText,
                                      BubbleGlobalNotificationText):
 
     @property
