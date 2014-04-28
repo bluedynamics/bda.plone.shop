@@ -746,7 +746,7 @@ msgstr "Allgemeiner Benachrichtigungstext für Bestätigungsmail"
 #. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
 #: ./interfaces.py:454
 msgid "label_site_global_overbook_notification_text"
-msgstr "Allgemeiner Benachrichtigungstext für Bestätigungsmail wenn Warenkorm Artikel enthält, die nicht lagernd sind"
+msgstr "Allgemeiner Benachrichtigungstext für Bestätigungsmail wenn Warenkorb Artikel enthält, die nicht lagernd sind"
 
 #. Default: "Default notification text for items in order confirmation mail"
 #: ./interfaces.py:416
