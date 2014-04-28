@@ -591,6 +591,26 @@ msgstr ""
 msgid "label_global_overbook_notification_text"
 msgstr ""
 
+#. Default: "Default notification text for items in order confirmation mail"
+#: ./interfaces.py:416
+msgid "label_global_site_item_notification_text"
+msgstr ""
+
+#. Default: "Default notification text for items in order confirmation mail if item out of stock."
+#: ./interfaces.py:429
+msgid "label_global_site_item_overbook_notification_text"
+msgstr ""
+
+#. Default: "Overall notification text for order confirmation mail"
+#: ./interfaces.py:442
+msgid "label_global_site_order_notification_text"
+msgstr ""
+
+#. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
+#: ./interfaces.py:454
+msgid "label_global_site_order_overbook_notification_text"
+msgstr ""
+
 #. Default: "Hide Cart if empty"
 #: ./interfaces.py:114
 msgid "label_hide_cart_if_empty"
@@ -683,16 +703,6 @@ msgstr ""
 msgid "label_order_notification_text"
 msgstr ""
 
-#. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
-#: ./interfaces.py:454
-msgid "label_overall overbook_notification_text"
-msgstr ""
-
-#. Default: "Overall notification text for order confirmation mail"
-#: ./interfaces.py:442
-msgid "label_overall_order_notification_text"
-msgstr ""
-
 #. Default: "Notification text for this item in order confirmation mail if item out of stock"
 #: ./at.py:400
 #: ./dx.py:314
@@ -748,16 +758,6 @@ msgstr ""
 #. Default: "Show link to cart in portlet"
 #: ./interfaces.py:153
 msgid "label_show_to_cart"
-msgstr ""
-
-#. Default: "Default notification text for items in order confirmation mail"
-#: ./interfaces.py:416
-msgid "label_site_order_notification_text"
-msgstr ""
-
-#. Default: "Default notification text for items in order confirmation mail if item out of stock."
-#: ./interfaces.py:429
-msgid "label_site_overbook_notification_text"
 msgstr ""
 
 #. Default: "Street"

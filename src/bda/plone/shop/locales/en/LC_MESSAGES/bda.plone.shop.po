@@ -589,6 +589,26 @@ msgstr "Additional overall notification text for order confirmation mail if this
 msgid "label_global_overbook_notification_text"
 msgstr "Additional overall notification text for order confirmation mail if this item in cart and out of stock"
 
+#. Default: "Default notification text for items in order confirmation mail"
+#: ./interfaces.py:416
+msgid "label_global_site_item_notification_text"
+msgstr ""
+
+#. Default: "Default notification text for items in order confirmation mail if item out of stock."
+#: ./interfaces.py:429
+msgid "label_global_site_item_overbook_notification_text"
+msgstr ""
+
+#. Default: "Overall notification text for order confirmation mail"
+#: ./interfaces.py:442
+msgid "label_global_site_order_notification_text"
+msgstr ""
+
+#. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
+#: ./interfaces.py:454
+msgid "label_global_site_order_overbook_notification_text"
+msgstr ""
+
 #. Default: "Hide Cart if empty"
 #: ./interfaces.py:114
 msgid "label_hide_cart_if_empty"
@@ -681,16 +701,6 @@ msgstr "Last name"
 msgid "label_order_notification_text"
 msgstr "Notification text for this item in order confirmation mail"
 
-#. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
-#: ./interfaces.py:454
-msgid "label_overall overbook_notification_text"
-msgstr "Overall notification text for order confirmation mail if order contains items out of stock"
-
-#. Default: "Overall notification text for order confirmation mail"
-#: ./interfaces.py:442
-msgid "label_overall_order_notification_text"
-msgstr "Overall notification text for order confirmation mail"
-
 #. Default: "Notification text for this item in order confirmation mail if item out of stock"
 #: ./at.py:400
 #: ./dx.py:314
@@ -747,16 +757,6 @@ msgstr "Show the currency for items"
 #: ./interfaces.py:153
 msgid "label_show_to_cart"
 msgstr "Show link to cart in portlet"
-
-#. Default: "Default notification text for items in order confirmation mail"
-#: ./interfaces.py:416
-msgid "label_site_order_notification_text"
-msgstr "Default notification text for items in order confirmation mail"
-
-#. Default: "Default notification text for items in order confirmation mail if item out of stock."
-#: ./interfaces.py:429
-msgid "label_site_overbook_notification_text"
-msgstr "Default notification text for items in order confirmation mail if item out of stock."
 
 #. Default: "Street"
 #: ./user/userdata.py:81
