@@ -171,7 +171,7 @@ msgid "availability"
 msgstr "Availability"
 
 #. Default: "Cart Discount"
-#: ./browser/admin.py:123
+#: ./browser/admin.py:136
 msgid "cart_discount"
 msgstr "Cart Discount"
 
@@ -229,6 +229,11 @@ msgstr "Enabled Vendor."
 #: ./browser/admin.py:94
 msgid "exportorders"
 msgstr "Export Orders"
+
+#. Default: "Export Orders on this Item"
+#: ./browser/admin.py:106
+msgid "exportorders_item"
+msgstr "Export Orders on this Item"
 
 #. Default: "Flat Rate"
 #: ./shipping.py:187
@@ -436,7 +441,7 @@ msgid "help_zip"
 msgstr ""
 
 #. Default: "Item Discount"
-#: ./browser/admin.py:138
+#: ./browser/admin.py:151
 msgid "item_discount"
 msgstr "Item Discount"
 
@@ -781,7 +786,7 @@ msgid "liter"
 msgstr "Liter"
 
 #. Default: "Notification Templates"
-#: ./browser/admin.py:109
+#: ./browser/admin.py:122
 msgid "mailtemplates"
 msgstr "Notification Templates"
 
@@ -891,7 +896,7 @@ msgid "shop_admin_heading"
 msgstr "Shop"
 
 #. Default: "Shop Portlet"
-#: ./browser/admin.py:150
+#: ./browser/admin.py:163
 msgid "shop_portlet"
 msgstr "Shop Portlet"
 

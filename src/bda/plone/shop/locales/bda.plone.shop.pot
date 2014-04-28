@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-04-27 20:40+0000\n"
+"POT-Creation-Date: 2014-04-28 12:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -175,7 +175,7 @@ msgid "availability"
 msgstr ""
 
 #. Default: "Cart Discount"
-#: ./browser/admin.py:123
+#: ./browser/admin.py:136
 msgid "cart_discount"
 msgstr ""
 
@@ -232,6 +232,11 @@ msgstr ""
 #. Default: "Export Orders"
 #: ./browser/admin.py:94
 msgid "exportorders"
+msgstr ""
+
+#. Default: "Export Orders on this Item"
+#: ./browser/admin.py:106
+msgid "exportorders_item"
 msgstr ""
 
 #. Default: "Flat Rate"
@@ -440,7 +445,7 @@ msgid "help_zip"
 msgstr ""
 
 #. Default: "Item Discount"
-#: ./browser/admin.py:138
+#: ./browser/admin.py:151
 msgid "item_discount"
 msgstr ""
 
@@ -785,7 +790,7 @@ msgid "liter"
 msgstr ""
 
 #. Default: "Notification Templates"
-#: ./browser/admin.py:109
+#: ./browser/admin.py:122
 msgid "mailtemplates"
 msgstr ""
 
@@ -895,7 +900,7 @@ msgid "shop_admin_heading"
 msgstr ""
 
 #. Default: "Shop Portlet"
-#: ./browser/admin.py:150
+#: ./browser/admin.py:163
 msgid "shop_portlet"
 msgstr ""
 
