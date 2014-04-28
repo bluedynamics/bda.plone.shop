@@ -65,6 +65,7 @@
   <adapter factory=".mailnotify.RegistryItemNotificationText" />
   <adapter factory=".mailnotify.BubbleGlobalNotificationText" />
   <adapter factory=".mailnotify.RegistryGlobalNotificationText" />
+  <adapter factory=".mailnotify.RegistryPaymentText" />
 
   <!-- AT Extenders -->
   <adapter

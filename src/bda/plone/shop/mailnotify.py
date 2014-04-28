@@ -4,8 +4,10 @@ from Products.CMFCore.utils import getToolByName
 from bda.plone.orders.interfaces import INotificationSettings
 from bda.plone.orders.interfaces import IGlobalNotificationText
 from bda.plone.orders.interfaces import IItemNotificationText
+from bda.plone.orders.interfaces import IPaymentText
 from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_notification_settings
+from bda.plone.shop.utils import get_shop_payment_settings
 from zope.component import adapter
 from zope.component import queryAdapter
 from zope.interface import implementer
@@ -128,3 +130,20 @@ class RegistryGlobalNotificationText(SiteRegistryNotificationText,
         if text:
             return text
         return super(RegistryGlobalNotificationText, self).global_overbook_text
+
+
+@implementer(IPaymentText)
+@adapter(ISiteRoot)
+class RegistryPaymentText(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    def payment_text(self, payment):
+        settings = get_shop_payment_settings()
+        portal_state = self.context.restrictedTraverse('@@plone_portal_state')
+        lang = portal_state.language()
+        for entry in settings.payment_text:
+            if entry['lang'] == lang and entry['payment'] == payment:
+                return entry['text']
+        return u''

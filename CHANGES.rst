@@ -4,6 +4,9 @@ Changelog
 0.7dev
 ------
 
+- Introduce ``RegistryPaymentText``.
+  [rnix]
+
 - Add admin portlet link for ``@@exportorders_contextual`` to export orders on
   this item.
   [thet]
