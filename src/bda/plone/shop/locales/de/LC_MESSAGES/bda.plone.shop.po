@@ -233,7 +233,7 @@ msgstr "Export Bestellungen"
 #. Default: "Export Orders on this Item"
 #: ./browser/admin.py:106
 msgid "exportorders_item"
-msgstr "Exportiere Bestellungen für Artikel"
+msgstr "Export Bestellungen für Artikel"
 
 #. Default: "Flat Rate"
 #: ./shipping.py:187
