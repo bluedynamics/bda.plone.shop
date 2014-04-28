@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-04-28 17:33+0000\n"
+"POT-Creation-Date: 2014-04-28 17:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -581,26 +581,6 @@ msgstr ""
 msgid "label_gender"
 msgstr ""
 
-#. Default: "Default notification text for items in order confirmation mail"
-#: ./interfaces.py:416
-msgid "label_site_item_notification_text"
-msgstr ""
-
-#. Default: "Default notification text for items in order confirmation mail if item out of stock."
-#: ./interfaces.py:429
-msgid "label_site_item_overbook_notification_text"
-msgstr ""
-
-#. Default: "Overall notification text for order confirmation mail"
-#: ./interfaces.py:442
-msgid "label_site_global_notification_text"
-msgstr ""
-
-#. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
-#: ./interfaces.py:454
-msgid "label_site_global_overbook_notification_text"
-msgstr ""
-
 #. Default: "Hide Cart if empty"
 #: ./interfaces.py:114
 msgid "label_hide_cart_if_empty"
@@ -760,6 +740,26 @@ msgstr ""
 #. Default: "Show link to cart in portlet"
 #: ./interfaces.py:153
 msgid "label_show_to_cart"
+msgstr ""
+
+#. Default: "Overall notification text for order confirmation mail"
+#: ./interfaces.py:442
+msgid "label_site_global_notification_text"
+msgstr ""
+
+#. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
+#: ./interfaces.py:454
+msgid "label_site_global_overbook_notification_text"
+msgstr ""
+
+#. Default: "Default notification text for items in order confirmation mail"
+#: ./interfaces.py:416
+msgid "label_site_item_notification_text"
+msgstr ""
+
+#. Default: "Default notification text for items in order confirmation mail if item out of stock."
+#: ./interfaces.py:429
+msgid "label_site_item_overbook_notification_text"
 msgstr ""
 
 #. Default: "Street"
