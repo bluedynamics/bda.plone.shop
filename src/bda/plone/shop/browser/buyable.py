@@ -1,15 +1,16 @@
-from decimal import Decimal
-from datetime import datetime
-from zope.i18n import translate
-from zope.component import queryAdapter
 from AccessControl import getSecurityManager
 from Products.Five import BrowserView
 from bda.plone.cart import get_data_provider
-from bda.plone.cart import get_item_data_provider
 from bda.plone.cart import get_item_availability
+from bda.plone.cart import get_item_data_provider
 from bda.plone.cart.browser import DataProviderMixin
 from bda.plone.shop import permissions
 from bda.plone.shop.interfaces import IBuyablePeriod
+from datetime import datetime
+from decimal import Decimal
+from plone.uuid.interfaces import IUUID
+from zope.component import queryAdapter
+from zope.i18n import translate
 
 
 class BuyableControls(BrowserView, DataProviderMixin):
@@ -67,7 +68,7 @@ class BuyableControls(BrowserView, DataProviderMixin):
 
     @property
     def item_uid(self):
-        return self.context.UID()
+        return IUUID(self.context)
 
     @property
     def item_vat(self):
