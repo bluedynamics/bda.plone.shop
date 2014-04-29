@@ -107,7 +107,7 @@ msgid "Notifications"
 msgstr "Notifications"
 
 #. Default: "Payment"
-#: ./interfaces.py:491
+#: ./interfaces.py:492
 msgid "Payment"
 msgstr "Payment"
 
@@ -191,7 +191,7 @@ msgid "critical_available_title"
 msgstr "Low items available"
 
 #. Default: "Default Shipping"
-#: ./shipping.py:31
+#: ./shipping.py:36
 msgid "default_shipping"
 msgstr "Default Shipping"
 
@@ -236,42 +236,42 @@ msgid "exportorders_item"
 msgstr "Export Orders on this Item"
 
 #. Default: "Flat Rate"
-#: ./shipping.py:187
+#: ./shipping.py:192
 msgid "flat_rate"
 msgstr "Flat Rate"
 
 #. Default: "Free Shipping"
-#: ./shipping.py:49
+#: ./shipping.py:54
 msgid "free_shipping"
 msgstr "Free Shipping"
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:83
+#: ./shipping.py:88
 msgid "free_shipping_limit_flat_and_item_gross"
 msgstr "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:90
+#: ./shipping.py:95
 msgid "free_shipping_limit_flat_and_item_net"
 msgstr "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
 
 #. Default: "Flat ${flat} ${currency}. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:105
+#: ./shipping.py:110
 msgid "free_shipping_limit_flat_only_gross"
 msgstr "Flat ${flat} ${currency}. Free shipping if gross purchase price above ${limit} ${currency}"
 
 #. Default: "Flat ${flat} ${currency}. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:111
+#: ./shipping.py:116
 msgid "free_shipping_limit_flat_only_net"
 msgstr "Flat ${flat} ${currency}. Free shipping if net purchase price above ${limit} ${currency}"
 
 #. Default: "${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:124
+#: ./shipping.py:129
 msgid "free_shipping_limit_item_only_gross"
 msgstr "${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
 
 #. Default: "${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:130
+#: ./shipping.py:135
 msgid "free_shipping_limit_item_only_net"
 msgstr "${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
 
@@ -309,6 +309,11 @@ msgstr "Name used for Shop E-Mails."
 #: ./user/userdata.py:109
 msgid "help_alternative_delivery"
 msgstr "Delivery address is different from billing address."
+
+#. Default: "Available payment methods in checkout"
+#: ./interfaces.py:503
+msgid "help_available_payment_methods"
+msgstr "Available payment methods in checkout"
 
 #. Default: "Available shipping methods in checkout"
 #: ./interfaces.py:276
@@ -385,6 +390,11 @@ msgstr "Net shipping cost per item in cart. If flat shipping cost set and item s
 #: ./user/userdata.py:62
 msgid "help_lastname"
 msgstr "Fill in your surname or your family name."
+
+#. Default: "Default payment method in checkout"
+#: ./interfaces.py:516
+msgid "help_payment_method"
+msgstr "Default payment method in checkout"
 
 #: ./user/userdata.py:69
 msgid "help_phone"
@@ -480,20 +490,25 @@ msgstr "Shop Admin Name"
 msgid "label_alternative_delivery"
 msgstr "Alternative delivery address"
 
+#. Default: "Available Payment Methods"
+#: ./interfaces.py:501
+msgid "label_available_payment_methods"
+msgstr "Available Payment Methods"
+
 #. Default: "Available Shipping Methods"
 #: ./interfaces.py:274
 msgid "label_available_shipping_methods"
 msgstr "Available Shipping Methods"
 
 #. Default: "Buyable effective date"
-#: ./at.py:499
-#: ./dx.py:403
+#: ./at.py:510
+#: ./dx.py:404
 msgid "label_buyable_effective_date"
 msgstr "Buyable effective date"
 
 #. Default: "Buyable expiration date"
-#: ./at.py:507
-#: ./dx.py:409
+#: ./at.py:518
+#: ./dx.py:410
 msgid "label_buyable_expiration_date"
 msgstr "Buyable expiration date"
 
@@ -624,16 +639,16 @@ msgid "label_item_display_stock"
 msgstr "Display item stock"
 
 #. Default: "Additional overall notification text for order confirmation mail if this item in cart"
-#: ./at.py:422
-#: ./dx.py:334
+#: ./at.py:423
+#: ./dx.py:335
 msgid "label_item_global_notification_text"
-msgstr ""
+msgstr "Additional overall notification text for order confirmation mail if this item in cart"
 
 #. Default: "Additional overall notification text for order confirmation mail if this item in cart and out of stock"
-#: ./at.py:435
-#: ./dx.py:343
+#: ./at.py:436
+#: ./dx.py:344
 msgid "label_item_global_overbook_notification_text"
-msgstr ""
+msgstr "Additional overall notification text for order confirmation mail if this item in cart and out of stock"
 
 #. Default: "Item net price"
 #: ./at.py:137
@@ -642,10 +657,10 @@ msgid "label_item_net"
 msgstr "Item net price"
 
 #. Default: "Notification text for this item in order confirmation mail"
-#: ./at.py:388
-#: ./dx.py:305
+#: ./at.py:389
+#: ./dx.py:306
 msgid "label_item_notification_text"
-msgstr ""
+msgstr "Notification text for this item in order confirmation mail"
 
 #. Default: "Item stock overbook"
 #: ./at.py:282
@@ -654,10 +669,10 @@ msgid "label_item_overbook"
 msgstr "Item stock overbook"
 
 #. Default: "Notification text for this item in order confirmation mail if item out of stock"
-#: ./at.py:400
-#: ./dx.py:314
+#: ./at.py:401
+#: ./dx.py:315
 msgid "label_item_overbook_notification_text"
-msgstr ""
+msgstr "Notification text for this item in order confirmation mail if item out of stock"
 
 #. Default: "Quantity unit"
 #: ./at.py:191
@@ -687,8 +702,13 @@ msgstr "Item VAT (in %)"
 msgid "label_lastname"
 msgstr "Last name"
 
+#. Default: "Payment Method"
+#: ./interfaces.py:514
+msgid "label_payment_method"
+msgstr "Payment Method"
+
 #. Default: "Payment Texts"
-#: ./interfaces.py:499
+#: ./interfaces.py:524
 msgid "label_payment_text"
 msgstr "Payment Texts"
 
@@ -741,22 +761,22 @@ msgstr "Show link to cart in portlet"
 #. Default: "Overall notification text for order confirmation mail"
 #: ./interfaces.py:442
 msgid "label_site_global_notification_text"
-msgstr ""
+msgstr "Overall notification text for order confirmation mail"
 
 #. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
 #: ./interfaces.py:454
 msgid "label_site_global_overbook_notification_text"
-msgstr ""
+msgstr "Overall notification text for order confirmation mail if order contains items out of stock"
 
 #. Default: "Default notification text for items in order confirmation mail"
 #: ./interfaces.py:416
 msgid "label_site_item_notification_text"
-msgstr ""
+msgstr "Default notification text for items in order confirmation mail"
 
 #. Default: "Default notification text for items in order confirmation mail if item out of stock."
 #: ./interfaces.py:429
 msgid "label_site_item_overbook_notification_text"
-msgstr ""
+msgstr "Default notification text for items in order confirmation mail if item out of stock."
 
 #. Default: "Street"
 #: ./user/userdata.py:81
@@ -819,22 +839,22 @@ msgid "net"
 msgstr "Net"
 
 #. Default: "No"
-#: ./vocabularies.py:129
+#: ./vocabularies.py:112
 msgid "no"
 msgstr "No"
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart"
-#: ./shipping.py:54
+#: ./shipping.py:59
 msgid "no_free_shipping_flat_and_item"
 msgstr "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart"
 
 #. Default: "Flat ${flat} ${currency}"
-#: ./shipping.py:64
+#: ./shipping.py:69
 msgid "no_free_shipping_flat_only"
 msgstr "Flat ${flat} ${currency}"
 
 #. Default: "${item} ${currency} per item in cart"
-#: ./shipping.py:72
+#: ./shipping.py:77
 msgid "no_free_shipping_item_only"
 msgstr "${item} ${currency} per item in cart"
 
@@ -879,7 +899,7 @@ msgid "payment"
 msgstr "Payment"
 
 #. Default: "Payment Text"
-#: ./interfaces.py:504
+#: ./interfaces.py:529
 msgid "payment_text"
 msgstr "Payment Text"
 
@@ -909,7 +929,7 @@ msgid "shop_portlet"
 msgstr "Shop Portlet"
 
 #. Default: "Symbol"
-#: ./vocabularies.py:130
+#: ./vocabularies.py:113
 msgid "symbol"
 msgstr "Symbol"
 
@@ -929,7 +949,7 @@ msgid "vat"
 msgstr "Vat"
 
 #. Default: "Yes"
-#: ./vocabularies.py:128
+#: ./vocabularies.py:111
 msgid "yes"
 msgstr "Yes"
 
