@@ -69,7 +69,7 @@ def VatVocabulary(context):
     try:
         settings = get_shop_tax_settings()
     except KeyError:
-        # happens on initial GS profile application
+        # happens GS profile application if registry entries not present yet
         return AvailableVatVocabulary(context)
     settings.vat
     terms = []
@@ -106,23 +106,6 @@ def AvailableCurrenciesVocabulary(context):
 
 
 @provider(IVocabularyFactory)
-def AvailableShippingMethodsVocabulary(context):
-    shippings = Shippings(context).shippings
-    items = [(shipping.sid, shipping.label) for shipping in shippings]
-    return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-
-
-@provider(IVocabularyFactory)
-def ShippingMethodsVocabulary(context):
-    try:
-        items = Shippings(context).vocab
-    except KeyError:
-        # happens before GS upgrade 2_to_3, remove with 1.0
-        return AvailableShippingMethodsVocabulary(context)
-    return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
-
-
-@provider(IVocabularyFactory)
 def CurrencyDisplayOptionsVocabulary(context):
     items = [
         ('yes', _('yes', default='Yes')),
@@ -147,6 +130,34 @@ def CountryVocabulary(context):
 
 
 @provider(IVocabularyFactory)
-def PaymentVocabulary(context):
-    return SimpleVocabulary([SimpleTerm(value=k, title=v)
-                             for k, v in Payments(context).vocab])
+def AvailableShippingMethodsVocabulary(context):
+    shippings = Shippings(context).shippings
+    items = [(shipping.sid, shipping.label) for shipping in shippings]
+    return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
+
+
+@provider(IVocabularyFactory)
+def ShippingMethodsVocabulary(context):
+    try:
+        items = Shippings(context).vocab
+    except KeyError:
+        # happens GS profile application if registry entries not present yet
+        return AvailableShippingMethodsVocabulary(context)
+    return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
+
+
+@provider(IVocabularyFactory)
+def AvailablePaymentMethodsVocabulary(context):
+    payments = Payments(context).payments
+    items = [(payment.pid, payment.label) for payment in payments]
+    return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
+
+
+@provider(IVocabularyFactory)
+def PaymentMethodsVocabulary(context):
+    try:
+        items = Payments(context).vocab
+    except KeyError:
+        # happens GS profile application if registry entries not present yet
+        return AvailablePaymentMethodsVocabulary(context)
+    return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])

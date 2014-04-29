@@ -36,4 +36,16 @@
 
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+    source="4"
+    destination="5"
+    profile="bda.plone.shop:default">
+
+    <genericsetup:upgradeDepends
+      title="GS Profile: add shop payment settings"
+      import_profile="bda.plone.shop.upgrades:4_to_5"
+      run_deps="True" />
+
+  </genericsetup:upgradeSteps>
+
 </configure>

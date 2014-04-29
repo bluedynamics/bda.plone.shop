@@ -30,14 +30,6 @@
     name="bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary" />
 
   <utility
-    component=".vocabularies.AvailableShippingMethodsVocabulary"
-    name="bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary" />
-
-  <utility
-    component=".vocabularies.ShippingMethodsVocabulary"
-    name="bda.plone.shop.vocabularies.ShippingMethodsVocabulary" />
-
-  <utility
     component=".vocabularies.GenderVocabulary"
     name="bda.plone.shop.vocabularies.GenderVocabulary" />
 
@@ -46,7 +38,19 @@
     name="bda.plone.shop.vocabularies.CountryVocabulary" />
 
   <utility
-    component=".vocabularies.PaymentVocabulary"
-    name="bda.plone.shop.vocabularies.PaymentVocabulary" />
+    component=".vocabularies.AvailableShippingMethodsVocabulary"
+    name="bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary" />
+
+  <utility
+    component=".vocabularies.ShippingMethodsVocabulary"
+    name="bda.plone.shop.vocabularies.ShippingMethodsVocabulary" />
+
+  <utility
+    component=".vocabularies.AvailablePaymentMethodsVocabulary"
+    name="bda.plone.shop.vocabularies.AvailablePaymentMethodsVocabulary" />
+
+  <utility
+    component=".vocabularies.PaymentMethodsVocabulary"
+    name="bda.plone.shop.vocabularies.PaymentMethodsVocabulary" />
 
 </configure>

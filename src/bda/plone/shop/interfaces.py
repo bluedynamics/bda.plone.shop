@@ -467,7 +467,7 @@ class ILanguageAndPaymentAwareTextRow(model.Schema):
 
     payment = schema.Choice(
         title=_(u'payment', default=u'Payment'),
-        vocabulary='bda.plone.shop.vocabularies.PaymentVocabulary',
+        vocabulary='bda.plone.shop.vocabularies.PaymentMethodsVocabulary',
         required=False
     )
 
@@ -485,13 +485,38 @@ class ILanguageAndPaymentAwareTextRow(model.Schema):
 
 @provider(IShopSettingsProvider)
 class IPaymentTextSettings(model.Schema):
+    # XXX: rename to IPaymentSettings
 
     model.fieldset(
         'payment',
         label=_(u'Payment', default=u'Payment'),
         fields=[
+            'available_payment_methods',
+            'payment_method',
             'payment_text',
         ],
+    )
+
+    available_payment_methods = schema.List(
+        title=_(u"label_available_payment_methods",
+                default=u"Available Payment Methods"),
+        description=_(u"help_available_payment_methods",
+                      default=u"Available payment methods in checkout"),
+        required=True,
+        min_length=1,
+        value_type=schema.Choice(
+            vocabulary=
+                'bda.plone.shop.vocabularies.AvailablePaymentMethodsVocabulary'
+        )
+    )
+
+    payment_method = schema.Choice(
+        title=_(u"label_payment_method",
+                default=u"Payment Method"),
+        description=_(u"help_payment_method",
+                      default=u"Default payment method in checkout"),
+        vocabulary=
+            'bda.plone.shop.vocabularies.PaymentMethodsVocabulary'
     )
 
     widget('payment_text', DataGridFieldFactory)

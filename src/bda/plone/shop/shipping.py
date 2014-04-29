@@ -1,38 +1,43 @@
 from bda.plone.cart.browser import CURRENCY_LITERALS
 from bda.plone.shipping import Shipping
+from bda.plone.shipping.interfaces import IShippingSettings
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.cartdata import CartItemCalculator
 from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_shipping_settings
 from decimal import Decimal
+from zope.component import adapter
+from zope.interface import implementer
+from zope.interface import Interface
 from zope.i18nmessageid import Message
 from zope.deprecation import deprecated
 
 
-class ShippingBase(Shipping):
-    """Abstract shipping.
-    """
+@implementer(IShippingSettings)
+@adapter(Interface)
+class ShippingSettings(object):
 
-    @property
-    def settings(self):
-        return get_shop_shipping_settings()
+    def __init__(self, context):
+        self.context = context
 
     @property
     def available(self):
-        return self.sid in self.settings.available_shipping_methods
+        settings = get_shop_shipping_settings()
+        return settings.available_shipping_methods
 
     @property
     def default(self):
-        return self.sid == self.settings.shipping_method
+        settings = get_shop_shipping_settings()
+        return settings.shipping_method
 
 
-class DefaultShipping(ShippingBase):
+class DefaultShipping(Shipping):
     sid = 'default_shipping'
     label = _('default_shipping', 'Default Shipping')
 
     @property
     def description(self):
-        settings = self.settings
+        settings = get_shop_shipping_settings()
         currency = get_shop_settings().currency
         show_currency = get_shop_settings().show_currency
         if show_currency == 'symbol':
@@ -138,7 +143,7 @@ class DefaultShipping(ShippingBase):
             })
 
     def net(self, items):
-        settings = self.settings
+        settings = get_shop_shipping_settings()
         calc = CartItemCalculator(self.context)
         shipping_limit_from_gross = settings.shipping_limit_from_gross
         free_shipping_limit = Decimal(str(settings.free_shipping_limit))
@@ -169,7 +174,7 @@ class DefaultShipping(ShippingBase):
         return shipping_costs
 
     def vat(self, items):
-        settings = self.settings
+        settings = get_shop_shipping_settings()
         shipping_vat = Decimal(str(settings.shipping_vat))
         return self.net(items) / Decimal(100) * shipping_vat
 
@@ -182,7 +187,7 @@ FREE_SHIPPING_LIMIT = 200
 FLAT_SHIPPING_COST = 10
 
 
-class FlatRate(ShippingBase):
+class FlatRate(Shipping):
     sid = 'flat_rate'
     label = _('flat_rate', 'Flat Rate')
 

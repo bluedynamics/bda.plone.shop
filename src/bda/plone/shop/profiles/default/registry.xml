@@ -63,6 +63,13 @@
   </records>
 
   <records interface="bda.plone.shop.interfaces.IPaymentTextSettings">
+    <value key="available_payment_methods" purge="false">
+      <element>cash</element>
+      <element>debit_order</element>
+      <element>invoice</element>
+      <element>six_payment</element>
+    </value>
+    <value key="payment_method" purge="false">invoice</value>
     <value key="payment_text" purge="false"></value>
   </records>
 

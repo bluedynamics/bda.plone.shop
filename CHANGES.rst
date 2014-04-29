@@ -4,7 +4,27 @@ Changelog
 0.7dev
 ------
 
-- Introduce ``RegistryPaymentText``.
+- Implement ``bda.plone.shipping.interfaces.IShippingSettings`` at
+  ``bda.plone.shop.shipping.ShippingSettings`` using
+  ``bda.plone.shop.interfaces.IShopShippingSettings`` controlpanel settings.
+  [rnix]
+
+- Implement ``bda.plone.payment.interfaces.IPaymentSettings`` at
+  ``bda.plone.shop.payment.PaymentSettings`` using
+  ``bda.plone.shop.interfaces.IPaymentTextSettings`` controlpanel settings.
+  [rnix]
+
+- Add ``available_payment_methods`` and ``payment_method`` to
+  ``bda.plone.shop.interfaces.IPaymentTextSettings`` and provide GS upgrade
+  step.
+  [rnix]
+
+- Rename ``bda.plone.shop.vocabularies.PaymentVocabulary`` to
+  ``bda.plone.shop.vocabularies.PaymentMethodsVocabulary``.
+  [rnix]
+
+- Implement ``bda.plone.orders.interfaces.IPaymentText`` at
+  ``bda.plone.shop.mailnotify.RegistryPaymentText``.
   [rnix]
 
 - Add admin portlet link for ``@@exportorders_contextual`` to export orders on

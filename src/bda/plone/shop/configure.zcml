@@ -47,6 +47,12 @@
     name="item_buyable"
     factory=".indexer.item_buyable" />
 
+  <!-- payment settings -->
+  <adapter factory=".payment.PaymentSettings" />
+
+  <!-- shipping settings -->
+  <adapter factory=".shipping.ShippingSettings" />
+
   <!-- default shipping -->
   <adapter name="default_shipping" factory=".shipping.DefaultShipping" />
 
