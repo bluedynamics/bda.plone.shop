@@ -30,4 +30,4 @@ class CheckoutSettings(object):
 
     def skip_payment_redirect_url(self, uid):
         base = '%s/@@order_done?uid=%s'
-        return base % (self.context.absolute_url(), self.order.attrs['uid'])
+        return base % (self.context.absolute_url(), uid)
