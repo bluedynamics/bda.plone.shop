@@ -311,7 +311,7 @@ msgid "help_alternative_delivery"
 msgstr "Delivery address is different from billing address."
 
 #. Default: "Available payment methods in checkout"
-#: ./interfaces.py:503
+#: ./interfaces.py:504
 msgid "help_available_payment_methods"
 msgstr "Available payment methods in checkout"
 
@@ -392,7 +392,7 @@ msgid "help_lastname"
 msgstr "Fill in your surname or your family name."
 
 #. Default: "Default payment method in checkout"
-#: ./interfaces.py:516
+#: ./interfaces.py:517
 msgid "help_payment_method"
 msgstr "Default payment method in checkout"
 
@@ -491,7 +491,7 @@ msgid "label_alternative_delivery"
 msgstr "Alternative delivery address"
 
 #. Default: "Available Payment Methods"
-#: ./interfaces.py:501
+#: ./interfaces.py:502
 msgid "label_available_payment_methods"
 msgstr "Available Payment Methods"
 
@@ -703,12 +703,12 @@ msgid "label_lastname"
 msgstr "Last name"
 
 #. Default: "Payment Method"
-#: ./interfaces.py:514
+#: ./interfaces.py:515
 msgid "label_payment_method"
 msgstr "Payment Method"
 
 #. Default: "Payment Texts"
-#: ./interfaces.py:524
+#: ./interfaces.py:533
 msgid "label_payment_text"
 msgstr "Payment Texts"
 
@@ -777,6 +777,11 @@ msgstr "Default notification text for items in order confirmation mail"
 #: ./interfaces.py:429
 msgid "label_site_item_overbook_notification_text"
 msgstr "Default notification text for items in order confirmation mail if item out of stock."
+
+#. Default: "Skip Payment if order contains reservations"
+#: ./interfaces.py:524
+msgid "label_skip_payment_if_order_contains_reservations"
+msgstr "Skip Payment if order contains reservations"
 
 #. Default: "Street"
 #: ./user/userdata.py:81
@@ -899,7 +904,7 @@ msgid "payment"
 msgstr "Payment"
 
 #. Default: "Payment Text"
-#: ./interfaces.py:529
+#: ./interfaces.py:538
 msgid "payment_text"
 msgstr "Payment Text"
 

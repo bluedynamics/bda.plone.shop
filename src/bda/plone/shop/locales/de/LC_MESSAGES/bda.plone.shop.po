@@ -311,7 +311,7 @@ msgid "help_alternative_delivery"
 msgstr "Lieferadresse weicht von Rechnungsadresse ab."
 
 #. Default: "Available payment methods in checkout"
-#: ./interfaces.py:503
+#: ./interfaces.py:504
 msgid "help_available_payment_methods"
 msgstr "Verfügbare Bezahlmethoden in der Kassa"
 
@@ -392,7 +392,7 @@ msgid "help_lastname"
 msgstr "Gebe Sie hier Ihren Nachnamen an."
 
 #. Default: "Default payment method in checkout"
-#: ./interfaces.py:516
+#: ./interfaces.py:517
 msgid "help_payment_method"
 msgstr "Standard Bezahlmethode in der Kassa"
 
@@ -491,7 +491,7 @@ msgid "label_alternative_delivery"
 msgstr "Alternative Lieferadresse"
 
 #. Default: "Available Payment Methods"
-#: ./interfaces.py:501
+#: ./interfaces.py:502
 msgid "label_available_payment_methods"
 msgstr "Verfügbare Bezahlmethoden"
 
@@ -703,12 +703,12 @@ msgid "label_lastname"
 msgstr "Nachname"
 
 #. Default: "Payment Method"
-#: ./interfaces.py:514
+#: ./interfaces.py:515
 msgid "label_payment_method"
 msgstr "Standard Bezahlmethode"
 
 #. Default: "Payment Texts"
-#: ./interfaces.py:524
+#: ./interfaces.py:533
 msgid "label_payment_text"
 msgstr "Benachrichtigungstext für Zahlungsart"
 
@@ -777,6 +777,11 @@ msgstr "Benachrichtigungstext für Bestätigungsmail für Artikel im Warenkorb"
 #: ./interfaces.py:429
 msgid "label_site_item_overbook_notification_text"
 msgstr "Benachrichtigungstext für Bestätigungsmail für Artikel im Warenkorb, die nicht lagernd"
+
+#. Default: "Skip Payment if order contains reservations"
+#: ./interfaces.py:524
+msgid "label_skip_payment_if_order_contains_reservations"
+msgstr "Nicht zur Bezahlung weiter leiten wenn Reservierungen im Warenkorb"
 
 #. Default: "Street"
 #: ./user/userdata.py:81
@@ -899,7 +904,7 @@ msgid "payment"
 msgstr "Zahlung"
 
 #. Default: "Payment Text"
-#: ./interfaces.py:529
+#: ./interfaces.py:538
 msgid "payment_text"
 msgstr "Text"
 
