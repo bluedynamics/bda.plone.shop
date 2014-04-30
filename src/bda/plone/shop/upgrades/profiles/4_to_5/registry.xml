@@ -8,5 +8,6 @@
       <element>six_payment</element>
     </value>
     <value key="payment_method" purge="false">invoice</value>
+    <value key="skip_payment_if_order_contains_reservations" purge="false">False</value>
   </records>
 </registry>

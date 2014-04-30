@@ -47,6 +47,9 @@
     name="item_buyable"
     factory=".indexer.item_buyable" />
 
+  <!-- checkout settings -->
+  <adapter factory=".checkout.CheckoutSettings" />
+
   <!-- payment settings -->
   <adapter factory=".payment.PaymentSettings" />
 

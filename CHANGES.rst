@@ -4,6 +4,10 @@ Changelog
 0.7dev
 ------
 
+- Implement ``bda.plone.checkout.interfaces.ICheckoutSettings`` at
+  ``bda.plone.shop.checkout.CheckoutSettings``.
+  [rnix]
+
 - Implement ``bda.plone.shipping.interfaces.IShippingSettings`` at
   ``bda.plone.shop.shipping.ShippingSettings`` using
   ``bda.plone.shop.interfaces.IShopShippingSettings`` controlpanel settings.
@@ -14,7 +18,8 @@ Changelog
   ``bda.plone.shop.interfaces.IPaymentTextSettings`` controlpanel settings.
   [rnix]
 
-- Add ``available_payment_methods`` and ``payment_method`` to
+- Add ``available_payment_methods``, ``payment_method`` and
+  ``skip_payment_if_order_contains_reservations`` to
   ``bda.plone.shop.interfaces.IPaymentTextSettings`` and provide GS upgrade
   step.
   [rnix]

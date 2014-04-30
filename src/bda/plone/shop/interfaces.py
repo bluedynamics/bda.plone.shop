@@ -519,6 +519,14 @@ class IPaymentTextSettings(model.Schema):
             'bda.plone.shop.vocabularies.PaymentMethodsVocabulary'
     )
 
+    skip_payment_if_order_contains_reservations = schema.Bool(
+        title=_(
+            u'label_skip_payment_if_order_contains_reservations',
+            default=u'Skip Payment if order contains reservations'
+        ),
+        required=False
+    )
+
     widget('payment_text', DataGridFieldFactory)
     payment_text = schema.List(
         title=_(
