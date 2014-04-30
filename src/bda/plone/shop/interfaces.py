@@ -493,6 +493,7 @@ class IPaymentTextSettings(model.Schema):
         fields=[
             'available_payment_methods',
             'payment_method',
+            'skip_payment_if_order_contains_reservations',
             'payment_text',
         ],
     )
