@@ -152,16 +152,10 @@ class DefaultShipping(Shipping):
         purchase_price = Decimal(0)
         # calculate shipping from gross
         if shipping_limit_from_gross:
-            for item in items:
-                if not cart_item_shippable(self.context, item):
-                    continue
-                purchase_price += calc.item_net(item) + calc.item_vat(item)
+            purchase_price += calc.net(items) + calc.vat(items)
         # calculate shipping from net
         else:
-            for item in items:
-                if not cart_item_shippable(self.context, item):
-                    continue
-                purchase_price += calc.item_net(item)
+            purchase_price += calc.net(items)
         # purchase price exceeds free shipping limit, no shipping costs
         if free_shipping_limit and purchase_price > free_shipping_limit:
             return Decimal(0)
@@ -204,12 +198,7 @@ class FlatRate(Shipping):
 
     def calculate(self, items):
         calc = CartItemCalculator(self.context)
-        purchase_price = Decimal(0)
-        for item in items:
-            if not cart_item_shippable(self.context, item):
-                continue
-            purchase_price += calc.item_net(item) + calc.item_vat(item)
-        if purchase_price > Decimal(FREE_SHIPPING_LIMIT):
+        if calc.net(items) + calc.vat(items) > Decimal(FREE_SHIPPING_LIMIT):
             return Decimal(0)
         return Decimal(FLAT_SHIPPING_COST)
 
