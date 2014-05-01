@@ -9,7 +9,9 @@ Changelog
   [rnix]
 
 - Remove ``IShopShippingSettings.include_shipping_costs``, flag gets calculated
-  now from ``IShippingItem.shippable``.
+  now from ``IShippingItem.shippable``. **Note** - Do not forget to run GS
+  upgrade step ``4 to 5`` and adopt your integration package SG profile if
+  necessary.
   [rnix]
 
 - Introduce ``IShopShippingSettings.default_shipping_item_shippable`` and use
