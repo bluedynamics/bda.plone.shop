@@ -4,6 +4,10 @@ Changelog
 0.7dev
 ------
 
+- Check against order total value instead of payment method in
+  ``CheckoutSettings.skip_payment``.
+  [rnix]
+
 - Add ``cartdata.CartDataProvider.max_artice_count``.
   [rnix]
 

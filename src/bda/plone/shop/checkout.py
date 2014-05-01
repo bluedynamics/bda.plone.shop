@@ -1,3 +1,4 @@
+from decimal import Decimal
 from bda.plone.checkout.interfaces import ICheckoutSettings
 from bda.plone.orders.interfaces import STATE_RESERVED
 from bda.plone.orders.interfaces import STATE_MIXED
@@ -18,8 +19,8 @@ class CheckoutSettings(object):
     def skip_payment(self, uid):
         settings = get_shop_payment_settings()
         order_data = OrderData(self.context, uid=uid)
-        # no order payment method, skip
-        if order_data.order.attrs['payment_method'] == 'no_payment':
+        # order total is 0, skip
+        if not Decimal(str(order_data.total)).quantize(Decimal('1.000')):
             return True
         # if payment should be skipped if order contains reservations and
         # order contains reservations, skip
