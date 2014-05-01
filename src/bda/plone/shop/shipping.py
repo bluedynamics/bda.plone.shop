@@ -1,6 +1,8 @@
+from bda.plone.cart import get_object_by_uid
 from bda.plone.cart.browser import CURRENCY_LITERALS
 from bda.plone.shipping import Shipping
 from bda.plone.shipping.interfaces import IShippingSettings
+from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.cartdata import CartItemCalculator
 from bda.plone.shop.utils import get_shop_settings
@@ -149,9 +151,13 @@ class DefaultShipping(Shipping):
         free_shipping_limit = Decimal(str(settings.free_shipping_limit))
         # calculate shipping from gross
         if shipping_limit_from_gross:
+            # XXX: consider shippable flag for items and calculate
+            #      purchase price from shippable items only
             purchase_price = calc.net(items) + calc.vat(items)
         # calculate shipping from net
         else:
+            # XXX: consider shippable flag for items and calculate
+            #      purchase price from shippable items only
             purchase_price = calc.net(items)
         # purchase price exceeds free shipping limit, no shipping costs
         if free_shipping_limit and purchase_price > free_shipping_limit:
@@ -162,6 +168,11 @@ class DefaultShipping(Shipping):
         # item shipping costs set, calculate for contained cart items
         if item_shipping_cost > Decimal(0):
             for item in items:
+                obj = get_object_by_uid(self.context, item[0])
+                if not obj:
+                    continue
+                if IShippingItem(obj).shippable:
+                    continue
                 shipping_costs += item_shipping_cost * item[1]
         # consider flat shipping cost if set
         if flat_shipping_cost:
@@ -176,6 +187,8 @@ class DefaultShipping(Shipping):
     def vat(self, items):
         settings = get_shop_shipping_settings()
         shipping_vat = Decimal(str(settings.shipping_vat))
+        # XXX: consider shippable flag for items and calculate
+        #      vat from shippable items only
         return self.net(items) / Decimal(100) * shipping_vat
 
 

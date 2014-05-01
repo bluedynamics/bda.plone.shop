@@ -4,6 +4,22 @@ Changelog
 0.7dev
 ------
 
+- Remove ``cartdata.CartDataProvider.include_shipping_costs``, it's implemented
+  now on base class.
+  [rnix]
+
+- Remove ``IShopShippingSettings.include_shipping_costs``, flag gets calculated
+  now from ``IShippingItem.shippable``.
+  [rnix]
+
+- Introduce ``IShopShippingSettings.default_shipping_item_shippable`` and use
+  as default for ``IShippingItem.shippable``.
+  [rnix]
+
+- Implement ``bda.plone.shipping.interfaces.IShippingItem.shippable`` and
+  consider at appropriate places.
+  [rnix]
+
 - Implement ``bda.plone.checkout.interfaces.ICheckoutSettings`` at
   ``bda.plone.shop.checkout.CheckoutSettings``.
   [rnix]

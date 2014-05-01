@@ -32,7 +32,7 @@
   </records>
 
   <records interface="bda.plone.shop.interfaces.IShopShippingSettings">
-    <value key="include_shipping_costs" purge="false">True</value>
+    <value key="default_shipping_item_shippable" purge="false">True</value>
     <value key="available_shipping_methods" purge="false">
       <element>default_shipping</element>
     </value>

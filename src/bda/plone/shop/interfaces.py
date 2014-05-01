@@ -249,7 +249,7 @@ class IShopShippingSettings(model.Schema):
         'shipping',
         label=_(u'Shipping', default=u'Shipping'),
         fields=[
-            'include_shipping_costs',
+            'default_shipping_item_shippable',
             'available_shipping_methods',
             'shipping_method',
             'shipping_vat',
@@ -260,14 +260,13 @@ class IShopShippingSettings(model.Schema):
         ],
     )
 
-    include_shipping_costs = schema.Bool(
+    default_shipping_item_shippable = schema.Bool(
         title=_(
-            u"label_include_shipping_costs",
-            default=u"Include Shipping Costs"
-        ),
-        description=_(u"help_include_shipping_costs",
-                      default=u"Include Shipping Costs in Cart"),
-        default=True
+            u'label_default_shipping_item_shippable',
+            default=u'Item Shippable by default'),
+        description=_('help_default_shipping_item_shippable',
+                      default=u'Flag whether item is shippable by default, '
+                              u'i.e. downloads are not')
     )
 
     available_shipping_methods = schema.List(

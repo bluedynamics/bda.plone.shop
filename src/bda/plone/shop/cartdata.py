@@ -141,10 +141,6 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         return get_shop_cart_settings().summary_total_only
 
     @property
-    def include_shipping_costs(self):
-        return get_shop_shipping_settings().include_shipping_costs
-
-    @property
     def shipping_method(self):
         # read from cookie and return if present
         shipping_method = self.request.cookies.get('shipping_method')

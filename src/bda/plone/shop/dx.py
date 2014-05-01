@@ -9,6 +9,7 @@ from bda.plone.shop.mailnotify import BubbleGlobalNotificationText
 from bda.plone.shop.mailnotify import BubbleItemNotificationText
 from bda.plone.shop.utils import get_shop_article_settings
 from bda.plone.shop.utils import get_shop_settings
+from bda.plone.shop.utils import get_shop_shipping_settings
 from bda.plone.shop.utils import get_shop_tax_settings
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
@@ -242,6 +243,11 @@ class DXCartItemStock(object):
     overbook = property(_get_overbook, _set_overbook)
 
 
+@provider(IContextAwareDefaultFactory)
+def default_shipping_item_shippable(context):
+    return get_shop_shipping_settings().default_shipping_item_shippable
+
+
 @provider(IFormFieldProvider)
 class IShippingBehavior(model.Schema):
     """Shipping behavior.
@@ -251,6 +257,14 @@ class IShippingBehavior(model.Schema):
         'shop',
         label=u"Shop",
         fields=['shipping_item_weight']
+    )
+
+    shipping_item_shippable = schema.Bool(
+        title=_(u'label_shipping_item_shippable', default=u'Item Shippable'),
+        description=_('help_shipping_item_shippable',
+                      default=u'Flag whether item is shippable, i.e. '
+                              u'downloads are not'),
+        defaultFactory=default_shipping_item_shippable
     )
 
     shipping_item_weight = schema.Float(
@@ -267,6 +281,10 @@ class DXShippingItem(object):
 
     def __init__(self, context):
         self.context = context
+
+    @property
+    def shippable(self):
+        return self.context.shipping_item_shippable
 
     @property
     def weight(self):

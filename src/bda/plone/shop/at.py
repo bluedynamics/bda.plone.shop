@@ -25,6 +25,7 @@ from bda.plone.shop.mailnotify import BubbleGlobalNotificationText
 from bda.plone.shop.mailnotify import BubbleItemNotificationText
 from bda.plone.shop.utils import get_shop_article_settings
 from bda.plone.shop.utils import get_shop_settings
+from bda.plone.shop.utils import get_shop_shipping_settings
 from bda.plone.shop.utils import get_shop_tax_settings
 from zope.component import adapter
 from zope.component import getUtility
@@ -316,6 +317,12 @@ class ATCartItemStock(object):
     overbook = property(_get_overbook, _set_overbook)
 
 
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_shipping_item_shippable(context):
+    return lambda: get_shop_shipping_settings().default_shipping_item_shippable
+
+
 class ShippingExtender(ExtenderBase):
     """Schema extender for item shipping.
     """
@@ -323,6 +330,17 @@ class ShippingExtender(ExtenderBase):
     layer = IShopExtensionLayer
 
     fields = [
+        XBooleanField(
+            name='shipping_item_shippable',
+            schemata='Shop',
+            widget=BooleanField._properties['widget'](
+                label=_(u'label_shipping_item_shippable',
+                        default=u'Item Shippable'),
+                description=_('help_shipping_item_shippable',
+                              default=u'Flag whether item is shippable, i.e. '
+                                      u'downloads are not'),
+            ),
+        ),
         XFloatField(
             name='shipping_item_weight',
             schemata='Shop',
@@ -342,6 +360,10 @@ class ATShippingItem(object):
 
     def __init__(self, context):
         self.context = context
+
+    @property
+    def shippable(self):
+        return field_value(self.context, 'shipping_item_shippable')
 
     @property
     def weight(self):

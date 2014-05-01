@@ -137,6 +137,11 @@
 
   <adapter
     zcml:condition="installed Products.Archetypes"
+    name="shipping_item_shippable"
+    factory=".at.default_shipping_item_shippable" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
     name="bda.plone.shop.itemnotificationtext"
     for="bda.plone.shop.interfaces.IBuyable"
     factory=".at.ItemNotificationTextExtender"

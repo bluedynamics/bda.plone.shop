@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <registry>
+  <records interface="bda.plone.shop.interfaces.IShopShippingSettings">
+    <value key="include_shipping_costs" remove="true" />
+    <value key="default_shipping_item_shippable" purge="false">True</value>
+  </records>
   <records interface="bda.plone.shop.interfaces.IPaymentTextSettings">
     <value key="available_payment_methods" purge="false">
       <element>cash</element>
