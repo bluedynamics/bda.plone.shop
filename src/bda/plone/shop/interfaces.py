@@ -103,6 +103,7 @@ class IShopCartSettings(model.Schema):
         label=_(u'Cart', default=u'Cart'),
         fields=[
             'hide_cart_if_empty',
+            'max_artice_count',
             'disable_max_article',
             'summary_total_only',
             'show_checkout',
@@ -119,10 +120,15 @@ class IShopCartSettings(model.Schema):
         default=False
     )
 
-    max_artice_count = schema.Integer(
+    max_artice_count = schema.Int(
         title=_(
             u'label_max_artice_count',
             default=u'Maximum number articles in cart'
+        ),
+        description=_(
+            u"help_max_artice_count",
+            default=u"Maximum number of articles in cart if disable max "
+                    u"article flag set"
         ),
         required=False
     )
