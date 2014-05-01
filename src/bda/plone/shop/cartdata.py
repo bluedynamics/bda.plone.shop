@@ -133,6 +133,10 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         return get_shop_cart_settings().hide_cart_if_empty
 
     @property
+    def max_artice_count(self):
+        return get_shop_cart_settings().max_artice_count
+
+    @property
     def disable_max_article(self):
         return get_shop_cart_settings().disable_max_article
 

@@ -4,6 +4,9 @@ Changelog
 0.7dev
 ------
 
+- Add ``cartdata.CartDataProvider.max_artice_count``.
+  [rnix]
+
 - Remove ``cartdata.CartDataProvider.include_shipping_costs``, it's implemented
   now on base class.
   [rnix]

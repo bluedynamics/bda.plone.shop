@@ -256,7 +256,10 @@ class IShippingBehavior(model.Schema):
     model.fieldset(
         'shop',
         label=u"Shop",
-        fields=['shipping_item_weight']
+        fields=[
+            'shipping_item_shippable',
+            'shipping_item_weight'
+        ]
     )
 
     shipping_item_shippable = schema.Bool(

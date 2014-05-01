@@ -11,6 +11,7 @@
 
   <records interface="bda.plone.shop.interfaces.IShopCartSettings">
     <value key="hide_cart_if_empty" purge="false">False</value>
+    <value key="max_artice_count" purge="false">5</value>
     <value key="disable_max_article" purge="false">True</value>
     <value key="summary_total_only" purge="false">False</value>
     <value key="show_checkout" purge="false">False</value>

@@ -119,6 +119,14 @@ class IShopCartSettings(model.Schema):
         default=False
     )
 
+    max_artice_count = schema.Integer(
+        title=_(
+            u'label_max_artice_count',
+            default=u'Maximum number articles in cart'
+        ),
+        required=False
+    )
+
     disable_max_article = schema.Bool(
         title=_(u"label_disable_max_article", default=u"Disable max article"),
         description=_(
