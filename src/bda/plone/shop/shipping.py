@@ -1,5 +1,5 @@
 from bda.plone.cart import cart_item_shippable
-from bda.plone.cart.browser import CURRENCY_LITERALS
+from bda.plone.cart import CURRENCY_LITERALS
 from bda.plone.shipping import Shipping
 from bda.plone.shipping.interfaces import IShippingSettings
 from bda.plone.shipping.interfaces import IShippingItem
