@@ -4,6 +4,11 @@ Changelog
 0.7dev
 ------
 
+- Register ``mailnotify.RegistryPaymentText`` for
+  ``zope.component.interfacesISite`` instead of
+  ``Products.CMFCore.interfaces.ISiteRoot``.
+  [rnix]
+
 - Check against order total value instead of payment method in
   ``CheckoutSettings.skip_payment``.
   [rnix]
