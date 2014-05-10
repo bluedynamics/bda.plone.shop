@@ -4,6 +4,9 @@ Changelog
 0.7dev
 ------
 
+- Check whether shipping method stored on cookie is available (any longer).
+  [rnix]
+
 - Implement ``bda.plone.orders.interfaces.ITrading`` for DX and AT.
   [rnix]
 
