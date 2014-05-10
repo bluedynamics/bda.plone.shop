@@ -10,6 +10,7 @@ from bda.plone.shop.utils import get_shop_notification_settings
 from bda.plone.shop.utils import get_shop_payment_settings
 from zope.component import adapter
 from zope.component import queryAdapter
+from zope.component.interfaces import ISite
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.location.interfaces import IContained
@@ -133,7 +134,7 @@ class RegistryGlobalNotificationText(SiteRegistryNotificationText,
 
 
 @implementer(IPaymentText)
-@adapter(ISiteRoot)
+@adapter(ISite)
 class RegistryPaymentText(object):
 
     def __init__(self, context):

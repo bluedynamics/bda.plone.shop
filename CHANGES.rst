@@ -4,6 +4,14 @@ Changelog
 0.7dev
 ------
 
+- Implement ``bda.plone.orders.interfaces.ITrading`` for DX and AT.
+  [rnix]
+
+- Register ``mailnotify.RegistryPaymentText`` for
+  ``zope.component.interfacesISite`` instead of
+  ``Products.CMFCore.interfaces.ISiteRoot``.
+  [rnix]
+
 - Check against order total value instead of payment method in
   ``CheckoutSettings.skip_payment``.
   [rnix]

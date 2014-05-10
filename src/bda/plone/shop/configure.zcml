@@ -160,6 +160,12 @@
     factory=".at.BuyablePeriodExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    name="bda.plone.shop.trading"
+    factory=".at.TradingExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
   <!-- cart related AT adapters -->
   <adapter
     zcml:condition="installed Products.Archetypes"
@@ -171,12 +177,14 @@
 
   <adapter
     zcml:condition="installed Products.Archetypes"
-    factory=".at.ATShippingItem" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
     factory=".at.ATCartItemPreviewImage" />
 
+  <!-- shipping related AT adapters -->
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATShippingItem" />
+
+  <!-- order related AT adapters -->
   <adapter
     zcml:condition="installed Products.Archetypes"
     factory=".at.ATItemNotificationText" />
@@ -184,6 +192,10 @@
   <adapter
     zcml:condition="installed Products.Archetypes"
     factory=".at.ATGlobalNotificationText" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
+    factory=".at.ATTrading" />
 
   <!-- buyable related AT adapters -->
   <adapter
@@ -233,6 +245,13 @@
     provides=".dx.IBuyablePeriodBehavior"
     for="plone.dexterity.interfaces.IDexterityContent" />
 
+  <plone:behavior
+    zcml:condition="installed plone.dexterity"
+    title="Shop: Trading Behavior"
+    description="Define trading information for item."
+    provides=".dx.ITradingBehavior"
+    for="plone.dexterity.interfaces.IDexterityContent" />
+
   <!-- cart related DX adapters -->
   <adapter
     zcml:condition="installed plone.dexterity"
@@ -244,12 +263,14 @@
 
   <adapter
     zcml:condition="installed plone.dexterity"
-    factory=".dx.DXShippingItem" />
-
-  <adapter
-    zcml:condition="installed plone.dexterity"
     factory=".dx.DXCartItemPreviewImage" />
 
+  <!-- shipping related DX adapters -->
+  <adapter
+    zcml:condition="installed plone.dexterity"
+    factory=".dx.DXShippingItem" />
+
+  <!-- order related DX adapters -->
   <adapter
     zcml:condition="installed plone.dexterity"
     factory=".dx.DXItemNotificationText" />
@@ -257,6 +278,10 @@
   <adapter
     zcml:condition="installed plone.dexterity"
     factory=".dx.DXGlobalNotificationText" />
+
+  <adapter
+    zcml:condition="installed plone.dexterity"
+    factory=".dx.DXTrading" />
 
   <!-- buyable related DX adapters -->
   <adapter
