@@ -80,6 +80,7 @@ adapters implementing the following interfaces::
 - ``bda.plone.shipping.interfaces.IShippingItem``
 - ``bda.plone.orders.interfaces.IItemNotificationText``
 - ``bda.plone.orders.interfaces.IGlobalNotificationText``
+- ``bda.plone.orders.interfaces.ITrading``
 - ``bda.plone.shop.interfaces.IBuyablePeriod``
 
 There exists Archetypes and Dexterity related implementations of these
@@ -127,6 +128,7 @@ interface. These are:
 - ``bda.plone.shop.dx.IShippingBehavior``
 - ``bda.plone.shop.dx.IItemNotificationTextBehavior``
 - ``bda.plone.shop.dx.IGlobalNotificationTextBehavior``
+- ``bda.plone.shop.dx.ITradingBehavior``
 - ``bda.plone.shop.dx.IBuyablePeriodBehavior``
 
 The corresponding adapter implementations are registered for the referring
@@ -262,17 +264,12 @@ method of a Zope2 package::
 
     </configure>
 
-In ``patchShop`` you typically import a constants from ``bda.plone.shop``
-related packages and redefine them.
-
-For example you can customize the standard shipping costs and the
-limit for free shipping like this::
+In ``patchShop`` you typically import constants from ``bda.plone.shop``
+related packages and redefine them.::
 
     def patchShop():
-        from bda.plone.shop import shipping
-
-        shipping.FLAT_SHIPPING_COST = 5
-        shipping.FREE_SHIPPING_LIMIT = 500
+        from bda.plone import cart
+        cart.CURRENCY_LITERALS['EUR'] = u'€'
 
 Please see `bda.plone.checkout`_ or `bda.plone.order`_ for information
 how to customize the checkout form or the notification emails

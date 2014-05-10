@@ -3,6 +3,7 @@ from Products.Archetypes.atapi import BooleanField
 from Products.Archetypes.atapi import FloatField
 from Products.Archetypes.atapi import SelectionWidget
 from Products.Archetypes.atapi import StringField
+from Products.Archetypes.atapi import StringWidget
 from Products.Archetypes.atapi import TextAreaWidget
 from Products.Archetypes.atapi import TextField
 from Products.Archetypes.atapi import DateTimeField
@@ -16,6 +17,7 @@ from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
 from bda.plone.cart import CartItemDataProviderBase
 from bda.plone.cart import CartItemPreviewAdapterBase
 from bda.plone.cart.interfaces import ICartItemStock
+from bda.plone.orders.interfaces import ITrading
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IShopExtensionLayer
@@ -564,3 +566,49 @@ class ATBuyablePeriod(object):
         if expires:
             expires = datetime.fromtimestamp(expires.timeTime())
         return expires
+
+
+class TradingExtender(ExtenderBase):
+    """Schema extender for trading information.
+    """
+
+    layer = IShopExtensionLayer
+
+    fields = [
+        XStringField(
+            name='item_number',
+            schemata='Shop',
+            widget=StringWidget(
+                label=_(u'label_item_number', default=u'Item number'),
+                description=_(u'help_item_number',
+                              default=u'Buyable Item number')
+            ),
+        ),
+        XStringField(
+            name='gtin',
+            schemata='Shop',
+            widget=StringWidget(
+                label=_(u'label_gtin', default=u'GTIN'),
+                description=_(u'help_gtin',
+                              default=u'Global Trade Item Number')
+            ),
+        ),
+    ]
+
+
+@implementer(ITrading)
+@adapter(IBaseObject)
+class ATTrading(object):
+    """Accessor Interface
+    """
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def item_number(self):
+        return field_value(self.context, 'item_number')
+
+    @property
+    def gtin(self):
+        return field_value(self.context, 'gtin')

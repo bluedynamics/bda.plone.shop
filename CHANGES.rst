@@ -4,6 +4,9 @@ Changelog
 0.7dev
 ------
 
+- Implement ``bda.plone.orders.interfaces.ITrading`` for DX and AT.
+  [rnix]
+
 - Register ``mailnotify.RegistryPaymentText`` for
   ``zope.component.interfacesISite`` instead of
   ``Products.CMFCore.interfaces.ISiteRoot``.

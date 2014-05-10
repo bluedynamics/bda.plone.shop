@@ -1,6 +1,7 @@
 from bda.plone.cart import CartItemDataProviderBase
 from bda.plone.cart import CartItemPreviewAdapterBase
 from bda.plone.cart.interfaces import ICartItemStock
+from bda.plone.orders.interfaces import ITrading
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IBuyable
@@ -448,3 +449,45 @@ class DXBuyablePeriod(object):
     @property
     def expires(self):
         return self.context.buyable_expires
+
+
+@provider(IFormFieldProvider)
+class ITradingBehavior(model.Schema):
+    """Trading behavior.
+    """
+    model.fieldset(
+        'shop',
+        label=u"Shop",
+        fields=[
+            'item_number',
+            'gtin',
+        ]
+    )
+
+    item_number = schema.TextLine(
+        title=_(u'label_item_number', default=u'Item number'),
+        description=_(u'help_item_number',
+                      default=u'Buyable Item number'),
+        required=False)
+
+    gtin = schema.TextLine(
+        title=_(u'label_gtin', default=u'GTIN'),
+        description=_(u'help_gtin',
+                      default=u'Global Trade Item Number'),
+        required=False)
+
+
+@implementer(ITrading)
+@adapter(ITradingBehavior)
+class DXTrading(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def item_number(self):
+        return self.context.item_number
+
+    @property
+    def gtin(self):
+        return self.context.gtin
