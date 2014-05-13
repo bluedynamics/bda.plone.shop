@@ -11,7 +11,7 @@ Changelog
   [rnix]
 
 - Register ``mailnotify.RegistryPaymentText`` for
-  ``zope.component.interfacesISite`` instead of
+  ``zope.component.interfaces.ISite`` instead of
   ``Products.CMFCore.interfaces.ISiteRoot``.
   [rnix]
 
