@@ -111,6 +111,14 @@ msgstr "Notifications"
 msgid "Payment"
 msgstr "Payment"
 
+#: ./profiles/default/actions.xml
+msgid "Personal Information"
+msgstr "Personal Information"
+
+#: ./profiles/default/actions.xml
+msgid "Personal Preferences"
+msgstr "Personal Preferences"
+
 #. Default: "Swedish Krona"
 #: ./vocabularies.py:95
 msgid "SEK"
@@ -146,22 +154,22 @@ msgid "add_to_cart"
 msgstr "add to cart"
 
 #. Default: "No longer available, please remove from cart"
-#: ./cartdata.py:276
+#: ./cartdata.py:278
 msgid "alert_item_no_longer_available"
 msgstr "No longer available, please remove from cart"
 
 #. Default: "Limit exceed by ${exceed} ${quantity_unit}"
-#: ./cartdata.py:288
+#: ./cartdata.py:290
 msgid "alert_item_number_exceed"
 msgstr "Limit exceed by ${exceed} ${quantity_unit}"
 
 #. Default: "${reserved} ${quantity_unit} reserved"
-#: ./cartdata.py:295
+#: ./cartdata.py:297
 msgid "alert_item_number_reserved"
 msgstr "${reserved} ${quantity_unit} reserved"
 
 #. Default: "Partly reserved"
-#: ./cartdata.py:283
+#: ./cartdata.py:285
 msgid "alert_item_some_reserved"
 msgstr "Partly reserved"
 
@@ -479,12 +487,12 @@ msgid "item_discount"
 msgstr "Item Discount"
 
 #. Default: "Item no longer buyable"
-#: ./cartdata.py:211
+#: ./cartdata.py:213
 msgid "item_no_longer_buyable"
 msgstr "Item no longer buyable"
 
 #. Default: "Item not buyable yet"
-#: ./cartdata.py:199
+#: ./cartdata.py:201
 msgid "item_not_buyable_yet"
 msgstr "Item not buyable yet"
 
@@ -955,7 +963,7 @@ msgid "payment_text"
 msgstr "Payment Text"
 
 #. Default: "Permission to buy ${title} not granted."
-#: ./cartdata.py:182
+#: ./cartdata.py:184
 msgid "permission_not_granted_to_buy_item"
 msgstr "Permission to buy ${title} not granted."
 
