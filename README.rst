@@ -16,7 +16,7 @@ requires some packages in more recent versions:
 
 * ``plone.app.workflow`` >= 2.2.1
 
-* ``plone.app.users`` >= 2.0.2
+* ``plone.app.users`` >= 2.0.4
 
 See the Troubleshooting_ section for more information.
 
@@ -114,7 +114,21 @@ activation, set ``IBuyable`` interface directly on content class::
       <implements interface="bda.plone.shop.interfaces.IBuyable" />
     </class>
 
-XXX: AT notification text documentation.
+Notification related schema extenders can be applied to any Archetypes object
+including buyable items, notification text values are aquired until plone root
+is reached::
+
+    <adapter
+      name="bda.plone.shop.itemnotificationtext"
+      for="your.package.IContentInterface"
+      factory="bda.plone.shop.at.ItemNotificationTextExtender"
+      provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+    <adapter
+      name="bda.plone.shop.globalnotificationtext"
+      for="your.package.IContentInterface"
+      factory="bda.plone.shop.at.GlobalNotificationTextExtender"
+      provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 
 
 Dexterity
@@ -140,8 +154,8 @@ In order to create buyable items with dexterity you need to either create a
 portal type via GenericSetup or use the Dexterity TTW Editor to assign the
 behaviors to existing content, or create new type(s) TTW from scratch.
 
-Notification related behaviors can be applied to any parent objects of buyable
-items as well, notification text values are aquired until plone root is
+Notification related behaviors can be applied to any Dexterity object including
+buyable items, notification text values are aquired until plone root is
 reached.
 
 
@@ -190,12 +204,18 @@ Dexterity::
 Permissions
 ===========
 
+In general, custom shop deployments are likely to configure the permission and
+role settings according to their use cases.
+
 There exists ``bda.plone.shop.ViewBuyableInfo`` and ``bda.plone.shop.BuyItems``
 permission to control what parts of buyable data and controls get exposed to
 the user.
 
-In general, custom shop deployments are likely to configure the permission and
-role settings according to their use cases.
+Further the permissions ``bda.plone.shop.ChangePersonalInformation`` and
+``bda.plone.shop.ChangePersonalPreferences`` are used to control access to
+Personal Preferences respective Personal Information pages. By default,
+users with role ``Customer`` can access Personal Information only, as it
+usually makes no sense to give a customer settings like a preferred editor.
 
 
 bda.plone.shop.ViewBuyableInfo
