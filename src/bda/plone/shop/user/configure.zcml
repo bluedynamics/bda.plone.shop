@@ -2,6 +2,23 @@
            xmlns:i18n="http://namespaces.zope.org/i18n"
            xmlns:browser="http://namespaces.zope.org/browser">
 
+  <!-- bind user preferences and information views to new permissions -->
+  <configure package="plone.app.users.browser">
+    <browser:page
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      name="personal-preferences"
+      class=".personalpreferences.PersonalPreferencesPanel"
+      permission="bda.plone.shop.ChangePersonalPreferences"
+      layer="bda.plone.shop.interfaces.IShopExtensionLayer" />
+
+    <browser:page
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      name="personal-information"
+      class=".userdatapanel.UserDataPanel"
+      permission="bda.plone.shop.ChangePersonalInformation"
+      layer="bda.plone.shop.interfaces.IShopExtensionLayer" />
+  </configure>
+
   <!-- userdata adapters -->
   <adapter
     factory=".userdata.UserDataPanelExtender"

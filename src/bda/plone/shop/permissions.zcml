@@ -10,4 +10,12 @@
     id="bda.plone.shop.BuyItems"
     title="bda.plone.shop: Buy Items" />
 
+  <permission
+    id="bda.plone.shop.ChangePersonalInformation"
+    title="bda.plone.shop: Change Personal Information" />
+
+  <permission
+    id="bda.plone.shop.ChangePersonalPreferences"
+    title="bda.plone.shop: Change Personal Preferences" />
+
 </configure>

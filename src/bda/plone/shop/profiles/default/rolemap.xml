@@ -14,5 +14,19 @@
       <role name="Site Administrator" />
       <role name="Customer" />
     </permission>
+    <permission name="bda.plone.shop: Change Personal Information" acquire="True">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Reviewer" />
+      <role name="Editor" />
+      <role name="Customer" />
+      <role name="Authenticated" />
+    </permission>
+    <permission name="bda.plone.shop: Change Personal Preferences" acquire="True">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Reviewer" />
+      <role name="Editor" />
+    </permission>
   </permissions>
 </rolemap>

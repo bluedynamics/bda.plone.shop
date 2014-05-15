@@ -35,12 +35,13 @@
            zcml:condition="installed plone.dexterity" />
   <include package="bda.plone.orders" />
 
-  <include package=".browser" />
-  <include package=".user" />
-  <include package=".upgrades" />
   <include file="permissions.zcml" />
   <include file="profiles.zcml" />
   <include file="vocabularies.zcml" />
+
+  <include package=".browser" />
+  <include package=".user" />
+  <include package=".upgrades" />
 
   <!-- indexing -->
   <adapter

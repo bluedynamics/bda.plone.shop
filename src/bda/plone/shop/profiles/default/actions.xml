@@ -2,6 +2,7 @@
 <object name="portal_actions"
         meta_type="Plone Actions Tool"
         xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
   <object name="object_buttons" meta_type="CMF Action Category">
     <object name="enableBuyable"
             meta_type="CMF Action"
@@ -90,4 +91,41 @@
     </object>
   </object>
 
+  <object name="user" meta_type="CMF Action Category">
+    <object name="preferences"
+            meta_type="CMF Action"
+            i18n:domain="bda.plone.shop">
+      <property name="title" i18n:translate="">
+        Personal Preferences
+      </property>
+      <property name="url_expr">
+        string:${globals_view/navigationRootUrl}/@@personal-preferences
+      </property>
+      <property name="available_expr">
+        python:member is not None
+      </property>
+      <property name="permissions">
+        <element value="bda.plone.shop: Change Personal Preferences"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+
+    <object name="information"
+            meta_type="CMF Action"
+            i18n:domain="bda.plone.shop">
+      <property name="title" i18n:translate="">
+        Personal Information
+      </property>
+      <property name="url_expr">
+        string:${globals_view/navigationRootUrl}/@@personal-information
+      </property>
+      <property name="available_expr">
+        python:member is not None
+      </property>
+      <property name="permissions">
+        <element value="bda.plone.shop: Change Personal Information"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+  </object>
 </object>

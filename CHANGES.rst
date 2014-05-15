@@ -4,6 +4,16 @@ Changelog
 0.7dev
 ------
 
+- Introduce "Personal Information" user action and adopt "Personal Preferences"
+  user action in order to get displayed for permitted users only.
+  [rnix]
+
+- Introduce ``bda.plone.shop.ChangePersonalInformation`` and
+  ``bda.plone.shop.ChangePersonalPreferences`` permissions and bind
+  ``personal-preferences`` and ``personal-information`` views to shop layer
+  and these permissions.
+  [rnix]
+
 - Check whether shipping method stored on cookie is available (any longer).
   [rnix]
 
