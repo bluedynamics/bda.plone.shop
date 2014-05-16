@@ -4,6 +4,10 @@ Changelog
 0.7dev
 ------
 
+- Introcuce ``IShopSettings.add_customer_role_to_new_users`` and consider in
+  principal created event subscriber.
+  [rnix]
+
 - Introduce "Personal Information" user action and adopt "Personal Preferences"
   user action in order to get displayed for permitted users only.
   [rnix]

@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <registry>
 
+  <records interface="bda.plone.shop.interfaces.IShopSettings">
+    <value key="add_customer_role_to_new_users" purge="false">True</value>
+  </records>
+
   <records interface="bda.plone.shop.interfaces.IShopCartSettings">
     <value key="max_artice_count" purge="false">5</value>
   </records>

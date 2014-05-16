@@ -4,6 +4,7 @@
   <records interface="bda.plone.shop.interfaces.IShopSettings">
     <value key="admin_email" purge="false"></value>
     <value key="admin_name" purge="false"></value>
+    <value key="add_customer_role_to_new_users" purge="false">True</value>
     <value key="currency" purge="false">EUR</value>
     <value key="show_currency" purge="false">symbol</value>
     <value key="default_item_display_gross" purge="false">False</value>

@@ -69,6 +69,16 @@ class IShopSettings(model.Schema):
         default=""
     )
 
+    add_customer_role_to_new_users = schema.Bool(
+        title=_(
+            u'label_add_customer_role_to_new_users',
+            default=u'Add Customer role to new Users'
+        ),
+        required=False,
+        default=True
+    )
+
+    # XXX: this is an article setting, move to IShopArticleSettings
     default_item_display_gross = schema.Bool(
         title=_(
             u'label_default_item_display_gross',
