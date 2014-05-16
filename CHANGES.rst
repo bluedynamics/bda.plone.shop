@@ -4,6 +4,9 @@ Changelog
 0.7dev
 ------
 
+- Skip Shop portlet entirely if no shop links for user available.
+  [rnix]
+
 - Check for ``bda.plone.orders.ExportOrders`` permission in
   ``ShopPortletExportOrdersLink`` and ``ShopPortletExportOrdersItemLink``.
   [rnix]

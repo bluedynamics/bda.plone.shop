@@ -168,14 +168,15 @@ class ShopAdminRenderer(base.Renderer):
     render = ViewPageTemplateFile('admin.pt')
 
     @property
-    def show(self):
-        return checkPermission(VIEW_ORDERS_PERMISSION, self.context)
+    def available(self):
+        return bool(self.links())
 
     def links(self):
         ret = list()
         for _, adapter in getAdapters((self.context,), IShopPortletLink):
             ret.append(adapter)
-        return sorted(ret, key=lambda x: x.order)
+        ret = sorted(ret, key=lambda x: x.order)
+        return [_ for _ in ret if _.display]
 
 
 class ShopAdminAddForm(base.NullAddForm):

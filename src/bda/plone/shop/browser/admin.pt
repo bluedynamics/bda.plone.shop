@@ -1,5 +1,4 @@
-<tal:block condition="view/show"
-           i18n:domain="bda.plone.shop">
+<tal:block i18n:domain="bda.plone.shop">
 
   <dl class="portlet portletShopAdmin">
     <dt class="portletHeader">
@@ -11,7 +10,7 @@
     <dd class="portletItem lastItem">
       <ul>
         <tal:li repeat="link view/links">
-          <li tal:condition="link/display" tal:attributes="class link/cssclass|nothing">
+          <li tal:attributes="class link/cssclass|nothing">
             <a href=""
                tal:attributes="href link/url"
                tal:content="link/title">Title</a>
