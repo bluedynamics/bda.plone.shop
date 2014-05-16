@@ -4,6 +4,10 @@ Changelog
 0.7dev
 ------
 
+- Check for ``bda.plone.orders.ExportOrders`` permission in
+  ``ShopPortletExportOrdersLink`` and ``ShopPortletExportOrdersItemLink``.
+  [rnix]
+
 - Bind ``dashboard`` user action to
   ``bda.plone.shop.ChangePersonalPreferences`` permission.
   [rnix]

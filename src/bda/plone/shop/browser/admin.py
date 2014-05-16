@@ -18,6 +18,7 @@ import plone.api
 
 BUY_ITEMS_PERMISSION = 'bda.plone.shop.BuyItems'
 VIEW_ORDERS_PERMISSION = 'bda.plone.orders.ViewOrders'
+EXPORT_ORDERS_PERMISSION = 'bda.plone.orders.ExportOrders'
 MANAGE_TEAMPLETS_PERMISSION = 'bda.plone.orders.ManageTemplates'
 MANAGE_DISCOUNT_PERMISSION = 'bda.plone.discount.ManageDiscount'
 
@@ -86,7 +87,7 @@ class ShopPortletOrdersLink(ShopPortletLink):
 class ShopPortletExportOrdersLink(ShopPortletLink):
 
     def __init__(self, context):
-        permissions = [VIEW_ORDERS_PERMISSION]
+        permissions = [EXPORT_ORDERS_PERMISSION]
         super(ShopPortletExportOrdersLink, self).__init__(
             context, view_permissions=permissions)
         site = plone.api.portal.get()
@@ -99,7 +100,7 @@ class ShopPortletExportOrdersLink(ShopPortletLink):
 class ShopPortletExportOrdersItemLink(ShopPortletLink):
 
     def __init__(self, context):
-        permissions = [VIEW_ORDERS_PERMISSION]
+        permissions = [EXPORT_ORDERS_PERMISSION]
         super(ShopPortletExportOrdersItemLink, self).__init__(
             context, view_permissions=permissions)
         self.url = '%s/@@exportorders_contextual' % self.context.absolute_url()
