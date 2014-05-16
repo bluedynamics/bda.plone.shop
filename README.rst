@@ -303,10 +303,6 @@ respectively.
 Troubleshooting
 ===============
 
-In case you can't add or change the texts in the ``Payment Texts``
-section of ``@@shop_controlpanel`` you might need
-``collective.z3cform.datagridfield`` > 0.16
-
 If you're missing widgets in the ``@@item_discount`` form (eg. the Autocomplete
 for users or groups), you might want to reinstall (or re-run the GS import
 steps) of the ``yafowil.plone`` (see its README__ for more information).
