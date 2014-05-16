@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.7dev
-------
+0.7
+---
 
 - Skip Shop portlet entirely if no shop links for user available.
   [rnix]
