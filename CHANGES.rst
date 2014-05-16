@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.8.dev0
+--------
+
+- No changes yet.
+  [rnix]
+
+
 0.7
 ---
 
