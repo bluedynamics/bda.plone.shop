@@ -4,6 +4,14 @@ Changelog
 0.7dev
 ------
 
+- Bind ``dashboard`` user action to
+  ``bda.plone.shop.ChangePersonalPreferences`` permission.
+  [rnix]
+
+- Format ``actions.xml`` to make action translations work properly. GS Profile
+  application required.
+  [rnix]
+
 - Introcuce ``IShopSettings.add_customer_role_to_new_users`` and consider in
   principal created event subscriber.
   [rnix]

@@ -25,7 +25,7 @@ msgstr "Erweitert Objekt um Shop Artikel Information"
 
 #: ./profiles/default/actions.xml
 msgid "Activate vendor area on this context"
-msgstr "Aktiviert Anbieterbereich für diesen Kontext"
+msgstr "Aktiviert Mandantenbereich für diesen Kontext"
 
 #. Default: "Article"
 #: ./interfaces.py:194
@@ -58,11 +58,11 @@ msgstr "Deaktiviert Shop Artikel Information auf dem Objekt"
 
 #: ./profiles/default/actions.xml
 msgid "Deactivates vendor area on this context"
-msgstr "Deaktiviert Anbieterbereich für diesen Kontext"
+msgstr "Deaktiviert Mandantenbereich für diesen Kontext"
 
 #: ./profiles/default/actions.xml
 msgid "Disable Vendor Area"
-msgstr "Deaktiviere Anbieterbereich"
+msgstr "Deaktiviere Mandantenbereich"
 
 #: ./profiles/default/actions.xml
 msgid "Disables Buyable"
@@ -79,7 +79,7 @@ msgstr "Aktiviere Shop Artikel"
 
 #: ./profiles/default/actions.xml
 msgid "Enable Vendor Area"
-msgstr "Aktiviere Anbieterbereich"
+msgstr "Aktiviere Mandantenbereich"
 
 #. Default: "British Pound Sterling"
 #: ./vocabularies.py:92
@@ -117,7 +117,7 @@ msgstr "Persönliche Informationen"
 
 #: ./profiles/default/actions.xml
 msgid "Personal Preferences"
-msgstr "Persönliche Einstellungen"
+msgstr "Meine Einstellungen"
 
 #. Default: "Swedish Krona"
 #: ./vocabularies.py:95
@@ -221,7 +221,7 @@ msgstr "Shop Artikel Information deaktiviert"
 #. Default: "Disabled Vendor."
 #: ./browser/actions.py:54
 msgid "disabled_vendor"
-msgstr "Anbieter deaktiviert."
+msgstr "Mandant deaktiviert."
 
 #. Default: "Enabled Buyable."
 #: ./browser/actions.py:46
@@ -231,7 +231,7 @@ msgstr "Shop Artikel Information hinzugefügt"
 #. Default: "Enabled Vendor."
 #: ./browser/actions.py:53
 msgid "enabled_vendor"
-msgstr "Anbieter aktiviert."
+msgstr "Mandant aktiviert."
 
 #. Default: "Export Orders"
 #: ./browser/admin.py:94

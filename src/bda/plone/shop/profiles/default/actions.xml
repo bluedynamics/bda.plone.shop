@@ -4,45 +4,31 @@
         xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <object name="object_buttons" meta_type="CMF Action Category">
+
     <object name="enableBuyable"
             meta_type="CMF Action"
             i18n:domain="bda.plone.shop">
-      <property name="title" i18n:translate="">
-          Enable Buyable
-      </property>
-      <property name="description" i18n:translate="">
-          Activate Buyable on Item
-      </property>
-      <property name="url_expr">
-          string:${object/absolute_url}/@@enable-buyable
-      </property>
+      <property name="title" i18n:translate="">Enable Buyable</property>
+      <property name="description" i18n:translate="">Activate Buyable on Item</property>
+      <property name="url_expr">string:${object/absolute_url}/@@enable-buyable</property>
       <property name="icon_expr"></property>
-      <property name="available_expr">
-          object/@@is-possible-to-enable-buyable
-      </property>
+      <property name="available_expr">object/@@is-possible-to-enable-buyable</property>
       <property name="permissions">
-          <element value="Modify portal content" />
+        <element value="Modify portal content" />
       </property>
       <property name="visible">True</property>
     </object>
+
     <object name="disableBuyable"
             meta_type="CMF Action"
             i18n:domain="bda.plone.shop">
-      <property name="title" i18n:translate="">
-          Disables Buyable
-      </property>
-      <property name="description" i18n:translate="">
-          Deactivates Buyable on Item
-      </property>
-      <property name="url_expr">
-          string:${object/absolute_url}/@@disable-buyable
-      </property>
+      <property name="title" i18n:translate="">Disables Buyable</property>
+      <property name="description" i18n:translate="">Deactivates Buyable on Item</property>
+      <property name="url_expr">string:${object/absolute_url}/@@disable-buyable</property>
       <property name="icon_expr"></property>
-      <property name="available_expr">
-          object/@@is-possible-to-disable-buyable
-      </property>
+      <property name="available_expr">object/@@is-possible-to-disable-buyable</property>
       <property name="permissions">
-          <element value="Modify portal content" />
+        <element value="Modify portal content" />
       </property>
       <property name="visible">True</property>
     </object>
@@ -50,60 +36,53 @@
     <object name="enableVendor"
             meta_type="CMF Action"
             i18n:domain="bda.plone.shop">
-      <property name="title" i18n:translate="">
-          Enable Vendor Area
-      </property>
-      <property name="description" i18n:translate="">
-          Activate vendor area on this context
-      </property>
-      <property name="url_expr">
-          string:${object/absolute_url}/@@enable-vendor
-      </property>
+      <property name="title" i18n:translate="">Enable Vendor Area</property>
+      <property name="description" i18n:translate="">Activate vendor area on this context</property>
+      <property name="url_expr">string:${object/absolute_url}/@@enable-vendor</property>
       <property name="icon_expr"></property>
-      <property name="available_expr">
-          object/@@is-possible-to-enable-vendor
-      </property>
+      <property name="available_expr">object/@@is-possible-to-enable-vendor</property>
       <property name="permissions">
-          <element value="Modify portal content" />
+        <element value="Modify portal content" />
       </property>
       <property name="visible">True</property>
     </object>
+
     <object name="disableVendor"
             meta_type="CMF Action"
             i18n:domain="bda.plone.shop">
-      <property name="title" i18n:translate="">
-          Disable Vendor Area
-      </property>
-      <property name="description" i18n:translate="">
-          Deactivates vendor area on this context
-      </property>
-      <property name="url_expr">
-          string:${object/absolute_url}/@@disable-vendor
-      </property>
+      <property name="title" i18n:translate="">Disable Vendor Area</property>
+      <property name="description" i18n:translate="">Deactivates vendor area on this context</property>
+      <property name="url_expr">string:${object/absolute_url}/@@disable-vendor</property>
       <property name="icon_expr"></property>
-      <property name="available_expr">
-          object/@@is-possible-to-disable-vendor
-      </property>
+      <property name="available_expr">object/@@is-possible-to-disable-vendor</property>
       <property name="permissions">
-          <element value="Modify portal content" />
+        <element value="Modify portal content" />
       </property>
       <property name="visible">True</property>
     </object>
+
   </object>
 
   <object name="user" meta_type="CMF Action Category">
+
+    <object name="dashboard"
+            meta_type="CMF Action"
+            i18n:domain="plone">
+      <property name="title" i18n:translate="">Dashboard</property>
+      <property name="url_expr">string:${portal_url}/dashboard</property>
+      <property name="available_expr">python:member is not None</property>
+      <property name="permissions">
+        <element value="bda.plone.shop: Change Personal Preferences"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+
     <object name="preferences"
             meta_type="CMF Action"
             i18n:domain="bda.plone.shop">
-      <property name="title" i18n:translate="">
-        Personal Preferences
-      </property>
-      <property name="url_expr">
-        string:${globals_view/navigationRootUrl}/@@personal-preferences
-      </property>
-      <property name="available_expr">
-        python:member is not None
-      </property>
+      <property name="title" i18n:translate="">Personal Preferences</property>
+      <property name="url_expr">string:${globals_view/navigationRootUrl}/@@personal-preferences</property>
+      <property name="available_expr">python:member is not None</property>
       <property name="permissions">
         <element value="bda.plone.shop: Change Personal Preferences"/>
       </property>
@@ -113,19 +92,15 @@
     <object name="information"
             meta_type="CMF Action"
             i18n:domain="bda.plone.shop">
-      <property name="title" i18n:translate="">
-        Personal Information
-      </property>
-      <property name="url_expr">
-        string:${globals_view/navigationRootUrl}/@@personal-information
-      </property>
-      <property name="available_expr">
-        python:member is not None
-      </property>
+      <property name="title" i18n:translate="">Personal Information</property>
+      <property name="url_expr">string:${globals_view/navigationRootUrl}/@@personal-information</property>
+      <property name="available_expr">python:member is not None</property>
       <property name="permissions">
         <element value="bda.plone.shop: Change Personal Information"/>
       </property>
       <property name="visible">True</property>
     </object>
+
   </object>
+
 </object>
