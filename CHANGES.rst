@@ -4,7 +4,7 @@ Changelog
 0.8.dev0
 --------
 
-- No changes yet.
+- Format currency values in default shipping messages.
   [rnix]
 
 

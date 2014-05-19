@@ -49,8 +49,13 @@ class DefaultShipping(Shipping):
         flat_shipping_cost = Decimal(str(settings.flat_shipping_cost))
         item_shipping_cost = Decimal(str(settings.item_shipping_cost))
         shipping_vat = Decimal(str(settings.shipping_vat))
+        def quantize(val):
+            val = val.quantize(Decimal('1.00'))
+            if bool(val % 2):
+                return str(val).replace('.', ',')
+            return str(val.quantize(Decimal('1'))) + ',-'
         def gross(val):
-            return val + (val / Decimal(100) * shipping_vat)
+            return quantize(val + (val / Decimal(100) * shipping_vat))
         # no shipping costs
         if not flat_shipping_cost and not item_shipping_cost:
             return _(u"free_shipping", default=u"Free Shipping")
@@ -102,7 +107,7 @@ class DefaultShipping(Shipping):
             return Message(msg, mapping={
                 'flat': gross(flat_shipping_cost),
                 'item': gross(item_shipping_cost),
-                'limit': free_shipping_limit,
+                'limit': quantize(free_shipping_limit),
                 'currency': currency,
             })
         # flat costs only
@@ -121,7 +126,7 @@ class DefaultShipping(Shipping):
                                 u"${limit} ${currency}")
             return Message(msg, mapping={
                 'flat': gross(flat_shipping_cost),
-                'limit': free_shipping_limit,
+                'limit': quantize(free_shipping_limit),
                 'currency': currency,
             })
         # item costs only
@@ -140,7 +145,7 @@ class DefaultShipping(Shipping):
                                 u"price above ${limit} ${currency}")
             return Message(msg, mapping={
                 'item': gross(item_shipping_cost),
-                'limit': free_shipping_limit,
+                'limit': quantize(free_shipping_limit),
                 'currency': currency,
             })
 
