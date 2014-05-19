@@ -4,6 +4,16 @@ Changelog
 0.8.dev0
 --------
 
+- Introduce ``bda.plone.shop.utils.format_amount``.
+  [rnix]
+
+- Add ``IPaymentTextSettings.cash_on_delivery_costs`` setting.
+  [rnix]
+
+- Add ``cash_in_advance`` and ``cash_on_delivery`` values to
+  ``IPaymentTextSettings.available_payment_methods``.
+  [rnix]
+
 - Format currency values in default shipping messages.
   [rnix]
 

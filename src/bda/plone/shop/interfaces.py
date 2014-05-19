@@ -519,6 +519,7 @@ class IPaymentTextSettings(model.Schema):
             'payment_method',
             'skip_payment_if_order_contains_reservations',
             'payment_text',
+            'cash_on_delivery_costs',
         ],
     )
 
@@ -561,5 +562,13 @@ class IPaymentTextSettings(model.Schema):
         value_type=DictRow(
             title=_(u'payment_text', default='Payment Text'),
             schema=ILanguageAndPaymentAwareTextRow),
+        required=False
+    )
+
+    cash_on_delivery_costs = schema.Float(
+        title=_(
+            u'label_cash_on_delivery_costs',
+            default=u'Cash on delivery costs in gross'
+        ),
         required=False
     )

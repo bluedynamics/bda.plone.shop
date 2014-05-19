@@ -53,6 +53,7 @@
 
   <!-- payment settings -->
   <adapter factory=".payment.PaymentSettings" />
+  <adapter factory=".payment.CashOnDeliverySettings" />
 
   <!-- shipping settings -->
   <adapter factory=".shipping.ShippingSettings" />

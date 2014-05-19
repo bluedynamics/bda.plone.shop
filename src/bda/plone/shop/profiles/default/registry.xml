@@ -67,6 +67,8 @@
   <records interface="bda.plone.shop.interfaces.IPaymentTextSettings">
     <value key="available_payment_methods" purge="false">
       <element>cash</element>
+      <element>cash_in_advance</element>
+      <element>cash_on_delivery</element>
       <element>debit_order</element>
       <element>invoice</element>
       <element>six_payment</element>
@@ -74,6 +76,7 @@
     <value key="payment_method" purge="false">invoice</value>
     <value key="skip_payment_if_order_contains_reservations" purge="false">False</value>
     <value key="payment_text" purge="false"></value>
+    <value key="cash_on_delivery_costs" purge="false">9.9</value>
   </records>
 
 </registry>
