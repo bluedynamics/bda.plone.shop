@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-16 08:44+0000\n"
+"POT-Creation-Date: 2014-05-19 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,7 +183,7 @@ msgid "availability"
 msgstr ""
 
 #. Default: "Cart Discount"
-#: ./browser/admin.py:136
+#: ./browser/admin.py:137
 msgid "cart_discount"
 msgstr ""
 
@@ -203,7 +203,7 @@ msgid "critical_available_title"
 msgstr ""
 
 #. Default: "Default Shipping"
-#: ./shipping.py:38
+#: ./shipping.py:39
 msgid "default_shipping"
 msgstr ""
 
@@ -238,52 +238,52 @@ msgid "enabled_vendor"
 msgstr ""
 
 #. Default: "Export Orders"
-#: ./browser/admin.py:94
+#: ./browser/admin.py:95
 msgid "exportorders"
 msgstr ""
 
 #. Default: "Export Orders on this Item"
-#: ./browser/admin.py:106
+#: ./browser/admin.py:107
 msgid "exportorders_item"
 msgstr ""
 
 #. Default: "Flat Rate"
-#: ./shipping.py:197
+#: ./shipping.py:198
 msgid "flat_rate"
 msgstr ""
 
 #. Default: "Free Shipping"
-#: ./shipping.py:56
+#: ./shipping.py:57
 msgid "free_shipping"
 msgstr ""
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:90
+#: ./shipping.py:91
 msgid "free_shipping_limit_flat_and_item_gross"
 msgstr ""
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:97
+#: ./shipping.py:98
 msgid "free_shipping_limit_flat_and_item_net"
 msgstr ""
 
 #. Default: "Flat ${flat} ${currency}. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:112
+#: ./shipping.py:113
 msgid "free_shipping_limit_flat_only_gross"
 msgstr ""
 
 #. Default: "Flat ${flat} ${currency}. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:118
+#: ./shipping.py:119
 msgid "free_shipping_limit_flat_only_net"
 msgstr ""
 
 #. Default: "${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:131
+#: ./shipping.py:132
 msgid "free_shipping_limit_item_only_gross"
 msgstr ""
 
 #. Default: "${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:137
+#: ./shipping.py:138
 msgid "free_shipping_limit_item_only_net"
 msgstr ""
 
@@ -323,7 +323,7 @@ msgid "help_alternative_delivery"
 msgstr ""
 
 #. Default: "Available payment methods in checkout"
-#: ./interfaces.py:528
+#: ./interfaces.py:529
 msgid "help_available_payment_methods"
 msgstr ""
 
@@ -421,7 +421,7 @@ msgid "help_max_artice_count"
 msgstr ""
 
 #. Default: "Default payment method in checkout"
-#: ./interfaces.py:541
+#: ./interfaces.py:542
 msgid "help_payment_method"
 msgstr ""
 
@@ -486,7 +486,7 @@ msgid "help_zip"
 msgstr ""
 
 #. Default: "Item Discount"
-#: ./browser/admin.py:151
+#: ./browser/admin.py:152
 msgid "item_discount"
 msgstr ""
 
@@ -531,7 +531,7 @@ msgid "label_alternative_delivery"
 msgstr ""
 
 #. Default: "Available Payment Methods"
-#: ./interfaces.py:526
+#: ./interfaces.py:527
 msgid "label_available_payment_methods"
 msgstr ""
 
@@ -550,6 +550,11 @@ msgstr ""
 #: ./at.py:542
 #: ./dx.py:432
 msgid "label_buyable_expiration_date"
+msgstr ""
+
+#. Default: "Cash on delivery costs in gross"
+#: ./interfaces.py:569
+msgid "label_cash_on_delivery_costs"
 msgstr ""
 
 #. Default: "City"
@@ -760,12 +765,12 @@ msgid "label_max_artice_count"
 msgstr ""
 
 #. Default: "Payment Method"
-#: ./interfaces.py:539
+#: ./interfaces.py:540
 msgid "label_payment_method"
 msgstr ""
 
 #. Default: "Payment Texts"
-#: ./interfaces.py:557
+#: ./interfaces.py:558
 msgid "label_payment_text"
 msgstr ""
 
@@ -842,7 +847,7 @@ msgid "label_site_item_overbook_notification_text"
 msgstr ""
 
 #. Default: "Skip Payment if order contains reservations"
-#: ./interfaces.py:548
+#: ./interfaces.py:549
 msgid "label_skip_payment_if_order_contains_reservations"
 msgstr ""
 
@@ -882,7 +887,7 @@ msgid "liter"
 msgstr ""
 
 #. Default: "Notification Templates"
-#: ./browser/admin.py:122
+#: ./browser/admin.py:123
 msgid "mailtemplates"
 msgstr ""
 
@@ -897,7 +902,7 @@ msgid "meter"
 msgstr ""
 
 #. Default: "My Orders"
-#: ./browser/admin.py:65
+#: ./browser/admin.py:66
 msgid "my_orders"
 msgstr ""
 
@@ -912,17 +917,17 @@ msgid "no"
 msgstr ""
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart"
-#: ./shipping.py:61
+#: ./shipping.py:62
 msgid "no_free_shipping_flat_and_item"
 msgstr ""
 
 #. Default: "Flat ${flat} ${currency}"
-#: ./shipping.py:71
+#: ./shipping.py:72
 msgid "no_free_shipping_flat_only"
 msgstr ""
 
 #. Default: "${item} ${currency} per item in cart"
-#: ./shipping.py:79
+#: ./shipping.py:80
 msgid "no_free_shipping_item_only"
 msgstr ""
 
@@ -942,7 +947,7 @@ msgid "order_text"
 msgstr ""
 
 #. Default: "Orders"
-#: ./browser/admin.py:81
+#: ./browser/admin.py:82
 msgid "orders"
 msgstr ""
 
@@ -967,7 +972,7 @@ msgid "payment"
 msgstr ""
 
 #. Default: "Payment Text"
-#: ./interfaces.py:562
+#: ./interfaces.py:563
 msgid "payment_text"
 msgstr ""
 
@@ -987,12 +992,12 @@ msgid "quantity"
 msgstr ""
 
 #. Default: "Shop"
-#: ./browser/admin.pt:7
+#: ./browser/admin.pt:6
 msgid "shop_admin_heading"
 msgstr ""
 
 #. Default: "Shop Portlet"
-#: ./browser/admin.py:163
+#: ./browser/admin.py:164
 msgid "shop_portlet"
 msgstr ""
 

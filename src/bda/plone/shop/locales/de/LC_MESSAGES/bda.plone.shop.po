@@ -179,7 +179,7 @@ msgid "availability"
 msgstr "Verfügbarkeit"
 
 #. Default: "Cart Discount"
-#: ./browser/admin.py:136
+#: ./browser/admin.py:137
 msgid "cart_discount"
 msgstr "Warenkorb Rabatt"
 
@@ -199,7 +199,7 @@ msgid "critical_available_title"
 msgstr "Wenige Artikel verfügbar"
 
 #. Default: "Default Shipping"
-#: ./shipping.py:38
+#: ./shipping.py:39
 msgid "default_shipping"
 msgstr "Standard"
 
@@ -234,52 +234,52 @@ msgid "enabled_vendor"
 msgstr "Mandant aktiviert."
 
 #. Default: "Export Orders"
-#: ./browser/admin.py:94
+#: ./browser/admin.py:95
 msgid "exportorders"
 msgstr "Export Bestellungen"
 
 #. Default: "Export Orders on this Item"
-#: ./browser/admin.py:106
+#: ./browser/admin.py:107
 msgid "exportorders_item"
 msgstr "Export Bestellungen für Artikel"
 
 #. Default: "Flat Rate"
-#: ./shipping.py:197
+#: ./shipping.py:198
 msgid "flat_rate"
 msgstr "Fixbetrag"
 
 #. Default: "Free Shipping"
-#: ./shipping.py:56
+#: ./shipping.py:57
 msgid "free_shipping"
 msgstr "Kostenloser Versand"
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:90
+#: ./shipping.py:91
 msgid "free_shipping_limit_flat_and_item_gross"
 msgstr "Mindestens ${flat} ${currency} oder ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:97
+#: ./shipping.py:98
 msgid "free_shipping_limit_flat_and_item_net"
 msgstr "Mindestens ${flat} ${currency} oder ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
 #. Default: "Flat ${flat} ${currency}. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:112
+#: ./shipping.py:113
 msgid "free_shipping_limit_flat_only_gross"
 msgstr "Fixbetrag ${flat} ${currency}. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
 #. Default: "Flat ${flat} ${currency}. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:118
+#: ./shipping.py:119
 msgid "free_shipping_limit_flat_only_net"
 msgstr "Fixbetrag ${flat} ${currency}. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
 #. Default: "${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:131
+#: ./shipping.py:132
 msgid "free_shipping_limit_item_only_gross"
 msgstr "${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
 #. Default: "${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:137
+#: ./shipping.py:138
 msgid "free_shipping_limit_item_only_net"
 msgstr "${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
@@ -319,7 +319,7 @@ msgid "help_alternative_delivery"
 msgstr "Lieferadresse weicht von Rechnungsadresse ab."
 
 #. Default: "Available payment methods in checkout"
-#: ./interfaces.py:528
+#: ./interfaces.py:529
 msgid "help_available_payment_methods"
 msgstr "Verfügbare Bezahlmethoden in der Kassa"
 
@@ -417,7 +417,7 @@ msgid "help_max_artice_count"
 msgstr "Maximale Anzahl an Artikeln im Warenkorb wenn Gesamtbeschränkung im Warenkorb aktiviert"
 
 #. Default: "Default payment method in checkout"
-#: ./interfaces.py:541
+#: ./interfaces.py:542
 msgid "help_payment_method"
 msgstr "Standard Bezahlmethode in der Kassa"
 
@@ -482,7 +482,7 @@ msgid "help_zip"
 msgstr ""
 
 #. Default: "Item Discount"
-#: ./browser/admin.py:151
+#: ./browser/admin.py:152
 msgid "item_discount"
 msgstr "Artikel Rabatt"
 
@@ -527,7 +527,7 @@ msgid "label_alternative_delivery"
 msgstr "Alternative Lieferadresse"
 
 #. Default: "Available Payment Methods"
-#: ./interfaces.py:526
+#: ./interfaces.py:527
 msgid "label_available_payment_methods"
 msgstr "Verfügbare Bezahlmethoden"
 
@@ -547,6 +547,11 @@ msgstr "Verkaufszeitraum Start"
 #: ./dx.py:432
 msgid "label_buyable_expiration_date"
 msgstr "Verkaufszeitraum Ende"
+
+#. Default: "Cash on delivery costs in gross"
+#: ./interfaces.py:569
+msgid "label_cash_on_delivery_costs"
+msgstr "Bezahlart per Nachname Kosten in Brutto"
 
 #. Default: "City"
 #: ./user/userdata.py:93
@@ -756,12 +761,12 @@ msgid "label_max_artice_count"
 msgstr "Maximale Anzahl Artikel im Warenkorb"
 
 #. Default: "Payment Method"
-#: ./interfaces.py:539
+#: ./interfaces.py:540
 msgid "label_payment_method"
 msgstr "Standard Bezahlmethode"
 
 #. Default: "Payment Texts"
-#: ./interfaces.py:557
+#: ./interfaces.py:558
 msgid "label_payment_text"
 msgstr "Benachrichtigungstext für Zahlungsart"
 
@@ -838,7 +843,7 @@ msgid "label_site_item_overbook_notification_text"
 msgstr "Benachrichtigungstext für Bestätigungsmail für Artikel im Warenkorb, die nicht lagernd"
 
 #. Default: "Skip Payment if order contains reservations"
-#: ./interfaces.py:548
+#: ./interfaces.py:549
 msgid "label_skip_payment_if_order_contains_reservations"
 msgstr "Nicht zur Bezahlung weiter leiten wenn Reservierungen im Warenkorb"
 
@@ -878,7 +883,7 @@ msgid "liter"
 msgstr "Liter"
 
 #. Default: "Notification Templates"
-#: ./browser/admin.py:122
+#: ./browser/admin.py:123
 msgid "mailtemplates"
 msgstr "Benachrichtigungen Vorlagen"
 
@@ -893,7 +898,7 @@ msgid "meter"
 msgstr "Meter"
 
 #. Default: "My Orders"
-#: ./browser/admin.py:65
+#: ./browser/admin.py:66
 msgid "my_orders"
 msgstr "Meine Bestellungen"
 
@@ -908,17 +913,17 @@ msgid "no"
 msgstr "Nein"
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart"
-#: ./shipping.py:61
+#: ./shipping.py:62
 msgid "no_free_shipping_flat_and_item"
 msgstr "Mindestens ${flat} ${currency} oder ${item} ${currency} pro Artikel im Warenkorb"
 
 #. Default: "Flat ${flat} ${currency}"
-#: ./shipping.py:71
+#: ./shipping.py:72
 msgid "no_free_shipping_flat_only"
 msgstr "Fixbetrag ${flat} ${currency}"
 
 #. Default: "${item} ${currency} per item in cart"
-#: ./shipping.py:79
+#: ./shipping.py:80
 msgid "no_free_shipping_item_only"
 msgstr "${item} ${currency} pro Artikel im Warenkorb"
 
@@ -938,7 +943,7 @@ msgid "order_text"
 msgstr "Text"
 
 #. Default: "Orders"
-#: ./browser/admin.py:81
+#: ./browser/admin.py:82
 msgid "orders"
 msgstr "Bestellungen"
 
@@ -963,7 +968,7 @@ msgid "payment"
 msgstr "Zahlung"
 
 #. Default: "Payment Text"
-#: ./interfaces.py:562
+#: ./interfaces.py:563
 msgid "payment_text"
 msgstr "Text"
 
@@ -983,12 +988,12 @@ msgid "quantity"
 msgstr "Anzahl"
 
 #. Default: "Shop"
-#: ./browser/admin.pt:7
+#: ./browser/admin.pt:6
 msgid "shop_admin_heading"
 msgstr "Shop"
 
 #. Default: "Shop Portlet"
-#: ./browser/admin.py:163
+#: ./browser/admin.py:164
 msgid "shop_portlet"
 msgstr "Shop"
 
