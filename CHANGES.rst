@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.8.dev0
+0.8.dev1
 --------
 
 - Do not fail in ``CashOnDeliverySettings.costs`` if
