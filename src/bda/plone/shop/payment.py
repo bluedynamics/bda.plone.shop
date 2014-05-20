@@ -46,7 +46,12 @@ class CashOnDeliverySettings(object):
 
     @property
     def costs(self):
-        settings = get_shop_payment_settings()
+        try:
+            settings = get_shop_payment_settings()
+        except KeyError:
+            # happens GS profile application if registry entries not present
+            # yet
+            return Decimal('0')
         costs = settings.cash_on_delivery_costs
         if costs:
             costs = Decimal(str(costs))

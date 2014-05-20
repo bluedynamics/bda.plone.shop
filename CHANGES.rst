@@ -4,6 +4,10 @@ Changelog
 0.8.dev0
 --------
 
+- Do not fail in ``CashOnDeliverySettings.costs`` if
+  ``IPaymentTextSettings.cash_on_delivery_costs`` not present yet.
+  [rnix]
+
 - Introduce ``bda.plone.shop.utils.format_amount``.
   [rnix]
 
