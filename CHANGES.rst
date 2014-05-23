@@ -4,6 +4,10 @@ Changelog
 0.8.dev1
 --------
 
+- Remove validation constraint for "Accept terms and conditions" flag in
+  user information. The validation only applies at checkout time.
+  [rnix]
+
 - Do not fail in ``CashOnDeliverySettings.costs`` if
   ``IPaymentTextSettings.cash_on_delivery_costs`` not present yet.
   [rnix]

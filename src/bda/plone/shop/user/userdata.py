@@ -18,12 +18,6 @@ from bda.plone.shop.interfaces import IShopExtensionLayer
 from bda.plone.shop import message_factory as _
 
 
-def validate_accept(value):
-    if value is not True:
-        return False
-    return True
-
-
 class ICustomer(model.Schema):
 
     model.fieldset('main_address', _('main_address', u'Main Address'),
@@ -163,8 +157,7 @@ class ICustomer(model.Schema):
         description=_(u'help_accept',
                       default=u'Tick this box to indicate that you have found,'
                       ' read and accepted the terms of use for this site.'),
-        required=True,
-        constraint=validate_accept,
+        required=False
     )
 
 
