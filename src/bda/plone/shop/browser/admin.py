@@ -16,7 +16,7 @@ from bda.plone.shop import message_factory as _
 import plone.api
 
 
-BUY_ITEMS_PERMISSION = 'bda.plone.shop.BuyItems'
+VIEW_OWN_ORDERS_PERMISSION = 'bda.plone.orders.ViewOwnOrders'
 VIEW_ORDERS_PERMISSION = 'bda.plone.orders.ViewOrders'
 EXPORT_ORDERS_PERMISSION = 'bda.plone.orders.ExportOrders'
 MANAGE_TEAMPLETS_PERMISSION = 'bda.plone.orders.ManageTemplates'
@@ -58,7 +58,7 @@ class ShopPortletMyOrdersLink(ShopPortletLink):
         # XXX: buy items permission is meant to control whether a user can buy
         #      a specific item. Change check to whether a user is customer
         #      somewhere in the portal, which is semantically the correct way.
-        permissions = [BUY_ITEMS_PERMISSION]
+        permissions = [VIEW_OWN_ORDERS_PERMISSION]
         super(ShopPortletMyOrdersLink, self).__init__(
             context, view_permissions=permissions)
         site = plone.api.portal.get()

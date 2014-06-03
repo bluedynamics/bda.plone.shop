@@ -4,6 +4,10 @@ Changelog
 0.8.dev1
 --------
 
+- Protect the ``@@myorders`` link in ``portlets.ShopAdmin`` portlet with the
+  ``bda.plone.orders.ViewOwnOrders`` permission.
+  [thet]
+
 - Remove validation constraint for "Accept terms and conditions" flag in
   user information. The validation only applies at checkout time.
   [rnix]
