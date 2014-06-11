@@ -177,7 +177,7 @@ msgstr ""
 #. Default: "Availability"
 #: ./browser/buyable.pt:15
 msgid "availability"
-msgstr ""
+msgstr "Disponibilità"
 
 #. Default: "Cart Discount"
 #: ./browser/admin.py:137
