@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.8.dev1
---------
+0.8
+---
 
 - Protect the ``@@myorders`` link in ``portlets.ShopAdmin`` portlet with the
   ``bda.plone.orders.ViewOwnOrders`` permission.
