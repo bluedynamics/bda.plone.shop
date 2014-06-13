@@ -1,12 +1,6 @@
 Changelog
 =========
 
-0.9.dev.0
----------
-
-- no changes yet.
-
-
 0.8
 ---
 
