@@ -9,10 +9,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: bda.plone.shop\n"
+"X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
 
 #. Default: "Australian Dollar"
 #: ./vocabularies.py:93
