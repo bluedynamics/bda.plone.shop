@@ -1,5 +1,5 @@
 from zope.container.interfaces import IContainer
-from zope.interface import directlyProvides
+from zope.interface import alsoProvides
 from zope.interface import noLongerProvides
 from Products.Five.browser import BrowserView
 from bda.plone.orders.interfaces import IVendor
@@ -16,20 +16,22 @@ class EnableDisableFeature(BrowserView):
     disable_message = None
 
     def enableFeature(self):
-        directlyProvides(self.context, self.feature_iface)
-        self.context.portal_catalog.reindexObject(self.context,
-                                                  idxs=['object_provides'],
-                                                  update_metadata=1)
-        self.context.plone_utils.addPortalMessage(self.enable_message)
-        self.request.response.redirect(self.context.absolute_url())
+        ctx = self.context
+        alsoProvides(ctx, self.feature_iface)
+        ctx.portal_catalog.reindexObject(ctx,
+                                         idxs=['object_provides'],
+                                         update_metadata=1)
+        ctx.plone_utils.addPortalMessage(self.enable_message)
+        self.request.response.redirect(ctx.absolute_url())
 
     def disableFeature(self):
-        noLongerProvides(self.context, self.feature_iface)
-        self.context.portal_catalog.reindexObject(self.context,
-                                                  idxs=['object_provides'],
-                                                  update_metadata=1)
-        self.context.plone_utils.addPortalMessage(self.disable_message)
-        self.request.response.redirect(self.context.absolute_url())
+        ctx = self.context
+        noLongerProvides(ctx, self.feature_iface)
+        ctx.portal_catalog.reindexObject(ctx,
+                                         idxs=['object_provides'],
+                                         update_metadata=1)
+        ctx.plone_utils.addPortalMessage(self.disable_message)
+        self.request.response.redirect(ctx.absolute_url())
 
     def isPossibleToEnableFeature(self):
         return self.potential_feature_iface.providedBy(self.context) \

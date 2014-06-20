@@ -4,7 +4,11 @@ Changelog
 0.9.dev.0
 ---------
 
-- no changes yet.
+- To enable and disable features on contexts (like vendor areas), don't use
+  ``directlyProvides`` and erase all other directly provided interfaces, but
+  use ``alsoProvides``. That's needed for collective.lineage sites to work
+  after a vendor area was activated on them.
+  [thet]
 
 
 0.8
