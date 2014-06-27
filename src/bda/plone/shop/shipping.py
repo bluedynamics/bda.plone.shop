@@ -36,7 +36,7 @@ class ShippingSettings(object):
 
 class DefaultShipping(Shipping):
     sid = 'default_shipping'
-    label = _('default_shipping', 'Default Shipping')
+    label = _('default_shipping', default='Default Shipping')
 
     @property
     def description(self):
@@ -183,6 +183,22 @@ class DefaultShipping(Shipping):
         settings = get_shop_shipping_settings()
         shipping_vat = Decimal(str(settings.shipping_vat))
         return self.net(items) / Decimal(100) * shipping_vat
+
+
+class CashAndCarryShipping(Shipping):
+    sid = 'cash_and_carry'
+    label = _('cash_and_carry', default='Cash and Carry')
+
+    @property
+    def description(self):
+        return _('cash_and_carry_descripton',
+                 default='Customer picks up goods at dealer\'s place')
+
+    def net(self, items):
+        return Decimal('0')
+
+    def vat(self, items):
+        return Decimal('0')
 
 
 ###############################################################################

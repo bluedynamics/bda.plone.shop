@@ -184,6 +184,16 @@ msgstr "Verfügbarkeit"
 msgid "cart_discount"
 msgstr "Warenkorb Rabatt"
 
+#. Default: "Cash and Carry"
+#: ./shipping.py:190
+msgid "cash_and_carry"
+msgstr "Selbstabholung"
+
+#. Default: "Customer picks up goods at dealer's place"
+#: ./shipping.py:194
+msgid "cash_and_carry_descripton"
+msgstr "Kunde holt die Ware direkt beim Lieferanten"
+
 #. Default: "Comment"
 #: ./browser/buyable.pt:84
 msgid "comment"
@@ -205,7 +215,7 @@ msgid "default_shipping"
 msgstr "Standard"
 
 #. Default: "Delivery Address"
-#: ./user/userdata.py:35
+#: ./user/userdata.py:29
 msgid "delivery_address"
 msgstr "Lieferadresse"
 
@@ -215,22 +225,22 @@ msgid "delivery_duration_title"
 msgstr "Lieferbar"
 
 #. Default: "Disabled Buyable."
-#: ./browser/actions.py:47
+#: ./browser/actions.py:49
 msgid "disabled_buyable"
 msgstr "Shop Artikel Information deaktiviert"
 
 #. Default: "Disabled Vendor."
-#: ./browser/actions.py:54
+#: ./browser/actions.py:56
 msgid "disabled_vendor"
 msgstr "Mandant deaktiviert."
 
 #. Default: "Enabled Buyable."
-#: ./browser/actions.py:46
+#: ./browser/actions.py:48
 msgid "enabled_buyable"
 msgstr "Shop Artikel Information hinzugefügt"
 
 #. Default: "Enabled Vendor."
-#: ./browser/actions.py:53
+#: ./browser/actions.py:55
 msgid "enabled_vendor"
 msgstr "Mandant aktiviert."
 
@@ -245,7 +255,7 @@ msgid "exportorders_item"
 msgstr "Export Bestellungen für Artikel"
 
 #. Default: "Flat Rate"
-#: ./shipping.py:198
+#: ./shipping.py:214
 msgid "flat_rate"
 msgstr "Fixbetrag"
 
@@ -300,7 +310,7 @@ msgid "gross"
 msgstr "Brutto"
 
 #. Default: "Tick this box to indicate that you have found, read and accepted the terms of use for this site."
-#: ./user/userdata.py:163
+#: ./user/userdata.py:157
 msgid "help_accept"
 msgstr "Wählen Sie diese Option wenn Sie die AGB's gelesen und akzeptiert haben."
 
@@ -315,7 +325,7 @@ msgid "help_admin_name"
 msgstr "Name welcher für Shop E-Mails verwendet wird."
 
 #. Default: "Delivery address is different from billing address."
-#: ./user/userdata.py:109
+#: ./user/userdata.py:103
 msgid "help_alternative_delivery"
 msgstr "Lieferadresse weicht von Rechnungsadresse ab."
 
@@ -329,15 +339,15 @@ msgstr "Verfügbare Bezahlmethoden in der Kassa"
 msgid "help_available_shipping_methods"
 msgstr "Verfügbare Versandarten für Bestellungen"
 
-#: ./user/userdata.py:94
+#: ./user/userdata.py:88
 msgid "help_city"
 msgstr ""
 
-#: ./user/userdata.py:75
+#: ./user/userdata.py:69
 msgid "help_company"
 msgstr ""
 
-#: ./user/userdata.py:100
+#: ./user/userdata.py:94
 msgid "help_country"
 msgstr ""
 
@@ -367,7 +377,7 @@ msgid "help_disable_max_article"
 msgstr "Kein Limit für die absolute Anzahl an Artikel im Warenkorb"
 
 #. Default: "Fill in your given name."
-#: ./user/userdata.py:55
+#: ./user/userdata.py:49
 msgid "help_firstname"
 msgstr "Geben Sie hier Ihren Vornamen an."
 
@@ -381,7 +391,7 @@ msgstr "Fixbetrag Versandkosten Netto"
 msgid "help_free_shipping_limit"
 msgstr "Versandkosten entfallen wenn der Warenwert im Warenkorb dieses Limit übersteigt. Ob dieses Limit vom Netto- oder Bruttowarenwert gilt, hängt von der 'Berechnung Limit kostenfreier Versand vom Bruttowarenwert' Einstellung ab"
 
-#: ./user/userdata.py:48
+#: ./user/userdata.py:42
 msgid "help_gender"
 msgstr ""
 
@@ -408,7 +418,7 @@ msgid "help_item_shipping_cost"
 msgstr "Versandkosten pro Artikel im Warenkorb Netto. Wenn ein Fixbetrag definiert ist und Artikelversandkosten niedriger sind als der Fixbetrag, wird der Fixbetrag verwendet"
 
 #. Default: "Fill in your surname or your family name."
-#: ./user/userdata.py:62
+#: ./user/userdata.py:56
 msgid "help_lastname"
 msgstr "Gebe Sie hier Ihren Nachnamen an."
 
@@ -422,7 +432,7 @@ msgstr "Maximale Anzahl an Artikeln im Warenkorb wenn Gesamtbeschränkung im War
 msgid "help_payment_method"
 msgstr "Standard Bezahlmethode in der Kassa"
 
-#: ./user/userdata.py:69
+#: ./user/userdata.py:63
 msgid "help_phone"
 msgstr ""
 
@@ -464,7 +474,7 @@ msgstr "Soll die Währung im Warenkorb angezeigt werden?"
 msgid "help_show_to_cart"
 msgstr "Soll der Link zur Warenkorbübersicht im Warenkorb angezeigt werden?"
 
-#: ./user/userdata.py:82
+#: ./user/userdata.py:76
 msgid "help_street"
 msgstr ""
 
@@ -478,7 +488,7 @@ msgstr "Zeige nur Gesamtsumme in der Warenkorbübersicht?"
 msgid "help_vat"
 msgstr "Verfügbare Umsatzsteuersätze"
 
-#: ./user/userdata.py:88
+#: ./user/userdata.py:82
 msgid "help_zip"
 msgstr ""
 
@@ -503,7 +513,7 @@ msgid "kilo"
 msgstr "Kilo"
 
 #. Default: "Accept terms of use"
-#: ./user/userdata.py:162
+#: ./user/userdata.py:156
 msgid "label_accept"
 msgstr "Bestätigen Sie die Allgemeinen Geschäftsbedingungen"
 
@@ -523,7 +533,7 @@ msgid "label_admin_name"
 msgstr "Name Shop Administrator"
 
 #. Default: "Alternative delivery address"
-#: ./user/userdata.py:107
+#: ./user/userdata.py:101
 msgid "label_alternative_delivery"
 msgstr "Alternative Lieferadresse"
 
@@ -555,17 +565,17 @@ msgid "label_cash_on_delivery_costs"
 msgstr "Bezahlart per Nachname Kosten in Brutto"
 
 #. Default: "City"
-#: ./user/userdata.py:93
+#: ./user/userdata.py:87
 msgid "label_city"
 msgstr "Stadt"
 
 #. Default: "Company"
-#: ./user/userdata.py:74
+#: ./user/userdata.py:68
 msgid "label_company"
 msgstr "Firma"
 
 #. Default: "Country"
-#: ./user/userdata.py:99
+#: ./user/userdata.py:93
 msgid "label_country"
 msgstr "Land"
 
@@ -620,7 +630,7 @@ msgid "label_disable_max_article"
 msgstr "Keine Gesamtbeschränkung der Artikel im Warenkorb"
 
 #. Default: "First name"
-#: ./user/userdata.py:54
+#: ./user/userdata.py:48
 msgid "label_firstname"
 msgstr "Vorname"
 
@@ -635,7 +645,7 @@ msgid "label_free_shipping_limit"
 msgstr "Limit kostenfreier Versand"
 
 #. Default: "Gender"
-#: ./user/userdata.py:47
+#: ./user/userdata.py:41
 msgid "label_gender"
 msgstr "Geschlecht"
 
@@ -752,7 +762,7 @@ msgid "label_item_vat"
 msgstr "Umsatzsteuer (in %)"
 
 #. Default: "Last name"
-#: ./user/userdata.py:61
+#: ./user/userdata.py:55
 msgid "label_lastname"
 msgstr "Nachname"
 
@@ -772,7 +782,7 @@ msgid "label_payment_text"
 msgstr "Benachrichtigungstext für Zahlungsart"
 
 #. Default: "Phone"
-#: ./user/userdata.py:68
+#: ./user/userdata.py:62
 msgid "label_phone"
 msgstr "Telefon"
 
@@ -849,7 +859,7 @@ msgid "label_skip_payment_if_order_contains_reservations"
 msgstr "Nicht zur Bezahlung weiter leiten wenn Reservierungen im Warenkorb"
 
 #. Default: "Street"
-#: ./user/userdata.py:81
+#: ./user/userdata.py:75
 msgid "label_street"
 msgstr "Straße"
 
@@ -864,7 +874,7 @@ msgid "label_vat"
 msgstr "Umsatzsteuer in %"
 
 #. Default: "Postal Code"
-#: ./user/userdata.py:87
+#: ./user/userdata.py:81
 msgid "label_zip"
 msgstr "Postleitzahl"
 
@@ -874,7 +884,7 @@ msgid "language"
 msgstr "Sprache"
 
 #. Default: "Legal"
-#: ./user/userdata.py:42
+#: ./user/userdata.py:36
 msgid "legal"
 msgstr "Rechtliches"
 
@@ -889,7 +899,7 @@ msgid "mailtemplates"
 msgstr "Benachrichtigungen Vorlagen"
 
 #. Default: "Main Address"
-#: ./user/userdata.py:29
+#: ./user/userdata.py:23
 msgid "main_address"
 msgstr "Hauptadresse"
 
