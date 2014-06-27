@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.9.dev.0
----------
+0.9
+---
 
 - Add "Cash and Carry" shipping.
   [rnix]
