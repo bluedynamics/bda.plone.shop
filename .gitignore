@@ -17,6 +17,7 @@
 *.mo
 .DS_Store
 /vpython/
+/env/
 /coverage/
 /report/
 /dist/
