@@ -1,12 +1,14 @@
+from Products.CMFCore.utils import getToolByName
+from Products.Five.browser import BrowserView
+from Products.statusmessages.interfaces import IStatusMessage
+from bda.plone.orders import permissions
+from bda.plone.orders.interfaces import IVendor
+from bda.plone.shop import message_factory as _
+from bda.plone.shop.interfaces import IBuyable
+from bda.plone.shop.interfaces import IPotentiallyBuyable
 from zope.container.interfaces import IContainer
 from zope.interface import alsoProvides
 from zope.interface import noLongerProvides
-from Products.Five.browser import BrowserView
-from bda.plone.orders.interfaces import IVendor
-from bda.plone.orders import permissions
-from bda.plone.shop.interfaces import IBuyable
-from bda.plone.shop.interfaces import IPotentiallyBuyable
-from bda.plone.shop import message_factory as _
 
 
 class EnableDisableFeature(BrowserView):
@@ -17,20 +19,20 @@ class EnableDisableFeature(BrowserView):
 
     def enableFeature(self):
         ctx = self.context
+        req = self.request
         alsoProvides(ctx, self.feature_iface)
-        ctx.portal_catalog.reindexObject(ctx,
-                                         idxs=['object_provides'],
-                                         update_metadata=1)
-        ctx.plone_utils.addPortalMessage(self.enable_message)
+        cat = getToolByName(ctx, 'portal_catalog')
+        cat.reindexObject(ctx, idxs=['object_provides'], update_metadata=1)
+        IStatusMessage(req).addStatusMessage(self.enable_message, 'info')
         self.request.response.redirect(ctx.absolute_url())
 
     def disableFeature(self):
         ctx = self.context
+        req = self.request
         noLongerProvides(ctx, self.feature_iface)
-        ctx.portal_catalog.reindexObject(ctx,
-                                         idxs=['object_provides'],
-                                         update_metadata=1)
-        ctx.plone_utils.addPortalMessage(self.disable_message)
+        cat = getToolByName(ctx, 'portal_catalog')
+        cat.reindexObject(ctx, idxs=['object_provides'], update_metadata=1)
+        IStatusMessage(req).addStatusMessage(self.disable_message, 'info')
         self.request.response.redirect(ctx.absolute_url())
 
     def isPossibleToEnableFeature(self):

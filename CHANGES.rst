@@ -4,7 +4,9 @@ Changelog
 0.9.1.dev0
 ----------
 
-- No changes yet.
+- Use Products.statusmessages for displaying portal status messages when
+  enabling or disabling Buyable or Vendor features.
+  [thet]
 
 
 0.9
