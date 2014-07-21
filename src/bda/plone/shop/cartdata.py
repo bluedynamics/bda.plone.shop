@@ -272,6 +272,8 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
 
 class CartItemState(CartItemStateBase):
+    # XXX: cart item state needs love how to display item warnings.
+    #      only display warning on effected items.
 
     @property
     def completely_exceeded_alert(self):
