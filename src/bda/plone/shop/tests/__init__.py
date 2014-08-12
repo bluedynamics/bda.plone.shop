@@ -167,7 +167,9 @@ class ShopDXFullLayer(ShopFullLayerBase):
         # Make Documents buyable by adding necessary behaviors to the FTI
         getUtility(IDexterityFTI, name='Document').behaviors +=\
             ('bda.plone.shop.dx.IBuyableBehavior',
-             'bda.plone.shop.dx.IStockBehavior', )
+             'bda.plone.shop.dx.IStockBehavior',
+             'bda.plone.shop.dx.IShippingBehavior',
+             'bda.plone.shop.dx.ITradingBehavior', )
 
         self.setup_content(portal)
 
