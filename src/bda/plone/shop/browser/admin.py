@@ -1,18 +1,19 @@
-from zope.interface import implementer
-from zope.interface import Interface
-from zope.interface import Attribute
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from bda.plone.discount.interfaces import IDiscountSettingsEnabled
+from bda.plone.orders.common import get_vendors_for
+from bda.plone.orders.interfaces import IVendor
+from bda.plone.shop import message_factory as _
+from operator import attrgetter
+from plone.app.portlets.portlets import base
+from plone.portlets.interfaces import IPortletDataProvider
 from zope.component import adapter
 from zope.component import getAdapters
-from zope.security import checkPermission
-from plone.portlets.interfaces import IPortletDataProvider
-from plone.app.portlets.portlets import base
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component.interfaces import ISite
-from bda.plone.discount.interfaces import IDiscountSettingsEnabled
-from bda.plone.orders.interfaces import IVendor
-from bda.plone.orders.common import get_vendors_for
-from bda.plone.shop import message_factory as _
-
+from zope.interface import Attribute
+from zope.interface import Interface
+from zope.interface import implementer
+from zope.security import checkPermission
 import plone.api
 
 
@@ -103,6 +104,9 @@ class ShopPortletExportOrdersItemLink(ShopPortletLink):
         permissions = [EXPORT_ORDERS_PERMISSION]
         super(ShopPortletExportOrdersItemLink, self).__init__(
             context, view_permissions=permissions)
+        if IPloneSiteRoot.providedBy(context):
+            self.display = False
+            return
         self.url = '%s/@@exportorders_contextual' % self.context.absolute_url()
         self.title = _(
             'exportorders_item', default=u'Export Orders on this Item')
@@ -172,11 +176,11 @@ class ShopAdminRenderer(base.Renderer):
         return bool(self.links())
 
     def links(self):
-        ret = list()
-        for _, adapter in getAdapters((self.context,), IShopPortletLink):
-            ret.append(adapter)
-        ret = sorted(ret, key=lambda x: x.order)
-        return [_ for _ in ret if _.display]
+        def unsorted_links():
+            for name, link in getAdapters((self.context,), IShopPortletLink):
+                if link.display:
+                    yield link
+        return sorted(unsorted_links(), key=attrgetter('order'))
 
 
 class ShopAdminAddForm(base.NullAddForm):
