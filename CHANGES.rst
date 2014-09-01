@@ -4,6 +4,9 @@ Changelog
 0.9.1.dev0
 ----------
 
+- Do not show 'Export Orders on this Item' on Plone Site Root
+  [jensens]
+
 - Use Products.statusmessages for displaying portal status messages when
   enabling or disabling Buyable or Vendor features.
   [thet]
