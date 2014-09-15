@@ -1,8 +1,8 @@
+# -*- coding: utf-8 -*-
 from bda.plone.cart import cart_item_shippable
 from bda.plone.cart import CURRENCY_LITERALS
 from bda.plone.shipping import Shipping
 from bda.plone.shipping.interfaces import IShippingSettings
-from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.cartdata import CartItemCalculator
 from bda.plone.shop.utils import format_amount
@@ -50,8 +50,10 @@ class DefaultShipping(Shipping):
         flat_shipping_cost = Decimal(str(settings.flat_shipping_cost))
         item_shipping_cost = Decimal(str(settings.item_shipping_cost))
         shipping_vat = Decimal(str(settings.shipping_vat))
+
         def gross(val):
             return format_amount(val + (val / Decimal(100) * shipping_vat))
+
         # no shipping costs
         if not flat_shipping_cost and not item_shipping_cost:
             return _(u"free_shipping", default=u"Free Shipping")
