@@ -50,6 +50,9 @@
   <records interface="bda.plone.shop.interfaces.IShopTaxSettings">
     <value key="vat" purge="false">
       <element>0</element>
+      <element>2.5</element>
+      <element>3.8</element>
+      <element>8</element>
       <element>10</element>
       <element>15</element>
       <element>20</element>

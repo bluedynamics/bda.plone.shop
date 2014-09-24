@@ -72,7 +72,10 @@ class BuyableControls(BrowserView, DataProviderMixin):
 
     @property
     def item_vat(self):
-        return Decimal(self._item_data.vat)
+        vat = self._item_data.vat
+        if vat % 2 != 0:
+            return Decimal(vat).quantize(Decimal('1.0'))
+        return Decimal(vat)
 
     @property
     def item_net_original(self):

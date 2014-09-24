@@ -48,6 +48,9 @@ def QuantityUnitVocabulary(context):
 # patch this vocab
 AVAILABLE_VAT_VALUES = {
     '0': '0%',
+    '2.5': '2,5%',
+    '3.8': '3,8%',
+    '8': '8%',
     '10': '10%',
     '15': '15%',
     '20': '20%',
