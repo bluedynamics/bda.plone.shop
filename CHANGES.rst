@@ -4,6 +4,9 @@ Changelog
 0.9.1.dev0
 ----------
 
+- Add swiss VAT rates
+  [rnix]
+
 - Do not show 'Export Orders on this Item' on Plone Site Root
   [jensens]
 
