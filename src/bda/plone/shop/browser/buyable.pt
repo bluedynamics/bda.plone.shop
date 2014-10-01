@@ -106,10 +106,10 @@
 
     <tal:addable condition="addable">
       <a href=""
-         class="add_cart_item buyable_add_to_cart"
+         class="add_cart_item buyable_add_to_cart show_status_message"
          i18n:translate="add_to_cart">add to cart</a>
       <a href=""
-         class="update_cart_item buyable_update_cart"
+         class="update_cart_item buyable_update_cart show_status_message"
          i18n:translate="update_cart">update cart</a>
     </tal:addable>
 

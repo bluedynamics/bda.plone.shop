@@ -4,6 +4,9 @@ Changelog
 0.9.1.dev0
 ----------
 
+- Display status messages when modifying cart data via buyable viewlet
+  [rnix]
+
 - Add swiss VAT rates
   [rnix]
 
