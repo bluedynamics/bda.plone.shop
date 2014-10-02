@@ -119,6 +119,10 @@ def default_item_comment_required(context):
 def default_item_quantity_unit_float(context):
     return lambda: get_shop_article_settings().default_item_quantity_unit_float
 
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_item_cart_count_limit(context):
+    return lambda: get_shop_article_settings().default_item_cart_count_limit
 
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)

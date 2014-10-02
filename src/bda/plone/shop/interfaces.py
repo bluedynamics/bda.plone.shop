@@ -199,6 +199,7 @@ class IShopArticleSettings(model.Schema):
             'default_item_comment_enabled',
             'default_item_comment_required',
             'default_item_quantity_unit_float',
+            'default_item_cart_count_limit',
         ],
     )
 
@@ -260,6 +261,14 @@ class IShopArticleSettings(model.Schema):
         title=_(
             u'label_default_item_quantity_unit_float',
             default='Quantity as float as default'
+        ),
+        required=False
+    )
+
+    default_item_cart_count_limit = schema.Float(
+        title=_(
+            u'label_default_item_cart_count_limit',
+            default='Quantity limit of an item in the cart.'
         ),
         required=False
     )

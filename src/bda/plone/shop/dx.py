@@ -55,6 +55,11 @@ def default_item_quantity_unit_float(context):
 
 
 @provider(IContextAwareDefaultFactory)
+def default_item_cart_count_limit(context):
+    return get_shop_article_settings().default_item_cart_count_limit
+
+
+@provider(IContextAwareDefaultFactory)
 def default_item_quantity_unit(context):
     return get_shop_article_settings().default_item_quantity_unit
 
@@ -95,7 +100,8 @@ class IBuyableBehavior(model.Schema, IBuyable):
     item_cart_count_limit = schema.Float(
         title=_(u'label_item_cart_count_limit',
                 default=u'Max count of this item in cart'),
-        required=False
+        required=False,
+        defaultFactory=default_item_cart_count_limit
     )
 
     item_display_gross = schema.Bool(
