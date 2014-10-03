@@ -33,7 +33,11 @@ def AvailableQuantityUnitVocabulary(context):
 @provider(IVocabularyFactory)
 def QuantityUnitVocabulary(context):
     # vocab is used for buyable items
-    settings = get_shop_article_settings()
+    try:
+        settings = get_shop_article_settings()
+    except KeyError:
+        # happens GS profile application if registry entries not present yet
+        return AvailableQuantityUnitVocabulary(context)
     if not settings:
         return
     terms = []
