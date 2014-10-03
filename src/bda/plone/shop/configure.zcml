@@ -120,6 +120,11 @@
 
   <adapter
     zcml:condition="installed Products.Archetypes"
+    name="item_cart_count_limit"
+    factory=".at.default_item_cart_count_limit" />
+
+  <adapter
+    zcml:condition="installed Products.Archetypes"
     name="item_quantity_unit"
     factory=".at.default_item_quantity_unit" />
 
