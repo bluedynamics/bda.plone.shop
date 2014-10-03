@@ -4,6 +4,10 @@ Changelog
 0.9.1.dev0
 ----------
 
+- Added default_item_cart_count_limit to control panel defaults.
+  Don't forget to run the update step.
+  [agitator]
+
 - Display status messages when modifying cart data via buyable viewlet
   [rnix]
 
