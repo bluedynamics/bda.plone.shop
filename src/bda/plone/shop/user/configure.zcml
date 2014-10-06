@@ -22,23 +22,28 @@
   <!-- userdata adapters -->
   <adapter
     factory=".userdata.UserDataPanelExtender"
-    provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
+    provides="plone.z3cform.fieldsets.interfaces.IFormExtender"
+    name="bda.plone.shop.user.userdata.UserDataPanelExtender"/>
+    />
 
   <adapter
     factory=".userdata.RegistrationPanelExtender"
-    provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
+    provides="plone.z3cform.fieldsets.interfaces.IFormExtender"
+    name="bda.plone.shop.user.userdata.RegistrationPanelExtender"/>
 
   <adapter
     factory=".userdata.AddUserFormExtender"
-    provides="plone.z3cform.fieldsets.interfaces.IFormExtender" />
+    provides="plone.z3cform.fieldsets.interfaces.IFormExtender"
+    name="bda.plone.shop.user.userdata.AddUserFormExtender"/>
 
   <adapter
     provides=".userdata.ICustomer"
     for="plone.app.layout.navigation.interfaces.INavigationRoot"
-    factory=".userdata.UserDataSchemaAdapter" />
+    factory=".userdata.UserDataSchemaAdapter"/>
 
   <!-- Adapter for member data retrieval in bda.plone.checkout -->
-  <adapter factory=".userdata.CheckoutFormMemberPresets" />
+  <adapter
+    factory=".userdata.CheckoutFormMemberPresets"/>
 
   <subscriber
     for="Products.PluggableAuthService.interfaces.events.IPrincipalCreatedEvent"

@@ -4,6 +4,10 @@ Changelog
 0.9.1.dev0
 ----------
 
+- Change userdata adapters to named adapters, so other adapters can
+  additionally extend the functionality.
+  [thet]
+
 - Added default_item_cart_count_limit to control panel defaults.
   Don't forget to run the update step.
   [agitator]
