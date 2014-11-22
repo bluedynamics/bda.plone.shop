@@ -14,7 +14,7 @@ control panel.
 ``bda.plone.shop`` won't work on stock Plone 4.3.x installations because it
 requires some packages in more recent versions:
 
-* ``plone.app.workflow`` >= 2.2.1
+* ``plone.app.workflow`` >= 2.1.8
 
 * ``plone.app.users`` >= 2.0.4
 
