@@ -1,51 +1,84 @@
 <tal:availability_details
-   i18n:domain="bda.plone.shop">
+   i18n:domain="bda.plone.shop"
+   tal:define="within_buyable_period view/within_buyable_period;">
 
-  <tal:not_available condition="view/not_available">
-    <strong i18n:translate="not_available_title">
-      Item not available
-    </strong>
-    <p i18n:translate="not_available_message">
-      Item is sold out.
-    </p>
-  </tal:not_available>
+  <tal:within_buyable_period condition="within_buyable_period">
 
-  <tal:full_available condition="view/full_available">
-    <strong i18n:translate="full_available_title">
-      Item available
-    </strong>
-    <p tal:content="view/full_available_message">
-      10 item(s) available.
-    </p>
-  </tal:full_available>
+    <tal:not_available condition="view/not_available">
+      <strong i18n:translate="not_available_title">
+        Item not available
+      </strong>
+      <p i18n:translate="not_available_message">
+        Item is sold out.
+      </p>
+    </tal:not_available>
 
-  <tal:critical_available condition="view/critical_available">
-    <strong i18n:translate="critical_available_title">
-      Low items available
-    </strong>
-    <p tal:content="view/critical_available_message">
-      Just 5 item(s) left.
-    </p>
-  </tal:critical_available>
+    <tal:full_available condition="view/full_available">
+      <strong i18n:translate="full_available_title">
+        Item available
+      </strong>
+      <p tal:content="view/full_available_message">
+        10 item(s) available.
+      </p>
+    </tal:full_available>
 
-  <tal:overbook_available condition="view/overbook_available">
-    <strong i18n:translate="overbook_available_title">
-      Pre-order available
-    </strong>
-    <p tal:content="view/overbook_available_message">
-      Item is sold out. You can pre-order 2 items.
-      As soon as item is available again, it gets delivered.
-    </p>
-  </tal:overbook_available>
+    <tal:critical_available condition="view/critical_available">
+      <strong i18n:translate="critical_available_title">
+        Low items available
+      </strong>
+      <p tal:content="view/critical_available_message">
+        Just 5 item(s) left.
+      </p>
+    </tal:critical_available>
 
-  <tal:delivery_duration define="delivery_duration view/delivery_duration"
-                         condition="delivery_duration">
-    <strong i18n:translate="delivery_duration_title">
-      Delivery
-    </strong>
-    <p tal:content="delivery_duration">
-      3 workdays
-    </p>
-  </tal:delivery_duration>
+    <tal:overbook_available condition="view/overbook_available">
+      <strong i18n:translate="overbook_available_title">
+        Pre-order available
+      </strong>
+      <p tal:content="view/overbook_available_message">
+        Item is sold out. You can pre-order 2 items.
+        As soon as item is available again, it gets delivered.
+      </p>
+    </tal:overbook_available>
+
+    <tal:delivery_duration define="delivery_duration view/delivery_duration"
+                           condition="delivery_duration">
+      <strong i18n:translate="delivery_duration_title">
+        Delivery
+      </strong>
+      <p tal:content="delivery_duration">
+        3 workdays
+      </p>
+    </tal:delivery_duration>
+
+    <tal:purchasable_until condition="view/purchasable_until">
+      <p tal:content="view/purchasable_until_message">
+        Item is purchasable until 2015.01.01 - 10:00
+      </p>
+    </tal:purchasable_until>
+
+  </tal:within_buyable_period>
+
+  <tal:out_of_buyable_period condition="not:within_buyable_period">
+
+    <tal:not_effective_yet condition="view/not_effective_yet">
+      <strong i18n:translate="not_available_yet_title">
+        Item not available yet.
+      </strong>
+      <p tal:content="view/purchasable_as_of_message">
+        Item is purchasable as of 2015.01.01 - 10:00
+      </p>
+    </tal:not_effective_yet>
+
+    <tal:already_expired condition="view/already_expired">
+      <strong i18n:translate="not_available_title">
+        Item not available
+      </strong>
+      <p i18n:translate="no_longer_purchasable">
+        Item is no longer purchasable.
+      </p>
+    </tal:already_expired>
+
+  </tal:out_of_buyable_period>
 
 </tal:availability_details>

@@ -1,9 +1,13 @@
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.cart import get_item_state
 from bda.plone.cart import get_item_delivery
 from bda.plone.cart import get_item_data_provider
 from bda.plone.cart import CartItemAvailabilityBase
 from bda.plone.shop import message_factory as _
+from bda.plone.shop.interfaces import IBuyablePeriod
+from datetime import datetime
+from Products.CMFPlone.i18nl10n import ulocalized_time
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from zope.component import queryAdapter
 
 
 class CartItemAvailability(CartItemAvailabilityBase):
@@ -11,6 +15,23 @@ class CartItemAvailability(CartItemAvailabilityBase):
 
     def details(self):
         return self.details_template(self)
+
+    @property
+    def within_buyable_period(self):
+        buyable_period = queryAdapter(self.context, IBuyablePeriod)
+        # no buyable period defined, always buyable
+        if not buyable_period:
+            return True
+        now = datetime.now()
+        effective = buyable_period.effective
+        # effective date not reached yet
+        if effective and effective >= now:
+            return False
+        expires = buyable_period.expires
+        # expires date already reached
+        if expires and expires <= now:
+            return False
+        return True
 
     @property
     def not_available(self):
@@ -39,6 +60,27 @@ class CartItemAvailability(CartItemAvailabilityBase):
         if overbook is None:
             return True
         return available > self.overbook * -1
+
+    @property
+    def delivery_duration(self):
+        return get_item_delivery(self.context).delivery_duration
+
+    @property
+    def purchasable_until(self):
+        expires = queryAdapter(self.context, IBuyablePeriod).expires
+        return bool(expires) and self.addable
+
+    @property
+    def not_effective_yet(self):
+        effective = queryAdapter(self.context, IBuyablePeriod).effective
+        now = datetime.now()
+        return effective and effective >= now or False
+
+    @property
+    def already_expired(self):
+        expires = queryAdapter(self.context, IBuyablePeriod).expires
+        now = datetime.now()
+        return expires and expires <= now or False
 
     @property
     def full_available_message(self):
@@ -81,5 +123,27 @@ class CartItemAvailability(CartItemAvailabilityBase):
         return message
 
     @property
-    def delivery_duration(self):
-        return get_item_delivery(self.context).delivery_duration
+    def purchasable_until_message(self):
+        date = ulocalized_time(
+            queryAdapter(self.context, IBuyablePeriod).expires,
+            long_format=1,
+            context=self.context,
+            request=self.request,
+        )
+        message = _(u'purchasable_until_message',
+                    default=u'Item is purchasable until ${date}',
+                    mapping={'date': date})
+        return message
+
+    @property
+    def purchasable_as_of_message(self):
+        date = ulocalized_time(
+            queryAdapter(self.context, IBuyablePeriod).effective,
+            long_format=1,
+            context=self.context,
+            request=self.request,
+        )
+        message = _(u'purchasable_as_of_message',
+                    default=u'Item is purchasable as of ${date}',
+                    mapping={'date': date})
+        return message

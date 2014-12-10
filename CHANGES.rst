@@ -1,8 +1,12 @@
 Changelog
 =========
 
-0.9.1.dev0
-----------
+0.10 (unreleased)
+-----------------
+
+- Consider buyable effective and expires dates in availability details and
+  display appropriate messages.
+  [rnix]
 
 - Change userdata adapters to named adapters, so other adapters can
   additionally extend the functionality.
