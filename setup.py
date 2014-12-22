@@ -31,15 +31,16 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'setuptools',
-        'Plone',
         'archetypes.schemaextender',  # XXX: remove from install dependencies
+        'bda.plone.discount',
         'bda.plone.orders',
+        'collective.z3cform.datagridfield',
+        'Plone',
         'plone.api',
         'plone.app.registry',
         'plone.app.users',
-        'collective.z3cform.datagridfield',
-        'bda.plone.discount',
+        'setuptools',
+        'zope.deferredimport',
     ],
     extras_require={
         'test': [

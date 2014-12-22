@@ -1,5 +1,3 @@
-from bda.plone.cart.interfaces import ICartItem
-from bda.plone.discount.interfaces import IDiscountSettingsEnabled
 from bda.plone.orders.interfaces import IGlobalNotificationText
 from bda.plone.orders.interfaces import IItemNotificationText
 from bda.plone.orders.interfaces import IOrdersExtensionLayer
@@ -14,6 +12,13 @@ from zope.interface import Interface
 from zope.interface import Attribute
 from zope.interface import provider
 
+import zope.deferredimport
+
+zope.deferredimport.deprecated(
+    "Import from bda.plone.orders.interfaces instead",
+    IBuyable='bda.plone.orders:interfaces.IBuyable'
+)
+
 
 class IShopExtensionLayer(IOrdersExtensionLayer):
     """Browser layer for bda.plone.shop
@@ -24,13 +29,6 @@ class IPotentiallyBuyable(Interface):
     """Mark item as potentially buyable.
 
     Considered for providing action in UI.
-    """
-
-
-class IBuyable(ICartItem, IDiscountSettingsEnabled):
-    """Marker for buyable item.
-
-    Item is buyable.
     """
 
 

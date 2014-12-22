@@ -4,6 +4,9 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Moved IBuyable to bda.plone.orders to avoid circular dependency.
+  [benniboy]
+
 - Consider buyable effective and expires dates in availability details and
   display appropriate messages.
   [rnix]
