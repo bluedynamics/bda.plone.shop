@@ -85,6 +85,22 @@ class ShopPortletOrdersLink(ShopPortletLink):
         self.cssclass = 'orders'
 
 
+class ShopPortletBookingsLink(ShopPortletLink):
+
+    def __init__(self, context):
+        permissions = [VIEW_ORDERS_PERMISSION]
+        super(ShopPortletBookingsLink, self).__init__(
+            context, view_permissions=permissions)
+        # check if authenticated user is vendor
+        if self.display and not get_vendors_for():
+            self.display = False
+        site = plone.api.portal.get()
+        self.url = '%s/@@bookings' % site.absolute_url()
+        self.title = _('bookings', default=u'Bookings')
+        self.order = 10
+        self.cssclass = 'bookings'
+
+
 class ShopPortletExportOrdersLink(ShopPortletLink):
 
     def __init__(self, context):
