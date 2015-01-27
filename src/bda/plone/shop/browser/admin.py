@@ -2,10 +2,12 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.discount.interfaces import IDiscountSettingsEnabled
 from bda.plone.orders.common import get_vendors_for
+from bda.plone.orders.interfaces import IBuyable
 from bda.plone.orders.interfaces import IVendor
 from bda.plone.shop import message_factory as _
 from operator import attrgetter
 from plone.app.portlets.portlets import base
+from plone.folder.interfaces import IFolder
 from plone.portlets.interfaces import IPortletDataProvider
 from zope.component import adapter
 from zope.component import getAdapters
@@ -14,6 +16,7 @@ from zope.interface import Attribute
 from zope.interface import Interface
 from zope.interface import implementer
 from zope.security import checkPermission
+
 import plone.api
 
 
@@ -97,7 +100,28 @@ class ShopPortletBookingsLink(ShopPortletLink):
         site = plone.api.portal.get()
         self.url = '%s/@@bookings' % site.absolute_url()
         self.title = _('bookings', default=u'Bookings')
-        self.order = 10
+        self.order = 21
+        self.cssclass = 'bookings'
+
+
+class ShopPortletBookingsInContextLink(ShopPortletLink):
+
+    def __init__(self, context):
+        permissions = [VIEW_ORDERS_PERMISSION]
+        super(ShopPortletBookingsInContextLink, self).__init__(
+            context, view_permissions=permissions)
+        # check if authenticated user is vendor
+        if self.display and not get_vendors_for():
+            self.display = False
+        if IBuyable.providedBy(context) \
+                or IFolder.providedBy(context) \
+                or IPloneSiteRoot.providedBy(context):
+            site = self.context
+        else:
+            site = self.context.aq_inner.aq_parent
+        self.url = '%s/@@bookings' % site.absolute_url()
+        self.title = _('bookings_in_context', default=u'Bookings in Context')
+        self.order = 22
         self.cssclass = 'bookings'
 
 

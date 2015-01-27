@@ -119,6 +119,7 @@
   <adapter name="orders" factory=".admin.ShopPortletOrdersLink" />
   <adapter name="myorders" factory=".admin.ShopPortletMyOrdersLink" />
   <adapter name="bookings" factory=".admin.ShopPortletBookingsLink" />
+  <adapter name="bookingsincontext" factory=".admin.ShopPortletBookingsInContextLink" />
   <adapter name="exportorders" factory=".admin.ShopPortletExportOrdersLink" />
   <adapter name="exportorders_item" factory=".admin.ShopPortletExportOrdersItemLink" />
   <adapter name="mailtemplates" factory=".admin.ShopPortletMailTemplatesLink" />
