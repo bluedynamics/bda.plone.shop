@@ -1051,7 +1051,7 @@ msgstr "aktualisieren"
 #. Default: "Vat"
 #: ./browser/buyable.pt:63
 msgid "vat"
-msgstr "Btw"
+msgstr "BTW"
 
 #. Default: "Yes"
 #: ./vocabularies.py:118
