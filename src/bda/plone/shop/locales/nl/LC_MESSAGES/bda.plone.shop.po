@@ -1,0 +1,1035 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: bda.plone.cart\n"
+"POT-Creation-Date: 2015-01-28 14:42+0000\n"
+"PO-Revision-Date: 2015-01-28 15:13+0100\n"
+"Last-Translator: INTK <info@intk.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: nl\n"
+"Language-Name: Nederlands\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: bda.plone.cart\n"
+"X-Is-Fallback-For: nl-be nl-nl\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.7.4\n"
+
+#. Default: "Australian Dollar"
+#: vocabularies.py:100
+msgid "AUD"
+msgstr "Australische Dollar"
+
+#: profiles/default/actions.xml
+msgid "Activate Buyable on Item"
+msgstr "Activeer Koopbaarheid van artikel"
+
+#: profiles/default/actions.xml
+msgid "Activate vendor area on this context"
+msgstr "Activeer leveranciersgebied voor deze context"
+
+#. Default: "Article"
+#: interfaces.py:194
+msgid "Article"
+msgstr "Artikel"
+
+#. Default: "Canadian Dollar"
+#: vocabularies.py:97
+msgid "CAD"
+msgstr "Canadese Dollar"
+
+#. Default: "Swiss Franc"
+#: vocabularies.py:98
+msgid "CHF"
+msgstr "Zwiterse Franken"
+
+#. Default: "Cart"
+#: interfaces.py:114
+msgid "Cart"
+msgstr "Winkelwagen"
+
+#. Default: "Danish Krone"
+#: vocabularies.py:103
+msgid "DKK"
+msgstr "Deense Kronen"
+
+#: profiles/default/actions.xml
+msgid "Deactivates Buyable on Item"
+msgstr "Deactiveer Koopbaarheid voor dit artikel"
+
+#: profiles/default/actions.xml
+msgid "Deactivates vendor area on this context"
+msgstr "Deactiveer leveranciersgebied voor deze context"
+
+#: profiles/default/actions.xml
+msgid "Disable Vendor Area"
+msgstr "Deactiveer leveranciersgebied"
+
+#: profiles/default/actions.xml
+msgid "Disables Buyable"
+msgstr "Deactiveer Koopbaarheid"
+
+#. Default: "Euro"
+#: vocabularies.py:94
+msgid "EUR"
+msgstr "Euro"
+
+#: profiles/default/actions.xml
+msgid "Enable Buyable"
+msgstr "Activeer Koopbaarheid"
+
+#: profiles/default/actions.xml
+msgid "Enable Vendor Area"
+msgstr "Activeer leveranciersgebied"
+
+#. Default: "British Pound Sterling"
+#: vocabularies.py:99
+msgid "GBP"
+msgstr "Britse Pond"
+
+#. Default: "Indian Rupee"
+#: vocabularies.py:96
+msgid "INR"
+msgstr "Indische Rupie"
+
+#. Default: "Norwegian Krone"
+#: vocabularies.py:101
+msgid "NOK"
+msgstr "Norweegse Kronen"
+
+#. Default: "New Zealand Dollar"
+#: vocabularies.py:105
+msgid "NZD"
+msgstr "Nieuwzeelandse Dollar"
+
+#. Default: "Notifications"
+#: interfaces.py:438
+msgid "Notifications"
+msgstr "Meldingen"
+
+#. Default: "Payment"
+#: interfaces.py:525
+msgid "Payment"
+msgstr "Betaling"
+
+#: profiles/default/actions.xml
+msgid "Personal Information"
+msgstr "Persoonlijke informatie"
+
+#: profiles/default/actions.xml
+msgid "Personal Preferences"
+msgstr "Persoonlijke voorkeuren"
+
+#. Default: "Swedish Krona"
+#: vocabularies.py:102
+msgid "SEK"
+msgstr "Zweedse Kronen"
+
+#. Default: "Shipping"
+#: interfaces.py:284
+msgid "Shipping"
+msgstr "Verzending"
+
+#: browser/controlpanel.py:49 profiles/default/controlpanel.xml
+msgid "Shop settings"
+msgstr "Winkelinstellingen"
+
+#: interfaces.py:386
+msgid "Tax Settings"
+msgstr "Belastinginstellingen"
+
+#. Default: "US Dollar"
+#: vocabularies.py:95
+msgid "USD"
+msgstr "Amerikaanse Dollar"
+
+#. Default: "Japanese Yen"
+#: vocabularies.py:104
+msgid "YEN"
+msgstr "Japanse Yen"
+
+#. Default: "add to cart"
+#: browser/buyable.pt:108
+msgid "add_to_cart"
+msgstr "Aanschaffen"
+
+#. Default: "No longer available, please remove from cart"
+#: cartdata.py:280
+msgid "alert_item_no_longer_available"
+msgstr "Niet langer verkrijgbaar, verwijder uit winkelwagen"
+
+#. Default: "Limit exceed by ${exceed} ${quantity_unit}"
+#: cartdata.py:292
+msgid "alert_item_number_exceed"
+msgstr "${exceed} ${quantity_unit} Te veel artikelen in winkelwagen"
+
+#. Default: "${reserved} ${quantity_unit} reserved"
+#: cartdata.py:299
+msgid "alert_item_number_reserved"
+msgstr "${reserved} ${quantity_unit} gereserveerd"
+
+#. Default: "Partly reserved"
+#: cartdata.py:287
+msgid "alert_item_some_reserved"
+msgstr "Gedeeltelijk gereserveerd"
+
+#. Default: "Availability"
+#: browser/buyable.pt:15
+msgid "availability"
+msgstr "Verkrijgbaarheid"
+
+#. Default: "Cart Discount"
+#: browser/admin.py:141
+msgid "cart_discount"
+msgstr "Winkelwagen Korting"
+
+#. Default: "Cash and Carry"
+#: shipping.py:192
+msgid "cash_and_carry"
+msgstr "Betaal en neem mee"
+
+#. Default: "Customer picks up goods at dealer's place"
+#: shipping.py:196
+msgid "cash_and_carry_descripton"
+msgstr "Consument haalt artikelen op bij verkooplocatie"
+
+#. Default: "Comment"
+#: browser/buyable.pt:84
+msgid "comment"
+msgstr "Reactie"
+
+#. Default: "Just ${available} items(s) left."
+#: browser/availability.py:103
+msgid "critical_available_message"
+msgstr "Nog ${available} artikel(en) verkrijgbaar"
+
+#. Default: "Low items available"
+#: browser/availability_details.pt:26
+msgid "critical_available_title"
+msgstr "Weinig artikelen verkrijgbaar"
+
+#. Default: "Default Shipping"
+#: shipping.py:39
+msgid "default_shipping"
+msgstr "Standaard verzending"
+
+#. Default: "Delivery Address"
+#: user/userdata.py:29
+msgid "delivery_address"
+msgstr "Bezorgadres"
+
+#. Default: "Delivery"
+#: browser/availability_details.pt:46
+msgid "delivery_duration_title"
+msgstr "Bezorging"
+
+#. Default: "Disabled Buyable."
+#: browser/actions.py:51
+msgid "disabled_buyable"
+msgstr "Koopbaarheid gedeactiveerd"
+
+#. Default: "Disabled Vendor."
+#: browser/actions.py:58
+msgid "disabled_vendor"
+msgstr "Leverancier gedeactiveerd"
+
+#. Default: "Enabled Buyable."
+#: browser/actions.py:50
+msgid "enabled_buyable"
+msgstr "Koopbaarheid geactiveerd"
+
+#. Default: "Enabled Vendor."
+#: browser/actions.py:57
+msgid "enabled_vendor"
+msgstr "Leverancier geactiveerd"
+
+#. Default: "Export Orders"
+#: browser/admin.py:96
+msgid "exportorders"
+msgstr "Export bestellingen"
+
+#. Default: "Export Orders on this Item"
+#: browser/admin.py:111
+msgid "exportorders_item"
+msgstr "Export bestellingen voor dit artikel"
+
+#. Default: "Flat Rate"
+#: shipping.py:216
+msgid "flat_rate"
+msgstr "Vast bedrag"
+
+#. Default: "Free Shipping"
+#: shipping.py:59
+msgid "free_shipping"
+msgstr "Gratis verzending"
+
+#. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
+#: shipping.py:93
+msgid "free_shipping_limit_flat_and_item_gross"
+msgstr "Minimum ${flat} ${currency} of ${item} ${currency} per artikel in winkelwagen. Gratis verzending als bruto verkoopprijs per artikel boven ${limit} ${currency} is"
+
+#. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
+#: shipping.py:100
+msgid "free_shipping_limit_flat_and_item_net"
+msgstr "Minimum ${flat} ${currency} of ${item} ${currency} per artikel in winkelwagen. Gratis verzending als netto verkoopprijs per artikel boven ${limit} ${currency} is"
+
+#. Default: "Flat ${flat} ${currency}. Free shipping if gross purchase price above ${limit} ${currency}"
+#: shipping.py:115
+msgid "free_shipping_limit_flat_only_gross"
+msgstr "Vast bedrag ${flat} ${currency}. Gratis verzending als de bruto verkoopprijs van de artikelen boven ${limit} ${currency} is"
+
+#. Default: "Flat ${flat} ${currency}. Free shipping if net purchase price above ${limit} ${currency}"
+#: shipping.py:121
+msgid "free_shipping_limit_flat_only_net"
+msgstr "Vast bedrag ${flat} ${currency}. Gratis verzending als de netto verkoopprijs van de artikelen boven ${limit} ${currency} is"
+
+#. Default: "${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
+#: shipping.py:134
+msgid "free_shipping_limit_item_only_gross"
+msgstr "${item} ${currency} per artikel in winkelwagen. Gratis verzending als de bruto verkoopprijs van het artikel boven ${limit} ${currency} is"
+
+#. Default: "${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
+#: shipping.py:140
+msgid "free_shipping_limit_item_only_net"
+msgstr "${item} ${currency} per artikel in winkelwagen. Gratis verzending als de netto verkoopprijs van het artikel boven ${limit} ${currency} is"
+
+#. Default: "${available} items(s) available."
+#: browser/availability.py:93
+msgid "full_available_message"
+msgstr "${available} artikel(en) verkrijgbaar"
+
+#. Default: "Item available"
+#: browser/availability_details.pt:17
+msgid "full_available_title"
+msgstr "Artikel verkrijgbaar"
+
+#. Default: "Gross"
+#: browser/buyable.pt:59
+msgid "gross"
+msgstr "Bruto"
+
+#. Default: "Tick this box to indicate that you have found, read and accepted the terms of use for this site."
+#: user/userdata.py:157
+msgid "help_accept"
+msgstr "Vink dit hokje aan wanneer je de algemene voorwaarden hebt gelezen en hebt geaccepteerd"
+
+#. Default: "No typos please...."
+#: interfaces.py:58
+msgid "help_admin_email"
+msgstr "Let op spelfouten"
+
+#. Default: "Name used for Shop E-Mails."
+#: interfaces.py:66
+msgid "help_admin_name"
+msgstr "Naam voor de e-mails"
+
+#. Default: "Delivery address is different from billing address."
+#: user/userdata.py:103
+msgid "help_alternative_delivery"
+msgstr "Bezorgadres verschilt van factuuradres"
+
+#. Default: "Available payment methods in checkout"
+#: interfaces.py:538
+msgid "help_available_payment_methods"
+msgstr "Beschikbare betaalmethodes"
+
+#. Default: "Available shipping methods in checkout"
+#: interfaces.py:309
+msgid "help_available_shipping_methods"
+msgstr "Beschikbare verzendmogelijkheden"
+
+#: user/userdata.py:88
+msgid "help_city"
+msgstr "Stad"
+
+#: user/userdata.py:69
+msgid "help_company"
+msgstr "Bedrijf"
+
+#: user/userdata.py:94
+msgid "help_country"
+msgstr "Land"
+
+#. Default: "Choose the default currency"
+#: interfaces.py:92
+msgid "help_currency"
+msgstr "Kies de valuta"
+
+#. Default: "default measurement"
+#: interfaces.py:229
+msgid "help_default_quantity_unit"
+msgstr "Aantal"
+
+#. Default: "Flag whether item is shippable by default, i.e. downloads are not"
+#: interfaces.py:301
+msgid "help_default_shipping_item_shippable"
+msgstr "Geef aan of het artikel standaard verzending heeft, downloads e.d. niet"
+
+#. Default: "Specify default vat name"
+#: interfaces.py:409
+msgid "help_default_vat"
+msgstr "Specificeer de standaard BTW"
+
+#. Default: "No total number of items in cart limit"
+#: interfaces.py:149
+msgid "help_disable_max_article"
+msgstr "Geen limiet aan het totaal aantal artikelen in de winkelwagen"
+
+#. Default: "Fill in your given name."
+#: user/userdata.py:49
+msgid "help_firstname"
+msgstr "Vul uw voornaam in"
+
+#. Default: "Net flat shipping cost"
+#: interfaces.py:361
+msgid "help_flat_shipping_cost"
+msgstr "Vast bedrag netto verzendkosten"
+
+#. Default: "Do not add shipping costs to orders with price bigger than limit. If limit applies to gross or net purchase price depends on 'Calculate shipping limit from gross' setting"
+#: interfaces.py:341
+msgid "help_free_shipping_limit"
+msgstr "Voeg geen verzendkosten toe aan bestellingen met een hogere prijs dan het limiet. Of het limiet is berekend voor de netto of bruto verkoopprijs is afhankelijk van instellingen voor 'Bereken bruto verzendkosten'"
+
+#: user/userdata.py:42
+msgid "help_gender"
+msgstr "Geslacht"
+
+#. Default: "Global Trade Item Number"
+#: at.py:596 dx.py:481
+msgid "help_gtin"
+msgstr "Global Trade Item Number, uniek nummer van een artikel"
+
+#. Default: "Hide cart if no items contained"
+#: interfaces.py:127
+msgid "help_hide_cart_if_empty"
+msgstr "Verberg winkelwagen als deze leeg is"
+
+#. Default: "Buyable Item number"
+#: at.py:587 dx.py:475
+msgid "help_item_number"
+msgstr "Productnummer voor dit artikel"
+
+#. Default: "Net shipping cost per item in cart. If flat shipping cost set and item shipping cost below flat shipping cost, flat shipping cost is used"
+#: interfaces.py:369
+msgid "help_item_shipping_cost"
+msgstr "Netto verzendkosten per artikel in winkelwagen. Als een vast bedrag voor verzendkosten is vastgesteld en het artikel kost minder dan de vaste verzendkosten, gebruik dan de vaste verzendkosten"
+
+#. Default: "Fill in your surname or your family name."
+#: user/userdata.py:56
+msgid "help_lastname"
+msgstr "Vul uw achternaam in"
+
+#. Default: "Maximum number of articles in cart if disable max article flag set"
+#: interfaces.py:139
+msgid "help_max_artice_count"
+msgstr "Maximaal aantal artikelen in winkelwagen wanneer de optie maximale artikelen is gedeactiveerd"
+
+#. Default: "Default payment method in checkout"
+#: interfaces.py:551
+msgid "help_payment_method"
+msgstr "Standaard betaalmethode in kassa"
+
+#: user/userdata.py:63
+msgid "help_phone"
+msgstr "Telefoon"
+
+#. Default: "Quantity units (what the buyable items are measured in)"
+#: interfaces.py:212
+msgid "help_quantity_units"
+msgstr "Eenheid waar de artikelen in gemeten worden"
+
+#. Default: "Flag whether item is shippable, i.e. downloads are not"
+#: at.py:345 dx.py:274
+msgid "help_shipping_item_shippable"
+msgstr "Geef aan of het artikel verzendbaar is, downloads e.d. niet"
+
+#. Default: "If set to False, shipping limit gets calculated from net price instead of gross."
+#: interfaces.py:354
+msgid "help_shipping_limit_from_gross"
+msgstr "Indien niet ingesteld, wordt het verzendingslimiet berekend voor de netto prijs in plaats van de bruto prijs"
+
+#. Default: "Default shipping method in checkout"
+#: interfaces.py:322
+msgid "help_shipping_method"
+msgstr "Standaard verzendmethode in kassa"
+
+#. Default: "VAT used to calculate shipping costs"
+#: interfaces.py:330
+msgid "help_shipping_vat"
+msgstr "BTW gebruikt om verzendkosten te berekenen"
+
+#: interfaces.py:173
+msgid "help_show_checkout"
+msgstr "Directe link weergegeven in de kassa"
+
+#: interfaces.py:101
+msgid "help_show_currency"
+msgstr "Valuta weergegeven in de winkelwagen"
+
+#: interfaces.py:182
+msgid "help_show_to_cart"
+msgstr "De koppeling naar het winkelwagenoverzicht in de winkelwagen"
+
+#: user/userdata.py:76
+msgid "help_street"
+msgstr "Straat"
+
+#. Default: "Show only total value in cart summary"
+#: interfaces.py:161
+msgid "help_summary_total_only"
+msgstr "Laat alleen totaalbedrag zien in het winkelwagenoverzicht"
+
+#. Default: "Specify all allowed vat settings"
+#: interfaces.py:396
+msgid "help_vat"
+msgstr "Specificeer alle toegestane BTW instellingen"
+
+#: user/userdata.py:82
+msgid "help_zip"
+msgstr "Postcode"
+
+#. Default: "Item Discount"
+#: browser/admin.py:156
+msgid "item_discount"
+msgstr "Artikel korting"
+
+#. Default: "Item no longer buyable"
+#: cartdata.py:213
+msgid "item_no_longer_buyable"
+msgstr "Artikel niet meer te koop"
+
+#. Default: "Item not buyable yet"
+#: cartdata.py:201
+msgid "item_not_buyable_yet"
+msgstr "Artikel niet meer te koop"
+
+#. Default: "Kilo"
+#: vocabularies.py:21
+msgid "kilo"
+msgstr "Kilo"
+
+#. Default: "Accept terms of use"
+#: user/userdata.py:156
+msgid "label_accept"
+msgstr "Accepteer algemene voorwaarden"
+
+#. Default: "Add Customer role to new Users"
+#: interfaces.py:73
+msgid "label_add_customer_role_to_new_users"
+msgstr "Geef nieuwe gebruikers de rol van consument"
+
+#. Default: "Shop Admin E-Mail"
+#: interfaces.py:57
+msgid "label_admin_email"
+msgstr "Winkel administratie e-mail"
+
+#. Default: "Shop Admin Name"
+#: interfaces.py:65
+msgid "label_admin_name"
+msgstr "Naam winkel administratie"
+
+#. Default: "Alternative delivery address"
+#: user/userdata.py:101
+msgid "label_alternative_delivery"
+msgstr "Alternatieve bezorgadressen"
+
+#. Default: "Available Payment Methods"
+#: interfaces.py:536
+msgid "label_available_payment_methods"
+msgstr "Beschikbare betaalmethodes"
+
+#. Default: "Available Shipping Methods"
+#: interfaces.py:307
+msgid "label_available_shipping_methods"
+msgstr "Beschikbare verzendmogelijkheden"
+
+#. Default: "Buyable effective date"
+#: at.py:538 dx.py:432
+msgid "label_buyable_effective_date"
+msgstr "Begindatum Koopbaarheid"
+
+#. Default: "Buyable expiration date"
+#: at.py:546 dx.py:438
+msgid "label_buyable_expiration_date"
+msgstr "Einddatum Koopbaarheid"
+
+#. Default: "Cash on delivery costs in gross"
+#: interfaces.py:578
+msgid "label_cash_on_delivery_costs"
+msgstr "Rembours verzendkosten betalen in bruto"
+
+#. Default: "City"
+#: user/userdata.py:87
+msgid "label_city"
+msgstr "Stad"
+
+#. Default: "Company"
+#: user/userdata.py:68
+msgid "label_company"
+msgstr "Bedrijf"
+
+#. Default: "Country"
+#: user/userdata.py:93
+msgid "label_country"
+msgstr "Land"
+
+#. Default: "Currency"
+#: interfaces.py:91
+msgid "label_currency"
+msgstr "Valuta"
+
+#. Default: "Quantity limit of an item in the cart."
+#: interfaces.py:269
+msgid "label_default_item_cart_count_limit"
+msgstr "Aantallimiet voor een artikel in de winkelwagen"
+
+#. Default: "Comment enabled by default"
+#: interfaces.py:245
+msgid "label_default_item_comment_enabled"
+msgstr "Reacties standaard toegestaan"
+
+#. Default: "Comment required by default"
+#: interfaces.py:253
+msgid "label_default_item_comment_required"
+msgstr "Reacties standaard vereist"
+
+#. Default: "Display Gross by default"
+#: interfaces.py:83
+msgid "label_default_item_display_gross"
+msgstr "Toon bruto standaard"
+
+#. Default: "Default Item net price"
+#: interfaces.py:237
+msgid "label_default_item_net"
+msgstr "Standaard netto prijs van artikel"
+
+#. Default: "Quantity as float as default"
+#: interfaces.py:261
+msgid "label_default_item_quantity_unit_float"
+msgstr "Voorgesteld standaard eenheid"
+
+#. Default: "Specify default quantity name."
+#: interfaces.py:225
+msgid "label_default_quantity_units"
+msgstr "Specificeer naam van standaard eenheid"
+
+#. Default: "Item Shippable by default"
+#: interfaces.py:298
+msgid "label_default_shipping_item_shippable"
+msgstr "Artikel standaard verzendbaar"
+
+#. Default: "Default Value added tax name"
+#: interfaces.py:408
+msgid "label_default_vat"
+msgstr "Standaard waarde toegevoegd BTW"
+
+#. Default: "Disable max article"
+#: interfaces.py:148
+msgid "label_disable_max_article"
+msgstr "Deactiveer maximaal aantal artikelen"
+
+#. Default: "First name"
+#: user/userdata.py:48
+msgid "label_firstname"
+msgstr "Voornaam"
+
+#. Default: "Flat shipping cost"
+#: interfaces.py:360
+msgid "label_flat_shipping_cost"
+msgstr "Vast bedrag verzendkosten"
+
+#. Default: "Free Shipping Limit"
+#: interfaces.py:340
+msgid "label_free_shipping_limit"
+msgstr "Limiet gratis verzending"
+
+#. Default: "Gender"
+#: user/userdata.py:41
+msgid "label_gender"
+msgstr "Geslacht"
+
+#. Default: "GTIN"
+#: at.py:595 dx.py:480
+msgid "label_gtin"
+msgstr "GTIN"
+
+#. Default: "Hide Cart if empty"
+#: interfaces.py:126
+msgid "label_hide_cart_if_empty"
+msgstr "Verberg lege winkelwagen"
+
+#. Default: "Item stock available"
+#: at.py:281 dx.py:213
+msgid "label_item_available"
+msgstr "Artikel is verkrijgbaar"
+
+#. Default: "Max count of this item in cart"
+#: at.py:159 dx.py:101
+msgid "label_item_cart_count_limit"
+msgstr "Maximaal aantal van dit artikel in de winkelwagen"
+
+#. Default: "Comment enabled"
+#: at.py:174 dx.py:114
+msgid "label_item_comment_enabled"
+msgstr "Reactie geactiveerd"
+
+#. Default: "Comment required"
+#: at.py:182 dx.py:120
+msgid "label_item_comment_required"
+msgstr "Reactie vereist"
+
+#. Default: "Display Gross"
+#: at.py:167 dx.py:108
+msgid "label_item_display_gross"
+msgstr "Toon bruto prijs"
+
+#. Default: "Display item stock"
+#: at.py:273 dx.py:207
+msgid "label_item_display_stock"
+msgstr "Toon beschikbaarheid artikel"
+
+#. Default: "Additional overall notification text for order confirmation mail if this item in cart"
+#: at.py:451 dx.py:363
+msgid "label_item_global_notification_text"
+msgstr "Bevestigingsmail met aanvullende informatie over dit artikel in de winkelwagen"
+
+#. Default: "Additional overall notification text for order confirmation mail if this item in cart and out of stock"
+#: at.py:464 dx.py:372
+msgid "label_item_global_overbook_notification_text"
+msgstr "Bevestigingsmail met aanvullende informatie over dit artikel in de winkelwagen als het artikel uitverkocht is"
+
+#. Default: "Item net price"
+#: at.py:144 dx.py:88
+msgid "label_item_net"
+msgstr "Artikel netto prijs"
+
+#. Default: "Notification text for this item in order confirmation mail"
+#: at.py:417 dx.py:334
+msgid "label_item_notification_text"
+msgstr "Meldingstekst voor dit artikel in bevestigingsmail"
+
+#. Default: "Item number"
+#: at.py:586 dx.py:474
+msgid "label_item_number"
+msgstr "Artikelnummer"
+
+#. Default: "Item stock overbook"
+#: at.py:289 dx.py:218
+msgid "label_item_overbook"
+msgstr "Artikel voorraad is overboekt"
+
+#. Default: "Notification text for this item in order confirmation mail if item out of stock"
+#: at.py:429 dx.py:343
+msgid "label_item_overbook_notification_text"
+msgstr "Algemeen bericht voor de bevestigingsmail als het artikel uitverkocht is"
+
+#. Default: "Quantity unit"
+#: at.py:198 dx.py:133
+msgid "label_item_quantity_unit"
+msgstr "Eenheid"
+
+#. Default: "Quantity as float"
+#: at.py:190 dx.py:126
+msgid "label_item_quantity_unit_float"
+msgstr "Decimalen toegestaan"
+
+#. Default: "Item shipping cost"
+#: interfaces.py:368
+msgid "label_item_shipping_cost"
+msgstr "Verzendkosten per artikel"
+
+#. Default: "Item VAT (in %)"
+#: at.py:151 dx.py:94
+msgid "label_item_vat"
+msgstr "BTW (in %)"
+
+#. Default: "Last name"
+#: user/userdata.py:55
+msgid "label_lastname"
+msgstr "Achternaam"
+
+#. Default: "Maximum number articles in cart"
+#: interfaces.py:135
+msgid "label_max_artice_count"
+msgstr "Maximaal aantal artikelen in winkelwagen"
+
+#. Default: "Payment Method"
+#: interfaces.py:549
+msgid "label_payment_method"
+msgstr "Betaalmethode"
+
+#. Default: "Payment Texts"
+#: interfaces.py:567
+msgid "label_payment_text"
+msgstr "Bericht na betaling"
+
+#. Default: "Phone"
+#: user/userdata.py:62
+msgid "label_phone"
+msgstr "Telefoon"
+
+#. Default: "Specify quantity units allowed in shop."
+#: interfaces.py:208
+msgid "label_quantity_units"
+msgstr "De toegestane hoeveelheid eenheden in de winkel"
+
+#. Default: "Item Shippable"
+#: at.py:343 dx.py:273
+msgid "label_shipping_item_shippable"
+msgstr "Artikel verzendbaar"
+
+#. Default: "Item Weight"
+#: at.py:354 dx.py:281
+msgid "label_shipping_item_weight"
+msgstr "Gewicht artikel"
+
+#. Default: "Calculate shipping limit from gross"
+#: interfaces.py:352
+msgid "label_shipping_limit_from_gross"
+msgstr "Bereken bruto verzendinglimiet "
+
+#. Default: "Shipping Method"
+#: interfaces.py:320
+msgid "label_shipping_method"
+msgstr "Verzendingmethode"
+
+#. Default: "Shipping VAT"
+#: interfaces.py:329
+msgid "label_shipping_vat"
+msgstr "BTW verzending"
+
+#. Default: "Show checkout link in portlet"
+#: interfaces.py:169
+msgid "label_show_checkout"
+msgstr "Toon link naar kassa in portlet"
+
+#. Default: "Show the currency for items"
+#: interfaces.py:100
+msgid "label_show_currency"
+msgstr "Toon de valuta voor artikelen"
+
+#. Default: "Show link to cart in portlet"
+#: interfaces.py:178
+msgid "label_show_to_cart"
+msgstr "Toon link naar winkelwagen in portlet"
+
+#. Default: "Overall notification text for order confirmation mail"
+#: interfaces.py:475
+msgid "label_site_global_notification_text"
+msgstr "Algemeen bericht voor bevestigingsmail"
+
+#. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
+#: interfaces.py:487
+msgid "label_site_global_overbook_notification_text"
+msgstr "Algemeen bericht voor bevestigingsmail als de bestelling artikelen bevat die uitverkocht zijn"
+
+#. Default: "Default notification text for items in order confirmation mail"
+#: interfaces.py:449
+msgid "label_site_item_notification_text"
+msgstr "Standaard bericht voor de bevestigingsmail van bestelde artikelen "
+
+#. Default: "Default notification text for items in order confirmation mail if item out of stock."
+#: interfaces.py:462
+msgid "label_site_item_overbook_notification_text"
+msgstr "Standaard bericht voor de bevestigingsmail als het artikel uitverkocht is"
+
+#. Default: "Skip Payment if order contains reservations"
+#: interfaces.py:558
+msgid "label_skip_payment_if_order_contains_reservations"
+msgstr "Sla betaling over als de bestelling gereserveerd is"
+
+#. Default: "Street"
+#: user/userdata.py:75
+msgid "label_street"
+msgstr "Straat"
+
+#. Default: "Cart Summary total only"
+#: interfaces.py:157
+msgid "label_summary_total_only"
+msgstr "Winkelwagenoverzicht totaal"
+
+#. Default: "VAT in %"
+#: interfaces.py:395
+msgid "label_vat"
+msgstr "BTW in %"
+
+#. Default: "Postal Code"
+#: user/userdata.py:81
+msgid "label_zip"
+msgstr "Postcode"
+
+#. Default: "Language"
+#: interfaces.py:420
+msgid "language"
+msgstr "Taal"
+
+#. Default: "Legal"
+#: user/userdata.py:36
+msgid "legal"
+msgstr "Voorwaarden"
+
+#. Default: "Liter"
+#: vocabularies.py:22
+msgid "liter"
+msgstr "Liter"
+
+#. Default: "Notification Templates"
+#: browser/admin.py:127
+msgid "mailtemplates"
+msgstr "Sjablonen meldingen"
+
+#. Default: "Main Address"
+#: user/userdata.py:23
+msgid "main_address"
+msgstr "Hoofd adres"
+
+#. Default: "Meter"
+#: vocabularies.py:20
+msgid "meter"
+msgstr "Meter"
+
+#. Default: "My Orders"
+#: browser/admin.py:67
+msgid "my_orders"
+msgstr "Mijn bestellingen"
+
+#. Default: "Net"
+#: browser/buyable.pt:43
+msgid "net"
+msgstr "Netto"
+
+#. Default: "No"
+#: vocabularies.py:119
+msgid "no"
+msgstr "Nee"
+
+#. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart"
+#: shipping.py:64
+msgid "no_free_shipping_flat_and_item"
+msgstr "Minimum ${flat} ${currency} of ${item} ${currency} per artikel in winkelwagen"
+
+#. Default: "Flat ${flat} ${currency}"
+#: shipping.py:74
+msgid "no_free_shipping_flat_only"
+msgstr "Vast bedrag ${flat} ${currency}"
+
+#. Default: "${item} ${currency} per item in cart"
+#: shipping.py:82
+msgid "no_free_shipping_item_only"
+msgstr "${item} ${currency} per artikel in winkelwagen"
+
+#. Default: "Item is no longer purchasable."
+#: browser/availability_details.pt:77
+msgid "no_longer_purchasable"
+msgstr "Artikel is niet meer verkrijgbaar"
+
+#. Default: "Item is sold out."
+#: browser/availability_details.pt:11
+msgid "not_available_message"
+msgstr "Artikel is uitverkocht"
+
+#. Default: "Item not available"
+#: browser/availability_details.pt:8
+msgid "not_available_title"
+msgstr "Niet verkrijgbaar"
+
+#. Default: "Item not available yet."
+#: browser/availability_details.pt:65
+msgid "not_available_yet_title"
+msgstr "Artikel is nog niet verkrijgbaar"
+
+#. Default: "Order Text"
+#: interfaces.py:455
+msgid "order_text"
+msgstr "Bestelling tekst"
+
+#. Default: "Orders"
+#: browser/admin.py:83
+msgid "orders"
+msgstr "Bestellingen"
+
+#. Default: "Item is sold out. You can pre-order ${reservable} items. As soon as item is available again, it gets delivered."
+#: browser/availability.py:118
+msgid "overbook_available_message"
+msgstr "Artikel is niet verkrijgbaar. U kunt ${reservable} voorbestellen. Zodra het artikel weer verkrijgbaar is, wordt het geleverd."
+
+#. Default: "Pre-order available"
+#: browser/availability_details.pt:35
+msgid "overbook_available_title"
+msgstr "Voorbestellen beschikbaar"
+
+#. Default: "Overbook Text"
+#: interfaces.py:468
+msgid "overbook_text"
+msgstr "Overboeken tekst"
+
+#. Default: "Payment"
+#: interfaces.py:502
+msgid "payment"
+msgstr "Betaling"
+
+#. Default: "Payment Text"
+#: interfaces.py:572
+msgid "payment_text"
+msgstr "Betaling tekst"
+
+#. Default: "Permission to buy ${title} not granted."
+#: cartdata.py:184
+msgid "permission_not_granted_to_buy_item"
+msgstr "Geen toestemming om ${title} te kopen."
+
+#. Default: "Price"
+#: browser/buyable.pt:34
+msgid "price"
+msgstr "Prijs"
+
+#. Default: "Item is purchasable as of ${date}"
+#: browser/availability.py:146
+msgid "purchasable_as_of_message"
+msgstr "Artikel is beschikbaar vanaf ${date} "
+
+#. Default: "Item is purchasable until ${date}"
+#: browser/availability.py:133
+msgid "purchasable_until_message"
+msgstr "Artikel is beschikbaar tot ${date}"
+
+#. Default: "Quantity"
+#: vocabularies.py:19
+msgid "quantity"
+msgstr "Aantal"
+
+#. Default: "Shop"
+#: browser/admin.pt:6
+msgid "shop_admin_heading"
+msgstr "Winkel"
+
+#. Default: "Shop Portlet"
+#: browser/admin.py:168
+msgid "shop_portlet"
+msgstr "Winkel portlet"
+
+#. Default: "Symbol"
+#: vocabularies.py:120
+msgid "symbol"
+msgstr "Symbool"
+
+#. Default: "Text"
+#: interfaces.py:426
+msgid "text"
+msgstr "Tekst"
+
+#. Default: "update cart"
+#: browser/buyable.pt:111
+msgid "update_cart"
+msgstr "Updaten winkelwagen"
+
+#. Default: "Vat"
+#: browser/buyable.pt:63
+msgid "vat"
+msgstr "BTW"
+
+#. Default: "Yes"
+#: vocabularies.py:118
+msgid "yes"
+msgstr "Ja"
