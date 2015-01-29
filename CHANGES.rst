@@ -4,7 +4,15 @@ Changelog
 0.10 (unreleased)
 -----------------
 
-- Moved IBuyable to bda.plone.orders to avoid circular dependency.
+- Added two views to the admin portlet in which bookings are displayed
+  and can be grouped by the buyers email adress or the buyable uid.
+  Both views support daterange filtering and text index support.
+  The ``Bookings`` view gets called on the portal root and the
+  ``Bookings in Context`` returns all bookings data on the corresponding
+  context it is called.
+  [benniboy]
+
+- Moved IBuyable to bda.plone.orders to avoid circular dependencies.
   [benniboy]
 
 - Consider buyable effective and expires dates in availability details and
