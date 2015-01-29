@@ -56,7 +56,7 @@ robot tests individually, like so (-d to start Zope in DEBUG-MODE)::
     ./bin/robot src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
 
 To automatically land in the debug shell on test-failure, use::
-    
+
     ./bin/robot-debug src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
 
 In the robot test you can place the debug statement to access a robot shell to
@@ -337,3 +337,4 @@ Contributors
 - Espen Moe-Nilssen
 - Johannes Raggam
 - Jure Cerjak
+- Benjamin Stefaner (benniboy)
