@@ -117,6 +117,7 @@
 
   <!-- shop portlet administration link adapters -->
   <adapter name="orders" factory=".admin.ShopPortletOrdersLink" />
+  <adapter name="ordersincontext" factory=".admin.ShopPortletOrdersInContextLink" />
   <adapter name="myorders" factory=".admin.ShopPortletMyOrdersLink" />
   <adapter name="bookings" factory=".admin.ShopPortletBookingsLink" />
   <adapter name="bookingsincontext" factory=".admin.ShopPortletBookingsInContextLink" />

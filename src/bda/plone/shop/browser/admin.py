@@ -88,6 +88,22 @@ class ShopPortletOrdersLink(ShopPortletLink):
         self.cssclass = 'orders'
 
 
+class ShopPortletOrdersInContextLink(ShopPortletLink):
+
+    def __init__(self, context):
+        permissions = [VIEW_ORDERS_PERMISSION]
+        super(ShopPortletOrdersInContextLink, self).__init__(
+            context, view_permissions=permissions)
+        # check if authenticated user is vendor
+        if self.display and not get_vendors_for():
+            self.display = False
+        site = self.context
+        self.url = '%s/@@orders' % site.absolute_url()
+        self.title = _('orders_in_context', default=u'Orders in Context')
+        self.order = 11
+        self.cssclass = 'orders'
+
+
 class ShopPortletBookingsLink(ShopPortletLink):
 
     def __init__(self, context):
