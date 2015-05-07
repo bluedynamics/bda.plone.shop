@@ -95,10 +95,13 @@ class IShopSettings(model.Schema):
     )
 
     show_currency = schema.Choice(
-        title=_(u"label_show_currency", default=u"Show the currency for items"),
+        title=_(
+            u"label_show_currency",
+            default=u"Show the currency for items"
+        ),
         description=_(u"help_show_currency", default=u""),
-        vocabulary=
-            'bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary'
+        vocabulary='bda.plone.shop.vocabularies.'
+                   'CurrencyDisplayOptionsVocabulary'
     )
 
 
@@ -214,8 +217,8 @@ class IShopArticleSettings(model.Schema):
         required=True,
         missing_value=set(),
         value_type=schema.Choice(
-            vocabulary=
-                'bda.plone.shop.vocabularies.AvailableQuantityUnitVocabulary'
+            vocabulary='bda.plone.shop.vocabularies.'
+                       'AvailableQuantityUnitVocabulary'
         )
     )
 
@@ -309,8 +312,8 @@ class IShopShippingSettings(model.Schema):
         required=True,
         min_length=1,
         value_type=schema.Choice(
-            vocabulary=
-                'bda.plone.shop.vocabularies.AvailableShippingMethodsVocabulary'
+            vocabulary='bda.plone.shop.vocabularies.'
+                       'AvailableShippingMethodsVocabulary'
         )
     )
 
@@ -319,8 +322,8 @@ class IShopShippingSettings(model.Schema):
                 default=u"Shipping Method"),
         description=_(u"help_shipping_method",
                       default=u"Default shipping method in checkout"),
-        vocabulary=
-            'bda.plone.shop.vocabularies.ShippingMethodsVocabulary'
+        vocabulary='bda.plone.shop.vocabularies.'
+                   'ShippingMethodsVocabulary'
     )
 
     shipping_vat = schema.Choice(
@@ -538,8 +541,8 @@ class IPaymentTextSettings(model.Schema):
         required=True,
         min_length=1,
         value_type=schema.Choice(
-            vocabulary=
-                'bda.plone.shop.vocabularies.AvailablePaymentMethodsVocabulary'
+            vocabulary='bda.plone.shop.vocabularies.'
+                       'AvailablePaymentMethodsVocabulary'
         )
     )
 
@@ -548,8 +551,8 @@ class IPaymentTextSettings(model.Schema):
                 default=u"Payment Method"),
         description=_(u"help_payment_method",
                       default=u"Default payment method in checkout"),
-        vocabulary=
-            'bda.plone.shop.vocabularies.PaymentMethodsVocabulary'
+        vocabulary='bda.plone.shop.vocabularies.'
+                   'PaymentMethodsVocabulary'
     )
 
     skip_payment_if_order_contains_reservations = schema.Bool(

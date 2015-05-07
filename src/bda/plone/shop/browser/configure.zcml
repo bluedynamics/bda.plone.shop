@@ -24,7 +24,7 @@
   <!-- viewlets -->
   <browser:viewlet
     name="bda.plone.shop.buyable"
-    for="..interfaces.IBuyable"
+    for="bda.plone.orders.interfaces.IBuyable"
     class="plone.app.layout.viewlets.common.ViewletBase"
     template="buyable_viewlet.pt"
     manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
@@ -34,7 +34,7 @@
   <!-- buyable controls -->
   <browser:page
     name="buyable_controls"
-    for="..interfaces.IBuyable"
+    for="bda.plone.orders.interfaces.IBuyable"
     class=".buyable.BuyableControls"
     template="buyable.pt"
     permission="zope2.View"

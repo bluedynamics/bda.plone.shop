@@ -4,6 +4,10 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Change imports of IBuyable to bda.plone.orders - get rid of deprecation 
+  messages
+  [jensens]
+
 - Added two views to the admin portlet in which bookings are displayed
   and can be grouped by the buyers email adress or the buyable uid.
   Both views support daterange filtering and text index support.
