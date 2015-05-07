@@ -1,5 +1,5 @@
 <configure xmlns="http://namespaces.zope.org/zope">
   <class class="Products.ATContentTypes.content.document.ATDocument">
-    <implements interface="bda.plone.shop.interfaces.IBuyable" />
+    <implements interface="bda.plone.orders.interfaces.IBuyable" />
   </class>
 </configure>

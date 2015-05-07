@@ -24,7 +24,7 @@
   <!--
   <class zcml:condition="installed Products.Archetypes"
          class="Products.Archetypes.BaseObject.BaseObject">
-    <implements interface="bda.plone.shop.interfaces.IBuyable" />
+    <implements interface="bda.plone.orders.interfaces.IBuyable" />
   </class>
   -->
 
@@ -153,7 +153,7 @@
   <adapter
     zcml:condition="installed Products.Archetypes"
     name="bda.plone.shop.itemnotificationtext"
-    for="bda.plone.shop.interfaces.IBuyable"
+    for="bda.plone.orders.interfaces.IBuyable"
     factory=".at.ItemNotificationTextExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
 

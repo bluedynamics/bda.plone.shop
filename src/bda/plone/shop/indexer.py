@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
+from bda.plone.orders.interfaces import IBuyable
 from plone.indexer import indexer
-from bda.plone.shop.interfaces import IBuyable
 
 
 @indexer(IBuyable)
