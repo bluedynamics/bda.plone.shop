@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.discount.interfaces import IDiscountSettingsEnabled
@@ -16,7 +17,6 @@ from zope.interface import Attribute
 from zope.interface import Interface
 from zope.interface import implementer
 from zope.security import checkPermission
-
 import plone.api
 
 

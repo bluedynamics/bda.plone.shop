@@ -1,11 +1,12 @@
-from zope.interface import alsoProvides
-from zope.component import getUtility
-from zope.dottedname.resolve import resolve
-from plone.app.registry.browser import controlpanel
-from plone.registry.interfaces import IRegistry
+# -*- coding: utf-8 -*-
+from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IShopSettings
 from bda.plone.shop.interfaces import IShopSettingsProvider
-from bda.plone.shop import message_factory as _
+from plone.app.registry.browser import controlpanel
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
+from zope.dottedname.resolve import resolve
+from zope.interface import alsoProvides
 
 
 class ContextProxy(object):

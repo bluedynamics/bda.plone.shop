@@ -1,12 +1,13 @@
-from bda.plone.cart import get_item_state
-from bda.plone.cart import get_item_delivery
-from bda.plone.cart import get_item_data_provider
+# -*- coding: utf-8 -*-
+from Products.CMFPlone.i18nl10n import ulocalized_time
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.cart import CartItemAvailabilityBase
+from bda.plone.cart import get_item_data_provider
+from bda.plone.cart import get_item_delivery
+from bda.plone.cart import get_item_state
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IBuyablePeriod
 from datetime import datetime
-from Products.CMFPlone.i18nl10n import ulocalized_time
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import queryAdapter
 
 

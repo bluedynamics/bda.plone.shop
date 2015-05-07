@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from AccessControl import getSecurityManager
 from Products.Five import BrowserView
 from bda.plone.cart import get_data_provider
