@@ -4,6 +4,9 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Disable adapter for deprecated ``FlatRate`` shipping.
+  [jensens]
+
 - Change imports of IBuyable to bda.plone.orders - get rid of deprecation 
   messages
   [jensens]

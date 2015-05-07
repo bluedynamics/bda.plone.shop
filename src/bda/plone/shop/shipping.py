@@ -222,6 +222,9 @@ class FlatRate(Shipping):
         return Decimal(FLAT_SHIPPING_COST)
 
 
-deprecated('FlatRate', """``FlatRate`` shipping is deprecated as of
-``bda.plone.shop`` 0.7 and will be removed in ``bda.plone.shop`` 1.0. Use
-``DefaultShipping`` instead which provides the same functionality.""")
+deprecated(
+    'FlatRate',
+    "'FlatRate' shipping is deprecated as of 'bda.plone.shop' 0.7 and "
+    "will be removed in 'bda.plone.shop' 1.0. Use 'DefaultShipping' "
+    "instead which provides the same functionality."
+)
