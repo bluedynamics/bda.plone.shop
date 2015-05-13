@@ -28,7 +28,6 @@
 
   <include package="collective.z3cform.datagridfield" />
   <include package="plone.app.registry" />
-  <include package="archetypes.schemaextender" />
   <include package="bda.plone.orders" />
 
   <include file="permissions.zcml" />

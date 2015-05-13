@@ -1,5 +1,7 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
+  <include package="archetypes.schemaextender" />
+
   <!-- AT Extenders -->
   <adapter
       name="bda.plone.shop.buyable"
