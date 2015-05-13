@@ -1,0 +1,111 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <include package="archetypes.schemaextender" />
+
+  <!-- AT Extenders -->
+  <adapter
+      name="bda.plone.shop.buyable"
+      factory=".at.BuyableExtender"
+      provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+  <adapter
+      name="item_net"
+      factory=".at.default_item_net" />
+
+  <adapter
+      name="item_vat"
+      factory=".at.default_item_vat" />
+
+  <adapter
+      name="item_display_gross"
+      factory=".at.default_item_display_gross" />
+
+  <adapter
+      name="item_comment_enabled"
+      factory=".at.item_comment_enabled" />
+
+  <adapter
+      name="item_comment_required"
+      factory=".at.default_item_comment_required" />
+
+  <adapter
+      name="item_quantity_unit_float"
+      factory=".at.default_item_quantity_unit_float" />
+
+  <adapter
+      name="item_cart_count_limit"
+      factory=".at.default_item_cart_count_limit" />
+
+  <adapter
+      name="item_quantity_unit"
+      factory=".at.default_item_quantity_unit" />
+
+  <adapter
+      name="bda.plone.shop.stock"
+      factory=".at.StockExtender"
+      provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+  <adapter
+      name="item_display_stock"
+      factory=".at.default_item_display_stock" />
+
+  <adapter
+      name="bda.plone.shop.shipping"
+      factory=".at.ShippingExtender"
+      provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+  <adapter
+      name="shipping_item_shippable"
+      factory=".at.default_shipping_item_shippable" />
+
+  <adapter
+      name="bda.plone.shop.itemnotificationtext"
+      for="bda.plone.orders.interfaces.IBuyable"
+      factory=".at.ItemNotificationTextExtender"
+      provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+  <adapter
+      name="bda.plone.shop.globalnotificationtext"
+      for="bda.plone.orders.interfaces.IVendor"
+      factory=".at.GlobalNotificationTextExtender"
+      provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+  <adapter
+      name="bda.plone.shop.buyableperiod"
+      factory=".at.BuyablePeriodExtender"
+      provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+  <adapter
+      name="bda.plone.shop.trading"
+      factory=".at.TradingExtender"
+      provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+
+  <!-- cart related AT adapters -->
+  <adapter
+      factory=".at.ATCartItemDataProvider" />
+
+  <adapter
+      factory=".at.ATCartItemStock" />
+
+  <adapter
+      factory=".at.ATCartItemPreviewImage" />
+
+  <!-- shipping related AT adapters -->
+  <adapter
+      factory=".at.ATShippingItem" />
+
+  <!-- order related AT adapters -->
+  <adapter
+      factory=".at.ATItemNotificationText" />
+
+  <adapter
+      factory=".at.ATGlobalNotificationText" />
+
+  <adapter
+      factory=".at.ATTrading" />
+
+  <!-- buyable related AT adapters -->
+  <adapter
+      factory=".at.ATBuyablePeriod" />
+
+</configure>

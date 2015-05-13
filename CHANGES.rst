@@ -4,10 +4,13 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Separate AT and DX zcml registrations into own files for a better overview.
+  [thet]
+
 - Disable adapter for deprecated ``FlatRate`` shipping.
   [jensens]
 
-- Change imports of IBuyable to bda.plone.orders - get rid of deprecation 
+- Change imports of IBuyable to bda.plone.orders - get rid of deprecation
   messages
   [jensens]
 

@@ -1,6 +1,4 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:five="http://namespaces.zope.org/five"
-           xmlns:plone="http://namespaces.plone.org/plone"
            xmlns:zcml="http://namespaces.zope.org/zcml"
            xmlns:i18n="http://namespaces.zope.org/i18n"
            i18n_domain="bda.plone.shop">
@@ -30,9 +28,6 @@
 
   <include package="collective.z3cform.datagridfield" />
   <include package="plone.app.registry" />
-  <include package="archetypes.schemaextender" />
-  <include package="plone.behavior" file="meta.zcml"
-           zcml:condition="installed plone.dexterity" />
   <include package="bda.plone.orders" />
 
   <include file="permissions.zcml" />
@@ -43,10 +38,18 @@
   <include package=".user" />
   <include package=".upgrades" />
 
+  <include
+      zcml:condition="installed Products.Archetypes"
+      file="at.zcml"/>
+  <include
+      zcml:condition="installed plone.dexterity"
+      file="dx.zcml"/>
+
+
   <!-- indexing -->
   <adapter
-    name="item_buyable"
-    factory=".indexer.item_buyable" />
+      name="item_buyable"
+      factory=".indexer.item_buyable" />
 
   <!-- checkout settings -->
   <adapter factory=".checkout.CheckoutSettings" />
@@ -64,9 +67,9 @@
   <!-- cash and carry shipping -->
   <adapter name="cash_and_carry" factory=".shipping.CashAndCarryShipping" />
 
-<!-- flat rate shipping (B/C, default shipping offers same functionality)
+  <!-- flat rate shipping (B/C, default shipping offers same functionality)
   <adapter name="flat_rate" factory=".shipping.FlatRate" />
--->
+  -->
   <!-- cart related adapters -->
   <adapter factory=".cartdata.CartDataProvider" />
   <adapter factory=".cartdata.CartItemState" />
@@ -80,222 +83,5 @@
   <adapter factory=".mailnotify.BubbleGlobalNotificationText" />
   <adapter factory=".mailnotify.RegistryGlobalNotificationText" />
   <adapter factory=".mailnotify.RegistryPaymentText" />
-
-  <!-- AT Extenders -->
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="bda.plone.shop.buyable"
-    factory=".at.BuyableExtender"
-    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_net"
-    factory=".at.default_item_net" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_vat"
-    factory=".at.default_item_vat" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_display_gross"
-    factory=".at.default_item_display_gross" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_comment_enabled"
-    factory=".at.item_comment_enabled" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_comment_required"
-    factory=".at.default_item_comment_required" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_quantity_unit_float"
-    factory=".at.default_item_quantity_unit_float" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_cart_count_limit"
-    factory=".at.default_item_cart_count_limit" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_quantity_unit"
-    factory=".at.default_item_quantity_unit" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="bda.plone.shop.stock"
-    factory=".at.StockExtender"
-    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="item_display_stock"
-    factory=".at.default_item_display_stock" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="bda.plone.shop.shipping"
-    factory=".at.ShippingExtender"
-    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="shipping_item_shippable"
-    factory=".at.default_shipping_item_shippable" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="bda.plone.shop.itemnotificationtext"
-    for="bda.plone.orders.interfaces.IBuyable"
-    factory=".at.ItemNotificationTextExtender"
-    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="bda.plone.shop.globalnotificationtext"
-    for="bda.plone.orders.interfaces.IVendor"
-    factory=".at.GlobalNotificationTextExtender"
-    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="bda.plone.shop.buyableperiod"
-    factory=".at.BuyablePeriodExtender"
-    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    name="bda.plone.shop.trading"
-    factory=".at.TradingExtender"
-    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
-
-  <!-- cart related AT adapters -->
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    factory=".at.ATCartItemDataProvider" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    factory=".at.ATCartItemStock" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    factory=".at.ATCartItemPreviewImage" />
-
-  <!-- shipping related AT adapters -->
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    factory=".at.ATShippingItem" />
-
-  <!-- order related AT adapters -->
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    factory=".at.ATItemNotificationText" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    factory=".at.ATGlobalNotificationText" />
-
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    factory=".at.ATTrading" />
-
-  <!-- buyable related AT adapters -->
-  <adapter
-    zcml:condition="installed Products.Archetypes"
-    factory=".at.ATBuyablePeriod" />
-
-  <!-- DX behaviors -->
-  <plone:behavior
-    zcml:condition="installed plone.dexterity"
-    title="Shop: Buyable Behavior"
-    description="Makes content type buyable."
-    provides=".dx.IBuyableBehavior"
-    for="plone.dexterity.interfaces.IDexterityContent" />
-
-  <plone:behavior
-    zcml:condition="installed plone.dexterity"
-    title="Shop: Stock Behavior"
-    description="Manages stock of buyable item."
-    provides=".dx.IStockBehavior"
-    for="plone.dexterity.interfaces.IDexterityContent" />
-
-  <plone:behavior
-    zcml:condition="installed plone.dexterity"
-    title="Shop: Shipping Behavior"
-    description="Manages shipping information of item."
-    provides=".dx.IShippingBehavior"
-    for="plone.dexterity.interfaces.IDexterityContent" />
-
-  <plone:behavior
-    zcml:condition="installed plone.dexterity"
-    title="Shop: Per Item Order Notification Text Behavior"
-    description="Manages notification text of item for order."
-    provides=".dx.IItemNotificationTextBehavior"
-    for="plone.dexterity.interfaces.IDexterityContent" />
-
-  <plone:behavior
-    zcml:condition="installed plone.dexterity"
-    title="Shop: Overall Order Notification Text Behavior"
-    description="Manages notification text for whole order."
-    provides=".dx.IGlobalNotificationTextBehavior"
-    for="plone.dexterity.interfaces.IDexterityContent" />
-
-  <plone:behavior
-    zcml:condition="installed plone.dexterity"
-    title="Shop: Buyable Period Behavior"
-    description="Define buyable period for item."
-    provides=".dx.IBuyablePeriodBehavior"
-    for="plone.dexterity.interfaces.IDexterityContent" />
-
-  <plone:behavior
-    zcml:condition="installed plone.dexterity"
-    title="Shop: Trading Behavior"
-    description="Define trading information for item."
-    provides=".dx.ITradingBehavior"
-    for="plone.dexterity.interfaces.IDexterityContent" />
-
-  <!-- cart related DX adapters -->
-  <adapter
-    zcml:condition="installed plone.dexterity"
-    factory=".dx.DXCartItemDataProvider" />
-
-  <adapter
-    zcml:condition="installed plone.dexterity"
-    factory=".dx.DXCartItemStock" />
-
-  <adapter
-    zcml:condition="installed plone.dexterity"
-    factory=".dx.DXCartItemPreviewImage" />
-
-  <!-- shipping related DX adapters -->
-  <adapter
-    zcml:condition="installed plone.dexterity"
-    factory=".dx.DXShippingItem" />
-
-  <!-- order related DX adapters -->
-  <adapter
-    zcml:condition="installed plone.dexterity"
-    factory=".dx.DXItemNotificationText" />
-
-  <adapter
-    zcml:condition="installed plone.dexterity"
-    factory=".dx.DXGlobalNotificationText" />
-
-  <adapter
-    zcml:condition="installed plone.dexterity"
-    factory=".dx.DXTrading" />
-
-  <!-- buyable related DX adapters -->
-  <adapter
-    zcml:condition="installed plone.dexterity"
-    factory=".dx.DXBuyablePeriod" />
 
 </configure>

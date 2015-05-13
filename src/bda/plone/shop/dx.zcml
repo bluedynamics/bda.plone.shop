@@ -1,0 +1,65 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:plone="http://namespaces.plone.org/plone">
+
+  <include package="plone.behavior" file="meta.zcml"/>
+
+  <!-- DX behaviors -->
+  <plone:behavior
+      title="Shop: Buyable Behavior"
+      description="Makes content type buyable."
+      provides=".dx.IBuyableBehavior"
+      for="plone.dexterity.interfaces.IDexterityContent" />
+
+  <plone:behavior
+      title="Shop: Stock Behavior"
+      description="Manages stock of buyable item."
+      provides=".dx.IStockBehavior"
+      for="plone.dexterity.interfaces.IDexterityContent" />
+
+  <plone:behavior
+      title="Shop: Shipping Behavior"
+      description="Manages shipping information of item."
+      provides=".dx.IShippingBehavior"
+      for="plone.dexterity.interfaces.IDexterityContent" />
+
+  <plone:behavior
+      title="Shop: Per Item Order Notification Text Behavior"
+      description="Manages notification text of item for order."
+      provides=".dx.IItemNotificationTextBehavior"
+      for="plone.dexterity.interfaces.IDexterityContent" />
+
+  <plone:behavior
+      title="Shop: Overall Order Notification Text Behavior"
+      description="Manages notification text for whole order."
+      provides=".dx.IGlobalNotificationTextBehavior"
+      for="plone.dexterity.interfaces.IDexterityContent" />
+
+  <plone:behavior
+      title="Shop: Buyable Period Behavior"
+      description="Define buyable period for item."
+      provides=".dx.IBuyablePeriodBehavior"
+      for="plone.dexterity.interfaces.IDexterityContent" />
+
+  <plone:behavior
+      title="Shop: Trading Behavior"
+      description="Define trading information for item."
+      provides=".dx.ITradingBehavior"
+      for="plone.dexterity.interfaces.IDexterityContent" />
+
+  <!-- cart related DX adapters -->
+  <adapter factory=".dx.DXCartItemDataProvider" />
+  <adapter factory=".dx.DXCartItemStock" />
+  <adapter factory=".dx.DXCartItemPreviewImage" />
+
+  <!-- shipping related DX adapters -->
+  <adapter factory=".dx.DXShippingItem" />
+
+  <!-- order related DX adapters -->
+  <adapter factory=".dx.DXItemNotificationText" />
+  <adapter factory=".dx.DXGlobalNotificationText" />
+  <adapter factory=".dx.DXTrading" />
+
+  <!-- buyable related DX adapters -->
+  <adapter factory=".dx.DXBuyablePeriod" />
+
+</configure>
