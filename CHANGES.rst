@@ -4,6 +4,9 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- JSHint JavaScript resources.
+  [thet]
+
 - Separate AT and DX zcml registrations into own files for a better overview.
   [thet]
 
