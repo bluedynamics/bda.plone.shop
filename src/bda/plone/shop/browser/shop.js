@@ -1,6 +1,6 @@
 /* jslint browser: true */
-/* global jQuery, bdajax */
-(function($, bdajax) {
+/* global jQuery */
+(function($) {
     "use strict";
 
     $(document).ready(function() {
@@ -23,11 +23,11 @@
                 });
         };
         if (typeof(window.bdajax) !== "undefined") {
-            $.extend(bdajax.binders, {
+            $.extend(window.bdajax.binders, {
                 buyable_controls_binder: binder
             });
         }
         binder(document);
     });
 
-})(jQuery, bdajax);
+})(jQuery);
