@@ -39,10 +39,10 @@ class BuyableControls(BrowserView, DataProviderMixin):
         if buyable_period:
             now = datetime.now()
             effective = buyable_period.effective
-            if effective and now < effective:
+            if effective and now <= effective:
                 return False
             expires = buyable_period.expires
-            if expires and now > expires:
+            if expires and now >= expires:
                 return False
         sm = getSecurityManager()
         return sm.checkPermission(permissions.BuyItems, self.context)
