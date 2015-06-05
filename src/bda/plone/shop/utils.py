@@ -18,28 +18,35 @@ def format_amount(val):
 
 
 def get_shop_settings():
-    return getUtility(IRegistry).forInterface(IShopSettings)
+    reg = getUtility(IRegistry)
+    return reg.forInterface(IShopSettings)
 
 
 def get_shop_tax_settings():
-    return getUtility(IRegistry).forInterface(IShopTaxSettings)
+    reg = getUtility(IRegistry)
+    return reg.forInterface(IShopTaxSettings)
 
 
 def get_shop_article_settings():
-    return getUtility(IRegistry).forInterface(IShopArticleSettings)
+    reg = getUtility(IRegistry)
+    return reg.forInterface(IShopArticleSettings)
 
 
 def get_shop_cart_settings():
-    return getUtility(IRegistry).forInterface(IShopCartSettings)
+    reg = getUtility(IRegistry)
+    return reg.forInterface(IShopCartSettings)
 
 
 def get_shop_shipping_settings():
-    return getUtility(IRegistry).forInterface(IShopShippingSettings)
+    reg = getUtility(IRegistry)
+    return reg.forInterface(IShopShippingSettings)
 
 
 def get_shop_notification_settings():
-    return getUtility(IRegistry).forInterface(INotificationTextSettings)
+    reg = getUtility(IRegistry)
+    return reg.forInterface(INotificationTextSettings)
 
 
 def get_shop_payment_settings():
-    return getUtility(IRegistry).forInterface(IPaymentTextSettings)
+    reg = getUtility(IRegistry)
+    return reg.forInterface(IPaymentTextSettings)

@@ -1,0 +1,17 @@
+{
+    "bitwise": true,
+    "browser": true,
+    "curly": true,
+    "eqeqeq": true,
+    "evil": true,
+    "immed": true,
+    "indent": 4,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "noempty": true,
+    "nonew": true,
+    "strict": true,
+    "undef": true,
+    "unused": "vars"
+}
