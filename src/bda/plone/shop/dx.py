@@ -234,21 +234,21 @@ class DXCartItemStock(object):
     def display(self):
         return self.context.item_display_stock
 
-    def _get_available(self):
+    @property
+    def available(self):
         return self.context.item_available
 
-    def _set_available(self, value):
+    @available.setter
+    def available(self, value):
         self.context.item_available = value
 
-    available = property(_get_available, _set_available)
-
-    def _get_overbook(self):
+    @property
+    def overbook(self):
         return self.context.item_overbook
 
-    def _set_overbook(self, value):
+    @overbook.setter
+    def overbook(self, value):
         self.context.item_overbook = value
-
-    overbook = property(_get_overbook, _set_overbook)
 
 
 @provider(IContextAwareDefaultFactory)
