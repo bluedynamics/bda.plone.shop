@@ -20,7 +20,7 @@
                 }
             });
         };
-        if (typeof(window.bdajax) !== "undefined") {
+        if (bdajax !== undefined) {
             $.extend(bdajax.binders, {
                 buyable_controls_binder: binder
             });
