@@ -4,11 +4,12 @@ Changelog
 0.10 (unreleased)
 -----------------
 
-- JSHint JavaScript resources.
+- Resolve JSHint errors and warnings.
   [thet]
 
 - Fix: ``buyable_period`` was started one minute after the given time.
   [jensens]
+
 - Separate AT and DX zcml registrations into own files for a better overview.
   [thet]
 
