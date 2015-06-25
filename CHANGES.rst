@@ -4,6 +4,16 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Shop Portlet: Add Shop Controlpanel admin link, linking to ISite or
+  IPloneSiteRoot. If lineage.registry is installed, the shop settings can also
+  be set on subsite level.
+  [thet]
+
+- Always show the mailtemplate link in the shop portlet, but link to the
+  correct context. Rename i18n messages to reflect, if context is on a IVendor
+  object (vendor), on a ISite (site-wide) or on a IPloneSiteRoot (global).
+  [thet]
+
 - Resolve JSHint errors and warnings.
   [thet]
 

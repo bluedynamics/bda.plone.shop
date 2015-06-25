@@ -127,6 +127,7 @@
   <adapter name="mailtemplates" factory=".admin.ShopPortletMailTemplatesLink" />
   <adapter name="cart_discount" factory=".admin.ShopPortletCartDiscountLink" />
   <adapter name="item_discount" factory=".admin.ShopPortletCartItemDiscountLink" />
+  <adapter name="controlpanel" factory=".admin.ShopPortletControlpanelLink" />
 
   <!-- controlpanel -->
   <browser:page

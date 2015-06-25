@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from Acquisition import aq_parent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.discount.interfaces import IDiscountSettingsEnabled
@@ -25,6 +26,7 @@ VIEW_ORDERS_PERMISSION = 'bda.plone.orders.ViewOrders'
 EXPORT_ORDERS_PERMISSION = 'bda.plone.orders.ExportOrders'
 MANAGE_TEAMPLETS_PERMISSION = 'bda.plone.orders.ManageTemplates'
 MANAGE_DISCOUNT_PERMISSION = 'bda.plone.discount.ManageDiscount'
+MANAGE_SHOP_PERMISSION = 'cmf.ManagePortal'
 
 
 class IShopPortletLink(Interface):
@@ -192,11 +194,33 @@ class ShopPortletMailTemplatesLink(ShopPortletLink):
         permissions = [MANAGE_TEAMPLETS_PERMISSION]
         super(ShopPortletMailTemplatesLink, self).__init__(
             context, view_permissions=permissions)
-        if self.display:
-            self.display = ISite.providedBy(context) \
-                or IVendor.providedBy(context)
+
+        self.display = True
+
+        # Find the nearest context, where this functionality can be bound to.
+        def _find_context(ctx):
+            return ctx\
+                if ISite.providedBy(ctx) or IVendor.providedBy(ctx)\
+                else _find_context(aq_parent(ctx))
+        context = _find_context(context)
+
+        if IPloneSiteRoot.providedBy(context):
+            self.title = _(
+                'mailtemplates_global',
+                default=u'Notification Templates (global)'
+            )
+        elif ISite.providedBy(context):
+            self.title = _(
+                'mailtemplates_site',
+                default=u'Notification Templates (site-wide)'
+            )
+        elif IVendor.providedBy(context):
+            self.title = _(
+                'mailtemplates_vendor',
+                default=u'Notification Templates (vendor specific)'
+            )
+
         self.url = '%s/@@mailtemplates' % context.absolute_url()
-        self.title = _('mailtemplates', default=u'Notification Templates')
         self.order = 50
         self.cssclass = 'mailtemplates'
 
@@ -228,6 +252,38 @@ class ShopPortletCartItemDiscountLink(ShopPortletLink):
         self.title = _('item_discount', default=u'Item Discount')
         self.order = 70
         self.cssclass = 'item_discount'
+
+
+class ShopPortletControlpanelLink(ShopPortletLink):
+
+    def __init__(self, context):
+        permissions = [MANAGE_SHOP_PERMISSION]
+        super(ShopPortletControlpanelLink, self).__init__(
+            context, view_permissions=permissions)
+
+        self.display = True
+
+        # Find the nearest context, where this functionality can be bound to.
+        def _find_context(ctx):
+            return ctx\
+                if ISite.providedBy(ctx)\
+                else _find_context(aq_parent(ctx))
+        context = _find_context(context)
+
+        if IPloneSiteRoot.providedBy(context):
+            self.title = _(
+                'shop_controlpanel_global',
+                default=u'Shop Controlpanel (global)'
+            )
+        elif ISite.providedBy(context):
+            self.title = _(
+                'shop_controlpanel_site',
+                default=u'Shop Controlpanel (site-wide)'
+            )
+
+        self.url = '%s/@@shop_controlpanel' % context.absolute_url()
+        self.order = 50
+        self.cssclass = 'controlpanel'
 
 
 class IShopAdminPortlet(IPortletDataProvider):

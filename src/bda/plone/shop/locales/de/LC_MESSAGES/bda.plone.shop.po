@@ -16,1065 +16,1085 @@ msgstr ""
 "X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
 
 #. Default: "Australian Dollar"
-#: ./vocabularies.py:100
+#: bda/plone/shop/vocabularies.py:100
 msgid "AUD"
 msgstr "Australische Dollar"
 
-#: ./profiles/default/actions.xml
+#: bda/plone/shop/profiles/default/actions.xml
 msgid "Activate Buyable on Item"
 msgstr "Erweitert Objekt um Shop Artikel Information"
 
-#: ./profiles/default/actions.xml
+#: bda/plone/shop/profiles/default/actions.xml
 msgid "Activate vendor area on this context"
 msgstr "Aktiviert Mandantenbereich für diesen Kontext"
 
 #. Default: "Article"
-#: ./interfaces.py:192
+#: bda/plone/shop/interfaces.py:195
 msgid "Article"
 msgstr "Artikel"
 
 #. Default: "Canadian Dollar"
-#: ./vocabularies.py:97
+#: bda/plone/shop/vocabularies.py:97
 msgid "CAD"
 msgstr "Kanadische Dollar"
 
 #. Default: "Swiss Franc"
-#: ./vocabularies.py:98
+#: bda/plone/shop/vocabularies.py:98
 msgid "CHF"
 msgstr "Schweizer Franken"
 
 #. Default: "Cart"
-#: ./interfaces.py:112
+#: bda/plone/shop/interfaces.py:115
 msgid "Cart"
 msgstr "Warenkorb"
 
 #. Default: "Danish Krone"
-#: ./vocabularies.py:103
+#: bda/plone/shop/vocabularies.py:103
 msgid "DKK"
 msgstr "Dänische Krone"
 
-#: ./profiles/default/actions.xml
+#: bda/plone/shop/profiles/default/actions.xml
 msgid "Deactivates Buyable on Item"
 msgstr "Deaktiviert Shop Artikel Information auf dem Objekt"
 
-#: ./profiles/default/actions.xml
+#: bda/plone/shop/profiles/default/actions.xml
 msgid "Deactivates vendor area on this context"
 msgstr "Deaktiviert Mandantenbereich für diesen Kontext"
 
-#: ./profiles/default/actions.xml
+#: bda/plone/shop/profiles/default/actions.xml
 msgid "Disable Vendor Area"
 msgstr "Deaktiviere Mandantenbereich"
 
-#: ./profiles/default/actions.xml
+#: bda/plone/shop/profiles/default/actions.xml
 msgid "Disables Buyable"
 msgstr "Deaktiviere Shop Artikel"
 
 #. Default: "Euro"
-#: ./vocabularies.py:94
+#: bda/plone/shop/vocabularies.py:94
 msgid "EUR"
 msgstr "Euro"
 
-#: ./profiles/default/actions.xml
+#: bda/plone/shop/profiles/default/actions.xml
 msgid "Enable Buyable"
 msgstr "Aktiviere Shop Artikel"
 
-#: ./profiles/default/actions.xml
+#: bda/plone/shop/profiles/default/actions.xml
 msgid "Enable Vendor Area"
 msgstr "Aktiviere Mandantenbereich"
 
 #. Default: "British Pound Sterling"
-#: ./vocabularies.py:99
+#: bda/plone/shop/vocabularies.py:99
 msgid "GBP"
 msgstr "Britische Pfund"
 
 #. Default: "Indian Rupee"
-#: ./vocabularies.py:96
+#: bda/plone/shop/vocabularies.py:96
 msgid "INR"
 msgstr "Indischer Rupie"
 
 #. Default: "Norwegian Krone"
-#: ./vocabularies.py:101
+#: bda/plone/shop/vocabularies.py:101
 msgid "NOK"
 msgstr "Norwegische Krone"
 
 #. Default: "New Zealand Dollar"
-#: ./vocabularies.py:105
+#: bda/plone/shop/vocabularies.py:105
 msgid "NZD"
 msgstr "Neuseeländischer Dollar"
 
 #. Default: "Notifications"
-#: ./interfaces.py:436
+#: bda/plone/shop/interfaces.py:439
 msgid "Notifications"
 msgstr "Benachrichtigungen"
 
 #. Default: "Payment"
-#: ./interfaces.py:523
+#: bda/plone/shop/interfaces.py:526
 msgid "Payment"
 msgstr "Bezahlung"
 
-#: ./profiles/default/actions.xml
+#: bda/plone/shop/profiles/default/actions.xml
 msgid "Personal Information"
 msgstr "Persönliche Informationen"
 
-#: ./profiles/default/actions.xml
+#: bda/plone/shop/profiles/default/actions.xml
 msgid "Personal Preferences"
 msgstr "Meine Einstellungen"
 
 #. Default: "Swedish Krona"
-#: ./vocabularies.py:102
+#: bda/plone/shop/vocabularies.py:102
 msgid "SEK"
 msgstr "Schwedische Krone"
 
 #. Default: "Shipping"
-#: ./interfaces.py:282
+#: bda/plone/shop/interfaces.py:285
 msgid "Shipping"
 msgstr "Versand"
 
-#: ./browser/controlpanel.py:49
-#: ./profiles/default/controlpanel.xml
+#: bda/plone/shop/browser/controlpanel.py:50
+#: bda/plone/shop/profiles/default/controlpanel.xml
 msgid "Shop settings"
 msgstr "Shop Einstellungen"
 
-#: ./interfaces.py:384
+#: bda/plone/shop/interfaces.py:387
 msgid "Tax Settings"
 msgstr "Steuern"
 
 #. Default: "US Dollar"
-#: ./vocabularies.py:95
+#: bda/plone/shop/vocabularies.py:95
 msgid "USD"
 msgstr "US Dollar"
 
 #. Default: "Japanese Yen"
-#: ./vocabularies.py:104
+#: bda/plone/shop/vocabularies.py:104
 msgid "YEN"
 msgstr "Japanischer Yen"
 
 #. Default: "add to cart"
-#: ./browser/buyable.pt:108
+#: bda/plone/shop/browser/buyable.pt:108
 msgid "add_to_cart"
 msgstr "hinzufügen"
 
 #. Default: "No longer available, please remove from cart"
-#: ./cartdata.py:280
+#: bda/plone/shop/cartdata.py:280
 msgid "alert_item_no_longer_available"
 msgstr "Nicht länger verfügbar. Bitte aus dem Warenkorb entfernen"
 
 #. Default: "Limit exceed by ${exceed} ${quantity_unit}"
-#: ./cartdata.py:292
+#: bda/plone/shop/cartdata.py:292
 msgid "alert_item_number_exceed"
 msgstr "${exceed} ${quantity_unit} zu viel im Warenkorb"
 
 #. Default: "${reserved} ${quantity_unit} reserved"
-#: ./cartdata.py:299
+#: bda/plone/shop/cartdata.py:299
 msgid "alert_item_number_reserved"
 msgstr "${reserved} ${quantity_unit} reserviert"
 
 #. Default: "Partly reserved"
-#: ./cartdata.py:287
+#: bda/plone/shop/cartdata.py:287
 msgid "alert_item_some_reserved"
 msgstr "Teilweise Reserviert"
 
 #. Default: "Availability"
-#: ./browser/buyable.pt:15
+#: bda/plone/shop/browser/buyable.pt:15
 msgid "availability"
 msgstr "Verfügbarkeit"
 
 #. Default: "Bookings"
-#: ./browser/admin.py:118
+#: bda/plone/shop/browser/admin.py:120
 msgid "bookings"
 msgstr "Buchungen"
 
 #. Default: "Bookings in Context"
-#: ./browser/admin.py:139
+#: bda/plone/shop/browser/admin.py:141
 msgid "bookings_in_context"
 msgstr "Buchungen im Kontext"
 
 #. Default: "Cart Discount"
-#: ./browser/admin.py:213
+#: bda/plone/shop/browser/admin.py:237
 msgid "cart_discount"
 msgstr "Warenkorb Rabatt"
 
 #. Default: "Cash and Carry"
-#: ./shipping.py:192
+#: bda/plone/shop/shipping.py:192
 msgid "cash_and_carry"
 msgstr "Selbstabholung"
 
 #. Default: "Customer picks up goods at dealer's place"
-#: ./shipping.py:196
+#: bda/plone/shop/shipping.py:196
 msgid "cash_and_carry_descripton"
 msgstr "Kunde holt die Ware direkt beim Lieferanten"
 
 #. Default: "Comment"
-#: ./browser/buyable.pt:84
+#: bda/plone/shop/browser/buyable.pt:84
 msgid "comment"
 msgstr "Zusatz"
 
 #. Default: "Contacts"
-#: ./browser/admin.py:155
+#: bda/plone/shop/browser/admin.py:157
 msgid "contacts"
 msgstr "Kontakte"
 
 #. Default: "Just ${available} items(s) left."
-#: ./browser/availability.py:103
+#: bda/plone/shop/browser/availability.py:104
 msgid "critical_available_message"
 msgstr "Nur noch ${available} Artikel verfügbar."
 
 #. Default: "Low items available"
-#: ./browser/availability_details.pt:26
+#: bda/plone/shop/browser/availability_details.pt:26
 msgid "critical_available_title"
 msgstr "Wenige Artikel verfügbar"
 
 #. Default: "Default Shipping"
-#: ./shipping.py:39
+#: bda/plone/shop/shipping.py:39
 msgid "default_shipping"
 msgstr "Standard"
 
 #. Default: "Delivery Address"
-#: ./user/userdata.py:29
+#: bda/plone/shop/user/userdata.py:29
 msgid "delivery_address"
 msgstr "Lieferadresse"
 
 #. Default: "Delivery"
-#: ./browser/availability_details.pt:46
+#: bda/plone/shop/browser/availability_details.pt:46
 msgid "delivery_duration_title"
 msgstr "Lieferbar"
 
 #. Default: "Disabled Buyable."
-#: ./browser/actions.py:51
+#: bda/plone/shop/browser/actions.py:52
 msgid "disabled_buyable"
 msgstr "Shop Artikel Information deaktiviert"
 
 #. Default: "Disabled Vendor."
-#: ./browser/actions.py:58
+#: bda/plone/shop/browser/actions.py:59
 msgid "disabled_vendor"
 msgstr "Mandant deaktiviert."
 
 #. Default: "Enabled Buyable."
-#: ./browser/actions.py:50
+#: bda/plone/shop/browser/actions.py:51
 msgid "enabled_buyable"
 msgstr "Shop Artikel Information hinzugefügt"
 
 #. Default: "Enabled Vendor."
-#: ./browser/actions.py:57
+#: bda/plone/shop/browser/actions.py:58
 msgid "enabled_vendor"
 msgstr "Mandant aktiviert."
 
 #. Default: "Export Orders"
-#: ./browser/admin.py:168
+#: bda/plone/shop/browser/admin.py:170
 msgid "exportorders"
 msgstr "Export Bestellungen"
 
 #. Default: "Export Orders on this Item"
-#: ./browser/admin.py:183
+#: bda/plone/shop/browser/admin.py:185
 msgid "exportorders_item"
 msgstr "Export Bestellungen für Artikel"
 
 #. Default: "Flat Rate"
-#: ./shipping.py:216
+#: bda/plone/shop/shipping.py:216
 msgid "flat_rate"
 msgstr "Fixbetrag"
 
 #. Default: "Free Shipping"
-#: ./shipping.py:59
+#: bda/plone/shop/shipping.py:59
 msgid "free_shipping"
 msgstr "Kostenloser Versand"
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:93
+#: bda/plone/shop/shipping.py:93
 msgid "free_shipping_limit_flat_and_item_gross"
 msgstr "Mindestens ${flat} ${currency} oder ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:100
+#: bda/plone/shop/shipping.py:100
 msgid "free_shipping_limit_flat_and_item_net"
 msgstr "Mindestens ${flat} ${currency} oder ${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
 #. Default: "Flat ${flat} ${currency}. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:115
+#: bda/plone/shop/shipping.py:115
 msgid "free_shipping_limit_flat_only_gross"
 msgstr "Fixbetrag ${flat} ${currency}. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
 #. Default: "Flat ${flat} ${currency}. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:121
+#: bda/plone/shop/shipping.py:121
 msgid "free_shipping_limit_flat_only_net"
 msgstr "Fixbetrag ${flat} ${currency}. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
 #. Default: "${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
-#: ./shipping.py:134
+#: bda/plone/shop/shipping.py:134
 msgid "free_shipping_limit_item_only_gross"
 msgstr "${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Brutto übersteigt"
 
 #. Default: "${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
-#: ./shipping.py:140
+#: bda/plone/shop/shipping.py:140
 msgid "free_shipping_limit_item_only_net"
 msgstr "${item} ${currency} pro Artikel im Warenkorb. Kostenloser Versand wenn der Warenwert ${limit} ${currency} Netto übersteigt"
 
 #. Default: "${available} items(s) available."
-#: ./browser/availability.py:93
+#: bda/plone/shop/browser/availability.py:94
 msgid "full_available_message"
 msgstr "${available} Artikel verfügbar."
 
 #. Default: "Item available"
-#: ./browser/availability_details.pt:17
+#: bda/plone/shop/browser/availability_details.pt:17
 msgid "full_available_title"
 msgstr "Artikel verfügbar"
 
 #. Default: "Gross"
-#: ./browser/buyable.pt:59
+#: bda/plone/shop/browser/buyable.pt:59
 msgid "gross"
 msgstr "Brutto"
 
 #. Default: "Tick this box to indicate that you have found, read and accepted the terms of use for this site."
-#: ./user/userdata.py:157
+#: bda/plone/shop/user/userdata.py:157
 msgid "help_accept"
 msgstr "Wählen Sie diese Option wenn Sie die AGB's gelesen und akzeptiert haben."
 
 #. Default: "No typos please...."
-#: ./interfaces.py:56
+#: bda/plone/shop/interfaces.py:56
 msgid "help_admin_email"
 msgstr "Absende Adresse des Shops"
 
 #. Default: "Name used for Shop E-Mails."
-#: ./interfaces.py:64
+#: bda/plone/shop/interfaces.py:64
 msgid "help_admin_name"
 msgstr "Name welcher für Shop E-Mails verwendet wird."
 
 #. Default: "Delivery address is different from billing address."
-#: ./user/userdata.py:103
+#: bda/plone/shop/user/userdata.py:103
 msgid "help_alternative_delivery"
 msgstr "Lieferadresse weicht von Rechnungsadresse ab."
 
 #. Default: "Available payment methods in checkout"
-#: ./interfaces.py:536
+#: bda/plone/shop/interfaces.py:539
 msgid "help_available_payment_methods"
 msgstr "Verfügbare Bezahlmethoden in der Kassa"
 
 #. Default: "Available shipping methods in checkout"
-#: ./interfaces.py:307
+#: bda/plone/shop/interfaces.py:310
 msgid "help_available_shipping_methods"
 msgstr "Verfügbare Versandarten für Bestellungen"
 
-#: ./user/userdata.py:88
+#: bda/plone/shop/user/userdata.py:88
 msgid "help_city"
 msgstr ""
 
-#: ./user/userdata.py:69
+#: bda/plone/shop/user/userdata.py:69
 msgid "help_company"
 msgstr ""
 
-#: ./user/userdata.py:94
+#: bda/plone/shop/user/userdata.py:94
 msgid "help_country"
 msgstr ""
 
 #. Default: "Choose the default currency"
-#: ./interfaces.py:90
+#: bda/plone/shop/interfaces.py:90
 msgid "help_currency"
 msgstr "Wählen sie die Shop Währung"
 
 #. Default: "default measurement"
-#: ./interfaces.py:227
+#: bda/plone/shop/interfaces.py:230
 msgid "help_default_quantity_unit"
 msgstr "Einheit"
 
 #. Default: "Flag whether item is shippable by default, i.e. downloads are not"
-#: ./interfaces.py:299
+#: bda/plone/shop/interfaces.py:302
 msgid "help_default_shipping_item_shippable"
 msgstr "Sind Artikel im Warenkorb standardmäßig versendbar? Downloads z.B. sind es nicht"
 
 #. Default: "Specify default vat name"
-#: ./interfaces.py:407
+#: bda/plone/shop/interfaces.py:410
 msgid "help_default_vat"
 msgstr "Wählen Sie den Standard Umasatzsteuersatz"
 
 #. Default: "No total number of items in cart limit"
-#: ./interfaces.py:147
+#: bda/plone/shop/interfaces.py:150
 msgid "help_disable_max_article"
 msgstr "Kein Limit für die absolute Anzahl an Artikel im Warenkorb"
 
 #. Default: "Fill in your given name."
-#: ./user/userdata.py:49
+#: bda/plone/shop/user/userdata.py:49
 msgid "help_firstname"
 msgstr "Geben Sie hier Ihren Vornamen an."
 
 #. Default: "Net flat shipping cost"
-#: ./interfaces.py:359
+#: bda/plone/shop/interfaces.py:362
 msgid "help_flat_shipping_cost"
 msgstr "Fixbetrag Versandkosten Netto"
 
 #. Default: "Do not add shipping costs to orders with price bigger than limit. If limit applies to gross or net purchase price depends on 'Calculate shipping limit from gross' setting"
-#: ./interfaces.py:339
+#: bda/plone/shop/interfaces.py:342
 msgid "help_free_shipping_limit"
 msgstr "Versandkosten entfallen wenn der Warenwert im Warenkorb dieses Limit übersteigt. Ob dieses Limit vom Netto- oder Bruttowarenwert gilt, hängt von der 'Berechnung Limit kostenfreier Versand vom Bruttowarenwert' Einstellung ab"
 
-#: ./user/userdata.py:42
+#: bda/plone/shop/user/userdata.py:42
 msgid "help_gender"
 msgstr ""
 
 #. Default: "Global Trade Item Number"
-#: ./at.py:596
-#: ./dx.py:481
+#: bda/plone/shop/at.py:597
+#: bda/plone/shop/dx.py:482
 msgid "help_gtin"
 msgstr "Global Trade Item Number (GTIN), mit der Produkte und Packstücke weltweit eindeutig identifiziert werden können"
 
 #. Default: "Hide cart if no items contained"
-#: ./interfaces.py:125
+#: bda/plone/shop/interfaces.py:128
 msgid "help_hide_cart_if_empty"
 msgstr "Warenkorb nicht anzeigen wenn keine Artikel enthalten"
 
 #. Default: "Buyable Item number"
-#: ./at.py:587
-#: ./dx.py:475
+#: bda/plone/shop/at.py:588
+#: bda/plone/shop/dx.py:476
 msgid "help_item_number"
 msgstr "Produktnummer für diesen Artikel"
 
 #. Default: "Net shipping cost per item in cart. If flat shipping cost set and item shipping cost below flat shipping cost, flat shipping cost is used"
-#: ./interfaces.py:367
+#: bda/plone/shop/interfaces.py:370
 msgid "help_item_shipping_cost"
 msgstr "Versandkosten pro Artikel im Warenkorb Netto. Wenn ein Fixbetrag definiert ist und Artikelversandkosten niedriger sind als der Fixbetrag, wird der Fixbetrag verwendet"
 
 #. Default: "Fill in your surname or your family name."
-#: ./user/userdata.py:56
+#: bda/plone/shop/user/userdata.py:56
 msgid "help_lastname"
 msgstr "Gebe Sie hier Ihren Nachnamen an."
 
 #. Default: "Maximum number of articles in cart if disable max article flag set"
-#: ./interfaces.py:137
+#: bda/plone/shop/interfaces.py:140
 msgid "help_max_artice_count"
 msgstr "Maximale Anzahl an Artikeln im Warenkorb wenn Gesamtbeschränkung im Warenkorb aktiviert"
 
 #. Default: "Default payment method in checkout"
-#: ./interfaces.py:549
+#: bda/plone/shop/interfaces.py:552
 msgid "help_payment_method"
 msgstr "Standard Bezahlmethode in der Kassa"
 
-#: ./user/userdata.py:63
+#: bda/plone/shop/user/userdata.py:63
 msgid "help_phone"
 msgstr ""
 
 #. Default: "Quantity units (what the buyable items are measured in)"
-#: ./interfaces.py:210
+#: bda/plone/shop/interfaces.py:213
 msgid "help_quantity_units"
 msgstr "Einheit in welcher die Artikel bemessen sind."
 
 #. Default: "Flag whether item is shippable, i.e. downloads are not"
-#: ./at.py:345
-#: ./dx.py:274
+#: bda/plone/shop/at.py:346
+#: bda/plone/shop/dx.py:275
 msgid "help_shipping_item_shippable"
 msgstr "Artikel versendbar? Downloads z.B. sind es nicht"
 
 #. Default: "If set to False, shipping limit gets calculated from net price instead of gross."
-#: ./interfaces.py:352
+#: bda/plone/shop/interfaces.py:355
 msgid "help_shipping_limit_from_gross"
 msgstr "Wenn nicht gesetzt, wird das Limit für den kostenfreien Versand vom Nettowarenwert berechnet."
 
 #. Default: "Default shipping method in checkout"
-#: ./interfaces.py:320
+#: bda/plone/shop/interfaces.py:323
 msgid "help_shipping_method"
 msgstr "Wählen sie die Standard Versandart für Bestellungen"
 
 #. Default: "VAT used to calculate shipping costs"
-#: ./interfaces.py:328
+#: bda/plone/shop/interfaces.py:331
 msgid "help_shipping_vat"
 msgstr "Umsatzsteuer die zur Berechnung der Versandkosten verwendet wird"
 
-#: ./interfaces.py:171
+#: bda/plone/shop/interfaces.py:174
 msgid "help_show_checkout"
 msgstr "Soll ein direkter Link zum Checkout im Warenkorb angezeigt werden?"
 
-#: ./interfaces.py:99
+#: bda/plone/shop/interfaces.py:102
 msgid "help_show_currency"
 msgstr "Soll die Währung im Warenkorb angezeigt werden?"
 
-#: ./interfaces.py:180
+#: bda/plone/shop/interfaces.py:183
 msgid "help_show_to_cart"
 msgstr "Soll der Link zur Warenkorbübersicht im Warenkorb angezeigt werden?"
 
-#: ./user/userdata.py:76
+#: bda/plone/shop/user/userdata.py:76
 msgid "help_street"
 msgstr ""
 
 #. Default: "Show only total value in cart summary"
-#: ./interfaces.py:159
+#: bda/plone/shop/interfaces.py:162
 msgid "help_summary_total_only"
 msgstr "Zeige nur Gesamtsumme in der Warenkorbübersicht?"
 
 #. Default: "Specify all allowed vat settings"
-#: ./interfaces.py:394
+#: bda/plone/shop/interfaces.py:397
 msgid "help_vat"
 msgstr "Verfügbare Umsatzsteuersätze"
 
-#: ./user/userdata.py:82
+#: bda/plone/shop/user/userdata.py:82
 msgid "help_zip"
 msgstr ""
 
 #. Default: "Item Discount"
-#: ./browser/admin.py:228
+#: bda/plone/shop/browser/admin.py:252
 msgid "item_discount"
 msgstr "Artikel Rabatt"
 
 #. Default: "Item no longer buyable"
-#: ./cartdata.py:213
+#: bda/plone/shop/cartdata.py:213
 msgid "item_no_longer_buyable"
 msgstr "Artikel nicht mehr käuflich"
 
 #. Default: "Item not buyable yet"
-#: ./cartdata.py:201
+#: bda/plone/shop/cartdata.py:201
 msgid "item_not_buyable_yet"
 msgstr "Artikel noch nicht käuflich"
 
 #. Default: "Kilo"
-#: ./vocabularies.py:21
+#: bda/plone/shop/vocabularies.py:21
 msgid "kilo"
 msgstr "Kilo"
 
 #. Default: "Accept terms of use"
-#: ./user/userdata.py:156
+#: bda/plone/shop/user/userdata.py:156
 msgid "label_accept"
 msgstr "Bestätigen Sie die Allgemeinen Geschäftsbedingungen"
 
 #. Default: "Add Customer role to new Users"
-#: ./interfaces.py:71
+#: bda/plone/shop/interfaces.py:71
 msgid "label_add_customer_role_to_new_users"
 msgstr "Neuen Benutzern automatisch die Rolle Customer zuweisen"
 
 #. Default: "Shop Admin E-Mail"
-#: ./interfaces.py:55
+#: bda/plone/shop/interfaces.py:55
 msgid "label_admin_email"
 msgstr "Admin E-Mail"
 
 #. Default: "Shop Admin Name"
-#: ./interfaces.py:63
+#: bda/plone/shop/interfaces.py:63
 msgid "label_admin_name"
 msgstr "Name Shop Administrator"
 
 #. Default: "Alternative delivery address"
-#: ./user/userdata.py:101
+#: bda/plone/shop/user/userdata.py:101
 msgid "label_alternative_delivery"
 msgstr "Alternative Lieferadresse"
 
 #. Default: "Available Payment Methods"
-#: ./interfaces.py:534
+#: bda/plone/shop/interfaces.py:537
 msgid "label_available_payment_methods"
 msgstr "Verfügbare Bezahlmethoden"
 
 #. Default: "Available Shipping Methods"
-#: ./interfaces.py:305
+#: bda/plone/shop/interfaces.py:308
 msgid "label_available_shipping_methods"
 msgstr "Verfügbare Versandarten"
 
 #. Default: "Buyable effective date"
-#: ./at.py:538
-#: ./dx.py:432
+#: bda/plone/shop/at.py:539
+#: bda/plone/shop/dx.py:433
 msgid "label_buyable_effective_date"
 msgstr "Verkaufszeitraum Start"
 
 #. Default: "Buyable expiration date"
-#: ./at.py:546
-#: ./dx.py:438
+#: bda/plone/shop/at.py:547
+#: bda/plone/shop/dx.py:439
 msgid "label_buyable_expiration_date"
 msgstr "Verkaufszeitraum Ende"
 
 #. Default: "Cash on delivery costs in gross"
-#: ./interfaces.py:576
+#: bda/plone/shop/interfaces.py:579
 msgid "label_cash_on_delivery_costs"
 msgstr "Bezahlart per Nachname Kosten in Brutto"
 
 #. Default: "City"
-#: ./user/userdata.py:87
+#: bda/plone/shop/user/userdata.py:87
 msgid "label_city"
 msgstr "Stadt"
 
 #. Default: "Company"
-#: ./user/userdata.py:68
+#: bda/plone/shop/user/userdata.py:68
 msgid "label_company"
 msgstr "Firma"
 
 #. Default: "Country"
-#: ./user/userdata.py:93
+#: bda/plone/shop/user/userdata.py:93
 msgid "label_country"
 msgstr "Land"
 
 #. Default: "Currency"
-#: ./interfaces.py:89
+#: bda/plone/shop/interfaces.py:89
 msgid "label_currency"
 msgstr "Währung"
 
 #. Default: "Quantity limit of an item in the cart."
-#: ./interfaces.py:267
+#: bda/plone/shop/interfaces.py:270
 msgid "label_default_item_cart_count_limit"
 msgstr "Mengenbeschränkung für einen Artikel im Warenkorb"
 
 #. Default: "Comment enabled by default"
-#: ./interfaces.py:243
+#: bda/plone/shop/interfaces.py:246
 msgid "label_default_item_comment_enabled"
 msgstr "Kommentare standardmäßig erlaubt"
 
 #. Default: "Comment required by default"
-#: ./interfaces.py:251
+#: bda/plone/shop/interfaces.py:254
 msgid "label_default_item_comment_required"
 msgstr "Kommentare standardmäßig erforderlich"
 
 #. Default: "Display Gross by default"
-#: ./interfaces.py:81
+#: bda/plone/shop/interfaces.py:81
 msgid "label_default_item_display_gross"
 msgstr "Zeige Brutto standardmäßig aktiviert"
 
 #. Default: "Default Item net price"
-#: ./interfaces.py:235
+#: bda/plone/shop/interfaces.py:238
 msgid "label_default_item_net"
 msgstr "Vorgabewert Netto Preis"
 
 #. Default: "Quantity as float as default"
-#: ./interfaces.py:259
+#: bda/plone/shop/interfaces.py:262
 msgid "label_default_item_quantity_unit_float"
 msgstr "Einheit als Gleiktommazahl standardmäßig aktiviert"
 
 #. Default: "Specify default quantity name."
-#: ./interfaces.py:223
+#: bda/plone/shop/interfaces.py:226
 msgid "label_default_quantity_units"
 msgstr "Vorgabewert Einheit"
 
 #. Default: "Item Shippable by default"
-#: ./interfaces.py:296
+#: bda/plone/shop/interfaces.py:299
 msgid "label_default_shipping_item_shippable"
 msgstr "Artikel standardmäßig versendbar"
 
 #. Default: "Default Value added tax name"
-#: ./interfaces.py:406
+#: bda/plone/shop/interfaces.py:409
 msgid "label_default_vat"
 msgstr "Vorgabewert Umsatzsteuer"
 
 #. Default: "Disable max article"
-#: ./interfaces.py:146
+#: bda/plone/shop/interfaces.py:149
 msgid "label_disable_max_article"
 msgstr "Keine Gesamtbeschränkung der Artikel im Warenkorb"
 
 #. Default: "First name"
-#: ./user/userdata.py:48
+#: bda/plone/shop/user/userdata.py:48
 msgid "label_firstname"
 msgstr "Vorname"
 
 #. Default: "Flat shipping cost"
-#: ./interfaces.py:358
+#: bda/plone/shop/interfaces.py:361
 msgid "label_flat_shipping_cost"
 msgstr "Fixbetrag Versandkosten"
 
 #. Default: "Free Shipping Limit"
-#: ./interfaces.py:338
+#: bda/plone/shop/interfaces.py:341
 msgid "label_free_shipping_limit"
 msgstr "Limit kostenfreier Versand"
 
 #. Default: "Gender"
-#: ./user/userdata.py:41
+#: bda/plone/shop/user/userdata.py:41
 msgid "label_gender"
 msgstr "Geschlecht"
 
 #. Default: "GTIN"
-#: ./at.py:595
-#: ./dx.py:480
+#: bda/plone/shop/at.py:596
+#: bda/plone/shop/dx.py:481
 msgid "label_gtin"
 msgstr "GTIN"
 
 #. Default: "Hide Cart if empty"
-#: ./interfaces.py:124
+#: bda/plone/shop/interfaces.py:127
 msgid "label_hide_cart_if_empty"
 msgstr "Warenkorb nicht anzeigen"
 
 #. Default: "Item stock available"
-#: ./at.py:281
-#: ./dx.py:213
+#: bda/plone/shop/at.py:282
+#: bda/plone/shop/dx.py:214
 msgid "label_item_available"
 msgstr "Verfügbar"
 
 #. Default: "Max count of this item in cart"
-#: ./at.py:159
-#: ./dx.py:101
+#: bda/plone/shop/at.py:160
+#: bda/plone/shop/dx.py:102
 msgid "label_item_cart_count_limit"
 msgstr "Maximale Anzahl diese Artikels im Warenkorb"
 
 #. Default: "Comment enabled"
-#: ./at.py:174
-#: ./dx.py:114
+#: bda/plone/shop/at.py:175
+#: bda/plone/shop/dx.py:115
 msgid "label_item_comment_enabled"
 msgstr "Zusatzinformation erlaubt"
 
 #. Default: "Comment required"
-#: ./at.py:182
-#: ./dx.py:120
+#: bda/plone/shop/at.py:183
+#: bda/plone/shop/dx.py:121
 msgid "label_item_comment_required"
 msgstr "Zusatzinformation erforderlich"
 
 #. Default: "Display Gross"
-#: ./at.py:167
-#: ./dx.py:108
+#: bda/plone/shop/at.py:168
+#: bda/plone/shop/dx.py:109
 msgid "label_item_display_gross"
 msgstr "Zeige Preis in Brutto"
 
 #. Default: "Display item stock"
-#: ./at.py:273
-#: ./dx.py:207
+#: bda/plone/shop/at.py:274
+#: bda/plone/shop/dx.py:208
 msgid "label_item_display_stock"
 msgstr "Zeige Verfügbarkeit"
 
 #. Default: "Additional overall notification text for order confirmation mail if this item in cart"
-#: ./at.py:451
-#: ./dx.py:363
+#: bda/plone/shop/at.py:452
+#: bda/plone/shop/dx.py:364
 msgid "label_item_global_notification_text"
 msgstr "Zusätzlicher allgemeiner Benachrichtigungstext für Bestätigungsmail für diesen Artikel im Warenkorb"
 
 #. Default: "Additional overall notification text for order confirmation mail if this item in cart and out of stock"
-#: ./at.py:464
-#: ./dx.py:372
+#: bda/plone/shop/at.py:465
+#: bda/plone/shop/dx.py:373
 msgid "label_item_global_overbook_notification_text"
 msgstr "Zusätzlicher allgemeiner Benachrichtigungstext für Bestätigungsmail für diesen Artikel im Warenkorb wenn Artikel nicht lagernd"
 
 #. Default: "Item net price"
-#: ./at.py:144
-#: ./dx.py:88
+#: bda/plone/shop/at.py:145
+#: bda/plone/shop/dx.py:89
 msgid "label_item_net"
 msgstr "Netto Preis"
 
 #. Default: "Notification text for this item in order confirmation mail"
-#: ./at.py:417
-#: ./dx.py:334
+#: bda/plone/shop/at.py:418
+#: bda/plone/shop/dx.py:335
 msgid "label_item_notification_text"
 msgstr "Benachrichtigungstext für Bestätigungsmail für diesen Artikel"
 
 #. Default: "Item number"
-#: ./at.py:586
-#: ./dx.py:474
+#: bda/plone/shop/at.py:587
+#: bda/plone/shop/dx.py:475
 msgid "label_item_number"
 msgstr "Artikelnummer"
 
 #. Default: "Item stock overbook"
-#: ./at.py:289
-#: ./dx.py:218
+#: bda/plone/shop/at.py:290
+#: bda/plone/shop/dx.py:219
 msgid "label_item_overbook"
 msgstr "Überbuchen"
 
 #. Default: "Notification text for this item in order confirmation mail if item out of stock"
-#: ./at.py:429
-#: ./dx.py:343
+#: bda/plone/shop/at.py:430
+#: bda/plone/shop/dx.py:344
 msgid "label_item_overbook_notification_text"
 msgstr "Benachrichtigungstext für Bestätigungsmail für diesen Artikel wenn Artikel nicht lagernd"
 
 #. Default: "Quantity unit"
-#: ./at.py:198
-#: ./dx.py:133
+#: bda/plone/shop/at.py:199
+#: bda/plone/shop/dx.py:134
 msgid "label_item_quantity_unit"
 msgstr "Einheit"
 
 #. Default: "Quantity as float"
-#: ./at.py:190
-#: ./dx.py:126
+#: bda/plone/shop/at.py:191
+#: bda/plone/shop/dx.py:127
 msgid "label_item_quantity_unit_float"
 msgstr "Dezimaleingabe bei Anzahl erlaubt"
 
 #. Default: "Item shipping cost"
-#: ./interfaces.py:366
+#: bda/plone/shop/interfaces.py:369
 msgid "label_item_shipping_cost"
 msgstr "Versandkosten pro Artikel"
 
 #. Default: "Item VAT (in %)"
-#: ./at.py:151
-#: ./dx.py:94
+#: bda/plone/shop/at.py:152
+#: bda/plone/shop/dx.py:95
 msgid "label_item_vat"
 msgstr "Umsatzsteuer (in %)"
 
 #. Default: "Last name"
-#: ./user/userdata.py:55
+#: bda/plone/shop/user/userdata.py:55
 msgid "label_lastname"
 msgstr "Nachname"
 
 #. Default: "Maximum number articles in cart"
-#: ./interfaces.py:133
+#: bda/plone/shop/interfaces.py:136
 msgid "label_max_artice_count"
 msgstr "Maximale Anzahl Artikel im Warenkorb"
 
 #. Default: "Payment Method"
-#: ./interfaces.py:547
+#: bda/plone/shop/interfaces.py:550
 msgid "label_payment_method"
 msgstr "Standard Bezahlmethode"
 
 #. Default: "Payment Texts"
-#: ./interfaces.py:565
+#: bda/plone/shop/interfaces.py:568
 msgid "label_payment_text"
 msgstr "Benachrichtigungstext für Zahlungsart"
 
 #. Default: "Phone"
-#: ./user/userdata.py:62
+#: bda/plone/shop/user/userdata.py:62
 msgid "label_phone"
 msgstr "Telefon"
 
 #. Default: "Specify quantity units allowed in shop."
-#: ./interfaces.py:206
+#: bda/plone/shop/interfaces.py:209
 msgid "label_quantity_units"
 msgstr "Mengeneinheiten die für Shop Artikel verfügbar sind."
 
 #. Default: "Item Shippable"
-#: ./at.py:343
-#: ./dx.py:273
+#: bda/plone/shop/at.py:344
+#: bda/plone/shop/dx.py:274
 msgid "label_shipping_item_shippable"
 msgstr "Artikel versendbar"
 
 #. Default: "Item Weight"
-#: ./at.py:354
-#: ./dx.py:281
+#: bda/plone/shop/at.py:355
+#: bda/plone/shop/dx.py:282
 msgid "label_shipping_item_weight"
 msgstr "Gewicht"
 
 #. Default: "Calculate shipping limit from gross"
-#: ./interfaces.py:350
+#: bda/plone/shop/interfaces.py:353
 msgid "label_shipping_limit_from_gross"
 msgstr "Berechnung Limit kostenfreier Versand vom Bruttowarenwert"
 
 #. Default: "Shipping Method"
-#: ./interfaces.py:318
+#: bda/plone/shop/interfaces.py:321
 msgid "label_shipping_method"
 msgstr "Standard Versandart"
 
 #. Default: "Shipping VAT"
-#: ./interfaces.py:327
+#: bda/plone/shop/interfaces.py:330
 msgid "label_shipping_vat"
 msgstr "Versandkosten Umsatzsteuer"
 
 #. Default: "Show checkout link in portlet"
-#: ./interfaces.py:167
+#: bda/plone/shop/interfaces.py:170
 msgid "label_show_checkout"
 msgstr "Direkten Checkout Link im Warenkorb Portlet anzeigen"
 
 #. Default: "Show the currency for items"
-#: ./interfaces.py:98
+#: bda/plone/shop/interfaces.py:98
 msgid "label_show_currency"
 msgstr "Zeige Währungssymbol"
 
 #. Default: "Show link to cart in portlet"
-#: ./interfaces.py:176
+#: bda/plone/shop/interfaces.py:179
 msgid "label_show_to_cart"
 msgstr "Zeige Link zu Warenkorb im Warenkorb Portlet anzeigen"
 
 #. Default: "Overall notification text for order confirmation mail"
-#: ./interfaces.py:473
+#: bda/plone/shop/interfaces.py:476
 msgid "label_site_global_notification_text"
 msgstr "Allgemeiner Benachrichtigungstext für Bestätigungsmail"
 
 #. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
-#: ./interfaces.py:485
+#: bda/plone/shop/interfaces.py:488
 msgid "label_site_global_overbook_notification_text"
 msgstr "Allgemeiner Benachrichtigungstext für Bestätigungsmail wenn Warenkorb Artikel enthält, die nicht lagernd sind"
 
 #. Default: "Default notification text for items in order confirmation mail"
-#: ./interfaces.py:447
+#: bda/plone/shop/interfaces.py:450
 msgid "label_site_item_notification_text"
 msgstr "Benachrichtigungstext für Bestätigungsmail für Artikel im Warenkorb"
 
 #. Default: "Default notification text for items in order confirmation mail if item out of stock."
-#: ./interfaces.py:460
+#: bda/plone/shop/interfaces.py:463
 msgid "label_site_item_overbook_notification_text"
 msgstr "Benachrichtigungstext für Bestätigungsmail für Artikel im Warenkorb, die nicht lagernd"
 
 #. Default: "Skip Payment if order contains reservations"
-#: ./interfaces.py:556
+#: bda/plone/shop/interfaces.py:559
 msgid "label_skip_payment_if_order_contains_reservations"
 msgstr "Nicht zur Bezahlung weiter leiten wenn Reservierungen im Warenkorb"
 
 #. Default: "Street"
-#: ./user/userdata.py:75
+#: bda/plone/shop/user/userdata.py:75
 msgid "label_street"
 msgstr "Straße"
 
 #. Default: "Cart Summary total only"
-#: ./interfaces.py:155
+#: bda/plone/shop/interfaces.py:158
 msgid "label_summary_total_only"
 msgstr "Zeige nur Gesamtbetrag in Warenkorb"
 
 #. Default: "VAT in %"
-#: ./interfaces.py:393
+#: bda/plone/shop/interfaces.py:396
 msgid "label_vat"
 msgstr "Umsatzsteuer in %"
 
 #. Default: "Postal Code"
-#: ./user/userdata.py:81
+#: bda/plone/shop/user/userdata.py:81
 msgid "label_zip"
 msgstr "Postleitzahl"
 
 #. Default: "Language"
-#: ./interfaces.py:418
+#: bda/plone/shop/interfaces.py:421
 msgid "language"
 msgstr "Sprache"
 
 #. Default: "Legal"
-#: ./user/userdata.py:36
+#: bda/plone/shop/user/userdata.py:36
 msgid "legal"
 msgstr "Rechtliches"
 
 #. Default: "Liter"
-#: ./vocabularies.py:22
+#: bda/plone/shop/vocabularies.py:22
 msgid "liter"
 msgstr "Liter"
 
-#. Default: "Notification Templates"
-#: ./browser/admin.py:199
-msgid "mailtemplates"
-msgstr "Benachrichtigungen Vorlagen"
+#. Default: "Notification Templates (global)"
+#: bda/plone/shop/browser/admin.py:208
+msgid "mailtemplates_global"
+msgstr "Mailvorlagen (Global)"
+
+#. Default: "Notification Templates (site-wide)"
+#: bda/plone/shop/browser/admin.py:213
+msgid "mailtemplates_site"
+msgstr "Mailvorlagen (Subseite)"
+
+#. Default: "Notification Templates (vendor specific)"
+#: bda/plone/shop/browser/admin.py:218
+msgid "mailtemplates_vendor"
+msgstr "Mailvorlagen (Mandant)"
 
 #. Default: "Main Address"
-#: ./user/userdata.py:23
+#: bda/plone/shop/user/userdata.py:23
 msgid "main_address"
 msgstr "Hauptadresse"
 
 #. Default: "Meter"
-#: ./vocabularies.py:20
+#: bda/plone/shop/vocabularies.py:20
 msgid "meter"
 msgstr "Meter"
 
 #. Default: "My Orders"
-#: ./browser/admin.py:70
+#: bda/plone/shop/browser/admin.py:72
 msgid "my_orders"
 msgstr "Meine Bestellungen"
 
 #. Default: "Net"
-#: ./browser/buyable.pt:43
+#: bda/plone/shop/browser/buyable.pt:43
 msgid "net"
 msgstr "Netto"
 
 #. Default: "No"
-#: ./vocabularies.py:119
+#: bda/plone/shop/vocabularies.py:119
 msgid "no"
 msgstr "Nein"
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart"
-#: ./shipping.py:64
+#: bda/plone/shop/shipping.py:64
 msgid "no_free_shipping_flat_and_item"
 msgstr "Mindestens ${flat} ${currency} oder ${item} ${currency} pro Artikel im Warenkorb"
 
 #. Default: "Flat ${flat} ${currency}"
-#: ./shipping.py:74
+#: bda/plone/shop/shipping.py:74
 msgid "no_free_shipping_flat_only"
 msgstr "Fixbetrag ${flat} ${currency}"
 
 #. Default: "${item} ${currency} per item in cart"
-#: ./shipping.py:82
+#: bda/plone/shop/shipping.py:82
 msgid "no_free_shipping_item_only"
 msgstr "${item} ${currency} pro Artikel im Warenkorb"
 
 #. Default: "Item is no longer purchasable."
-#: ./browser/availability_details.pt:77
+#: bda/plone/shop/browser/availability_details.pt:77
 msgid "no_longer_purchasable"
 msgstr "Artikel ist nicht mehr erhältlich"
 
 #. Default: "Item is sold out."
-#: ./browser/availability_details.pt:11
+#: bda/plone/shop/browser/availability_details.pt:11
 msgid "not_available_message"
 msgstr "Dieser Artikel ist im Moment nicht verfügbar"
 
 #. Default: "Item not available"
-#: ./browser/availability_details.pt:8
+#: bda/plone/shop/browser/availability_details.pt:8
 msgid "not_available_title"
 msgstr "Nicht verfügbar"
 
 #. Default: "Item not available yet."
-#: ./browser/availability_details.pt:65
+#: bda/plone/shop/browser/availability_details.pt:65
 msgid "not_available_yet_title"
 msgstr "Artikel ist noch nicht erhältlich"
 
 #. Default: "Order Text"
-#: ./interfaces.py:453
+#: bda/plone/shop/interfaces.py:456
 msgid "order_text"
 msgstr "Text"
 
 #. Default: "Orders"
-#: ./browser/admin.py:86
+#: bda/plone/shop/browser/admin.py:88
 msgid "orders"
 msgstr "Bestellungen"
 
 #. Default: "Orders in Context"
-#: ./browser/admin.py:102
+#: bda/plone/shop/browser/admin.py:104
 msgid "orders_in_context"
 msgstr "Bestellungen im Kontext"
 
 #. Default: "Item is sold out. You can pre-order ${reservable} items. As soon as item is available again, it gets delivered."
-#: ./browser/availability.py:118
+#: bda/plone/shop/browser/availability.py:119
 msgid "overbook_available_message"
 msgstr "Artikel ist nicht verfügbar. Sie können ${reservable} vorbestellen. Sobal der Artikel wieder verfügbar ist, wird er zugestellt."
 
 #. Default: "Pre-order available"
-#: ./browser/availability_details.pt:35
+#: bda/plone/shop/browser/availability_details.pt:35
 msgid "overbook_available_title"
 msgstr "Vorbestellungen verfügbar"
 
 #. Default: "Overbook Text"
-#: ./interfaces.py:466
+#: bda/plone/shop/interfaces.py:469
 msgid "overbook_text"
 msgstr "Text"
 
 #. Default: "Payment"
-#: ./interfaces.py:500
+#: bda/plone/shop/interfaces.py:503
 msgid "payment"
 msgstr "Zahlung"
 
 #. Default: "Payment Text"
-#: ./interfaces.py:570
+#: bda/plone/shop/interfaces.py:573
 msgid "payment_text"
 msgstr "Text"
 
 #. Default: "Permission to buy ${title} not granted."
-#: ./cartdata.py:184
+#: bda/plone/shop/cartdata.py:184
 msgid "permission_not_granted_to_buy_item"
 msgstr "Keine Berechtigung um ${title} zu kaufen."
 
 #. Default: "Price"
-#: ./browser/buyable.pt:34
+#: bda/plone/shop/browser/buyable.pt:34
 msgid "price"
 msgstr "Preis"
 
 #. Default: "Item is purchasable as of ${date}"
-#: ./browser/availability.py:146
+#: bda/plone/shop/browser/availability.py:147
 msgid "purchasable_as_of_message"
 msgstr "Artikel ist ab ${date} erhältlich"
 
 #. Default: "Item is purchasable until ${date}"
-#: ./browser/availability.py:133
+#: bda/plone/shop/browser/availability.py:134
 msgid "purchasable_until_message"
 msgstr "Artikel ist bis ${date} erhältlich"
 
 #. Default: "Quantity"
-#: ./vocabularies.py:19
+#: bda/plone/shop/vocabularies.py:19
 msgid "quantity"
 msgstr "Anzahl"
 
 #. Default: "Shop"
-#: ./browser/admin.pt:6
+#: bda/plone/shop/browser/admin.pt:6
 msgid "shop_admin_heading"
 msgstr "Shop"
 
+#. Default: "Shop Controlpanel (global)"
+#: bda/plone/shop/browser/admin.py:274
+msgid "shop_controlpanel_global"
+msgstr "Shopeinstellungen (Global)"
+
+#. Default: "Shop Controlpanel (site-wide)"
+#: bda/plone/shop/browser/admin.py:279
+msgid "shop_controlpanel_site"
+msgstr "Shopeinstellungen (Subseite)"
+
 #. Default: "Shop Portlet"
-#: ./browser/admin.py:240
+#: bda/plone/shop/browser/admin.py:296
 msgid "shop_portlet"
 msgstr "Shop"
 
 #. Default: "Symbol"
-#: ./vocabularies.py:120
+#: bda/plone/shop/vocabularies.py:120
 msgid "symbol"
 msgstr "Zeichen"
 
 #. Default: "Text"
-#: ./interfaces.py:424
+#: bda/plone/shop/interfaces.py:427
 msgid "text"
 msgstr "Text"
 
 #. Default: "update cart"
-#: ./browser/buyable.pt:111
+#: bda/plone/shop/browser/buyable.pt:111
 msgid "update_cart"
 msgstr "aktualisieren"
 
 #. Default: "Vat"
-#: ./browser/buyable.pt:63
+#: bda/plone/shop/browser/buyable.pt:63
 msgid "vat"
 msgstr "USt"
 
 #. Default: "Yes"
-#: ./vocabularies.py:118
+#: bda/plone/shop/vocabularies.py:118
 msgid "yes"
 msgstr "Ja"
 
