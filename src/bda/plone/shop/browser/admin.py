@@ -99,7 +99,13 @@ class ShopPortletOrdersInContextLink(ShopPortletLink):
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
-        site = self.context
+        # Go to appropriate context
+        if IBuyable.providedBy(context) \
+                or IFolder.providedBy(context) \
+                or IPloneSiteRoot.providedBy(context):
+            site = self.context
+        else:
+            site = self.context.aq_inner.aq_parent
         self.url = '%s/@@orders' % site.absolute_url()
         self.title = _('orders_in_context', default=u'Orders in Context')
         self.order = 11
@@ -131,6 +137,7 @@ class ShopPortletBookingsInContextLink(ShopPortletLink):
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
+        # Go to appropriate context
         if IBuyable.providedBy(context) \
                 or IFolder.providedBy(context) \
                 or IPloneSiteRoot.providedBy(context):
