@@ -4,6 +4,10 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Shop Portlet: Use appropriate context (Vendor, Site or Plone Site Root) also
+  for Orders and Bookings views.
+  [thet]
+
 - Shop Portlet: Use appropriate context for "orders in context", like it's done
   for "bookings in context". Avoids calling this view on default pages.
   [thet]

@@ -83,9 +83,31 @@ class ShopPortletOrdersLink(ShopPortletLink):
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
-        site = plone.api.portal.get()
-        self.url = '%s/@@orders' % site.absolute_url()
-        self.title = _('orders', default=u'Orders')
+
+        # Find the nearest context, where this functionality can be bound to.
+        def _find_context(ctx):
+            return ctx\
+                if ISite.providedBy(ctx) or IVendor.providedBy(ctx)\
+                else _find_context(aq_parent(ctx))
+        context = _find_context(context)
+
+        if IPloneSiteRoot.providedBy(context):
+            self.title = _(
+                'orders_global',
+                default=u'Orders (global)'
+            )
+        elif ISite.providedBy(context):
+            self.title = _(
+                'orders_site',
+                default=u'Orders (site-wide)'
+            )
+        elif IVendor.providedBy(context):
+            self.title = _(
+                'orders_vendor',
+                default=u'Orders (vendor specific)'
+            )
+
+        self.url = '%s/@@orders' % context.absolute_url()
         self.order = 10
         self.cssclass = 'orders'
 
@@ -100,13 +122,11 @@ class ShopPortletOrdersInContextLink(ShopPortletLink):
         if self.display and not get_vendors_for():
             self.display = False
         # Go to appropriate context
-        if IBuyable.providedBy(context) \
-                or IFolder.providedBy(context) \
-                or IPloneSiteRoot.providedBy(context):
-            site = self.context
-        else:
-            site = self.context.aq_inner.aq_parent
-        self.url = '%s/@@orders' % site.absolute_url()
+        if not IBuyable.providedBy(context) \
+                and not IFolder.providedBy(context) \
+                and not IPloneSiteRoot.providedBy(context):
+            context = context.aq_inner.aq_parent
+        self.url = '%s/@@orders' % context.absolute_url()
         self.title = _('orders_in_context', default=u'Orders in Context')
         self.order = 11
         self.cssclass = 'orders'
@@ -121,9 +141,31 @@ class ShopPortletBookingsLink(ShopPortletLink):
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
-        site = plone.api.portal.get()
-        self.url = '%s/@@bookings' % site.absolute_url()
-        self.title = _('bookings', default=u'Bookings')
+
+        # Find the nearest context, where this functionality can be bound to.
+        def _find_context(ctx):
+            return ctx\
+                if ISite.providedBy(ctx) or IVendor.providedBy(ctx)\
+                else _find_context(aq_parent(ctx))
+        context = _find_context(context)
+
+        if IPloneSiteRoot.providedBy(context):
+            self.title = _(
+                'bookings_global',
+                default=u'Bookings (global)'
+            )
+        elif ISite.providedBy(context):
+            self.title = _(
+                'bookings_site',
+                default=u'Bookings (site-wide)'
+            )
+        elif IVendor.providedBy(context):
+            self.title = _(
+                'bookings_vendor',
+                default=u'Bookings (vendor specific)'
+            )
+
+        self.url = '%s/@@bookings' % context.absolute_url()
         self.order = 21
         self.cssclass = 'bookings'
 
@@ -138,13 +180,11 @@ class ShopPortletBookingsInContextLink(ShopPortletLink):
         if self.display and not get_vendors_for():
             self.display = False
         # Go to appropriate context
-        if IBuyable.providedBy(context) \
-                or IFolder.providedBy(context) \
-                or IPloneSiteRoot.providedBy(context):
-            site = self.context
-        else:
-            site = self.context.aq_inner.aq_parent
-        self.url = '%s/@@bookings' % site.absolute_url()
+        if not IBuyable.providedBy(context) \
+                and not IFolder.providedBy(context) \
+                and not IPloneSiteRoot.providedBy(context):
+            context = context.aq_inner.aq_parent
+        self.url = '%s/@@bookings' % context.absolute_url()
         self.title = _('bookings_in_context', default=u'Bookings in Context')
         self.order = 22
         self.cssclass = 'bookings'

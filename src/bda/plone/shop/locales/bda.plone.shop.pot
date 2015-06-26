@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-06-25 23:01+0000\n"
+"POT-Creation-Date: 2015-06-26 09:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,18 +185,28 @@ msgstr ""
 msgid "availability"
 msgstr ""
 
-#. Default: "Bookings"
-#: bda/plone/shop/browser/admin.py:120
-msgid "bookings"
+#. Default: "Bookings (global)"
+#: bda/plone/shop/browser/admin.py:156
+msgid "bookings_global"
 msgstr ""
 
 #. Default: "Bookings in Context"
-#: bda/plone/shop/browser/admin.py:141
+#: bda/plone/shop/browser/admin.py:194
 msgid "bookings_in_context"
 msgstr ""
 
+#. Default: "Bookings (site-wide)"
+#: bda/plone/shop/browser/admin.py:161
+msgid "bookings_site"
+msgstr ""
+
+#. Default: "Bookings (vendor specific)"
+#: bda/plone/shop/browser/admin.py:166
+msgid "bookings_vendor"
+msgstr ""
+
 #. Default: "Cart Discount"
-#: bda/plone/shop/browser/admin.py:237
+#: bda/plone/shop/browser/admin.py:290
 msgid "cart_discount"
 msgstr ""
 
@@ -216,7 +226,7 @@ msgid "comment"
 msgstr ""
 
 #. Default: "Contacts"
-#: bda/plone/shop/browser/admin.py:157
+#: bda/plone/shop/browser/admin.py:210
 msgid "contacts"
 msgstr ""
 
@@ -266,12 +276,12 @@ msgid "enabled_vendor"
 msgstr ""
 
 #. Default: "Export Orders"
-#: bda/plone/shop/browser/admin.py:170
+#: bda/plone/shop/browser/admin.py:223
 msgid "exportorders"
 msgstr ""
 
 #. Default: "Export Orders on this Item"
-#: bda/plone/shop/browser/admin.py:185
+#: bda/plone/shop/browser/admin.py:238
 msgid "exportorders_item"
 msgstr ""
 
@@ -514,7 +524,7 @@ msgid "help_zip"
 msgstr ""
 
 #. Default: "Item Discount"
-#: bda/plone/shop/browser/admin.py:252
+#: bda/plone/shop/browser/admin.py:305
 msgid "item_discount"
 msgstr ""
 
@@ -920,17 +930,17 @@ msgid "liter"
 msgstr ""
 
 #. Default: "Notification Templates (global)"
-#: bda/plone/shop/browser/admin.py:208
+#: bda/plone/shop/browser/admin.py:261
 msgid "mailtemplates_global"
 msgstr ""
 
 #. Default: "Notification Templates (site-wide)"
-#: bda/plone/shop/browser/admin.py:213
+#: bda/plone/shop/browser/admin.py:266
 msgid "mailtemplates_site"
 msgstr ""
 
 #. Default: "Notification Templates (vendor specific)"
-#: bda/plone/shop/browser/admin.py:218
+#: bda/plone/shop/browser/admin.py:271
 msgid "mailtemplates_vendor"
 msgstr ""
 
@@ -999,14 +1009,24 @@ msgstr ""
 msgid "order_text"
 msgstr ""
 
-#. Default: "Orders"
-#: bda/plone/shop/browser/admin.py:88
-msgid "orders"
+#. Default: "Orders (global)"
+#: bda/plone/shop/browser/admin.py:95
+msgid "orders_global"
 msgstr ""
 
 #. Default: "Orders in Context"
-#: bda/plone/shop/browser/admin.py:104
+#: bda/plone/shop/browser/admin.py:133
 msgid "orders_in_context"
+msgstr ""
+
+#. Default: "Orders (site-wide)"
+#: bda/plone/shop/browser/admin.py:100
+msgid "orders_site"
+msgstr ""
+
+#. Default: "Orders (vendor specific)"
+#: bda/plone/shop/browser/admin.py:105
+msgid "orders_vendor"
 msgstr ""
 
 #. Default: "Item is sold out. You can pre-order ${reservable} items. As soon as item is available again, it gets delivered."
@@ -1065,17 +1085,17 @@ msgid "shop_admin_heading"
 msgstr ""
 
 #. Default: "Shop Controlpanel (global)"
-#: bda/plone/shop/browser/admin.py:274
+#: bda/plone/shop/browser/admin.py:327
 msgid "shop_controlpanel_global"
 msgstr ""
 
 #. Default: "Shop Controlpanel (site-wide)"
-#: bda/plone/shop/browser/admin.py:279
+#: bda/plone/shop/browser/admin.py:332
 msgid "shop_controlpanel_site"
 msgstr ""
 
 #. Default: "Shop Portlet"
-#: bda/plone/shop/browser/admin.py:296
+#: bda/plone/shop/browser/admin.py:349
 msgid "shop_portlet"
 msgstr ""
 
