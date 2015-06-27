@@ -242,8 +242,6 @@ class ShopPortletMailTemplatesLink(ShopPortletLink):
         super(ShopPortletMailTemplatesLink, self).__init__(
             context, view_permissions=permissions)
 
-        self.display = True
-
         # Find the nearest context, where this functionality can be bound to.
         def _find_context(ctx):
             return ctx\
@@ -307,8 +305,6 @@ class ShopPortletControlpanelLink(ShopPortletLink):
         permissions = [MANAGE_SHOP_PERMISSION]
         super(ShopPortletControlpanelLink, self).__init__(
             context, view_permissions=permissions)
-
-        self.display = True
 
         # Find the nearest context, where this functionality can be bound to.
         def _find_context(ctx):
