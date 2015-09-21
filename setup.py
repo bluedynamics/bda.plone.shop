@@ -38,9 +38,11 @@ setup(
         'Plone',
         'plone.api',
         'plone.app.registry',
-        'plone.app.users',
+        'plone.app.users>=2.0',
+        'plone.app.workflow>=2.1.9',
         'setuptools',
         'zope.deferredimport',
+        'z3c.form>=3.2.4',  # Issue #55
     ],
     extras_require={
         'test': [
