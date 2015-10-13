@@ -1,6 +1,6 @@
+from bda.plone.shop.tests import ShopAT_INTEGRATION_TESTING
+from bda.plone.shop.tests import set_browserlayer
 import unittest2 as unittest
-from . import ShopAT_INTEGRATION_TESTING
-from . import set_browserlayer
 
 
 class TestATIntegration(unittest.TestCase):

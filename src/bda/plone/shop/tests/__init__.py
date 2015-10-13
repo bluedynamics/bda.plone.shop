@@ -1,6 +1,4 @@
 from Products.CMFPlone.utils import getFSVersionTuple
-from zope.component import getUtility
-from plone.dexterity.interfaces import IDexterityFTI
 from bda.plone.shop.interfaces import IShopExtensionLayer
 from plone.app.robotframework.testing import MOCK_MAILHOST_FIXTURE
 from plone.app.testing import FunctionalTesting
@@ -9,9 +7,10 @@ from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import setRoles
+from plone.dexterity.interfaces import IDexterityFTI
 from plone.testing import z2
+from zope.component import getUtility
 from zope.interface import alsoProvides
-
 import plone.api
 
 
