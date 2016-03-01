@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="bda.plone.shop">
+
+<!-- Bundle resource. This is a file that will define a
+     require method(requirejs) and be built -->
+  <records prefix="plone.resources/bda-plone-shop"
+            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+     <value key="css">
+        <element>++resource++bda.plone.shop.css</element>
+     </value>
+     <value key="js">++resource++bda.plone.shop.js</value>
+  </records>
+
+  <records prefix="plone.bundles/bda-plone-shop-bundle"
+            interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+    <value key="resources">
+      <element>bda-plone-shop</element>
+    </value>
+    <value key="enabled">True</value>
+    <value key="jscompilation">++plone++sl_scripts/social_like.js</value>
+    <value key="csscompilation">++resource++bda.plone.shop.js</value>
+    <value key="last_compilation">2016-02-22 16:30:00</value>
+   </records>
+
+</registry>
