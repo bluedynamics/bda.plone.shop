@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.11 (unreleased)
+-----------------
+
+- Plone 5 Update
+  [agitator]
+
 0.10 (unreleased)
 -----------------
 
