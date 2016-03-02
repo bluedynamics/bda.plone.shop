@@ -23,7 +23,7 @@
 
   <genericsetup:registerProfile
     name="install-base"
-    title="bda.plone.shop"
+    title="bda.plone.shop base"
     directory="profiles/base"
     description="bda.plone.shop"
     provides="Products.GenericSetup.interfaces.EXTENSION" />

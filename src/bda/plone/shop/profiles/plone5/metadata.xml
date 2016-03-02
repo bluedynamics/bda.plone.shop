@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <metadata>
-  <version>1000</version>
+  <version>5</version>
   <dependencies>
      <dependency>profile-bda.plone.shop:install-base</dependency>
   </dependencies>
