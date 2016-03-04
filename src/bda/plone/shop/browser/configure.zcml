@@ -21,6 +21,16 @@
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:resource
+    name="bda.plone.shop-compiled.js"
+    file="shop-compiled.js"
+    layer="..interfaces.IShopExtensionLayer" />
+
+  <browser:resource
+    name="bda.plone.shop.cookie.functions.js"
+    file="cookie_functions.js"
+    layer="..interfaces.IShopExtensionLayer" />
+
+  <browser:resource
     name="shop_icon.png"
     file="shop_icon.png"
     layer="..interfaces.IShopExtensionLayer" />
