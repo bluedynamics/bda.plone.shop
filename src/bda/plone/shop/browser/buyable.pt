@@ -1,13 +1,13 @@
 <div xmlns:tal="http://xml.zope.org/namespaces/tal"
      xmlns:ajax="http://namesspaces.bluedynamics.eu/ajax"
-     class="buyable"
+     class="buyable viewlet"
      i18n:domain="bda.plone.shop"
      ajax:bind="cart_changed"
      tal:define="addable view/item_addable;
                  css string:cart_item_${context/UID}"
      tal:attributes="ajax:target context/absolute_url;
                      ajax:action string:buyable_controls:.${css}:replace;
-                     class string:buyable ${css}">
+                     class string:buyable viewlet ${css}">
 
   <tal:info condition="view/can_view_buyable_info">
 
@@ -106,10 +106,10 @@
 
     <tal:addable condition="addable">
       <a href=""
-         class="add_cart_item buyable_add_to_cart show_status_message"
+         class="context add_cart_item buyable_add_to_cart show_status_message"
          i18n:translate="add_to_cart">add to cart</a>
       <a href=""
-         class="update_cart_item buyable_update_cart show_status_message"
+         class="context update_cart_item buyable_update_cart show_status_message"
          i18n:translate="update_cart">update cart</a>
     </tal:addable>
 
