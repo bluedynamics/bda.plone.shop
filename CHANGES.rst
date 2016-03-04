@@ -4,7 +4,7 @@ Changelog
 0.11 (unreleased)
 -----------------
 
-- Plone 5 Update
+- Plone 5 Update, use separate styles/less
   [agitator]
 
 0.10 (unreleased)
