@@ -3,6 +3,13 @@
            xmlns:plone="http://namespaces.plone.org/plone">
 
   <!-- resources -->
+  <!-- compiled Plone 5 styles -->
+  <browser:resource
+    name="bda.plone.shop-compiled.css"
+    file="shop-compiled.css"
+    layer="..interfaces.IShopExtensionLayer" />
+
+  <!-- Plone 4 styles -->
   <browser:resource
     name="bda.plone.shop.css"
     file="shop.css"
