@@ -41,7 +41,7 @@
         display: none;
     }
     div.signal {
-        vertical-align: middle;
+        vertical-align: sub;
         border: #ccc 1px solid;
         border-radius: @plone-border-radius-base;
         width: 1em;
@@ -61,4 +61,19 @@
         background-color: green;
     }
 
+}
+
+.portletShopAdmin {
+  .portletContent {
+    ul {
+      padding-top: 0.5em!important;
+      padding-bottom: 1em!important;
+      li {
+        a {
+          padding: 0.5em 1em 0em 2em!important;
+          border: 0!important;
+        }
+      }
+    }
+  }
 }

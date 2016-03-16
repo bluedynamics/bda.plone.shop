@@ -33,7 +33,7 @@
   display: none;
 }
 .buyable.viewlet div.signal {
-  vertical-align: middle;
+  vertical-align: sub;
   border: #ccc 1px solid;
   border-radius: 4px;
   width: 1em;
@@ -51,5 +51,13 @@
 }
 .buyable.viewlet div.signal.green {
   background-color: green;
+}
+.portletShopAdmin .portletContent ul {
+  padding-top: 0.5em!important;
+  padding-bottom: 1em!important;
+}
+.portletShopAdmin .portletContent ul li a {
+  padding: 0.5em 1em 0em 2em!important;
+  border: 0!important;
 }
 /*# sourceMappingURL=++resource++bda.plone.shop-compiled.css.map */

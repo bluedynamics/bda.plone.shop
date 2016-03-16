@@ -19,6 +19,13 @@ from zope.interface import Interface
 from zope.interface import implementer
 from zope.security import checkPermission
 import plone.api
+import pkg_resources
+
+
+if pkg_resources.get_distribution("Products.CMFPlone").version > '4.99':
+    PLONE5 = 1
+else:
+    PLONE5 = 0
 
 
 VIEW_OWN_ORDERS_PERMISSION = 'bda.plone.orders.ViewOwnOrders'
@@ -340,7 +347,11 @@ class ShopAdminAssignment(base.Assignment):
 
 
 class ShopAdminRenderer(base.Renderer):
-    render = ViewPageTemplateFile('admin.pt')
+    if PLONE5:
+        render = ViewPageTemplateFile('admin_plone5.pt')
+    else:
+        render = ViewPageTemplateFile('admin.pt')
+
 
     @property
     def available(self):
