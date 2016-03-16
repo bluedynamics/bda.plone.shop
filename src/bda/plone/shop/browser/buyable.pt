@@ -10,19 +10,19 @@
                      class string:buyable viewlet ${css}">
 
   <tal:info condition="view/can_view_buyable_info">
-
-    <div class="availability" tal:condition="view/show_available">
-      <strong i18n:translate="availability">Availability</strong>
-      <div class="signal green"
-           tal:attributes="class string:signal ${view/availability_signal}">
-        &nbsp;
-      </div>
-      <div class="availability_details"
-           tal:content="structure view/availability_details">
-        deliverable until 1.1.2013
+    <div class="availabilityWrapper">
+      <div class="availability" tal:condition="view/show_available">
+        <strong i18n:translate="availability">Availability</strong>
+        <div class="signal green"
+             tal:attributes="class string:signal ${view/availability_signal}">
+          &nbsp;
+        </div>
+        <div class="availability_details"
+             tal:content="structure view/availability_details">
+          deliverable until 1.1.2013
+        </div>
       </div>
     </div>
-
   </tal:info>
 
   <dl class="details">
