@@ -84,7 +84,7 @@
         <dt class="extra_comment" i18n:translate="comment">Comment</dt>
         <dd class="extra_comment">
           <input type="text"
-                 size="20"
+                 size="16"
                  value=""
                  class="cart_item_comment"
                  tal:define="css python: view.comment_required and \
