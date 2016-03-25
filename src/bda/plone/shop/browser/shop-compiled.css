@@ -1,5 +1,6 @@
 .buyable.viewlet {
   clear: both;
+  margin: 1em 0 2em 0;
 }
 .buyable.viewlet dl.details {
   display: inline-block;
