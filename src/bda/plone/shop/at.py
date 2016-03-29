@@ -130,6 +130,11 @@ def default_item_cart_count_limit(context):
 def default_item_quantity_unit(context):
     return lambda: get_shop_article_settings().default_item_quantity_unit
 
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_item_minimum_stock(context):
+    return lambda: get_shop_article_settings().default_item_minimum_stock
+
 
 class BuyableExtender(ExtenderBase):
     """Schema extender for buyable items.

@@ -64,6 +64,10 @@ def default_item_cart_count_limit(context):
 def default_item_quantity_unit(context):
     return get_shop_article_settings().default_item_quantity_unit
 
+@provider(IContextAwareDefaultFactory)
+def default_item_minimum_stock(context):
+    return get_shop_article_settings().default_item_minimum_stock
+
 
 @provider(IFormFieldProvider)
 class IBuyableBehavior(model.Schema, IBuyable):

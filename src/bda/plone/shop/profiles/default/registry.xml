@@ -32,6 +32,7 @@
     <value key="default_item_comment_required" purge="false">False</value>
     <value key="default_item_quantity_unit_float" purge="false">False</value>
     <value key="default_item_cart_count_limit" purge="false"></value>
+    <value key="default_item_minimum_stock" purge="false"></value>
   </records>
 
   <records interface="bda.plone.shop.interfaces.IShopShippingSettings">
