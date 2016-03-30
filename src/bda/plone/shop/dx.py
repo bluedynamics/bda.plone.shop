@@ -192,6 +192,10 @@ class DXCartItemDataProvider(CartItemDataProviderBase):
 def default_item_display_stock(context):
     return True
 
+@provider(IContextAwareDefaultFactory)
+def default_item_minimum_stock(context):
+    return get_shop_article_settings().default_item_minimum_stock
+
 
 @provider(IFormFieldProvider)
 class IStockBehavior(model.Schema):
@@ -201,7 +205,7 @@ class IStockBehavior(model.Schema):
     model.fieldset(
         'shop',
         label=u"Shop",
-        fields=['item_display_stock', 'item_available', 'item_overbook']
+        fields=['item_display_stock', 'item_available', 'item_overbook', 'item_minimum_stock']
     )
 
     item_display_stock = schema.Bool(
@@ -220,6 +224,11 @@ class IStockBehavior(model.Schema):
         required=False
     )
 
+    item_minimum_stock = schema.Float(
+        title=_(u'label_item_minimum_stock', default=u'Minimum number of items in stock'),
+        required=False,
+        defaultFactory=default_item_minimum_stock
+    )
 
 @implementer(ICartItemStock)
 @adapter(IStockBehavior)
@@ -249,6 +258,14 @@ class DXCartItemStock(object):
     @overbook.setter
     def overbook(self, value):
         self.context.item_overbook = value
+
+    @property
+    def minimum_stock(self):
+        return self.context.item_minimum_stock
+
+    @minimum_stock.setter
+    def minimum_stock(self, value):
+        self.context.item_minimum_stock = value
 
 
 @provider(IContextAwareDefaultFactory)

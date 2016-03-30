@@ -50,6 +50,10 @@
       factory=".at.default_item_display_stock" />
 
   <adapter
+      name="item_minimum_stock"
+      factory=".at.default_item_minimum_stock" />
+
+  <adapter
       name="bda.plone.shop.shipping"
       factory=".at.ShippingExtender"
       provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />

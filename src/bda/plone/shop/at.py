@@ -259,6 +259,11 @@ class ATCartItemDataProvider(CartItemDataProviderBase):
 def default_item_display_stock(context):
     return lambda: True
 
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_item_minimum_stock(context):
+    return lambda: get_shop_article_settings().default_item_minimum_stock
+
 
 class StockExtender(ExtenderBase):
     """Schema extender for item stock.
@@ -289,6 +294,14 @@ class StockExtender(ExtenderBase):
             widget=FloatField._properties['widget'](
                 label=_(u'label_item_overbook',
                         default=u'Item stock overbook'),
+            ),
+        ),
+        XFloatField(
+            name='item_minimum_stock',
+            schemata='Shop',
+            widget=FloatField._properties['widget'](
+                label=_(u'label_item_minimum_stock',
+                        default=u'Minimum number of items in stock'),
             ),
         ),
     ]
@@ -322,6 +335,15 @@ class ATCartItemStock(object):
         set_field_value(self.context, 'item_overbook', value)
 
     overbook = property(_get_overbook, _set_overbook)
+
+    def _get_minimum_stock(self):
+        return field_value(self.context, 'item_minimum_stock')
+
+    def _set_minimum_stock(self, value):
+        set_field_value(self.context, 'item_minimum_stock', value)
+
+    minimum_stock = property(_get_minimum_stock, _set_minimum_stock)
+    
 
 
 @implementer(IFieldDefaultProvider)
