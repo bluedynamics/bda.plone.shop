@@ -337,10 +337,10 @@ class ATCartItemStock(object):
     overbook = property(_get_overbook, _set_overbook)
 
     def _get_stock_warning_threshold(self):
-        return field_value(self.context, 'stock_warning_threshold')
+        return field_value(self.context, 'item_stock_warning_threshold')
 
     def _set_stock_warning_threshold(self, value):
-        set_field_value(self.context, 'stock_warning_threshold', value)
+        set_field_value(self.context, 'item_stock_warning_threshold', value)
 
     stock_warning_threshold = property(_get_stock_warning_threshold, _set_stock_warning_threshold)
 
