@@ -261,8 +261,8 @@ def default_item_display_stock(context):
 
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)
-def default_item_minimum_stock(context):
-    return lambda: get_shop_article_settings().default_item_minimum_stock
+def default_item_stock_warning_threshold(context):
+    return lambda: get_shop_article_settings().default_item_stock_warning_threshold
 
 
 class StockExtender(ExtenderBase):
@@ -297,11 +297,11 @@ class StockExtender(ExtenderBase):
             ),
         ),
         XFloatField(
-            name='item_minimum_stock',
+            name='item_stock_warning_threshold',
             schemata='Shop',
             widget=FloatField._properties['widget'](
-                label=_(u'label_item_minimum_stock',
-                        default=u'Minimum number of items in stock'),
+                label=_(u'label_stock_warning_threshold',
+                        default=u'Item stock warning threshold.'),
             ),
         ),
     ]
@@ -336,14 +336,14 @@ class ATCartItemStock(object):
 
     overbook = property(_get_overbook, _set_overbook)
 
-    def _get_minimum_stock(self):
-        return field_value(self.context, 'item_minimum_stock')
+    def _get_stock_warning_threshold(self):
+        return field_value(self.context, 'stock_warning_threshold')
 
-    def _set_minimum_stock(self, value):
-        set_field_value(self.context, 'item_minimum_stock', value)
+    def _set_stock_warning_threshold(self, value):
+        set_field_value(self.context, 'stock_warning_threshold', value)
 
-    minimum_stock = property(_get_minimum_stock, _set_minimum_stock)
-    
+    stock_warning_threshold = property(_get_stock_warning_threshold, _set_stock_warning_threshold)
+
 
 
 @implementer(IFieldDefaultProvider)

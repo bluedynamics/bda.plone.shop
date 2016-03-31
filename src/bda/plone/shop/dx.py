@@ -193,8 +193,8 @@ def default_item_display_stock(context):
     return True
 
 @provider(IContextAwareDefaultFactory)
-def default_item_minimum_stock(context):
-    return get_shop_article_settings().default_item_minimum_stock
+def default_item_stock_warning_threshold(context):
+    return get_shop_article_settings().default_item_stock_warning_threshold
 
 
 @provider(IFormFieldProvider)
@@ -205,7 +205,7 @@ class IStockBehavior(model.Schema):
     model.fieldset(
         'shop',
         label=u"Shop",
-        fields=['item_display_stock', 'item_available', 'item_overbook', 'item_minimum_stock']
+        fields=['item_display_stock', 'item_available', 'item_overbook', 'item_stock_warning_threshold']
     )
 
     item_display_stock = schema.Bool(
@@ -224,10 +224,10 @@ class IStockBehavior(model.Schema):
         required=False
     )
 
-    item_minimum_stock = schema.Float(
-        title=_(u'label_item_minimum_stock', default=u'Minimum number of items in stock'),
+    item_stock_warning_threshold = schema.Float(
+        title=_(u'label_item_stock_warning_threshold', default=u'Item stock warning threshold.'),
         required=False,
-        defaultFactory=default_item_minimum_stock
+        defaultFactory=default_item_stock_warning_threshold
     )
 
 @implementer(ICartItemStock)
@@ -260,12 +260,12 @@ class DXCartItemStock(object):
         self.context.item_overbook = value
 
     @property
-    def minimum_stock(self):
-        return self.context.item_minimum_stock
+    def stock_warning_threshold(self):
+        return self.context.item_stock_warning_threshold
 
-    @minimum_stock.setter
-    def minimum_stock(self, value):
-        self.context.item_minimum_stock = value
+    @stock_warning_threshold.setter
+    def stock_warning_threshold(self, value):
+        self.context.item_stock_warning_threshold = value
 
 
 @provider(IContextAwareDefaultFactory)

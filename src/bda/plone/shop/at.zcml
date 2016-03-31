@@ -50,8 +50,8 @@
       factory=".at.default_item_display_stock" />
 
   <adapter
-      name="item_minimum_stock"
-      factory=".at.default_item_minimum_stock" />
+      name="item_stock_warning_threshold"
+      factory=".at.default_item_stock_warning_threshold" />
 
   <adapter
       name="bda.plone.shop.shipping"
