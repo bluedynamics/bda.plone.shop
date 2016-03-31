@@ -201,6 +201,7 @@ class IShopArticleSettings(model.Schema):
             'default_item_comment_required',
             'default_item_quantity_unit_float',
             'default_item_cart_count_limit',
+            'default_item_stock_warning_threshold'
         ],
     )
 
@@ -271,6 +272,17 @@ class IShopArticleSettings(model.Schema):
             u'label_default_item_cart_count_limit',
             default='Quantity limit of an item in the cart.'
         ),
+        required=False
+    )
+
+    default_item_stock_warning_threshold = schema.Float(
+        title=_(
+            u'label_default_item_stock_warning_threshold',
+            default='Item stock warning threshold.',
+            
+        ),
+        description=_('help_default_item_stock_warning_threshold',
+                        default=u'Shop administrator will be notified if stock is less than the specified threshold.'),
         required=False
     )
 

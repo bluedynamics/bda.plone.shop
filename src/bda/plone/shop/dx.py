@@ -192,6 +192,10 @@ class DXCartItemDataProvider(CartItemDataProviderBase):
 def default_item_display_stock(context):
     return True
 
+@provider(IContextAwareDefaultFactory)
+def default_item_stock_warning_threshold(context):
+    return get_shop_article_settings().default_item_stock_warning_threshold
+
 
 @provider(IFormFieldProvider)
 class IStockBehavior(model.Schema):
@@ -201,7 +205,7 @@ class IStockBehavior(model.Schema):
     model.fieldset(
         'shop',
         label=u"Shop",
-        fields=['item_display_stock', 'item_available', 'item_overbook']
+        fields=['item_display_stock', 'item_available', 'item_overbook', 'item_stock_warning_threshold']
     )
 
     item_display_stock = schema.Bool(
@@ -220,6 +224,11 @@ class IStockBehavior(model.Schema):
         required=False
     )
 
+    item_stock_warning_threshold = schema.Float(
+        title=_(u'label_item_stock_warning_threshold', default=u'Item stock warning threshold.'),
+        required=False,
+        defaultFactory=default_item_stock_warning_threshold
+    )
 
 @implementer(ICartItemStock)
 @adapter(IStockBehavior)
@@ -249,6 +258,14 @@ class DXCartItemStock(object):
     @overbook.setter
     def overbook(self, value):
         self.context.item_overbook = value
+
+    @property
+    def stock_warning_threshold(self):
+        return self.context.item_stock_warning_threshold
+
+    @stock_warning_threshold.setter
+    def stock_warning_threshold(self, value):
+        self.context.item_stock_warning_threshold = value
 
 
 @provider(IContextAwareDefaultFactory)

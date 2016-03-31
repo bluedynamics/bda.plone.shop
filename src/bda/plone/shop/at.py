@@ -259,6 +259,11 @@ class ATCartItemDataProvider(CartItemDataProviderBase):
 def default_item_display_stock(context):
     return lambda: True
 
+@implementer(IFieldDefaultProvider)
+@adapter(IBuyable)
+def default_item_stock_warning_threshold(context):
+    return lambda: get_shop_article_settings().default_item_stock_warning_threshold
+
 
 class StockExtender(ExtenderBase):
     """Schema extender for item stock.
@@ -289,6 +294,14 @@ class StockExtender(ExtenderBase):
             widget=FloatField._properties['widget'](
                 label=_(u'label_item_overbook',
                         default=u'Item stock overbook'),
+            ),
+        ),
+        XFloatField(
+            name='item_stock_warning_threshold',
+            schemata='Shop',
+            widget=FloatField._properties['widget'](
+                label=_(u'label_stock_warning_threshold',
+                        default=u'Item stock warning threshold.'),
             ),
         ),
     ]
@@ -322,6 +335,15 @@ class ATCartItemStock(object):
         set_field_value(self.context, 'item_overbook', value)
 
     overbook = property(_get_overbook, _set_overbook)
+
+    def _get_stock_warning_threshold(self):
+        return field_value(self.context, 'item_stock_warning_threshold')
+
+    def _set_stock_warning_threshold(self, value):
+        set_field_value(self.context, 'item_stock_warning_threshold', value)
+
+    stock_warning_threshold = property(_get_stock_warning_threshold, _set_stock_warning_threshold)
+
 
 
 @implementer(IFieldDefaultProvider)
