@@ -28,8 +28,8 @@ Checkout ``bda.plone.shop`` from
 ``git://github.com/bluedynamics/bda.plone.shop.git`` and run contained buidlout
 like so::
 
-    ~$ virtualenv --no-site-packages vpython
-    ~$ ./vpython/bin/python bootstrap.py
+    ~$ virtualenv .
+    ~$ ./bin/pip install zc.buildout
     ~$ ./bin/buildout
 
 Start instance and create Plone site with shop profile applied.
