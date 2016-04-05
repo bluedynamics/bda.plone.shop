@@ -2,12 +2,14 @@
            xmlns:browser="http://namespaces.zope.org/browser"
            xmlns:plone="http://namespaces.plone.org/plone">
 
+
   <!-- resources -->
-  <!-- compiled Plone 5 styles -->
-  <browser:resource
-    name="bda.plone.shop-compiled.css"
-    file="shop-compiled.css"
-    layer="..interfaces.IShopExtensionLayer" />
+  <!-- P5 compiled resource files -->
+  <plone:static
+      directory="compiled"
+      type="plone"
+      name="bda.plone.shop.compiled"
+  />
 
   <!-- Plone 4 styles -->
   <browser:resource

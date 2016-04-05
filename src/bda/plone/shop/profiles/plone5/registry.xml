@@ -23,8 +23,8 @@
     </value>
     <value key="enabled">True</value>
     <value key="compile">True</value>
-    <value key="jscompilation">++resource++bda.plone.shop-compiled.js</value>
-    <value key="csscompilation">++resource++bda.plone.shop-compiled.css</value>
+    <value key="jscompilation">++plone++bda.plone.shop.compiled/shop.css</value>
+    <value key="csscompilation">++plone++bda.plone.shop.compiled/shop.js</value>
     <value key="last_compilation">2016-03-04 17:00:00</value>
    </records>
 
