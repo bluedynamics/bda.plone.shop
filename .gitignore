@@ -27,6 +27,6 @@
 /selenium-screenshot-1.png
 /pip-selfcheck.json
 /share/
-
-node_modules
-.Python
+/Gruntfile.js
+/node_modules/
+/temp_resources/
