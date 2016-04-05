@@ -4,7 +4,7 @@
 
   <records prefix="plone.resources/cookie-functions"
            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-    <value key="js">bda.plone.shop.cookie.functions.js</value>
+    <value key="js">++resource++bda.plone.shop.cookie.functions.js</value>
   </records>
 
   <records prefix="plone.resources/bda-plone-shop"
