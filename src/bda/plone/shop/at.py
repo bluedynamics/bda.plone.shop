@@ -120,10 +120,12 @@ def default_item_comment_required(context):
 def default_item_quantity_unit_float(context):
     return lambda: get_shop_article_settings().default_item_quantity_unit_float
 
+
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)
 def default_item_cart_count_limit(context):
     return lambda: get_shop_article_settings().default_item_cart_count_limit
+
 
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)
@@ -259,6 +261,7 @@ class ATCartItemDataProvider(CartItemDataProviderBase):
 def default_item_display_stock(context):
     return lambda: True
 
+
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)
 def default_item_stock_warning_threshold(context):
@@ -342,8 +345,10 @@ class ATCartItemStock(object):
     def _set_stock_warning_threshold(self, value):
         set_field_value(self.context, 'item_stock_warning_threshold', value)
 
-    stock_warning_threshold = property(_get_stock_warning_threshold, _set_stock_warning_threshold)
-
+    stock_warning_threshold = property(
+        _get_stock_warning_threshold,
+        _set_stock_warning_threshold
+    )
 
 
 @implementer(IFieldDefaultProvider)
