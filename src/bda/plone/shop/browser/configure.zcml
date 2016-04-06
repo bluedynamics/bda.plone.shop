@@ -152,10 +152,16 @@
     file="shop_p5.less"
     layer="..interfaces.IShopExtensionLayer" />
 
-  <plone:static
+  <browser:resource
     zcml:condition="have plone-5"
-    directory="compiled"
-    type="plone"
-    name="bda.plone.shop" />
+    name="bda.plone.shop.css"
+    file="shop_p5.css"
+    layer="..interfaces.IShopExtensionLayer" />
+
+  <browser:resource
+    zcml:condition="have plone-5"
+    name="bda.plone.shop.css.map"
+    file="shop_p5.css.map"
+    layer="..interfaces.IShopExtensionLayer" />
 
 </configure>
