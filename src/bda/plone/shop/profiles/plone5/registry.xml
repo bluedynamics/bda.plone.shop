@@ -4,7 +4,7 @@
 
   <records prefix="plone.resources/cookie-functions"
            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
-    <value key="js">++resource++bda.plone.shop.cookie.functions.js</value>
+    <value key="js">++resource++cookie.functions.js</value>
   </records>
 
   <records prefix="plone.resources/bda-plone-shop"
@@ -15,7 +15,7 @@
     </value>
   </records>
 
-  <records prefix="plone.bundles/bda-plone-shop-bundle"
+  <records prefix="plone.bundles/bda-plone-shop"
            interface='Products.CMFPlone.interfaces.IBundleRegistry'>
     <value key="resources">
       <element>cookie-functions</element>
@@ -23,9 +23,9 @@
     </value>
     <value key="enabled">True</value>
     <value key="compile">True</value>
-    <value key="jscompilation">++plone++bda.plone.shop.compiled/shop.css</value>
-    <value key="csscompilation">++plone++bda.plone.shop.compiled/shop.js</value>
+    <value key="jscompilation">++plone++bda.plone.shop/shop.js</value>
+    <value key="csscompilation">++plone++bda.plone.shop/shop.css</value>
     <value key="last_compilation">2016-03-04 17:00:00</value>
-   </records>
+  </records>
 
 </registry>

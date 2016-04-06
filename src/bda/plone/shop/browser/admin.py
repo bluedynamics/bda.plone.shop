@@ -18,8 +18,8 @@ from zope.interface import Attribute
 from zope.interface import Interface
 from zope.interface import implementer
 from zope.security import checkPermission
-import plone.api
 import pkg_resources
+import plone.api
 
 
 if pkg_resources.get_distribution("Products.CMFPlone").version > '4.99':
@@ -348,10 +348,9 @@ class ShopAdminAssignment(base.Assignment):
 
 class ShopAdminRenderer(base.Renderer):
     if PLONE5:
-        render = ViewPageTemplateFile('admin_plone5.pt')
+        render = ViewPageTemplateFile('admin_p5.pt')
     else:
-        render = ViewPageTemplateFile('admin.pt')
-
+        render = ViewPageTemplateFile('admin_p4.pt')
 
     @property
     def available(self):

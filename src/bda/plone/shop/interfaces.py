@@ -8,11 +8,11 @@ from plone.autoform.directives import widget
 from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
-from zope.interface import Interface
 from zope.interface import Attribute
+from zope.interface import Interface
 from zope.interface import provider
-
 import zope.deferredimport
+
 
 zope.deferredimport.deprecated(
     "Import from bda.plone.orders.interfaces instead",
