@@ -142,12 +142,6 @@
   <!-- plone 5 resources -->
   <browser:resource
     zcml:condition="have plone-5"
-    name="cookie.functions.js"
-    file="cookie_functions.js"
-    layer="..interfaces.IShopExtensionLayer" />
-
-  <browser:resource
-    zcml:condition="have plone-5"
     name="bda.plone.shop.less"
     file="shop_p5.less"
     layer="..interfaces.IShopExtensionLayer" />
