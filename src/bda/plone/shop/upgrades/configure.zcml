@@ -48,4 +48,16 @@
 
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+    source="5"
+    destination="6"
+    profile="bda.plone.shop:default">
+
+    <genericsetup:upgradeDepends
+      title="GS Profile: add default_item_stock_warning_threshold"
+      import_profile="bda.plone.shop.upgrades:5_to_6"
+      run_deps="False" />
+
+  </genericsetup:upgradeSteps>
+
 </configure>

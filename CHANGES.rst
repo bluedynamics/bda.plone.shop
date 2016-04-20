@@ -4,6 +4,12 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Add upgrade step for ``default_item_stock_warning_threshold`` setting.
+  [thet]
+
+- Add ``default_item_stock_warning_threshold`` setting for ``default_item_minimum_stock`` property from bda.plone.orders.
+  [andreesg]
+
 - Shop Portlet: Use appropriate context (Vendor, Site or Plone Site Root) also
   for Orders and Bookings views.
   [thet]

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<registry>
+
+  <records interface="bda.plone.shop.interfaces.IShopArticleSettings" purge="False">
+    <value key="default_item_stock_warning_threshold" purge="false"></value>
+  </records>
+
+</registry>
