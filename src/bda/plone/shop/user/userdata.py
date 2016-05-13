@@ -166,11 +166,13 @@ class UserDataSchemaAdapter(AccountPanelSchemaAdapter):
 
     @property
     def fullname(self):
+        # TODO: I think this never gets called as there
+        # was an error in the string formatting.
         first = self._getProperty('firstname')
         last = self._getProperty('lastname')
-        return u'%s%s' % (first and first or '',
-                          first and last and ' ' or '',
-                          last and last or '')
+        return u'%s%s%s' % (first and first or '',
+                            first and last and ' ' or '',
+                            last and last or '')
 
     @property
     def location(self):

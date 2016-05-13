@@ -1,7 +1,87 @@
 # -*- coding:utf-8 -*-
+import logging
+
 from Products.CMFPlone import interfaces as Plone
 from Products.CMFQuickInstallerTool import interfaces as QuickInstaller
+from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
+from bda.plone.shop.user.properties import UserPropertiesPASPlugin
+from bda.plone.shop.user.properties import PAS_ID
+from plone import api
 from zope.interface import implementer
+
+
+PAS_TITLE = 'bda.plone.shop plugin'
+
+
+logger = logging.getLogger('bda.plone.shop')
+
+
+def add_plugin(pas, plugin_id=PAS_ID):
+    """
+    Install and activate bda.plone.shop user properties PAS plugin
+    """
+    # Skip if already installed (activation is assumed).
+    installed = pas.objectIds()
+    if plugin_id in installed:
+        return PAS_TITLE + " already installed."
+
+    # Install the plugin
+    plugin = UserPropertiesPASPlugin(plugin_id, title=PAS_TITLE)
+    pas._setObject(plugin_id, plugin)
+
+    # get plugin acquisition wrapped
+    plugin = pas[plugin.getId()]
+
+    # Activate the Plugin
+    pas.plugins.activatePlugin(IPropertiesPlugin, plugin.getId())
+
+    # Make it the last Plugin in the list of PropertiesPlugin - FIFO.
+    pas.plugins.movePluginsDown(
+        IPropertiesPlugin,
+        [x[0] for x in pas.plugins.listPlugins(IPropertiesPlugin)[:-1]],
+    )
+
+    return PAS_TITLE + " installed."
+
+
+def remove_plugin(pas, plugin_id=PAS_ID):
+    """
+    Deactivate and uninstall bda.plone.shop user properties PAS plugin
+    """
+
+    # Skip if already uninstalled (deactivation is assumed).
+    installed = pas.objectIds()
+    if plugin_id not in installed:
+        return PAS_TITLE + " not installed."
+
+    plugin = UserPropertiesPASPlugin(plugin_id, title=PAS_TITLE)
+
+    # get plugin acquisition wrapped
+    plugin = pas[plugin.getId()]
+
+    # Deactivate the plugin
+    pas.plugins.deactivatePlugin(IPropertiesPlugin, plugin.getId())
+
+    # And finaly uninstall it
+    pas._delObject(plugin_id, plugin)
+
+    return PAS_TITLE + " uninstalled."
+
+
+def install(context):
+    """
+    Install the PAS plugin.
+    """
+    pas = api.portal.get_tool(name='acl_users')
+    logger.info(add_plugin(pas))
+
+
+def uninstall(context):
+    """
+    Remove the PAS plugin.
+    """
+    pas = api.portal.get_tool(name='acl_users')
+    logger.info(remove_plugin(pas))
 
 
 @implementer(Plone.INonInstallable)

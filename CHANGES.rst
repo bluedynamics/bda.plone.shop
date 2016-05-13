@@ -4,6 +4,9 @@ Changelog
 0.11 (unreleased)
 -----------------
 
+- Add a PlonePAS Plugin for computed user properties.
+  [pcdummy]
+
 - Plone 5 Update, use separate styles/less
   [agitator]
 
