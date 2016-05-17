@@ -67,11 +67,6 @@ class UserPropertiesPASPlugin(BasePlugin):
 
         join_list = [street, '{0} {1}'.format(zip_code, city), country]
 
-        # return {
-        #     'fullname': u"bda.plone.shop",
-        #     'location': u"bda.plone.shop",
-        # }
-
         return {
             'fullname': u'%s%s%s' % (
                 first,
