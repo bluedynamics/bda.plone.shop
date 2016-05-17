@@ -13,7 +13,6 @@ from plone.supermodel import model
 from plone.z3cform.fieldsets import extensible
 from z3c.form import field
 from bda.plone.checkout.interfaces import ICheckoutFormPresets
-from bda.plone.checkout.vocabularies import get_pycountry_name
 from bda.plone.shop.interfaces import IShopExtensionLayer
 from bda.plone.shop import message_factory as _
 
@@ -163,24 +162,6 @@ class ICustomer(model.Schema):
 
 class UserDataSchemaAdapter(AccountPanelSchemaAdapter):
     schema = ICustomer
-
-    @property
-    def fullname(self):
-        first = self._getProperty('firstname')
-        last = self._getProperty('lastname')
-        return u'%s%s' % (first and first or '',
-                          first and last and ' ' or '',
-                          last and last or '')
-
-    @property
-    def location(self):
-        street = self._getProperty('street')
-        zip = self._getProperty('zip')
-        city = self._getProperty('city')
-        country = self._getProperty('country')
-        country = country and get_pycountry_name(country) or ''
-        join_list = [street, '{0} {1}'.format(zip, city), country]
-        return ', '.join([it for it in join_list if it])
 
 
 class UserDataPanelExtender(extensible.FormExtender):

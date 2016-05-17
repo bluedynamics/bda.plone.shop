@@ -1,7 +1,10 @@
-from zope.component import getUtility
-from plone.registry.interfaces import IRegistry
-
 import logging
+
+from bda.plone.shop.setuphandlers import add_plugin
+from plone import api
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
+
 
 logger = logging.getLogger('bda.plone.shop UPGRADE')
 
@@ -15,3 +18,8 @@ def update_notification_text_registry_entries(ctx=None):
     del registry.records[key]
     key = 'bda.plone.shop.interfaces.IPaymentTextSettings.payment_text'
     del registry.records[key]
+
+
+def install_userproperties_pas_plugin(context):
+    pas = api.portal.get_tool(name='acl_users')
+    logger.info(add_plugin(pas))

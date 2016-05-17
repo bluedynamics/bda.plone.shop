@@ -1,9 +1,12 @@
 <configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five"
            xmlns:zcml="http://namespaces.zope.org/zcml"
            xmlns:i18n="http://namespaces.zope.org/i18n"
            i18n_domain="bda.plone.shop">
 
   <i18n:registerTranslations directory="locales" />
+
+  <five:registerPackage package="." initialize=".initialize" />
 
   <!--
     Set this interface on desired content class in order to enable content

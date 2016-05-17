@@ -48,4 +48,15 @@
 
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+    source="5"
+    destination="6"
+    profile="bda.plone.shop:default">
+
+    <genericsetup:upgradeStep
+      title="Install a PAS Plugin for computed user properties"
+      handler=".install_userproperties_pas_plugin" />
+
+  </genericsetup:upgradeSteps>
+
 </configure>

@@ -26,7 +26,8 @@
     title="bda.plone.shop base"
     directory="profiles/base"
     description="bda.plone.shop"
-    provides="Products.GenericSetup.interfaces.EXTENSION" />
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    post_handler="bda.plone.shop.setuphandlers.install" />
 
   <!-- Hide profiles/products from Quick Installer -->
   <utility factory=".setuphandlers.HiddenProfiles" name="bda.plone.shop" />
