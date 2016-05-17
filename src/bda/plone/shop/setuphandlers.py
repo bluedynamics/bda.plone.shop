@@ -35,12 +35,6 @@ def add_plugin(pas, plugin_id=PAS_ID):
     # Activate the Plugin
     pas.plugins.activatePlugin(IPropertiesPlugin, plugin.getId())
 
-    # Make it the last Plugin in the list of PropertiesPlugin - FIFO.
-    pas.plugins.movePluginsDown(
-        IPropertiesPlugin,
-        [x[0] for x in pas.plugins.listPlugins(IPropertiesPlugin)[:-1]],
-    )
-
     return PAS_TITLE + " installed."
 
 
