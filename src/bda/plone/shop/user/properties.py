@@ -53,25 +53,25 @@ class UserPropertiesPASPlugin(BasePlugin):
 
             return safe_unicode(default)
 
-        first = getProperty('firstname', u'')
-        last = getProperty('lastname', u'')
-        street = getProperty('street', u'')
-        zip_code = getProperty('zip', u'')
-        city = getProperty('city', u'')
-        country = getProperty('country', u'')
+        first = safe_unicode(getProperty('firstname', u''))
+        last = safe_unicode(getProperty('lastname', u''))
+        street = safe_unicode(getProperty('street', u''))
+        zip_code = safe_unicode(getProperty('zip', u''))
+        city = safe_unicode(getProperty('city', u''))
+        country = safe_unicode(getProperty('country', u''))
 
         try:
             country = country and get_pycountry_name(country) or ''
         except KeyError:
             country = ''
 
-        join_list = [street, '{0} {1}'.format(zip_code, city), country]
+        join_list = [street, u'{0} {1}'.format(zip_code, city), country]
 
         return {
-            'fullname': u'%s%s%s' % (
+            'fullname': u'{0}{1}{2}'.format(
                 first,
-                first and last and u' ' or u'',
-                last,
+                u' ' if first and last else u'',
+                last
             ),
 
             'location': u', '.join([it for it in join_list if it]),
