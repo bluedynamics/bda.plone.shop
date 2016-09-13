@@ -134,16 +134,16 @@ is reached::
 Dexterity
 ---------
 
-The Dexterity related implementation consists of Behaviors for each
-interface. These are:
+The Dexterity related implementation consists of Behaviors for each interface.
+These are (shortname in brackets):
 
-- ``bda.plone.shop.dx.IBuyableBehavior``
-- ``bda.plone.shop.dx.IStockBehavior``
-- ``bda.plone.shop.dx.IShippingBehavior``
-- ``bda.plone.shop.dx.IItemNotificationTextBehavior``
-- ``bda.plone.shop.dx.IGlobalNotificationTextBehavior``
-- ``bda.plone.shop.dx.ITradingBehavior``
-- ``bda.plone.shop.dx.IBuyablePeriodBehavior``
+- ``bda.plone.shop.dx.IBuyableBehavior`` (``bda.shop.buyable``)
+- ``bda.plone.shop.dx.IStockBehavior`` (``bda.shop.stock``)
+- ``bda.plone.shop.dx.IShippingBehavior`` (``bda.shop.shipping``)
+- ``bda.plone.shop.dx.IItemNotificationTextBehavior`` (``bda.shop.notificationtext.item``)
+- ``bda.plone.shop.dx.IGlobalNotificationTextBehavior`` (``bda.shop.notificationtext.global``)
+- ``bda.plone.shop.dx.ITradingBehavior`` (``bda.shop.trading``)
+- ``bda.plone.shop.dx.IBuyablePeriodBehavior`` (``bda.shop.buyableperiod``)
 
 The corresponding adapter implementations are registered for the referring
 behavior interfaces.
