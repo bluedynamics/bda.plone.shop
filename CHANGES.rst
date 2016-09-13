@@ -11,6 +11,10 @@ Changelog
   ``default_item_minimum_stock`` property from ``bda.plone.orders``.
   [andreesg]
 
+- Behavior registration:
+  Remove superfluos 'for' and give behaviors short names.
+  [jensens]
+
 - Add a PlonePAS Plugin for computed user properties.
   [pcdummy]
 
