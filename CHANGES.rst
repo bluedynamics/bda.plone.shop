@@ -10,8 +10,9 @@ Changelog
 - Plone 5 Update, use separate styles/less
   [agitator]
 
-0.10 (unreleased)
------------------
+
+0.10
+----
 
 - Shop Portlet: Use appropriate context (Vendor, Site or Plone Site Root) also
   for Orders and Bookings views.
