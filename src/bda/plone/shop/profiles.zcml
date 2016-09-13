@@ -1,14 +1,36 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-           i18n_domain="bda.plone.shop">
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="bda.plone.shop">
 
   <include package="Products.GenericSetup" file="meta.zcml" />
 
   <genericsetup:registerProfile
+    zcml:condition="not-have plone-5"
     name="default"
     title="bda.plone.shop"
-    directory="profiles/default"
+    directory="profiles/plone4"
     description="bda.plone.shop"
     provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+  <genericsetup:registerProfile
+    zcml:condition="have plone-5"
+    name="default"
+    title="bda.plone.shop"
+    directory="profiles/plone5"
+    description="bda.plone.shop"
+    provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+  <genericsetup:registerProfile
+    name="install-base"
+    title="bda.plone.shop base"
+    directory="profiles/base"
+    description="bda.plone.shop"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    post_handler="bda.plone.shop.setuphandlers.install" />
+
+  <!-- Hide profiles/products from Quick Installer -->
+  <utility factory=".setuphandlers.HiddenProfiles" name="bda.plone.shop" />
+  <utility factory=".setuphandlers.HiddenProducts" name="bda.plone.shop" />
 
 </configure>

@@ -1,0 +1,12 @@
+{
+  "name": "bda.plone.shop",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-sed": "latest"
+  }
+}

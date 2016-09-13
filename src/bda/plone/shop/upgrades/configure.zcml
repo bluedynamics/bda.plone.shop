@@ -58,6 +58,10 @@
       import_profile="bda.plone.shop.upgrades:5_to_6"
       run_deps="False" />
 
+    <genericsetup:upgradeStep
+      title="Install a PAS Plugin for computed user properties"
+      handler=".install_userproperties_pas_plugin" />
+
   </genericsetup:upgradeSteps>
 
 </configure>

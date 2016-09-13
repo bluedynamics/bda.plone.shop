@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="">
+<aside class="portlet portletShopAdmin"
+    i18n:domain="bda.plone.shop">
+
+  <header class="portletHeader">
+      <span i18n:translate="shop_admin_heading">Shop</span>
+  </header>
+  <div class="portletContent">
+    <ul>
+      <tal:li repeat="link view/links">
+        <li tal:attributes="class link/cssclass|nothing">
+          <a href=""
+             tal:attributes="href link/url"
+             tal:content="link/title">Title</a>
+        </li>
+      </tal:li>
+    </ul>
+  </div>
+</aside>
+</html>

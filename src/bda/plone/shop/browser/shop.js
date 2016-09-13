@@ -20,11 +20,9 @@
                 }
             });
         };
-        if (bdajax !== undefined) {
-            $.extend(bdajax.binders, {
-                buyable_controls_binder: binder
-            });
-        }
+        $.extend(bdajax.binders, {
+            buyable_controls_binder: binder
+        });
         binder(document);
     });
 
