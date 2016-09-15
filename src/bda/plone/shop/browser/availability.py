@@ -68,12 +68,20 @@ class CartItemAvailability(CartItemAvailabilityBase):
 
     @property
     def purchasable_until(self):
-        expires = queryAdapter(self.context, IBuyablePeriod).expires
+        buyable_period = queryAdapter(self.context, IBuyablePeriod)
+        # buyable period not applied
+        if buyable_period is None:
+            return False
+        expires = buyable_period.expires
         return bool(expires) and self.addable
 
     @property
     def not_effective_yet(self):
-        effective = queryAdapter(self.context, IBuyablePeriod).effective
+        buyable_period = queryAdapter(self.context, IBuyablePeriod)
+        # buyable period not applied
+        if buyable_period is None:
+            return False
+        effective = buyable_period.effective
         now = datetime.now()
         return effective and effective >= now or False
 
