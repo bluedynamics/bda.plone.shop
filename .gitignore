@@ -4,6 +4,7 @@
 /.mr.developer.cfg
 /.installed.cfg
 /.settings/
+/.buildout.cfg
 /bin/
 /develop-eggs/
 /devsrc/
