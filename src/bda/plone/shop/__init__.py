@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from bda.plone.shop import permissions  # nopep8
+from bda.plone.shop import permissions  # noqa
 from bda.plone.shop.user.properties import UserPropertiesPASPlugin
-from Products.PluggableAuthService.PluggableAuthService import registerMultiPlugin
+from Products.PluggableAuthService.PluggableAuthService import registerMultiPlugin  # noqa
 from zope.i18nmessageid import MessageFactory
 
 

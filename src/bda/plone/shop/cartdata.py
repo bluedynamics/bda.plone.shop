@@ -78,7 +78,7 @@ class CartItemCalculator(object):
         """
         cat = self.catalog
         net = Decimal(0)
-        for uid, count, _ in items:
+        for uid, count, unused in items:
             brain = cat(UID=uid)
             if not brain:
                 continue
@@ -93,7 +93,7 @@ class CartItemCalculator(object):
         """
         cat = self.catalog
         vat = Decimal(0)
-        for uid, count, _ in items:
+        for uid, count, unused in items:
             brain = cat(UID=uid)
             if not brain:
                 continue
@@ -108,7 +108,7 @@ class CartItemCalculator(object):
         """
         cat = self.catalog
         weight = Decimal(0)
-        for uid, count, _ in items:
+        for uid, count, unused in items:
             brain = cat(UID=uid)
             if not brain:
                 continue
@@ -321,6 +321,7 @@ class CartItemState(CartItemStateBase):
         item_data = get_item_data_provider(self.context)
         quantity_unit = item_data.quantity_unit
         quantity_unit_float = item_data.quantity_unit_float
+
         def display_format(num):
             if quantity_unit_float:
                 return num

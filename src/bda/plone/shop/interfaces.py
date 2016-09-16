@@ -281,10 +281,13 @@ class IShopArticleSettings(model.Schema):
         title=_(
             u'label_default_item_stock_warning_threshold',
             default='Item stock warning threshold.',
-            
+
         ),
-        description=_('help_default_item_stock_warning_threshold',
-                        default=u'Shop administrator will be notified if stock is less than the specified threshold.'),
+        description=_(
+            'help_default_item_stock_warning_threshold',
+            default=u'Shop administrator will be notified if stock is less '
+                    u'than the specified threshold.'
+        ),
         required=False
     )
 
@@ -444,9 +447,11 @@ class ILanguageAwareTextRow(model.Schema):
 
 
 @provider(IShopSettingsProvider)
-class INotificationTextSettings(model.Schema,
-                                IGlobalNotificationText,
-                                IItemNotificationText):
+class INotificationTextSettings(
+    model.Schema,
+    IGlobalNotificationText,
+    IItemNotificationText
+):
 
     model.fieldset(
         'notifications',

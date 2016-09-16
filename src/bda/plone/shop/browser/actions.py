@@ -37,12 +37,16 @@ class EnableDisableFeature(BrowserView):
         self.request.response.redirect(ctx.absolute_url())
 
     def isPossibleToEnableFeature(self):
-        return self.potential_feature_iface.providedBy(self.context) \
-               and not self.feature_iface.providedBy(self.context)
+        return (
+            self.potential_feature_iface.providedBy(self.context) and
+            not self.feature_iface.providedBy(self.context)
+        )
 
     def isPossibleToDisableFeature(self):
-        return self.potential_feature_iface.providedBy(self.context) \
-               and self.feature_iface.providedBy(self.context)
+        return (
+            self.potential_feature_iface.providedBy(self.context) and
+            self.feature_iface.providedBy(self.context)
+        )
 
 
 class BuyableAction(EnableDisableFeature):
