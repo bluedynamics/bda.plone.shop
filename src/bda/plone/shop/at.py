@@ -59,11 +59,24 @@ def set_field_value(obj, field_name, value):
         raise AttributeError
 
 
-class XStringField(ExtensionField, StringField): pass
-class XFloatField(ExtensionField, FloatField): pass
-class XBooleanField(ExtensionField, BooleanField): pass
-class XTextField(ExtensionField, TextField): pass
-class XDateTimeField(ExtensionField, DateTimeField): pass
+class XStringField(ExtensionField, StringField):
+    pass
+
+
+class XFloatField(ExtensionField, FloatField):
+    pass
+
+
+class XBooleanField(ExtensionField, BooleanField):
+    pass
+
+
+class XTextField(ExtensionField, TextField):
+    pass
+
+
+class XDateTimeField(ExtensionField, DateTimeField):
+    pass
 
 
 @implementer(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
@@ -201,8 +214,8 @@ class BuyableExtender(ExtenderBase):
             widget=SelectionWidget(
                 label=_(u'label_item_quantity_unit', default=u'Quantity unit'),
             ),
-            vocabulary_factory=\
-                'bda.plone.shop.vocabularies.QuantityUnitVocabulary',
+            vocabulary_factory='bda.plone.shop.vocabularies.'
+                               'QuantityUnitVocabulary',
         ),
     ]
 
@@ -266,7 +279,10 @@ def default_item_display_stock(context):
 @implementer(IFieldDefaultProvider)
 @adapter(IBuyable)
 def default_item_stock_warning_threshold(context):
-    return lambda: get_shop_article_settings().default_item_stock_warning_threshold
+    def default_item_stock_warning_threshold_func():
+        settings = get_shop_article_settings()
+        return settings.default_item_stock_warning_threshold
+    return default_item_stock_warning_threshold_func
 
 
 class StockExtender(ExtenderBase):
