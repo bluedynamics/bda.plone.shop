@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bda.plone.orders.interfaces import IGlobalNotificationText
 from bda.plone.orders.interfaces import IItemNotificationText
 from bda.plone.orders.interfaces import IOrdersExtensionLayer

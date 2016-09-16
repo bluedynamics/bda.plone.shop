@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bda.plone.shop.interfaces import INotificationTextSettings
 from bda.plone.shop.interfaces import IPaymentTextSettings
 from bda.plone.shop.interfaces import IShopArticleSettings

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bda.plone.shop.tests import ShopATFull_ROBOT_TESTING
 from bda.plone.shop.tests import ShopDXFull_ROBOT_TESTING
 from plone.testing import layered

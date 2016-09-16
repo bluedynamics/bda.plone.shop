@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bda.plone.shop.setuphandlers import add_plugin
 from plone import api
 from plone.registry.interfaces import IRegistry

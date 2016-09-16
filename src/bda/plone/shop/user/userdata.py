@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bda.plone.checkout.interfaces import ICheckoutFormPresets
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IShopExtensionLayer

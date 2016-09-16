@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bda.plone.cart import CURRENCY_LITERALS
 from bda.plone.payment.cash_on_delivery import ICashOnDeliverySettings
 from bda.plone.payment.interfaces import IPaymentSettings

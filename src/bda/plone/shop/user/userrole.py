@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bda.plone.shop.utils import get_shop_settings
 from plone.api import user as apiuser
 

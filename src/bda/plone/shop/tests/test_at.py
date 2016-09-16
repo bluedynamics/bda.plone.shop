@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bda.plone.shop.tests import set_browserlayer
 from bda.plone.shop.tests import ShopAT_INTEGRATION_TESTING
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bda.plone.checkout.interfaces import ICheckoutSettings
 from bda.plone.orders.common import OrderData
 from bda.plone.orders.interfaces import STATE_MIXED

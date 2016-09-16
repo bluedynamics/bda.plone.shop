@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bda.plone.checkout.vocabularies import country_vocabulary
 from bda.plone.checkout.vocabularies import gender_vocabulary
 from bda.plone.payment import Payments

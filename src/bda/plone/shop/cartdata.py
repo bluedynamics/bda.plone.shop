@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from AccessControl import getSecurityManager
 from bda.plone.cart import CartDataProviderBase
 from bda.plone.cart import CartItemStateBase

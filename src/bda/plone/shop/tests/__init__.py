@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bda.plone.shop.interfaces import IShopExtensionLayer
 from plone.app.robotframework.testing import MOCK_MAILHOST_FIXTURE
 from plone.app.testing import FunctionalTesting
