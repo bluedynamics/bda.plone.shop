@@ -1,9 +1,9 @@
-import logging
-
 from bda.plone.shop.setuphandlers import add_plugin
 from plone import api
 from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
+
+import logging
 
 
 logger = logging.getLogger('bda.plone.shop UPGRADE')

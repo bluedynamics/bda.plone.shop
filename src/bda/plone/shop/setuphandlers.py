@@ -1,13 +1,13 @@
 # -*- coding:utf-8 -*-
-import logging
-
+from bda.plone.shop.user.properties import PAS_ID
+from bda.plone.shop.user.properties import UserPropertiesPASPlugin
+from plone import api
 from Products.CMFPlone import interfaces as Plone
 from Products.CMFQuickInstallerTool import interfaces as QuickInstaller
 from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
-from bda.plone.shop.user.properties import UserPropertiesPASPlugin
-from bda.plone.shop.user.properties import PAS_ID
-from plone import api
 from zope.interface import implementer
+
+import logging
 
 
 PAS_TITLE = 'bda.plone.shop plugin'

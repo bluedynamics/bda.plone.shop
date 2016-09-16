@@ -1,20 +1,20 @@
-from zope import schema
-from zope.component import adapter
-from zope.component import adapts
-from zope.interface import Interface
-from zope.interface import implementer
+from bda.plone.checkout.interfaces import ICheckoutFormPresets
+from bda.plone.shop import message_factory as _
+from bda.plone.shop.interfaces import IShopExtensionLayer
 from node.utils import UNSET
-from Products.CMFPlone.utils import getToolByName
 from plone.app.users.browser.account import AccountPanelSchemaAdapter
-from plone.app.users.browser.register import RegistrationForm
 from plone.app.users.browser.register import AddUserForm
+from plone.app.users.browser.register import RegistrationForm
 from plone.app.users.browser.userdatapanel import UserDataPanel
 from plone.supermodel import model
 from plone.z3cform.fieldsets import extensible
+from Products.CMFPlone.utils import getToolByName
 from z3c.form import field
-from bda.plone.checkout.interfaces import ICheckoutFormPresets
-from bda.plone.shop.interfaces import IShopExtensionLayer
-from bda.plone.shop import message_factory as _
+from zope import schema
+from zope.component import adapter
+from zope.component import adapts
+from zope.interface import implementer
+from zope.interface import Interface
 
 
 class ICustomer(model.Schema):

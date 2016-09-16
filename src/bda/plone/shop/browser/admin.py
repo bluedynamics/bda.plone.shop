@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 from Acquisition import aq_parent
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.discount.interfaces import IDiscountSettingsEnabled
 from bda.plone.orders.common import get_vendors_for
 from bda.plone.orders.interfaces import IBuyable
@@ -11,13 +9,16 @@ from operator import attrgetter
 from plone.app.portlets.portlets import base
 from plone.folder.interfaces import IFolder
 from plone.portlets.interfaces import IPortletDataProvider
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import adapter
 from zope.component import getAdapters
 from zope.component.interfaces import ISite
 from zope.interface import Attribute
-from zope.interface import Interface
 from zope.interface import implementer
+from zope.interface import Interface
 from zope.security import checkPermission
+
 import pkg_resources
 import plone.api
 

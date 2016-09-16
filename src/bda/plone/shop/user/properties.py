@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from AccessControl.class_init import InitializeClass
+from bda.plone.checkout.vocabularies import get_pycountry_name
 from Products.CMFPlone.utils import safe_unicode
 from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 from Products.PluggableAuthService.utils import classImplements
-from bda.plone.checkout.vocabularies import get_pycountry_name
 from zope.interface import implementer
 
 

@@ -10,10 +10,10 @@ from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_shipping_settings
 from decimal import Decimal
 from zope.component import adapter
+from zope.deprecation import deprecated
+from zope.i18nmessageid import Message
 from zope.interface import implementer
 from zope.interface import Interface
-from zope.i18nmessageid import Message
-from zope.deprecation import deprecated
 
 
 @implementer(IShippingSettings)

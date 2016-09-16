@@ -1,16 +1,4 @@
 # -*- coding: utf-8 -*-
-from Products.Archetypes.atapi import BooleanField
-from Products.Archetypes.atapi import CalendarWidget
-from Products.Archetypes.atapi import DateTimeField
-from Products.Archetypes.atapi import FloatField
-from Products.Archetypes.atapi import SelectionWidget
-from Products.Archetypes.atapi import StringField
-from Products.Archetypes.atapi import StringWidget
-from Products.Archetypes.atapi import TextAreaWidget
-from Products.Archetypes.atapi import TextField
-from Products.Archetypes.interfaces import IBaseObject
-from Products.Archetypes.interfaces import IFieldDefaultProvider
-from Products.Archetypes.utils import OrderedDict
 from archetypes.schemaextender.field import ExtensionField
 from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
 from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
@@ -30,10 +18,23 @@ from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_shipping_settings
 from bda.plone.shop.utils import get_shop_tax_settings
 from datetime import datetime
+from Products.Archetypes.atapi import BooleanField
+from Products.Archetypes.atapi import CalendarWidget
+from Products.Archetypes.atapi import DateTimeField
+from Products.Archetypes.atapi import FloatField
+from Products.Archetypes.atapi import SelectionWidget
+from Products.Archetypes.atapi import StringField
+from Products.Archetypes.atapi import StringWidget
+from Products.Archetypes.atapi import TextAreaWidget
+from Products.Archetypes.atapi import TextField
+from Products.Archetypes.interfaces import IBaseObject
+from Products.Archetypes.interfaces import IFieldDefaultProvider
+from Products.Archetypes.utils import OrderedDict
 from zope.component import adapter
 from zope.component import getUtility
 from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
+
 
 try:
     from collective.contentleadimage.config import IMAGE_FIELD_NAME

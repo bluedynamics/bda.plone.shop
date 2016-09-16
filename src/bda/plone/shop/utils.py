@@ -1,13 +1,13 @@
-from decimal import Decimal
-from zope.component import getUtility
-from plone.registry.interfaces import IRegistry
+from bda.plone.shop.interfaces import INotificationTextSettings
+from bda.plone.shop.interfaces import IPaymentTextSettings
 from bda.plone.shop.interfaces import IShopArticleSettings
 from bda.plone.shop.interfaces import IShopCartSettings
 from bda.plone.shop.interfaces import IShopSettings
 from bda.plone.shop.interfaces import IShopShippingSettings
 from bda.plone.shop.interfaces import IShopTaxSettings
-from bda.plone.shop.interfaces import INotificationTextSettings
-from bda.plone.shop.interfaces import IPaymentTextSettings
+from decimal import Decimal
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
 
 
 def format_amount(val):

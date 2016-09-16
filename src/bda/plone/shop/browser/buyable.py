@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from AccessControl import getSecurityManager
-from Products.Five import BrowserView
 from bda.plone.cart import get_data_provider
 from bda.plone.cart import get_item_availability
 from bda.plone.cart import get_item_data_provider
@@ -10,6 +9,7 @@ from bda.plone.shop.interfaces import IBuyablePeriod
 from datetime import datetime
 from decimal import Decimal
 from plone.uuid.interfaces import IUUID
+from Products.Five import BrowserView
 from zope.component import queryAdapter
 from zope.i18n import translate
 

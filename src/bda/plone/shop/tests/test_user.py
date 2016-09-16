@@ -1,6 +1,7 @@
-from bda.plone.shop.tests import Shop_INTEGRATION_TESTING
 from bda.plone.shop.tests import set_browserlayer
+from bda.plone.shop.tests import Shop_INTEGRATION_TESTING
 from bda.plone.shop.utils import get_shop_settings
+
 import plone.api
 import unittest2 as unittest
 

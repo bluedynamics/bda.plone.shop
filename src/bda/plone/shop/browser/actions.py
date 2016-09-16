@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-from Products.CMFCore.utils import getToolByName
-from Products.Five.browser import BrowserView
-from Products.statusmessages.interfaces import IStatusMessage
 from bda.plone.orders import permissions
 from bda.plone.orders.interfaces import IBuyable
 from bda.plone.orders.interfaces import IVendor
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IPotentiallyBuyable
+from Products.CMFCore.utils import getToolByName
+from Products.Five.browser import BrowserView
+from Products.statusmessages.interfaces import IStatusMessage
 from zope.container.interfaces import IContainer
 from zope.interface import alsoProvides
 from zope.interface import noLongerProvides
