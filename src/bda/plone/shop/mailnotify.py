@@ -27,14 +27,18 @@ class NotificationSettings(object):
     @property
     def admin_email(self):
         props = getToolByName(self.context, 'portal_properties')
-        return get_shop_settings().admin_email or \
-            props.site_properties.email_from_address
+        return (
+            get_shop_settings().admin_email or
+            getattr(props.site_properties, 'email_from_address', '')
+        )
 
     @property
     def admin_name(self):
         props = getToolByName(self.context, 'portal_properties')
-        return get_shop_settings().admin_name or \
-            props.site_properties.email_from_name
+        return (
+            get_shop_settings().admin_name or
+            getattr(props.site_properties, 'email_from_name', '')
+        )
 
 
 @implementer(IItemNotificationText)

@@ -4,6 +4,9 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Fix: Do not raise AttributeError if admin email or name were not yet set.
+  [jensens]
+
 - Add upgrade step for ``default_item_stock_warning_threshold`` setting.
   [thet]
 
