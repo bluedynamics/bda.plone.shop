@@ -3,17 +3,16 @@ from bda.plone.checkout.interfaces import ICheckoutFormPresets
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IShopExtensionLayer
 from node.utils import UNSET
+from plone import api
 from plone.app.users.browser.account import AccountPanelSchemaAdapter
 from plone.app.users.browser.register import AddUserForm
 from plone.app.users.browser.register import RegistrationForm
 from plone.app.users.browser.userdatapanel import UserDataPanel
 from plone.supermodel import model
 from plone.z3cform.fieldsets import extensible
-from Products.CMFPlone.utils import getToolByName
 from z3c.form import field
 from zope import schema
 from zope.component import adapter
-from zope.component import adapts
 from zope.interface import implementer
 from zope.interface import Interface
 
@@ -165,8 +164,8 @@ class UserDataSchemaAdapter(AccountPanelSchemaAdapter):
     schema = ICustomer
 
 
+@adapter(Interface, IShopExtensionLayer, UserDataPanel)
 class UserDataPanelExtender(extensible.FormExtender):
-    adapts(Interface, IShopExtensionLayer, UserDataPanel)
 
     def update(self):
         # Remove fields, where our schema has substitutes
@@ -177,8 +176,8 @@ class UserDataPanelExtender(extensible.FormExtender):
         self.add(fields, prefix="delivery")
 
 
+@adapter(Interface, IShopExtensionLayer, RegistrationForm)
 class RegistrationPanelExtender(extensible.FormExtender):
-    adapts(Interface, IShopExtensionLayer, RegistrationForm)
 
     def update(self):
         # Remove fields, where our schema has substitutes
@@ -188,8 +187,8 @@ class RegistrationPanelExtender(extensible.FormExtender):
         self.add(fields, prefix="delivery")
 
 
+@adapter(Interface, IShopExtensionLayer, AddUserForm)
 class AddUserFormExtender(extensible.FormExtender):
-    adapts(Interface, IShopExtensionLayer, AddUserForm)
 
     def update(self):
         # Remove fields, where our schema has substitutes
@@ -210,11 +209,10 @@ class CheckoutFormMemberPresets(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        member = None
-        membership = getToolByName(self.context, 'portal_membership', None)
-        if membership and not membership.isAnonymousUser():
-            member = membership.getAuthenticatedMember()
-        self.member = member
+        if api.user.is_anonymous():
+            self.member = None
+        else:
+            self.member = api.user.get_current()
 
     def get_value(self, field_name):
         default = UNSET

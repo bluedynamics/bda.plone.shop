@@ -6,7 +6,6 @@ from bda.plone.cart import get_item_data_provider
 from bda.plone.cart import get_item_preview
 from bda.plone.cart import get_item_state
 from bda.plone.cart import get_item_stock
-from bda.plone.cart import get_object_by_uid
 from bda.plone.cart import remove_item_from_cart
 from bda.plone.shipping.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
@@ -17,7 +16,7 @@ from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_shipping_settings
 from datetime import datetime
 from decimal import Decimal
-from Products.CMFCore.utils import getToolByName
+from plone import api
 from zope.component import queryAdapter
 from zope.i18n import translate
 
@@ -31,17 +30,17 @@ class CartItemCalculator(object):
 
     @property
     def catalog(self):
-        return getToolByName(self.context, 'portal_catalog')
+        return api.portal.get_tool('portal_catalog')
 
     def item_net(self, item):
         """Net price of item.
         """
-        cat = self.catalog
         uid, count, _ = item
-        brain = cat(UID=uid)
-        if not brain:
+        try:
+            obj = api.content.get(UID=uid)
+        except ValueError:
             return Decimal(0)
-        data = get_item_data_provider(brain[0].getObject())
+        data = get_item_data_provider(obj)
         discount_net = data.discount_net(count)
         item_net = Decimal(str(data.net)) - discount_net
         return item_net * count
@@ -49,12 +48,12 @@ class CartItemCalculator(object):
     def item_vat(self, item):
         """VAT of item.
         """
-        cat = self.catalog
         uid, count, _ = item
-        brain = cat(UID=uid)
-        if not brain:
+        try:
+            obj = api.content.get(UID=uid)
+        except ValueError:
             return Decimal(0)
-        data = get_item_data_provider(brain[0].getObject())
+        data = get_item_data_provider(obj)
         discount_net = data.discount_net(count)
         item_net = Decimal(str(data.net)) - discount_net
         return (item_net / Decimal(100)) * Decimal(str(data.vat)) * count
@@ -62,12 +61,12 @@ class CartItemCalculator(object):
     def item_weight(self, item):
         """Weight of item.
         """
-        cat = self.catalog
         uid, count, _ = item
-        brain = cat(UID=uid)
-        if not brain:
+        try:
+            obj = api.content.get(UID=uid)
+        except ValueError:
             return Decimal(0)
-        shipping = IShippingItem(brain[0].getObject())
+        shipping = IShippingItem(obj)
         item_weight = shipping.weight
         if item_weight:
             return Decimal(item_weight) * count
@@ -76,13 +75,13 @@ class CartItemCalculator(object):
     def net(self, items):
         """Overall net of items.
         """
-        cat = self.catalog
         net = Decimal(0)
         for uid, count, unused in items:
-            brain = cat(UID=uid)
-            if not brain:
+            try:
+                obj = api.content.get(UID=uid)
+            except ValueError:
                 continue
-            data = get_item_data_provider(brain[0].getObject())
+            data = get_item_data_provider(obj)
             discount_net = data.discount_net(count)
             item_net = Decimal(str(data.net)) - discount_net
             net += item_net * count
@@ -91,13 +90,13 @@ class CartItemCalculator(object):
     def vat(self, items):
         """Overall VAT of items.
         """
-        cat = self.catalog
         vat = Decimal(0)
         for uid, count, unused in items:
-            brain = cat(UID=uid)
-            if not brain:
+            try:
+                obj = api.content.get(UID=uid)
+            except ValueError:
                 continue
-            data = get_item_data_provider(brain[0].getObject())
+            data = get_item_data_provider(obj)
             discount_net = data.discount_net(count)
             item_net = Decimal(str(data.net)) - discount_net
             vat += (item_net / Decimal(100)) * Decimal(str(data.vat)) * count
@@ -106,13 +105,13 @@ class CartItemCalculator(object):
     def weight(self, items):
         """Overall weight of items.
         """
-        cat = self.catalog
         weight = Decimal(0)
         for uid, count, unused in items:
-            brain = cat(UID=uid)
-            if not brain:
+            try:
+                obj = api.content.get(UID=uid)
+            except ValueError:
                 continue
-            shipping = IShippingItem(brain[0].getObject())
+            shipping = IShippingItem(obj)
             item_weight = shipping.weight
             if item_weight:
                 weight += Decimal(item_weight) * count
@@ -177,10 +176,20 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         return get_shop_settings().show_currency
 
     def validate_set(self, uid):
-        buyable = get_object_by_uid(self.context, uid)
+        try:
+            buyable = api.content.get(UID=uid)
+        except ValueError:
+            message = _(
+                u'buyable_does_not_exist',
+                default=u'Buyable item with UID {uuid} does not exist.',
+                        mapping={'uuid': uid})
+            return {
+                'success': False,
+                'error': message,
+                'update': True,
+            }
         # check whether user can buy item
-        sm = getSecurityManager()
-        if not sm.checkPermission(permissions.BuyItems, buyable):
+        if not api.user.has_permission(permissions.BuyItems, obj=buyable):
             remove_item_from_cart(self.request, uid)
             message = _(u'permission_not_granted_to_buy_item',
                         default=u'Permission to buy ${title} not granted.',
@@ -225,16 +234,14 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         }
 
     def cart_items(self, items):
-        cat = self.catalog
         ret = list()
         sm = getSecurityManager()
         for uid, count, comment in items:
-            brain = cat(UID=uid)
-            if not brain:
+            try:
+                obj = api.content.get(UID=uid)
+            except ValueError:
                 remove_item_from_cart(self.request, uid)
                 continue
-            brain = brain[0]
-            obj = brain.getObject()
             if not sm.checkPermission(permissions.BuyItems, obj):
                 remove_item_from_cart(self.request, uid)
                 continue
@@ -255,8 +262,8 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             price = (Decimal(str(data.net)) - discount_net) * count
             if data.display_gross:
                 price = price + price / Decimal(100) * Decimal(str(data.vat))
-            url = brain.getURL()
-            description = brain.Description
+            url = obj.absolute_url()
+            description = obj.Description()
             comment_required = data.comment_required
             quantity_unit_float = data.quantity_unit_float
             quantity_unit = translate(data.quantity_unit, context=self.request)

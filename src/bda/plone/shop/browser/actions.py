@@ -4,9 +4,8 @@ from bda.plone.orders.interfaces import IBuyable
 from bda.plone.orders.interfaces import IVendor
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IPotentiallyBuyable
-from Products.CMFCore.utils import getToolByName
+from plone import api
 from Products.Five.browser import BrowserView
-from Products.statusmessages.interfaces import IStatusMessage
 from zope.container.interfaces import IContainer
 from zope.interface import alsoProvides
 from zope.interface import noLongerProvides
@@ -19,22 +18,32 @@ class EnableDisableFeature(BrowserView):
     disable_message = None
 
     def enableFeature(self):
-        ctx = self.context
-        req = self.request
-        alsoProvides(ctx, self.feature_iface)
-        cat = getToolByName(ctx, 'portal_catalog')
-        cat.reindexObject(ctx, idxs=['object_provides'], update_metadata=1)
-        IStatusMessage(req).addStatusMessage(self.enable_message, 'info')
-        self.request.response.redirect(ctx.absolute_url())
+        alsoProvides(self.context, self.feature_iface)
+        cat = api.portal.get_tool('portal_catalog')
+        cat.reindexObject(
+            self.context,
+            idxs=['object_provides'],
+            update_metadata=1
+        )
+        api.portal.show_message(
+            message=self.enable_message,
+            request=self.request
+        )
+        self.request.response.redirect(self.context.absolute_url())
 
     def disableFeature(self):
-        ctx = self.context
-        req = self.request
-        noLongerProvides(ctx, self.feature_iface)
-        cat = getToolByName(ctx, 'portal_catalog')
-        cat.reindexObject(ctx, idxs=['object_provides'], update_metadata=1)
-        IStatusMessage(req).addStatusMessage(self.disable_message, 'info')
-        self.request.response.redirect(ctx.absolute_url())
+        noLongerProvides(self.context, self.feature_iface)
+        cat = api.portal.get_tool('portal_catalog')
+        cat.reindexObject(
+            self.context,
+            idxs=['object_provides'],
+            update_metadata=1
+        )
+        api.portal.show_message(
+            message=self.disable_message,
+            request=self.request
+        )
+        self.request.response.redirect(self.context.absolute_url())
 
     def isPossibleToEnableFeature(self):
         return (
@@ -66,10 +75,14 @@ class VendorAction(EnableDisableFeature):
         self.context.manage_permission(
             permissions.DelegateVendorRole,
             roles=['Manager', 'Site Administrator'],
-            acquire=0)
+            acquire=0
+        )
         super(VendorAction, self).enableFeature()
 
     def disableFeature(self):
         self.context.manage_permission(
-            permissions.DelegateVendorRole, roles=[], acquire=0)
+            permissions.DelegateVendorRole,
+            roles=[],
+            acquire=0
+        )
         super(VendorAction, self).disableFeature()

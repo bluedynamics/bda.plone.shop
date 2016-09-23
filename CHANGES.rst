@@ -4,6 +4,9 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Overhaul code: use plone.api and zca decorators 
+  [jensens]
+
 - Fix: Do not raise AttributeError if admin email or name were not yet set.
   [jensens]
 

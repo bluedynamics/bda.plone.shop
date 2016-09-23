@@ -7,8 +7,8 @@ from bda.plone.orders.interfaces import IPaymentText
 from bda.plone.shop.utils import get_shop_notification_settings
 from bda.plone.shop.utils import get_shop_payment_settings
 from bda.plone.shop.utils import get_shop_settings
+from plone import api
 from Products.CMFCore.interfaces import ISiteRoot
-from Products.CMFCore.utils import getToolByName
 from zope.component import adapter
 from zope.component import queryAdapter
 from zope.component.interfaces import ISite
@@ -26,7 +26,7 @@ class NotificationSettings(object):
 
     @property
     def admin_email(self):
-        props = getToolByName(self.context, 'portal_properties')
+        props = api.portal.get_tool('portal_properties')
         return (
             get_shop_settings().admin_email or
             getattr(props.site_properties, 'email_from_address', '')
@@ -34,7 +34,7 @@ class NotificationSettings(object):
 
     @property
     def admin_name(self):
-        props = getToolByName(self.context, 'portal_properties')
+        props = api.portal.get_tool('portal_properties')
         return (
             get_shop_settings().admin_name or
             getattr(props.site_properties, 'email_from_name', '')
