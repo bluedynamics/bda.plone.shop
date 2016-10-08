@@ -1111,7 +1111,7 @@ msgstr "aktualisieren"
 #. Default: "Vat"
 #: bda/plone/shop/browser/buyable.pt:63
 msgid "vat"
-msgstr "USt"
+msgstr "MwSt."
 
 #. Default: "Yes"
 #: bda/plone/shop/vocabularies.py:118
