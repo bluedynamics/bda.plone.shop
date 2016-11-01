@@ -61,4 +61,11 @@
   padding: 0.5em 1em 0em 2em!important;
   border: 0!important;
 }
+#formfield-form-widgets-IBuyablePeriodBehavior-buyable_effective select,
+#formfield-form-widgets-IBuyablePeriodBehavior-buyable_expires select,
+#formfield-form-widgets-IBuyableBehavior-item_vat select,
+#formfield-form-widgets-IBuyableBehavior-item_quantity_unit select {
+  display: inline-block;
+  width: unset;
+}
 /*# sourceMappingURL=++resource++bda.plone.shop.css.map */
