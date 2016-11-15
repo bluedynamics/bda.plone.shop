@@ -101,18 +101,18 @@
     addview=".admin.ShopAdminAddForm" />
 
   <!-- shop navigation links -->
-  <adapter name="orders" factory=".navigation.ShopPortletOrdersLink" />
-  <adapter name="ordersincontext" factory=".navigation.ShopPortletOrdersInContextLink" />
-  <adapter name="myorders" factory=".navigation.ShopPortletMyOrdersLink" />
-  <adapter name="bookings" factory=".navigation.ShopPortletBookingsLink" />
-  <adapter name="bookingsincontext" factory=".navigation.ShopPortletBookingsInContextLink" />
-  <adapter name="contacts" factory=".navigation.ShopPortletContactsLink" />
-  <adapter name="exportorders" factory=".navigation.ShopPortletExportOrdersLink" />
-  <adapter name="exportorders_item" factory=".navigation.ShopPortletExportOrdersItemLink" />
-  <adapter name="mailtemplates" factory=".navigation.ShopPortletMailTemplatesLink" />
-  <adapter name="cart_discount" factory=".navigation.ShopPortletCartDiscountLink" />
-  <adapter name="item_discount" factory=".navigation.ShopPortletCartItemDiscountLink" />
-  <adapter name="controlpanel" factory=".navigation.ShopPortletControlpanelLink" />
+  <adapter name="orders" factory=".navigation.OrdersLink" />
+  <adapter name="ordersincontext" factory=".navigation.OrdersInContextLink" />
+  <adapter name="myorders" factory=".navigation.MyOrdersLink" />
+  <adapter name="bookings" factory=".navigation.BookingsLink" />
+  <adapter name="bookingsincontext" factory=".navigation.BookingsInContextLink" />
+  <adapter name="contacts" factory=".navigation.ContactsLink" />
+  <adapter name="exportorders" factory=".navigation.ExportOrdersLink" />
+  <adapter name="exportorders_item" factory=".navigation.ExportOrdersItemLink" />
+  <adapter name="mailtemplates" factory=".navigation.MailTemplatesLink" />
+  <adapter name="cart_discount" factory=".navigation.CartDiscountLink" />
+  <adapter name="item_discount" factory=".navigation.CartItemDiscountLink" />
+  <adapter name="controlpanel" factory=".navigation.ControlpanelLink" />
 
   <!-- controlpanel -->
   <browser:page
