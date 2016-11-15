@@ -33,11 +33,13 @@ MANAGE_SHOP_PERMISSION = 'cmf.ManagePortal'
 class IShopNavigationLink(Interface):
     """Adapter interface for providing shop navigation links.
     """
+    permission = Attribute(u"Permissions a user must have on contextto view "
+                           u"this link")
     display = Attribute(u"Flag whether to display this link")
-    url = Attribute(u"Link URL")
-    title = Attribute(u"Link title")
-    order = Attribute(u"Link order in listing")
-    cssclass = Attribute(u"CSS class for the link")
+    url = Attribute(u"Target URL of this link")
+    title = Attribute(u"Title of this link")
+    order = Attribute(u"Order in which this link gets rendered")
+    cssclass = Attribute(u"Additional CSS class to render")
 
 
 @implementer(IShopNavigationLink)
@@ -45,31 +47,17 @@ class IShopNavigationLink(Interface):
 class ShopNavigationLink(object):
     """Abstract shop navigation link.
     """
-    # context on which this link gets rendered
-    context = None
-    # flag whether to display link
-    display = False
-    # target URL of this link
+    permission = None
+    display = True
     url = None
-    # title of this link
     title = None
-    # order in which this link gets rendered
     order = 0
-    # additional CSS class to render
     cssclass = None
 
-    def __init__(self, context, view_permissions=[VIEW_ORDERS_PERMISSION]):
-        """Instanciate shop navigation link.
-
-        Sets ``context`` and checks whether current user has one of the given
-        ``view_permissions`` on context. If not, ``display`` gets set to
-        ``False``.
-        """
+    def __init__(self, context):
         self.context = context
-        for permission in view_permissions:
-            self.display = checkPermission(permission, context)
-            if self.display:
-                break
+        if self.permission is not None:
+            self.display = checkPermission(self.permission, self.context)
 
 
 class ShopNavigation(object):
@@ -99,30 +87,25 @@ class ShopNavigation(object):
 class MyOrdersLink(ShopNavigationLink):
     """Link for navigating to ``My Orders`` view.
     """
+    permission = VIEW_OWN_ORDERS_PERMISSION
     title = _('my_orders', default=u'My Orders')
     order = 20
     cssclass = 'myorders'
 
     def __init__(self, context):
-        # XXX: buy items permission is meant to control whether a user can buy
-        #      a specific item. Change check to whether a user is customer
-        #      somewhere in the portal, which is semantically the correct way.
-        permissions = [VIEW_OWN_ORDERS_PERMISSION]
-        super(MyOrdersLink, self).__init__(
-            context, view_permissions=permissions)
+        super(MyOrdersLink, self).__init__(context)
         self.url = '{}/@@myorders'.format(api.portal.get().absolute_url())
 
 
 class OrdersLink(ShopNavigationLink):
     """Link for navigating to ``Global Orders`` view.
     """
+    permission = VIEW_ORDERS_PERMISSION
     order = 10
     cssclass = 'orders'
 
     def __init__(self, context):
-        permissions = [VIEW_ORDERS_PERMISSION]
-        super(OrdersLink, self).__init__(
-            context, view_permissions=permissions)
+        super(OrdersLink, self).__init__(context)
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
@@ -154,14 +137,13 @@ class OrdersLink(ShopNavigationLink):
 class OrdersInContextLink(ShopNavigationLink):
     """Link for navigating to ``Context Orders`` view.
     """
+    permission = VIEW_ORDERS_PERMISSION
     title = _('orders_in_context', default=u'Orders in Context')
     order = 11
     cssclass = 'orders'
 
     def __init__(self, context):
-        permissions = [VIEW_ORDERS_PERMISSION]
-        super(OrdersInContextLink, self).__init__(
-            context, view_permissions=permissions)
+        super(OrdersInContextLink, self).__init__(context)
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
@@ -182,13 +164,12 @@ class OrdersInContextLink(ShopNavigationLink):
 class BookingsLink(ShopNavigationLink):
     """Link for navigating to ``Global Bookings`` view.
     """
+    permission = VIEW_ORDERS_PERMISSION
     order = 21
     cssclass = 'bookings'
 
     def __init__(self, context):
-        permissions = [VIEW_ORDERS_PERMISSION]
-        super(BookingsLink, self).__init__(
-            context, view_permissions=permissions)
+        super(BookingsLink, self).__init__(context)
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
@@ -220,14 +201,13 @@ class BookingsLink(ShopNavigationLink):
 class BookingsInContextLink(ShopNavigationLink):
     """Link for navigating to ``Context Bookings`` view.
     """
+    permission = VIEW_ORDERS_PERMISSION
     title = _('bookings_in_context', default=u'Bookings in Context')
     order = 22
     cssclass = 'bookings'
 
     def __init__(self, context):
-        permissions = [VIEW_ORDERS_PERMISSION]
-        super(BookingsInContextLink, self).__init__(
-            context, view_permissions=permissions)
+        super(BookingsInContextLink, self).__init__(context)
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
@@ -248,14 +228,13 @@ class BookingsInContextLink(ShopNavigationLink):
 class ContactsLink(ShopNavigationLink):
     """Link for navigating to ``Contacts`` view.
     """
+    permission = VIEW_ORDERS_PERMISSION
     title = _('contacts', default=u'Contacts')
     order = 23
     cssclass = 'bookings'
 
     def __init__(self, context):
-        permissions = [VIEW_ORDERS_PERMISSION]
-        super(ContactsLink, self).__init__(
-            context, view_permissions=permissions)
+        super(ContactsLink, self).__init__(context)
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
@@ -269,28 +248,26 @@ class ContactsLink(ShopNavigationLink):
 class ExportOrdersLink(ShopNavigationLink):
     """Link for navigating to ``Export Orders`` view.
     """
+    permission = EXPORT_ORDERS_PERMISSION
     title = _('exportorders', default=u'Export Orders')
     order = 30
     cssclass = 'export_orders'
 
     def __init__(self, context):
-        permissions = [EXPORT_ORDERS_PERMISSION]
-        super(ExportOrdersLink, self).__init__(
-            context, view_permissions=permissions)
+        super(ExportOrdersLink, self).__init__(context)
         self.url = '{}/@@exportorders'.format(api.portal.get().absolute_url())
 
 
 class ExportOrdersItemLink(ShopNavigationLink):
     """Link for navigating to ``Export Context Orders`` view.
     """
+    permission = EXPORT_ORDERS_PERMISSION
     title = _('exportorders_item', default=u'Export Orders on this Item')
     order = 40
     cssclass = 'export_orders_item'
 
     def __init__(self, context):
-        permissions = [EXPORT_ORDERS_PERMISSION]
-        super(ExportOrdersItemLink, self).__init__(
-            context, view_permissions=permissions)
+        super(ExportOrdersItemLink, self).__init__(context)
         # XXX: catalog query -> IBuyable contained in path
         #      of not, display False
         if IPloneSiteRoot.providedBy(context):
@@ -308,14 +285,12 @@ class ExportOrdersItemLink(ShopNavigationLink):
 class MailTemplatesLink(ShopNavigationLink):
     """Link for navigating to ``Mail Templates`` view.
     """
+    permission = MANAGE_TEAMPLETS_PERMISSION
     order = 50
     cssclass = 'mailtemplates'
 
     def __init__(self, context):
-        permissions = [MANAGE_TEAMPLETS_PERMISSION]
-        super(MailTemplatesLink, self).__init__(
-            context, view_permissions=permissions)
-
+        super(MailTemplatesLink, self).__init__(context)
         # Find the nearest context, where this functionality can be bound to.
         def _find_context(ctx):
             return ctx\
@@ -347,14 +322,13 @@ class MailTemplatesLink(ShopNavigationLink):
 class CartDiscountLink(ShopNavigationLink):
     """Link for navigating to ``Cart Discount`` view.
     """
+    permission = MANAGE_DISCOUNT_PERMISSION
     title = _('cart_discount', default=u'Cart Discount')
     order = 60
     cssclass = 'cart_discount'
 
     def __init__(self, context):
-        permissions = [MANAGE_DISCOUNT_PERMISSION]
-        super(CartDiscountLink, self).__init__(
-            context, view_permissions=permissions)
+        super(CartDiscountLink, self).__init__(context)
         if self.display:
             self.display = ISite.providedBy(context)
         self.url = '{}/@@cart_discount'.format(context.absolute_url())
@@ -363,14 +337,13 @@ class CartDiscountLink(ShopNavigationLink):
 class CartItemDiscountLink(ShopNavigationLink):
     """Link for navigating to ``Item Discount`` view.
     """
+    permission = MANAGE_DISCOUNT_PERMISSION
     title = _('item_discount', default=u'Item Discount')
     order = 70
     cssclass = 'item_discount'
 
     def __init__(self, context):
-        permissions = [MANAGE_DISCOUNT_PERMISSION]
-        super(CartItemDiscountLink, self).__init__(
-            context, view_permissions=permissions)
+        super(CartItemDiscountLink, self).__init__(context)
         if self.display:
             self.display = ISite.providedBy(context) \
                 or IDiscountSettingsEnabled.providedBy(context)
@@ -384,14 +357,12 @@ class CartItemDiscountLink(ShopNavigationLink):
 class ControlpanelLink(ShopNavigationLink):
     """Link for navigating to ``Shop Controlpanel`` view.
     """
+    permission = MANAGE_SHOP_PERMISSION
     order = 50
     cssclass = 'controlpanel'
 
     def __init__(self, context):
-        permissions = [MANAGE_SHOP_PERMISSION]
-        super(ControlpanelLink, self).__init__(
-            context, view_permissions=permissions)
-
+        super(ControlpanelLink, self).__init__(context)
         # Find the nearest context, where this functionality can be bound to.
         def _find_context(ctx):
             return ctx\
