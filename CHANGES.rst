@@ -4,6 +4,10 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Move shop portlet related link implementations to
+  ``bda.plone.shop.browser.navigation``
+  [rnix]
+
 - use MwSt. instead of Ust. in german
   [agitator]
 

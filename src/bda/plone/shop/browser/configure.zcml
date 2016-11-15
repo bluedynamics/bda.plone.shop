@@ -100,19 +100,19 @@
     renderer=".admin.ShopAdminRenderer"
     addview=".admin.ShopAdminAddForm" />
 
-  <!-- shop portlet administration link adapters -->
-  <adapter name="orders" factory=".admin.ShopPortletOrdersLink" />
-  <adapter name="ordersincontext" factory=".admin.ShopPortletOrdersInContextLink" />
-  <adapter name="myorders" factory=".admin.ShopPortletMyOrdersLink" />
-  <adapter name="bookings" factory=".admin.ShopPortletBookingsLink" />
-  <adapter name="bookingsincontext" factory=".admin.ShopPortletBookingsInContextLink" />
-  <adapter name="contacts" factory=".admin.ShopPortletContactsLink" />
-  <adapter name="exportorders" factory=".admin.ShopPortletExportOrdersLink" />
-  <adapter name="exportorders_item" factory=".admin.ShopPortletExportOrdersItemLink" />
-  <adapter name="mailtemplates" factory=".admin.ShopPortletMailTemplatesLink" />
-  <adapter name="cart_discount" factory=".admin.ShopPortletCartDiscountLink" />
-  <adapter name="item_discount" factory=".admin.ShopPortletCartItemDiscountLink" />
-  <adapter name="controlpanel" factory=".admin.ShopPortletControlpanelLink" />
+  <!-- shop navigation links -->
+  <adapter name="orders" factory=".navigation.ShopPortletOrdersLink" />
+  <adapter name="ordersincontext" factory=".navigation.ShopPortletOrdersInContextLink" />
+  <adapter name="myorders" factory=".navigation.ShopPortletMyOrdersLink" />
+  <adapter name="bookings" factory=".navigation.ShopPortletBookingsLink" />
+  <adapter name="bookingsincontext" factory=".navigation.ShopPortletBookingsInContextLink" />
+  <adapter name="contacts" factory=".navigation.ShopPortletContactsLink" />
+  <adapter name="exportorders" factory=".navigation.ShopPortletExportOrdersLink" />
+  <adapter name="exportorders_item" factory=".navigation.ShopPortletExportOrdersItemLink" />
+  <adapter name="mailtemplates" factory=".navigation.ShopPortletMailTemplatesLink" />
+  <adapter name="cart_discount" factory=".navigation.ShopPortletCartDiscountLink" />
+  <adapter name="item_discount" factory=".navigation.ShopPortletCartItemDiscountLink" />
+  <adapter name="controlpanel" factory=".navigation.ShopPortletControlpanelLink" />
 
   <!-- controlpanel -->
   <browser:page
