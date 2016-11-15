@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from Acquisition import aq_inner
 from Acquisition import aq_parent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from bda.plone.discount.interfaces import IDiscountSettingsEnabled
@@ -59,6 +60,12 @@ class ShopNavigationLink(object):
         if self.permission is not None:
             self.display = checkPermission(self.permission, self.context)
 
+    def acquire_context(self, context, interfaces=[]):
+        for iface in interfaces:
+            if iface.providedBy(context):
+                return context
+        return self.acquire_context(aq_parent(context), interfaces=interfaces)
+
 
 class ShopNavigation(object):
     """Base object for shop navigation.
@@ -109,13 +116,7 @@ class OrdersLink(ShopNavigationLink):
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
-
-        # Find the nearest context, where this functionality can be bound to.
-        def _find_context(ctx):
-            return ctx\
-                if ISite.providedBy(ctx) or IVendor.providedBy(ctx)\
-                else _find_context(aq_parent(ctx))
-        context = _find_context(context)
+        context = self.acquire_context(context, interfaces=[ISite, IVendor])
         if IPloneSiteRoot.providedBy(context):
             self.title = _(
                 'orders_global',
@@ -173,13 +174,7 @@ class BookingsLink(ShopNavigationLink):
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
-
-        # Find the nearest context, where this functionality can be bound to.
-        def _find_context(ctx):
-            return ctx\
-                if ISite.providedBy(ctx) or IVendor.providedBy(ctx)\
-                else _find_context(aq_parent(ctx))
-        context = _find_context(context)
+        context = self.acquire_context(context, interfaces=[ISite, IVendor])
         if IPloneSiteRoot.providedBy(context):
             self.title = _(
                 'bookings_global',
@@ -291,12 +286,7 @@ class MailTemplatesLink(ShopNavigationLink):
 
     def __init__(self, context):
         super(MailTemplatesLink, self).__init__(context)
-        # Find the nearest context, where this functionality can be bound to.
-        def _find_context(ctx):
-            return ctx\
-                if ISite.providedBy(ctx) or IVendor.providedBy(ctx)\
-                else _find_context(aq_parent(ctx))
-        context = _find_context(context)
+        context = self.acquire_context(context, interfaces=[ISite, IVendor])
         if IPloneSiteRoot.providedBy(context):
             self.title = _(
                 'mailtemplates_global',
@@ -363,12 +353,7 @@ class ControlpanelLink(ShopNavigationLink):
 
     def __init__(self, context):
         super(ControlpanelLink, self).__init__(context)
-        # Find the nearest context, where this functionality can be bound to.
-        def _find_context(ctx):
-            return ctx\
-                if ISite.providedBy(ctx)\
-                else _find_context(aq_parent(ctx))
-        context = _find_context(context)
+        context = self.acquire_context(context, interfaces=[ISite])
         if IPloneSiteRoot.providedBy(context):
             self.title = _(
                 'shop_controlpanel_global',
