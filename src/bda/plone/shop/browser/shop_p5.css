@@ -68,4 +68,11 @@
   display: inline-block;
   width: unset;
 }
+#shop_toolbar_menu .actionSeparator {
+  border-top: 1px solid rgba(255, 255, 255, 0.17);
+}
+#shop_toolbar_menu .actionSeparator > span {
+  color: #ccc;
+  font-weight: 400;
+}
 /*# sourceMappingURL=++resource++bda.plone.shop.css.map */

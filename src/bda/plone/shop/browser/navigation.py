@@ -36,6 +36,8 @@ MANAGE_SHOP = 'cmf.ManagePortal'
 class IShopNavigationLink(Interface):
     """Adapter interface for providing shop navigation links.
     """
+    id = Attribute(u"Link ID")
+    group = Attribute(u"ShopNavigationGroup instance")
     permission = Attribute(u"Permissions a user must have on contextto view "
                            u"this link")
     display = Attribute(u"Flag whether to display this link")
@@ -50,6 +52,8 @@ class IShopNavigationLink(Interface):
 class ShopNavigationLink(object):
     """Abstract shop navigation link.
     """
+    id = None
+    group = None
     permission = None
     display = False
     url = None
@@ -101,7 +105,75 @@ class ShopNavigationLink(object):
         return default_page.getDefaultPage() == context.getId()
 
 
-class ShopNavigation(object):
+class NavigationItemLookupMixin(object):
+    """Mixin for navigation links related item lookup
+    """
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def lookup_navigation_items(self, interface):
+        """Lookup navigation items by interface.
+
+        XXX: cache result on request by interface
+        """
+        def unsorted_items():
+            to_adapt = self.context, self.request
+            for _, link in getAdapters(to_adapt, interface):
+                yield link
+        return sorted(unsorted_items(), key=attrgetter('order'))
+
+
+class IShopNavigationGroup(Interface):
+    """Interface for providing shop navigation groups.
+    """
+    id = Attribute(u"Navigation Group ID")
+    title = Attribute(u"Navigation Group Title")
+    order = Attribute(u"Navigation Group Rendering Order")
+    available = Attribute(u"Flag whether group navigation links are available")
+
+    def links():
+        """Sorted list of ``IShopNavigationLink`` implementing instances
+        related to this group.
+        """
+
+
+@implementer(IShopNavigationGroup)
+@adapter(Interface, IBrowserRequest)
+class ShopNavigationGroup(NavigationItemLookupMixin):
+    """Abstract shop navigation group.
+    """
+    id = None
+    title = None
+    order = 0
+
+    @property
+    def available(self):
+        return bool(self.links())
+
+    def links(self):
+        for link in self.lookup_navigation_items(IShopNavigationLink):
+            if link.display and link.group == self.id:
+                yield link
+
+
+class IShopNavigation(Interface):
+    """Interface for providing shop navigation API.
+    """
+    available = Attribute(u"Flag whether navigation links are available")
+
+    def links():
+        """Sorted list of ``IShopNavigationLink`` implementing instances.
+        """
+
+    def groups():
+        """Sorted list of ``IShopNavigationGroup`` implementing instances.
+        """
+
+
+@implementer(IShopNavigation)
+class ShopNavigation(NavigationItemLookupMixin):
     """Mixin for shop navigation view.
 
     Subclass is usually view like and must provide ``context`` and ``request``
@@ -109,28 +181,34 @@ class ShopNavigation(object):
 
     @property
     def available(self):
-        """Flag whether shop navigation links are available in context.
-        """
         return bool(self.links())
 
     def links(self):
-        """Sorted list of ``IShopNavigationLink`` implementing instances.
-        """
-        def unsorted_links():
-            to_adapt = self.context, self.request
-            for _, link in getAdapters(to_adapt, IShopNavigationLink):
-                if link.display:
-                    yield link
-        return sorted(unsorted_links(), key=attrgetter('order'))
+        for link in self.lookup_navigation_items(IShopNavigationLink):
+            if link.display:
+                yield link
+
+    def groups(self):
+        for group in self.lookup_navigation_items(IShopNavigationGroup):
+            if group.available:
+                yield group
 
 
 ###############################################################################
 # orders related
 ###############################################################################
 
+class OrdersGroup(ShopNavigationGroup):
+    id = 'shop_orders_group'
+    title = _('orders', default=u'Orders')
+    order = 10
+
+
 class OrdersLink(ShopNavigationLink):
     """Link for navigating to ``Global Orders`` view.
     """
+    id = 'shop_orders_link'
+    group = 'shop_orders_group'
     permission = VIEW_ORDERS
     order = 10
     cssclass = 'orders'
@@ -161,6 +239,8 @@ class OrdersLink(ShopNavigationLink):
 class OrdersInContextLink(ShopNavigationLink):
     """Link for navigating to ``Context Orders`` view.
     """
+    id = 'shop_orders_in_context_link'
+    group = 'shop_orders_group'
     permission = VIEW_ORDERS
     title = _('orders_in_context', default=u'Orders in Context')
     order = 11
@@ -191,6 +271,8 @@ class OrdersInContextLink(ShopNavigationLink):
 class OrdersInContainerLink(OrdersInContextLink):
     """Link for navigating to ``Container Orders`` view.
     """
+    id = 'shop_orders_in_container_link'
+    group = 'shop_orders_group'
     title = _('orders_in_container', default=u'Orders in Container')
     order = 12
 
@@ -213,6 +295,8 @@ class OrdersInContainerLink(OrdersInContextLink):
 class MyOrdersLink(ShopNavigationLink):
     """Link for navigating to ``My Orders`` view.
     """
+    id = 'shop_myorders_link'
+    group = 'shop_orders_group'
     permission = VIEW_OWN_ORDERS
     title = _('my_orders', default=u'My Orders')
     order = 13
@@ -231,9 +315,17 @@ class MyOrdersLink(ShopNavigationLink):
 # bookings related
 ###############################################################################
 
+class BookingsGroup(ShopNavigationGroup):
+    id = 'shop_bookings_group'
+    title = _('bookings', default=u'Bookings')
+    order = 20
+
+
 class BookingsLink(ShopNavigationLink):
     """Link for navigating to ``Global Bookings`` view.
     """
+    id = 'shop_bookings_link'
+    group = 'shop_bookings_group'
     permission = VIEW_ORDERS
     order = 20
     cssclass = 'bookings'
@@ -264,6 +356,8 @@ class BookingsLink(ShopNavigationLink):
 class BookingsInContextLink(ShopNavigationLink):
     """Link for navigating to ``Context Bookings`` view.
     """
+    id = 'shop_bookings_in_context_link'
+    group = 'shop_bookings_group'
     permission = VIEW_ORDERS
     title = _('bookings_in_context', default=u'Bookings in Context')
     order = 21
@@ -294,6 +388,8 @@ class BookingsInContextLink(ShopNavigationLink):
 class BookingsInContainerLink(BookingsInContextLink):
     """Link for navigating to ``Container Bookings`` view.
     """
+    id = 'shop_bookings_in_container_link'
+    group = 'shop_bookings_group'
     title = _('bookings_in_container', default=u'Bookings in Container')
     order = 22
 
@@ -317,9 +413,17 @@ class BookingsInContainerLink(BookingsInContextLink):
 # contacts related
 ###############################################################################
 
+class ContactsGroup(ShopNavigationGroup):
+    id = 'shop_contacts_group'
+    title = _('contacts', default=u'Contacts')
+    order = 30
+
+
 class ContactsLink(ShopNavigationLink):
     """Link for navigating to ``Contacts`` view.
     """
+    id = 'shop_contacts_link'
+    group = 'shop_contacts_group'
     permission = VIEW_ORDERS
     title = _('contacts', default=u'Contacts')
     order = 30
@@ -342,9 +446,17 @@ class ContactsLink(ShopNavigationLink):
 # export related
 ###############################################################################
 
+class ExportGroup(ShopNavigationGroup):
+    id = 'shop_export_group'
+    title = _('export', default=u'Export')
+    order = 40
+
+
 class ExportOrdersLink(ShopNavigationLink):
     """Link for navigating to ``Export Orders`` view.
     """
+    id = 'shop_export_orders_link'
+    group = 'shop_export_group'
     permission = EXPORT_ORDERS
     title = _('exportorders', default=u'Export Orders')
     order = 40
@@ -362,6 +474,8 @@ class ExportOrdersLink(ShopNavigationLink):
 class ExportOrdersInContext(ShopNavigationLink):
     """Link for navigating to ``Export Context Orders`` view.
     """
+    id = 'shop_export_orders_in_context_link'
+    group = 'shop_export_group'
     permission = EXPORT_ORDERS
     title = _('exportorders_item', default=u'Export Orders on this Item')
     order = 41
@@ -394,6 +508,8 @@ class ExportOrdersInContext(ShopNavigationLink):
 class ExportOrdersInContainerLink(ExportOrdersInContext):
     """Link for navigating to ``Export Orders in Container`` view.
     """
+    id = 'shop_export_orders_in_container_link'
+    group = 'shop_export_group'
     title = _(
         'exportorders_in_container',
         default=u'Export Orders in Container'
@@ -420,9 +536,17 @@ class ExportOrdersInContainerLink(ExportOrdersInContext):
 # mail templates related
 ###############################################################################
 
+class MailTemaplatesGroup(ShopNavigationGroup):
+    id = 'shop_mailtemplates_group'
+    title = _('mailtemplates', default=u'Mail Templates')
+    order = 50
+
+
 class MailTemplatesLink(ShopNavigationLink):
     """Link for navigating to ``Mail Templates`` view.
     """
+    id = 'shop_mail_templates_link'
+    group = 'shop_mailtemplates_group'
     permission = MANAGE_TEAMPLETS
     order = 50
     cssclass = 'mailtemplates'
@@ -456,9 +580,17 @@ class MailTemplatesLink(ShopNavigationLink):
 # discount related
 ###############################################################################
 
+class DiscountGroup(ShopNavigationGroup):
+    id = 'shop_discount_group'
+    title = _('discount', default=u'Discount')
+    order = 60
+
+
 class CartDiscountLink(ShopNavigationLink):
     """Link for navigating to ``Cart Discount`` view.
     """
+    id = 'shop_cart_discount_link'
+    group = 'shop_discount_group'
     permission = MANAGE_DISCOUNT
     title = _('cart_discount', default=u'Cart Discount')
     order = 60
@@ -476,6 +608,8 @@ class CartDiscountLink(ShopNavigationLink):
 class CartItemDiscountLink(ShopNavigationLink):
     """Link for navigating to ``Item Discount`` view.
     """
+    id = 'shop_item_discount_link'
+    group = 'shop_discount_group'
     permission = MANAGE_DISCOUNT
     title = _('item_discount', default=u'Item Discount')
     order = 61
@@ -499,6 +633,8 @@ class CartItemDiscountLink(ShopNavigationLink):
 class CartItemDiscountInContainerLink(CartItemDiscountLink):
     """Link for navigating to ``Item Discount in Container`` view.
     """
+    id = 'shop_item_discount_in_container_link'
+    group = 'shop_discount_group'
     title = _(
         'item_discount_in_container',
         default=u'Item Discount in Container'
@@ -525,9 +661,17 @@ class CartItemDiscountInContainerLink(CartItemDiscountLink):
 # control panel related
 ###############################################################################
 
+class AdministrationGroup(ShopNavigationGroup):
+    id = 'shop_administration_group'
+    title = _('administration', default=u'Administration')
+    order = 70
+
+
 class ControlPanelLink(ShopNavigationLink):
     """Link for navigating to ``Shop Control Panel`` view.
     """
+    id = 'shop_control_panel_link'
+    group = 'shop_administration_group'
     permission = MANAGE_SHOP
     order = 70
     cssclass = 'controlpanel'

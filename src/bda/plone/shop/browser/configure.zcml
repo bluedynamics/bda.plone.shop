@@ -100,6 +100,15 @@
     renderer=".admin.ShopAdminRenderer"
     addview=".admin.ShopAdminAddForm" />
 
+  <!-- shop navigation groups -->
+  <adapter name="orders" factory=".navigation.OrdersGroup" />
+  <adapter name="bookings" factory=".navigation.BookingsGroup" />
+  <adapter name="contacts" factory=".navigation.ContactsGroup" />
+  <adapter name="export" factory=".navigation.ExportGroup" />
+  <adapter name="mail_templates" factory=".navigation.MailTemaplatesGroup" />
+  <adapter name="discount" factory=".navigation.DiscountGroup" />
+  <adapter name="administration" factory=".navigation.AdministrationGroup" />
+
   <!-- shop navigation links -->
   <adapter name="orders" factory=".navigation.OrdersLink" />
   <adapter name="orders_in_context" factory=".navigation.OrdersInContextLink" />
@@ -167,5 +176,18 @@
     name="bda.plone.shop.css.map"
     file="shop_p5.css.map"
     layer="..interfaces.IShopExtensionLayer" />
+
+  <browser:menu
+    zcml:condition="have plone-5"
+    id="shop_toolbar_menu"
+    title="Shop"
+    class=".toolbar.ShopMenu" />
+
+  <adapter
+    zcml:condition="have plone-5"
+    for="* *"
+    name="shop_toolbar_menu_item"
+    factory=".toolbar.ShopSubMenuItem"
+    provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
 
 </configure>
