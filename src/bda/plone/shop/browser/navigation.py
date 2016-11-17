@@ -91,7 +91,7 @@ class ShopNavigationLink(object):
         container = aq_parent(context)
         to_adapt = container, self.request
         default_page = getMultiAdapter(to_adapt, name='default_page')
-        return default_page.getDefaultPage(container) is context
+        return default_page.getDefaultPage() is context
 
 
 class ShopNavigation(object):
@@ -121,19 +121,6 @@ class ShopNavigation(object):
 # orders related
 ###############################################################################
 
-class MyOrdersLink(ShopNavigationLink):
-    """Link for navigating to ``My Orders`` view.
-    """
-    permission = VIEW_OWN_ORDERS
-    title = _('my_orders', default=u'My Orders')
-    order = 20
-    cssclass = 'myorders'
-
-    def __init__(self, context, request):
-        super(MyOrdersLink, self).__init__(context, request)
-        self.url = '{}/@@myorders'.format(api.portal.get().absolute_url())
-
-
 class OrdersLink(ShopNavigationLink):
     """Link for navigating to ``Global Orders`` view.
     """
@@ -142,26 +129,24 @@ class OrdersLink(ShopNavigationLink):
     cssclass = 'orders'
 
     def __init__(self, context, request):
+        # acquire desired context
+        context = self.acquire_context(context, interfaces=[ISite, IVendor])
+        # call super class constructor
         super(OrdersLink, self).__init__(context, request)
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
-        context = self.acquire_context(context, interfaces=[ISite, IVendor])
+        # set title by context interface
         if IPloneSiteRoot.providedBy(context):
-            self.title = _(
-                'orders_global',
-                default=u'Orders (global)'
-            )
+            self.title = _('orders_global', default=u'Orders (global)')
         elif ISite.providedBy(context):
-            self.title = _(
-                'orders_site',
-                default=u'Orders (site-wide)'
-            )
+            self.title = _('orders_site', default=u'Orders (site-wide)')
         elif IVendor.providedBy(context):
             self.title = _(
                 'orders_vendor',
                 default=u'Orders (vendor specific)'
             )
+        # set target URL
         self.url = '{}/@@orders'.format(context.absolute_url())
 
 
@@ -174,18 +159,54 @@ class OrdersInContextLink(ShopNavigationLink):
     cssclass = 'orders'
 
     def __init__(self, context, request):
+        # acquire desired context
+        interfaces = [IBuyable, IFolder, ISite]
+        context = self.acquire_context(context, interfaces=interfaces)
+        # call super class constructor
         super(OrdersInContextLink, self).__init__(context, request)
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
-        # XXX: catalog query -> IBuyable contained in path
-        #      of not, display False
-        # Go to appropriate context
-        if not IBuyable.providedBy(context) \
-                and not IFolder.providedBy(context) \
-                and not IPloneSiteRoot.providedBy(context):
-            context = aq_parent(aq_inner(context))
+        # check if buyables in context
+        if self.display and not self.buyables_in_context(context):
+            self.display = False
+        # set target URL
         self.url = '{}/@@orders'.format(context.absolute_url())
+
+
+class OrdersInContainerLink(OrdersInContextLink):
+    """Link for navigating to ``Container Orders`` view.
+    """
+    title = _('orders_in_container', default=u'Orders in Container')
+    order = 12
+
+    def __init__(self, context, request):
+        # check whether context is default page in folder
+        self.request = request
+        if self.context_is_default_page(context):
+            context = aq_parent(aq_inner(context))
+        else:
+            self.display = False
+            return
+        # call super class constructor
+        super(OrdersInContextLink, self).__init__(context, request)
+
+
+class MyOrdersLink(ShopNavigationLink):
+    """Link for navigating to ``My Orders`` view.
+    """
+    permission = VIEW_OWN_ORDERS
+    title = _('my_orders', default=u'My Orders')
+    order = 13
+    cssclass = 'myorders'
+
+    def __init__(self, context, request):
+        # acquire desired context
+        context = self.acquire_context(context, interfaces=[ISite])
+        # call super class constructor
+        super(MyOrdersLink, self).__init__(context, request)
+        # set target URL
+        self.url = '{}/@@myorders'.format(context.absolute_url())
 
 
 ###############################################################################
@@ -196,30 +217,28 @@ class BookingsLink(ShopNavigationLink):
     """Link for navigating to ``Global Bookings`` view.
     """
     permission = VIEW_ORDERS
-    order = 21
+    order = 20
     cssclass = 'bookings'
 
     def __init__(self, context, request):
+        # acquire desired context
+        context = self.acquire_context(context, interfaces=[ISite, IVendor])
+        # call super class constructor
         super(BookingsLink, self).__init__(context, request)
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
-        context = self.acquire_context(context, interfaces=[ISite, IVendor])
+        # set title by context interface
         if IPloneSiteRoot.providedBy(context):
-            self.title = _(
-                'bookings_global',
-                default=u'Bookings (global)'
-            )
+            self.title = _('bookings_global', default=u'Bookings (global)')
         elif ISite.providedBy(context):
-            self.title = _(
-                'bookings_site',
-                default=u'Bookings (site-wide)'
-            )
+            self.title = _('bookings_site', default=u'Bookings (site-wide)')
         elif IVendor.providedBy(context):
             self.title = _(
                 'bookings_vendor',
                 default=u'Bookings (vendor specific)'
             )
+        # set target URL
         self.url = '{}/@@bookings'.format(context.absolute_url())
 
 
@@ -228,22 +247,41 @@ class BookingsInContextLink(ShopNavigationLink):
     """
     permission = VIEW_ORDERS
     title = _('bookings_in_context', default=u'Bookings in Context')
-    order = 22
+    order = 21
     cssclass = 'bookings'
 
     def __init__(self, context, request):
+        # acquire desired context
+        interfaces = [IBuyable, IFolder, ISite]
+        context = self.acquire_context(context, interfaces=interfaces)
+        # call super class constructor
         super(BookingsInContextLink, self).__init__(context, request)
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
-        # XXX: catalog query -> IBuyable contained in path
-        #      of not, display False
-        # Go to appropriate context
-        if not IBuyable.providedBy(context) \
-                and not IFolder.providedBy(context) \
-                and not IPloneSiteRoot.providedBy(context):
-            context = aq_parent(aq_inner(context))
+        # check if buyables in context
+        if self.display and not self.buyables_in_context(context):
+            self.display = False
+        # set target URL
         self.url = '{}/@@bookings'.format(context.absolute_url())
+
+
+class BookingsInContainerLink(BookingsInContextLink):
+    """Link for navigating to ``Container Bookings`` view.
+    """
+    title = _('bookings_in_container', default=u'Bookings in Container')
+    order = 22
+
+    def __init__(self, context, request):
+        # check whether context is default page in folder
+        self.request = request
+        if self.context_is_default_page(context):
+            context = aq_parent(aq_inner(context))
+        else:
+            self.display = False
+            return
+        # call super class constructor
+        super(BookingsInContainerLink, self).__init__(context, request)
 
 
 ###############################################################################
@@ -255,15 +293,19 @@ class ContactsLink(ShopNavigationLink):
     """
     permission = VIEW_ORDERS
     title = _('contacts', default=u'Contacts')
-    order = 23
+    order = 30
     cssclass = 'bookings'
 
     def __init__(self, context, request):
+        # acquire desired context
+        context = self.acquire_context(context, interfaces=[ISite])
+        # call super class constructor
         super(ContactsLink, self).__init__(context, request)
         # check if authenticated user is vendor
         if self.display and not get_vendors_for():
             self.display = False
-        self.url = '{}/@@contacts'.format(api.portal.get().absolute_url())
+        # set target URL
+        self.url = '{}/@@contacts'.format(context.absolute_url())
 
 
 ###############################################################################
@@ -275,32 +317,63 @@ class ExportOrdersLink(ShopNavigationLink):
     """
     permission = EXPORT_ORDERS
     title = _('exportorders', default=u'Export Orders')
-    order = 30
+    order = 40
     cssclass = 'export_orders'
 
     def __init__(self, context, request):
+        # acquire desired context
+        context = self.acquire_context(context, interfaces=[ISite])
+        # call super class constructor
         super(ExportOrdersLink, self).__init__(context, request)
-        self.url = '{}/@@exportorders'.format(api.portal.get().absolute_url())
+        # set target URL
+        self.url = '{}/@@exportorders'.format(context.absolute_url())
 
 
-class ExportOrdersItemLink(ShopNavigationLink):
+class ExportOrdersInContext(ShopNavigationLink):
     """Link for navigating to ``Export Context Orders`` view.
     """
     permission = EXPORT_ORDERS
     title = _('exportorders_item', default=u'Export Orders on this Item')
-    order = 40
+    order = 41
     cssclass = 'export_orders_item'
 
     def __init__(self, context, request):
-        super(ExportOrdersItemLink, self).__init__(context, request)
-        # XXX: catalog query -> IBuyable contained in path
-        #      of not, display False
-        if IPloneSiteRoot.providedBy(context):
+        # acquire desired context
+        interfaces = [IBuyable, IFolder, ISite]
+        context = self.acquire_context(context, interfaces=interfaces)
+        # call super class constructor
+        super(ExportOrdersInContext, self).__init__(context, request)
+        # do not display on site
+        if self.display and ISite.providedBy(context):
+            self.display = False
+        # check if buyables in context
+        if self.display and not self.buyables_in_context(context):
+            self.display = False
+        # set target URL
+        self.url = '{}/@@exportorders_contextual'.format(
+            context.absolute_url()
+        )
+
+
+class ExportOrdersInContainerLink(ExportOrdersInContext):
+    """Link for navigating to ``Export Orders in Container`` view.
+    """
+    title = _(
+        'exportorders_in_container',
+        default=u'Export Orders in Container'
+    )
+    order = 42
+
+    def __init__(self, context, request):
+        # check whether context is default page in folder
+        self.request = request
+        if self.context_is_default_page(context):
+            context = aq_parent(aq_inner(context))
+        else:
             self.display = False
             return
-        self.url = '{}/@@exportorders_contextual'.format(
-            self.context.absolute_url()
-        )
+        # call super class constructor
+        super(ExportOrdersInContainerLink, self).__init__(context, request)
 
 
 ###############################################################################
@@ -315,8 +388,11 @@ class MailTemplatesLink(ShopNavigationLink):
     cssclass = 'mailtemplates'
 
     def __init__(self, context, request):
-        super(MailTemplatesLink, self).__init__(context, request)
+        # acquire desired context
         context = self.acquire_context(context, interfaces=[ISite, IVendor])
+        # call super class constructor
+        super(MailTemplatesLink, self).__init__(context, request)
+        # set title by context interface
         if IPloneSiteRoot.providedBy(context):
             self.title = _(
                 'mailtemplates_global',
@@ -332,6 +408,7 @@ class MailTemplatesLink(ShopNavigationLink):
                 'mailtemplates_vendor',
                 default=u'Notification Templates (vendor specific)'
             )
+        # set target URL
         self.url = '{}/@@mailtemplates'.format(context.absolute_url())
 
 
@@ -348,9 +425,11 @@ class CartDiscountLink(ShopNavigationLink):
     cssclass = 'cart_discount'
 
     def __init__(self, context, request):
+        # acquire desired context
+        context = self.acquire_context(context, interfaces=[ISite])
+        # call super class constructor
         super(CartDiscountLink, self).__init__(context, request)
-        if self.display:
-            self.display = ISite.providedBy(context)
+        # set target URL
         self.url = '{}/@@cart_discount'.format(context.absolute_url())
 
 
@@ -359,31 +438,62 @@ class CartItemDiscountLink(ShopNavigationLink):
     """
     permission = MANAGE_DISCOUNT
     title = _('item_discount', default=u'Item Discount')
-    order = 70
+    order = 61
     cssclass = 'item_discount'
 
     def __init__(self, context, request):
+        # acquire desired context
+        interfaces = [IBuyable, IFolder, ISite]
+        context = self.acquire_context(context, interfaces=interfaces)
+        # call super class constructor
         super(CartItemDiscountLink, self).__init__(context, request)
+        # check whether context is site or discount settings are enabled on
+        # context
         if self.display:
             self.display = ISite.providedBy(context) \
                 or IDiscountSettingsEnabled.providedBy(context)
+        # set target URL
         self.url = '{}/@@item_discount'.format(context.absolute_url())
+
+
+class CartItemDiscountInContainerLink(CartItemDiscountLink):
+    """Link for navigating to ``Item Discount in Container`` view.
+    """
+    title = _(
+        'item_discount_in_container',
+        default=u'Item Discount in Container'
+    )
+    order = 62
+
+    def __init__(self, context, request):
+        # check whether context is default page in folder
+        self.request = request
+        if self.context_is_default_page(context):
+            context = aq_parent(aq_inner(context))
+        else:
+            self.display = False
+            return
+        # call super class constructor
+        super(CartItemDiscountInContainerLink, self).__init__(context, request)
 
 
 ###############################################################################
 # control panel related
 ###############################################################################
 
-class ControlpanelLink(ShopNavigationLink):
-    """Link for navigating to ``Shop Controlpanel`` view.
+class ControlPanelLink(ShopNavigationLink):
+    """Link for navigating to ``Shop Control Panel`` view.
     """
     permission = MANAGE_SHOP
-    order = 50
+    order = 70
     cssclass = 'controlpanel'
 
     def __init__(self, context, request):
-        super(ControlpanelLink, self).__init__(context, request)
+        # acquire desired context
         context = self.acquire_context(context, interfaces=[ISite])
+        # call super class constructor
+        super(ControlPanelLink, self).__init__(context, request)
+        # set title by context interface
         if IPloneSiteRoot.providedBy(context):
             self.title = _(
                 'shop_controlpanel_global',
@@ -394,4 +504,5 @@ class ControlpanelLink(ShopNavigationLink):
                 'shop_controlpanel_site',
                 default=u'Shop Controlpanel (site-wide)'
             )
+        # set target URL
         self.url = '{}/@@shop_controlpanel'.format(context.absolute_url())

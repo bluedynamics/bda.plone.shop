@@ -102,17 +102,27 @@
 
   <!-- shop navigation links -->
   <adapter name="orders" factory=".navigation.OrdersLink" />
-  <adapter name="ordersincontext" factory=".navigation.OrdersInContextLink" />
+  <adapter name="orders_in_context" factory=".navigation.OrdersInContextLink" />
+  <adapter name="orders_in_container" factory=".navigation.OrdersInContainerLink" />
   <adapter name="myorders" factory=".navigation.MyOrdersLink" />
+
   <adapter name="bookings" factory=".navigation.BookingsLink" />
-  <adapter name="bookingsincontext" factory=".navigation.BookingsInContextLink" />
+  <adapter name="bookings_in_context" factory=".navigation.BookingsInContextLink" />
+  <adapter name="bookings_in_container" factory=".navigation.BookingsInContainerLink" />
+
   <adapter name="contacts" factory=".navigation.ContactsLink" />
-  <adapter name="exportorders" factory=".navigation.ExportOrdersLink" />
-  <adapter name="exportorders_item" factory=".navigation.ExportOrdersItemLink" />
-  <adapter name="mailtemplates" factory=".navigation.MailTemplatesLink" />
+
+  <adapter name="export_orders" factory=".navigation.ExportOrdersLink" />
+  <adapter name="export_orders_in_context" factory=".navigation.ExportOrdersInContext" />
+  <adapter name="export_orders_in_container" factory=".navigation.ExportOrdersInContainerLink" />
+
+  <adapter name="mail_templates" factory=".navigation.MailTemplatesLink" />
+
   <adapter name="cart_discount" factory=".navigation.CartDiscountLink" />
   <adapter name="item_discount" factory=".navigation.CartItemDiscountLink" />
-  <adapter name="controlpanel" factory=".navigation.ControlpanelLink" />
+  <adapter name="item_discount_in_container" factory=".navigation.CartItemDiscountInContainerLink" />
+
+  <adapter name="control_panel" factory=".navigation.ControlPanelLink" />
 
   <!-- controlpanel -->
   <browser:page
