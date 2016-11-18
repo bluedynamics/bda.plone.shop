@@ -291,7 +291,8 @@ class IShippingBehavior(model.Schema):
         label=u"Shop",
         fields=[
             'shipping_item_shippable',
-            'shipping_item_weight'
+            'shipping_item_weight',
+            'shipping_item_free_shipping'
         ]
     )
 
@@ -306,6 +307,13 @@ class IShippingBehavior(model.Schema):
     shipping_item_weight = schema.Float(
         title=_(u'label_shipping_item_weight', default=u'Item Weight'),
         required=False
+    )
+
+    shipping_item_free_shipping = schema.Bool(
+        title=_(u'label_shipping_item_free_shipping',
+                default=u'Free Shipping'),
+        description=_('help_shipping_item_free_shipping',
+                      default=u'Flag whether shipping of this item is free.')
     )
 
 
@@ -325,6 +333,10 @@ class DXShippingItem(object):
     @property
     def weight(self):
         return self.context.shipping_item_weight
+
+    @property
+    def free_shipping(self):
+        return self.context.shipping_item_free_shipping
 
 
 @adapter(IDexterityContent)

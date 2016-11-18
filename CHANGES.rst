@@ -4,6 +4,10 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Implement ``IShippingItem.free_shipping`` for AT and DX. Consider this flag
+  in conjunction with item shipping costs in ``DefaultShipping``.
+  [rnix]
+
 - Do not add shop admin portlet assignment on install in Plone 5
   [rnix]
 

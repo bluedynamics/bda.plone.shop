@@ -400,6 +400,17 @@ class ShippingExtender(ExtenderBase):
                         default=u'Item Weight'),
             ),
         ),
+        XBooleanField(
+            name='shipping_item_free_shipping',
+            schemata='Shop',
+            widget=BooleanField._properties['widget'](
+                label=_(u'label_shipping_item_free_shipping',
+                        default=u'Free Shipping'),
+                description=_('help_shipping_item_free_shipping',
+                              default=u'Flag whether shipping of this item '
+                                      u'is free.'),
+            ),
+        ),
     ]
 
 
@@ -419,6 +430,10 @@ class ATShippingItem(object):
     @property
     def weight(self):
         return field_value(self.context, 'shipping_item_weight')
+
+    @property
+    def free_shipping(self):
+        return field_value(self.context, 'shipping_item_free_shipping')
 
 
 @adapter(IBaseObject)

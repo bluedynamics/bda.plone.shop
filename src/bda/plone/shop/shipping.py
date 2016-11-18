@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from bda.plone.cart import cart_item_shippable
 from bda.plone.cart import CURRENCY_LITERALS
+from bda.plone.cart import cart_item_free_shipping
+from bda.plone.cart import cart_item_shippable
 from bda.plone.shipping import Shipping
 from bda.plone.shipping.interfaces import IShippingSettings
 from bda.plone.shop import message_factory as _
@@ -12,8 +13,8 @@ from decimal import Decimal
 from zope.component import adapter
 from zope.deprecation import deprecated
 from zope.i18nmessageid import Message
-from zope.interface import implementer
 from zope.interface import Interface
+from zope.interface import implementer
 
 
 @implementer(IShippingSettings)
@@ -169,6 +170,8 @@ class DefaultShipping(Shipping):
         if item_shipping_cost > Decimal(0):
             for item in items:
                 if not cart_item_shippable(self.context, item):
+                    continue
+                if cart_item_free_shipping(self.context, item):
                     continue
                 shipping_costs += item_shipping_cost * item[1]
         # consider flat shipping cost if set
