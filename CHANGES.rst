@@ -4,8 +4,14 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Do not add shop admin portlet assignment on install in Plone 5
+  [rnix]
+
+- Implement shop navigation menu for Plone 5 toolbar.
+  [rnix]
+
 - Move shop portlet related link implementations to
-  ``bda.plone.shop.browser.navigation``
+  ``bda.plone.shop.browser.navigation``.
   [rnix]
 
 - use MwSt. instead of Ust. in german
