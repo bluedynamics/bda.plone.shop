@@ -10,6 +10,7 @@ from bda.plone.shop import message_factory as _
 from operator import attrgetter
 from plone import api
 from plone.folder.interfaces import IFolder
+from zope.annotation import IAnnotations
 from zope.component import adapter
 from zope.component import getAdapters
 from zope.component import getMultiAdapter
@@ -19,6 +20,53 @@ from zope.interface import Interface
 from zope.interface import implementer
 from zope.publisher.interfaces.browser import IBrowserRequest
 from zope.security import checkPermission
+
+
+###############################################################################
+# interfaces
+###############################################################################
+
+class IShopNavigationLink(Interface):
+    """Adapter interface for providing shop navigation links.
+    """
+    id = Attribute(u"Link ID")
+    group = Attribute(u"Navigation group ID")
+    permission = Attribute(u"Permissions a user must have on context to view "
+                           u"this link")
+    display = Attribute(u"Flag whether to display this link")
+    url = Attribute(u"Target URL of this link")
+    title = Attribute(u"Title of this link")
+    order = Attribute(u"Order in which this link gets rendered")
+    cssclass = Attribute(u"Additional CSS class to render")
+
+
+class IShopNavigationGroup(Interface):
+    """Adapter interface for providing shop navigation groups.
+    """
+    id = Attribute(u"Group ID")
+    title = Attribute(u"Group Title")
+    order = Attribute(u"Group rendering order")
+    available = Attribute(u"Flag whether group navigation links are available")
+
+    def links():
+        """Sorted list of ``IShopNavigationLink`` implementing instances
+        related to this group.
+        """
+
+
+class IShopNavigation(Interface):
+    """Interface for providing shop navigation API.
+    """
+    available = Attribute(u"Flag whether navigation links are available")
+
+    def links():
+        """Sorted list of ``IShopNavigationLink`` implementing instances
+        regardless of group.
+        """
+
+    def groups():
+        """Sorted list of ``IShopNavigationGroup`` implementing instances.
+        """
 
 
 ###############################################################################
@@ -33,18 +81,30 @@ MANAGE_DISCOUNT = 'bda.plone.discount.ManageDiscount'
 MANAGE_SHOP = 'cmf.ManagePortal'
 
 
-class IShopNavigationLink(Interface):
-    """Adapter interface for providing shop navigation links.
+class NavigationItemLookupMixin(object):
+    """Mixin for navigation links related item lookup.
     """
-    id = Attribute(u"Link ID")
-    group = Attribute(u"ShopNavigationGroup instance")
-    permission = Attribute(u"Permissions a user must have on contextto view "
-                           u"this link")
-    display = Attribute(u"Flag whether to display this link")
-    url = Attribute(u"Target URL of this link")
-    title = Attribute(u"Title of this link")
-    order = Attribute(u"Order in which this link gets rendered")
-    cssclass = Attribute(u"Additional CSS class to render")
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def lookup_navigation_items(self, interface):
+        """Lookup navigation items by interface.
+        """
+        cache = IAnnotations(self.request)
+        cache_key = 'NavigationItemLookupMixin.lookup_navigation_items.{}'
+        cache_key = cache_key.format(interface.__name__)
+        cached = cache.get(cache_key)
+        if cached is not None:
+            return cached
+
+        def unsorted_items():
+            to_adapt = self.context, self.request
+            for _, link in getAdapters(to_adapt, interface):
+                yield link
+        cache[cache_key] = sorted(unsorted_items(), key=attrgetter('order'))
+        return cache[cache_key]
 
 
 @implementer(IShopNavigationLink)
@@ -105,40 +165,6 @@ class ShopNavigationLink(object):
         return default_page.getDefaultPage() == context.getId()
 
 
-class NavigationItemLookupMixin(object):
-    """Mixin for navigation links related item lookup
-    """
-
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-    def lookup_navigation_items(self, interface):
-        """Lookup navigation items by interface.
-
-        XXX: cache result on request by interface
-        """
-        def unsorted_items():
-            to_adapt = self.context, self.request
-            for _, link in getAdapters(to_adapt, interface):
-                yield link
-        return sorted(unsorted_items(), key=attrgetter('order'))
-
-
-class IShopNavigationGroup(Interface):
-    """Interface for providing shop navigation groups.
-    """
-    id = Attribute(u"Navigation Group ID")
-    title = Attribute(u"Navigation Group Title")
-    order = Attribute(u"Navigation Group Rendering Order")
-    available = Attribute(u"Flag whether group navigation links are available")
-
-    def links():
-        """Sorted list of ``IShopNavigationLink`` implementing instances
-        related to this group.
-        """
-
-
 @implementer(IShopNavigationGroup)
 @adapter(Interface, IBrowserRequest)
 class ShopNavigationGroup(NavigationItemLookupMixin):
@@ -156,20 +182,6 @@ class ShopNavigationGroup(NavigationItemLookupMixin):
         for link in self.lookup_navigation_items(IShopNavigationLink):
             if link.display and link.group == self.id:
                 yield link
-
-
-class IShopNavigation(Interface):
-    """Interface for providing shop navigation API.
-    """
-    available = Attribute(u"Flag whether navigation links are available")
-
-    def links():
-        """Sorted list of ``IShopNavigationLink`` implementing instances.
-        """
-
-    def groups():
-        """Sorted list of ``IShopNavigationGroup`` implementing instances.
-        """
 
 
 @implementer(IShopNavigation)
