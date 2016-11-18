@@ -165,17 +165,25 @@ class DefaultShipping(Shipping):
             return Decimal(0)
         flat_shipping_cost = Decimal(str(settings.flat_shipping_cost))
         item_shipping_cost = Decimal(str(settings.item_shipping_cost))
+        # flag whether all items have free shipping flag set
+        all_items_free_shipping = True
         shipping_costs = Decimal(0)
         # item shipping costs set, calculate for contained cart items
         if item_shipping_cost > Decimal(0):
             for item in items:
+                # ignore item if not shippable
                 if not cart_item_shippable(self.context, item):
                     continue
+                # ignore item if free shipping set
                 if cart_item_free_shipping(self.context, item):
                     continue
+                # as soon as one item in cart has no free shipping,
+                # all_items_free_shipping is False
+                all_items_free_shipping = False
                 shipping_costs += item_shipping_cost * item[1]
-        # consider flat shipping cost if set
-        if flat_shipping_cost:
+        # consider flat shipping cost if set, gets ignored if all items
+        # have free shipping set
+        if flat_shipping_cost and not all_items_free_shipping:
             # item shipping costs exceed flat shipping costs
             if shipping_costs > flat_shipping_cost:
                 return shipping_costs
