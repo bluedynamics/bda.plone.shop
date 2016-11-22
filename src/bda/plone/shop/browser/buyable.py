@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from AccessControl import getSecurityManager
+from bda.plone.cart import CURRENCY_LITERALS
 from bda.plone.cart import get_data_provider
 from bda.plone.cart import get_item_availability
 from bda.plone.cart import get_item_data_provider
@@ -65,7 +66,14 @@ class BuyableControls(BrowserView, DataProviderMixin):
 
     @property
     def currency(self):
-        return self._cart_data.currency
+        data_provider = self._cart_data
+        currency = data_provider.currency
+        show_currency = data_provider.show_currency
+        if show_currency == 'yes':
+            return currency
+        if show_currency == 'symbol':
+            return CURRENCY_LITERALS[currency]
+        return ''
 
     @property
     def item_uid(self):
