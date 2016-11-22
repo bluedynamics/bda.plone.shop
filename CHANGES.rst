@@ -4,6 +4,9 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Fix display of currency in buyable viewlet based on shop settings
+  [agitator]
+
 - Implement ``IShippingItem.free_shipping`` for AT and DX. Consider this flag
   in conjunction with item shipping costs in ``DefaultShipping``.
   [rnix]
