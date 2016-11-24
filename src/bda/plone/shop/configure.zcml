@@ -70,9 +70,11 @@
   <!-- cash and carry shipping -->
   <adapter name="cash_and_carry" factory=".shipping.CashAndCarryShipping" />
 
-  <!-- flat rate shipping (B/C, default shipping offers same functionality)
+  <!-- flat rate shipping (B/C, default shipping offers same functionality) -->
+  <!--
   <adapter name="flat_rate" factory=".shipping.FlatRate" />
   -->
+
   <!-- cart related adapters -->
   <adapter factory=".cartdata.CartDataProvider" />
   <adapter factory=".cartdata.CartItemState" />

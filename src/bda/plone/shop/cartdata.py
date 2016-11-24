@@ -81,6 +81,8 @@ class CartItemCalculator(object):
                 obj = api.content.get(UID=uid)
             except ValueError:
                 continue
+            if obj is None:
+                continue
             data = get_item_data_provider(obj)
             discount_net = data.discount_net(count)
             item_net = Decimal(str(data.net)) - discount_net
@@ -96,6 +98,8 @@ class CartItemCalculator(object):
                 obj = api.content.get(UID=uid)
             except ValueError:
                 continue
+            if obj is None:
+                continue
             data = get_item_data_provider(obj)
             discount_net = data.discount_net(count)
             item_net = Decimal(str(data.net)) - discount_net
@@ -110,6 +114,8 @@ class CartItemCalculator(object):
             try:
                 obj = api.content.get(UID=uid)
             except ValueError:
+                continue
+            if obj is None:
                 continue
             shipping = IShippingItem(obj)
             item_weight = shipping.weight
@@ -240,6 +246,9 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             try:
                 obj = api.content.get(UID=uid)
             except ValueError:
+                remove_item_from_cart(self.request, uid)
+                continue
+            if obj is None:
                 remove_item_from_cart(self.request, uid)
                 continue
             if not sm.checkPermission(permissions.BuyItems, obj):

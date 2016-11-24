@@ -4,6 +4,9 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Fix error if item from cart cookie not found.
+  [rnix]
+
 - Fix display of currency in buyable viewlet based on shop settings
   [agitator]
 

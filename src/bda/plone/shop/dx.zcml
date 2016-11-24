@@ -9,7 +9,7 @@
     name="bda.shop.buyable"
     description="Makes content type buyable."
     provides=".dx.IBuyableBehavior"
-   />
+  />
 
   <plone:behavior
     title="Shop: Stock Behavior"
