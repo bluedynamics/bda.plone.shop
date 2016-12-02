@@ -181,6 +181,9 @@ class DefaultShipping(Shipping):
                 # all_items_free_shipping is False
                 all_items_free_shipping = False
                 shipping_costs += item_shipping_cost * item[1]
+        # calculate flat shipping costs anyway if no item shipping costs
+        else:
+            all_items_free_shipping = False
         # consider flat shipping cost if set, gets ignored if all items
         # have free shipping set
         if flat_shipping_cost and not all_items_free_shipping:
