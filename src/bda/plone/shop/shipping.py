@@ -2,10 +2,10 @@
 from bda.plone.cart import CURRENCY_LITERALS
 from bda.plone.cart import cart_item_free_shipping
 from bda.plone.cart import cart_item_shippable
+from bda.plone.cart import get_data_provider
 from bda.plone.shipping import Shipping
 from bda.plone.shipping.interfaces import IShippingSettings
 from bda.plone.shop import message_factory as _
-from bda.plone.shop.cartdata import CartItemCalculator
 from bda.plone.shop.utils import format_amount
 from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_shipping_settings
@@ -150,16 +150,16 @@ class DefaultShipping(Shipping):
 
     def net(self, items):
         settings = get_shop_shipping_settings()
-        calc = CartItemCalculator(self.context)
+        cart_data = get_data_provider(self.context)
         shipping_limit_from_gross = settings.shipping_limit_from_gross
         free_shipping_limit = Decimal(str(settings.free_shipping_limit))
         purchase_price = Decimal(0)
         # calculate shipping from gross
         if shipping_limit_from_gross:
-            purchase_price += calc.net(items) + calc.vat(items)
+            purchase_price += cart_data.net(items) + cart_data.vat(items)
         # calculate shipping from net
         else:
-            purchase_price += calc.net(items)
+            purchase_price += cart_data.net(items)
         # purchase price exceeds free shipping limit, no shipping costs
         if free_shipping_limit and purchase_price > free_shipping_limit:
             return Decimal(0)
@@ -230,8 +230,9 @@ class FlatRate(Shipping):
     label = _('flat_rate', 'Flat Rate')
 
     def calculate(self, items):
-        calc = CartItemCalculator(self.context)
-        if calc.net(items) + calc.vat(items) > Decimal(FREE_SHIPPING_LIMIT):
+        cart_data = get_data_provider(self.context)
+        limit = FREE_SHIPPING_LIMIT
+        if cart_data.net(items) + cart_data.vat(items) > Decimal(limit):
             return Decimal(0)
         return Decimal(FLAT_SHIPPING_COST)
 

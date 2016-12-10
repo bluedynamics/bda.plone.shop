@@ -19,6 +19,7 @@ from decimal import Decimal
 from plone import api
 from zope.component import queryAdapter
 from zope.i18n import translate
+import warnings
 
 
 class CartItemCalculator(object):
@@ -26,6 +27,12 @@ class CartItemCalculator(object):
     """
 
     def __init__(self, context):
+        msg = (
+            'The use of ``CartItemCalculator`` is deprecated. '
+            'Please use ``bda.plone.cart.get_data_provider`` instead. '
+            'This class will be removed as of ``bda.plone.shop`` 1.0. '
+        )
+        warnings.warn(msg, DeprecationWarning)
         self.context = context
 
     @property

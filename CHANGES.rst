@@ -4,6 +4,14 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Use ``ICartDataProvider`` adapter lookup instead of ``CartItemCalculator``
+  directly in shipping calculation to ensure possible custom implementation
+  to take effect.
+  [rnix]
+
+- Deprecate use of ``bda.plone.shop.cartdata.CartItemCalculator``.
+  [rnix]
+
 - Fix error if item from cart cookie not found.
   [rnix]
 
