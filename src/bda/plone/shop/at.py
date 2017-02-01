@@ -478,8 +478,8 @@ class ItemNotificationTextExtender(ExtenderBase):
             default_output_type="text/plain",
             widget=TextAreaWidget(
                 label=_(u'label_item_notification_text',
-                        default=u"Notification text for this item in order "
-                                u"confirmation mail"),
+                        default=u"Notification text for this item in the "
+                                u"order confirmation mail"),
             ),
         ),
         XTextField(
@@ -490,8 +490,9 @@ class ItemNotificationTextExtender(ExtenderBase):
             default_output_type="text/plain",
             widget=TextAreaWidget(
                 label=_(u'label_item_overbook_notification_text',
-                        default=u"Notification text for this item in order "
-                                u"confirmation mail if item out of stock"),
+                        default=u"Notification text for this item in the "
+                                u"order confirmation mail if item is out "
+                                u"of stock"),
             ),
         ),
     ]
@@ -513,8 +514,7 @@ class GlobalNotificationTextExtender(ExtenderBase):
             widget=TextAreaWidget(
                 label=_(u'label_item_global_notification_text',
                         default=u"Additional overall notification text for "
-                                u"order confirmation mail if this item "
-                                u"in cart"),
+                                u"the order confirmation mail of this item"),
             ),
         ),
         XTextField(
@@ -525,9 +525,9 @@ class GlobalNotificationTextExtender(ExtenderBase):
             default_output_type="text/plain",
             widget=TextAreaWidget(
                 label=_(u'label_item_global_overbook_notification_text',
-                        default=u"Additional overall notification text for "
-                                u"order confirmation mail if this item "
-                                u"in cart and out of stock"),
+                        default=u"Additional overall notification text for the "
+                                u"order confirmation mail of this item ordered "
+                                u"if out of stock"),
             ),
         ),
     ]

@@ -38,7 +38,7 @@ fi
 #
 # Do we need to merge manual PO entries from a file called manual.pot.
 # this option is later passed to i18ndude
-# 
+#
 if test -e locales/manual.pot; then
         echo "Manual PO entries detected"
         MERGE="--merge locales/manual.pot"
@@ -70,7 +70,7 @@ for lang in $(find locales -mindepth 1 -maxdepth 1 -type d); do
         # but it will happen on start up if you have
         # registered the locales directory in ZCML
         # For more info see http://vincentfretin.ecreall.com/articles/my-translation-doesnt-show-up-in-plone-4
-    
+
         # Compile .po to .mo
         # MO=$lang/LC_MESSAGES/${CATALOGNAME}.mo
         # echo "Compiling $MO"
