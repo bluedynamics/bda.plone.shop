@@ -181,7 +181,10 @@ class BuyableExtender(ExtenderBase):
             name='item_display_gross',
             schemata='Shop',
             widget=BooleanField._properties['widget'](
-                label=_(u'label_item_display_gross', default=u'Display Gross'),
+                label=_(u'label_item_display_gross', default=u'Display Gross Price'),
+                description=_(u'help_item_display_gross',
+                      default=u'Show price with taxes included')
+
             ),
         ),
         XBooleanField(

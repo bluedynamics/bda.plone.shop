@@ -106,7 +106,9 @@ class IBuyableBehavior(model.Schema, IBuyable):
     )
 
     item_display_gross = schema.Bool(
-        title=_(u'label_item_display_gross', default=u'Display Gross'),
+        title=_(u'label_item_display_gross', default=u'Display Gross Price'),
+        description=_(u'help_item_display_gross',
+                      default=u'Show price with taxes included'),
         required=False,
         defaultFactory=default_item_display_gross
     )
@@ -371,7 +373,7 @@ class IItemNotificationTextBehavior(model.Schema):
     order_text = schema.Text(
         title=_(
             u"label_item_notification_text",
-            default=u"Notification text for this item in order confirmation "
+            default=u"Notification text for this item in the order confirmation "
                     u"mail"
         ),
         required=False
@@ -380,8 +382,8 @@ class IItemNotificationTextBehavior(model.Schema):
     overbook_text = schema.Text(
         title=_(
             u"label_item_overbook_notification_text",
-            default=u"Notification text for this item in order confirmation "
-                    u"mail if item out of stock"
+            default=u"Notification text for this item in the order confirmation "
+                    u"mail if item is out of stock"
         ),
         required=False
     )
@@ -400,8 +402,8 @@ class IGlobalNotificationTextBehavior(model.Schema):
     global_order_text = schema.Text(
         title=_(
             u"label_item_global_notification_text",
-            default=u"Additional overall notification text for order "
-                    u"confirmation mail if this item in cart"
+            default=u"Additional overall notification text for the order "
+                    u"confirmation mail of this item"
         ),
         required=False
     )
@@ -409,8 +411,8 @@ class IGlobalNotificationTextBehavior(model.Schema):
     global_overbook_text = schema.Text(
         title=_(
             u"label_item_global_overbook_notification_text",
-            default=u"Additional overall notification text for order "
-                    u"confirmation mail if this item in cart and out of stock"
+            default=u"Additional overall notification text for the order "
+                    u"confirmation mail of this item ordered if out of stock"
         ),
         required=False
     )

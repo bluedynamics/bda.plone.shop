@@ -7,49 +7,49 @@
   <plone:behavior
     title="Shop: Buyable Behavior"
     name="bda.shop.buyable"
-    description="Makes content type buyable."
+    description="Makes a content type buyable."
     provides=".dx.IBuyableBehavior"
   />
 
   <plone:behavior
     title="Shop: Stock Behavior"
     name="bda.shop.stock"
-    description="Manages stock of buyable item."
+    description="Manages stock of buyable items and adds fields for availabilty, overbooking and stock warning threshold."
     provides=".dx.IStockBehavior"
   />
 
   <plone:behavior
     title="Shop: Shipping Behavior"
     name="bda.shop.shipping"
-    description="Manages shipping information of item."
+    description="Defines if an item is shippable and adds additional fields for 'Weight' and 'Free shipping' settings."
     provides=".dx.IShippingBehavior"
   />
 
   <plone:behavior
     title="Shop: Per Item Order Notification Text Behavior"
     name="bda.shop.notificationtext.item"
-    description="Manages notification text of item for order."
+    description="Manages the notification text of an item within the order."
     provides=".dx.IItemNotificationTextBehavior"
   />
 
   <plone:behavior
     title="Shop: Overall Order Notification Text Behavior"
     name="bda.shop.notificationtext.global"
-    description="Manages notification text for whole order."
+    description="Manages the notification text for the whole order."
     provides=".dx.IGlobalNotificationTextBehavior"
   />
 
   <plone:behavior
     title="Shop: Buyable Period Behavior"
     name="bda.shop.buyableperiod"
-    description="Define buyable period for item."
+    description="Adds a effective and expiration date for the period an item is buyable."
     provides=".dx.IBuyablePeriodBehavior"
   />
 
   <plone:behavior
     title="Shop: Trading Behavior"
     name="bda.shop.trading"
-    description="Define trading information for item."
+    description="Add fields for 'Item number' and 'GTIN' item to an item"
     provides=".dx.ITradingBehavior"
   />
 
