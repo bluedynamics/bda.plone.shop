@@ -33,6 +33,9 @@
   min-width: 14em;
   display: none;
 }
+.buyable.viewlet div.availability_details p {
+  margin-bottom: 0;
+}
 .buyable.viewlet div.signal {
   vertical-align: sub;
   border: #ccc 1px solid;
