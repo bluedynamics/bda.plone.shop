@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="context/main_template/macros/master"
+    i18n:domain="plone">
+<body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block use-macro="context/@@listing_view/macros/content-core">
+
+  <metal:entries fill-slot="entries">
+    <metal:block use-macro="context/@@listing_view/macros/entries">
+      <metal:entry fill-slot="entry">
+
+        <article class="tileItem" tal:define="obj item/getObject">
+          <h2 class="tileHeadline" metal:define-macro="listitem">
+            <a class="summary url"
+                tal:attributes="href item_link;
+                                title item_type"
+                tal:content="item_title">
+              Item Title
+            </a>
+          </h2>
+
+          <div metal:use-macro="context/@@listing_view/macros/document_byline"></div>
+
+          <div class="tileImage"
+               tal:condition="item_has_image"
+               tal:attributes="class python: 'tileImage' if item_description else 'tileImageNoFloat'">
+            <a tal:attributes="href item_link">
+              <img tal:define="scales obj/@@images;
+                               scale python:scales.scale('image', 'thumb')"
+                  tal:replace="structure python:scale and scale.tag() or None" />
+            </a>
+          </div>
+
+          <div class="tileBody" tal:condition="item_description">
+            <span class="description" tal:content="item_description">
+              description
+            </span>
+            <a tal:attributes="href item_link"
+                i18n:translate="read_more">
+              Read More&hellip;
+            </a>
+          </div>
+
+          <div class="tileFooter" style="padding-top: 1em;">
+            <div tal:replace="structure python:obj.restrictedTraverse('buyable_controls')()"
+                 tal:on-error="" />
+          </div>
+
+          <div class="visualClear"><!-- --></div>
+
+        </article>
+
+      </metal:entry>
+    </metal:block>
+  </metal:entries>
+
+</metal:block>
+</metal:content-core>
+
+</body>
+</html>

@@ -86,6 +86,8 @@ adapters implementing the following interfaces::
 There exists Archetypes and Dexterity related implementations of these
 adapters among with related Schema Extenders respective Dexterity Behaviors.
 
+For Plone 5 'Summary View' is overriden for folders and collections to show your buyables with controls to add them into the cart.
+
 
 Archetypes
 ----------

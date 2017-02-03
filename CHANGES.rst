@@ -4,6 +4,9 @@ Changelog
 0.10 (unreleased)
 -----------------
 
+- Added buyable_controls to summary_view via override of plone.app.contentypes
+  [agitator]
+
 - Use ``ICartDataProvider`` adapter lookup instead of ``CartItemCalculator``
   directly in shipping calculation to ensure possible custom implementation
   to take effect.
