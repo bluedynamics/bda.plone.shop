@@ -56,6 +56,12 @@
 .buyable.viewlet div.signal.green {
   background-color: green;
 }
+.buyable.viewlet dd.price.original {
+  color:#ae0000;
+  text-decoration:line-through;
+  padding-right:0.2em;
+}
+
 .portletShopAdmin .portletContent ul {
   padding-top: 0.5em!important;
   padding-bottom: 1em!important;
