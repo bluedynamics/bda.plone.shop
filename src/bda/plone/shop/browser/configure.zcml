@@ -25,46 +25,46 @@
     permission="zope2.View"
     layer="..interfaces.IShopExtensionLayer" />
 
-
   <!-- plone.app.contenttypes view override -->
 
   <!-- override for IPloneSiteRoot  -->
-  <!-- <browser:pages
-      zcml:condition="have plone-5"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      class="plone.app.contenttypes.browser.folder.FolderView"
-      layer="..interfaces.IShopExtensionLayer"
-      permission="zope2.View">
+  <!-- XXX: summary listing throws exception on plone root
+  <browser:pages
+    zcml:condition="have plone-5"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class="plone.app.contenttypes.browser.folder.FolderView"
+    layer="..interfaces.IShopExtensionLayer"
+    permission="zope2.View">
+
     <browser:page
-        name="summary_view"
-        template="listing_summary.pt"
-        />
-  </browser:pages> -->
+      name="summary_view"
+      template="listing_summary_p5.pt" />
+  </browser:pages>
+  -->
 
   <browser:pages
-      zcml:condition="have plone-5"
-      for="plone.dexterity.interfaces.IDexterityContainer"
-      class="plone.app.contenttypes.browser.folder.FolderView"
-      layer="..interfaces.IShopExtensionLayer"
-      permission="zope2.View">
+    zcml:condition="have plone-5"
+    for="plone.dexterity.interfaces.IDexterityContainer"
+    class="plone.app.contenttypes.browser.folder.FolderView"
+    layer="..interfaces.IShopExtensionLayer"
+    permission="zope2.View">
+
     <browser:page
-        name="summary_view"
-        template="listing_summary.pt"
-        />
+      name="summary_view"
+      template="listing_summary_p5.pt" />
   </browser:pages>
 
   <browser:pages
-      zcml:condition="have plone-5"
-      for="plone.app.contenttypes.behaviors.collection.ISyndicatableCollection"
-      class="plone.app.contenttypes.browser.collection.CollectionView"
-      layer="..interfaces.IShopExtensionLayer"
-      permission="zope2.View">
-    <browser:page
-        name="summary_view"
-        template="listing_summary.pt"
-        />
-  </browser:pages>
+    zcml:condition="have plone-5"
+    for="plone.app.contenttypes.behaviors.collection.ISyndicatableCollection"
+    class="plone.app.contenttypes.browser.collection.CollectionView"
+    layer="..interfaces.IShopExtensionLayer"
+    permission="zope2.View">
 
+    <browser:page
+      name="summary_view"
+      template="listing_summary_p5.pt" />
+  </browser:pages>
 
   <!-- actions -->
   <!-- enable buyable -->
