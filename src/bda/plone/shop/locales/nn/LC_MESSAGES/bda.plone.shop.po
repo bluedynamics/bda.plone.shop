@@ -1,0 +1,1096 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: nynorsk  oversetting bda shop\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2017-02-06 15:38+0100\n"
+"Last-Translator: Espen Moe-Nilssen <espen@medialog.no>\n"
+"Language-Team: Espen Moe-Nilssen <espen@medialog.no>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: no\n"
+"Language-Name: Norsk\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"Language: nn_NO\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. Default: "Australian Dollar"
+#: bda/plone/shop/vocabularies.py:100
+msgid "AUD"
+msgstr ""
+
+#: bda/plone/shop/profiles/default/actions.xml
+msgid "Activate Buyable on Item"
+msgstr "Kjøp"
+
+#: bda/plone/shop/profiles/default/actions.xml
+msgid "Activate vendor area on this context"
+msgstr ""
+
+#. Default: "Article"
+#: bda/plone/shop/interfaces.py:195
+msgid "Article"
+msgstr "Produkt"
+
+#. Default: "Canadian Dollar"
+#: bda/plone/shop/vocabularies.py:97
+msgid "CAD"
+msgstr ""
+
+#. Default: "Swiss Franc"
+#: bda/plone/shop/vocabularies.py:98
+msgid "CHF"
+msgstr ""
+
+#. Default: "Cart"
+#: bda/plone/shop/interfaces.py:115
+msgid "Cart"
+msgstr ""
+
+#. Default: "Danish Krone"
+#: bda/plone/shop/vocabularies.py:103
+msgid "DKK"
+msgstr ""
+
+#: bda/plone/shop/profiles/default/actions.xml
+msgid "Deactivates Buyable on Item"
+msgstr "Slett"
+
+#: bda/plone/shop/profiles/default/actions.xml
+msgid "Deactivates vendor area on this context"
+msgstr ""
+
+#: bda/plone/shop/profiles/default/actions.xml
+msgid "Disable Vendor Area"
+msgstr ""
+
+#: bda/plone/shop/profiles/default/actions.xml
+msgid "Disables Buyable"
+msgstr "Slett"
+
+#. Default: "Euro"
+#: bda/plone/shop/vocabularies.py:94
+msgid "EUR"
+msgstr ""
+
+#: bda/plone/shop/profiles/default/actions.xml
+msgid "Enable Buyable"
+msgstr "Kjøp"
+
+#: bda/plone/shop/profiles/default/actions.xml
+msgid "Enable Vendor Area"
+msgstr ""
+
+#. Default: "British Pound Sterling"
+#: bda/plone/shop/vocabularies.py:99
+msgid "GBP"
+msgstr ""
+
+#. Default: "Indian Rupee"
+#: bda/plone/shop/vocabularies.py:96
+msgid "INR"
+msgstr ""
+
+#. Default: "Norwegian Krone"
+#: bda/plone/shop/vocabularies.py:101
+msgid "NOK"
+msgstr ""
+
+#. Default: "New Zealand Dollar"
+#: bda/plone/shop/vocabularies.py:105
+msgid "NZD"
+msgstr ""
+
+#. Default: "Notifications"
+#: bda/plone/shop/interfaces.py:439
+msgid "Notifications"
+msgstr "Tilleggsinformasjon"
+
+#. Default: "Payment"
+#: bda/plone/shop/interfaces.py:526
+msgid "Payment"
+msgstr "Betaling"
+
+#: bda/plone/shop/profiles/default/actions.xml
+msgid "Personal Information"
+msgstr "Personleg informasjon"
+
+#: bda/plone/shop/profiles/default/actions.xml
+msgid "Personal Preferences"
+msgstr "Personlege detaljar"
+
+#. Default: "Swedish Krona"
+#: bda/plone/shop/vocabularies.py:102
+msgid "SEK"
+msgstr ""
+
+#. Default: "Shipping"
+#: bda/plone/shop/interfaces.py:285
+msgid "Shipping"
+msgstr "frakt"
+
+#: bda/plone/shop/browser/controlpanel.py:50
+#: bda/plone/shop/profiles/default/controlpanel.xml
+msgid "Shop settings"
+msgstr "Butikk oppset"
+
+#: bda/plone/shop/interfaces.py:387
+msgid "Tax Settings"
+msgstr "Mva oppsett"
+
+#. Default: "US Dollar"
+#: bda/plone/shop/vocabularies.py:95
+msgid "USD"
+msgstr ""
+
+#. Default: "Japanese Yen"
+#: bda/plone/shop/vocabularies.py:104
+msgid "YEN"
+msgstr ""
+
+#. Default: "add to cart"
+#: bda/plone/shop/browser/buyable.pt:108
+msgid "add_to_cart"
+msgstr "Legg i handlekorg"
+
+#. Default: "No longer available, please remove from cart"
+#: bda/plone/shop/cartdata.py:280
+msgid "alert_item_no_longer_available"
+msgstr "Utseld"
+
+#. Default: "Limit exceed by ${exceed} ${quantity_unit}"
+#: bda/plone/shop/cartdata.py:292
+msgid "alert_item_number_exceed"
+msgstr "For mange produkt"
+
+#. Default: "${reserved} ${quantity_unit} reserved"
+#: bda/plone/shop/cartdata.py:299
+msgid "alert_item_number_reserved"
+msgstr ""
+
+#. Default: "Partly reserved"
+#: bda/plone/shop/cartdata.py:287
+msgid "alert_item_some_reserved"
+msgstr ""
+
+#. Default: "Availability"
+#: bda/plone/shop/browser/buyable.pt:15
+msgid "availability"
+msgstr "Tilgjengeleg"
+
+#. Default: "Bookings (global)"
+#: bda/plone/shop/browser/admin.py:156
+msgid "bookings_global"
+msgstr ""
+
+#. Default: "Bookings in Context"
+#: bda/plone/shop/browser/admin.py:194
+msgid "bookings_in_context"
+msgstr ""
+
+#. Default: "Bookings (site-wide)"
+#: bda/plone/shop/browser/admin.py:161
+msgid "bookings_site"
+msgstr ""
+
+#. Default: "Bookings (vendor specific)"
+#: bda/plone/shop/browser/admin.py:166
+msgid "bookings_vendor"
+msgstr ""
+
+#. Default: "Cart Discount"
+#: bda/plone/shop/browser/admin.py:290
+msgid "cart_discount"
+msgstr "Rabatt"
+
+#. Default: "Cash and Carry"
+#: bda/plone/shop/shipping.py:192
+msgid "cash_and_carry"
+msgstr "Betaling - levering"
+
+#. Default: "Customer picks up goods at dealer's place"
+#: bda/plone/shop/shipping.py:196
+msgid "cash_and_carry_descripton"
+msgstr "Betalings- og leveringsinformasjon"
+
+#. Default: "Comment"
+#: bda/plone/shop/browser/buyable.pt:84
+msgid "comment"
+msgstr "Kommentar"
+
+#. Default: "Contacts"
+#: bda/plone/shop/browser/admin.py:210
+msgid "contacts"
+msgstr "Kontakter"
+
+#. Default: "Just ${available} items(s) left."
+#: bda/plone/shop/browser/availability.py:104
+msgid "critical_available_message"
+msgstr ""
+
+#. Default: "Low items available"
+#: bda/plone/shop/browser/availability_details.pt:26
+msgid "critical_available_title"
+msgstr ""
+
+#. Default: "Default Shipping"
+#: bda/plone/shop/shipping.py:39
+msgid "default_shipping"
+msgstr "standard frakt"
+
+#. Default: "Delivery Address"
+#: bda/plone/shop/user/userdata.py:29
+msgid "delivery_address"
+msgstr "leveringsadresse"
+
+#. Default: "Delivery"
+#: bda/plone/shop/browser/availability_details.pt:46
+msgid "delivery_duration_title"
+msgstr "leveringstid"
+
+#. Default: "Disabled Buyable."
+#: bda/plone/shop/browser/actions.py:52
+msgid "disabled_buyable"
+msgstr "Produktinformasjon deaktivert"
+
+#. Default: "Disabled Vendor."
+#: bda/plone/shop/browser/actions.py:59
+msgid "disabled_vendor"
+msgstr ""
+
+#. Default: "Enabled Buyable."
+#: bda/plone/shop/browser/actions.py:51
+msgid "enabled_buyable"
+msgstr "Tilleggsinformasjon"
+
+#. Default: "Enabled Vendor."
+#: bda/plone/shop/browser/actions.py:58
+msgid "enabled_vendor"
+msgstr ""
+
+#. Default: "Export Orders"
+#: bda/plone/shop/browser/admin.py:223
+msgid "exportorders"
+msgstr "Kjøp"
+
+#. Default: "Export Orders on this Item"
+#: bda/plone/shop/browser/admin.py:238
+msgid "exportorders_item"
+msgstr ""
+
+#. Default: "Flat Rate"
+#: bda/plone/shop/shipping.py:216
+msgid "flat_rate"
+msgstr ""
+
+#. Default: "Free Shipping"
+#: bda/plone/shop/shipping.py:59
+msgid "free_shipping"
+msgstr "fraktfritt"
+
+#. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
+#: bda/plone/shop/shipping.py:93
+msgid "free_shipping_limit_flat_and_item_gross"
+msgstr "fraktfritt brutto"
+
+#. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
+#: bda/plone/shop/shipping.py:100
+msgid "free_shipping_limit_flat_and_item_net"
+msgstr "fraktfritt netto"
+
+#. Default: "Flat ${flat} ${currency}. Free shipping if gross purchase price above ${limit} ${currency}"
+#: bda/plone/shop/shipping.py:115
+msgid "free_shipping_limit_flat_only_gross"
+msgstr "fraktfritt kun brutto"
+
+#. Default: "Flat ${flat} ${currency}. Free shipping if net purchase price above ${limit} ${currency}"
+#: bda/plone/shop/shipping.py:121
+msgid "free_shipping_limit_flat_only_net"
+msgstr "fraktfritt  kun netto"
+
+#. Default: "${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
+#: bda/plone/shop/shipping.py:134
+msgid "free_shipping_limit_item_only_gross"
+msgstr "fraktfritt grense brutto"
+
+#. Default: "${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
+#: bda/plone/shop/shipping.py:140
+msgid "free_shipping_limit_item_only_net"
+msgstr "fraktfritt  grense netto"
+
+#. Default: "${available} items(s) available."
+#: bda/plone/shop/browser/availability.py:94
+msgid "full_available_message"
+msgstr "På lager"
+
+#. Default: "Item available"
+#: bda/plone/shop/browser/availability_details.pt:17
+msgid "full_available_title"
+msgstr "På lager "
+
+#. Default: "Gross"
+#: bda/plone/shop/browser/buyable.pt:59
+msgid "gross"
+msgstr "Brutto"
+
+#. Default: "Tick this box to indicate that you have found, read and accepted the terms of use for this site."
+#: bda/plone/shop/user/userdata.py:157
+msgid "help_accept"
+msgstr ""
+
+#. Default: "No typos please...."
+#: bda/plone/shop/interfaces.py:56
+msgid "help_admin_email"
+msgstr ""
+
+#. Default: "Name used for Shop E-Mails."
+#: bda/plone/shop/interfaces.py:64
+msgid "help_admin_name"
+msgstr ""
+
+#. Default: "Delivery address is different from billing address."
+#: bda/plone/shop/user/userdata.py:103
+msgid "help_alternative_delivery"
+msgstr "Hjelp alternativ levering"
+
+#. Default: "Available payment methods in checkout"
+#: bda/plone/shop/interfaces.py:539
+msgid "help_available_payment_methods"
+msgstr "hjelp mogelege betalingsmåtar"
+
+#. Default: "Available shipping methods in checkout"
+#: bda/plone/shop/interfaces.py:310
+msgid "help_available_shipping_methods"
+msgstr "hjelp moglege fraktalternativ"
+
+#: bda/plone/shop/user/userdata.py:88
+msgid "help_city"
+msgstr "hjelp by"
+
+#: bda/plone/shop/user/userdata.py:69
+msgid "help_company"
+msgstr "hjelp firma"
+
+#: bda/plone/shop/user/userdata.py:94
+msgid "help_country"
+msgstr "hjelp land"
+
+#. Default: "Choose the default currency"
+#: bda/plone/shop/interfaces.py:90
+msgid "help_currency"
+msgstr "hjelp valuta"
+
+#. Default: "default measurement"
+#: bda/plone/shop/interfaces.py:230
+msgid "help_default_quantity_unit"
+msgstr "hjelp standard antal "
+
+#. Default: "Flag whether item is shippable by default, i.e. downloads are not"
+#: bda/plone/shop/interfaces.py:302
+msgid "help_default_shipping_item_shippable"
+msgstr "hjelp standard fraktmetode"
+
+#. Default: "Specify default vat name"
+#: bda/plone/shop/interfaces.py:410
+msgid "help_default_vat"
+msgstr "hjelp standard mva "
+
+#. Default: "No total number of items in cart limit"
+#: bda/plone/shop/interfaces.py:150
+msgid "help_disable_max_article"
+msgstr "hjelp maks tal produkt"
+
+#. Default: "Fill in your given name."
+#: bda/plone/shop/user/userdata.py:49
+msgid "help_firstname"
+msgstr "hjelp førenamn"
+
+#. Default: "Net flat shipping cost"
+#: bda/plone/shop/interfaces.py:362
+msgid "help_flat_shipping_cost"
+msgstr "hjelp standard fraktkostnader"
+
+#. Default: "Do not add shipping costs to orders with price bigger than limit. If limit applies to gross or net purchase price depends on 'Calculate shipping limit from gross' setting"
+#: bda/plone/shop/interfaces.py:342
+msgid "help_free_shipping_limit"
+msgstr "hjelp fri frakt grense"
+
+#: bda/plone/shop/user/userdata.py:42
+msgid "help_gender"
+msgstr ""
+
+#. Default: "Global Trade Item Number"
+#: bda/plone/shop/at.py:597 bda/plone/shop/dx.py:482
+msgid "help_gtin"
+msgstr ""
+
+#. Default: "Hide cart if no items contained"
+#: bda/plone/shop/interfaces.py:128
+msgid "help_hide_cart_if_empty"
+msgstr "hejlp skjul felt om tomt"
+
+#. Default: "Buyable Item number"
+#: bda/plone/shop/at.py:588 bda/plone/shop/dx.py:476
+msgid "help_item_number"
+msgstr "hjelp produktnr."
+
+#. Default: "Net shipping cost per item in cart. If flat shipping cost set and item shipping cost below flat shipping cost, flat shipping cost is used"
+#: bda/plone/shop/interfaces.py:370
+msgid "help_item_shipping_cost"
+msgstr "hjelp produkt fraktkostnader"
+
+#. Default: "Fill in your surname or your family name."
+#: bda/plone/shop/user/userdata.py:56
+msgid "help_lastname"
+msgstr "hjelp etternamn"
+
+#. Default: "Maximum number of articles in cart if disable max article flag set"
+#: bda/plone/shop/interfaces.py:140
+msgid "help_max_artice_count"
+msgstr "hjelp maks produkt"
+
+#. Default: "Default payment method in checkout"
+#: bda/plone/shop/interfaces.py:552
+msgid "help_payment_method"
+msgstr "hjelp betalingsmetode"
+
+#: bda/plone/shop/user/userdata.py:63
+msgid "help_phone"
+msgstr "hjelp telefon"
+
+#. Default: "Quantity units (what the buyable items are measured in)"
+#: bda/plone/shop/interfaces.py:213
+msgid "help_quantity_units"
+msgstr "hjelp antal varer"
+
+#. Default: "Flag whether item is shippable, i.e. downloads are not"
+#: bda/plone/shop/at.py:346 bda/plone/shop/dx.py:275
+msgid "help_shipping_item_shippable"
+msgstr "hjelp fraktalternativ"
+
+#. Default: "If set to False, shipping limit gets calculated from net price instead of gross."
+#: bda/plone/shop/interfaces.py:355
+msgid "help_shipping_limit_from_gross"
+msgstr ""
+
+#. Default: "Default shipping method in checkout"
+#: bda/plone/shop/interfaces.py:323
+msgid "help_shipping_method"
+msgstr "Hjelp fraktmetode"
+
+#. Default: "VAT used to calculate shipping costs"
+#: bda/plone/shop/interfaces.py:331
+msgid "help_shipping_vat"
+msgstr "hjelp moms på frakt"
+
+#: bda/plone/shop/interfaces.py:174
+msgid "help_show_checkout"
+msgstr "hjelp, vis gå til betaling"
+
+#: bda/plone/shop/interfaces.py:102
+msgid "help_show_currency"
+msgstr "hjelp vis valuta"
+
+#: bda/plone/shop/interfaces.py:183
+msgid "help_show_to_cart"
+msgstr "hjelp vis skjema"
+
+#: bda/plone/shop/user/userdata.py:76
+msgid "help_street"
+msgstr "hjelp gateadresse"
+
+#. Default: "Show only total value in cart summary"
+#: bda/plone/shop/interfaces.py:162
+msgid "help_summary_total_only"
+msgstr "hjelp oppsumert totalt"
+
+#. Default: "Specify all allowed vat settings"
+#: bda/plone/shop/interfaces.py:397
+msgid "help_vat"
+msgstr "hjelp mva"
+
+#: bda/plone/shop/user/userdata.py:82
+msgid "help_zip"
+msgstr "hjelp zip."
+
+#. Default: "Item Discount"
+#: bda/plone/shop/browser/admin.py:305
+msgid "item_discount"
+msgstr "produkt rabatt"
+
+#. Default: "Item no longer buyable"
+#: bda/plone/shop/cartdata.py:213
+msgid "item_no_longer_buyable"
+msgstr "produkti ikkje lenger tilgjengeleg"
+
+#. Default: "Item not buyable yet"
+#: bda/plone/shop/cartdata.py:201
+msgid "item_not_buyable_yet"
+msgstr "produkt ikkje tilgjengeleg endå"
+
+#. Default: "Kilo"
+#: bda/plone/shop/vocabularies.py:21
+msgid "kilo"
+msgstr "kilo"
+
+#. Default: "Accept terms of use"
+#: bda/plone/shop/user/userdata.py:156
+msgid "label_accept"
+msgstr "etikett akseptert"
+
+#. Default: "Add Customer role to new Users"
+#: bda/plone/shop/interfaces.py:71
+msgid "label_add_customer_role_to_new_users"
+msgstr ""
+
+#. Default: "Shop Admin E-Mail"
+#: bda/plone/shop/interfaces.py:55
+msgid "label_admin_email"
+msgstr "etikett administrator epost"
+
+#. Default: "Shop Admin Name"
+#: bda/plone/shop/interfaces.py:63
+msgid "label_admin_name"
+msgstr "etikett administrator navn"
+
+#. Default: "Alternative delivery address"
+#: bda/plone/shop/user/userdata.py:101
+msgid "label_alternative_delivery"
+msgstr "etikett alternativ levering"
+
+#. Default: "Available Payment Methods"
+#: bda/plone/shop/interfaces.py:537
+msgid "label_available_payment_methods"
+msgstr "etikett tilgelege betalingsmåtar"
+
+#. Default: "Available Shipping Methods"
+#: bda/plone/shop/interfaces.py:308
+msgid "label_available_shipping_methods"
+msgstr "etikett tilgjengelege fraktmetodar"
+
+#. Default: "Buyable effective date"
+#: bda/plone/shop/at.py:539 bda/plone/shop/dx.py:433
+msgid "label_buyable_effective_date"
+msgstr "etikett "
+
+#. Default: "Buyable expiration date"
+#: bda/plone/shop/at.py:547 bda/plone/shop/dx.py:439
+msgid "label_buyable_expiration_date"
+msgstr "etikett til sals best før dato"
+
+#. Default: "Cash on delivery costs in gross"
+#: bda/plone/shop/interfaces.py:579
+msgid "label_cash_on_delivery_costs"
+msgstr "etikett betaling ved henting"
+
+#. Default: "City"
+#: bda/plone/shop/user/userdata.py:87
+msgid "label_city"
+msgstr "etikett by"
+
+#. Default: "Company"
+#: bda/plone/shop/user/userdata.py:68
+msgid "label_company"
+msgstr "etikett firma"
+
+#. Default: "Country"
+#: bda/plone/shop/user/userdata.py:93
+msgid "label_country"
+msgstr "etikett land"
+
+#. Default: "Currency"
+#: bda/plone/shop/interfaces.py:89
+msgid "label_currency"
+msgstr "etikett valuta"
+
+#. Default: "Quantity limit of an item in the cart."
+#: bda/plone/shop/interfaces.py:270
+msgid "label_default_item_cart_count_limit"
+msgstr ""
+
+#. Default: "Comment enabled by default"
+#: bda/plone/shop/interfaces.py:246
+msgid "label_default_item_comment_enabled"
+msgstr ""
+
+#. Default: "Comment required by default"
+#: bda/plone/shop/interfaces.py:254
+msgid "label_default_item_comment_required"
+msgstr ""
+
+#. Default: "Display Gross by default"
+#: bda/plone/shop/interfaces.py:81
+msgid "label_default_item_display_gross"
+msgstr "etikett standard produkt vises brutto"
+
+#. Default: "Default Item net price"
+#: bda/plone/shop/interfaces.py:238
+msgid "label_default_item_net"
+msgstr "etikett standard produkt netto"
+
+#. Default: "Quantity as float as default"
+#: bda/plone/shop/interfaces.py:262
+msgid "label_default_item_quantity_unit_float"
+msgstr "etikett standard antal "
+
+#. Default: "Specify default quantity name."
+#: bda/plone/shop/interfaces.py:226
+msgid "label_default_quantity_units"
+msgstr "etikett standard antal produkt"
+
+#. Default: "Item Shippable by default"
+#: bda/plone/shop/interfaces.py:299
+msgid "label_default_shipping_item_shippable"
+msgstr "etikett standard frakt produkt sendbart"
+
+#. Default: "Default Value added tax name"
+#: bda/plone/shop/interfaces.py:409
+msgid "label_default_vat"
+msgstr "etikett standard mva"
+
+#. Default: "Disable max article"
+#: bda/plone/shop/interfaces.py:149
+msgid "label_disable_max_article"
+msgstr "etikett avbrutt maks produkter"
+
+#. Default: "First name"
+#: bda/plone/shop/user/userdata.py:48
+msgid "label_firstname"
+msgstr "etikett førenamn"
+
+#. Default: "Flat shipping cost"
+#: bda/plone/shop/interfaces.py:361
+msgid "label_flat_shipping_cost"
+msgstr "etikett standard fraktkostnader"
+
+#. Default: "Free Shipping Limit"
+#: bda/plone/shop/interfaces.py:341
+msgid "label_free_shipping_limit"
+msgstr "etikett fraktfritt grense"
+
+#. Default: "Gender"
+#: bda/plone/shop/user/userdata.py:41
+msgid "label_gender"
+msgstr ""
+
+#. Default: "GTIN"
+#: bda/plone/shop/at.py:596 bda/plone/shop/dx.py:481
+msgid "label_gtin"
+msgstr ""
+
+#. Default: "Hide Cart if empty"
+#: bda/plone/shop/interfaces.py:127
+msgid "label_hide_cart_if_empty"
+msgstr "etikett skjul felt om tomt"
+
+#. Default: "Item stock available"
+#: bda/plone/shop/at.py:282 bda/plone/shop/dx.py:214
+msgid "label_item_available"
+msgstr "etikett produkt på lager"
+
+#. Default: "Max count of this item in cart"
+#: bda/plone/shop/at.py:160 bda/plone/shop/dx.py:102
+msgid "label_item_cart_count_limit"
+msgstr "etikett produkt antal grense"
+
+#. Default: "Comment enabled"
+#: bda/plone/shop/at.py:175 bda/plone/shop/dx.py:115
+msgid "label_item_comment_enabled"
+msgstr "Kommentarer aktivert"
+
+#. Default: "Comment required"
+#: bda/plone/shop/at.py:183 bda/plone/shop/dx.py:121
+msgid "label_item_comment_required"
+msgstr "Kommentar er påkrevd"
+
+#. Default: "Display Gross"
+#: bda/plone/shop/at.py:168 bda/plone/shop/dx.py:109
+msgid "label_item_display_gross"
+msgstr "Vis bruttopriser "
+
+#. Default: "Display item stock"
+#: bda/plone/shop/at.py:274 bda/plone/shop/dx.py:208
+msgid "label_item_display_stock"
+msgstr "etikett produkt vis lager"
+
+#. Default: "Additional overall notification text for order confirmation mail if this item in cart"
+#: bda/plone/shop/at.py:452 bda/plone/shop/dx.py:364
+msgid "label_item_global_notification_text"
+msgstr ""
+
+#. Default: "Additional overall notification text for order confirmation mail if this item in cart and out of stock"
+#: bda/plone/shop/at.py:465 bda/plone/shop/dx.py:373
+msgid "label_item_global_overbook_notification_text"
+msgstr ""
+
+#. Default: "Item net price"
+#: bda/plone/shop/at.py:145 bda/plone/shop/dx.py:89
+msgid "label_item_net"
+msgstr "Nettopris"
+
+#. Default: "Notification text for this item in order confirmation mail"
+#: bda/plone/shop/at.py:418 bda/plone/shop/dx.py:335
+msgid "label_item_notification_text"
+msgstr "etikett produktinformasjon"
+
+#. Default: "Item number"
+#: bda/plone/shop/at.py:587 bda/plone/shop/dx.py:475
+msgid "label_item_number"
+msgstr "etikett produktnr."
+
+#. Default: "Item stock overbook"
+#: bda/plone/shop/at.py:290 bda/plone/shop/dx.py:219
+msgid "label_item_overbook"
+msgstr "etikett produkt for mykje valgt"
+
+#. Default: "Notification text for this item in order confirmation mail if item out of stock"
+#: bda/plone/shop/at.py:430 bda/plone/shop/dx.py:344
+msgid "label_item_overbook_notification_text"
+msgstr "etikett produkt for mykje valgt produktinformasjon"
+
+#. Default: "Quantity unit"
+#: bda/plone/shop/at.py:199 bda/plone/shop/dx.py:134
+msgid "label_item_quantity_unit"
+msgstr "Stykk"
+
+#. Default: "Quantity as float"
+#: bda/plone/shop/at.py:191 bda/plone/shop/dx.py:127
+msgid "label_item_quantity_unit_float"
+msgstr "tal (som helttall)"
+
+#. Default: "Item shipping cost"
+#: bda/plone/shop/interfaces.py:369
+msgid "label_item_shipping_cost"
+msgstr "etikett produkt fraktkostnader"
+
+#. Default: "Item VAT (in %)"
+#: bda/plone/shop/at.py:152 bda/plone/shop/dx.py:95
+msgid "label_item_vat"
+msgstr "moms (i prosent)"
+
+#. Default: "Last name"
+#: bda/plone/shop/user/userdata.py:55
+msgid "label_lastname"
+msgstr "etikett etternamn"
+
+#. Default: "Maximum number articles in cart"
+#: bda/plone/shop/interfaces.py:136
+msgid "label_max_artice_count"
+msgstr "etikett maks produkt  antal"
+
+#. Default: "Payment Method"
+#: bda/plone/shop/interfaces.py:550
+msgid "label_payment_method"
+msgstr "etikett betalingsmåte"
+
+#. Default: "Payment Texts"
+#: bda/plone/shop/interfaces.py:568
+msgid "label_payment_text"
+msgstr "etikett betaling tekst"
+
+#. Default: "Phone"
+#: bda/plone/shop/user/userdata.py:62
+msgid "label_phone"
+msgstr "etikett telefon"
+
+#. Default: "Specify quantity units allowed in shop."
+#: bda/plone/shop/interfaces.py:209
+msgid "label_quantity_units"
+msgstr "etikett antal produkter"
+
+#. Default: "Item Shippable"
+#: bda/plone/shop/at.py:344 bda/plone/shop/dx.py:274
+msgid "label_shipping_item_shippable"
+msgstr "etikett fraktalternativ produkter sendbar"
+
+#. Default: "Item Weight"
+#: bda/plone/shop/at.py:355 bda/plone/shop/dx.py:282
+msgid "label_shipping_item_weight"
+msgstr "etikett frakt produkt vekt"
+
+#. Default: "Calculate shipping limit from gross"
+#: bda/plone/shop/interfaces.py:353
+msgid "label_shipping_limit_from_gross"
+msgstr "etikett frakt grense fra brutto"
+
+#. Default: "Shipping Method"
+#: bda/plone/shop/interfaces.py:321
+msgid "label_shipping_method"
+msgstr "etikett fraktalternativ"
+
+#. Default: "Shipping VAT"
+#: bda/plone/shop/interfaces.py:330
+msgid "label_shipping_vat"
+msgstr "etikett frakt mva"
+
+#. Default: "Show checkout link in portlet"
+#: bda/plone/shop/interfaces.py:170
+msgid "label_show_checkout"
+msgstr "etikett vis avslutt"
+
+#. Default: "Show the currency for items"
+#: bda/plone/shop/interfaces.py:98
+msgid "label_show_currency"
+msgstr "etikett vis valuta"
+
+#. Default: "Show link to cart in portlet"
+#: bda/plone/shop/interfaces.py:179
+msgid "label_show_to_cart"
+msgstr "etikett vis til felt"
+
+#. Default: "Overall notification text for order confirmation mail"
+#: bda/plone/shop/interfaces.py:476
+msgid "label_site_global_notification_text"
+msgstr ""
+
+#. Default: "Overall notification text for order confirmation mail if order contains items out of stock"
+#: bda/plone/shop/interfaces.py:488
+msgid "label_site_global_overbook_notification_text"
+msgstr ""
+
+#. Default: "Default notification text for items in order confirmation mail"
+#: bda/plone/shop/interfaces.py:450
+msgid "label_site_item_notification_text"
+msgstr ""
+
+#. Default: "Default notification text for items in order confirmation mail if item out of stock."
+#: bda/plone/shop/interfaces.py:463
+msgid "label_site_item_overbook_notification_text"
+msgstr ""
+
+#. Default: "Skip Payment if order contains reservations"
+#: bda/plone/shop/interfaces.py:559
+msgid "label_skip_payment_if_order_contains_reservations"
+msgstr ""
+
+#. Default: "Street"
+#: bda/plone/shop/user/userdata.py:75
+msgid "label_street"
+msgstr "etikett gateadresse"
+
+#. Default: "Cart Summary total only"
+#: bda/plone/shop/interfaces.py:158
+msgid "label_summary_total_only"
+msgstr "etikett totalt kun"
+
+#. Default: "VAT in %"
+#: bda/plone/shop/interfaces.py:396
+msgid "label_vat"
+msgstr "etikett mva."
+
+#. Default: "Postal Code"
+#: bda/plone/shop/user/userdata.py:81
+msgid "label_zip"
+msgstr ""
+
+#. Default: "Language"
+#: bda/plone/shop/interfaces.py:421
+msgid "language"
+msgstr "språk"
+
+#. Default: "Legal"
+#: bda/plone/shop/user/userdata.py:36
+msgid "legal"
+msgstr "tillete"
+
+#. Default: "Liter"
+#: bda/plone/shop/vocabularies.py:22
+msgid "liter"
+msgstr ""
+
+#. Default: "Notification Templates (global)"
+#: bda/plone/shop/browser/admin.py:261
+msgid "mailtemplates_global"
+msgstr ""
+
+#. Default: "Notification Templates (site-wide)"
+#: bda/plone/shop/browser/admin.py:266
+msgid "mailtemplates_site"
+msgstr ""
+
+#. Default: "Notification Templates (vendor specific)"
+#: bda/plone/shop/browser/admin.py:271
+msgid "mailtemplates_vendor"
+msgstr ""
+
+#. Default: "Main Address"
+#: bda/plone/shop/user/userdata.py:23
+msgid "main_address"
+msgstr "hovudadresse"
+
+#. Default: "Meter"
+#: bda/plone/shop/vocabularies.py:20
+msgid "meter"
+msgstr ""
+
+#. Default: "My Orders"
+#: bda/plone/shop/browser/admin.py:72
+msgid "my_orders"
+msgstr "mine ordrer"
+
+#. Default: "Net"
+#: bda/plone/shop/browser/buyable.pt:43
+msgid "net"
+msgstr "Netto"
+
+#. Default: "No"
+#: bda/plone/shop/vocabularies.py:119
+msgid "no"
+msgstr ""
+
+#. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart"
+#: bda/plone/shop/shipping.py:64
+msgid "no_free_shipping_flat_and_item"
+msgstr "ingen fri frakt produkter"
+
+#. Default: "Flat ${flat} ${currency}"
+#: bda/plone/shop/shipping.py:74
+msgid "no_free_shipping_flat_only"
+msgstr ""
+
+#. Default: "${item} ${currency} per item in cart"
+#: bda/plone/shop/shipping.py:82
+msgid "no_free_shipping_item_only"
+msgstr ""
+
+#. Default: "Item is no longer purchasable."
+#: bda/plone/shop/browser/availability_details.pt:77
+msgid "no_longer_purchasable"
+msgstr "ikkje lenger på lager"
+
+#. Default: "Item is sold out."
+#: bda/plone/shop/browser/availability_details.pt:11
+msgid "not_available_message"
+msgstr "ikkje på lager melding"
+
+#. Default: "Item not available"
+#: bda/plone/shop/browser/availability_details.pt:8
+msgid "not_available_title"
+msgstr "ikkje på lager tittel"
+
+#. Default: "Item not available yet."
+#: bda/plone/shop/browser/availability_details.pt:65
+msgid "not_available_yet_title"
+msgstr "ikkje på lager endå"
+
+#. Default: "Order Text"
+#: bda/plone/shop/interfaces.py:456
+msgid "order_text"
+msgstr "bestelling tekst"
+
+#. Default: "Orders (global)"
+#: bda/plone/shop/browser/admin.py:95
+msgid "orders_global"
+msgstr "Bestellingar (global)"
+
+#. Default: "Orders in Context"
+#: bda/plone/shop/browser/admin.py:133
+msgid "orders_in_context"
+msgstr "Bestellingar undertekst"
+
+#. Default: "Orders (site-wide)"
+#: bda/plone/shop/browser/admin.py:100
+msgid "orders_site"
+msgstr "Bestillingar (site-wide)"
+
+#. Default: "Orders (vendor specific)"
+#: bda/plone/shop/browser/admin.py:105
+msgid "orders_vendor"
+msgstr "Bestillingar (vendor specific)"
+
+#. Default: "Item is sold out. You can pre-order ${reservable} items. As soon as item is available again, it gets delivered."
+#: bda/plone/shop/browser/availability.py:119
+msgid "overbook_available_message"
+msgstr ""
+
+#. Default: "Pre-order available"
+#: bda/plone/shop/browser/availability_details.pt:35
+msgid "overbook_available_title"
+msgstr ""
+
+#. Default: "Overbook Text"
+#: bda/plone/shop/interfaces.py:469
+msgid "overbook_text"
+msgstr "For mykje bestelt"
+
+#. Default: "Payment"
+#: bda/plone/shop/interfaces.py:503
+msgid "payment"
+msgstr "betalng"
+
+#. Default: "Payment Text"
+#: bda/plone/shop/interfaces.py:573
+msgid "payment_text"
+msgstr "betaling tekst"
+
+#. Default: "Permission to buy ${title} not granted."
+#: bda/plone/shop/cartdata.py:184
+msgid "permission_not_granted_to_buy_item"
+msgstr ""
+
+#. Default: "Price"
+#: bda/plone/shop/browser/buyable.pt:34
+msgid "price"
+msgstr "Pris"
+
+#. Default: "Item is purchasable as of ${date}"
+#: bda/plone/shop/browser/availability.py:147
+msgid "purchasable_as_of_message"
+msgstr ""
+
+#. Default: "Item is purchasable until ${date}"
+#: bda/plone/shop/browser/availability.py:134
+msgid "purchasable_until_message"
+msgstr ""
+
+#. Default: "Quantity"
+#: bda/plone/shop/vocabularies.py:19
+msgid "quantity"
+msgstr "antal"
+
+#. Default: "Shop"
+#: bda/plone/shop/browser/admin.pt:6
+msgid "shop_admin_heading"
+msgstr "Butikk"
+
+#. Default: "Shop Controlpanel (global)"
+#: bda/plone/shop/browser/admin.py:327
+msgid "shop_controlpanel_global"
+msgstr ""
+
+#. Default: "Shop Controlpanel (site-wide)"
+#: bda/plone/shop/browser/admin.py:332
+msgid "shop_controlpanel_site"
+msgstr ""
+
+#. Default: "Shop Portlet"
+#: bda/plone/shop/browser/admin.py:349
+msgid "shop_portlet"
+msgstr ""
+
+#. Default: "Symbol"
+#: bda/plone/shop/vocabularies.py:120
+msgid "symbol"
+msgstr "symbol"
+
+#. Default: "Text"
+#: bda/plone/shop/interfaces.py:427
+msgid "text"
+msgstr "tekst"
+
+#. Default: "update cart"
+#: bda/plone/shop/browser/buyable.pt:111
+msgid "update_cart"
+msgstr "Oppdater handlekorga"
+
+#. Default: "Vat"
+#: bda/plone/shop/browser/buyable.pt:63
+msgid "vat"
+msgstr "mva"
+
+#. Default: "Yes"
+#: bda/plone/shop/vocabularies.py:118
+msgid "yes"
+msgstr "ja"
