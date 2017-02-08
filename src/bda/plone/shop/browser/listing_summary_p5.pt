@@ -48,7 +48,7 @@
 
           <div class="tileFooter" style="padding-top: 1em;">
             <div tal:replace="structure python:obj.restrictedTraverse('buyable_controls')()"
-                 tal:on-error="" />
+                 tal:on-error="string:" />
           </div>
 
           <div class="visualClear"><!-- --></div>
