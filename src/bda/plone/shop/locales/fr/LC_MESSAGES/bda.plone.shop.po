@@ -46,7 +46,7 @@ msgstr ""
 #. Default: "Cart"
 #: ./interfaces.py:117
 msgid "Cart"
-msgstr "Cart"
+msgstr "Panier"
 
 #. Default: "Danish Krone"
 #: ./vocabularies.py:103
@@ -351,32 +351,32 @@ msgstr "Livraison offerte"
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
 #: ./shipping.py:94
 msgid "free_shipping_limit_flat_and_item_gross"
-msgstr "Au minimum ${flat} ${currency} ou ${item} ${currency} part article dans le panier. Livraison offerte si le prix d'achat brut excède ${limit} ${currency}"
+msgstr "Au minimum ${flat} ${currency} ou ${item} ${currency} part article dans le panier. Livraison offerte si le prix d'achat TTC excède ${limit} ${currency}"
 
 #. Default: "Minimum ${flat} ${currency} or ${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
 #: ./shipping.py:101
 msgid "free_shipping_limit_flat_and_item_net"
-msgstr "Au minimum ${flat} ${currency} ou ${item} ${currency} part article dans le panier. Livraison offerte si le prix d'achat net excède ${limit} ${currency}"
+msgstr "Au minimum ${flat} ${currency} ou ${item} ${currency} part article dans le panier. Livraison offerte si le prix d'achat HT excède ${limit} ${currency}"
 
 #. Default: "Flat ${flat} ${currency}. Free shipping if gross purchase price above ${limit} ${currency}"
 #: ./shipping.py:116
 msgid "free_shipping_limit_flat_only_gross"
-msgstr "Fixe ${flat} ${currency}. Livraison offerte si le prix d'achat brut excède ${limit} ${currency}"
+msgstr "Fixe ${flat} ${currency}. Livraison offerte si le prix d'achat TTC excède ${limit} ${currency}"
 
 #. Default: "Flat ${flat} ${currency}. Free shipping if net purchase price above ${limit} ${currency}"
 #: ./shipping.py:122
 msgid "free_shipping_limit_flat_only_net"
-msgstr "Fixe ${flat} ${currency}. Livraison offerte si le prix d'achat net excède ${limit} ${currency}"
+msgstr "Fixe ${flat} ${currency}. Livraison offerte si le prix d'achat HT excède ${limit} ${currency}"
 
 #. Default: "${item} ${currency} per item in cart. Free shipping if gross purchase price above ${limit} ${currency}"
 #: ./shipping.py:135
 msgid "free_shipping_limit_item_only_gross"
-msgstr "${item} ${currency} par article dans le panier. Livraison offerte si le prix brut excède ${limit} ${currency}"
+msgstr "${item} ${currency} par article dans le panier. Livraison offerte si le prix TTC excède ${limit} ${currency}"
 
 #. Default: "${item} ${currency} per item in cart. Free shipping if net purchase price above ${limit} ${currency}"
 #: ./shipping.py:141
 msgid "free_shipping_limit_item_only_net"
-msgstr "${item} ${currency} par article dans le panier. Livraison offerte si le prix net excède ${limit} ${currency}"
+msgstr "${item} ${currency} par article dans le panier. Livraison offerte si le prix HT excède ${limit} ${currency}"
 
 #. Default: "${available} items(s) available."
 #: ./browser/availability.py:102
@@ -391,7 +391,7 @@ msgstr "Article disponible"
 #. Default: "Gross"
 #: ./browser/buyable.pt:59
 msgid "gross"
-msgstr "HT"
+msgstr "TTC"
 
 #. Default: "Tick this box to indicate that you have found, read and accepted the terms of use for this site."
 #: ./user/userdata.py:156
@@ -473,12 +473,12 @@ msgstr "Remplissez votre prénom"
 #. Default: "Net flat shipping cost"
 #: ./interfaces.py:379
 msgid "help_flat_shipping_cost"
-msgstr "Frais de port net"
+msgstr "Frais de port HT"
 
 #. Default: "Do not add shipping costs to orders with price bigger than limit. If limit applies to gross or net purchase price depends on 'Calculate shipping limit from gross' setting"
 #: ./interfaces.py:359
 msgid "help_free_shipping_limit"
-msgstr "N'ajoutez pas les frais de port aux commandes dont le prix est supérieur à la limite. Si la limite s'applique au prix d'achat brut ou net dépend du paramètre «Calculer la limite d'expédition à partir du brut»"
+msgstr "N'ajoutez pas les frais de port aux commandes dont le prix est supérieur à la limite. Si la limite s'applique au prix d'achat TTC ou HT dépend du paramètre «Calculer la limite d'expédition à partir du TTC»"
 
 #: ./user/userdata.py:41
 msgid "help_gender"
@@ -510,7 +510,7 @@ msgstr "Numérot d'article"
 #. Default: "Net shipping cost per item in cart. If flat shipping cost set and item shipping cost below flat shipping cost, flat shipping cost is used"
 #: ./interfaces.py:387
 msgid "help_item_shipping_cost"
-msgstr "Frais de port net par article dans le panier. Si le coût d'expédition forfaitaire est défini et que le coût d'expédition d'article est plus bas, le coût d'expédition forfaitaire est employé"
+msgstr "Frais de port HT par article dans le panier. Si le coût d'expédition forfaitaire est défini et que le coût d'expédition d'article est plus bas, le coût d'expédition forfaitaire est employé"
 
 #. Default: "Fill in your surname or your family name."
 #: ./user/userdata.py:55
@@ -551,7 +551,7 @@ msgstr "Indique si l'article est expédiable, p. ex. les téléchargements ne le
 #. Default: "If set to False, shipping limit gets calculated from net price instead of gross."
 #: ./interfaces.py:372
 msgid "help_shipping_limit_from_gross"
-msgstr "Si défini à faux, la limite d'expédition est calculée sur le prix net au lieu de brut."
+msgstr "Si défini à faux, la limite d'expédition est calculée sur le prix HT au lieu de TTC."
 
 #. Default: "Default shipping method in checkout"
 #: ./interfaces.py:340
@@ -668,7 +668,7 @@ msgstr "Expiration de l'achetabilité"
 #. Default: "Cash on delivery costs in gross"
 #: ./interfaces.py:598
 msgid "label_cash_on_delivery_costs"
-msgstr "Encaisse des frais de livraison brut"
+msgstr "Encaisse des frais de livraison TTC"
 
 #. Default: "City"
 #: ./user/userdata.py:86
@@ -708,12 +708,12 @@ msgstr "Information complémentaire obligatoire par défaut"
 #. Default: "Display Gross by default"
 #: ./interfaces.py:83
 msgid "label_default_item_display_gross"
-msgstr "Afficher le prix brut par défaut"
+msgstr "Afficher le prix TTC par défaut"
 
 #. Default: "Default Item net price"
 #: ./interfaces.py:241
 msgid "label_default_item_net"
-msgstr "Prix net par défaut"
+msgstr "Prix HT par défaut"
 
 #. Default: "Quantity as float as default"
 #: ./interfaces.py:265
@@ -804,7 +804,7 @@ msgstr "Information complémentaire obligatoire"
 #: ./at.py:184
 #: ./dx.py:109
 msgid "label_item_display_gross"
-msgstr "Prix brut"
+msgstr "Prix TTC"
 
 #. Default: "Display item stock"
 #: ./at.py:302
@@ -828,7 +828,7 @@ msgstr "Texte supplémentaire général de notification pour l'email de confirma
 #: ./at.py:161
 #: ./dx.py:89
 msgid "label_item_net"
-msgstr "Prix net"
+msgstr "Prix HT"
 
 #. Default: "Notification text for this item in the order confirmation mail"
 #: ./at.py:480
@@ -933,7 +933,7 @@ msgstr "Poids de l'article"
 #. Default: "Calculate shipping limit from gross"
 #: ./interfaces.py:370
 msgid "label_shipping_limit_from_gross"
-msgstr "Calculer la limite de livraison depuis le brut"
+msgstr "Calculer la limite de livraison depuis TTC"
 
 #. Default: "Shipping Method"
 #: ./interfaces.py:338
@@ -1063,7 +1063,7 @@ msgstr "Mes commandes"
 #. Default: "Net"
 #: ./browser/buyable.pt:43
 msgid "net"
-msgstr "Net"
+msgstr "HT"
 
 #. Default: "No"
 #: ./vocabularies.py:119
