@@ -46,7 +46,7 @@ msgstr ""
 #. Default: "Cart"
 #: ./interfaces.py:117
 msgid "Cart"
-msgstr "Cart"
+msgstr "Panier"
 
 #. Default: "Danish Krone"
 #: ./vocabularies.py:103
