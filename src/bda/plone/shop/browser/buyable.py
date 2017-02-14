@@ -23,9 +23,7 @@ class BuyableControls(BrowserView, DataProviderMixin):
 
     @property
     def _item_data(self):
-        idp = get_item_data_provider(self.context)
-        idp.update()
-        return idp
+        return get_item_data_provider(self.context)
 
     @property
     def _item_availability(self):
