@@ -7,8 +7,8 @@
     title="bda.plone.shop: View Buyable Info" />
 
   <permission
-    id="bda.plone.shop.BuyItems"
-    title="bda.plone.shop: Buy Items" />
+    id="bda.plone.shop.ModifyCart"
+    title="bda.plone.shop: Modify Cart" />
 
   <permission
     id="bda.plone.shop.ChangePersonalInformation"

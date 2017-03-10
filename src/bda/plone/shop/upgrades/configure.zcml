@@ -64,4 +64,16 @@
 
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+    source="6"
+    destination="7"
+    profile="bda.plone.shop:default">
+
+    <genericsetup:upgradeDepends
+      title="GS Profile: Modify Cart permission"
+      import_profile="bda.plone.shop.upgrades:6_to_7"
+      run_deps="True" />
+
+  </genericsetup:upgradeSteps>
+
 </configure>
