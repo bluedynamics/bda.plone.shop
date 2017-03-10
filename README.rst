@@ -209,9 +209,9 @@ Permissions
 In general, custom shop deployments are likely to configure the permission and
 role settings according to their use cases.
 
-There exists ``bda.plone.shop.ViewBuyableInfo`` and ``bda.plone.shop.BuyItems``
-permission to control what parts of buyable data and controls get exposed to
-the user.
+There exists ``bda.plone.shop.ViewBuyableInfo`` and
+``bda.plone.shop.ModifyCart`` permission to control what parts of buyable data
+and controls get exposed to the user.
 
 Further the permissions ``bda.plone.shop.ChangePersonalInformation`` and
 ``bda.plone.shop.ChangePersonalPreferences`` are used to control access to
@@ -243,17 +243,17 @@ add ``Anonymous`` role via generic setup's ``rolemap.xml`` of your
 integration package.
 
 
-bda.plone.shop.BuyItems
------------------------
+bda.plone.shop.ModifyCart
+-------------------------
 
-This permission controls whether a user can actually add this item to shopping
-cart. By default, this permission is set for roles:
+This permission controls whether a user can actually add or update this item to
+shopping cart. By default, this permission is set for roles:
 
 * Manager
 * Site Administrator
 * Customer
 
-In order to enable non-customers or anonymous users to buy items, modify
+In order to enable non-customers or anonymous users to mofify the cart, edit
 ``rolemap.xml`` in your integration package as needed. Be aware that the shop
 is basically designed that anonymous users can buy items, but orders related
 features like viewing own orders are bound to ``Customer`` role.
@@ -327,6 +327,18 @@ Create translations
 
     $ cd src/bda/plone/shop/
     $ ./i18n.sh
+
+
+Backward incompatible changes
+=============================
+
+1.0a1
+-----
+
+* ``bda.plone.shop: Buy Items`` permission has been renamed to
+  ``bda.plone.shop: Modify Cart``. If you have custom ``rolemap.xml`` in your
+  GS profiles using this permission, or you use this permission somewhere in
+  your code, you need to update your customizations.
 
 
 Contributors

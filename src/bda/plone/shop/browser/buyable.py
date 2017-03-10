@@ -46,7 +46,7 @@ class BuyableControls(BrowserView, DataProviderMixin):
             if expires and now >= expires:
                 return False
         sm = getSecurityManager()
-        return sm.checkPermission(permissions.BuyItems, self.context)
+        return sm.checkPermission(permissions.ModifyCart, self.context)
 
     @property
     def show_available(self):

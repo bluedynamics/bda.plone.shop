@@ -8,9 +8,10 @@ setDefaultRoles(ViewBuyableInfo,
                 ('Manager', 'Site Administrator', 'Reviewer',
                  'Editor', 'Customer', 'Authenticated'))
 
-# buy items
-BuyItems = 'bda.plone.shop: Buy Items'
-setDefaultRoles(BuyItems,
+
+# modify cart
+ModifyCart = 'bda.plone.shop: Modify Cart'
+setDefaultRoles(ModifyCart,
                 ('Manager', 'Site Administrator', 'Customer'))
 
 

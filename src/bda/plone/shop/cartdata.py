@@ -201,8 +201,8 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
                 'error': message,
                 'update': True,
             }
-        # check whether user can buy item
-        if not api.user.has_permission(permissions.BuyItems, obj=buyable):
+        # check whether user can modify cart
+        if not api.user.has_permission(permissions.ModifyCart, obj=buyable):
             remove_item_from_cart(self.request, uid)
             message = _(u'permission_not_granted_to_buy_item',
                         default=u'Permission to buy ${title} not granted.',
@@ -258,7 +258,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             if obj is None:
                 remove_item_from_cart(self.request, uid)
                 continue
-            if not sm.checkPermission(permissions.BuyItems, obj):
+            if not sm.checkPermission(permissions.ModifyCart, obj):
                 remove_item_from_cart(self.request, uid)
                 continue
             buyable_period = queryAdapter(obj, IBuyablePeriod)

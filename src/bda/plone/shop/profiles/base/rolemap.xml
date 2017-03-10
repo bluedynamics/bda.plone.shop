@@ -9,7 +9,7 @@
       <role name="Customer" />
       <role name="Authenticated" />
     </permission>
-    <permission name="bda.plone.shop: Buy Items" acquire="True">
+    <permission name="bda.plone.shop: Modify Cart" acquire="True">
       <role name="Manager" />
       <role name="Site Administrator" />
       <role name="Customer" />

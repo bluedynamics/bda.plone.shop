@@ -1,8 +1,12 @@
 Changelog
 =========
 
-0.10 (unreleased)
------------------
+1.0a1 (unreleased)
+------------------
+
+- Rename ``bda.plone.shop: Buy Items`` permission to
+  ``bda.plone.shop: Modify Cart``.
+  [rnix]
 
 - Added buyable_controls to summary_view via override of plone.app.contentypes
   [agitator]
