@@ -304,7 +304,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
                 preview_image_url=preview_image_url,
                 no_longer_available=no_longer_available,
                 alert=alert,
-                discount=discount * Decimal('-1') if discount else 0
+                discount=discount * Decimal(-1) if discount else Decimal(0)
             ))
         return ret
 
