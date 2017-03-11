@@ -4,6 +4,9 @@ Changelog
 1.0a1 (unreleased)
 ------------------
 
+- Deliver discount in cart item data.
+  [rnix]
+
 - Rename ``bda.plone.shop: Buy Items`` permission to
   ``bda.plone.shop: Modify Cart``.
   [rnix]
