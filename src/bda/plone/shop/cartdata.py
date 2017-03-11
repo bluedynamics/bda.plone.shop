@@ -276,8 +276,11 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             title = data.title
             discount_net = data.discount_net(count)
             price = (Decimal(str(data.net)) - discount_net) * count
+            discount = discount_net * count
             if data.display_gross:
                 price = price + price / Decimal(100) * Decimal(str(data.vat))
+                discount = \
+                    discount + discount / Decimal(100) * Decimal(str(data.vat))
             url = obj.absolute_url()
             description = obj.Description()
             comment_required = data.comment_required
@@ -287,11 +290,22 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             item_state = get_item_state(obj, self.request)
             no_longer_available = not item_state.validate_count(count)
             alert = item_state.alert(count)
-            item = self.item(
-                uid, title, count, price, url, comment, description,
-                comment_required, quantity_unit_float, quantity_unit,
-                preview_image_url, no_longer_available, alert)
-            ret.append(item)
+            ret.append(self.item(
+                uid=uid,
+                title=title,
+                count=count,
+                price=price,
+                url=url,
+                comment=comment,
+                description=description,
+                comment_required=comment_required,
+                quantity_unit_float=quantity_unit_float,
+                quantity_unit=quantity_unit,
+                preview_image_url=preview_image_url,
+                no_longer_available=no_longer_available,
+                alert=alert,
+                discount=discount * Decimal('-1') if discount else 0
+            ))
         return ret
 
 
