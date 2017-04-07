@@ -36,7 +36,7 @@ setup(
         'bda.plone.orders',
         'collective.z3cform.datagridfield',
         'Plone',
-        'plone.api',
+        'plone.api>=1.3.0',
         'plone.app.registry',
         'plone.app.users>=2.0',
         'plone.app.workflow>=2.1.9',
