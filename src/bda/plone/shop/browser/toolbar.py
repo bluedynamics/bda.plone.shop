@@ -51,6 +51,9 @@ class ShopMenu(BrowserMenu):
         navigation = ShopNavigation(context, request)
         items = list()
         for group in navigation.groups():
+            group_links = [x for x in group.links()]
+            if not group_links:
+                continue
             items.append(self.menu_item(
                 group.id,
                 group.title,
@@ -58,7 +61,7 @@ class ShopMenu(BrowserMenu):
                 None,
                 'actionSeparator'
             ))
-            for link in group.links():
+            for link in group_links:
                 items.append(self.menu_item(
                     link.id,
                     link.title,

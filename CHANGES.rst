@@ -4,6 +4,9 @@ Changelog
 1.0a1 (unreleased)
 ------------------
 
+- Hide empty toolbar categories
+  [agitator]
+
 - Deliver discount in cart item data.
   [rnix]
 
