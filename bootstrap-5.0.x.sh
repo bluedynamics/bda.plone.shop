@@ -4,4 +4,5 @@
 rm -r ./lib ./include ./local ./bin
 ln -fs plone-5.0.x.cfg buildout.cfg
 virtualenv --clear .
-./bin/pip install -r https://raw.githubusercontent.com/plone/buildout.coredev/5.0/requirements.txt./bin/buildout
+./bin/pip install -r https://raw.githubusercontent.com/plone/buildout.coredev/5.0/requirements.txt
+./bin/buildout
