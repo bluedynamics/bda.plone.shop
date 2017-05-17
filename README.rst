@@ -341,6 +341,12 @@ Backward incompatible changes
   your code, you need to update your customizations.
 
 
+Upgrade to Plone 5
+==================
+
+If you upgrade to Plone 5, you have to run the upgrade step ``Remove old JS and CSS resources for Plone 5`` manually to remove the old registration of resources.
+
+
 Contributors
 ============
 
