@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
 
   <include file="profiles.zcml" />
@@ -10,7 +11,7 @@
     title="Alter notification text registry entry types"
     description=""
     profile="bda.plone.shop:default"
-    handler=".update_notification_text_registry_entries" />
+    handler=".upgrades.update_notification_text_registry_entries" />
 
   <genericsetup:upgradeSteps
     source="2"
@@ -60,7 +61,7 @@
 
     <genericsetup:upgradeStep
       title="Install a PAS Plugin for computed user properties"
-      handler=".install_userproperties_pas_plugin" />
+      handler=".upgrades.install_userproperties_pas_plugin" />
 
   </genericsetup:upgradeSteps>
 
@@ -75,5 +76,14 @@
       run_deps="True" />
 
   </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeStep
+    zcml:condition="have plone-5"
+    title="Remove old JS and CSS resources for Plone 5"
+    description=""
+    source="7"
+    destination="8"
+    profile="bda.plone.shop:default"
+    handler=".upgrades.remove_old_resources" />
 
 </configure>

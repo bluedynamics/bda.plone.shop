@@ -373,8 +373,8 @@ class IItemNotificationTextBehavior(model.Schema):
     order_text = schema.Text(
         title=_(
             u"label_item_notification_text",
-            default=u"Notification text for this item in the order confirmation "
-                    u"mail"
+            default=u"Notification text for this item in the order "
+                    u"confirmation mail"
         ),
         required=False
     )
@@ -382,8 +382,8 @@ class IItemNotificationTextBehavior(model.Schema):
     overbook_text = schema.Text(
         title=_(
             u"label_item_overbook_notification_text",
-            default=u"Notification text for this item in the order confirmation "
-                    u"mail if item is out of stock"
+            default=u"Notification text for this item in the order "
+                    u"confirmation mail if item is out of stock"
         ),
         required=False
     )
