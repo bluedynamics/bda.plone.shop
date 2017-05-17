@@ -77,5 +77,6 @@ class UserPropertiesPASPlugin(BasePlugin):
             'location': u', '.join([it for it in join_list if it]),
         }
 
+
 classImplements(UserPropertiesPASPlugin, IPropertiesPlugin)
 InitializeClass(UserPropertiesPASPlugin)

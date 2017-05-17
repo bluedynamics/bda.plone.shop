@@ -181,9 +181,10 @@ class BuyableExtender(ExtenderBase):
             name='item_display_gross',
             schemata='Shop',
             widget=BooleanField._properties['widget'](
-                label=_(u'label_item_display_gross', default=u'Display Gross Price'),
+                label=_(u'label_item_display_gross',
+                        default=u'Display Gross Price'),
                 description=_(u'help_item_display_gross',
-                      default=u'Show price with taxes included')
+                              default=u'Show price with taxes included')
 
             ),
         ),
@@ -215,7 +216,8 @@ class BuyableExtender(ExtenderBase):
             name='item_quantity_unit',
             schemata='Shop',
             widget=SelectionWidget(
-                label=_(u'label_item_quantity_unit', default=u'Quantity unit'),
+                label=_(u'label_item_quantity_unit',
+                        default=u'Quantity unit'),
             ),
             vocabulary_factory='bda.plone.shop.vocabularies.'
                                'QuantityUnitVocabulary',
@@ -525,9 +527,9 @@ class GlobalNotificationTextExtender(ExtenderBase):
             default_output_type="text/plain",
             widget=TextAreaWidget(
                 label=_(u'label_item_global_overbook_notification_text',
-                        default=u"Additional overall notification text for the "
-                                u"order confirmation mail of this item ordered "
-                                u"if out of stock"),
+                        default=u"Additional overall notification text for "
+                                u"the order confirmation mail of this item "
+                                u"ordered if out of stock"),
             ),
         ),
     ]
