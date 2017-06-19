@@ -3,4 +3,7 @@
   <index name="item_buyable" meta_type="FieldIndex">
     <indexed_attr value="item_buyable" />
   </index>
+ <column value="item_net"/>
+ <column value="item_buyable_start"/>
+ <column value="item_buyable_end"/>
 </object>
