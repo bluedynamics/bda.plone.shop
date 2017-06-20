@@ -50,9 +50,11 @@
 
 
   <!-- indexing -->
-  <adapter
-      name="item_buyable"
-      factory=".indexer.item_buyable" />
+  <adapter name="item_buyable" factory=".indexer.item_buyable" />
+  <adapter name="item_net" factory=".indexer.item_net" />
+  <adapter name="item_buyable_start" factory=".indexer.item_buyable_start" />
+  <adapter name="item_buyable_end" factory=".indexer.item_buyable_end" />
+
 
   <!-- checkout settings -->
   <adapter factory=".checkout.CheckoutSettings" />
