@@ -1188,7 +1188,7 @@ msgstr "Artikel ist bis ${date} erhältlich"
 #. Default: "Quantity"
 #: ./vocabularies.py:19
 msgid "quantity"
-msgstr "Anzahl"
+msgstr "Stück"
 
 #. Default: "Shop"
 #: ./browser/toolbar.py:13
