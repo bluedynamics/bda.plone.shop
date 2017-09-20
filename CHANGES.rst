@@ -4,6 +4,10 @@ Changelog
 1.0a1 (unreleased)
 ------------------
 
+- Fix failing ``bin/instance adduser`` in Plone due to not initialized registry on startup.
+  Fixes: #100.
+  [thet]
+
 - Add metadata columns for ``item_net``, ``item_buyable_start`` and ``item_buyable_end``.
   This way, they can be displayed in the table view of collection results.
   [thet]
