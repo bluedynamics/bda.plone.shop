@@ -11,4 +11,6 @@ def add_customer_role(event):
         username = event.principal.getUserName()
         apiuser.grant_roles(username=username, roles=['Customer'])
     except ComponentLookupError:
+        # failing on ``bin/instance adduser`` due to uninitialized registry
+        # on startup.
         return
