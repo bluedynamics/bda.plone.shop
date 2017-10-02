@@ -4,6 +4,7 @@
 /.mr.developer.cfg
 /.installed.cfg
 /.settings/
+/.vscode/
 /buildout.cfg
 /bin/
 /develop-eggs/
