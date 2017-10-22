@@ -4,6 +4,9 @@ Changelog
 1.0a1 (unreleased)
 ------------------
 
+- Some CSS fixes for shop settings in plone 5.
+  [rnix]
+
 - Fix failing ``bin/instance adduser`` in Plone due to not initialized registry on startup.
   Fixes: #100.
   [thet]
