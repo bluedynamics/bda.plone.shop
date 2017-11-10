@@ -542,80 +542,119 @@ class IInvoiceSettings(model.Schema):
 
     default_invoice_company = schema.TextLine(
         title=_(u'label_company', default=u'Company'),
-        description=_(u'help_company', default=u''),
+        description=_(
+            u'help_invoice_company',
+            default=u'Company name of invoice sender.'
+        ),
         required=True,
     )
 
     default_invoice_companyadd = schema.TextLine(
         title=_(u'label_companyadd', default=u'Company additional'),
-        description=_(u'help_companyadd', default=u''),
+        description=_(
+            u'help_invoice_companyadd',
+            default=u'Optional additional line displayed under company name'
+        ),
         required=False,
     )
 
     default_invoice_firstname = schema.TextLine(
         title=_(u'label_firstname', default=u'First name'),
-        description=_(u'help_firstname', default=u''),
+        description=_(
+            u'help_invoice_firstname',
+            default=u'Given name of invoice sender'
+        ),
         required=True,
     )
 
     default_invoice_lastname = schema.TextLine(
         title=_(u'label_lastname', default=u'Last name'),
-        description=_(u'help_lastname', default=u''),
+        description=_(
+            u'help_invoice_lastname',
+            default=u'Last name of invoice sender'
+        ),
         required=True,
     )
 
     default_invoice_street = schema.TextLine(
         title=_(u'label_street', default=u'Street'),
-        description=_(u'help_street', default=u''),
+        description=_(
+            u'help_invoice_street',
+            default=u'Street of invoice sender'
+        ),
         required=True,
     )
 
     default_invoice_zip = schema.TextLine(
-        title=_(u'label_zip', default=u'ZIP'),
-        description=_(u'help_zip', default=u''),
+        title=_(u'label_zip', default=u'Postal Code'),
+        description=_(
+            u'help_invoice_zip',
+            default=u'Postal code of invoice sender'
+        ),
         required=True,
     )
 
     default_invoice_city = schema.TextLine(
         title=_(u'label_city', default=u'City'),
-        description=_(u'help_city', default=u''),
+        description=_(
+            u'help_invoice_city',
+            default=u'City of invoice sender'
+        ),
         required=True,
     )
 
     default_invoice_country = schema.Choice(
         title=_(u'label_country', default=u'Country'),
-        description=_(u'help_country', default=u''),
+        description=_(
+            u'help_invoice_country',
+            default=u'Country of invoice sender'
+        ),
         required=True,
         vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
     )
 
     default_invoice_phone = schema.TextLine(
-        title=_(u'label_phone', default=u'Phone number'),
-        description=_(u'help_phone', default=u''),
+        title=_(u'label_phone', default=u'Phone'),
+        description=_(
+            u'help_invoice_phone',
+            default=u'Optional phone number of invoice sender'
+        ),
         required=False,
     )
 
     default_invoice_email = schema.TextLine(
         title=_(u'label_email', default=u'Email address'),
-        description=_(u'help_email', default=u''),
+        description=_(
+            u'help_invoice_email',
+            default=u'Optional email address of invoice sender'
+        ),
         required=False,
     )
 
     default_invoice_web = schema.TextLine(
         title=_(u'label_web', default=u'Web address'),
-        description=_(u'help_web', default=u''),
+        description=_(
+            u'help_invoice_web',
+            default=u'Optional web address of invoice sender'
+        ),
         required=False,
     )
 
     default_invoice_iban = schema.TextLine(
         title=_(u'label_iban', default=u'IBAN'),
-        description=_(u'help_iban', default=u''),
+        description=_(
+            u'help_invoice_iban',
+            default=u'Invoice sender banking account IBAN'
+        ),
         required=True,
     )
 
     default_invoice_bic = schema.TextLine(
         title=_(u'label_bic', default=u'BIC'),
-        description=_(u'help_bic', default=u''),
+        description=_(
+            u'help_invoice_bic',
+            default=u'Invoice sender banking account BIC'
+        ),
         required=True,
     )
 
