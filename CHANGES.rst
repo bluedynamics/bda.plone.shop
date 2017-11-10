@@ -4,6 +4,9 @@ Changelog
 1.0a1 (unreleased)
 ------------------
 
+- Add invoice settings.
+  [rnix]
+
 - Some CSS fixes for shop settings in plone 5.
   [rnix]
 

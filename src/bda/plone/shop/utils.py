@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from bda.plone.shop.interfaces import IInvoiceSettings
 from bda.plone.shop.interfaces import INotificationTextSettings
 from bda.plone.shop.interfaces import IPaymentTextSettings
 from bda.plone.shop.interfaces import IShopArticleSettings
@@ -40,6 +41,10 @@ def get_shop_shipping_settings():
 
 def get_shop_notification_settings():
     return getUtility(IRegistry).forInterface(INotificationTextSettings)
+
+
+def get_shop_invoice_settings():
+    return getUtility(IRegistry).forInterface(IInvoiceSettings)
 
 
 def get_shop_payment_settings():

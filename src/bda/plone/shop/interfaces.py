@@ -12,7 +12,6 @@ from zope import schema
 from zope.interface import Attribute
 from zope.interface import Interface
 from zope.interface import provider
-
 import zope.deferredimport
 
 
@@ -513,6 +512,111 @@ class INotificationTextSettings(
             title=_(u'overbook_text', default='Overbook Text'),
             schema=ILanguageAwareTextRow),
         required=False
+    )
+
+
+@provider(IShopSettingsProvider)
+class IInvoiceSettings(model.Schema):
+    """Global invoice settings.
+    """
+
+    model.fieldset(
+        'invoice',
+        label=_(u'Invoice', default=u'Invoice'),
+        fields=[
+            'default_invoice_company',
+            'default_invoice_companyadd',
+            'default_invoice_firstname',
+            'default_invoice_lastname',
+            'default_invoice_street',
+            'default_invoice_zip',
+            'default_invoice_city',
+            'default_invoice_country',
+            'default_invoice_phone',
+            'default_invoice_email',
+            'default_invoice_web',
+            'default_invoice_iban',
+            'default_invoice_bic'
+        ]
+    )
+
+    default_invoice_company = schema.TextLine(
+        title=_(u'label_company', default=u'Company'),
+        description=_(u'help_company', default=u''),
+        required=True,
+    )
+
+    default_invoice_companyadd = schema.TextLine(
+        title=_(u'label_companyadd', default=u'Company additional'),
+        description=_(u'help_companyadd', default=u''),
+        required=False,
+    )
+
+    default_invoice_firstname = schema.TextLine(
+        title=_(u'label_firstname', default=u'First name'),
+        description=_(u'help_firstname', default=u''),
+        required=True,
+    )
+
+    default_invoice_lastname = schema.TextLine(
+        title=_(u'label_lastname', default=u'Last name'),
+        description=_(u'help_lastname', default=u''),
+        required=True,
+    )
+
+    default_invoice_street = schema.TextLine(
+        title=_(u'label_street', default=u'Street'),
+        description=_(u'help_street', default=u''),
+        required=True,
+    )
+
+    default_invoice_zip = schema.TextLine(
+        title=_(u'label_zip', default=u'ZIP'),
+        description=_(u'help_zip', default=u''),
+        required=True,
+    )
+
+    default_invoice_city = schema.TextLine(
+        title=_(u'label_city', default=u'City'),
+        description=_(u'help_city', default=u''),
+        required=True,
+    )
+
+    default_invoice_country = schema.Choice(
+        title=_(u'label_country', default=u'Country'),
+        description=_(u'help_country', default=u''),
+        required=True,
+        vocabulary='bda.plone.shop.vocabularies.CountryVocabulary'
+    )
+
+    default_invoice_phone = schema.TextLine(
+        title=_(u'label_phone', default=u'Phone number'),
+        description=_(u'help_phone', default=u''),
+        required=False,
+    )
+
+    default_invoice_email = schema.TextLine(
+        title=_(u'label_email', default=u'Email address'),
+        description=_(u'help_email', default=u''),
+        required=False,
+    )
+
+    default_invoice_web = schema.TextLine(
+        title=_(u'label_web', default=u'Web address'),
+        description=_(u'help_web', default=u''),
+        required=False,
+    )
+
+    default_invoice_iban = schema.TextLine(
+        title=_(u'label_iban', default=u'IBAN'),
+        description=_(u'help_iban', default=u''),
+        required=True,
+    )
+
+    default_invoice_bic = schema.TextLine(
+        title=_(u'label_bic', default=u'BIC'),
+        description=_(u'help_bic', default=u''),
+        required=True,
     )
 
 
