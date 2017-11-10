@@ -39,7 +39,7 @@ from zope.schema.interfaces import IVocabularyFactory
 try:
     from collective.contentleadimage.config import IMAGE_FIELD_NAME
     HAS_CLI = True
-except:
+except ImportError:
     HAS_CLI = False
 
 
