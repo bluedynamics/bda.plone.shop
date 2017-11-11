@@ -6,7 +6,7 @@
     <value key="default_invoice_companyadd" purge="false">My Awesome Company</value>
     <value key="default_invoice_firstname" purge="false">John</value>
     <value key="default_invoice_lastname" purge="false">Doe</value>
-    <value key="default_invoice_street" purge="false">Dummy Street</value>
+    <value key="default_invoice_street" purge="false">Dummy Street 1</value>
     <value key="default_invoice_zip" purge="false">1234</value>
     <value key="default_invoice_city" purge="false">Hildesheim</value>
     <value key="default_invoice_country" purge="false">040</value>
