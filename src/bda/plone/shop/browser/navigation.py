@@ -422,13 +422,130 @@ class BookingsInContainerLink(BookingsInContextLink):
 
 
 ###############################################################################
+# invoices related
+###############################################################################
+
+class InvoicesGroup(ShopNavigationGroup):
+    id = 'shop_invoices_group'
+    title = _('invoices', default=u'Invoices')
+    order = 30
+
+
+class InvoicesLink(ShopNavigationLink):
+    """Link for navigating to ``Global Invoices`` view.
+    """
+    id = 'shop_invoices_link'
+    group = 'shop_invoices_group'
+    permission = VIEW_ORDERS
+    order = 30
+    cssclass = 'invoices'
+
+    def __init__(self, context, request):
+        # acquire desired context
+        context = self.acquire_context(context, interfaces=[IVendor, ISite])
+        # call super class constructor
+        super(InvoicesLink, self).__init__(context, request)
+        # check if authenticated user is vendor
+        if self.display and not get_vendors_for():
+            self.display = False
+            return
+        # set title by context interface
+        if IPloneSiteRoot.providedBy(context):
+            self.title = _('invoices_global', default=u'Invoices (global)')
+        elif ISite.providedBy(context):
+            self.title = _('invoices_site', default=u'Invoices (site-wide)')
+        elif IVendor.providedBy(context):
+            self.title = _(
+                'invoices_vendor',
+                default=u'Invoices (vendor specific)'
+            )
+        # set target URL
+        self.url = '{}/@@invoices'.format(context.absolute_url())
+
+
+class InvoicesInContextLink(ShopNavigationLink):
+    """Link for navigating to ``Context Invoices`` view.
+    """
+    id = 'shop_invoices_in_context_link'
+    group = 'shop_invoices_group'
+    permission = VIEW_ORDERS
+    title = _('invoices_in_context', default=u'Invoices in Context')
+    order = 31
+    cssclass = 'invoices'
+
+    def __init__(self, context, request):
+        # acquire desired context
+        interfaces = [IBuyable, IFolder, ISite]
+        context = self.acquire_context(context, interfaces=interfaces)
+        # skip link if context is vendor or site
+        if self.context_provides(context, interfaces=[IVendor, ISite]):
+            self.display = False
+            return
+        # call super class constructor
+        super(InvoicesInContextLink, self).__init__(context, request)
+        # check if authenticated user is vendor
+        if self.display and not get_vendors_for():
+            self.display = False
+            return
+        # check if buyables in context
+        if self.display and not self.buyables_in_context(context):
+            self.display = False
+            return
+        # set target URL
+        self.url = '{}/@@invoices'.format(context.absolute_url())
+
+
+class InvoicesInContainerLink(InvoicesInContextLink):
+    """Link for navigating to ``Container Invoices`` view.
+    """
+    id = 'shop_invoices_in_container_link'
+    group = 'shop_invoices_group'
+    title = _('invoices_in_container', default=u'Invoices in Container')
+    order = 32
+
+    def __init__(self, context, request):
+        # check whether context is default page in folder
+        self.request = request
+        if not self.context_is_default_page(context):
+            self.display = False
+            return
+        # get container
+        context = aq_parent(aq_inner(context))
+        # skip link if context is vendor or site
+        if self.context_provides(context, interfaces=[IVendor, ISite]):
+            self.display = False
+            return
+        # call super class constructor
+        super(InvoicesInContainerLink, self).__init__(context, request)
+
+
+class MyInvoicesLink(ShopNavigationLink):
+    """Link for navigating to ``My Invoices`` view.
+    """
+    id = 'shop_myinvoices_link'
+    group = 'shop_invoices_group'
+    permission = VIEW_OWN_ORDERS
+    title = _('my_invoices', default=u'My Invoices')
+    order = 33
+    cssclass = 'myinvoices'
+
+    def __init__(self, context, request):
+        # acquire desired context
+        context = self.acquire_context(context, interfaces=[ISite])
+        # call super class constructor
+        super(MyInvoicesLink, self).__init__(context, request)
+        # set target URL
+        self.url = '{}/@@myinvoices'.format(context.absolute_url())
+
+
+###############################################################################
 # contacts related
 ###############################################################################
 
 class ContactsGroup(ShopNavigationGroup):
     id = 'shop_contacts_group'
     title = _('contacts', default=u'Contacts')
-    order = 30
+    order = 40
 
 
 class ContactsLink(ShopNavigationLink):
@@ -438,7 +555,7 @@ class ContactsLink(ShopNavigationLink):
     group = 'shop_contacts_group'
     permission = VIEW_ORDERS
     title = _('contacts', default=u'Contacts')
-    order = 30
+    order = 40
     cssclass = 'bookings'
 
     def __init__(self, context, request):
@@ -461,7 +578,7 @@ class ContactsLink(ShopNavigationLink):
 class ExportGroup(ShopNavigationGroup):
     id = 'shop_export_group'
     title = _('export', default=u'Export')
-    order = 40
+    order = 50
 
 
 class ExportOrdersLink(ShopNavigationLink):
@@ -471,7 +588,7 @@ class ExportOrdersLink(ShopNavigationLink):
     group = 'shop_export_group'
     permission = EXPORT_ORDERS
     title = _('exportorders', default=u'Export Orders')
-    order = 40
+    order = 50
     cssclass = 'export_orders'
 
     def __init__(self, context, request):
@@ -490,7 +607,7 @@ class ExportOrdersInContext(ShopNavigationLink):
     group = 'shop_export_group'
     permission = EXPORT_ORDERS
     title = _('exportorders_item', default=u'Export Orders on this Item')
-    order = 41
+    order = 51
     cssclass = 'export_orders_item'
 
     def __init__(self, context, request):
@@ -526,7 +643,7 @@ class ExportOrdersInContainerLink(ExportOrdersInContext):
         'exportorders_in_container',
         default=u'Export Orders in Container'
     )
-    order = 42
+    order = 52
 
     def __init__(self, context, request):
         # check whether context is default page in folder
@@ -551,7 +668,7 @@ class ExportOrdersInContainerLink(ExportOrdersInContext):
 class MailTemaplatesGroup(ShopNavigationGroup):
     id = 'shop_mailtemplates_group'
     title = _('mailtemplates', default=u'Mail Templates')
-    order = 50
+    order = 60
 
 
 class MailTemplatesLink(ShopNavigationLink):
@@ -560,7 +677,7 @@ class MailTemplatesLink(ShopNavigationLink):
     id = 'shop_mail_templates_link'
     group = 'shop_mailtemplates_group'
     permission = MANAGE_TEAMPLETS
-    order = 50
+    order = 60
     cssclass = 'mailtemplates'
 
     def __init__(self, context, request):
@@ -595,7 +712,7 @@ class MailTemplatesLink(ShopNavigationLink):
 class DiscountGroup(ShopNavigationGroup):
     id = 'shop_discount_group'
     title = _('discount', default=u'Discount')
-    order = 60
+    order = 70
 
 
 class CartDiscountLink(ShopNavigationLink):
@@ -605,7 +722,7 @@ class CartDiscountLink(ShopNavigationLink):
     group = 'shop_discount_group'
     permission = MANAGE_DISCOUNT
     title = _('cart_discount', default=u'Cart Discount')
-    order = 60
+    order = 70
     cssclass = 'cart_discount'
 
     def __init__(self, context, request):
@@ -624,7 +741,7 @@ class CartItemDiscountLink(ShopNavigationLink):
     group = 'shop_discount_group'
     permission = MANAGE_DISCOUNT
     title = _('item_discount', default=u'Item Discount')
-    order = 61
+    order = 71
     cssclass = 'item_discount'
 
     def __init__(self, context, request):
@@ -651,7 +768,7 @@ class CartItemDiscountInContainerLink(CartItemDiscountLink):
         'item_discount_in_container',
         default=u'Item Discount in Container'
     )
-    order = 62
+    order = 72
 
     def __init__(self, context, request):
         # check whether context is default page in folder
@@ -676,7 +793,7 @@ class CartItemDiscountInContainerLink(CartItemDiscountLink):
 class AdministrationGroup(ShopNavigationGroup):
     id = 'shop_administration_group'
     title = _('administration', default=u'Administration')
-    order = 70
+    order = 80
 
 
 class ControlPanelLink(ShopNavigationLink):
@@ -685,7 +802,7 @@ class ControlPanelLink(ShopNavigationLink):
     id = 'shop_control_panel_link'
     group = 'shop_administration_group'
     permission = MANAGE_SHOP
-    order = 70
+    order = 80
     cssclass = 'controlpanel'
 
     def __init__(self, context, request):

@@ -144,6 +144,7 @@
   <!-- shop navigation groups -->
   <adapter name="orders" factory=".navigation.OrdersGroup" />
   <adapter name="bookings" factory=".navigation.BookingsGroup" />
+  <adapter name="invoices" factory=".navigation.InvoicesGroup" />
   <adapter name="contacts" factory=".navigation.ContactsGroup" />
   <adapter name="export" factory=".navigation.ExportGroup" />
   <adapter name="mail_templates" factory=".navigation.MailTemaplatesGroup" />
@@ -159,6 +160,11 @@
   <adapter name="bookings" factory=".navigation.BookingsLink" />
   <adapter name="bookings_in_context" factory=".navigation.BookingsInContextLink" />
   <adapter name="bookings_in_container" factory=".navigation.BookingsInContainerLink" />
+
+  <adapter name="invoices" factory=".navigation.InvoicesLink" />
+  <adapter name="invoices_in_context" factory=".navigation.InvoicesInContextLink" />
+  <adapter name="invoices_in_container" factory=".navigation.InvoicesInContainerLink" />
+  <adapter name="myinvoices" factory=".navigation.MyInvoicesLink" />
 
   <adapter name="contacts" factory=".navigation.ContactsLink" />
 
