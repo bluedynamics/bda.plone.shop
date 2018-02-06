@@ -888,7 +888,7 @@ msgstr "Verfügbar"
 #: ./at.py:176
 #: ./dx.py:102
 msgid "label_item_cart_count_limit"
-msgstr "Maximale Anzahl diese Artikels im Warenkorb"
+msgstr "Maximale Anzahl dieses Artikels im Warenkorb"
 
 #. Default: "Comment enabled"
 #: ./at.py:195
