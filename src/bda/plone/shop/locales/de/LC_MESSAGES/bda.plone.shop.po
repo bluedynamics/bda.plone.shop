@@ -429,7 +429,7 @@ msgstr "Lieferadresse weicht von Rechnungsadresse ab."
 #. Default: "Available payment methods in checkout"
 #: ./interfaces.py:701
 msgid "help_available_payment_methods"
-msgstr "Verfügbare Bezahlmethoden in der Kassa"
+msgstr "Verfügbare Bezahlmethoden"
 
 #. Default: "Available shipping methods in checkout"
 #: ./interfaces.py:326
@@ -603,7 +603,7 @@ msgstr "Maximale Anzahl an Artikeln im Warenkorb, wenn Gesamtbeschränkung im Wa
 #. Default: "Default payment method in checkout"
 #: ./interfaces.py:714
 msgid "help_payment_method"
-msgstr "Standard-Bezahlmethode in der Kassa"
+msgstr "Standard-Bezahlmethode"
 
 #: ./user/userdata.py:62
 msgid "help_phone"
@@ -643,7 +643,7 @@ msgstr "Umsatzsteuer die zur Berechnung der Versandkosten verwendet wird"
 
 #: ./interfaces.py:175
 msgid "help_show_checkout"
-msgstr "Soll ein direkter Link zum Checkout im Warenkorb angezeigt werden?"
+msgstr "Soll ein direkter Link zur Kasse im Warenkorb angezeigt werden?"
 
 #: ./interfaces.py:103
 msgid "help_show_currency"
@@ -1053,7 +1053,7 @@ msgstr "Umsatzsteuer für Versandkosten"
 #. Default: "Show checkout link in portlet"
 #: ./interfaces.py:171
 msgid "label_show_checkout"
-msgstr "Direkten Checkout-Link im Warenkorb-Portlet anzeigen"
+msgstr "Direkten Link zur Kasse im Warenkorb-Portlet anzeigen"
 
 #. Default: "Show the currency for items"
 #: ./interfaces.py:99
