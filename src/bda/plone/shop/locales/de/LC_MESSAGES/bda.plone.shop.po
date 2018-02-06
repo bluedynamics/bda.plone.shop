@@ -618,7 +618,7 @@ msgstr "Einheit in welcher die Artikel bemessen sind."
 #: ./at.py:414
 #: ./dx.py:317
 msgid "help_shipping_item_free_shipping"
-msgstr "Einstellung ob Versandkosten für diesen Artikel anfallen."
+msgstr "Markieren, wenn dieser Artikel kostenfrei versandt wird"
 
 #. Default: "Flag whether item is shippable, i.e. downloads are not"
 #: ./at.py:395
