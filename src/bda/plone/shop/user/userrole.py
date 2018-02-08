@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 from bda.plone.shop.utils import get_shop_settings
 from plone.api import user as apiuser
-try:
-    # Plone 4.3 compatibility: module moved in zope.component 3.11.0 
-    from zope.interface.interfaces import ComponentLookupError
-except ImportError:
-    from zope.component.interfaces import ComponentLookupError
+from zope.component import ComponentLookupError
 
 
 def add_customer_role(event):
