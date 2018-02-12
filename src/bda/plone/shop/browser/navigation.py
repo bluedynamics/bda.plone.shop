@@ -159,7 +159,8 @@ class ShopNavigationLink(object):
         """Return flag whether given context is default page in it's container.
         """
         context = aq_inner(context)
-        to_adapt = context, self.request
+        container = aq_parent(context)
+        to_adapt = container, self.request
         default_page = getMultiAdapter(to_adapt, name='default_page')
         return default_page.getDefaultPage() == context.getId()
 
