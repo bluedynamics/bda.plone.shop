@@ -2,7 +2,7 @@
 from bda.plone.shop.tests import set_browserlayer
 from bda.plone.shop.tests import ShopDX_INTEGRATION_TESTING
 
-import unittest2 as unittest
+import unittest
 
 
 class TestDXIntegration(unittest.TestCase):

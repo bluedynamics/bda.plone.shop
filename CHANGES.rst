@@ -4,6 +4,9 @@ Changelog
 1.0a1 (unreleased)
 ------------------
 
+- Replace unittest2 with unittest
+  [llisa123]
+
 - Add invoice settings.
   [rnix]
 
