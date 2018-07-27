@@ -49,6 +49,9 @@ Scenario: Two users order some items in different vendor areas
   When adding item_22 in folder_2 to cart
   Then item number 4 in cart should have quantity 1
   When Checkout Order customer1
+  # !!!
+  and Click Button  css=div.formControls > input.standalone
+  # !!!
   Then Order should be placed
 
   When checking myorders
@@ -65,6 +68,9 @@ Scenario: Two users order some items in different vendor areas
   When adding item_22 in folder_2 to cart
   Then item number 2 in cart should have quantity 1
   When Checkout Order customer2
+  # !!!
+  and Click Button  css=div.formControls > input.standalone
+  # !!!
   Then Order should be placed
 
   When checking myorders
@@ -116,14 +122,15 @@ a user ${user}
 Admin enables vendor area on ${path}
   Go to  ${PLONE_URL}/${path}
   Location Should Be  ${PLONE_URL}/${path}
-  Click Element  css=#plone-contentmenu-actions dt a
-  Click Link  css=#plone-contentmenu-actions-enableVendor
+  Click Element  css=li#plone-contentmenu-actions
+  Click Link  css=li.plonetoolbar-content-action > a#plone-contentmenu-actions-enableVendor
 
 Admin adds user ${user} to Vendors on ${path}
   Go to  ${PLONE_URL}/${path}/@@sharing
   Page Should Contain  Sharing for
   Input Text  id=sharing-user-group-search  ${user}
-  Select Checkbox  css=td[title='${user}'] ~ td input[name='entries.role_Vendor:records']
+  Click Button  id=sharing-search-button
+  Select Checkbox  xpath=//tr/td[@title='${user}']/following-sibling::*//input[@name='entries.role_Vendor:records']   
   Click Button  id=sharing-save-button
 
 adding ${item} in ${path} to cart
@@ -139,14 +146,16 @@ item number ${pos} in cart should have quantity ${num}
 
 Checkout Order customer1
   Click Link  css=.go_to_cart_action
+  Sleep  1
   Click Link  css=.cart_checkout_button
-  Input Text  css=#input-checkout-personal_data-firstname  Mister
-  Input Text  css=#input-checkout-personal_data-lastname  Pfister
-  Input Text  css=#input-checkout-personal_data-email  mister@pfister.com
-  Input Text  css=#input-checkout-personal_data-phone  +1234567890
-  Input Text  css=#input-checkout-billing_address-street  Mister Pfisterstrasse
-  Input Text  css=#input-checkout-billing_address-zip  1234
-  Input Text  css=#input-checkout-billing_address-city  megacity
+  wait until element is visible  css=input#input-checkout-personal_data-firstname
+  Input Text  css=input#input-checkout-personal_data-firstname  Mister
+  Input Text  css=input#input-checkout-personal_data-lastname  Pfister
+  Input Text  css=input#input-checkout-personal_data-email  mister@pfister.com
+  Input Text  css=input#input-checkout-personal_data-phone  +1234567890
+  Input Text  css=input#input-checkout-billing_address-street  Mister Pfisterstrasse
+  Input Text  css=input#input-checkout-billing_address-zip  1234
+  Input Text  css=input#input-checkout-billing_address-city  megacity
   Select From List By Value  css=#input-checkout-billing_address-country  040
   Select Radio Button  checkout.payment_selection.payment  cash
   Click Button  css=#input-checkout-next
@@ -195,34 +204,37 @@ Checkout Order customer2
   Click Button  css=#input-checkout-finish
 
 checking myorders
-  Click Link  css=.portlet .myorders a
+  Click Link  css=a.payment_button
+  Click Link  css=li#shop_toolbar_menu > a.label-
+  Click Link  css=li.plonetoolbar-shop_toolbar_menu > a.myorders
 
 checking orders
-  Click Link  css=.portletShopAdmin li.orders a
+  Click Link  css=li#shop_toolbar_menu > a.label-
+  Click Link  css=li.plonetoolbar-shop_toolbar_menu > a.orders
 
 checking order details
-  Click Link  css=#bdaploneorders tr:nth-of-type(1) a.contenttype-document[title="View Order"]
+  Click Link  css=a[title="View Order"]
 
 
 vendor1 checking customer1 order details
   # These selectors are quite weak. but the table doesn't offer better.
-  Click Link  css=#bdaploneorders tr:nth-of-type(1) a.contenttype-document[title="View Order"]
+  Click Link  xpath=//table[@id='bdaploneorders']//td//a[@title='View Order']
 
 vendor2 checking customer1 order details
   # These selectors are quite weak. but the table doesn't offer better.
-  Click Link  css=#bdaploneorders tr:nth-of-type(2) a.contenttype-document[title="View Order"]
+  Click Link  xpath=(//table[@id='bdaploneorders']//td//a[@title='View Order'])[2]
 
 vendor2 checking customer2 order details
   # These selectors are quite weak. but the table doesn't offer better.
-  Click Link  css=#bdaploneorders tr:nth-of-type(1) a.contenttype-document[title="View Order"]
+  Click Link  xpath=(//table[@id='bdaploneorders']//td//a[@title='View Order'])[1]
 
 admin checking customer1 order details
   # These selectors are quite weak. but the table doesn't offer better.
-  Click Link  css=#bdaploneorders tr:nth-of-type(2) a.contenttype-document[title="View Order"]
+  Click Link  xpath=(//table[@id='bdaploneorders']//td//a[@title='View Order'])[2]
 
 admin checking customer2 order details
   # These selectors are quite weak. but the table doesn't offer better.
-  Click Link  css=#bdaploneorders tr:nth-of-type(1) a.contenttype-document[title="View Order"]
+  Click Link  xpath=(//table[@id='bdaploneorders']//td//a[@title='View Order'])[1]
 
 
 
@@ -263,6 +275,7 @@ vendor1 sees customer1 allowed bookings
   Page Should Contain  item_12
   Page Should Not Contain  item_21
   Page Should Not Contain  item_22
+  Click Link  css=a.close
 
 
 vendor2 sees allowed orders
@@ -279,6 +292,8 @@ vendor2 sees customer1 allowed bookings
   Page Should Not Contain  item_12
   Page Should Contain  item_21
   Page Should Contain  item_22
+  Click Link  css=a.close
+  Sleep  1
 
 vendor2 sees customer2 allowed bookings
   Page Should Contain  Order Details
@@ -288,6 +303,8 @@ vendor2 sees customer2 allowed bookings
   Page Should Not Contain  item_12
   Page Should Contain  item_21
   Page Should Contain  item_22
+  Click Link  css=a.close
+  Sleep  1
 
 
 admin sees all orders
@@ -304,6 +321,8 @@ admin sees customer1 all bookings
   Page Should Contain  item_12
   Page Should Contain  item_21
   Page Should Contain  item_22
+  Click Link  css=a.close
+  Sleep  1
 
 admin sees customer2 all bookings
   Page Should Contain  Order Details
@@ -313,3 +332,4 @@ admin sees customer2 all bookings
   Page Should Not Contain  item_12
   Page Should Contain  item_21
   Page Should Contain  item_22
+  Click Link  css=a.close
