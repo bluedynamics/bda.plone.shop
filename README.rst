@@ -166,8 +166,8 @@ Cart item preview images
 
 The cart can render preview images for the cart items in case when
 
-    1. the context has a field named ``image``
-    2. ``collective.contentleadimage`` is installed (Archetypes only)
+1. the context has a field named ``image``
+2. ``collective.contentleadimage`` is installed (Archetypes only)
 
 You can easily change the preview image rendering by adapting your own cart
 items. If you want to change the scale of the image, inherit from the existing
