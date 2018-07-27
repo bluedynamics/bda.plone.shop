@@ -357,4 +357,5 @@ Contributors
 - Espen Moe-Nilssen
 - Johannes Raggam
 - Jure Cerjak
-- Benjamin Stefaner (benniboy)
+- Benjamin Stefane 
+- Jens Klein
