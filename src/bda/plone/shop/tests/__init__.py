@@ -7,6 +7,9 @@ from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from plone.app.testing import TEST_USER_NAME
+from plone.app.testing import login
+from plone.app.testing import logout
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.testing import z2
 from Products.CMFPlone.utils import getFSVersionTuple
@@ -103,6 +106,8 @@ class ShopFullLayerBase(PloneSandboxLayer):
 
         setRoles(portal, TEST_USER_ID, ['Manager'])
 
+        login(portal, TEST_USER_NAME)
+
         # Create test content
         crc = plone.api.content.create
         crc(container=portal, type='Folder', id='folder_1')
@@ -123,6 +128,8 @@ class ShopFullLayerBase(PloneSandboxLayer):
         cru(email="c2@test.com", username="customer2", password="customer2")
         cru(email="v1@test.com", username="vendor1", password="vendor1")
         cru(email="vendor2@test.com", username="vendor2", password="vendor2")
+
+        logout()
 
 
 class ShopATFullLayer(ShopFullLayerBase):

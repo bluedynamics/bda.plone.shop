@@ -35,9 +35,8 @@ setup(
         'bda.plone.discount',
         'bda.plone.orders',
         'collective.z3cform.datagridfield',
-        'Plone',
+        'Products.CMFPlone',
         'plone.api>=1.3.0',
-        'plone.app.registry',
         'plone.app.users>=2.0',
         'plone.app.workflow>=2.1.9',
         'setuptools',
@@ -51,6 +50,7 @@ setup(
             'plone.app.dexterity',
             'plone.app.robotframework [debug]',
             'plone.app.testing [robot]',
+            'Products.PrintingMailHost',
         ]
     },
     entry_points="""
