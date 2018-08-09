@@ -7,6 +7,9 @@ Changelog
 - Replace unittest2 with unittest
   [llisa123]
 
+- Use userschema.xml to extend shop specific user data for Plone 5.
+  [agitator]
+
 - Add invoice settings.
   [rnix]
 

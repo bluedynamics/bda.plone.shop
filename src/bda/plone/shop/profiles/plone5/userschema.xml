@@ -1,0 +1,135 @@
+<model xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns="http://namespaces.plone.org/supermodel/schema" i18n:domain="plone">
+  <schema name="member-fields">
+
+    <!-- Default fields are required for setup -->
+    <field name="home_page" type="zope.schema.URI" users:forms="In User Profile">
+      <description i18n:translate="help_homepage">
+          The URL for your external home page, if you have one.
+      </description>
+      <required>False</required>
+      <title i18n:translate="label_homepage">Home page</title>
+    </field>
+
+    <field name="description" type="zope.schema.Text" users:forms="In User Profile">
+      <description i18n:translate="help_biography">
+          A short overview of who you are and what you do. Will be displayed on your author page, linked from the items you create.
+      </description>
+      <required>False</required>
+      <title i18n:translate="label_biography">Biography</title>
+    </field>
+
+    <field name="location" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description i18n:translate="help_location">
+          Your location - either city and country - or in a company setting, where your office is located.
+      </description>
+      <required>False</required>
+      <title i18n:translate="label_location">Location</title>
+    </field>
+
+    <field name="portrait" type="plone.namedfile.field.NamedBlobImage" users:forms="In User Profile">
+      <description i18n:translate="help_portrait">
+          To add or change the portrait: click the "Browse" button; select a picture of yourself. Recommended image size is 75 pixels wide by 100 pixels tall.
+      </description>
+      <required>False</required>
+      <title i18n:translate="label_portrait">Portrait</title>
+    </field>
+
+    <!-- Personal Data -->
+    <field name="salutation" type="zope.schema.Choice" users:forms="In User Profile">
+      <description/>
+      <title>Salutation</title>
+      <vocabulary>bda.plone.shop.vocabularies.GenderVocabulary</vocabulary>
+    </field>
+    <field name="first_name" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description>Fill in your given name.</description>
+      <title>First name</title>
+    </field>
+    <field name="lastname" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description>Fill in your surname or your family name.</description>
+      <title>Last name</title>
+    </field>
+    <field name="phone" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description/>
+      <title>Phone</title>
+    </field>
+    <field name="company" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description/>
+      <required>False</required>
+      <title>Company</title>
+    </field>
+
+    <!-- Billing Address -->
+    <field name="street" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description/>
+      <title>Street</title>
+    </field>
+    <field name="zip" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description/>
+      <title>Postal Code</title>
+    </field>
+    <field name="city" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description/>
+      <title>City</title>
+    </field>
+    <field name="country" type="zope.schema.Choice" users:forms="In User Profile">
+      <description/>
+      <title>Country</title>
+      <vocabulary>bda.plone.shop.vocabularies.CountryVocabulary</vocabulary>
+    </field>
+
+    <!-- Delivery Address -->
+    <field name="alternative_delivery_address" type="zope.schema.Bool">
+      <description/>
+      <required>False</required>
+      <title>Alternative delivery address</title>
+      <form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
+    </field>
+    <field name="delivery_firstname" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description>Fill in your given name.</description>
+      <required>False</required>
+      <title>First name</title>
+    </field>
+    <field name="delivery_lastname" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description>Fill in your surname or your family name.</description>
+      <required>False</required>
+      <title>Last name</title>
+    </field>
+    <field name="delivery_company" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description/>
+      <required>False</required>
+      <title>Company</title>
+    </field>
+    <field name="delivery_street" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description/>
+      <required>False</required>
+      <title>Street</title>
+    </field>
+    <field name="delivery_zip" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description/>
+      <required>False</required>
+      <title>Postal Code</title>
+    </field>
+    <field name="delivery_city" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description/>
+      <required>False</required>
+      <title>City</title>
+    </field>
+    <field name="delivery_country" type="zope.schema.Choice" users:forms="In User Profile">
+      <description/>
+      <required>False</required>
+      <title>Country</title>
+      <vocabulary>bda.plone.shop.vocabularies.CountryVocabulary</vocabulary>
+    </field>
+
+    <!-- Terms and Conditions -->
+    <field name="accept" type="zope.schema.Bool">
+      <description>Tick this box to indicate that you have found, read and accepted the terms of use for this site.</description>
+      <required>False</required>
+      <title>Accept terms of use</title>
+      <form:widget type="z3c.form.browser.checkbox.SingleCheckBoxFieldWidget"/>
+    </field>
+
+  </schema>
+</model>
+
+
