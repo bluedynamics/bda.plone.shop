@@ -1311,7 +1311,7 @@ msgstr ""
 
 #. Default: "Shop"
 #: ./browser/admin_p4.pt:6
-#: ./browser/admin_p5.pt:9
+#: ./browser/admin.pt:9
 msgid "shop_admin_heading"
 msgstr ""
 
