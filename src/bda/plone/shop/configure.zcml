@@ -42,9 +42,6 @@
   <include package=".upgrades" />
 
   <include
-      zcml:condition="installed Products.Archetypes"
-      file="at.zcml"/>
-  <include
       zcml:condition="installed plone.dexterity"
       file="dx.zcml"/>
 

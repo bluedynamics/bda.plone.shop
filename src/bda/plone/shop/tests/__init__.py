@@ -55,25 +55,6 @@ Shop_INTEGRATION_TESTING = IntegrationTesting(
     name="Shop:Integration")
 
 
-class ShopATLayer(PloneSandboxLayer):
-    defaultBases = (Shop_FIXTURE,)
-
-    def setUpZope(self, app, configurationContext):
-        import Products.ATContentTypes
-        self.loadZCML(package=Products.ATContentTypes,
-                      context=configurationContext)
-
-    def setUpPloneSite(self, portal):
-        if PLONE5:
-            self.applyProfile(portal, 'Products.ATContentTypes:default')
-
-
-ShopAT_FIXTURE = ShopATLayer()
-ShopAT_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(ShopAT_FIXTURE,),
-    name="ShopAT:Integration")
-
-
 class ShopDXLayer(PloneSandboxLayer):
     defaultBases = (Shop_FIXTURE,)
 
@@ -130,33 +111,6 @@ class ShopFullLayerBase(PloneSandboxLayer):
         cru(email="vendor2@test.com", username="vendor2", password="vendor2")
 
         logout()
-
-
-class ShopATFullLayer(ShopFullLayerBase):
-    defaultBases = (ShopAT_FIXTURE,)
-
-    def setUpZope(self, app, configurationContext):
-        # Make Documents IBuyable
-        import bda.plone.shop.tests
-        self.loadZCML(package=bda.plone.shop.tests,
-                      name='buyable_at.zcml',
-                      context=configurationContext)
-
-    def setUpPloneSite(self, portal):
-        self.setup_content(portal)
-
-
-ShopATFull_FIXTURE = ShopATFullLayer()
-ShopATFull_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(ShopATFull_FIXTURE,),
-    name="ShopAT:Integration")
-ShopATFull_ROBOT_TESTING = FunctionalTesting(
-    bases=(
-        MOCK_MAILHOST_FIXTURE,
-        ShopATFull_FIXTURE,
-        z2.ZSERVER_FIXTURE
-    ),
-    name="ShopATFull:Robot")
 
 
 class ShopDXFullLayer(ShopFullLayerBase):

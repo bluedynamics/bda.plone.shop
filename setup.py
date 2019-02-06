@@ -31,7 +31,6 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'archetypes.schemaextender',  # XXX: remove from install dependencies
         'bda.plone.discount',
         'bda.plone.orders',
         'collective.z3cform.datagridfield',
@@ -45,7 +44,6 @@ setup(
     ],
     extras_require={
         'test': [
-            'Products.ATContentTypes',
             'plone.app.contenttypes',
             'plone.app.dexterity',
             'plone.app.robotframework [debug]',
