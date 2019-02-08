@@ -84,15 +84,7 @@ class HiddenProfiles(object):
     def getNonInstallableProfiles(self):
         """Do not show on Plone's list of installable profiles.
         """
-        return [
-            'bda.plone.shop:install-base',
-            # 'bda.plone.cart:default',
-            # 'bda.plone.checkout:default',
-            # 'bda.plone.discount:default',
-            # 'bda.plone.orders:default',
-            # 'bda.plone.payment:default',
-            # 'bda.plone.shipping:default',
-        ]
+        return []
 
 
 @implementer(QuickInstaller.INonInstallable)
@@ -101,12 +93,4 @@ class HiddenProducts(object):
     def getNonInstallableProducts(self):
         """Do not show on QuickInstaller's list of installable products.
         """
-        return [
-            'bda.plone.shop:install-base',
-            # 'bda.plone.cart:default',
-            # 'bda.plone.checkout:default',
-            # 'bda.plone.discount:default',
-            # 'bda.plone.orders:default',
-            # 'bda.plone.payment:default',
-            # 'bda.plone.shipping:default',
-        ]
+        return []
