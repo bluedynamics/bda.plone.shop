@@ -20,11 +20,11 @@ msgstr ""
 msgid "AUD"
 msgstr ""
 
-#: ./profiles/base/actions.xml
+#: ./profiles/default/actions.xml
 msgid "Activate Buyable on Item"
 msgstr "Information complémentaire des produits dans le shop"
 
-#: ./profiles/base/actions.xml
+#: ./profiles/default/actions.xml
 msgid "Activate vendor area on this context"
 msgstr "Active l'espace vendeur sur ce contexte"
 
@@ -53,19 +53,19 @@ msgstr "Panier"
 msgid "DKK"
 msgstr ""
 
-#: ./profiles/base/actions.xml
+#: ./profiles/default/actions.xml
 msgid "Deactivates Buyable on Item"
 msgstr "Déactiver information des produits dans le shop"
 
-#: ./profiles/base/actions.xml
+#: ./profiles/default/actions.xml
 msgid "Deactivates vendor area on this context"
 msgstr "Désactive l'espace vendeur sur ce contexte"
 
-#: ./profiles/base/actions.xml
+#: ./profiles/default/actions.xml
 msgid "Disable Vendor Area"
 msgstr "Désactiver l'espace vendeur"
 
-#: ./profiles/base/actions.xml
+#: ./profiles/default/actions.xml
 msgid "Disables Buyable"
 msgstr "Déactiver information des produits dans le shop"
 
@@ -74,11 +74,11 @@ msgstr "Déactiver information des produits dans le shop"
 msgid "EUR"
 msgstr ""
 
-#: ./profiles/base/actions.xml
+#: ./profiles/default/actions.xml
 msgid "Enable Buyable"
 msgstr "Activer information des produits dans le shop"
 
-#: ./profiles/base/actions.xml
+#: ./profiles/default/actions.xml
 msgid "Enable Vendor Area"
 msgstr "Activer l'espace vendeur"
 
@@ -117,11 +117,11 @@ msgstr "Notifications"
 msgid "Payment"
 msgstr "Paiement"
 
-#: ./profiles/base/actions.xml
+#: ./profiles/default/actions.xml
 msgid "Personal Information"
 msgstr "Information personnelle"
 
-#: ./profiles/base/actions.xml
+#: ./profiles/default/actions.xml
 msgid "Personal Preferences"
 msgstr "Préférences personnelles"
 
@@ -136,7 +136,7 @@ msgid "Shipping"
 msgstr "Livraison"
 
 #: ./browser/controlpanel.py:50
-#: ./profiles/base/controlpanel.xml
+#: ./profiles/default/controlpanel.xml
 msgid "Shop settings"
 msgstr "Réglages du magasin"
 
@@ -184,7 +184,7 @@ msgid "add_to_cart"
 msgstr "Ajouter"
 
 #. Default: "Administration"
-#: ./browser/navigation.py:678
+#: ./browser/navigation.py:680
 msgid "administration"
 msgstr "Administration"
 
@@ -213,41 +213,37 @@ msgstr "Partiellement réservé"
 msgid "availability"
 msgstr "Disponibilité"
 
-#: ./profiles.zcml:14
+#: ./profiles.zcml:13
 msgid "bda.plone.shop"
 msgstr ""
 
-#: ./profiles.zcml:30
-msgid "bda.plone.shop base"
-msgstr ""
-
 #. Default: "Bookings"
-#: ./browser/navigation.py:332
+#: ./browser/navigation.py:334
 msgid "bookings"
 msgstr "Réservations"
 
 #. Default: "Bookings (global)"
-#: ./browser/navigation.py:356
+#: ./browser/navigation.py:358
 msgid "bookings_global"
 msgstr "Réservations (global)"
 
 #. Default: "Bookings in Container"
-#: ./browser/navigation.py:405
+#: ./browser/navigation.py:407
 msgid "bookings_in_container"
 msgstr "Réservations dans le conteneur"
 
 #. Default: "Bookings in Context"
-#: ./browser/navigation.py:374
+#: ./browser/navigation.py:376
 msgid "bookings_in_context"
 msgstr "Réservations dans le contexte"
 
 #. Default: "Bookings (site-wide)"
-#: ./browser/navigation.py:358
+#: ./browser/navigation.py:360
 msgid "bookings_site"
 msgstr "Réservations (dans tout le site)"
 
 #. Default: "Bookings (vendor specific)"
-#: ./browser/navigation.py:360
+#: ./browser/navigation.py:362
 msgid "bookings_vendor"
 msgstr "Réservations (côté vendeur)"
 
@@ -257,7 +253,7 @@ msgid "buyable_does_not_exist"
 msgstr "BL'article avec l'UID {uuid} n'existe pas."
 
 #. Default: "Cart Discount"
-#: ./browser/navigation.py:607
+#: ./browser/navigation.py:609
 msgid "cart_discount"
 msgstr "Rabais du panier"
 
@@ -277,7 +273,7 @@ msgid "comment"
 msgstr "Complément"
 
 #. Default: "Contacts"
-#: ./browser/navigation.py:430
+#: ./browser/navigation.py:432
 msgid "contacts"
 msgstr "Contacts"
 
@@ -317,7 +313,7 @@ msgid "disabled_vendor"
 msgstr "Désactiver vendeur"
 
 #. Default: "Discount"
-#: ./browser/navigation.py:597
+#: ./browser/navigation.py:599
 msgid "discount"
 msgstr "Rabais"
 
@@ -332,22 +328,22 @@ msgid "enabled_vendor"
 msgstr "Activer vendeur"
 
 #. Default: "Export"
-#: ./browser/navigation.py:463
+#: ./browser/navigation.py:465
 msgid "export"
 msgstr "Export"
 
 #. Default: "Export Orders"
-#: ./browser/navigation.py:473
+#: ./browser/navigation.py:475
 msgid "exportorders"
 msgstr "Exporter commande"
 
 #. Default: "Export Orders in Container"
-#: ./browser/navigation.py:525
+#: ./browser/navigation.py:527
 msgid "exportorders_in_container"
 msgstr "Exporter les commandes dans le conteneur"
 
 #. Default: "Export Orders on this Item"
-#: ./browser/navigation.py:492
+#: ./browser/navigation.py:494
 msgid "exportorders_item"
 msgstr "Exporter les commandes de cet article"
 
@@ -498,7 +494,6 @@ msgid "help_gender"
 msgstr ""
 
 #. Default: "Global Trade Item Number"
-#: ./at.py:661
 #: ./dx.py:521
 msgid "help_gtin"
 msgstr "Code d'article international"
@@ -574,13 +569,11 @@ msgid "help_invoice_zip"
 msgstr ""
 
 #. Default: "Show price with taxes included"
-#: ./at.py:186
 #: ./dx.py:110
 msgid "help_item_display_gross"
 msgstr "Afficher les prix TTC"
 
 #. Default: "Buyable Item number"
-#: ./at.py:652
 #: ./dx.py:515
 msgid "help_item_number"
 msgstr "Numérot d'article"
@@ -615,13 +608,11 @@ msgid "help_quantity_units"
 msgstr "Unités de quantité (unité de mesure des articles)"
 
 #. Default: "Flag whether shipping of this item is free."
-#: ./at.py:414
 #: ./dx.py:317
 msgid "help_shipping_item_free_shipping"
 msgstr "Indique si l'expédition de cet articles est gratuite"
 
 #. Default: "Flag whether item is shippable, i.e. downloads are not"
-#: ./at.py:395
 #: ./dx.py:303
 msgid "help_shipping_item_shippable"
 msgstr "Indique si l'article est expédiable, p. ex. les téléchargements ne le sont pas"
@@ -672,12 +663,12 @@ msgid "help_zip"
 msgstr ""
 
 #. Default: "Item Discount"
-#: ./browser/navigation.py:626
+#: ./browser/navigation.py:628
 msgid "item_discount"
 msgstr "Rabais sur article"
 
 #. Default: "Item Discount in Container"
-#: ./browser/navigation.py:650
+#: ./browser/navigation.py:652
 msgid "item_discount_in_container"
 msgstr "Rabais sur article dans le conteneur"
 
@@ -737,13 +728,11 @@ msgid "label_bic"
 msgstr ""
 
 #. Default: "Buyable effective date"
-#: ./at.py:603
 #: ./dx.py:472
 msgid "label_buyable_effective_date"
 msgstr "Date de l'achetabilité"
 
 #. Default: "Buyable expiration date"
-#: ./at.py:611
 #: ./dx.py:478
 msgid "label_buyable_expiration_date"
 msgstr "Expiration de l'achetabilité"
@@ -863,7 +852,6 @@ msgid "label_gender"
 msgstr "Genre"
 
 #. Default: "GTIN"
-#: ./at.py:660
 #: ./dx.py:520
 msgid "label_gtin"
 msgstr "GTIN"
@@ -879,91 +867,76 @@ msgid "label_iban"
 msgstr ""
 
 #. Default: "Item stock available"
-#: ./at.py:312
 #: ./dx.py:226
 msgid "label_item_available"
 msgstr "Disponible en stock"
 
 #. Default: "Max count of this item in cart"
-#: ./at.py:176
 #: ./dx.py:102
 msgid "label_item_cart_count_limit"
 msgstr "Nombre maximum de cet article dans le panier"
 
 #. Default: "Comment enabled"
-#: ./at.py:195
 #: ./dx.py:117
 msgid "label_item_comment_enabled"
 msgstr "Information complémentaire autorisée"
 
 #. Default: "Comment required"
-#: ./at.py:203
 #: ./dx.py:123
 msgid "label_item_comment_required"
 msgstr "Information complémentaire obligatoire"
 
 #. Default: "Display Gross Price"
-#: ./at.py:184
 #: ./dx.py:109
 msgid "label_item_display_gross"
 msgstr "Prix TTC"
 
 #. Default: "Display item stock"
-#: ./at.py:304
 #: ./dx.py:220
 msgid "label_item_display_stock"
 msgstr "Afficher l'article dans le panier"
 
 #. Default: "Additional overall notification text for the order confirmation mail of this item"
-#: ./at.py:517
 #: ./dx.py:403
 msgid "label_item_global_notification_text"
 msgstr "Texte supplémentaire général de notification pour l'email de confirmation de commande de cet article"
 
 #. Default: "Additional overall notification text for the order confirmation mail of this item ordered if out of stock"
-#: ./at.py:529
 #: ./dx.py:412
 msgid "label_item_global_overbook_notification_text"
 msgstr "Texte supplémentaire général de notification pour l'email de confirmation de commande de cet article si rupture de stock"
 
 #. Default: "Item net price"
-#: ./at.py:161
 #: ./dx.py:89
 msgid "label_item_net"
 msgstr "Prix HT"
 
 #. Default: "Notification text for this item in the order confirmation mail"
-#: ./at.py:482
 #: ./dx.py:374
 msgid "label_item_notification_text"
 msgstr "Text de notification pour cet article dans l'email de confirmation de commande"
 
 #. Default: "Item number"
-#: ./at.py:651
 #: ./dx.py:514
 msgid "label_item_number"
 msgstr "Numéro d'article"
 
 #. Default: "Item stock overbook"
-#: ./at.py:320
 #: ./dx.py:231
 msgid "label_item_overbook"
 msgstr "Suprplus de stock d'article"
 
 #. Default: "Notification text for this item in the order confirmation mail if item is out of stock"
-#: ./at.py:494
 #: ./dx.py:383
 msgid "label_item_overbook_notification_text"
 msgstr "Text de notification pour cet article dans l'email de confirmation de commande si rupture de stock"
 
 #. Default: "Quantity unit"
-#: ./at.py:219
 #: ./dx.py:136
 msgid "label_item_quantity_unit"
 msgstr "Unité de quantité"
 
 #. Default: "Quantity as float"
-#: ./at.py:211
 #: ./dx.py:129
 msgid "label_item_quantity_unit_float"
 msgstr "Commande en fraction possible"
@@ -979,7 +952,6 @@ msgid "label_item_stock_warning_threshold"
 msgstr "Seuil d'alerte du stock."
 
 #. Default: "Item VAT (in %)"
-#: ./at.py:168
 #: ./dx.py:95
 msgid "label_item_vat"
 msgstr "Impôt sur le chiffre d'affaire (en %)"
@@ -1018,19 +990,16 @@ msgid "label_quantity_units"
 msgstr "Spécifier les unités de quantités autorisées dans le magasin"
 
 #. Default: "Free Shipping"
-#: ./at.py:412
 #: ./dx.py:315
 msgid "label_shipping_item_free_shipping"
 msgstr "Frais de port offerts"
 
 #. Default: "Item Shippable"
-#: ./at.py:393
 #: ./dx.py:302
 msgid "label_shipping_item_shippable"
 msgstr "Article expédiable"
 
 #. Default: "Item Weight"
-#: ./at.py:404
 #: ./dx.py:310
 msgid "label_shipping_item_weight"
 msgstr "Poids de l'article"
@@ -1090,11 +1059,6 @@ msgstr "Texte de notification par défaut pour les articles dans l'email de conf
 msgid "label_skip_payment_if_order_contains_reservations"
 msgstr "Passer l'étape de paiement si la commande contient des réservations"
 
-#. Default: "Item stock warning threshold."
-#: ./at.py:328
-msgid "label_stock_warning_threshold"
-msgstr "Seuil d'alerte du stock"
-
 #. Default: "Street"
 #: ./interfaces.py:580
 #: ./user/userdata.py:74
@@ -1139,22 +1103,22 @@ msgid "liter"
 msgstr "Litre"
 
 #. Default: "Mail Templates"
-#: ./browser/navigation.py:553
+#: ./browser/navigation.py:555
 msgid "mailtemplates"
 msgstr "Modèles d'email"
 
 #. Default: "Notification Templates (global)"
-#: ./browser/navigation.py:573
+#: ./browser/navigation.py:575
 msgid "mailtemplates_global"
 msgstr "Modèles de notification (global)"
 
 #. Default: "Notification Templates (site-wide)"
-#: ./browser/navigation.py:578
+#: ./browser/navigation.py:580
 msgid "mailtemplates_site"
 msgstr "Modèles de notification (sur le site)"
 
 #. Default: "Notification Templates (vendor specific)"
-#: ./browser/navigation.py:583
+#: ./browser/navigation.py:585
 msgid "mailtemplates_vendor"
 msgstr "Modèles de notification (pour le vendeur)"
 
@@ -1169,7 +1133,7 @@ msgid "meter"
 msgstr "Mètre"
 
 #. Default: "My Orders"
-#: ./browser/navigation.py:313
+#: ./browser/navigation.py:315
 msgid "my_orders"
 msgstr "Mes commandes"
 
@@ -1224,32 +1188,32 @@ msgid "order_text"
 msgstr "Text de commande"
 
 #. Default: "Orders"
-#: ./browser/navigation.py:215
+#: ./browser/navigation.py:217
 msgid "orders"
 msgstr "Commandes"
 
 #. Default: "Orders (global)"
-#: ./browser/navigation.py:239
+#: ./browser/navigation.py:241
 msgid "orders_global"
 msgstr "Commandes (global)"
 
 #. Default: "Orders in Container"
-#: ./browser/navigation.py:288
+#: ./browser/navigation.py:290
 msgid "orders_in_container"
 msgstr "Commandes dans le conteneur"
 
 #. Default: "Orders in Context"
-#: ./browser/navigation.py:257
+#: ./browser/navigation.py:259
 msgid "orders_in_context"
 msgstr "Commandes dans le contexte"
 
 #. Default: "Orders (site-wide)"
-#: ./browser/navigation.py:241
+#: ./browser/navigation.py:243
 msgid "orders_site"
 msgstr "Commandes (dans le site)"
 
 #. Default: "Orders (vendor specific)"
-#: ./browser/navigation.py:243
+#: ./browser/navigation.py:245
 msgid "orders_vendor"
 msgstr "Commandes (vendeur)"
 
@@ -1309,18 +1273,17 @@ msgid "shop"
 msgstr "Magasin"
 
 #. Default: "Shop"
-#: ./browser/admin_p4.pt:6
 #: ./browser/admin.pt:9
 msgid "shop_admin_heading"
 msgstr "Magasin"
 
 #. Default: "Shop Controlpanel (global)"
-#: ./browser/navigation.py:698
+#: ./browser/navigation.py:700
 msgid "shop_controlpanel_global"
 msgstr "Panneau de configuration du magasin (global)"
 
 #. Default: "Shop Controlpanel (site-wide)"
-#: ./browser/navigation.py:703
+#: ./browser/navigation.py:705
 msgid "shop_controlpanel_site"
 msgstr "Panneau de configuration du magasin (sur le site)"
 
