@@ -26,10 +26,7 @@ class ShopAdminAssignment(base.Assignment):
 
 
 class ShopAdminRenderer(base.Renderer, ShopNavigation):
-    if PLONE5:
-        render = ViewPageTemplateFile('admin_p5.pt')
-    else:
-        render = ViewPageTemplateFile('admin_p4.pt')
+    render = ViewPageTemplateFile('admin.pt')
 
 
 class ShopAdminAddForm(base.NullAddForm):

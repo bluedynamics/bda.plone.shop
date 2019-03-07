@@ -30,7 +30,6 @@
   <!-- override for IPloneSiteRoot  -->
   <!-- XXX: summary listing throws exception on plone root
   <browser:pages
-    zcml:condition="have plone-5"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     class="plone.app.contenttypes.browser.folder.FolderView"
     layer="..interfaces.IShopExtensionLayer"
@@ -38,12 +37,11 @@
 
     <browser:page
       name="summary_view"
-      template="listing_summary_p5.pt" />
+      template="listing_summary.pt" />
   </browser:pages>
   -->
 
   <browser:pages
-    zcml:condition="have plone-5"
     for="plone.dexterity.interfaces.IDexterityContainer"
     class="plone.app.contenttypes.browser.folder.FolderView"
     layer="..interfaces.IShopExtensionLayer"
@@ -51,11 +49,10 @@
 
     <browser:page
       name="summary_view"
-      template="listing_summary_p5.pt" />
+      template="listing_summary.pt" />
   </browser:pages>
 
   <browser:pages
-    zcml:condition="have plone-5"
     for="plone.app.contenttypes.behaviors.collection.ISyndicatableCollection"
     class="plone.app.contenttypes.browser.collection.CollectionView"
     layer="..interfaces.IShopExtensionLayer"
@@ -63,7 +60,7 @@
 
     <browser:page
       name="summary_view"
-      template="listing_summary_p5.pt" />
+      template="listing_summary.pt" />
   </browser:pages>
 
   <!-- actions -->
@@ -201,31 +198,26 @@
 
   <!-- plone 5 resources -->
   <browser:resource
-    zcml:condition="have plone-5"
     name="bda.plone.shop.less"
-    file="shop_p5.less"
+    file="shop.less"
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:resource
-    zcml:condition="have plone-5"
     name="bda.plone.shop.css"
-    file="shop_p5.css"
+    file="shop.css"
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:resource
-    zcml:condition="have plone-5"
     name="bda.plone.shop.css.map"
-    file="shop_p5.css.map"
+    file="shop.css.map"
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:menu
-    zcml:condition="have plone-5"
     id="shop_toolbar_menu"
     title="Shop"
     class=".toolbar.ShopMenu" />
 
   <adapter
-    zcml:condition="have plone-5"
     for="* *"
     name="shop_toolbar_menu_item"
     factory=".toolbar.ShopSubMenuItem"

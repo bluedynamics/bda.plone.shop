@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<metadata>
-  <version>8</version>
-  <dependencies>
-     <dependency>profile-bda.plone.shop:install-base</dependency>
-  </dependencies>
-</metadata>

@@ -1,6 +1,15 @@
 <?xml version="1.0"?>
 <registry>
 
+  <records prefix="plone.bundles/bda-plone-shop"
+           interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+    <value key="enabled">True</value>
+    <value key="compile">False</value>
+    <value key="jscompilation">++resource++bda.plone.shop.js</value>
+    <value key="csscompilation">++resource++bda.plone.shop.css</value>
+    <value key="depends">bdajax</value>
+  </records>
+
   <records interface="bda.plone.shop.interfaces.IShopSettings">
     <value key="admin_email" purge="false"></value>
     <value key="admin_name" purge="false"></value>

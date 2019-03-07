@@ -59,7 +59,7 @@ class ShopSettingsEditForm(controlpanel.RegistryEditForm):
     def additionalSchemata(self):
         registry = getUtility(IRegistry)
         interface_names = set(record.interfaceName for record
-                              in registry.records.values())
+                              in list(registry.records.values()))
 
         for name in interface_names:
             if not name:

@@ -26,7 +26,7 @@ AVAILABLE_QUANTITY_UNITS = {
 @provider(IVocabularyFactory)
 def AvailableQuantityUnitVocabulary(context):
     # vocab is used in shop settings control panel
-    items = AVAILABLE_QUANTITY_UNITS.items()
+    items = list(AVAILABLE_QUANTITY_UNITS.items())
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 
@@ -65,7 +65,7 @@ AVAILABLE_VAT_VALUES = {
 @provider(IVocabularyFactory)
 def AvailableVatVocabulary(context):
     # vocab is used in shop settings control panel
-    items = AVAILABLE_VAT_VALUES.items()
+    items = list(AVAILABLE_VAT_VALUES.items())
     items = sorted(items, key=lambda x: x[0])
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
@@ -108,7 +108,7 @@ AVAILABLE_CURRENCIES = {
 
 @provider(IVocabularyFactory)
 def AvailableCurrenciesVocabulary(context):
-    items = AVAILABLE_CURRENCIES.items()
+    items = list(AVAILABLE_CURRENCIES.items())
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 

@@ -3,7 +3,7 @@ from setuptools import setup
 from setuptools import find_packages
 
 
-version = '1.0.dev0'
+version = '2.0.dev0'
 shortdesc = "Shop Solution for Plone"
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'CHANGES.rst')).read()
@@ -16,11 +16,12 @@ setup(
     description=shortdesc,
     long_description=longdesc,
     classifiers=[
-        'Environment :: Web Environment',
-        'License :: OSI Approved :: GNU General Public License (GPL)',
-        'Operating System :: OS Independent',
+        'Framework :: Plone',
+        'Framework :: Plone :: 5.1',
+        'Framework :: Plone :: 5.2',
         'Programming Language :: Python',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'License :: OSI Approved :: GNU General Public License (GPL)',
     ],
     author='BlueDynamics Alliance',
     author_email='dev@bluedynamics.com',
@@ -31,7 +32,6 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'archetypes.schemaextender',  # XXX: remove from install dependencies
         'bda.plone.discount',
         'bda.plone.orders',
         'collective.z3cform.datagridfield',
@@ -45,7 +45,6 @@ setup(
     ],
     extras_require={
         'test': [
-            'Products.ATContentTypes',
             'plone.app.contenttypes',
             'plone.app.dexterity',
             'plone.app.robotframework [debug]',

@@ -1,6 +1,16 @@
 Changelog
 =========
 
+2.0.dev0 (unreleased)
+---------------------
+
+- Python 2/3 compatibility
+  [agitator]
+
+- Update version and classifiers - 2.x targets Plone 5.1/5.2 without Archetypes
+  [agitator]
+
+
 1.0a1 (unreleased)
 ------------------
 
