@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <object name="portal_memberdata" meta_type="Plone Memberdata Tool">
 
- <!-- 5.2 complains, that it shouldn't be remove -->
+ <!-- 5.2 complains that it shouldn't be remove -->
  <!-- <property name="fullname" remove="True"></property> -->
  <!-- <property name="location" remove="True"></property> -->
 

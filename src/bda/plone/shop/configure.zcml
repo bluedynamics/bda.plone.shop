@@ -41,9 +41,7 @@
   <include package=".user" />
   <include package=".upgrades" />
 
-  <include
-      zcml:condition="installed plone.dexterity"
-      file="dx.zcml"/>
+  <include file="dx.zcml"/>
 
   <!-- indexing -->
   <adapter name="item_buyable" factory=".indexer.item_buyable" />
