@@ -32,3 +32,4 @@
 /node_modules/
 lib64
 /.Python
+.python-version

@@ -1,32 +1,33 @@
 language: python
+dist: xenial
 sudo: false
 cache:
   pip: true
   directories:
-    - $HOME/buildout-cache
-python:
-  - 2.7
-env:
-  - PLONE_VERSION=4.3.x
-  - PLONE_VERSION=5.0.x
-  - PLONE_VERSION=5.1.x
-before_install:
-  - mkdir -p $HOME/buildout-cache/{eggs,downloads}
-  - mkdir $HOME/.buildout
-  - echo "[buildout]" > $HOME/.buildout/default.cfg
-  - echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg
-  - echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg
+    - eggs
+    - downloads
+services:
+  - xvfb
+matrix:
+  include:
+    - python: 2.7
+      env: PLONE_VERSION=5.1
+    - python: 2.7
+      env: PLONE_VERSION=5.2
+    - python: 3.6
+      env: PLONE_VERSION=5.2
+    - python: 3.7
+      env: PLONE_VERSION=5.2
 install:
-  - sed -ie "s#plone-4.3.x.cfg#plone-$PLONE_VERSION.cfg#" travis.cfg
-  - pip install -U zc.buildout setuptools pip
-  - buildout -c travis.cfg annotate
-  - buildout -t 10 -Nc travis.cfg
-before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+  - sed -ie "s#plone-5.1.x.cfg#plone-$PLONE_VERSION.x.cfg#" travis.cfg
+  - virtualenv .
+  - ./bin/pip install --upgrade pip
+  - ./bin/pip install -r http://dist.plone.org/release/$PLONE_VERSION-latest/requirements.txt
+  - ./bin/buildout -c travis.cfg annotate
+  - ./bin/buildout -t 10 -Nc travis.cfg
 script:
   - bin/code-analysis
-  - bin/test --all
+  - bin/test
 after_success:
   - bin/coverage.sh
   - pip install coveralls
