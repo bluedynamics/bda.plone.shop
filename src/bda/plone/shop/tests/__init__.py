@@ -12,17 +12,10 @@ from plone.app.testing import login
 from plone.app.testing import logout
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.testing import z2
-from Products.CMFPlone.utils import getFSVersionTuple
 from zope.component import getUtility
 from zope.interface import alsoProvides
 
 import plone.api
-
-
-if getFSVersionTuple()[0] >= 5:
-    PLONE5 = 1
-else:
-    PLONE5 = 0
 
 
 def set_browserlayer(request):
