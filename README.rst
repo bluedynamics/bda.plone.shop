@@ -2,7 +2,13 @@
 bda.plone.shop
 ==============
 
-Webshop Solution for Plone.
+E-commerce solution for `Plone <http://plone.com>`_
+
+.. image:: https://travis-ci.org/bluedynamics/bda.plone.shop.svg?branch=master
+    :target: https://travis-ci.org/bluedynamics/bda.plone.shop
+
+.. image:: https://black.readthedocs.io/en/stable/_static/pypi.svg
+    :target: https://pypi.org/project/black/
 
 
 Installation
@@ -350,12 +356,28 @@ If you upgrade to Plone 5, you have to run the upgrade step ``Remove old JS and 
 Contributors
 ============
 
-- Robert Niederreiter (Author)
+We'd be happy to see many forks and pull-requests to make this program even better.
+Professional support is offered by the maintainers and some of the authors.
+
+Maintainers
+-----------
+
+- Robert Niederreiter
+- Peter Holzer
+- Jens Klein
+
+Contact: `dev@bluedynamics.com <mailto:dev@bluedynamics.com>`_
+
+
+Authors
+-------
+
+- Robert Niederreiter (initial Author)
 - Peter Holzer
 - Peter Mathis
 - Harald Frießnegger
 - Espen Moe-Nilssen
 - Johannes Raggam
 - Jure Cerjak
-- Benjamin Stefane 
+- Benjamin Stefaner
 - Jens Klein
