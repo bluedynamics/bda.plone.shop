@@ -20,31 +20,27 @@ from zope.location.interfaces import IContained
 @implementer(INotificationSettings)
 @adapter(Interface)
 class NotificationSettings(object):
-
     def __init__(self, context):
         self.context = context
 
     @property
     def admin_email(self):
-        props = api.portal.get_tool('portal_properties')
-        return (
-            get_shop_settings().admin_email or
-            getattr(props.site_properties, 'email_from_address', '')
+        props = api.portal.get_tool("portal_properties")
+        return get_shop_settings().admin_email or getattr(
+            props.site_properties, "email_from_address", ""
         )
 
     @property
     def admin_name(self):
-        props = api.portal.get_tool('portal_properties')
-        return (
-            get_shop_settings().admin_name or
-            getattr(props.site_properties, 'email_from_name', '')
+        props = api.portal.get_tool("portal_properties")
+        return get_shop_settings().admin_name or getattr(
+            props.site_properties, "email_from_name", ""
         )
 
 
 @implementer(IItemNotificationText)
 @adapter(IContained)
 class BubbleItemNotificationText(object):
-
     def __init__(self, context):
         self.context = context
 
@@ -53,20 +49,19 @@ class BubbleItemNotificationText(object):
         parent = queryAdapter(aq_parent(self.context), IItemNotificationText)
         if parent:
             return parent.order_text
-        return ''
+        return ""
 
     @property
     def overbook_text(self):
         parent = queryAdapter(aq_parent(self.context), IItemNotificationText)
         if parent:
             return parent.overbook_text
-        return ''
+        return ""
 
 
 @implementer(IGlobalNotificationText)
 @adapter(IContained)
 class BubbleGlobalNotificationText(object):
-
     def __init__(self, context):
         self.context = context
 
@@ -75,64 +70,63 @@ class BubbleGlobalNotificationText(object):
         parent = queryAdapter(aq_parent(self.context), IGlobalNotificationText)
         if parent:
             return parent.global_order_text
-        return ''
+        return ""
 
     @property
     def global_overbook_text(self):
         parent = queryAdapter(aq_parent(self.context), IGlobalNotificationText)
         if parent:
             return parent.global_overbook_text
-        return ''
+        return ""
 
 
 class SiteRegistryNotificationText(object):
-
     def __init__(self, context):
         self.context = context
 
     def _lookup_text(self, field):
         settings = get_shop_notification_settings()
         enum = getattr(settings, field)
-        portal_state = self.context.restrictedTraverse('@@plone_portal_state')
+        portal_state = self.context.restrictedTraverse("@@plone_portal_state")
         lang = portal_state.language()
         for entry in enum:
-            if entry['lang'] == lang:
-                return entry['text']
+            if entry["lang"] == lang:
+                return entry["text"]
 
 
 @adapter(ISiteRoot)
-class RegistryItemNotificationText(SiteRegistryNotificationText,
-                                   BubbleItemNotificationText):
-
+class RegistryItemNotificationText(
+    SiteRegistryNotificationText, BubbleItemNotificationText
+):
     @property
     def order_text(self):
-        text = self._lookup_text('order_text')
+        text = self._lookup_text("order_text")
         if text:
             return text
         return super(RegistryItemNotificationText, self).order_text
 
     @property
     def overbook_text(self):
-        text = self._lookup_text('overbook_text')
+        text = self._lookup_text("overbook_text")
         if text:
             return text
         return super(RegistryItemNotificationText, self).overbook_text
 
 
 @adapter(ISiteRoot)
-class RegistryGlobalNotificationText(SiteRegistryNotificationText,
-                                     BubbleGlobalNotificationText):
-
+class RegistryGlobalNotificationText(
+    SiteRegistryNotificationText, BubbleGlobalNotificationText
+):
     @property
     def order_text(self):
-        text = self._lookup_text('global_order_text')
+        text = self._lookup_text("global_order_text")
         if text:
             return text
         return super(RegistryGlobalNotificationText, self).global_order_text
 
     @property
     def overbook_text(self):
-        text = self._lookup_text('global_overbook_text')
+        text = self._lookup_text("global_overbook_text")
         if text:
             return text
         return super(RegistryGlobalNotificationText, self).global_overbook_text
@@ -141,15 +135,14 @@ class RegistryGlobalNotificationText(SiteRegistryNotificationText,
 @implementer(IPaymentText)
 @adapter(ISite)
 class RegistryPaymentText(object):
-
     def __init__(self, context):
         self.context = context
 
     def payment_text(self, payment):
         settings = get_shop_payment_settings()
-        portal_state = self.context.restrictedTraverse('@@plone_portal_state')
+        portal_state = self.context.restrictedTraverse("@@plone_portal_state")
         lang = portal_state.language()
         for entry in settings.payment_text:
-            if entry['lang'] == lang and entry['payment'] == payment:
-                return entry['text']
-        return u''
+            if entry["lang"] == lang and entry["payment"] == payment:
+                return entry["text"]
+        return u""

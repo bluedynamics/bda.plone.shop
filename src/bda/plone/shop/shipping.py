@@ -20,7 +20,6 @@ from zope.interface import implementer
 @implementer(IShippingSettings)
 @adapter(Interface)
 class ShippingSettings(object):
-
     def __init__(self, context):
         self.context = context
 
@@ -36,15 +35,15 @@ class ShippingSettings(object):
 
 
 class DefaultShipping(Shipping):
-    sid = 'default_shipping'
-    label = _('default_shipping', default='Default Shipping')
+    sid = "default_shipping"
+    label = _("default_shipping", default="Default Shipping")
 
     @property
     def description(self):
         settings = get_shop_shipping_settings()
         currency = get_shop_settings().currency
         show_currency = get_shop_settings().show_currency
-        if show_currency == 'symbol':
+        if show_currency == "symbol":
             currency = CURRENCY_LITERALS[currency]
         shipping_limit_from_gross = settings.shipping_limit_from_gross
         free_shipping_limit = Decimal(str(settings.free_shipping_limit))
@@ -62,91 +61,120 @@ class DefaultShipping(Shipping):
         if not free_shipping_limit:
             # flat and item costs defined
             if flat_shipping_cost and item_shipping_cost:
-                msg = _(u"no_free_shipping_flat_and_item",
-                        default=u"Minimum ${flat} ${currency} or ${item} "
-                                u"${currency} per item in cart")
-                return Message(msg, mapping={
-                    'flat': gross(flat_shipping_cost),
-                    'item': gross(item_shipping_cost),
-                    'currency': currency,
-                })
+                msg = _(
+                    u"no_free_shipping_flat_and_item",
+                    default=u"Minimum ${flat} ${currency} or ${item} "
+                    u"${currency} per item in cart",
+                )
+                return Message(
+                    msg,
+                    mapping={
+                        "flat": gross(flat_shipping_cost),
+                        "item": gross(item_shipping_cost),
+                        "currency": currency,
+                    },
+                )
             # flat costs only
             if flat_shipping_cost and not item_shipping_cost:
-                msg = _(u"no_free_shipping_flat_only",
-                        default=u"Flat ${flat} ${currency}")
-                return Message(msg, mapping={
-                    'flat': gross(flat_shipping_cost),
-                    'currency': currency,
-                })
+                msg = _(
+                    u"no_free_shipping_flat_only", default=u"Flat ${flat} ${currency}"
+                )
+                return Message(
+                    msg,
+                    mapping={"flat": gross(flat_shipping_cost), "currency": currency},
+                )
             # item costs only
             if not flat_shipping_cost and item_shipping_cost:
-                msg = _(u"no_free_shipping_item_only",
-                        default=u"${item} ${currency} per item in cart")
-                return Message(msg, mapping={
-                    'item': gross(item_shipping_cost),
-                    'currency': currency,
-                })
+                msg = _(
+                    u"no_free_shipping_item_only",
+                    default=u"${item} ${currency} per item in cart",
+                )
+                return Message(
+                    msg,
+                    mapping={"item": gross(item_shipping_cost), "currency": currency},
+                )
         # free shipping above limit
         # flat and item costs defined
         if flat_shipping_cost and item_shipping_cost:
             # from gross
             if shipping_limit_from_gross:
-                msg = _(u"free_shipping_limit_flat_and_item_gross",
-                        default=u"Minimum ${flat} ${currency} or "
-                                u"${item} ${currency} per item in cart. Free "
-                                u"shipping if gross purchase price above "
-                                u"${limit} ${currency}")
+                msg = _(
+                    u"free_shipping_limit_flat_and_item_gross",
+                    default=u"Minimum ${flat} ${currency} or "
+                    u"${item} ${currency} per item in cart. Free "
+                    u"shipping if gross purchase price above "
+                    u"${limit} ${currency}",
+                )
             # from net
             else:
-                msg = _(u"free_shipping_limit_flat_and_item_net",
-                        default=u"Minimum ${flat} ${currency} or "
-                                u"${item} ${currency} per item in cart. Free "
-                                u"shipping if net purchase price above "
-                                u"${limit} ${currency}")
-            return Message(msg, mapping={
-                'flat': gross(flat_shipping_cost),
-                'item': gross(item_shipping_cost),
-                'limit': format_amount(free_shipping_limit),
-                'currency': currency,
-            })
+                msg = _(
+                    u"free_shipping_limit_flat_and_item_net",
+                    default=u"Minimum ${flat} ${currency} or "
+                    u"${item} ${currency} per item in cart. Free "
+                    u"shipping if net purchase price above "
+                    u"${limit} ${currency}",
+                )
+            return Message(
+                msg,
+                mapping={
+                    "flat": gross(flat_shipping_cost),
+                    "item": gross(item_shipping_cost),
+                    "limit": format_amount(free_shipping_limit),
+                    "currency": currency,
+                },
+            )
         # flat costs only
         if flat_shipping_cost and not item_shipping_cost:
             # from gross
             if shipping_limit_from_gross:
-                msg = _(u"free_shipping_limit_flat_only_gross",
-                        default=u"Flat ${flat} ${currency}. Free "
-                                u"shipping if gross purchase price above "
-                                u"${limit} ${currency}")
+                msg = _(
+                    u"free_shipping_limit_flat_only_gross",
+                    default=u"Flat ${flat} ${currency}. Free "
+                    u"shipping if gross purchase price above "
+                    u"${limit} ${currency}",
+                )
             # from net
             else:
-                msg = _(u"free_shipping_limit_flat_only_net",
-                        default=u"Flat ${flat} ${currency}. Free "
-                                u"shipping if net purchase price above "
-                                u"${limit} ${currency}")
-            return Message(msg, mapping={
-                'flat': gross(flat_shipping_cost),
-                'limit': format_amount(free_shipping_limit),
-                'currency': currency,
-            })
+                msg = _(
+                    u"free_shipping_limit_flat_only_net",
+                    default=u"Flat ${flat} ${currency}. Free "
+                    u"shipping if net purchase price above "
+                    u"${limit} ${currency}",
+                )
+            return Message(
+                msg,
+                mapping={
+                    "flat": gross(flat_shipping_cost),
+                    "limit": format_amount(free_shipping_limit),
+                    "currency": currency,
+                },
+            )
         # item costs only
         if not flat_shipping_cost and item_shipping_cost:
             # from gross
             if shipping_limit_from_gross:
-                msg = _(u"free_shipping_limit_item_only_gross",
-                        default=u"${item} ${currency} per item in "
-                                u"cart. Free shipping if gross purchase "
-                                u"price above ${limit} ${currency}")
+                msg = _(
+                    u"free_shipping_limit_item_only_gross",
+                    default=u"${item} ${currency} per item in "
+                    u"cart. Free shipping if gross purchase "
+                    u"price above ${limit} ${currency}",
+                )
             # from net
             else:
-                msg = _(u"free_shipping_limit_item_only_net",
-                        default=u"${item} ${currency} per item in "
-                                u"cart. Free shipping if net purchase "
-                                u"price above ${limit} ${currency}")
-            return Message(msg, mapping={
-                'item': gross(item_shipping_cost),
-                'limit': format_amount(free_shipping_limit),
-                'currency': currency,
-            })
+                msg = _(
+                    u"free_shipping_limit_item_only_net",
+                    default=u"${item} ${currency} per item in "
+                    u"cart. Free shipping if net purchase "
+                    u"price above ${limit} ${currency}",
+                )
+            return Message(
+                msg,
+                mapping={
+                    "item": gross(item_shipping_cost),
+                    "limit": format_amount(free_shipping_limit),
+                    "currency": currency,
+                },
+            )
 
     def net(self, items):
         settings = get_shop_shipping_settings()
@@ -202,19 +230,21 @@ class DefaultShipping(Shipping):
 
 
 class CashAndCarryShipping(Shipping):
-    sid = 'cash_and_carry'
-    label = _('cash_and_carry', default='Cash and Carry')
+    sid = "cash_and_carry"
+    label = _("cash_and_carry", default="Cash and Carry")
 
     @property
     def description(self):
-        return _('cash_and_carry_descripton',
-                 default='Customer picks up goods at dealer\'s place')
+        return _(
+            "cash_and_carry_descripton",
+            default="Customer picks up goods at dealer's place",
+        )
 
     def net(self, items):
-        return Decimal('0')
+        return Decimal("0")
 
     def vat(self, items):
-        return Decimal('0')
+        return Decimal("0")
 
 
 ###############################################################################
@@ -226,8 +256,8 @@ FLAT_SHIPPING_COST = 10
 
 
 class FlatRate(Shipping):
-    sid = 'flat_rate'
-    label = _('flat_rate', 'Flat Rate')
+    sid = "flat_rate"
+    label = _("flat_rate", "Flat Rate")
 
     def calculate(self, items):
         cart_data = get_data_provider(self.context)
@@ -238,8 +268,8 @@ class FlatRate(Shipping):
 
 
 deprecated(
-    'FlatRate',
+    "FlatRate",
     "'FlatRate' shipping is deprecated as of 'bda.plone.shop' 0.7 and "
     "will be removed in 'bda.plone.shop' 1.0. Use 'DefaultShipping' "
-    "instead which provides the same functionality."
+    "instead which provides the same functionality.",
 )

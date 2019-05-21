@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from bda.plone.shop import permissions  # noqa
 from bda.plone.shop.user.properties import UserPropertiesPASPlugin
-from Products.PluggableAuthService.PluggableAuthService import registerMultiPlugin  # noqa
+from Products.PluggableAuthService.PluggableAuthService import (
+    registerMultiPlugin,
+)  # noqa
 from zope.i18nmessageid import MessageFactory
 
 
-message_factory = MessageFactory('bda.plone.shop')
+message_factory = MessageFactory("bda.plone.shop")
 
 
 def initialize(context):

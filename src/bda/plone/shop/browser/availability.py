@@ -12,7 +12,7 @@ from zope.component import queryAdapter
 
 
 class CartItemAvailability(CartItemAvailabilityBase):
-    details_template = ViewPageTemplateFile('availability_details.pt')
+    details_template = ViewPageTemplateFile("availability_details.pt")
 
     def details(self):
         return self.details_template(self)
@@ -95,13 +95,15 @@ class CartItemAvailability(CartItemAvailabilityBase):
     def full_available_message(self):
         available = self.available
         if available is None:
-            available = ''
+            available = ""
         else:
             if not get_item_data_provider(self.context).quantity_unit_float:
                 available = int(available)
-        message = _(u'full_available_message',
-                    default=u'${available} items(s) available.',
-                    mapping={'available': available})
+        message = _(
+            u"full_available_message",
+            default=u"${available} items(s) available.",
+            mapping={"available": available},
+        )
         return message
 
     @property
@@ -109,9 +111,11 @@ class CartItemAvailability(CartItemAvailabilityBase):
         available = self.available
         if not get_item_data_provider(self.context).quantity_unit_float:
             available = int(available)
-        message = _(u'critical_available_message',
-                    default=u'Just ${available} items(s) left.',
-                    mapping={'available': available})
+        message = _(
+            u"critical_available_message",
+            default=u"Just ${available} items(s) left.",
+            mapping={"available": available},
+        )
         return message
 
     @property
@@ -119,16 +123,18 @@ class CartItemAvailability(CartItemAvailabilityBase):
         state = get_item_state(self.context, self.request)
         overbook = self.stock.overbook
         if overbook is None:
-            reservable = ''
+            reservable = ""
         else:
             reservable = overbook - state.reserved
             if not get_item_data_provider(self.context).quantity_unit_float:
                 reservable = int(reservable)
-        message = _(u'overbook_available_message',
-                    default=u'Item is sold out. You can pre-order '
-                            u'${reservable} items. As soon as item is '
-                            u'available again, it gets delivered.',
-                    mapping={'reservable': reservable})
+        message = _(
+            u"overbook_available_message",
+            default=u"Item is sold out. You can pre-order "
+            u"${reservable} items. As soon as item is "
+            u"available again, it gets delivered.",
+            mapping={"reservable": reservable},
+        )
         return message
 
     @property
@@ -139,9 +145,11 @@ class CartItemAvailability(CartItemAvailabilityBase):
             context=self.context,
             request=self.request,
         )
-        message = _(u'purchasable_until_message',
-                    default=u'Item is purchasable until ${date}',
-                    mapping={'date': date})
+        message = _(
+            u"purchasable_until_message",
+            default=u"Item is purchasable until ${date}",
+            mapping={"date": date},
+        )
         return message
 
     @property
@@ -152,7 +160,9 @@ class CartItemAvailability(CartItemAvailabilityBase):
             context=self.context,
             request=self.request,
         )
-        message = _(u'purchasable_as_of_message',
-                    default=u'Item is purchasable as of ${date}',
-                    mapping={'date': date})
+        message = _(
+            u"purchasable_as_of_message",
+            default=u"Item is purchasable as of ${date}",
+            mapping={"date": date},
+        )
         return message

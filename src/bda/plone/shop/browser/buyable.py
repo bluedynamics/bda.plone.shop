@@ -16,7 +16,6 @@ from zope.i18n import translate
 
 
 class BuyableControls(BrowserView, DataProviderMixin):
-
     @property
     def _cart_data(self):
         return get_data_provider(self.context, self.request)
@@ -69,11 +68,11 @@ class BuyableControls(BrowserView, DataProviderMixin):
         data_provider = self._cart_data
         currency = data_provider.currency
         show_currency = data_provider.show_currency
-        if show_currency == 'yes':
+        if show_currency == "yes":
             return currency
-        if show_currency == 'symbol':
+        if show_currency == "symbol":
             return CURRENCY_LITERALS[currency]
-        return ''
+        return ""
 
     @property
     def item_uid(self):
@@ -83,7 +82,7 @@ class BuyableControls(BrowserView, DataProviderMixin):
     def item_vat(self):
         vat = self._item_data.vat
         if vat % 2 != 0:
-            return Decimal(vat).quantize(Decimal('1.0'))
+            return Decimal(vat).quantize(Decimal("1.0"))
         return Decimal(vat)
 
     @property
@@ -92,8 +91,7 @@ class BuyableControls(BrowserView, DataProviderMixin):
 
     @property
     def item_net(self):
-        return Decimal(self._item_data.net) - \
-            self._item_data.discount_net(Decimal(1))
+        return Decimal(self._item_data.net) - self._item_data.discount_net(Decimal(1))
 
     @property
     def item_gross_original(self):
@@ -126,9 +124,9 @@ class BuyableControls(BrowserView, DataProviderMixin):
         return translate(self._item_data.quantity_unit, context=self.request)
 
     def not_eq(self, v_1, v_2):
-        return v_1.quantize(Decimal('1.000')) != v_2.quantize(Decimal('1.000'))
+        return v_1.quantize(Decimal("1.000")) != v_2.quantize(Decimal("1.000"))
 
     def __call__(self, *args):
-        if '_' in self.request.form:
-            self.request.response.setHeader('X-Theme-Disabled', 'True')
+        if "_" in self.request.form:
+            self.request.response.setHeader("X-Theme-Disabled", "True")
         return super(BuyableControls, self).__call__()

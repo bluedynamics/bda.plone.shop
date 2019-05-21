@@ -9,7 +9,7 @@ from zope.interface import implementer
 import pkg_resources
 
 
-if pkg_resources.get_distribution("Products.CMFPlone").version > '4.99':
+if pkg_resources.get_distribution("Products.CMFPlone").version > "4.99":
     PLONE5 = 1
 else:
     PLONE5 = 0
@@ -22,14 +22,13 @@ class IShopAdminPortlet(IPortletDataProvider):
 
 @implementer(IShopAdminPortlet)
 class ShopAdminAssignment(base.Assignment):
-    title = _(u'shop_portlet', default=u'Shop Portlet')
+    title = _(u"shop_portlet", default=u"Shop Portlet")
 
 
 class ShopAdminRenderer(base.Renderer, ShopNavigation):
-    render = ViewPageTemplateFile('admin.pt')
+    render = ViewPageTemplateFile("admin.pt")
 
 
 class ShopAdminAddForm(base.NullAddForm):
-
     def create(self):
         return ShopAdminAssignment()

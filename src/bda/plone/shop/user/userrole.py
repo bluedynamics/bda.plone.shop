@@ -9,7 +9,7 @@ def add_customer_role(event):
         if not get_shop_settings().add_customer_role_to_new_users:
             return
         username = event.principal.getUserName()
-        apiuser.grant_roles(username=username, roles=['Customer'])
+        apiuser.grant_roles(username=username, roles=["Customer"])
     except ComponentLookupError:
         # failing on ``bin/instance adduser`` due to uninitialized registry
         # on startup.

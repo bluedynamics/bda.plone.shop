@@ -19,70 +19,52 @@ class EnableDisableFeature(BrowserView):
 
     def enableFeature(self):
         alsoProvides(self.context, self.feature_iface)
-        cat = api.portal.get_tool('portal_catalog')
-        cat.reindexObject(
-            self.context,
-            idxs=['object_provides'],
-            update_metadata=1
-        )
-        api.portal.show_message(
-            message=self.enable_message,
-            request=self.request
-        )
+        cat = api.portal.get_tool("portal_catalog")
+        cat.reindexObject(self.context, idxs=["object_provides"], update_metadata=1)
+        api.portal.show_message(message=self.enable_message, request=self.request)
         self.request.response.redirect(self.context.absolute_url())
 
     def disableFeature(self):
         noLongerProvides(self.context, self.feature_iface)
-        cat = api.portal.get_tool('portal_catalog')
-        cat.reindexObject(
-            self.context,
-            idxs=['object_provides'],
-            update_metadata=1
-        )
-        api.portal.show_message(
-            message=self.disable_message,
-            request=self.request
-        )
+        cat = api.portal.get_tool("portal_catalog")
+        cat.reindexObject(self.context, idxs=["object_provides"], update_metadata=1)
+        api.portal.show_message(message=self.disable_message, request=self.request)
         self.request.response.redirect(self.context.absolute_url())
 
     def isPossibleToEnableFeature(self):
-        return (
-            self.potential_feature_iface.providedBy(self.context) and
-            not self.feature_iface.providedBy(self.context)
-        )
+        return self.potential_feature_iface.providedBy(
+            self.context
+        ) and not self.feature_iface.providedBy(self.context)
 
     def isPossibleToDisableFeature(self):
-        return (
-            self.potential_feature_iface.providedBy(self.context) and
-            self.feature_iface.providedBy(self.context)
-        )
+        return self.potential_feature_iface.providedBy(
+            self.context
+        ) and self.feature_iface.providedBy(self.context)
 
 
 class BuyableAction(EnableDisableFeature):
     feature_iface = IBuyable
     potential_feature_iface = IPotentiallyBuyable
-    enable_message = _(u'enabled_buyable', u'Enabled Buyable.')
-    disable_message = _(u'disabled_buyable', u'Disabled Buyable.')
+    enable_message = _(u"enabled_buyable", u"Enabled Buyable.")
+    disable_message = _(u"disabled_buyable", u"Disabled Buyable.")
 
 
 class VendorAction(EnableDisableFeature):
     feature_iface = IVendor
     potential_feature_iface = IContainer
-    enable_message = _(u'enabled_vendor', u'Enabled Vendor.')
-    disable_message = _(u'disabled_vendor', u'Disabled Vendor.')
+    enable_message = _(u"enabled_vendor", u"Enabled Vendor.")
+    disable_message = _(u"disabled_vendor", u"Disabled Vendor.")
 
     def enableFeature(self):
         self.context.manage_permission(
             permissions.DelegateVendorRole,
-            roles=['Manager', 'Site Administrator'],
-            acquire=0
+            roles=["Manager", "Site Administrator"],
+            acquire=0,
         )
         super(VendorAction, self).enableFeature()
 
     def disableFeature(self):
         self.context.manage_permission(
-            permissions.DelegateVendorRole,
-            roles=[],
-            acquire=0
+            permissions.DelegateVendorRole, roles=[], acquire=0
         )
         super(VendorAction, self).disableFeature()

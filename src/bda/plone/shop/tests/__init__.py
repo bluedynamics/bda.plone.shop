@@ -39,11 +39,11 @@ class ShopLayer(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         import bda.plone.shop
-        self.loadZCML(package=bda.plone.shop,
-                      context=configurationContext)
+
+        self.loadZCML(package=bda.plone.shop, context=configurationContext)
 
     def setUpPloneSite(self, portal):
-        self.applyProfile(portal, 'bda.plone.shop:default')
+        self.applyProfile(portal, "bda.plone.shop:default")
 
     def tearDownZope(self, app):
         pass
@@ -51,8 +51,8 @@ class ShopLayer(PloneSandboxLayer):
 
 Shop_FIXTURE = ShopLayer()
 Shop_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(Shop_FIXTURE,),
-    name="Shop:Integration")
+    bases=(Shop_FIXTURE,), name="Shop:Integration"
+)
 
 
 class ShopDXLayer(PloneSandboxLayer):
@@ -60,48 +60,48 @@ class ShopDXLayer(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         import plone.app.dexterity
-        self.loadZCML(package=plone.app.dexterity,
-                      context=configurationContext)
+
+        self.loadZCML(package=plone.app.dexterity, context=configurationContext)
 
     def setUpPloneSite(self, portal):
-        self.applyProfile(portal, 'plone.app.dexterity:default')
+        self.applyProfile(portal, "plone.app.dexterity:default")
 
 
 ShopDX_FIXTURE = ShopDXLayer()
 ShopDX_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(ShopDX_FIXTURE,),
-    name="ShopDX:Integration")
+    bases=(ShopDX_FIXTURE,), name="ShopDX:Integration"
+)
 ShopDX_ROBOT_TESTING = FunctionalTesting(
-    bases=(
-        MOCK_MAILHOST_FIXTURE,
-        ShopDX_FIXTURE,
-        z2.ZSERVER_FIXTURE
-    ),
-    name="ShopDX:Robot")
+    bases=(MOCK_MAILHOST_FIXTURE, ShopDX_FIXTURE, z2.ZSERVER_FIXTURE),
+    name="ShopDX:Robot",
+)
 
 
 class ShopFullLayerBase(PloneSandboxLayer):
-
     def setup_content(self, portal):
         portal.portal_workflow.setDefaultChain("one_state_workflow")
 
-        setRoles(portal, TEST_USER_ID, ['Manager'])
+        setRoles(portal, TEST_USER_ID, ["Manager"])
 
         login(portal, TEST_USER_NAME)
 
         # Create test content
         crc = plone.api.content.create
-        crc(container=portal, type='Folder', id='folder_1')
-        crc(container=portal['folder_1'], type='Document', id='item_11',
-            title="item_11")
-        crc(container=portal['folder_1'], type='Document', id='item_12',
-            title="item_12")
+        crc(container=portal, type="Folder", id="folder_1")
+        crc(
+            container=portal["folder_1"], type="Document", id="item_11", title="item_11"
+        )
+        crc(
+            container=portal["folder_1"], type="Document", id="item_12", title="item_12"
+        )
 
-        crc(container=portal, type='Folder', id='folder_2')
-        crc(container=portal['folder_2'], type='Document', id='item_21',
-            title="item_21")
-        crc(container=portal['folder_2'], type='Document', id='item_22',
-            title="item_22")
+        crc(container=portal, type="Folder", id="folder_2")
+        crc(
+            container=portal["folder_2"], type="Document", id="item_21", title="item_21"
+        )
+        crc(
+            container=portal["folder_2"], type="Document", id="item_22", title="item_22"
+        )
 
         # Create test users
         cru = plone.api.user.create
@@ -117,33 +117,31 @@ class ShopDXFullLayer(ShopFullLayerBase):
     defaultBases = (ShopDX_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
-        z2.installProduct(app, 'Products.DateRecurringIndex')  # still needed
+        z2.installProduct(app, "Products.DateRecurringIndex")  # still needed
 
         import plone.app.contenttypes
-        self.loadZCML(package=plone.app.contenttypes,
-                      context=configurationContext)
+
+        self.loadZCML(package=plone.app.contenttypes, context=configurationContext)
 
     def setUpPloneSite(self, portal):
-        self.applyProfile(portal, 'plone.app.contenttypes:default')
+        self.applyProfile(portal, "plone.app.contenttypes:default")
 
         # Make Documents buyable by adding necessary behaviors to the FTI
-        getUtility(IDexterityFTI, name='Document').behaviors +=\
-            ('bda.plone.shop.dx.IBuyableBehavior',
-             'bda.plone.shop.dx.IStockBehavior',
-             'bda.plone.shop.dx.IShippingBehavior',
-             'bda.plone.shop.dx.ITradingBehavior', )
+        getUtility(IDexterityFTI, name="Document").behaviors += (
+            "bda.plone.shop.dx.IBuyableBehavior",
+            "bda.plone.shop.dx.IStockBehavior",
+            "bda.plone.shop.dx.IShippingBehavior",
+            "bda.plone.shop.dx.ITradingBehavior",
+        )
 
         self.setup_content(portal)
 
 
 ShopDXFull_FIXTURE = ShopDXFullLayer()
 ShopDXFull_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(ShopDXFull_FIXTURE,),
-    name="ShopDX:Integration")
+    bases=(ShopDXFull_FIXTURE,), name="ShopDX:Integration"
+)
 ShopDXFull_ROBOT_TESTING = FunctionalTesting(
-    bases=(
-        MOCK_MAILHOST_FIXTURE,
-        ShopDXFull_FIXTURE,
-        z2.ZSERVER_FIXTURE
-    ),
-    name="ShopDXFull:Robot")
+    bases=(MOCK_MAILHOST_FIXTURE, ShopDXFull_FIXTURE, z2.ZSERVER_FIXTURE),
+    name="ShopDXFull:Robot",
+)

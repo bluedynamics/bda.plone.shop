@@ -10,12 +10,9 @@ from zope.interface import implementer
 
 @implementer(IActionsSubMenuItem)
 class ShopSubMenuItem(BrowserSubMenuItem):
-    title = _('shop', default=u'Shop')
-    submenuId = 'shop_toolbar_menu'
-    extra = {
-        'id': 'shop_toolbar_menu',
-        'li_class': 'plonetoolbar-shop_toolbar_menu'
-    }
+    title = _("shop", default=u"Shop")
+    submenuId = "shop_toolbar_menu"
+    extra = {"id": "shop_toolbar_menu", "li_class": "plonetoolbar-shop_toolbar_menu"}
     order = 70
 
     @property
@@ -31,20 +28,15 @@ class ShopSubMenuItem(BrowserSubMenuItem):
 
 @implementer(IActionsMenu)
 class ShopMenu(BrowserMenu):
-
     def menu_item(self, id_, title, url, cssclass, seperator):
         return {
-            'title': title,
-            'description': '',
-            'action': url,
-            'selected': False,
-            'icons': None,
-            'extra': {
-                'id': id_,
-                'separator': seperator,
-                'class': cssclass
-            },
-            'submenu': None
+            "title": title,
+            "description": "",
+            "action": url,
+            "selected": False,
+            "icons": None,
+            "extra": {"id": id_, "separator": seperator, "class": cssclass},
+            "submenu": None,
         }
 
     def getMenuItems(self, context, request):
@@ -54,19 +46,11 @@ class ShopMenu(BrowserMenu):
             group_links = [x for x in group.links()]
             if not group_links:
                 continue
-            items.append(self.menu_item(
-                group.id,
-                group.title,
-                None,
-                None,
-                'actionSeparator'
-            ))
+            items.append(
+                self.menu_item(group.id, group.title, None, None, "actionSeparator")
+            )
             for link in group_links:
-                items.append(self.menu_item(
-                    link.id,
-                    link.title,
-                    link.url,
-                    link.cssclass,
-                    None
-                ))
+                items.append(
+                    self.menu_item(link.id, link.title, link.url, link.cssclass, None)
+                )
         return items

@@ -8,7 +8,7 @@ from Products.PluggableAuthService.utils import classImplements
 from zope.interface import implementer
 
 
-PAS_ID = 'bda.plone.shop'
+PAS_ID = "bda.plone.shop"
 
 
 @implementer(IPropertiesPlugin)
@@ -19,7 +19,7 @@ class UserPropertiesPASPlugin(BasePlugin):
     at another place.
     """
 
-    meta_type = 'bda.plone.shop user properties'
+    meta_type = "bda.plone.shop user properties"
 
     def __init__(self, id, title=None):
         self._setId(id)
@@ -53,28 +53,25 @@ class UserPropertiesPASPlugin(BasePlugin):
 
             return safe_unicode(default)
 
-        first = safe_unicode(getProperty('firstname', u''))
-        last = safe_unicode(getProperty('lastname', u''))
-        street = safe_unicode(getProperty('street', u''))
-        zip_code = safe_unicode(getProperty('zip', u''))
-        city = safe_unicode(getProperty('city', u''))
-        country = safe_unicode(getProperty('country', u''))
+        first = safe_unicode(getProperty("firstname", u""))
+        last = safe_unicode(getProperty("lastname", u""))
+        street = safe_unicode(getProperty("street", u""))
+        zip_code = safe_unicode(getProperty("zip", u""))
+        city = safe_unicode(getProperty("city", u""))
+        country = safe_unicode(getProperty("country", u""))
 
         try:
-            country = country and get_pycountry_name(country) or ''
+            country = country and get_pycountry_name(country) or ""
         except KeyError:
-            country = ''
+            country = ""
 
-        join_list = [street, u'{0} {1}'.format(zip_code, city), country]
+        join_list = [street, u"{0} {1}".format(zip_code, city), country]
 
         return {
-            'fullname': u'{0}{1}{2}'.format(
-                first,
-                u' ' if first and last else u'',
-                last
+            "fullname": u"{0}{1}{2}".format(
+                first, u" " if first and last else u"", last
             ),
-
-            'location': u', '.join([it for it in join_list if it]),
+            "location": u", ".join([it for it in join_list if it]),
         }
 
 

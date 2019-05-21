@@ -13,10 +13,10 @@ from zope.component import getUtility
 
 
 def format_amount(val):
-    val = val.quantize(Decimal('1.00'))
+    val = val.quantize(Decimal("1.00"))
     if bool(val % 2):
-        return str(val).replace('.', ',')
-    return str(val.quantize(Decimal('1'))) + ',-'
+        return str(val).replace(".", ",")
+    return str(val.quantize(Decimal("1"))) + ",-"
 
 
 def get_shop_settings():

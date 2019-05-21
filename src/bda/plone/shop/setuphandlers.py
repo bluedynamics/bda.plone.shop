@@ -10,10 +10,10 @@ from zope.interface import implementer
 import logging
 
 
-PAS_TITLE = 'bda.plone.shop plugin'
+PAS_TITLE = "bda.plone.shop plugin"
 
 
-logger = logging.getLogger('bda.plone.shop')
+logger = logging.getLogger("bda.plone.shop")
 
 
 def add_plugin(pas, plugin_id=PAS_ID):
@@ -66,7 +66,7 @@ def install(context):
     """
     Install the PAS plugin.
     """
-    pas = api.portal.get_tool(name='acl_users')
+    pas = api.portal.get_tool(name="acl_users")
     logger.info(add_plugin(pas))
 
 
@@ -74,13 +74,12 @@ def uninstall(context):
     """
     Remove the PAS plugin.
     """
-    pas = api.portal.get_tool(name='acl_users')
+    pas = api.portal.get_tool(name="acl_users")
     logger.info(remove_plugin(pas))
 
 
 @implementer(Plone.INonInstallable)
 class HiddenProfiles(object):
-
     def getNonInstallableProfiles(self):
         """Do not show on Plone's list of installable profiles.
         """
@@ -89,7 +88,6 @@ class HiddenProfiles(object):
 
 @implementer(QuickInstaller.INonInstallable)
 class HiddenProducts(object):
-
     def getNonInstallableProducts(self):
         """Do not show on QuickInstaller's list of installable products.
         """

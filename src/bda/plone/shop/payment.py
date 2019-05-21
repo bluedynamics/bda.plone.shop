@@ -14,7 +14,6 @@ from zope.interface import Interface
 @implementer(IPaymentSettings)
 @adapter(Interface)
 class PaymentSettings(object):
-
     def __init__(self, context):
         self.context = context
 
@@ -32,7 +31,6 @@ class PaymentSettings(object):
 @implementer(ICashOnDeliverySettings)
 @adapter(Interface)
 class CashOnDeliverySettings(object):
-
     def __init__(self, context):
         self.context = context
 
@@ -41,7 +39,7 @@ class CashOnDeliverySettings(object):
         settings = get_shop_settings()
         currency = settings.currency
         show_currency = settings.show_currency
-        if show_currency == 'symbol':
+        if show_currency == "symbol":
             currency = CURRENCY_LITERALS[currency]
         return currency
 
@@ -52,10 +50,10 @@ class CashOnDeliverySettings(object):
         except KeyError:
             # happens GS profile application if registry entries not present
             # yet
-            return Decimal('0')
+            return Decimal("0")
         costs = settings.cash_on_delivery_costs
         if costs:
             costs = Decimal(str(costs))
         else:
-            costs = Decimal('0')
+            costs = Decimal("0")
         return format_amount(costs)

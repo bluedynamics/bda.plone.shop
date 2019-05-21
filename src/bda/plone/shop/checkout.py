@@ -13,7 +13,6 @@ from zope.interface import Interface
 @implementer(ICheckoutSettings)
 @adapter(Interface)
 class CheckoutSettings(object):
-
     def __init__(self, context):
         self.context = context
 
@@ -21,7 +20,7 @@ class CheckoutSettings(object):
         settings = get_shop_payment_settings()
         order_data = OrderData(self.context, uid=uid)
         # order total is 0, skip
-        if not Decimal(str(order_data.total)).quantize(Decimal('1.000')):
+        if not Decimal(str(order_data.total)).quantize(Decimal("1.000")):
             return True
         # if payment should be skipped if order contains reservations and
         # order contains reservations, skip
@@ -31,5 +30,5 @@ class CheckoutSettings(object):
         return False
 
     def skip_payment_redirect_url(self, uid):
-        base = '%s/@@order_done?uid=%s'
+        base = "%s/@@order_done?uid=%s"
         return base % (self.context.absolute_url(), uid)

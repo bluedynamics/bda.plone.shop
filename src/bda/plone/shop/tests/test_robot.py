@@ -17,10 +17,10 @@ except ImportError:
 def test_suite():
     suite = unittest.TestSuite()
     suite.level = ROBOT_TEST_LEVEL
-    suite.addTests([
-        layered(robotsuite.RobotTestSuite('robot'),
-                layer=ShopATFull_ROBOT_TESTING),
-        layered(robotsuite.RobotTestSuite('robot'),
-                layer=ShopDXFull_ROBOT_TESTING),
-    ])
+    suite.addTests(
+        [
+            layered(robotsuite.RobotTestSuite("robot"), layer=ShopATFull_ROBOT_TESTING),
+            layered(robotsuite.RobotTestSuite("robot"), layer=ShopDXFull_ROBOT_TESTING),
+        ]
+    )
     return suite

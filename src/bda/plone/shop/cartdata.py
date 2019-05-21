@@ -29,16 +29,16 @@ class CartItemCalculator(object):
 
     def __init__(self, context):
         msg = (
-            'The use of ``CartItemCalculator`` is deprecated. '
-            'Please use ``bda.plone.cart.get_data_provider`` instead. '
-            'This class will be removed as of ``bda.plone.shop`` 1.0. '
+            "The use of ``CartItemCalculator`` is deprecated. "
+            "Please use ``bda.plone.cart.get_data_provider`` instead. "
+            "This class will be removed as of ``bda.plone.shop`` 1.0. "
         )
         warnings.warn(msg, DeprecationWarning)
         self.context = context
 
     @property
     def catalog(self):
-        return api.portal.get_tool('portal_catalog')
+        return api.portal.get_tool("portal_catalog")
 
     def item_net(self, item):
         """Net price of item.
@@ -133,7 +133,6 @@ class CartItemCalculator(object):
 
 
 class CartDataProvider(CartItemCalculator, CartDataProviderBase):
-
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -162,7 +161,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
     def shipping_method(self):
         settings = get_shop_shipping_settings()
         # read from cookie and return if present and available
-        shipping_method = self.request.cookies.get('shipping_method')
+        shipping_method = self.request.cookies.get("shipping_method")
         if shipping_method:
             if shipping_method in settings.available_shipping_methods:
                 return shipping_method
@@ -171,11 +170,11 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
     @property
     def checkout_url(self):
-        return '%s/@@checkout' % self.context.absolute_url()
+        return "%s/@@checkout" % self.context.absolute_url()
 
     @property
     def cart_url(self):
-        return '%s/@@cart' % self.context.absolute_url()
+        return "%s/@@cart" % self.context.absolute_url()
 
     @property
     def show_to_cart(self):
@@ -194,26 +193,21 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             buyable = api.content.get(UID=uid)
         except ValueError:
             message = _(
-                u'buyable_does_not_exist',
-                default=u'Buyable item with UID {uuid} does not exist.',
-                        mapping={'uuid': uid})
-            return {
-                'success': False,
-                'error': message,
-                'update': True,
-            }
+                u"buyable_does_not_exist",
+                default=u"Buyable item with UID {uuid} does not exist.",
+                mapping={"uuid": uid},
+            )
+            return {"success": False, "error": message, "update": True}
         # check whether user can modify cart
         if not api.user.has_permission(permissions.ModifyCart, obj=buyable):
             remove_item_from_cart(self.request, uid)
-            message = _(u'permission_not_granted_to_buy_item',
-                        default=u'Permission to buy ${title} not granted.',
-                        mapping={'title': buyable.Title()})
+            message = _(
+                u"permission_not_granted_to_buy_item",
+                default=u"Permission to buy ${title} not granted.",
+                mapping={"title": buyable.Title()},
+            )
             message = translate(message, context=self.request)
-            return {
-                'success': False,
-                'error': message,
-                'update': True,
-            }
+            return {"success": False, "error": message, "update": True}
         # check buyable period
         buyable_period = queryAdapter(buyable, IBuyablePeriod)
         if buyable_period:
@@ -222,30 +216,17 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             effective = buyable_period.effective
             if effective and now < effective:
                 remove_item_from_cart(self.request, uid)
-                message = _('item_not_buyable_yet',
-                            default=u'Item not buyable yet')
+                message = _("item_not_buyable_yet", default=u"Item not buyable yet")
                 message = translate(message, context=self.request)
-                return {
-                    'success': False,
-                    'error': message,
-                    'update': True,
-                }
+                return {"success": False, "error": message, "update": True}
             # expires date exceed
             expires = buyable_period.expires
             if expires and now > expires:
                 remove_item_from_cart(self.request, uid)
-                message = _('item_no_longer_buyable',
-                            default=u'Item no longer buyable')
+                message = _("item_no_longer_buyable", default=u"Item no longer buyable")
                 message = translate(message, context=self.request)
-                return {
-                    'success': False,
-                    'error': message,
-                    'update': True,
-                }
-        return {
-            'success': True,
-            'error': '',
-        }
+                return {"success": False, "error": message, "update": True}
+        return {"success": True, "error": ""}
 
     def cart_items(self, items):
         ret = list()
@@ -280,8 +261,7 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             discount = discount_net * count
             if data.display_gross:
                 price = price + price / Decimal(100) * Decimal(str(data.vat))
-                discount = \
-                    discount + discount / Decimal(100) * Decimal(str(data.vat))
+                discount = discount + discount / Decimal(100) * Decimal(str(data.vat))
             url = obj.absolute_url()
             description = obj.Description()
             comment_required = data.comment_required
@@ -291,22 +271,24 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             item_state = get_item_state(obj, self.request)
             no_longer_available = not item_state.validate_count(count)
             alert = item_state.alert(count)
-            ret.append(self.item(
-                uid=uid,
-                title=title,
-                count=count,
-                price=price,
-                url=url,
-                comment=comment,
-                description=description,
-                comment_required=comment_required,
-                quantity_unit_float=quantity_unit_float,
-                quantity_unit=quantity_unit,
-                preview_image_url=preview_image_url,
-                no_longer_available=no_longer_available,
-                alert=alert,
-                discount=discount * Decimal(-1) if discount else Decimal(0)
-            ))
+            ret.append(
+                self.item(
+                    uid=uid,
+                    title=title,
+                    count=count,
+                    price=price,
+                    url=url,
+                    comment=comment,
+                    description=description,
+                    comment_required=comment_required,
+                    quantity_unit_float=quantity_unit_float,
+                    quantity_unit=quantity_unit,
+                    preview_image_url=preview_image_url,
+                    no_longer_available=no_longer_available,
+                    alert=alert,
+                    discount=discount * Decimal(-1) if discount else Decimal(0),
+                )
+            )
         return ret
 
 
@@ -316,46 +298,48 @@ class CartItemState(CartItemStateBase):
 
     @property
     def completely_exceeded_alert(self):
-        message = _(u'alert_item_no_longer_available',
-                    default=u'No longer available, please '
-                            u'remove from cart')
+        message = _(
+            u"alert_item_no_longer_available",
+            default=u"No longer available, please " u"remove from cart",
+        )
         return translate(message, context=self.request)
 
     @property
     def some_reservations_alert(self):
-        message = _(u'alert_item_some_reserved',
-                    default=u'Partly reserved')
+        message = _(u"alert_item_some_reserved", default=u"Partly reserved")
         return translate(message, context=self.request)
 
     def partly_exceeded_alert(self, exceed, quantity_unit):
-        message = _(u'alert_item_number_exceed',
-                    default=u'Limit exceed by ${exceed} ${quantity_unit}',
-                    mapping={'exceed': exceed,
-                             'quantity_unit': quantity_unit})
+        message = _(
+            u"alert_item_number_exceed",
+            default=u"Limit exceed by ${exceed} ${quantity_unit}",
+            mapping={"exceed": exceed, "quantity_unit": quantity_unit},
+        )
         return translate(message, context=self.request)
 
     def number_reservations_alert(self, reserved, quantity_unit):
-        message = _(u'alert_item_number_reserved',
-                    default=u'${reserved} ${quantity_unit} reserved',
-                    mapping={'reserved': reserved,
-                             'quantity_unit': quantity_unit})
+        message = _(
+            u"alert_item_number_reserved",
+            default=u"${reserved} ${quantity_unit} reserved",
+            mapping={"reserved": reserved, "quantity_unit": quantity_unit},
+        )
         return translate(message, context=self.request)
 
     def alert(self, count):
         stock = get_item_stock(self.context)
         # stock not applied
         if stock is None:
-            return ''
+            return ""
         available = stock.available
         # no limitation
         if available is None:
-            return ''
+            return ""
         reserved = self.reserved
         exceed = self.exceed
         # no reservations and no exceed
         if not reserved and not exceed:
             # no message
-            return ''
+            return ""
         item_data = get_item_data_provider(self.context)
         quantity_unit = item_data.quantity_unit
         quantity_unit_float = item_data.quantity_unit_float
@@ -364,13 +348,13 @@ class CartItemState(CartItemStateBase):
             if quantity_unit_float:
                 return num
             return int(num)
+
         # exceed
         if exceed:
             remaining_available = self.remaining_available
             # partly exceeded
             if remaining_available > 0:
-                return self.partly_exceeded_alert(
-                    display_format(exceed), quantity_unit)
+                return self.partly_exceeded_alert(display_format(exceed), quantity_unit)
             # completely exceeded
             return self.completely_exceeded_alert
         # reservations
@@ -383,5 +367,6 @@ class CartItemState(CartItemStateBase):
             # number reservations message
             else:
                 return self.number_reservations_alert(
-                    display_format(reserved), quantity_unit)
-        return ''
+                    display_format(reserved), quantity_unit
+                )
+        return ""

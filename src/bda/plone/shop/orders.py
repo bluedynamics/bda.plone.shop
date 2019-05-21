@@ -9,7 +9,6 @@ from zope.interface import Interface
 @implementer(IInvoiceSender)
 @adapter(Interface)
 class InvoiceSender(object):
-
     def __init__(self, context):
         self.context = context
 

@@ -10,13 +10,12 @@ from zope.interface import alsoProvides
 
 
 class ContextProxy(object):
-
     def __init__(self, interfaces):
         self.__interfaces = interfaces
         alsoProvides(self, *interfaces)
 
     def __setattr__(self, name, value):
-        if name.startswith('__') or name.startswith('_ContextProxy__'):
+        if name.startswith("__") or name.startswith("_ContextProxy__"):
             return object.__setattr__(self, name, value)
 
         registry = getUtility(IRegistry)
@@ -31,7 +30,7 @@ class ContextProxy(object):
         raise AttributeError(name)
 
     def __getattr__(self, name):
-        if name.startswith('__') or name.startswith('_ContextProxy__'):
+        if name.startswith("__") or name.startswith("_ContextProxy__"):
             return object.__getattr__(self, name)
 
         registry = getUtility(IRegistry)
@@ -58,8 +57,9 @@ class ShopSettingsEditForm(controlpanel.RegistryEditForm):
     @property
     def additionalSchemata(self):
         registry = getUtility(IRegistry)
-        interface_names = set(record.interfaceName for record
-                              in list(registry.records.values()))
+        interface_names = set(
+            record.interfaceName for record in list(registry.records.values())
+        )
 
         for name in interface_names:
             if not name:
