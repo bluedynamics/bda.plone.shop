@@ -4,6 +4,9 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- Fix import for latest cart/shipping changes.
+  [jensens]
+
 - Python 2/3 compatibility
   [agitator]
 

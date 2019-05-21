@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from bda.plone.cart import CURRENCY_LITERALS
-from bda.plone.cart import cart_item_free_shipping
-from bda.plone.cart import cart_item_shippable
-from bda.plone.cart import get_data_provider
-from bda.plone.shipping import Shipping
-from bda.plone.shipping.interfaces import IShippingSettings
+from bda.plone.cart.cart import get_data_provider
+from bda.plone.cart.cartitem import cart_item_free_shipping
+from bda.plone.cart.cartitem import cart_item_shippable
+from bda.plone.cart.interfaces import IShippingSettings
+from bda.plone.cart.shipping import Shipping
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.utils import format_amount
 from bda.plone.shop.utils import get_shop_settings

@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from AccessControl import getSecurityManager
-from bda.plone.cart import CartDataProviderBase
-from bda.plone.cart import CartItemStateBase
-from bda.plone.cart import get_item_data_provider
-from bda.plone.cart import get_item_preview
-from bda.plone.cart import get_item_state
-from bda.plone.cart import get_item_stock
-from bda.plone.cart import remove_item_from_cart
-from bda.plone.shipping.interfaces import IShippingItem
+from bda.plone.cart.cart import CartDataProviderBase
+from bda.plone.cart.cartitem import CartItemStateBase
+from bda.plone.cart.cartitem import get_item_data_provider
+from bda.plone.cart.cartitem import get_item_preview
+from bda.plone.cart.cartitem import get_item_state
+from bda.plone.cart.cartitem import get_item_stock
+from bda.plone.cart.cartitem import remove_item_from_cart
+from bda.plone.cart.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
 from bda.plone.shop import permissions
 from bda.plone.shop.interfaces import IBuyablePeriod
@@ -19,6 +19,7 @@ from decimal import Decimal
 from plone import api
 from zope.component import queryAdapter
 from zope.i18n import translate
+
 import warnings
 
 

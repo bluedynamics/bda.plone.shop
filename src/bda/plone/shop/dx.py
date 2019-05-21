@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from bda.plone.cart import CartItemDataProviderBase
-from bda.plone.cart import CartItemPreviewAdapterBase
+from bda.plone.cart.cartitem import CartItemDataProviderBase
+from bda.plone.cart.cartitem import CartItemPreviewAdapterBase
 from bda.plone.cart.interfaces import ICartItemStock
 from bda.plone.orders.interfaces import IBuyable
 from bda.plone.orders.interfaces import ITrading
-from bda.plone.shipping.interfaces import IShippingItem
+from bda.plone.cart.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IBuyablePeriod
 from bda.plone.shop.mailnotify import BubbleGlobalNotificationText

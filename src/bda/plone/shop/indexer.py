@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from bda.plone.cart import get_item_data_provider
+from bda.plone.cart.cartitem import get_item_data_provider
 from bda.plone.orders.interfaces import IBuyable
 from bda.plone.shop.interfaces import IBuyablePeriod
 from decimal import Decimal
