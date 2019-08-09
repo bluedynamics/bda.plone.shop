@@ -4,4 +4,4 @@
 rm -r ./lib ./include ./local ./bin
 ln -fs plone-5.1.x.cfg buildout.cfg
 virtualenv --clear .
-./bin/pip install r http://dist.plone.org/release/5.1-latest/requirements.txt
+./bin/pip install -r http://dist.plone.org/release/5.1-latest/requirements.txt
