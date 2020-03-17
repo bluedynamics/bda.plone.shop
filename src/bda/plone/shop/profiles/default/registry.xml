@@ -80,19 +80,19 @@
   </records>
 
   <records interface="bda.plone.shop.interfaces.IInvoiceSettings">
-    <value key="default_invoice_company" purge="false">Company Name</value>
-    <value key="default_invoice_companyadd" purge="false">My Awesome Company</value>
-    <value key="default_invoice_firstname" purge="false">John</value>
-    <value key="default_invoice_lastname" purge="false">Doe</value>
-    <value key="default_invoice_street" purge="false">Dummy Street 1</value>
-    <value key="default_invoice_zip" purge="false">1234</value>
-    <value key="default_invoice_city" purge="false">Hildesheim</value>
-    <value key="default_invoice_country" purge="false">040</value>
-    <value key="default_invoice_phone" purge="false">+43 123 456 78 90</value>
-    <value key="default_invoice_email" purge="false">john.doe@example.com</value>
-    <value key="default_invoice_web" purge="false">www.example.com</value>
-    <value key="default_invoice_iban" purge="false">AT00 0000 0000 0000 0000</value>
-    <value key="default_invoice_bic" purge="false">XXXXXXXX</value>
+    <value key="default_invoice_company" purge="false"></value>
+    <value key="default_invoice_companyadd" purge="false"></value>
+    <value key="default_invoice_firstname" purge="false"></value>
+    <value key="default_invoice_lastname" purge="false"></value>
+    <value key="default_invoice_street" purge="false"></value>
+    <value key="default_invoice_zip" purge="false"></value>
+    <value key="default_invoice_city" purge="false"></value>
+    <value key="default_invoice_country" purge="false"></value>
+    <value key="default_invoice_phone" purge="false"></value>
+    <value key="default_invoice_email" purge="false"></value>
+    <value key="default_invoice_web" purge="false"></value>
+    <value key="default_invoice_iban" purge="false"></value>
+    <value key="default_invoice_bic" purge="false"></value>
   </records>
 
   <records interface="bda.plone.shop.interfaces.IPaymentTextSettings">

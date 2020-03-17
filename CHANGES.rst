@@ -4,6 +4,9 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- Make invoice fields optional
+  [agitator]
+
 - Code style black.
   [jensens]
 

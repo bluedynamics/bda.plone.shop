@@ -507,7 +507,7 @@ class IInvoiceSettings(model.Schema):
         description=_(
             u"help_invoice_company", default=u"Company name of invoice sender."
         ),
-        required=True,
+        required=False,
     )
 
     default_invoice_companyadd = schema.TextLine(
@@ -524,37 +524,37 @@ class IInvoiceSettings(model.Schema):
         description=_(
             u"help_invoice_firstname", default=u"Given name of invoice sender"
         ),
-        required=True,
+        required=False,
     )
 
     default_invoice_lastname = schema.TextLine(
         title=_(u"label_lastname", default=u"Last name"),
         description=_(u"help_invoice_lastname", default=u"Last name of invoice sender"),
-        required=True,
+        required=False,
     )
 
     default_invoice_street = schema.TextLine(
         title=_(u"label_street", default=u"Street"),
         description=_(u"help_invoice_street", default=u"Street of invoice sender"),
-        required=True,
+        required=False,
     )
 
     default_invoice_zip = schema.TextLine(
         title=_(u"label_zip", default=u"Postal Code"),
         description=_(u"help_invoice_zip", default=u"Postal code of invoice sender"),
-        required=True,
+        required=False,
     )
 
     default_invoice_city = schema.TextLine(
         title=_(u"label_city", default=u"City"),
         description=_(u"help_invoice_city", default=u"City of invoice sender"),
-        required=True,
+        required=False,
     )
 
     default_invoice_country = schema.Choice(
         title=_(u"label_country", default=u"Country"),
         description=_(u"help_invoice_country", default=u"Country of invoice sender"),
-        required=True,
+        required=False,
         vocabulary="bda.plone.shop.vocabularies.CountryVocabulary",
     )
 
@@ -587,7 +587,7 @@ class IInvoiceSettings(model.Schema):
         description=_(
             u"help_invoice_iban", default=u"Invoice sender banking account IBAN"
         ),
-        required=True,
+        required=False,
     )
 
     default_invoice_bic = schema.TextLine(
@@ -595,7 +595,7 @@ class IInvoiceSettings(model.Schema):
         description=_(
             u"help_invoice_bic", default=u"Invoice sender banking account BIC"
         ),
-        required=True,
+        required=False,
     )
 
 
