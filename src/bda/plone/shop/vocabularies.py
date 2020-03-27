@@ -17,9 +17,12 @@ from zope.schema.vocabulary import SimpleVocabulary
 # patch this vocab
 AVAILABLE_QUANTITY_UNITS = {
     "quantity": _("quantity", default="Quantity"),
+    "centimeter": _("centimeter", default="Centimeter"),
     "meter": _("meter", default="Meter"),
-    "kilo": _("kilo", default="Kilo"),
-    "liter": _("liter", default="Liter"),
+    "gram": _("gram", default="Gram"),
+    "kilo": _("kilo", default="Kilogram"),
+    "milliliters": _("milliliters", default="Milliliters"),
+    "liter": _("liters", default="Liters"),
 }
 
 
@@ -42,8 +45,12 @@ def QuantityUnitVocabulary(context):
         return
     terms = []
     for quantity_unit in settings.quantity_units:
-        title = AVAILABLE_QUANTITY_UNITS.get(quantity_unit, quantity_unit)
-        terms.append(SimpleTerm(value=quantity_unit, title=title))
+        terms.append(
+            SimpleTerm(
+                value=quantity_unit,
+                title=AVAILABLE_QUANTITY_UNITS.get(quantity_unit, quantity_unit)
+            )
+        )
     return SimpleVocabulary(terms)
 
 
