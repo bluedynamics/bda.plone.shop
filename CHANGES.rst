@@ -4,6 +4,9 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- Add more available units.
+  [jensens]
+
 - Make invoice fields optional
   [agitator]
 
