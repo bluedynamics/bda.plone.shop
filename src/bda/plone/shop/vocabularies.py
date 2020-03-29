@@ -54,7 +54,7 @@ def QuantityUnitVocabulary(context):
     return SimpleVocabulary(terms)
 
 
-# This are the overall avaiable VAT values which then can be reduced in
+# This are the overall available VAT values which then can be reduced in
 # control panel. If you need to provide more vat values add it here or
 # patch this vocab
 AVAILABLE_VAT_VALUES = {
@@ -63,6 +63,7 @@ AVAILABLE_VAT_VALUES = {
     "3.8": "3,8%",
     "8": "8%",
     "10": "10%",
+    "13": "13%",
     "15": "15%",
     "20": "20%",
     "25": "25%",
