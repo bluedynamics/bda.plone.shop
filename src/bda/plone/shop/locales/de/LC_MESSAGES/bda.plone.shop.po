@@ -890,12 +890,12 @@ msgstr "Maximale Anzahl dieses Artikels im Warenkorb"
 #. Default: "Comment enabled"
 #: ./dx.py:119
 msgid "label_item_comment_enabled"
-msgstr "Zusatzinformation erlaubt"
+msgstr "Zusatzinformation eingeben"
 
 #. Default: "Comment required"
 #: ./dx.py:125
 msgid "label_item_comment_required"
-msgstr "Zusatzinformation erforderlich"
+msgstr "Zusatzinformation Eingabe erforderlich"
 
 #. Default: "Display Gross Price"
 #: ./dx.py:110
