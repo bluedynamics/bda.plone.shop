@@ -69,9 +69,10 @@
 
       <dt class="quantity" tal:content="view/quantity_unit">Quantity</dt>
       <dd class="quantity">
-        <input type="text"
+        <input type="number"
                size="2"
                value="1"
+               min="0"
                class="cart_item_count"
                tal:define="css python: view.quantity_unit_float and \
                                        'cart_item_count quantity_unit_float' or

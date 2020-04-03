@@ -4,6 +4,9 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- Localized number input for count.
+  [jensens]
+
 - No longer support for z3c.autoinclude.
   [jensens]
 

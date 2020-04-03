@@ -12,7 +12,7 @@ from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 
-# This are the overall avaiable quantity units which then can be reduced in
+# This are the overall available quantity units which then can be reduced in
 # control panel. If you need to provide more quantity units add it here or
 # patch this vocab
 AVAILABLE_QUANTITY_UNITS = {
