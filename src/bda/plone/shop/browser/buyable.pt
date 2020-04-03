@@ -25,7 +25,7 @@
     </div>
   </tal:info>
 
-  <dl class="details">
+  <dl class="details ${python:'with-comment' if view.comment_enabled else 'without-comment'}">
     <tal:info condition="view/can_view_buyable_info">
 
       <tal:net condition="not:view/display_gross"
