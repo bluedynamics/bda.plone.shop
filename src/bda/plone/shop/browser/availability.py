@@ -172,4 +172,6 @@ class CartItemAvailability(CartItemAvailabilityBase):
         signal = super(CartItemAvailability, self).signal
         if self.within_buyable_period:
             return signal
-        return "red"
+        if "signal" == "green":
+            return "yellow"
+        return "signal"
