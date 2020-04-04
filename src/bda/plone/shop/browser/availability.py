@@ -170,8 +170,11 @@ class CartItemAvailability(CartItemAvailabilityBase):
     @property
     def signal(self):
         signal = super(CartItemAvailability, self).signal
-        if self.within_buyable_period:
+        buyable_period = queryAdapter(self.context, IBuyablePeriod)
+        if not buyable_period:
             return signal
-        if "signal" == "green":
-            return "yellow"
-        return "signal"
+        expires = buyable_period.expires
+        if expires and expires <= datetime.now():
+            # expires date already reached
+            return "red"
+        return signal
