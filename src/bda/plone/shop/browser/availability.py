@@ -166,3 +166,10 @@ class CartItemAvailability(CartItemAvailabilityBase):
             mapping={"date": date},
         )
         return message
+
+    @property
+    def signal(self):
+        signal = super(CartItemAvailability, self).signal
+        if self.within_buyable_period:
+            return signal
+        return "red"

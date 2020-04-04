@@ -4,6 +4,9 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- Take buyable period for availability signal into account.
+  [jensens]
+
 - Mark buyable dl if comments are enabled or not to ease styling.
   [jensens]
 
