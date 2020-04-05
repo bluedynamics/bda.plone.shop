@@ -4,6 +4,9 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- provide information wether a comment is enabled or not on cartitem data.
+  [jensens]
+
 - Take buyable period for availability signal into account.
   [jensens]
 
