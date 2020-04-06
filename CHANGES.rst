@@ -4,6 +4,9 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- Use Decimal field for net price and cast to Decimal (for old values) in accessor.
+  [jensens]
+
 - provide information wether a comment is enabled or not on cartitem data.
   [jensens]
 

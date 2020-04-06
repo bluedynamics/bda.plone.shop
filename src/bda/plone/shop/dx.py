@@ -2,9 +2,9 @@
 from bda.plone.cart.cartitem import CartItemDataProviderBase
 from bda.plone.cart.cartitem import CartItemPreviewAdapterBase
 from bda.plone.cart.interfaces import ICartItemStock
+from bda.plone.cart.interfaces import IShippingItem
 from bda.plone.orders.interfaces import IBuyable
 from bda.plone.orders.interfaces import ITrading
-from bda.plone.cart.interfaces import IShippingItem
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.interfaces import IBuyablePeriod
 from bda.plone.shop.mailnotify import BubbleGlobalNotificationText
@@ -13,6 +13,7 @@ from bda.plone.shop.utils import get_shop_article_settings
 from bda.plone.shop.utils import get_shop_settings
 from bda.plone.shop.utils import get_shop_shipping_settings
 from bda.plone.shop.utils import get_shop_tax_settings
+from decimal import Decimal
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.interfaces import IDexterityContent
 from plone.supermodel import model
@@ -24,11 +25,12 @@ from zope.interface import provider
 from zope.schema.interfaces import IContextAwareDefaultFactory
 from zope.schema.interfaces import IVocabularyFactory
 
-
 @provider(IContextAwareDefaultFactory)
 def default_item_net(context):
-    return get_shop_article_settings().default_item_net
-
+    default = get_shop_article_settings().default_item_net
+    if default is not None:
+        return Decimal(default)
+    return default
 
 @provider(IContextAwareDefaultFactory)
 def default_item_vat(context):
@@ -57,7 +59,11 @@ def default_item_quantity_unit_float(context):
 
 @provider(IContextAwareDefaultFactory)
 def default_item_cart_count_limit(context):
-    return get_shop_article_settings().default_item_cart_count_limit
+    default = get_shop_article_settings().default_item_cart_count_limit
+    if default is not None:
+        return Decimal(default)
+    return default
+
 
 
 @provider(IContextAwareDefaultFactory)
@@ -85,10 +91,11 @@ class IBuyableBehavior(model.Schema, IBuyable):
         ],
     )
 
-    item_net = schema.Float(
+    item_net = schema.Decimal(
         title=_(u"label_item_net", default=u"Item net price"),
         required=False,
         defaultFactory=default_item_net,
+        min=Decimal(0),
     )
 
     item_vat = schema.Choice(
@@ -98,12 +105,13 @@ class IBuyableBehavior(model.Schema, IBuyable):
         defaultFactory=default_item_vat,
     )
 
-    item_cart_count_limit = schema.Float(
+    item_cart_count_limit = schema.Decimal(
         title=_(
             u"label_item_cart_count_limit", default=u"Max count of this item in cart"
         ),
         required=False,
         defaultFactory=default_item_cart_count_limit,
+        min=Decimal(0),
     )
 
     item_display_gross = schema.Bool(
@@ -150,15 +158,15 @@ class DXCartItemDataProvider(CartItemDataProviderBase):
     def net(self):
         val = self.context.item_net
         if not val:
-            return 0.0
-        return float(val)
+            return Decimal(0.0)
+        return Decimal(val)
 
     @property
     def vat(self):
         val = self.context.item_vat
         if not val:
-            return 0.0
-        return float(val)
+            return Decimal(0.0)
+        return Decimal(val)
 
     @property
     def cart_count_limit(self):

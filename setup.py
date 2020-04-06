@@ -43,6 +43,7 @@ setup(
         'setuptools',
         'zope.deferredimport',
         'z3c.form>=3.2.4',  # Issue #55
+        'zope.schema>=3.4',  # Decimal field
     ],
     extras_require={
         'test': [
