@@ -4,6 +4,10 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- Refactor buyable.[py|pt] for localized number output and better Decimal usage.
+  Also use Python expressions for performance.
+  [jensens]
+
 - Use Decimal field for net price and cast to Decimal (for old values) in accessor.
   [jensens]
 
