@@ -55,11 +55,11 @@
                 tal:condition="python:view.not_eq(price_original, price)">
               <span tal:replace="python:'%0.2f' % price_original">1.0</span>
               <span tal:replace="view/currency">EUR</span>
-          </span>
-          <span class="discount">
-            <span tal:replace="python:'%0.2f' % price">1.0</span>
-            <span tal:replace="view/currency">EUR</span>
-          </span>
+            </span>
+            <span class="discount">
+              <span tal:replace="python:'%0.2f' % price">1.0</span>
+              <span tal:replace="view/currency">EUR</span>
+            </span>
           </span>
         </tal:gross>
         <label class="vat text-muted ml-2">
