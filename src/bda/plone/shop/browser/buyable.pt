@@ -10,9 +10,9 @@
                      class string:buyable viewlet ${css}">
 
   <tal:info condition="view/can_view_buyable_info">
-    <div class="availabilityWrapper">
-      <div class="availability" tal:condition="view/show_available">
-        <strong i18n:translate="availability">Availability</strong>
+    <div class="availabilityWrapper form-row">
+      <div class="availability form-group form-inline" tal:condition="view/show_available">
+        <strong class="mr-2" i18n:translate="availability">Availability</strong>
         <div class="signal green"
              tal:attributes="class string:signal ${view/availability_signal}">
           &nbsp;
@@ -26,50 +26,55 @@
   </tal:info>
 
   <div class="form-row details ${python:'with-comment' if view.comment_enabled else 'without-comment'}">
-    <tal:info condition="view/can_view_buyable_info">
     <div class="form-group form-inline col-md">
-      <div class="input-group">
+    <tal:info condition="view/can_view_buyable_info">
+      <div class="price-group input-group mr-4">
         <tal:net condition="not:view/display_gross"
                 define="price_original view/item_net_original;
                         price view/item_net">
-          <span class="price" i18n:translate="price">Price</span>
-          <span class="price original"
-              tal:condition="python:view.not_eq(price_original, price)">
-            <span tal:replace="python:'%0.2f' % price_original">1.00</span>
-            <span tal:replace="view/currency">EUR</span>
+          <span class="price h4 mb-1">
+            <span class="label mr-2"><span i18n:translate="price" tal:omit-tag="">Price</span>:</span>
+            <span class="value original"
+                tal:condition="python:view.not_eq(price_original, price)">
+              <span tal:replace="python:'%0.2f' % price_original">1.00</span>
+              <span tal:replace="view/currency">EUR</span>
+            </span>
           </span>
-          <span class="price discount">
+          <span class="discount">
             <span tal:replace="python:'%0.2f' % view.item_net">1.00</span>
             <span tal:replace="view/currency">EUR</span>
-            (<span i18n:translate="net">Net</span>)
           </span>
         </tal:net>
 
         <tal:gross condition="view/display_gross"
                 define="price_original view/item_gross_original;
                         price view/item_gross">
-          <span class="price" i18n:translate="price">Price</span>
-          <span class="price original"
-              tal:condition="python:view.not_eq(price_original, price)">
-            <span tal:replace="python:'%0.2f' % price_original">1.0</span>
-            <span tal:replace="view/currency">EUR</span>
+          <span class="price h4 mb-1">
+            <span class="label mr-2"><span i18n:translate="price" tal:omit-tag="">Price</span>:</span>
+            <span class="value original"
+                tal:condition="python:view.not_eq(price_original, price)">
+              <span tal:replace="python:'%0.2f' % price_original">1.0</span>
+              <span tal:replace="view/currency">EUR</span>
           </span>
-          <span class="price discount">
+          <span class="discount">
             <span tal:replace="python:'%0.2f' % price">1.0</span>
             <span tal:replace="view/currency">EUR</span>
-            (<span i18n:translate="gross">Gross</span>)
+          </span>
           </span>
         </tal:gross>
-
-        <span class="vat" i18n:translate="vat">Vat</span>
-        <span class="vat" tal:content="string:${view/item_vat}%">20 %</span>
+        <label class="vat text-muted ml-2">
+          <span tal:condition="view/display_gross"
+                i18n:translate="incl." tal:omit-tag="">incl.</span>
+          <span tal:condition="not:view/display_gross"
+                i18n:translate="excl." tal:omit-tag="">excl.</span>
+                <span class="" i18n:translate="vat">Vat</span>
+          <span class="" tal:content="string:${view/item_vat}%">20 %</span>
+        </label>
       </div>
-    </div>
     </tal:info>
 
     <tal:buy condition="view/can_buy_items">
-    <div class="form-group form-inline col-md">
-      <div class="input-group">
+      <div class="input-group ml-2">
         <label class="quantity mr-2" tal:content="view/quantity_unit">Quantity</label>
         <div class="quantity">
           <input type="number"
@@ -83,9 +88,11 @@
                 tal:attributes="class css;
                                 disabled python: not addable and 'disabled' or None" />
         </div>
+      </div>
 
       <tal:comment condition="view/comment_enabled">
-        <div class="extra_comment" i18n:translate="comment">Comment</div>
+      <div class="input-group ml-2">
+        <label class="extra_comment mr-2" i18n:translate="comment">Comment</label>
         <div class="extra_comment">
           <input type="text"
                  size="16"
@@ -97,13 +104,15 @@
                  tal:attributes="class css;
                                  disabled python: not addable and 'disabled' or None" />
         </div>
+      </div>
       </tal:comment>
       <span tal:condition="view/can_buy_items"
-            class="cart_item_uid"
-            style="display: none;"
-            tal:content="view/item_uid">12345678</span>
+      class="cart_item_uid"
+      style="display: none;"
+      tal:content="view/item_uid">12345678</span>
 
       <tal:addable condition="addable">
+      <div class="input-group ml-2">
         <a href="" i18n:attributes="title add_to_cart"
            class="btn btn-primary add_cart_item buyable_add_to_cart show_status_message">
            <svg class="bi bi-bag" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -121,17 +130,20 @@
           </svg>
            <span i18n:translate="update_cart">update cart</span>
         </a>
+      </div>
       </tal:addable>
 
       <tal:not_addable condition="not:addable">
+      <div class="input-group ml-2">
         <span class="buyable_add_to_cart_disabled"
               i18n:translate="add_to_cart">add to cart</span>
         <span class="buyable_update_cart_disabled"
               i18n:translate="update_cart">update cart</span>
+      </div>
       </tal:not_addable>
-    </div>
+
+    </tal:buy>
   </div>
-  </tal:buy>
 
   </div>
 
