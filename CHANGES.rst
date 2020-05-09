@@ -44,6 +44,9 @@ Changelog
 - Update version and classifiers - 2.x targets Plone 5.1/5.2 without Archetypes
   [agitator]
 
+- Italian translations
+  [ale-rt]
+
 
 1.0a1 (unreleased)
 ------------------
