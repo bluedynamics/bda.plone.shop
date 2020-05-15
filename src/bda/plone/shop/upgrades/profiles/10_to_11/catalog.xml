@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
+  <index name="item_buyable" remove="true"/>
   <index name="item_buyable" meta_type="BooleanIndex">
     <indexed_attr value="item_buyable" />
   </index>
