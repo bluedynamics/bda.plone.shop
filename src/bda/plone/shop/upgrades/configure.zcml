@@ -110,4 +110,17 @@
 
   </genericsetup:upgradeSteps>
 
+
+  <genericsetup:upgradeSteps
+    source="10"
+    destination="11"
+    profile="bda.plone.shop:default">
+
+    <genericsetup:upgradeDepends
+      title="GS Profile: Use BooleanIndex for item_buyable & add metadata"
+      import_profile="bda.plone.shop.upgrades:10_to_10"
+      run_deps="False" />
+
+  </genericsetup:upgradeSteps>
+
 </configure>
