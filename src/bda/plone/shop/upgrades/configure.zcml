@@ -117,7 +117,7 @@
     profile="bda.plone.shop:default">
 
     <genericsetup:upgradeDepends
-      title="GS Profile: Use BooleanIndex for item_buyable & add metadata"
+      title="GS Profile: Use BooleanIndex for item_buyable and add metadata"
       import_profile="bda.plone.shop.upgrades:10_to_10"
       run_deps="False" />
 
