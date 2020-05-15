@@ -4,6 +4,9 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- Use BooleanIndex for item_buyable & add metadata.
+  [agitator]
+
 - Use Decimal for shipping and article defaults.
   [agitator]
 
