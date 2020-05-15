@@ -104,7 +104,7 @@
     profile="bda.plone.shop:default">
 
     <genericsetup:upgradeDepends
-      title="GS Profile: Update shipping and item defaults from float to decimal"
+      title="GS Profile: Update shipping and item defaults from float to decimal. Warning: Related settings will be reset!"
       import_profile="bda.plone.shop.upgrades:9_to_10"
       run_deps="False" />
 
