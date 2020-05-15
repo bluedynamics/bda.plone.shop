@@ -5,6 +5,7 @@ from bda.plone.orders.interfaces import IOrdersExtensionLayer
 from bda.plone.shop import message_factory as _
 from collective.z3cform.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
+from decimal import Decimal
 from plone.autoform.directives import widget
 from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
@@ -208,7 +209,7 @@ class IShopArticleSettings(model.Schema):
         vocabulary="bda.plone.shop.vocabularies.QuantityUnitVocabulary",
     )
 
-    default_item_net = schema.Float(
+    default_item_net = schema.Decimal(
         title=_(u"label_default_item_net", default=u"Default Item net price"),
         required=False,
     )
@@ -236,7 +237,7 @@ class IShopArticleSettings(model.Schema):
         required=False,
     )
 
-    default_item_cart_count_limit = schema.Float(
+    default_item_cart_count_limit = schema.Decimal(
         title=_(
             u"label_default_item_cart_count_limit",
             default="Quantity limit of an item in the cart.",
@@ -244,7 +245,7 @@ class IShopArticleSettings(model.Schema):
         required=False,
     )
 
-    default_item_stock_warning_threshold = schema.Float(
+    default_item_stock_warning_threshold = schema.Decimal(
         title=_(
             u"label_default_item_stock_warning_threshold",
             default="Item stock warning threshold.",
@@ -324,7 +325,7 @@ class IShopShippingSettings(model.Schema):
 
     # default shipping related settings
 
-    free_shipping_limit = schema.Float(
+    free_shipping_limit = schema.Decimal(
         title=_(u"label_free_shipping_limit", default=u"Free Shipping Limit"),
         description=_(
             u"help_free_shipping_limit",
@@ -335,7 +336,7 @@ class IShopShippingSettings(model.Schema):
             u"gross' setting",
         ),
         required=True,
-        default=200.0,
+        default=Decimal('200.0'),
     )
 
     shipping_limit_from_gross = schema.Bool(
@@ -350,14 +351,14 @@ class IShopShippingSettings(model.Schema):
         ),
     )
 
-    flat_shipping_cost = schema.Float(
+    flat_shipping_cost = schema.Decimal(
         title=_(u"label_flat_shipping_cost", default=u"Flat shipping cost"),
         description=_(u"help_flat_shipping_cost", default=u"Net flat shipping cost"),
         required=True,
-        default=10.0,
+        default=Decimal('10.0'),
     )
 
-    item_shipping_cost = schema.Float(
+    item_shipping_cost = schema.Decimal(
         title=_(u"label_item_shipping_cost", default=u"Item shipping cost"),
         description=_(
             u"help_item_shipping_cost",
@@ -367,7 +368,7 @@ class IShopShippingSettings(model.Schema):
             u"is used",
         ),
         required=True,
-        default=0.0,
+        default=Decimal('0.0'),
     )
 
 
@@ -674,7 +675,7 @@ class IPaymentTextSettings(model.Schema):
         required=False,
     )
 
-    cash_on_delivery_costs = schema.Float(
+    cash_on_delivery_costs = schema.Decimal(
         title=_(
             u"label_cash_on_delivery_costs", default=u"Cash on delivery costs in gross"
         ),
