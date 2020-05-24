@@ -36,13 +36,13 @@
             <span class="label mr-2"><span i18n:translate="price" tal:omit-tag="">Price</span>:</span>
             <span class="value original"
                 tal:condition="python:view.not_eq(price_original, price)">
+                <span tal:replace="view/currency">EUR</span>
               <span tal:replace="python:'%0.2f' % price_original">1.00</span>
-              <span tal:replace="view/currency">EUR</span>
             </span>
           </span>
           <span class="discount">
-            <span tal:replace="python:'%0.2f' % view.item_net">1.00</span>
             <span tal:replace="view/currency">EUR</span>
+            <span tal:replace="python:'%0.2f' % view.item_net">1.00</span>
           </span>
         </tal:net>
 
@@ -53,12 +53,12 @@
             <span class="label mr-2"><span i18n:translate="price" tal:omit-tag="">Price</span>:</span>
             <span class="value original"
                 tal:condition="python:view.not_eq(price_original, price)">
-              <span tal:replace="python:'%0.2f' % price_original">1.0</span>
               <span tal:replace="view/currency">EUR</span>
+              <span tal:replace="python:'%0.2f' % price_original">1.0</span>
             </span>
             <span class="discount">
-              <span tal:replace="python:'%0.2f' % price">1.0</span>
               <span tal:replace="view/currency">EUR</span>
+              <span tal:replace="python:'%0.2f' % price">1.0</span>
             </span>
           </span>
         </tal:gross>
