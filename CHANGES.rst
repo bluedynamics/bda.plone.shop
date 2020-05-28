@@ -44,6 +44,9 @@ Changelog
 - Update version and classifiers - 2.x targets Plone 5.1/5.2 without Archetypes
   [agitator]
 
+- migration: fixed an edgecase when upgrading old shop installations
+  [petschki]
+
 
 1.0a1 (unreleased)
 ------------------
