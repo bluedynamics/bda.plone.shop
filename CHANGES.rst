@@ -161,6 +161,9 @@ Changelog
   enabling or disabling Buyable or Vendor features.
   [thet]
 
+- fix upgradestep for old shop installations
+  [petschki]
+
 
 0.9
 ---
