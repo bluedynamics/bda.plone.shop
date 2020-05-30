@@ -190,7 +190,7 @@ msgstr "Japanischer Yen"
 #: ./browser/buyable.pt:116
 #: ./browser/buyable_mini.pt:89
 msgid "add_to_cart"
-msgstr "hinzufügen"
+msgstr "In den Warenkorb"
 
 #. Default: "Administration"
 #: ./browser/navigation.py:695
