@@ -58,16 +58,16 @@ def QuantityUnitVocabulary(context):
 # control panel. If you need to provide more vat values add it here or
 # patch this vocab
 AVAILABLE_VAT_VALUES = {
-    "0": "0%",
-    "2.5": "2,5%",
-    "3.8": "3,8%",
-    "7.7": "7.7%",
-    "8": "8%",
-    "10": "10%",
-    "13": "13%",
-    "15": "15%",
-    "20": "20%",
-    "25": "25%",
+    "0": "0 %",
+    "2.5": "2,5 %",
+    "3.8": "3,8 %",
+    "7.7": "7.7 %",
+    "8": "8 %",
+    "10": "10 %",
+    "13": "13 %",
+    "15": "15 %",
+    "20": "20 %",
+    "25": "25 %",
 }
 
 
