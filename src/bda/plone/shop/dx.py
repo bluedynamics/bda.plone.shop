@@ -357,7 +357,7 @@ class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
     """Accessor Interface
     """
 
-    preview_scale = "tile"
+    preview_scale = "thumb"
 
     @property
     def url(self):
