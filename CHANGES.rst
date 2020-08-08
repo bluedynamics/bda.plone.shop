@@ -4,6 +4,9 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- Fix availability details pop-up
+  [petri]
+
 - Refactor buyable.[py|pt] for localized number output and better Decimal usage.
   Also use Python expressions for performance.
   [jensens]
