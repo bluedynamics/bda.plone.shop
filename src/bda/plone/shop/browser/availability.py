@@ -14,6 +14,7 @@ from zope.component import queryAdapter
 class CartItemAvailability(CartItemAvailabilityBase):
     details_template = ViewPageTemplateFile("availability_details.pt")
 
+    @property
     def details(self):
         return self.details_template(self)
 
