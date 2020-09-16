@@ -4,6 +4,12 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- Introduce ``bda.plone.shop.cartdata.CHECKOUT_INTERMEDIATE_VIEW``.
+  [rnix]
+
+- Remove Archetypes related documentation.
+  [rnix]
+
 - Use BooleanIndex for item_buyable & add metadata.
   [agitator]
 

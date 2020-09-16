@@ -23,6 +23,10 @@ from zope.i18n import translate
 import warnings
 
 
+# patch to define intermediate checkout view
+CHECKOUT_INTERMEDIATE_VIEW = None
+
+
 class CartItemCalculator(object):
     """Object for calculating cart item related data.
     """
@@ -170,7 +174,12 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
     @property
     def checkout_url(self):
-        return "%s/@@checkout" % self.context.absolute_url()
+        view_name = '@@checkout'
+        # case anonymous user is permitted to perform checkout and intermediate
+        # view is defined. can be used to ask user to login before checkout
+        if api.user.is_anonymous() and CHECKOUT_INTERMEDIATE_VIEW:
+            view_name = CHECKOUT_INTERMEDIATE_VIEW
+        return "%s/%s" % (view_name, self.context.absolute_url())
 
     @property
     def cart_url(self):
