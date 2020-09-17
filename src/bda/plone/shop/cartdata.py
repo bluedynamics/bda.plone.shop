@@ -179,7 +179,10 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         # view is defined. can be used to ask user to login before checkout
         if api.user.is_anonymous() and CHECKOUT_INTERMEDIATE_VIEW:
             view_name = CHECKOUT_INTERMEDIATE_VIEW
-        return "%s/%s" % (view_name, self.context.absolute_url())
+        return "{0}{1}".format(
+            api.portal.get_navigation_root(self.context).absolute_url(),
+            view_name
+        )
 
     @property
     def cart_url(self):
