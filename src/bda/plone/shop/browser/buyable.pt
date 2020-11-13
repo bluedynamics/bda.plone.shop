@@ -11,7 +11,7 @@
 
   <tal:info condition="view/can_view_buyable_info">
     <div class="availabilityWrapper form-row">
-      <div class="availability form-group form-inline" tal:condition="view/show_available">
+      <div class="availability mb-3 form-inline" tal:condition="view/show_available">
         <strong class="mr-2" i18n:translate="availability">Availability</strong>
         <div class="signal green"
              tal:attributes="class string:signal ${view/availability_signal}">
@@ -26,7 +26,7 @@
   </tal:info>
 
   <div class="form-row details ${python:'with-comment' if view.comment_enabled else 'without-comment'}">
-    <div class="form-group form-inline col-md">
+    <div class="mb-3 form-inline col-md">
     <tal:info condition="view/can_view_buyable_info">
       <div class="price-group input-group mr-2">
         <tal:net condition="not:view/display_gross"
