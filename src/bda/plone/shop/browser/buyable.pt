@@ -12,7 +12,7 @@
   <tal:info condition="view/can_view_buyable_info">
     <div class="availabilityWrapper form-row">
       <div class="availability mb-3 form-inline" tal:condition="view/show_available">
-        <strong class="mr-2" i18n:translate="availability">Availability</strong>
+        <strong class="me-2" i18n:translate="availability">Availability</strong>
         <div class="signal green"
              tal:attributes="class string:signal ${view/availability_signal}">
           &nbsp;
@@ -28,11 +28,11 @@
   <div class="form-row details ${python:'with-comment' if view.comment_enabled else 'without-comment'}">
     <div class="mb-3 form-inline col-md">
     <tal:info condition="view/can_view_buyable_info">
-      <div class="price-group input-group mr-2">
+      <div class="price-group input-group me-2">
         <tal:net condition="not:view/display_gross"
                 define="price_original view/item_net_original;
                         price view/item_net">
-          <span class="price h4 mb-2 mr-2">
+          <span class="price h4 mb-2 me-2">
             <span class="value original"
                 tal:condition="python:view.not_eq(price_original, price)">
                 <span tal:replace="view/currency">EUR</span>
@@ -48,7 +48,7 @@
         <tal:gross condition="view/display_gross"
                 define="price_original view/item_gross_original;
                         price view/item_gross">
-          <span class="price h4 mb-2 mr-2">
+          <span class="price h4 mb-2 me-2">
             <span class="value original"
                 tal:condition="python:view.not_eq(price_original, price)">
               <span tal:replace="view/currency">EUR</span>
@@ -60,12 +60,12 @@
             </span>
           </span>
         </tal:gross>
-        <label class="vat text-muted mr-1 mb-2">
+        <label class="vat text-muted me-1 mb-2">
           <span tal:condition="view/display_gross"
-                class="mr-1" i18n:translate="incl.">incl.</span>
+                class="me-1" i18n:translate="incl.">incl.</span>
           <span tal:condition="not:view/display_gross"
-                class="mr-1" i18n:translate="excl.">excl.</span>
-                <span class="mr-1" i18n:translate="vat">Vat</span>
+                class="me-1" i18n:translate="excl.">excl.</span>
+                <span class="me-1" i18n:translate="vat">Vat</span>
           <span class="" tal:content="string:${view/item_vat}%">20 %</span>
         </label>
       </div>
@@ -73,8 +73,8 @@
     <div class="input-group">
       <tal:buy condition="view/can_buy_items">
         <div class="quantity-group input-group mb-2">
-          <label class="quantity mr-2" tal:content="view/quantity_unit">Quantity</label>
-          <div class="quantity mr-2">
+          <label class="quantity me-2" tal:content="view/quantity_unit">Quantity</label>
+          <div class="quantity me-2">
             <input type="number"
                   size="2"
                   value="1"
@@ -90,7 +90,7 @@
 
         <tal:comment condition="view/comment_enabled">
         <div class="comment-group input-group">
-          <label class="extra_comment mr-2" i18n:translate="comment">Comment</label>
+          <label class="extra_comment me-2" i18n:translate="comment">Comment</label>
           <div class="extra_comment">
             <input type="text"
                   size="16"
@@ -110,7 +110,7 @@
         tal:content="view/item_uid">12345678</span>
 
         <tal:addable condition="addable">
-        <div class="add-to-cart-group input-group mb-2 mr-2">
+        <div class="add-to-cart-group input-group mb-2 me-2">
           <a href="" i18n:attributes="title add_to_cart"
             class="btn btn-outline-primary btn-sm add_cart_item buyable_add_to_cart show_status_message">
             <svg class="bi bi-bag" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +124,7 @@
         </tal:addable>
 
         <tal:not_addable condition="not:addable">
-        <div class="add-to-cart-group input-group mb-2 mr-2">
+        <div class="add-to-cart-group input-group mb-2 me-2">
           <span class="buyable_add_to_cart_disabled"
                 i18n:translate="add_to_cart">add to cart</span>
         </div>
