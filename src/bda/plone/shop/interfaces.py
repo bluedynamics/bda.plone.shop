@@ -123,6 +123,7 @@ class IShopCartSettings(model.Schema):
             u"help_hide_cart_if_empty", default=u"Hide cart if no items contained"
         ),
         default=False,
+        required=False,
     )
 
     max_artice_count = schema.Int(
@@ -142,6 +143,7 @@ class IShopCartSettings(model.Schema):
             default=u"No total number of items in cart limit",
         ),
         default=True,
+        required=False,
     )
 
     summary_total_only = schema.Bool(
@@ -150,18 +152,21 @@ class IShopCartSettings(model.Schema):
             u"help_summary_total_only", default=u"Show only total value in cart summary"
         ),
         default=False,
+        required=False,
     )
 
     show_checkout = schema.Bool(
         title=_(u"label_show_checkout", default=u"Show checkout link in portlet"),
         description=_(u"help_show_checkout", default=""),
         default=False,
+        required=False,
     )
 
     show_to_cart = schema.Bool(
         title=_(u"label_show_to_cart", default=u"Show link to cart in portlet"),
         description=_(u"help_show_to_cart", default=u""),
         default=True,
+        required=False,
     )
 
 
@@ -194,8 +199,8 @@ class IShopArticleSettings(model.Schema):
             u"help_quantity_units",
             default=u"Quantity units (what the buyable items are measured in)",
         ),
-        required=True,
-        missing_value=set(),
+        required=False,
+        missing_value=set(['quantity']),
         value_type=schema.Choice(
             vocabulary="bda.plone.shop.vocabularies." "AvailableQuantityUnitVocabulary"
         ),
@@ -289,6 +294,7 @@ class IShopShippingSettings(model.Schema):
             default=u"Flag whether item is shippable by default, "
             u"i.e. downloads are not",
         ),
+        required=False,
     )
 
     available_shipping_methods = schema.List(
@@ -349,6 +355,7 @@ class IShopShippingSettings(model.Schema):
             default=u"If set to False, shipping limit gets "
             u"calculated from net price instead of gross.",
         ),
+        required=False,
     )
 
     flat_shipping_cost = schema.Decimal(
@@ -383,8 +390,8 @@ class IShopTaxSettings(model.Schema):
     vat = schema.List(
         title=_(u"label_vat", default=u"VAT in %"),
         description=_(u"help_vat", default=u"Specify all allowed vat settings"),
-        required=True,
-        missing_value=set(),
+        required=False,
+        missing_value=set([0]),
         value_type=schema.Choice(
             vocabulary="bda.plone.shop.vocabularies.AvailableVatVocabulary"
         ),
