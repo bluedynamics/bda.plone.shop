@@ -237,7 +237,8 @@ class IStockBehavior(model.Schema):
     )
 
     item_overbook = schema.Float(
-        title=_(u"label_item_overbook", default=u"Item stock overbook"), required=False
+        title=_(u"label_item_overbook", default=u"Item stock overbook"), 
+        required=False
     )
 
     item_stock_warning_threshold = schema.Float(
@@ -315,10 +316,12 @@ class IShippingBehavior(model.Schema):
             default=u"Flag whether item is shippable, i.e. " u"downloads are not",
         ),
         defaultFactory=default_shipping_item_shippable,
+        required=False
     )
 
     shipping_item_weight = schema.Float(
-        title=_(u"label_shipping_item_weight", default=u"Item Weight"), required=False
+        title=_(u"label_shipping_item_weight", default=u"Item Weight"), 
+        required=False
     )
 
     shipping_item_free_shipping = schema.Bool(
@@ -327,6 +330,7 @@ class IShippingBehavior(model.Schema):
             "help_shipping_item_free_shipping",
             default=u"Flag whether shipping of this item is free.",
         ),
+        required=False
     )
 
 
