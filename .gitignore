@@ -5,6 +5,7 @@
 /.installed.cfg
 /.settings/
 /.vscode/
+/pyvenv.cfg
 /buildout.cfg
 /bin/
 /develop-eggs/
