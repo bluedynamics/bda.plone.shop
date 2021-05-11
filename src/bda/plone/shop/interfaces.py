@@ -3,8 +3,8 @@ from bda.plone.orders.interfaces import IGlobalNotificationText
 from bda.plone.orders.interfaces import IItemNotificationText
 from bda.plone.orders.interfaces import IOrdersExtensionLayer
 from bda.plone.shop import message_factory as _
-from collective.z3cform.datagridfield import DataGridFieldFactory
-from collective.z3cform.datagridfield.registry import DictRow
+from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield.row import DictRow
 from decimal import Decimal
 from plone.autoform.directives import widget
 from plone.supermodel import model
