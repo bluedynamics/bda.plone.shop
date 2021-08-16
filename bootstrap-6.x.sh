@@ -16,8 +16,8 @@ if [ "$1" == "venv" ]; then
     ./bin/pip install -r $REQUIREMENTS
     ./bin/buildout
 else
-    pyenv virtualenv 3.8.6 bda.plone6.shop
-    pyenv local bda.plone.shop
+    pyenv virtualenv 3.9.6 bda.plone6.shop
+    pyenv local bda.plone6.shop
     pip install -r $REQUIREMENTS
     buildout
 fi
