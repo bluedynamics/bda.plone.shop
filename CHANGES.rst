@@ -4,6 +4,9 @@ Changelog
 2.0.dev0 (unreleased)
 ---------------------
 
+- Fix availability details pop-up
+  [petri]
+
 - Refactor buyable.[py|pt] for localized number output and better Decimal usage.
   Also use Python expressions for performance.
   [jensens]
@@ -46,6 +49,9 @@ Changelog
 
 - Italian translations
   [ale-rt]
+
+- migration: fixed an edgecase when upgrading old shop installations
+  [petschki]
 
 
 1.0a1 (unreleased)
