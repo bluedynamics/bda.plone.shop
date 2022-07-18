@@ -45,15 +45,15 @@ class EnableDisableFeature(BrowserView):
 class BuyableAction(EnableDisableFeature):
     feature_iface = IBuyable
     potential_feature_iface = IPotentiallyBuyable
-    enable_message = _(u"enabled_buyable", u"Enabled Buyable.")
-    disable_message = _(u"disabled_buyable", u"Disabled Buyable.")
+    enable_message = _("enabled_buyable", "Enabled Buyable.")
+    disable_message = _("disabled_buyable", "Disabled Buyable.")
 
 
 class VendorAction(EnableDisableFeature):
     feature_iface = IVendor
     potential_feature_iface = IContainer
-    enable_message = _(u"enabled_vendor", u"Enabled Vendor.")
-    disable_message = _(u"disabled_vendor", u"Disabled Vendor.")
+    enable_message = _("enabled_vendor", "Enabled Vendor.")
+    disable_message = _("disabled_vendor", "Disabled Vendor.")
 
     def enableFeature(self):
         self.context.manage_permission(

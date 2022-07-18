@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.browser.navigation import ShopNavigation
 from plone.app.portlets.portlets import base
 from plone.portlets.interfaces import IPortletDataProvider
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.interface import implementer
 
 import pkg_resources
@@ -16,13 +16,12 @@ else:
 
 
 class IShopAdminPortlet(IPortletDataProvider):
-    """A portlet rendering shop portlet links.
-    """
+    """A portlet rendering shop portlet links."""
 
 
 @implementer(IShopAdminPortlet)
 class ShopAdminAssignment(base.Assignment):
-    title = _(u"shop_portlet", default=u"Shop Portlet")
+    title = _("shop_portlet", default="Shop Portlet")
 
 
 class ShopAdminRenderer(base.Renderer, ShopNavigation):

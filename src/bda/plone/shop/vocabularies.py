@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+from bda.plone.cart.shipping import Shippings
 from bda.plone.checkout.vocabularies import country_vocabulary
 from bda.plone.checkout.vocabularies import gender_vocabulary
 from bda.plone.payment import Payments
-from bda.plone.cart.shipping import Shippings
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.utils import get_shop_article_settings
 from bda.plone.shop.utils import get_shop_tax_settings
@@ -48,7 +48,7 @@ def QuantityUnitVocabulary(context):
         terms.append(
             SimpleTerm(
                 value=quantity_unit,
-                title=AVAILABLE_QUANTITY_UNITS.get(quantity_unit, quantity_unit)
+                title=AVAILABLE_QUANTITY_UNITS.get(quantity_unit, quantity_unit),
             )
         )
     return SimpleVocabulary(terms)
@@ -140,8 +140,7 @@ def GenderVocabulary(context):
 
 @provider(IVocabularyFactory)
 def CountryVocabulary(context):
-    """VocabularyFactory for countries from ISO3166 source.
-    """
+    """VocabularyFactory for countries from ISO3166 source."""
     return SimpleVocabulary(
         [SimpleTerm(value=k, title=v) for k, v in country_vocabulary()]
     )

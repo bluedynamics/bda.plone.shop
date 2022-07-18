@@ -3,13 +3,13 @@ from bda.plone.shop.interfaces import IShopExtensionLayer
 from plone.app.robotframework.testing import MOCK_MAILHOST_FIXTURE
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
+from plone.app.testing import login
+from plone.app.testing import logout
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
-from plone.app.testing import login
-from plone.app.testing import logout
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.testing import z2
 from zope.component import getUtility

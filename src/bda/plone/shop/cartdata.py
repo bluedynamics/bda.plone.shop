@@ -28,8 +28,7 @@ CHECKOUT_INTERMEDIATE_VIEW = None
 
 
 class CartItemCalculator(object):
-    """Object for calculating cart item related data.
-    """
+    """Object for calculating cart item related data."""
 
     def __init__(self, context):
         msg = (
@@ -45,8 +44,7 @@ class CartItemCalculator(object):
         return api.portal.get_tool("portal_catalog")
 
     def item_net(self, item):
-        """Net price of item.
-        """
+        """Net price of item."""
         uid, count, _ = item
         try:
             obj = api.content.get(UID=uid)
@@ -58,8 +56,7 @@ class CartItemCalculator(object):
         return item_net * count
 
     def item_vat(self, item):
-        """VAT of item.
-        """
+        """VAT of item."""
         uid, count, _ = item
         try:
             obj = api.content.get(UID=uid)
@@ -71,8 +68,7 @@ class CartItemCalculator(object):
         return (item_net / Decimal(100)) * Decimal(str(data.vat)) * count
 
     def item_weight(self, item):
-        """Weight of item.
-        """
+        """Weight of item."""
         uid, count, _ = item
         try:
             obj = api.content.get(UID=uid)
@@ -85,8 +81,7 @@ class CartItemCalculator(object):
         return Decimal(0)
 
     def net(self, items):
-        """Overall net of items.
-        """
+        """Overall net of items."""
         net = Decimal(0)
         for uid, count, unused in items:
             try:
@@ -102,8 +97,7 @@ class CartItemCalculator(object):
         return net
 
     def vat(self, items):
-        """Overall VAT of items.
-        """
+        """Overall VAT of items."""
         vat = Decimal(0)
         for uid, count, unused in items:
             try:
@@ -119,8 +113,7 @@ class CartItemCalculator(object):
         return vat
 
     def weight(self, items):
-        """Overall weight of items.
-        """
+        """Overall weight of items."""
         weight = Decimal(0)
         for uid, count, unused in items:
             try:
@@ -174,15 +167,12 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
 
     @property
     def checkout_url(self):
-        view_name = '@@checkout'
+        view_name = "@@checkout"
         # case anonymous user is permitted to perform checkout and intermediate
         # view is defined. can be used to ask user to login before checkout
         if api.user.is_anonymous() and CHECKOUT_INTERMEDIATE_VIEW:
             view_name = CHECKOUT_INTERMEDIATE_VIEW
-        return "{0}/{1}".format(
-            self.context.absolute_url(),
-            view_name
-        )
+        return "{0}/{1}".format(self.context.absolute_url(), view_name)
 
     @property
     def cart_url(self):
@@ -205,8 +195,8 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             buyable = api.content.get(UID=uid)
         except ValueError:
             message = _(
-                u"buyable_does_not_exist",
-                default=u"Buyable item with UID {uuid} does not exist.",
+                "buyable_does_not_exist",
+                default="Buyable item with UID {uuid} does not exist.",
                 mapping={"uuid": uid},
             )
             return {"success": False, "error": message, "update": True}
@@ -214,8 +204,8 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
         if not api.user.has_permission(permissions.ModifyCart, obj=buyable):
             remove_item_from_cart(self.request, uid)
             message = _(
-                u"permission_not_granted_to_buy_item",
-                default=u"Permission to buy ${title} not granted.",
+                "permission_not_granted_to_buy_item",
+                default="Permission to buy ${title} not granted.",
                 mapping={"title": buyable.Title()},
             )
             message = translate(message, context=self.request)
@@ -228,14 +218,14 @@ class CartDataProvider(CartItemCalculator, CartDataProviderBase):
             effective = buyable_period.effective
             if effective and now < effective:
                 remove_item_from_cart(self.request, uid)
-                message = _("item_not_buyable_yet", default=u"Item not buyable yet")
+                message = _("item_not_buyable_yet", default="Item not buyable yet")
                 message = translate(message, context=self.request)
                 return {"success": False, "error": message, "update": True}
             # expires date exceed
             expires = buyable_period.expires
             if expires and now > expires:
                 remove_item_from_cart(self.request, uid)
-                message = _("item_no_longer_buyable", default=u"Item no longer buyable")
+                message = _("item_no_longer_buyable", default="Item no longer buyable")
                 message = translate(message, context=self.request)
                 return {"success": False, "error": message, "update": True}
         return {"success": True, "error": ""}
@@ -305,28 +295,28 @@ class CartItemState(CartItemStateBase):
     @property
     def completely_exceeded_alert(self):
         message = _(
-            u"alert_item_no_longer_available",
-            default=u"No longer available, please " u"remove from cart",
+            "alert_item_no_longer_available",
+            default="No longer available, please " "remove from cart",
         )
         return translate(message, context=self.request)
 
     @property
     def some_reservations_alert(self):
-        message = _(u"alert_item_some_reserved", default=u"Partly reserved")
+        message = _("alert_item_some_reserved", default="Partly reserved")
         return translate(message, context=self.request)
 
     def partly_exceeded_alert(self, exceed, quantity_unit):
         message = _(
-            u"alert_item_number_exceed",
-            default=u"Limit exceed by ${exceed} ${quantity_unit}",
+            "alert_item_number_exceed",
+            default="Limit exceed by ${exceed} ${quantity_unit}",
             mapping={"exceed": exceed, "quantity_unit": quantity_unit},
         )
         return translate(message, context=self.request)
 
     def number_reservations_alert(self, reserved, quantity_unit):
         message = _(
-            u"alert_item_number_reserved",
-            default=u"${reserved} ${quantity_unit} reserved",
+            "alert_item_number_reserved",
+            default="${reserved} ${quantity_unit} reserved",
             mapping={"reserved": reserved, "quantity_unit": quantity_unit},
         )
         return translate(message, context=self.request)

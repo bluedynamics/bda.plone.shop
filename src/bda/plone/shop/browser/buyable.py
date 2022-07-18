@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from AccessControl import getSecurityManager
 from bda.plone.cart import CURRENCY_LITERALS
+from bda.plone.cart.browser import DataProviderMixin
 from bda.plone.cart.cart import get_data_provider
 from bda.plone.cart.cartitem import get_item_availability
 from bda.plone.cart.cartitem import get_item_data_provider
-from bda.plone.cart.browser import DataProviderMixin
 from bda.plone.shop import permissions
 from bda.plone.shop.interfaces import IBuyablePeriod
 from datetime import datetime

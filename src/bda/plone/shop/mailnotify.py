@@ -145,4 +145,4 @@ class RegistryPaymentText(object):
         for entry in settings.payment_text:
             if entry["lang"] == lang and entry["payment"] == payment:
                 return entry["text"]
-        return u""
+        return ""
