@@ -34,3 +34,9 @@
 lib64
 /.Python
 .python-version
+
+# mxdev
+.make-sentinels/
+sources/
+/*-mxdev.txt
+.installed.txt
