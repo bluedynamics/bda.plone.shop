@@ -4,8 +4,8 @@ bda.plone.shop
 
 E-commerce solution for `Plone <http://plone.com>`_
 
-.. image:: https://travis-ci.org/bluedynamics/bda.plone.shop.svg?branch=master
-    :target: https://travis-ci.org/bluedynamics/bda.plone.shop
+.. image:: https://github.com/bluedynamics/bda.plone.shop/actions/workflows/main.yml/badge.svg
+    :target: https://github.com/bluedynamics/bda.plone.shop/actions/workflows/main.yml
 
 .. image:: https://black.readthedocs.io/en/stable/_static/pypi.svg
     :target: https://pypi.org/project/black/
@@ -17,28 +17,17 @@ Installation
 Depend your instance to ``bda.plone.shop`` and install it as addon in plone
 control panel.
 
-``bda.plone.shop`` won't work on stock Plone 4.3.x installations because it
-requires some packages in more recent versions:
-
-* ``plone.app.workflow`` >= 2.1.8
-
-* ``plone.app.users`` >= 2.0.4
-
-See the Troubleshooting_ section for more information.
-
 
 Development and testing
 =======================
 
 Checkout ``bda.plone.shop`` from
-``git://github.com/bluedynamics/bda.plone.shop.git`` and run contained buidlout
-like so::
+``git://github.com/bluedynamics/bda.plone.shop.git`` and run::
 
-    ~$ virtualenv .
-    ~$ ./bin/pip install zc.buildout
-    ~$ ./bin/buildout
+    ~$ make install
 
-Start instance and create Plone site with shop profile applied.
+This installs all dependencies with ``mxdev`` and prepares scripts for
+running tests.
 
 
 Running tests
@@ -46,30 +35,27 @@ Running tests
 
 If you have run the buildout, you can run all tests like so::
 
-    ./bin/test -s bda.plone.shop
-
-The -t switch allows you to run a specific test file or method. The
-``--list-tests`` lists all available tests.
+    ~$ make test-ignore-warnings
 
 To run the robot tests do::
 
-    ./bin/test --all -s bda.plone.shop -t robot
+    ./venv/bin/zope-testrunner --auto-color --auto-progress --test-path=./src --all
 
 For development, it might be more convenient to start a test server and run
 robot tests individually, like so (-d to start Zope in DEBUG-MODE)::
 
-    ./bin/robot-server bda.plone.shop.tests.ShopDXFull_ROBOT_TESTING -d
-    ./bin/robot src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
+    ./venv/bin/robot-server bda.plone.shop.tests.ShopDXFull_ROBOT_TESTING -d
+    ./venv/bin/robot src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
 
 To automatically land in the debug shell on test-failure, use::
 
-    ./bin/robot-debug src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
+    ./venv/bin/robot-debug src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
 
 In the robot test you can place the debug statement to access a robot shell to
 try things out.
 
 For more information on this topic visit:
-http://developer.plone.org/reference_manuals/external/plone.app.robotframework/happy.html
+https://docs.plone.org/external/plone.app.robotframework/docs/source/happy.html
 
 
 Enable Content to be buyable
@@ -327,3 +313,4 @@ Authors
 - Jure Cerjak
 - Benjamin Stefaner
 - Jens Klein
+
