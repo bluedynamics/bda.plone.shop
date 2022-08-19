@@ -195,7 +195,7 @@ class IShopArticleSettings(model.Schema):
         required=False,
         missing_value=set(["quantity"]),
         value_type=schema.Choice(
-            vocabulary="bda.plone.shop.vocabularies." "AvailableQuantityUnitVocabulary"
+            vocabulary="bda.plone.shop.vocabularies.AvailableQuantityUnitVocabulary"
         ),
     )
 
