@@ -88,7 +88,7 @@
     <value key="default_invoice_street" purge="false"></value>
     <value key="default_invoice_zip" purge="false"></value>
     <value key="default_invoice_city" purge="false"></value>
-    <value key="default_invoice_country" purge="false"></value>
+    <value key="default_invoice_country" purge="false">040</value>
     <value key="default_invoice_phone" purge="false"></value>
     <value key="default_invoice_email" purge="false"></value>
     <value key="default_invoice_web" purge="false"></value>
