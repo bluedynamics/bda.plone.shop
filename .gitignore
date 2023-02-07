@@ -35,6 +35,8 @@ lib64
 /.Python
 .python-version
 /venv/
+/robot/
+/instance/
 
 # mxdev
 .make-sentinels/
