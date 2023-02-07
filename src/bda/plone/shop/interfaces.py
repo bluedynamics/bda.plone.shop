@@ -90,7 +90,7 @@ class IShopSettings(model.Schema):
     show_currency = schema.Choice(
         title=_("label_show_currency", default="Show the currency for items"),
         description=_("help_show_currency", default=""),
-        vocabulary="bda.plone.shop.vocabularies." "CurrencyDisplayOptionsVocabulary",
+        vocabulary="bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary",
     )
 
 
@@ -310,7 +310,7 @@ class IShopShippingSettings(model.Schema):
         description=_(
             "help_shipping_method", default="Default shipping method in checkout"
         ),
-        vocabulary="bda.plone.shop.vocabularies." "ShippingMethodsVocabulary",
+        vocabulary="bda.plone.shop.vocabularies.ShippingMethodsVocabulary",
     )
 
     shipping_vat = schema.Choice(
@@ -426,7 +426,7 @@ class INotificationTextSettings(
     order_text = schema.List(
         title=_(
             "label_site_item_notification_text",
-            default="Default notification text for items in order " "confirmation mail",
+            default="Default notification text for items in order confirmation mail",
         ),
         value_type=DictRow(
             title=_("order_text", default="Order Text"), schema=ILanguageAwareTextRow
@@ -644,7 +644,7 @@ class IPaymentTextSettings(model.Schema):
         description=_(
             "help_payment_method", default="Default payment method in checkout"
         ),
-        vocabulary="bda.plone.shop.vocabularies." "PaymentMethodsVocabulary",
+        vocabulary="bda.plone.shop.vocabularies.PaymentMethodsVocabulary",
     )
 
     skip_payment_if_order_contains_reservations = schema.Bool(
