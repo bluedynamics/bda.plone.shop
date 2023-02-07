@@ -287,7 +287,8 @@ packages-dirty:
 packages-clean:
 	@test -e $(FILES_TARGET) \
 		&& test -e $(MXENV_PATH)pip \
-		&& $(MXENV_PATH)pip uninstall -y -r $(FILES_TARGET)
+		&& $(MXENV_PATH)pip uninstall -y -r $(FILES_TARGET) \
+		|| :
 	@rm -f $(PACKAGES_TARGET)
 
 INSTALL_TARGETS+=packages
@@ -310,7 +311,7 @@ cookiecutter-dirty:
 
 .PHONY: cookiecutter-clean
 cookiecutter-clean: cookiecutter-dirty
-	@test -e $(MXENV_PATH)pip && $(MXENV_PATH)pip uninstall -y cookiecutter
+	@test -e $(MXENV_PATH)pip && $(MXENV_PATH)pip uninstall -y cookiecutter || :
 	@rm -f $(COOKIECUTTER_TARGET)
 
 DIRTY_TARGETS+=cookiecutter-dirty
