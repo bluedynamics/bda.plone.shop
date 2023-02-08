@@ -10,6 +10,10 @@
 #     ./venv/bin/twistd -ny shop.tac
 ##############################################################################
 
+# use asyncio main loop in twisted
+from twisted.internet import asyncioreactor
+asyncioreactor.install()
+
 from twisted.application import internet
 from twisted.application import service
 from twisted.internet import reactor
