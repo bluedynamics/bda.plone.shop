@@ -74,16 +74,20 @@ class BuyableControls(BrowserView, DataProviderMixin):
             return CURRENCY_LITERALS[currency]
         return ""
 
+    def format_number_localized(self, value, quantizer=None):
+        formatter = self.request.locale.numbers.getFormatter('decimal')
+        formatter.type = Decimal
+        if quantizer is not None:
+            value = value.quantize(Decimal(quantizer))
+        return formatter.format(value)
+
     @property
     def item_uid(self):
         return IUUID(self.context)
 
     @property
     def item_vat(self):
-        vat = self._item_data.vat
-        if vat % 2 != 0:
-            return Decimal(vat).quantize(Decimal("1.0"))
-        return Decimal(vat)
+        return Decimal(self._item_data.vat)
 
     @property
     def item_net_original(self):

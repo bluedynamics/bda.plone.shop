@@ -16,6 +16,13 @@ Changelog
 - Use Decimal for shipping and article defaults.
   [agitator]
 
+- Fix availability details pop-up
+  [petri]
+
+- Refactor buyable.[py|pt] for localized number output and better Decimal usage.
+  Also use Python expressions for performance.
+  [jensens]
+
 - Use Decimal field for net price and cast to Decimal (for old values) in accessor.
   [jensens]
 
@@ -51,6 +58,12 @@ Changelog
 
 - Update version and classifiers - 2.x targets Plone 5.1/5.2 without Archetypes
   [agitator]
+
+- Italian translations
+  [ale-rt]
+
+- migration: fixed an edgecase when upgrading old shop installations
+  [petschki]
 
 
 1.0a1 (unreleased)

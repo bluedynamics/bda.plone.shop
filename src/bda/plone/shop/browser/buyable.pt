@@ -5,7 +5,7 @@
      ajax:bind="cart_changed"
      tal:define="addable view/item_addable;
                  css string:cart_item_${context/UID}"
-     tal:attributes="ajax:target context/absolute_url;
+     tal:attributes="ajax:target python:context.absolute_url();
                      ajax:action string:buyable_controls:.${css}:replace;
                      class string:buyable viewlet ${css}">
 
@@ -18,7 +18,7 @@
           &nbsp;
         </div>
         <div class="availability_details"
-             tal:content="structure view/availability_details">
+             tal:content="structure python:view.availability_details">
           deliverable until 1.1.2013
         </div>
       </div>
@@ -105,9 +105,8 @@
         </div>
         </tal:comment>
         <span tal:condition="view/can_buy_items"
-        class="cart_item_uid"
-        style="display: none;"
-        tal:content="view/item_uid">12345678</span>
+              class="cart_item_uid"
+              style="display: none;">${view/item_uid}</span>
 
         <tal:addable condition="addable">
         <div class="add-to-cart-group input-group mb-2 me-2">
