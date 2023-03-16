@@ -13,7 +13,7 @@ PAS_ID = "bda.plone.shop"
 
 @implementer(IPropertiesPlugin)
 class UserPropertiesPASPlugin(BasePlugin):
-    """ An implementer of IPropertiesPlugin which
+    """An implementer of IPropertiesPlugin which
     provides the method getPropertiesForUser, this method
     adds computed properties to PlonePAS which we remove
     at another place.
@@ -26,7 +26,7 @@ class UserPropertiesPASPlugin(BasePlugin):
         self.title = title
 
     def _getPropertSheetsFromUser(self, user):
-        """ Get PropertySheets from a IPropertiedUser without
+        """Get PropertySheets from a IPropertiedUser without
         the current sheet, so we dont have recursions.
         """
         sheet_ids = user.listPropertysheets()
@@ -39,7 +39,7 @@ class UserPropertiesPASPlugin(BasePlugin):
         return result
 
     def getPropertiesForUser(self, user, request=None):
-        """ This can't use plone.api.user.get(user.getId()) as it would
+        """This can't use plone.api.user.get(user.getId()) as it would
         lead to a recursion.
         """
 
@@ -53,25 +53,23 @@ class UserPropertiesPASPlugin(BasePlugin):
 
             return safe_unicode(default)
 
-        first = safe_unicode(getProperty("firstname", u""))
-        last = safe_unicode(getProperty("lastname", u""))
-        street = safe_unicode(getProperty("street", u""))
-        zip_code = safe_unicode(getProperty("zip", u""))
-        city = safe_unicode(getProperty("city", u""))
-        country = safe_unicode(getProperty("country", u""))
+        first = safe_unicode(getProperty("firstname", ""))
+        last = safe_unicode(getProperty("lastname", ""))
+        street = safe_unicode(getProperty("street", ""))
+        zip_code = safe_unicode(getProperty("zip", ""))
+        city = safe_unicode(getProperty("city", ""))
+        country = safe_unicode(getProperty("country", ""))
 
         try:
             country = country and get_pycountry_name(country) or ""
         except KeyError:
             country = ""
 
-        join_list = [street, u"{0} {1}".format(zip_code, city), country]
+        join_list = [street, "{0} {1}".format(zip_code, city), country]
 
         return {
-            "fullname": u"{0}{1}{2}".format(
-                first, u" " if first and last else u"", last
-            ),
-            "location": u", ".join([it for it in join_list if it]),
+            "fullname": "{0}{1}{2}".format(first, " " if first and last else "", last),
+            "location": ", ".join([it for it in join_list if it]),
         }
 
 

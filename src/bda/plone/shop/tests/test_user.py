@@ -16,8 +16,7 @@ class TestUser(unittest.TestCase):
         set_browserlayer(self.request)
 
     def test_is_customer(self):
-        """Test if a newly created user is granted the "Customer" role.
-        """
+        """Test if a newly created user is granted the "Customer" role."""
         self.assertTrue(get_shop_settings().add_customer_role_to_new_users)
         plone.api.user.create(
             email="user@test.com", username="testuser", password="testuser"

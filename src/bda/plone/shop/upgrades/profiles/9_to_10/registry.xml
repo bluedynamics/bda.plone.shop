@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<registry>
+
+  <!-- bda.plone.shop.interfaces.IShopShippingSettings -->
+
+  <record name="bda.plone.shop.interfaces.IShopShippingSettings.free_shipping_limit" remove="true"
+          interface="bda.plone.shop.interfaces.IShopShippingSettings" field="free_shipping_limit">
+  </record>
+  <record name="bda.plone.shop.interfaces.IShopShippingSettings.free_shipping_limit"
+          interface="bda.plone.shop.interfaces.IShopShippingSettings" field="free_shipping_limit">
+    <value>200.0</value>
+  </record>
+
+  <record name="bda.plone.shop.interfaces.IShopShippingSettings.flat_shipping_cost" remove="true"
+          interface="bda.plone.shop.interfaces.IShopShippingSettings" field="flat_shipping_cost">
+  </record>
+  <record name="bda.plone.shop.interfaces.IShopShippingSettings.flat_shipping_cost"
+          interface="bda.plone.shop.interfaces.IShopShippingSettings" field="flat_shipping_cost">
+    <value>10.0</value>
+  </record>
+
+  <record name="bda.plone.shop.interfaces.IShopShippingSettings.item_shipping_cost" remove="true"
+          interface="bda.plone.shop.interfaces.IShopShippingSettings" field="item_shipping_cost">
+  </record>
+  <record name="bda.plone.shop.interfaces.IShopShippingSettings.item_shipping_cost"
+          interface="bda.plone.shop.interfaces.IShopShippingSettings" field="item_shipping_cost">
+    <value>0.0</value>
+  </record>
+
+
+  <!-- bda.plone.shop.interfaces.IShopArticleSettings -->
+
+  <record name="bda.plone.shop.interfaces.IShopArticleSettings.default_item_net" remove="true"
+          interface="bda.plone.shop.interfaces.IShopArticleSettings" field="default_item_net">
+  </record>
+  <record name="bda.plone.shop.interfaces.IShopArticleSettings.default_item_net"
+          interface="bda.plone.shop.interfaces.IShopArticleSettings" field="default_item_net">
+    <value>10</value>
+  </record>
+
+  <record name="bda.plone.shop.interfaces.IShopArticleSettings.default_item_cart_count_limit" remove="true"
+          interface="bda.plone.shop.interfaces.IShopArticleSettings" field="default_item_cart_count_limit">
+  </record>
+  <record name="bda.plone.shop.interfaces.IShopArticleSettings.default_item_cart_count_limit"
+          interface="bda.plone.shop.interfaces.IShopArticleSettings" field="default_item_cart_count_limit">
+    <value/>
+  </record>
+
+  <record name="bda.plone.shop.interfaces.IShopArticleSettings.default_item_stock_warning_threshold" remove="true"
+          interface="bda.plone.shop.interfaces.IShopArticleSettings" field="default_item_stock_warning_threshold">
+  </record>
+  <record name="bda.plone.shop.interfaces.IShopArticleSettings.default_item_stock_warning_threshold"
+          interface="bda.plone.shop.interfaces.IShopArticleSettings" field="default_item_stock_warning_threshold">
+    <value/>
+  </record>
+
+
+  <!-- bda.plone.shop.interfaces.IPaymentTextSettings -->
+
+  <record name="bda.plone.shop.interfaces.IPaymentTextSettings.cash_on_delivery_costs" remove="true"
+          interface="bda.plone.shop.interfaces.IPaymentTextSettings" field="cash_on_delivery_costs">
+  </record>
+  <record name="bda.plone.shop.interfaces.IPaymentTextSettings.cash_on_delivery_costs"
+          interface="bda.plone.shop.interfaces.IPaymentTextSettings" field="cash_on_delivery_costs">
+    <value>9.9</value>
+  </record>
+
+
+</registry>

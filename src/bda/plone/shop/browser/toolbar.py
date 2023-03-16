@@ -10,7 +10,7 @@ from zope.interface import implementer
 
 @implementer(IActionsSubMenuItem)
 class ShopSubMenuItem(BrowserSubMenuItem):
-    title = _("shop", default=u"Shop")
+    title = _("shop", default="Shop")
     submenuId = "shop_toolbar_menu"
     extra = {"id": "shop_toolbar_menu", "li_class": "plonetoolbar-shop_toolbar_menu"}
     order = 70

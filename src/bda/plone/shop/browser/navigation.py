@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from Acquisition import aq_inner
 from Acquisition import aq_parent
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 from bda.plone.discount.interfaces import IDiscountSettingsEnabled
 from bda.plone.orders.common import get_vendors_for
 from bda.plone.orders.interfaces import IBuyable
@@ -10,14 +9,15 @@ from bda.plone.shop import message_factory as _
 from operator import attrgetter
 from plone import api
 from plone.folder.interfaces import IFolder
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from zope.annotation import IAnnotations
 from zope.component import adapter
 from zope.component import getAdapters
 from zope.component import getMultiAdapter
 from zope.component.interfaces import ISite
 from zope.interface import Attribute
-from zope.interface import Interface
 from zope.interface import implementer
+from zope.interface import Interface
 from zope.publisher.interfaces.browser import IBrowserRequest
 from zope.security import checkPermission
 
@@ -28,29 +28,27 @@ from zope.security import checkPermission
 
 
 class IShopNavigationLink(Interface):
-    """Adapter interface for providing shop navigation links.
-    """
+    """Adapter interface for providing shop navigation links."""
 
-    id = Attribute(u"Link ID")
-    group = Attribute(u"Navigation group ID")
+    id = Attribute("Link ID")
+    group = Attribute("Navigation group ID")
     permission = Attribute(
-        u"Permissions a user must have on context to view " u"this link"
+        "Permissions a user must have on context to view " "this link"
     )
-    display = Attribute(u"Flag whether to display this link")
-    url = Attribute(u"Target URL of this link")
-    title = Attribute(u"Title of this link")
-    order = Attribute(u"Order in which this link gets rendered")
-    cssclass = Attribute(u"Additional CSS class to render")
+    display = Attribute("Flag whether to display this link")
+    url = Attribute("Target URL of this link")
+    title = Attribute("Title of this link")
+    order = Attribute("Order in which this link gets rendered")
+    cssclass = Attribute("Additional CSS class to render")
 
 
 class IShopNavigationGroup(Interface):
-    """Adapter interface for providing shop navigation groups.
-    """
+    """Adapter interface for providing shop navigation groups."""
 
-    id = Attribute(u"Group ID")
-    title = Attribute(u"Group Title")
-    order = Attribute(u"Group rendering order")
-    available = Attribute(u"Flag whether group navigation links are available")
+    id = Attribute("Group ID")
+    title = Attribute("Group Title")
+    order = Attribute("Group rendering order")
+    available = Attribute("Flag whether group navigation links are available")
 
     def links():
         """Sorted list of ``IShopNavigationLink`` implementing instances
@@ -59,10 +57,9 @@ class IShopNavigationGroup(Interface):
 
 
 class IShopNavigation(Interface):
-    """Interface for providing shop navigation API.
-    """
+    """Interface for providing shop navigation API."""
 
-    available = Attribute(u"Flag whether navigation links are available")
+    available = Attribute("Flag whether navigation links are available")
 
     def links():
         """Sorted list of ``IShopNavigationLink`` implementing instances
@@ -70,8 +67,7 @@ class IShopNavigation(Interface):
         """
 
     def groups():
-        """Sorted list of ``IShopNavigationGroup`` implementing instances.
-        """
+        """Sorted list of ``IShopNavigationGroup`` implementing instances."""
 
 
 ###############################################################################
@@ -87,16 +83,14 @@ MANAGE_SHOP = "cmf.ManagePortal"
 
 
 class NavigationItemLookupMixin(object):
-    """Mixin for navigation links related item lookup.
-    """
+    """Mixin for navigation links related item lookup."""
 
     def __init__(self, context, request):
         self.context = context
         self.request = request
 
     def lookup_navigation_items(self, interface):
-        """Lookup navigation items by interface.
-        """
+        """Lookup navigation items by interface."""
         cache = IAnnotations(self.request)
         cache_key = "NavigationItemLookupMixin.lookup_navigation_items.{}"
         cache_key = cache_key.format(interface.__name__)
@@ -116,8 +110,7 @@ class NavigationItemLookupMixin(object):
 @implementer(IShopNavigationLink)
 @adapter(Interface, IBrowserRequest)
 class ShopNavigationLink(object):
-    """Abstract shop navigation link.
-    """
+    """Abstract shop navigation link."""
 
     id = None
     group = None
@@ -138,23 +131,20 @@ class ShopNavigationLink(object):
             self.display = checkPermission(self.permission, self.context)
 
     def context_provides(self, context, interfaces=[]):
-        """Return flag whether context provides one of the given interfaces.
-        """
+        """Return flag whether context provides one of the given interfaces."""
         for iface in interfaces:
             if iface.providedBy(context):
                 return True
         return False
 
     def acquire_context(self, context, interfaces=[]):
-        """Acquire next context parent providing one of the given interfaces.
-        """
+        """Acquire next context parent providing one of the given interfaces."""
         if self.context_provides(context, interfaces=interfaces):
             return context
         return self.acquire_context(aq_parent(context), interfaces=interfaces)
 
     def buyables_in_context(self, context):
-        """Return flag whether context contains buyables.
-        """
+        """Return flag whether context contains buyables."""
         catalog = api.portal.get_tool("portal_catalog")
         path = "/".join(context.getPhysicalPath())
         brains = catalog(path=path, object_provides=IBuyable.__identifier__)
@@ -163,8 +153,7 @@ class ShopNavigationLink(object):
         return False
 
     def context_is_default_page(self, context):
-        """Return flag whether given context is default page in it's container.
-        """
+        """Return flag whether given context is default page in it's container."""
         context = aq_inner(context)
         if IPloneSiteRoot.providedBy(context):
             return False
@@ -177,8 +166,7 @@ class ShopNavigationLink(object):
 @implementer(IShopNavigationGroup)
 @adapter(Interface, IBrowserRequest)
 class ShopNavigationGroup(NavigationItemLookupMixin):
-    """Abstract shop navigation group.
-    """
+    """Abstract shop navigation group."""
 
     id = None
     title = None
@@ -223,13 +211,12 @@ class ShopNavigation(NavigationItemLookupMixin):
 
 class OrdersGroup(ShopNavigationGroup):
     id = "shop_orders_group"
-    title = _("orders", default=u"Orders")
+    title = _("orders", default="Orders")
     order = 10
 
 
 class OrdersLink(ShopNavigationLink):
-    """Link for navigating to ``Global Orders`` view.
-    """
+    """Link for navigating to ``Global Orders`` view."""
 
     id = "shop_orders_link"
     group = "shop_orders_group"
@@ -248,23 +235,22 @@ class OrdersLink(ShopNavigationLink):
             return
         # set title by context interface
         if IPloneSiteRoot.providedBy(context):
-            self.title = _("orders_global", default=u"Orders (global)")
+            self.title = _("orders_global", default="Orders (global)")
         elif ISite.providedBy(context):
-            self.title = _("orders_site", default=u"Orders (site-wide)")
+            self.title = _("orders_site", default="Orders (site-wide)")
         elif IVendor.providedBy(context):
-            self.title = _("orders_vendor", default=u"Orders (vendor specific)")
+            self.title = _("orders_vendor", default="Orders (vendor specific)")
         # set target URL
         self.url = "{}/@@orders".format(context.absolute_url())
 
 
 class OrdersInContextLink(ShopNavigationLink):
-    """Link for navigating to ``Context Orders`` view.
-    """
+    """Link for navigating to ``Context Orders`` view."""
 
     id = "shop_orders_in_context_link"
     group = "shop_orders_group"
     permission = VIEW_ORDERS
-    title = _("orders_in_context", default=u"Orders in Context")
+    title = _("orders_in_context", default="Orders in Context")
     order = 11
     cssclass = "orders"
 
@@ -291,12 +277,11 @@ class OrdersInContextLink(ShopNavigationLink):
 
 
 class OrdersInContainerLink(OrdersInContextLink):
-    """Link for navigating to ``Container Orders`` view.
-    """
+    """Link for navigating to ``Container Orders`` view."""
 
     id = "shop_orders_in_container_link"
     group = "shop_orders_group"
-    title = _("orders_in_container", default=u"Orders in Container")
+    title = _("orders_in_container", default="Orders in Container")
     order = 12
 
     def __init__(self, context, request):
@@ -316,13 +301,12 @@ class OrdersInContainerLink(OrdersInContextLink):
 
 
 class MyOrdersLink(ShopNavigationLink):
-    """Link for navigating to ``My Orders`` view.
-    """
+    """Link for navigating to ``My Orders`` view."""
 
     id = "shop_myorders_link"
     group = "shop_orders_group"
     permission = VIEW_OWN_ORDERS
-    title = _("my_orders", default=u"My Orders")
+    title = _("my_orders", default="My Orders")
     order = 13
     cssclass = "myorders"
 
@@ -342,13 +326,12 @@ class MyOrdersLink(ShopNavigationLink):
 
 class BookingsGroup(ShopNavigationGroup):
     id = "shop_bookings_group"
-    title = _("bookings", default=u"Bookings")
+    title = _("bookings", default="Bookings")
     order = 20
 
 
 class BookingsLink(ShopNavigationLink):
-    """Link for navigating to ``Global Bookings`` view.
-    """
+    """Link for navigating to ``Global Bookings`` view."""
 
     id = "shop_bookings_link"
     group = "shop_bookings_group"
@@ -367,23 +350,22 @@ class BookingsLink(ShopNavigationLink):
             return
         # set title by context interface
         if IPloneSiteRoot.providedBy(context):
-            self.title = _("bookings_global", default=u"Bookings (global)")
+            self.title = _("bookings_global", default="Bookings (global)")
         elif ISite.providedBy(context):
-            self.title = _("bookings_site", default=u"Bookings (site-wide)")
+            self.title = _("bookings_site", default="Bookings (site-wide)")
         elif IVendor.providedBy(context):
-            self.title = _("bookings_vendor", default=u"Bookings (vendor specific)")
+            self.title = _("bookings_vendor", default="Bookings (vendor specific)")
         # set target URL
         self.url = "{}/@@bookings".format(context.absolute_url())
 
 
 class BookingsInContextLink(ShopNavigationLink):
-    """Link for navigating to ``Context Bookings`` view.
-    """
+    """Link for navigating to ``Context Bookings`` view."""
 
     id = "shop_bookings_in_context_link"
     group = "shop_bookings_group"
     permission = VIEW_ORDERS
-    title = _("bookings_in_context", default=u"Bookings in Context")
+    title = _("bookings_in_context", default="Bookings in Context")
     order = 21
     cssclass = "bookings"
 
@@ -410,12 +392,11 @@ class BookingsInContextLink(ShopNavigationLink):
 
 
 class BookingsInContainerLink(BookingsInContextLink):
-    """Link for navigating to ``Container Bookings`` view.
-    """
+    """Link for navigating to ``Container Bookings`` view."""
 
     id = "shop_bookings_in_container_link"
     group = "shop_bookings_group"
-    title = _("bookings_in_container", default=u"Bookings in Container")
+    title = _("bookings_in_container", default="Bookings in Container")
     order = 22
 
     def __init__(self, context, request):
@@ -441,18 +422,17 @@ class BookingsInContainerLink(BookingsInContextLink):
 
 class ContactsGroup(ShopNavigationGroup):
     id = "shop_contacts_group"
-    title = _("contacts", default=u"Contacts")
+    title = _("contacts", default="Contacts")
     order = 30
 
 
 class ContactsLink(ShopNavigationLink):
-    """Link for navigating to ``Contacts`` view.
-    """
+    """Link for navigating to ``Contacts`` view."""
 
     id = "shop_contacts_link"
     group = "shop_contacts_group"
     permission = VIEW_ORDERS
-    title = _("contacts", default=u"Contacts")
+    title = _("contacts", default="Contacts")
     order = 30
     cssclass = "bookings"
 
@@ -476,18 +456,17 @@ class ContactsLink(ShopNavigationLink):
 
 class ExportGroup(ShopNavigationGroup):
     id = "shop_export_group"
-    title = _("export", default=u"Export")
+    title = _("export", default="Export")
     order = 40
 
 
 class ExportOrdersLink(ShopNavigationLink):
-    """Link for navigating to ``Export Orders`` view.
-    """
+    """Link for navigating to ``Export Orders`` view."""
 
     id = "shop_export_orders_link"
     group = "shop_export_group"
     permission = EXPORT_ORDERS
-    title = _("exportorders", default=u"Export Orders")
+    title = _("exportorders", default="Export Orders")
     order = 40
     cssclass = "export_orders"
 
@@ -501,13 +480,12 @@ class ExportOrdersLink(ShopNavigationLink):
 
 
 class ExportOrdersInContext(ShopNavigationLink):
-    """Link for navigating to ``Export Context Orders`` view.
-    """
+    """Link for navigating to ``Export Context Orders`` view."""
 
     id = "shop_export_orders_in_context_link"
     group = "shop_export_group"
     permission = EXPORT_ORDERS
-    title = _("exportorders_item", default=u"Export Orders on this Item")
+    title = _("exportorders_item", default="Export Orders on this Item")
     order = 41
     cssclass = "export_orders_item"
 
@@ -534,12 +512,11 @@ class ExportOrdersInContext(ShopNavigationLink):
 
 
 class ExportOrdersInContainerLink(ExportOrdersInContext):
-    """Link for navigating to ``Export Orders in Container`` view.
-    """
+    """Link for navigating to ``Export Orders in Container`` view."""
 
     id = "shop_export_orders_in_container_link"
     group = "shop_export_group"
-    title = _("exportorders_in_container", default=u"Export Orders in Container")
+    title = _("exportorders_in_container", default="Export Orders in Container")
     order = 42
 
     def __init__(self, context, request):
@@ -565,13 +542,12 @@ class ExportOrdersInContainerLink(ExportOrdersInContext):
 
 class MailTemaplatesGroup(ShopNavigationGroup):
     id = "shop_mailtemplates_group"
-    title = _("mailtemplates", default=u"Mail Templates")
+    title = _("mailtemplates", default="Mail Templates")
     order = 50
 
 
 class MailTemplatesLink(ShopNavigationLink):
-    """Link for navigating to ``Mail Templates`` view.
-    """
+    """Link for navigating to ``Mail Templates`` view."""
 
     id = "shop_mail_templates_link"
     group = "shop_mailtemplates_group"
@@ -587,16 +563,16 @@ class MailTemplatesLink(ShopNavigationLink):
         # set title by context interface
         if IPloneSiteRoot.providedBy(context):
             self.title = _(
-                "mailtemplates_global", default=u"Notification Templates (global)"
+                "mailtemplates_global", default="Notification Templates (global)"
             )
         elif ISite.providedBy(context):
             self.title = _(
-                "mailtemplates_site", default=u"Notification Templates (site-wide)"
+                "mailtemplates_site", default="Notification Templates (site-wide)"
             )
         elif IVendor.providedBy(context):
             self.title = _(
                 "mailtemplates_vendor",
-                default=u"Notification Templates (vendor specific)",
+                default="Notification Templates (vendor specific)",
             )
         # set target URL
         self.url = "{}/@@mailtemplates".format(context.absolute_url())
@@ -609,18 +585,17 @@ class MailTemplatesLink(ShopNavigationLink):
 
 class DiscountGroup(ShopNavigationGroup):
     id = "shop_discount_group"
-    title = _("discount", default=u"Discount")
+    title = _("discount", default="Discount")
     order = 60
 
 
 class CartDiscountLink(ShopNavigationLink):
-    """Link for navigating to ``Cart Discount`` view.
-    """
+    """Link for navigating to ``Cart Discount`` view."""
 
     id = "shop_cart_discount_link"
     group = "shop_discount_group"
     permission = MANAGE_DISCOUNT
-    title = _("cart_discount", default=u"Cart Discount")
+    title = _("cart_discount", default="Cart Discount")
     order = 60
     cssclass = "cart_discount"
 
@@ -634,13 +609,12 @@ class CartDiscountLink(ShopNavigationLink):
 
 
 class CartItemDiscountLink(ShopNavigationLink):
-    """Link for navigating to ``Item Discount`` view.
-    """
+    """Link for navigating to ``Item Discount`` view."""
 
     id = "shop_item_discount_link"
     group = "shop_discount_group"
     permission = MANAGE_DISCOUNT
-    title = _("item_discount", default=u"Item Discount")
+    title = _("item_discount", default="Item Discount")
     order = 61
     cssclass = "item_discount"
 
@@ -661,12 +635,11 @@ class CartItemDiscountLink(ShopNavigationLink):
 
 
 class CartItemDiscountInContainerLink(CartItemDiscountLink):
-    """Link for navigating to ``Item Discount in Container`` view.
-    """
+    """Link for navigating to ``Item Discount in Container`` view."""
 
     id = "shop_item_discount_in_container_link"
     group = "shop_discount_group"
-    title = _("item_discount_in_container", default=u"Item Discount in Container")
+    title = _("item_discount_in_container", default="Item Discount in Container")
     order = 62
 
     def __init__(self, context, request):
@@ -692,13 +665,12 @@ class CartItemDiscountInContainerLink(CartItemDiscountLink):
 
 class AdministrationGroup(ShopNavigationGroup):
     id = "shop_administration_group"
-    title = _("administration", default=u"Administration")
+    title = _("administration", default="Administration")
     order = 70
 
 
 class ControlPanelLink(ShopNavigationLink):
-    """Link for navigating to ``Shop Control Panel`` view.
-    """
+    """Link for navigating to ``Shop Control Panel`` view."""
 
     id = "shop_control_panel_link"
     group = "shop_administration_group"
@@ -714,11 +686,11 @@ class ControlPanelLink(ShopNavigationLink):
         # set title by context interface
         if IPloneSiteRoot.providedBy(context):
             self.title = _(
-                "shop_controlpanel_global", default=u"Shop Controlpanel (global)"
+                "shop_controlpanel_global", default="Shop Controlpanel (global)"
             )
         elif ISite.providedBy(context):
             self.title = _(
-                "shop_controlpanel_site", default=u"Shop Controlpanel (site-wide)"
+                "shop_controlpanel_site", default="Shop Controlpanel (site-wide)"
             )
         # set target URL
         self.url = "{}/@@shop_controlpanel".format(context.absolute_url())

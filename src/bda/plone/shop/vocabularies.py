@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+from bda.plone.cart.shipping import Shippings
 from bda.plone.checkout.vocabularies import country_vocabulary
 from bda.plone.checkout.vocabularies import gender_vocabulary
 from bda.plone.payment import Payments
-from bda.plone.cart.shipping import Shippings
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.utils import get_shop_article_settings
 from bda.plone.shop.utils import get_shop_tax_settings
@@ -48,7 +48,7 @@ def QuantityUnitVocabulary(context):
         terms.append(
             SimpleTerm(
                 value=quantity_unit,
-                title=AVAILABLE_QUANTITY_UNITS.get(quantity_unit, quantity_unit)
+                title=AVAILABLE_QUANTITY_UNITS.get(quantity_unit, quantity_unit),
             )
         )
     return SimpleVocabulary(terms)
@@ -58,16 +58,16 @@ def QuantityUnitVocabulary(context):
 # control panel. If you need to provide more vat values add it here or
 # patch this vocab
 AVAILABLE_VAT_VALUES = {
-    "0": "0%",
-    "2.5": "2,5%",
-    "3.8": "3,8%",
-    "7.7": "7.7%",
-    "8": "8%",
-    "10": "10%",
-    "13": "13%",
-    "15": "15%",
-    "20": "20%",
-    "25": "25%",
+    "0": "0 %",
+    "2.5": "2,5 %",
+    "3.8": "3,8 %",
+    "7.7": "7.7 %",
+    "8": "8 %",
+    "10": "10 %",
+    "13": "13 %",
+    "15": "15 %",
+    "20": "20 %",
+    "25": "25 %",
 }
 
 
@@ -140,8 +140,7 @@ def GenderVocabulary(context):
 
 @provider(IVocabularyFactory)
 def CountryVocabulary(context):
-    """VocabularyFactory for countries from ISO3166 source.
-    """
+    """VocabularyFactory for countries from ISO3166 source."""
     return SimpleVocabulary(
         [SimpleTerm(value=k, title=v) for k, v in country_vocabulary()]
     )

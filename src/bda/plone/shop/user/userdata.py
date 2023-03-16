@@ -21,7 +21,7 @@ class ICustomer(model.Schema):
 
     model.fieldset(
         "main_address",
-        _("main_address", u"Main Address"),
+        _("main_address", "Main Address"),
         fields=[
             "firstname",
             "lastname",
@@ -37,7 +37,7 @@ class ICustomer(model.Schema):
 
     model.fieldset(
         "delivery_address",
-        _("delivery_address", u"Delivery Address"),
+        _("delivery_address", "Delivery Address"),
         fields=[
             "delivery_firstname",
             "delivery_lastname",
@@ -49,129 +49,129 @@ class ICustomer(model.Schema):
         ],
     )
 
-    model.fieldset("legal", _("legal", u"Legal"), fields=["accept"])
+    model.fieldset("legal", _("legal", "Legal"), fields=["accept"])
 
     # Personal Data
     gender = schema.Choice(
-        title=_(u"label_gender", default=u"Gender"),
-        description=_(u"help_gender", default=u""),
+        title=_("label_gender", default="Gender"),
+        description=_("help_gender", default=""),
         required=False,
         vocabulary="bda.plone.shop.vocabularies.GenderVocabulary",
     )
 
     firstname = schema.TextLine(
-        title=_(u"label_firstname", default=u"First name"),
-        description=_(u"help_firstname", default=u"Fill in your given name."),
+        title=_("label_firstname", default="First name"),
+        description=_("help_firstname", default="Fill in your given name."),
         required=True,
     )
 
     lastname = schema.TextLine(
-        title=_(u"label_lastname", default=u"Last name"),
+        title=_("label_lastname", default="Last name"),
         description=_(
-            u"help_lastname", default=u"Fill in your surname or your family name."
+            "help_lastname", default="Fill in your surname or your family name."
         ),
         required=True,
     )
 
     phone = schema.TextLine(
-        title=_(u"label_phone", default=u"Phone"),
-        description=_(u"help_phone", default=u""),
+        title=_("label_phone", default="Phone"),
+        description=_("help_phone", default=""),
         required=True,
     )
 
     company = schema.TextLine(
-        title=_(u"label_company", default=u"Company"),
-        description=_(u"help_company", default=u""),
+        title=_("label_company", default="Company"),
+        description=_("help_company", default=""),
         required=False,
     )
 
     # Billing Address
     street = schema.TextLine(
-        title=_(u"label_street", default=u"Street"),
-        description=_(u"help_street", default=u""),
+        title=_("label_street", default="Street"),
+        description=_("help_street", default=""),
         required=True,
     )
 
     zip = schema.TextLine(
-        title=_(u"label_zip", default=u"Postal Code"),
-        description=_(u"help_zip", default=u""),
+        title=_("label_zip", default="Postal Code"),
+        description=_("help_zip", default=""),
         required=True,
     )
 
     city = schema.TextLine(
-        title=_(u"label_city", default=u"City"),
-        description=_(u"help_city", default=u""),
+        title=_("label_city", default="City"),
+        description=_("help_city", default=""),
         required=True,
     )
 
     country = schema.Choice(
-        title=_(u"label_country", default=u"Country"),
-        description=_(u"help_country", default=u""),
+        title=_("label_country", default="Country"),
+        description=_("help_country", default=""),
         required=True,
         vocabulary="bda.plone.shop.vocabularies.CountryVocabulary",
     )
 
     # Delivery Address
     delivery_alternative_delivery = schema.Bool(
-        title=_(u"label_alternative_delivery", default=u"Alternative delivery address"),
+        title=_("label_alternative_delivery", default="Alternative delivery address"),
         description=_(
-            u"help_alternative_delivery",
-            default=u"Delivery address is different from billing " u"address.",
+            "help_alternative_delivery",
+            default="Delivery address is different from billing " "address.",
         ),
         required=False,
     )
 
     delivery_firstname = schema.TextLine(
-        title=_(u"label_firstname", default=u"First name"),
-        description=_(u"help_firstname", default=u"Fill in your given name."),
+        title=_("label_firstname", default="First name"),
+        description=_("help_firstname", default="Fill in your given name."),
         required=False,
     )
 
     delivery_lastname = schema.TextLine(
-        title=_(u"label_lastname", default=u"Last name"),
+        title=_("label_lastname", default="Last name"),
         description=_(
-            u"help_lastname", default=u"Fill in your surname or your family name."
+            "help_lastname", default="Fill in your surname or your family name."
         ),
         required=False,
     )
 
     delivery_company = schema.TextLine(
-        title=_(u"label_company", default=u"Company"),
-        description=_(u"help_company", default=u""),
+        title=_("label_company", default="Company"),
+        description=_("help_company", default=""),
         required=False,
     )
 
     delivery_street = schema.TextLine(
-        title=_(u"label_street", default=u"Street"),
-        description=_(u"help_street", default=u""),
+        title=_("label_street", default="Street"),
+        description=_("help_street", default=""),
         required=False,
     )
 
     delivery_zip = schema.TextLine(
-        title=_(u"label_zip", default=u"Postal Code"),
-        description=_(u"help_zip", default=u""),
+        title=_("label_zip", default="Postal Code"),
+        description=_("help_zip", default=""),
         required=False,
     )
 
     delivery_city = schema.TextLine(
-        title=_(u"label_city", default=u"City"),
-        description=_(u"help_city", default=u""),
+        title=_("label_city", default="City"),
+        description=_("help_city", default=""),
         required=False,
     )
 
     delivery_country = schema.Choice(
-        title=_(u"label_country", default=u"Country"),
-        description=_(u"help_country", default=u""),
+        title=_("label_country", default="Country"),
+        description=_("help_country", default=""),
         required=False,
         vocabulary="bda.plone.shop.vocabularies.CountryVocabulary",
     )
 
     # Terms and Conditions
     accept = schema.Bool(
-        title=_(u"label_accept", default=u"Accept terms of use"),
+        title=_("label_accept", default="Accept terms of use"),
         description=_(
-            u"help_accept",
-            default=u"Tick this box to indicate that you have found,"
+            "help_accept",
+            default="Tick this box to indicate that you have found,"
             " read and accepted the terms of use for this site.",
         ),
         required=False,
@@ -218,8 +218,7 @@ class AddUserFormExtender(extensible.FormExtender):
 @implementer(ICheckoutFormPresets)
 @adapter(Interface, IShopExtensionLayer)
 class CheckoutFormMemberPresets(object):
-    """Adapter to retrieve member presets for checkout form.
-    """
+    """Adapter to retrieve member presets for checkout form."""
 
     def __init__(self, context, request):
         self.context = context

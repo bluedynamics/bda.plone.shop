@@ -81,14 +81,12 @@ def uninstall(context):
 @implementer(Plone.INonInstallable)
 class HiddenProfiles(object):
     def getNonInstallableProfiles(self):
-        """Do not show on Plone's list of installable profiles.
-        """
+        """Do not show on Plone's list of installable profiles."""
         return []
 
 
 @implementer(QuickInstaller.INonInstallable)
 class HiddenProducts(object):
     def getNonInstallableProducts(self):
-        """Do not show on QuickInstaller's list of installable products.
-        """
+        """Do not show on QuickInstaller's list of installable products."""
         return []

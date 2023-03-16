@@ -25,12 +25,14 @@ from zope.interface import provider
 from zope.schema.interfaces import IContextAwareDefaultFactory
 from zope.schema.interfaces import IVocabularyFactory
 
+
 @provider(IContextAwareDefaultFactory)
 def default_item_net(context):
     default = get_shop_article_settings().default_item_net
     if default is not None:
         return Decimal(default)
     return default
+
 
 @provider(IContextAwareDefaultFactory)
 def default_item_vat(context):
@@ -65,7 +67,6 @@ def default_item_cart_count_limit(context):
     return default
 
 
-
 @provider(IContextAwareDefaultFactory)
 def default_item_quantity_unit(context):
     return get_shop_article_settings().default_item_quantity_unit
@@ -73,12 +74,11 @@ def default_item_quantity_unit(context):
 
 @provider(IFormFieldProvider)
 class IBuyableBehavior(model.Schema, IBuyable):
-    """Buyable behavior.
-    """
+    """Buyable behavior."""
 
     model.fieldset(
         "shop",
-        label=u"Shop",
+        label="Shop",
         fields=[
             "item_net",
             "item_vat",
@@ -92,14 +92,14 @@ class IBuyableBehavior(model.Schema, IBuyable):
     )
 
     item_net = schema.Decimal(
-        title=_(u"label_item_net", default=u"Item net price"),
+        title=_("label_item_net", default="Item net price"),
         required=False,
         defaultFactory=default_item_net,
         min=Decimal(0),
     )
 
     item_vat = schema.Choice(
-        title=_(u"label_item_vat", default=u"Item VAT (in %)"),
+        title=_("label_item_vat", default="Item VAT (in %)"),
         vocabulary="bda.plone.shop.vocabularies.VatVocabulary",
         required=False,
         defaultFactory=default_item_vat,
@@ -107,7 +107,7 @@ class IBuyableBehavior(model.Schema, IBuyable):
 
     item_cart_count_limit = schema.Decimal(
         title=_(
-            u"label_item_cart_count_limit", default=u"Max count of this item in cart"
+            "label_item_cart_count_limit", default="Max count of this item in cart"
         ),
         required=False,
         defaultFactory=default_item_cart_count_limit,
@@ -115,34 +115,34 @@ class IBuyableBehavior(model.Schema, IBuyable):
     )
 
     item_display_gross = schema.Bool(
-        title=_(u"label_item_display_gross", default=u"Display Gross Price"),
+        title=_("label_item_display_gross", default="Display Gross Price"),
         description=_(
-            u"help_item_display_gross", default=u"Show price with taxes included"
+            "help_item_display_gross", default="Show price with taxes included"
         ),
         required=False,
         defaultFactory=default_item_display_gross,
     )
 
     item_comment_enabled = schema.Bool(
-        title=_(u"label_item_comment_enabled", default="Comment enabled"),
+        title=_("label_item_comment_enabled", default="Comment enabled"),
         required=False,
         defaultFactory=item_comment_enabled,
     )
 
     item_comment_required = schema.Bool(
-        title=_(u"label_item_comment_required", default="Comment required"),
+        title=_("label_item_comment_required", default="Comment required"),
         required=False,
         defaultFactory=default_item_comment_required,
     )
 
     item_quantity_unit_float = schema.Bool(
-        title=_(u"label_item_quantity_unit_float", default="Quantity as float"),
+        title=_("label_item_quantity_unit_float", default="Quantity as float"),
         required=False,
         defaultFactory=default_item_quantity_unit_float,
     )
 
     item_quantity_unit = schema.Choice(
-        title=_(u"label_item_quantity_unit", default="Quantity unit"),
+        title=_("label_item_quantity_unit", default="Quantity unit"),
         vocabulary="bda.plone.shop.vocabularies.QuantityUnitVocabulary",
         required=False,
         defaultFactory=default_item_quantity_unit,
@@ -151,8 +151,7 @@ class IBuyableBehavior(model.Schema, IBuyable):
 
 @adapter(IBuyableBehavior)
 class DXCartItemDataProvider(CartItemDataProviderBase):
-    """Accessor Interface
-    """
+    """Accessor Interface"""
 
     @property
     def net(self):
@@ -211,12 +210,11 @@ def default_item_stock_warning_threshold(context):
 
 @provider(IFormFieldProvider)
 class IStockBehavior(model.Schema):
-    """Stock behavior.
-    """
+    """Stock behavior."""
 
     model.fieldset(
         "shop",
-        label=u"Shop",
+        label="Shop",
         fields=[
             "item_display_stock",
             "item_available",
@@ -226,24 +224,24 @@ class IStockBehavior(model.Schema):
     )
 
     item_display_stock = schema.Bool(
-        title=_(u"label_item_display_stock", default=u"Display item stock"),
+        title=_("label_item_display_stock", default="Display item stock"),
         required=False,
         defaultFactory=default_item_display_stock,
     )
 
     item_available = schema.Float(
-        title=_(u"label_item_available", default=u"Item stock available"),
+        title=_("label_item_available", default="Item stock available"),
         required=False,
     )
 
     item_overbook = schema.Float(
-        title=_(u"label_item_overbook", default=u"Item stock overbook"), required=False
+        title=_("label_item_overbook", default="Item stock overbook"), required=False
     )
 
     item_stock_warning_threshold = schema.Float(
         title=_(
-            u"label_item_stock_warning_threshold",
-            default=u"Item stock warning threshold.",
+            "label_item_stock_warning_threshold",
+            default="Item stock warning threshold.",
         ),
         required=False,
         defaultFactory=default_item_stock_warning_threshold,
@@ -253,8 +251,7 @@ class IStockBehavior(model.Schema):
 @implementer(ICartItemStock)
 @adapter(IStockBehavior)
 class DXCartItemStock(object):
-    """Accessor Interface
-    """
+    """Accessor Interface"""
 
     def __init__(self, context):
         self.context = context
@@ -295,12 +292,11 @@ def default_shipping_item_shippable(context):
 
 @provider(IFormFieldProvider)
 class IShippingBehavior(model.Schema):
-    """Shipping behavior.
-    """
+    """Shipping behavior."""
 
     model.fieldset(
         "shop",
-        label=u"Shop",
+        label="Shop",
         fields=[
             "shipping_item_shippable",
             "shipping_item_weight",
@@ -309,32 +305,33 @@ class IShippingBehavior(model.Schema):
     )
 
     shipping_item_shippable = schema.Bool(
-        title=_(u"label_shipping_item_shippable", default=u"Item Shippable"),
+        title=_("label_shipping_item_shippable", default="Item Shippable"),
         description=_(
             "help_shipping_item_shippable",
-            default=u"Flag whether item is shippable, i.e. " u"downloads are not",
+            default="Flag whether item is shippable, i.e. " "downloads are not",
         ),
         defaultFactory=default_shipping_item_shippable,
+        required=False,
     )
 
     shipping_item_weight = schema.Float(
-        title=_(u"label_shipping_item_weight", default=u"Item Weight"), required=False
+        title=_("label_shipping_item_weight", default="Item Weight"), required=False
     )
 
     shipping_item_free_shipping = schema.Bool(
-        title=_(u"label_shipping_item_free_shipping", default=u"Free Shipping"),
+        title=_("label_shipping_item_free_shipping", default="Free Shipping"),
         description=_(
             "help_shipping_item_free_shipping",
-            default=u"Flag whether shipping of this item is free.",
+            default="Flag whether shipping of this item is free.",
         ),
+        required=False,
     )
 
 
 @implementer(IShippingItem)
 @adapter(IShippingBehavior)
 class DXShippingItem(object):
-    """Accessor Interface
-    """
+    """Accessor Interface"""
 
     def __init__(self, context):
         self.context = context
@@ -354,10 +351,9 @@ class DXShippingItem(object):
 
 @adapter(IDexterityContent)
 class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
-    """Accessor Interface
-    """
+    """Accessor Interface"""
 
-    preview_scale = "tile"
+    preview_scale = "thumb"
 
     @property
     def url(self):
@@ -374,22 +370,21 @@ class DXCartItemPreviewImage(CartItemPreviewAdapterBase):
 @provider(IFormFieldProvider)
 class IItemNotificationTextBehavior(model.Schema):
 
-    model.fieldset("shop", label=u"Shop", fields=["order_text", "overbook_text"])
+    model.fieldset("shop", label="Shop", fields=["order_text", "overbook_text"])
 
     order_text = schema.Text(
         title=_(
-            u"label_item_notification_text",
-            default=u"Notification text for this item in the order "
-            u"confirmation mail",
+            "label_item_notification_text",
+            default="Notification text for this item in the order " "confirmation mail",
         ),
         required=False,
     )
 
     overbook_text = schema.Text(
         title=_(
-            u"label_item_overbook_notification_text",
-            default=u"Notification text for this item in the order "
-            u"confirmation mail if item is out of stock",
+            "label_item_overbook_notification_text",
+            default="Notification text for this item in the order "
+            "confirmation mail if item is out of stock",
         ),
         required=False,
     )
@@ -399,23 +394,23 @@ class IItemNotificationTextBehavior(model.Schema):
 class IGlobalNotificationTextBehavior(model.Schema):
 
     model.fieldset(
-        "shop", label=u"Shop", fields=["global_order_text", "global_overbook_text"]
+        "shop", label="Shop", fields=["global_order_text", "global_overbook_text"]
     )
 
     global_order_text = schema.Text(
         title=_(
-            u"label_item_global_notification_text",
-            default=u"Additional overall notification text for the order "
-            u"confirmation mail of this item",
+            "label_item_global_notification_text",
+            default="Additional overall notification text for the order "
+            "confirmation mail of this item",
         ),
         required=False,
     )
 
     global_overbook_text = schema.Text(
         title=_(
-            u"label_item_global_overbook_notification_text",
-            default=u"Additional overall notification text for the order "
-            u"confirmation mail of this item ordered if out of stock",
+            "label_item_global_overbook_notification_text",
+            default="Additional overall notification text for the order "
+            "confirmation mail of this item ordered if out of stock",
         ),
         required=False,
     )
@@ -423,8 +418,7 @@ class IGlobalNotificationTextBehavior(model.Schema):
 
 @adapter(IItemNotificationTextBehavior)
 class DXItemNotificationText(BubbleItemNotificationText):
-    """Accessor Interface
-    """
+    """Accessor Interface"""
 
     @property
     def order_text(self):
@@ -441,8 +435,7 @@ class DXItemNotificationText(BubbleItemNotificationText):
 
 @adapter(IGlobalNotificationTextBehavior)
 class DXGlobalNotificationText(BubbleGlobalNotificationText):
-    """Accessor Interface
-    """
+    """Accessor Interface"""
 
     @property
     def global_order_text(self):
@@ -459,20 +452,19 @@ class DXGlobalNotificationText(BubbleGlobalNotificationText):
 
 @provider(IFormFieldProvider)
 class IBuyablePeriodBehavior(model.Schema):
-    """Buyable period behavior.
-    """
+    """Buyable period behavior."""
 
     model.fieldset(
-        "shop", label=u"Shop", fields=["buyable_effective", "buyable_expires"]
+        "shop", label="Shop", fields=["buyable_effective", "buyable_expires"]
     )
 
     buyable_effective = schema.Datetime(
-        title=_(u"label_buyable_effective_date", default=u"Buyable effective date"),
+        title=_("label_buyable_effective_date", default="Buyable effective date"),
         required=False,
     )
 
     buyable_expires = schema.Datetime(
-        title=_(u"label_buyable_expiration_date", default=u"Buyable expiration date"),
+        title=_("label_buyable_expiration_date", default="Buyable expiration date"),
         required=False,
     )
 
@@ -494,20 +486,19 @@ class DXBuyablePeriod(object):
 
 @provider(IFormFieldProvider)
 class ITradingBehavior(model.Schema):
-    """Trading behavior.
-    """
+    """Trading behavior."""
 
-    model.fieldset("shop", label=u"Shop", fields=["item_number", "gtin"])
+    model.fieldset("shop", label="Shop", fields=["item_number", "gtin"])
 
     item_number = schema.TextLine(
-        title=_(u"label_item_number", default=u"Item number"),
-        description=_(u"help_item_number", default=u"Buyable Item number"),
+        title=_("label_item_number", default="Item number"),
+        description=_("help_item_number", default="Buyable Item number"),
         required=False,
     )
 
     gtin = schema.TextLine(
-        title=_(u"label_gtin", default=u"GTIN"),
-        description=_(u"help_gtin", default=u"Global Trade Item Number"),
+        title=_("label_gtin", default="GTIN"),
+        description=_("help_gtin", default="Global Trade Item Number"),
         required=False,
     )
 

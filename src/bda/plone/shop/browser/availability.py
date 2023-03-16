@@ -101,8 +101,8 @@ class CartItemAvailability(CartItemAvailabilityBase):
             if not get_item_data_provider(self.context).quantity_unit_float:
                 available = int(available)
         message = _(
-            u"full_available_message",
-            default=u"${available} items(s) available.",
+            "full_available_message",
+            default="${available} items(s) available.",
             mapping={"available": available},
         )
         return message
@@ -113,8 +113,8 @@ class CartItemAvailability(CartItemAvailabilityBase):
         if not get_item_data_provider(self.context).quantity_unit_float:
             available = int(available)
         message = _(
-            u"critical_available_message",
-            default=u"Just ${available} items(s) left.",
+            "critical_available_message",
+            default="Just ${available} items(s) left.",
             mapping={"available": available},
         )
         return message
@@ -130,10 +130,10 @@ class CartItemAvailability(CartItemAvailabilityBase):
             if not get_item_data_provider(self.context).quantity_unit_float:
                 reservable = int(reservable)
         message = _(
-            u"overbook_available_message",
-            default=u"Item is sold out. You can pre-order "
-            u"${reservable} items. As soon as item is "
-            u"available again, it gets delivered.",
+            "overbook_available_message",
+            default="Item is sold out. You can pre-order "
+            "${reservable} items. As soon as item is "
+            "available again, it gets delivered.",
             mapping={"reservable": reservable},
         )
         return message
@@ -147,8 +147,8 @@ class CartItemAvailability(CartItemAvailabilityBase):
             request=self.request,
         )
         message = _(
-            u"purchasable_until_message",
-            default=u"Item is purchasable until ${date}",
+            "purchasable_until_message",
+            default="Item is purchasable until ${date}",
             mapping={"date": date},
         )
         return message
@@ -162,8 +162,8 @@ class CartItemAvailability(CartItemAvailabilityBase):
             request=self.request,
         )
         message = _(
-            u"purchasable_as_of_message",
-            default=u"Item is purchasable as of ${date}",
+            "purchasable_as_of_message",
+            default="Item is purchasable as of ${date}",
             mapping={"date": date},
         )
         return message

@@ -4,8 +4,8 @@ bda.plone.shop
 
 E-commerce solution for `Plone <http://plone.com>`_
 
-.. image:: https://travis-ci.org/bluedynamics/bda.plone.shop.svg?branch=master
-    :target: https://travis-ci.org/bluedynamics/bda.plone.shop
+.. image:: https://github.com/bluedynamics/bda.plone.shop/actions/workflows/main.yml/badge.svg
+    :target: https://github.com/bluedynamics/bda.plone.shop/actions/workflows/main.yml
 
 .. image:: https://black.readthedocs.io/en/stable/_static/pypi.svg
     :target: https://pypi.org/project/black/
@@ -17,28 +17,17 @@ Installation
 Depend your instance to ``bda.plone.shop`` and install it as addon in plone
 control panel.
 
-``bda.plone.shop`` won't work on stock Plone 4.3.x installations because it
-requires some packages in more recent versions:
-
-* ``plone.app.workflow`` >= 2.1.8
-
-* ``plone.app.users`` >= 2.0.4
-
-See the Troubleshooting_ section for more information.
-
 
 Development and testing
 =======================
 
 Checkout ``bda.plone.shop`` from
-``git://github.com/bluedynamics/bda.plone.shop.git`` and run contained buidlout
-like so::
+``git://github.com/bluedynamics/bda.plone.shop.git`` and run::
 
-    ~$ virtualenv .
-    ~$ ./bin/pip install zc.buildout
-    ~$ ./bin/buildout
+    ~$ make install
 
-Start instance and create Plone site with shop profile applied.
+This installs all dependencies with ``mxdev`` and prepares scripts for
+running tests.
 
 
 Running tests
@@ -46,30 +35,27 @@ Running tests
 
 If you have run the buildout, you can run all tests like so::
 
-    ./bin/test -s bda.plone.shop
-
-The -t switch allows you to run a specific test file or method. The
-``--list-tests`` lists all available tests.
+    ~$ make test-ignore-warnings
 
 To run the robot tests do::
 
-    ./bin/test --all -s bda.plone.shop -t robot
+    ./venv/bin/zope-testrunner --auto-color --auto-progress --test-path=./src --all
 
 For development, it might be more convenient to start a test server and run
 robot tests individually, like so (-d to start Zope in DEBUG-MODE)::
 
-    ./bin/robot-server bda.plone.shop.tests.ShopDXFull_ROBOT_TESTING -d
-    ./bin/robot src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
+    ./venv/bin/robot-server bda.plone.shop.tests.ShopDXFull_ROBOT_TESTING -d
+    ./venv/bin/robot src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
 
 To automatically land in the debug shell on test-failure, use::
 
-    ./bin/robot-debug src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
+    ./venv/bin/robot-debug src/bda/plone/shop/tests/robot/test_shop_orderprocess.robot
 
 In the robot test you can place the debug statement to access a robot shell to
 try things out.
 
 For more information on this topic visit:
-http://developer.plone.org/reference_manuals/external/plone.app.robotframework/happy.html
+https://docs.plone.org/external/plone.app.robotframework/docs/source/happy.html
 
 
 Enable Content to be buyable
@@ -89,54 +75,10 @@ adapters implementing the following interfaces::
 - ``bda.plone.orders.interfaces.ITrading``
 - ``bda.plone.orders.interfaces.IBuyablePeriod``
 
-There exists Archetypes and Dexterity related implementations of these
-adapters among with related Schema Extenders respective Dexterity Behaviors.
+There exists implementations of these adapters among with related Dexterity Behaviors.
 
-For Plone 5 'Summary View' is overriden for folders and collections to show your buyables with controls to add them into the cart.
-
-
-Archetypes
-----------
-
-The Archetypes related implementation consists of Schema Extenders for each
-required interfaces which all are bound to ``IBuyable`` and the corresponding
-adapter implementations which are registered for
-``Products.Archetypes.BaseObject.BaseObject``.
-
-There exists a content action with which ``IBuyable`` interface can be set
-dynamically. To enable this Action content items must implement
-``bda.plone.shop.interfaces.IPotentiallyBuyable``.
-
-**Note** This action works for Archetypes based content only::
-
-    <class zcml:condition="installed Products.Archetypes"
-           class="Products.Archetypes.BaseObject.BaseObject">
-      <implements interface="bda.plone.shop.interfaces.IPotentiallyBuyable" />
-    </class>
-
-If Archetypes based content should be immediately buyable without explicit
-activation, set ``IBuyable`` interface directly on content class::
-
-    <class zcml:condition="installed Products.Archetypes"
-           class="Products.Archetypes.BaseObject.BaseObject">
-      <implements interface="bda.plone.orders.interfaces.IBuyable" />
-    </class>
-
-Notification related schema extenders can be applied to any Archetypes object
-including buyable items, notification text values are aquired until plone root
-is reached::
-
-    <adapter
-      name="bda.plone.shop.itemnotificationtext"
-      for="your.package.IContentInterface"
-      factory="bda.plone.shop.at.ItemNotificationTextExtender"
-      provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
-
-    <adapter
-      name="bda.plone.shop.globalnotificationtext"
-      for="your.package.IContentInterface"
-      factory="bda.plone.shop.at.GlobalNotificationTextExtender"
-      provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender" />
+For Plone 5 'Summary View' is overriden for folders and collections to show your
+buyables with controls to add them into the cart.
 
 
 Dexterity
@@ -170,39 +112,27 @@ reached.
 Cart item preview images
 ========================
 
-The cart can render preview images for the cart items in case when
+The cart can render preview images for the cart items in case when the context
+has a field named ``image``
 
-1. the context has a field named ``image``
-2. ``collective.contentleadimage`` is installed (Archetypes only)
+You can change the preview image rendering by adapting your own cart items.
+If you want to change the scale of the image, inherit from the existing
+adapter class and change ``preview_scale`` property::
 
-You can easily change the preview image rendering by adapting your own cart
-items. If you want to change the scale of the image, inherit from the existing
-adapter class and change ``preview_scale`` property (example uses the
-Archetypes version)::
-
-    >>> from bda.plone.shop.at import ATCartItemPreviewImage
-    >>> class MyATCartItemPreviewImage(ATCartItemPreviewImage):
+    >>> from bda.plone.shop.dx import DXCartItemPreviewImage
+    >>> class MyDXCartItemPreviewImage(DXCartItemPreviewImage):
     ...     preview_scale = "my_scale"
 
 To do more complex preview image rendering you can override the ``url``
-property (example uses the Dexterity version)::
+property::
 
-    >>> from bda.plone.shop.dx import DXCartItemPreviewImage
     >>> class MyDXCartItemPreviewImage(DXCartItemPreviewImage):
     ...     @property
     ...     def url(self):
     ...         # do sophisticated stuff to get your preview image
     ...         return preview_url
 
-Register your adapter via ZCML.
-
-Archetypes::
-
-    <adapter
-      for="some.package.IMyATContent"
-      factory=".youradater.MyATCartItemPreviewImage" />
-
-Dexterity::
+Register your adapter via ZCML::
 
     <adapter
       for="some.package.IMyDXContent"
@@ -350,13 +280,15 @@ Backward incompatible changes
 Upgrade to Plone 5
 ==================
 
-If you upgrade to Plone 5, you have to run the upgrade step ``Remove old JS and CSS resources for Plone 5`` manually to remove the old registration of resources.
+If you upgrade to Plone 5, you have to run the upgrade step
+``Remove old JS and CSS resources for Plone 5`` manually to remove the old
+registration of resources.
 
 
 Contributors
 ============
 
-We'd be happy to see many forks and pull-requests to make this program even better.
+We'd be happy to see forks and pull-requests to improve this program.
 Professional support is offered by the maintainers and some of the authors.
 
 Maintainers
@@ -381,3 +313,4 @@ Authors
 - Jure Cerjak
 - Benjamin Stefaner
 - Jens Klein
+
