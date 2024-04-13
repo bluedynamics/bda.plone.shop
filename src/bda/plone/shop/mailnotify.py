@@ -86,7 +86,9 @@ class SiteRegistryNotificationText(object):
 
     def _lookup_text(self, field):
         settings = get_shop_notification_settings()
-        enum = getattr(settings, field)
+        enum = getattr(settings, field, None)
+        if enum is None:
+            return
         portal_state = self.context.restrictedTraverse("@@plone_portal_state")
         lang = portal_state.language()
         for entry in enum:

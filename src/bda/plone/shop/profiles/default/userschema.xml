@@ -41,11 +41,11 @@
       <vocabulary>bda.plone.shop.vocabularies.GenderVocabulary</vocabulary>
     </field>
     <field name="first_name" type="zope.schema.TextLine" users:forms="In User Profile">
-      <description>Fill in your given name.</description>
+      <description></description>
       <title>First name</title>
     </field>
     <field name="lastname" type="zope.schema.TextLine" users:forms="In User Profile">
-      <description>Fill in your surname or your family name.</description>
+      <description></description>
       <title>Last name</title>
     </field>
     <field name="phone" type="zope.schema.TextLine" users:forms="In User Profile">
