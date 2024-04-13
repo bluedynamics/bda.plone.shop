@@ -9,6 +9,8 @@
 #: core.mxfiles
 #: core.packages
 #: core.sources
+#: qa.isort
+#: qa.ruff
 #
 # SETTINGS (ALL CHANGES MADE BELOW SETTINGS WILL BE LOST)
 ##############################################################################
@@ -19,22 +21,52 @@
 # No default value.
 DEPLOY_TARGETS?=
 
+# target to be executed when calling `make run`
+# No default value.
+RUN_TARGET?=
+
 # Additional files and folders to remove when running clean target
 # No default value.
 CLEAN_FS?=
 
+# Optional makefile to include before default targets. This can
+# be used to provide custom targets or hook up to existing targets.
+# Default: include.mk
+INCLUDE_MAKEFILE?=include.mk
+
+# Optional additional directories to be added to PATH in format
+# `/path/to/dir/:/path/to/other/dir`. Gets inserted first, thus gets searched
+# first.
+# No default value.
+EXTRA_PATH?=
+
 ## core.mxenv
 
-# Python interpreter to use.
+# Primary Python interpreter to use. It is used to create the
+# virtual environment if `VENV_ENABLED` and `VENV_CREATE` are set to `true`.
 # Default: python3
-PYTHON_BIN?=python3
+PRIMARY_PYTHON?=python3
 
 # Minimum required Python version.
 # Default: 3.7
 PYTHON_MIN_VERSION?=3.7
 
-# Flag whether to use virtual environment.
-# If `false`, the interpreter according to `PYTHON_BIN` found in `PATH` is used.
+# Install packages using the given package installer method.
+# Supported are `pip` and `uv`. If uv is used, its global availability is
+# checked. Otherwise, it is installed, either in the virtual environment or
+# using the `PRIMARY_PYTHON`, dependent on the `VENV_ENABLED` setting. If
+# `VENV_ENABLED` and uv is selected, uv is used to create the virtual
+# environment.
+# Default: pip
+PYTHON_PACKAGE_INSTALLER?=uv
+
+# Flag whether to use a global installed 'uv' or install
+# it in the virtual environment.
+# Default: false
+MXENV_UV_GLOBAL?=false
+
+# Flag whether to use virtual environment. If `false`, the
+# interpreter according to `PRIMARY_PYTHON` found in `PATH` is used.
 # Default: true
 VENV_ENABLED?=true
 
@@ -45,25 +77,45 @@ VENV_ENABLED?=true
 VENV_CREATE?=true
 
 # The folder of the virtual environment.
-# If `VENV_ENABLED` is `true` and `VENV_CREATE` is true it is used as the target folder for the virtual environment.
-# If `VENV_ENABLED` is `true` and `VENV_CREATE` is false it is expected to point to an existing virtual environment.
-# If `VENV_ENABLED` is `false` it is ignored.
-# Default: venv
+# If `VENV_ENABLED` is `true` and `VENV_CREATE` is true it is used as the
+# target folder for the virtual environment. If `VENV_ENABLED` is `true` and
+# `VENV_CREATE` is false it is expected to point to an existing virtual
+# environment. If `VENV_ENABLED` is `false` it is ignored.
+# Default: .venv
 VENV_FOLDER?=venv
 
 # mxdev to install in virtual environment.
-# Default: https://github.com/mxstack/mxdev/archive/main.zip
-MXDEV?=https://github.com/mxstack/mxdev/archive/main.zip
+# Default: mxdev
+MXDEV?=mxdev
 
 # mxmake to install in virtual environment.
-# Default: https://github.com/mxstack/mxmake/archive/develop.zip
-MXMAKE?=https://github.com/mxstack/mxmake/archive/develop.zip
+# Default: mxmake
+MXMAKE?=mxmake
+
+## qa.ruff
+
+# Source folder to scan for Python files to run ruff on.
+# Default: src
+RUFF_SRC?=src
+
+## qa.isort
+
+# Source folder to scan for Python files to run isort on.
+# Default: src
+ISORT_SRC?=src
 
 ## core.mxfiles
 
 # The config file to use.
 # Default: mx.ini
 PROJECT_CONFIG?=mx.ini
+
+## core.packages
+
+# Allow prerelease and development versions.
+# By default, the package installer only finds stable versions.
+# Default: false
+PACKAGES_ALLOW_PRERELEASES?=false
 
 ## applications.zope
 
@@ -74,6 +126,10 @@ ZOPE_CONFIGURATION_FILE?=instance.yaml
 # cookiecutter configuration file to use
 # Default: https://github.com/plone/cookiecutter-zope-instance
 ZOPE_TEMPLATE?=https://github.com/plone/cookiecutter-zope-instance
+
+# cookiecutter branch, tag or commit to checkout from the ZOPE_TEMPLATE. If empty, `--checkout` is not passed to cookiecutter.
+# Default: main
+ZOPE_TEMPLATE_CHECKOUT?=main
 
 # The Zope folder "instance" will be generated relative to this existing folder.
 # Default: .
@@ -91,6 +147,11 @@ INSTALL_TARGETS?=
 DIRTY_TARGETS?=
 CLEAN_TARGETS?=
 PURGE_TARGETS?=
+CHECK_TARGETS?=
+TYPECHECK_TARGETS?=
+FORMAT_TARGETS?=
+
+export PATH:=$(if $(EXTRA_PATH),$(EXTRA_PATH):,)$(PATH)
 
 # Defensive settings for make: https://tech.davis-hansson.com/p/make/
 SHELL:=bash
@@ -117,12 +178,12 @@ $(SENTINEL):
 ##############################################################################
 
 # Check if given Python is installed
-ifeq (,$(shell which $(PYTHON_BIN)))
-$(error "PYTHON=$(PYTHON_BIN) not found in $(PATH)")
+ifeq (,$(shell which $(PRIMARY_PYTHON)))
+$(error "PYTHON=$(PRIMARY_PYTHON) not found in $(PATH)")
 endif
 
 # Check if given Python version is ok
-PYTHON_VERSION_OK=$(shell $(PYTHON_BIN) -c "import sys; print((int(sys.version_info[0]), int(sys.version_info[1])) >= tuple(map(int, '$(PYTHON_MIN_VERSION)'.split('.'))))")
+PYTHON_VERSION_OK=$(shell $(PRIMARY_PYTHON) -c "import sys; print((int(sys.version_info[0]), int(sys.version_info[1])) >= tuple(map(int, '$(PYTHON_MIN_VERSION)'.split('.'))))")
 ifeq ($(PYTHON_VERSION_OK),0)
 $(error "Need Python >= $(PYTHON_MIN_VERSION)")
 endif
@@ -132,22 +193,55 @@ ifeq ($(shell [[ "$(VENV_ENABLED)" == "true" && "$(VENV_FOLDER)" == "" ]] && ech
 $(error "VENV_FOLDER must be configured if VENV_ENABLED is true")
 endif
 
-# determine the executable path
+# Check if global python is used with uv (this is not supported by uv)
+ifeq ("$(VENV_ENABLED)$(PYTHON_PACKAGE_INSTALLER)","falseuv")
+$(error "Package installer uv does not work with a global Python interpreter.")
+endif
+
+# Determine the executable path
 ifeq ("$(VENV_ENABLED)", "true")
-MXENV_PATH=$(VENV_FOLDER)/bin/
+export VIRTUAL_ENV=$(abspath $(VENV_FOLDER))
+ifeq ("$(OS)", "Windows_NT")
+VENV_EXECUTABLE_FOLDER=$(VIRTUAL_ENV)/Scripts
 else
-MXENV_PATH=
+VENV_EXECUTABLE_FOLDER=$(VIRTUAL_ENV)/bin
+endif
+export PATH:=$(VENV_EXECUTABLE_FOLDER):$(PATH)
+MXENV_PYTHON=python
+else
+MXENV_PYTHON=$(PRIMARY_PYTHON)
+endif
+
+# Determine the package installer
+ifeq ("$(PYTHON_PACKAGE_INSTALLER)","uv")
+PYTHON_PACKAGE_COMMAND=uv pip
+else
+PYTHON_PACKAGE_COMMAND=$(MXENV_PYTHON) -m pip
 endif
 
 MXENV_TARGET:=$(SENTINEL_FOLDER)/mxenv.sentinel
 $(MXENV_TARGET): $(SENTINEL)
 ifeq ("$(VENV_ENABLED)", "true")
-	@echo "Setup Python Virtual Environment under '$(VENV_FOLDER)'"
-	@$(PYTHON_BIN) -m venv $(VENV_FOLDER)
+ifeq ("$(VENV_CREATE)", "true")
+ifeq ("$(PYTHON_PACKAGE_INSTALLER)$(MXENV_UV_GLOBAL)","uvtrue")
+	@echo "Setup Python Virtual Environment using package 'uv' at '$(VENV_FOLDER)'"
+	@uv venv -p $(PRIMARY_PYTHON) --seed $(VENV_FOLDER)
+else
+	@echo "Setup Python Virtual Environment using module 'venv' at '$(VENV_FOLDER)'"
+	@$(PRIMARY_PYTHON) -m venv $(VENV_FOLDER)
+	@$(MXENV_PYTHON) -m ensurepip -U
 endif
-	@$(MXENV_PATH)pip install -U pip setuptools wheel
-	@$(MXENV_PATH)pip install -U $(MXDEV)
-	@$(MXENV_PATH)pip install -U $(MXMAKE)
+endif
+else
+	@echo "Using system Python interpreter"
+endif
+ifeq ("$(PYTHON_PACKAGE_INSTALLER)$(MXENV_UV_GLOBAL)","uvfalse")
+	@echo "Install uv"
+	@$(MXENV_PYTHON) -m pip install uv
+endif
+	@$(PYTHON_PACKAGE_COMMAND) install -U pip setuptools wheel
+	@echo "Install/Update MXStack Python packages"
+	@$(PYTHON_PACKAGE_COMMAND) install -U $(MXDEV) $(MXMAKE)
 	@touch $(MXENV_TARGET)
 
 .PHONY: mxenv
@@ -160,10 +254,12 @@ mxenv-dirty:
 .PHONY: mxenv-clean
 mxenv-clean: mxenv-dirty
 ifeq ("$(VENV_ENABLED)", "true")
+ifeq ("$(VENV_CREATE)", "true")
 	@rm -rf $(VENV_FOLDER)
+endif
 else
-	@$(MXENV_PATH)pip uninstall -y $(MXDEV)
-	@$(MXENV_PATH)pip uninstall -y $(MXMAKE)
+	@$(PYTHON_PACKAGE_COMMAND) uninstall -y $(MXDEV)
+	@$(PYTHON_PACKAGE_COMMAND) uninstall -y $(MXMAKE)
 endif
 
 INSTALL_TARGETS+=mxenv
@@ -171,13 +267,82 @@ DIRTY_TARGETS+=mxenv-dirty
 CLEAN_TARGETS+=mxenv-clean
 
 ##############################################################################
+# ruff
+##############################################################################
+
+RUFF_TARGET:=$(SENTINEL_FOLDER)/ruff.sentinel
+$(RUFF_TARGET): $(MXENV_TARGET)
+	@echo "Install Ruff"
+	@$(PYTHON_PACKAGE_COMMAND) install ruff
+	@touch $(RUFF_TARGET)
+
+.PHONY: ruff-check
+ruff-check: $(RUFF_TARGET)
+	@echo "Run ruff check"
+	@ruff check $(RUFF_SRC)
+
+.PHONY: ruff-format
+ruff-format: $(RUFF_TARGET)
+	@echo "Run ruff format"
+	@ruff format $(RUFF_SRC)
+
+.PHONY: ruff-dirty
+ruff-dirty:
+	@rm -f $(RUFF_TARGET)
+
+.PHONY: ruff-clean
+ruff-clean: ruff-dirty
+	@test -e $(MXENV_PYTHON) && $(MXENV_PYTHON) -m pip uninstall -y ruff || :
+	@rm -rf .ruff_cache
+
+INSTALL_TARGETS+=$(RUFF_TARGET)
+CHECK_TARGETS+=ruff-check
+FORMAT_TARGETS+=ruff-format
+DIRTY_TARGETS+=ruff-dirty
+CLEAN_TARGETS+=ruff-clean
+
+##############################################################################
+# isort
+##############################################################################
+
+ISORT_TARGET:=$(SENTINEL_FOLDER)/isort.sentinel
+$(ISORT_TARGET): $(MXENV_TARGET)
+	@echo "Install isort"
+	@$(PYTHON_PACKAGE_COMMAND) install isort
+	@touch $(ISORT_TARGET)
+
+.PHONY: isort-check
+isort-check: $(ISORT_TARGET)
+	@echo "Run isort check"
+	@isort --check $(ISORT_SRC)
+
+.PHONY: isort-format
+isort-format: $(ISORT_TARGET)
+	@echo "Run isort format"
+	@isort $(ISORT_SRC)
+
+.PHONY: isort-dirty
+isort-dirty:
+	@rm -f $(ISORT_TARGET)
+
+.PHONY: isort-clean
+isort-clean: isort-dirty
+	@test -e $(MXENV_PYTHON) && $(MXENV_PYTHON) -m pip uninstall -y isort || :
+
+INSTALL_TARGETS+=$(ISORT_TARGET)
+CHECK_TARGETS+=isort-check
+FORMAT_TARGETS+=isort-format
+DIRTY_TARGETS+=isort-dirty
+CLEAN_TARGETS+=isort-clean
+
+##############################################################################
 # sources
 ##############################################################################
 
 SOURCES_TARGET:=$(SENTINEL_FOLDER)/sources.sentinel
-$(SOURCES_TARGET): $(MXENV_TARGET)
+$(SOURCES_TARGET): $(PROJECT_CONFIG) $(MXENV_TARGET)
 	@echo "Checkout project sources"
-	@$(MXENV_PATH)mxdev -o -c $(PROJECT_CONFIG)
+	@mxdev -o -c $(PROJECT_CONFIG)
 	@touch $(SOURCES_TARGET)
 
 .PHONY: sources
@@ -207,13 +372,11 @@ MXMAKE_FILES?=$(MXMAKE_FOLDER)/files
 
 # set environment variables for mxmake
 define set_mxfiles_env
-	@export MXMAKE_MXENV_PATH=$(1)
-	@export MXMAKE_FILES=$(2)
+	@export MXMAKE_FILES=$(1)
 endef
 
 # unset environment variables for mxmake
 define unset_mxfiles_env
-	@unset MXMAKE_MXENV_PATH
 	@unset MXMAKE_FILES
 endef
 
@@ -224,24 +387,16 @@ else
 	@echo "[settings]" > $(PROJECT_CONFIG)
 endif
 
-LOCAL_PACKAGE_FILES:=
-ifneq ("$(wildcard pyproject.toml)","")
-	LOCAL_PACKAGE_FILES+=pyproject.toml
-endif
-ifneq ("$(wildcard setup.cfg)","")
-	LOCAL_PACKAGE_FILES+=setup.cfg
-endif
-ifneq ("$(wildcard setup.py)","")
-	LOCAL_PACKAGE_FILES+=setup.py
-endif
+LOCAL_PACKAGE_FILES:=$(wildcard pyproject.toml setup.cfg setup.py requirements.txt constraints.txt)
 
 FILES_TARGET:=requirements-mxdev.txt
 $(FILES_TARGET): $(PROJECT_CONFIG) $(MXENV_TARGET) $(SOURCES_TARGET) $(LOCAL_PACKAGE_FILES)
 	@echo "Create project files"
 	@mkdir -p $(MXMAKE_FILES)
-	$(call set_mxfiles_env,$(MXENV_PATH),$(MXMAKE_FILES))
-	@$(MXENV_PATH)mxdev -n -c $(PROJECT_CONFIG)
-	$(call unset_mxfiles_env,$(MXENV_PATH),$(MXMAKE_FILES))
+	$(call set_mxfiles_env,$(MXMAKE_FILES))
+	@mxdev -n -c $(PROJECT_CONFIG)
+	$(call unset_mxfiles_env)
+	@test -e $(MXMAKE_FILES)/pip.conf && cp $(MXMAKE_FILES)/pip.conf $(VENV_FOLDER)/pip.conf || :
 	@touch $(FILES_TARGET)
 
 .PHONY: mxfiles
@@ -269,11 +424,21 @@ ADDITIONAL_SOURCES_TARGETS?=
 
 INSTALLED_PACKAGES=$(MXMAKE_FILES)/installed.txt
 
+ifeq ("$(PACKAGES_ALLOW_PRERELEASES)","true")
+ifeq ("$(PYTHON_PACKAGE_INSTALLER)","uv")
+PACKAGES_PRERELEASES=--prerelease=allow
+else
+PACKAGES_PRERELEASES=--pre
+endif
+else
+PACKAGES_PRERELEASES=
+endif
+
 PACKAGES_TARGET:=$(INSTALLED_PACKAGES)
 $(PACKAGES_TARGET): $(FILES_TARGET) $(ADDITIONAL_SOURCES_TARGETS)
 	@echo "Install python packages"
-	@$(MXENV_PATH)pip install -r $(FILES_TARGET)
-	@$(MXENV_PATH)pip freeze > $(INSTALLED_PACKAGES)
+	@$(PYTHON_PACKAGE_COMMAND) install $(PACKAGES_PRERELEASES) -r $(FILES_TARGET)
+	@$(PYTHON_PACKAGE_COMMAND) freeze > $(INSTALLED_PACKAGES)
 	@touch $(PACKAGES_TARGET)
 
 .PHONY: packages
@@ -286,8 +451,8 @@ packages-dirty:
 .PHONY: packages-clean
 packages-clean:
 	@test -e $(FILES_TARGET) \
-		&& test -e $(MXENV_PATH)pip \
-		&& $(MXENV_PATH)pip uninstall -y -r $(FILES_TARGET) \
+		&& test -e $(MXENV_PYTHON) \
+		&& $(MXENV_PYTHON) -m pip uninstall -y -r $(FILES_TARGET) \
 		|| :
 	@rm -f $(PACKAGES_TARGET)
 
@@ -302,8 +467,11 @@ CLEAN_TARGETS+=packages-clean
 COOKIECUTTER_TARGET:=$(SENTINEL_FOLDER)/cookiecutter.sentinel
 $(COOKIECUTTER_TARGET): $(MXENV_TARGET)
 	@echo "Install cookiecutter"
-	@$(MXENV_PATH)pip install "cookiecutter>=2.1.1"
+	@$(PYTHON_PACKAGE_COMMAND) install "cookiecutter>=2.6.0"
 	@touch $(COOKIECUTTER_TARGET)
+
+.PHONY: cookiecutter
+cookiecutter: $(COOKIECUTTER_TARGET)
 
 .PHONY: cookiecutter-dirty
 cookiecutter-dirty:
@@ -311,7 +479,7 @@ cookiecutter-dirty:
 
 .PHONY: cookiecutter-clean
 cookiecutter-clean: cookiecutter-dirty
-	@test -e $(MXENV_PATH)pip && $(MXENV_PATH)pip uninstall -y cookiecutter || :
+	@test -e $(MXENV_PYTHON) && $(MXENV_PYTHON) -m pip uninstall -y cookiecutter || :
 	@rm -f $(COOKIECUTTER_TARGET)
 
 DIRTY_TARGETS+=cookiecutter-dirty
@@ -324,12 +492,18 @@ CLEAN_TARGETS+=cookiecutter-clean
 ZOPE_INSTANCE_FOLDER:=$(ZOPE_BASE_FOLDER)/instance
 ZOPE_INSTANCE_TARGET:=$(ZOPE_INSTANCE_FOLDER)/etc/zope.ini $(ZOPE_INSTANCE_FOLDER)/etc/zope.conf $(ZOPE_INSTANCE_FOLDER)/etc/site.zcml
 
+ifeq (,$(ZOPE_TEMPLATE_CHECKOUT))
+	ZOPE_COOKIECUTTER_TEMPLATE_OPTIONS=
+else
+	ZOPE_COOKIECUTTER_TEMPLATE_OPTIONS=--checkout $(ZOPE_TEMPLATE_CHECKOUT)
+endif
+
 ${ZOPE_CONFIGURATION_FILE}:
 	@touch ${ZOPE_CONFIGURATION_FILE}
 
 $(ZOPE_INSTANCE_TARGET): $(COOKIECUTTER_TARGET) $(ZOPE_CONFIGURATION_FILE)
 	@echo Create Plone/Zope configuration from $(ZOPE_TEMPLATE) to $(ZOPE_INSTANCE_FOLDER)
-	@$(MXENV_PATH)cookiecutter -f --no-input --config-file $(ZOPE_CONFIGURATION_FILE) --output-dir $(ZOPE_BASE_FOLDER) $(ZOPE_TEMPLATE)
+	@cookiecutter -f --no-input ${ZOPE_COOKIECUTTER_TEMPLATE_OPTIONS} --config-file $(ZOPE_CONFIGURATION_FILE) --output-dir $(ZOPE_BASE_FOLDER) $(ZOPE_TEMPLATE)
 
 .PHONY: zope-instance
 zope-instance: $(ZOPE_INSTANCE_TARGET) $(SOURCES)
@@ -337,17 +511,17 @@ zope-instance: $(ZOPE_INSTANCE_TARGET) $(SOURCES)
 .PHONY: zope-start
 zope-start: $(ZOPE_INSTANCE_TARGET) $(PACKAGES_TARGET)
 	@echo "Start Zope/Plone with configuration in $(ZOPE_INSTANCE_FOLDER)"
-	@$(MXENV_PATH)runwsgi -v "$(ZOPE_INSTANCE_FOLDER)/etc/zope.ini"
+	@runwsgi -v "$(ZOPE_INSTANCE_FOLDER)/etc/zope.ini"
 
 .PHONY: zope-debug
 zope-debug: $(ZOPE_INSTANCE_TARGET) $(PACKAGES_TARGET)
 	@echo "Start Zope/Plone with configuration in $(ZOPE_INSTANCE_FOLDER)"
-	@$(MXENV_PATH)zconsole debug "$(ZOPE_INSTANCE_FOLDER)/etc/zope.ini"
+	@zconsole debug "$(ZOPE_INSTANCE_FOLDER)/etc/zope.ini"
 
 .PHONY: zope-runscript
 zope-runscript: $(ZOPE_INSTANCE_TARGET) $(PACKAGES_TARGET)
 	@echo "Run Zope/Plone Console Script $(ZOPE_SCRIPTNAME) in $(ZOPE_INSTANCE_FOLDER)"
-	@$(MXENV_PATH)zconsole run "$(ZOPE_INSTANCE_FOLDER)/etc/zope.ini" $(ZOPE_SCRIPTNAME)
+	@zconsole run "$(ZOPE_INSTANCE_FOLDER)/etc/zope.ini" $(ZOPE_SCRIPTNAME)
 
 .PHONY: zope-dirty
 zope-dirty:
@@ -366,6 +540,8 @@ INSTALL_TARGETS+=zope-instance
 DIRTY_TARGETS+=zope-dirty
 CLEAN_TARGETS+=zope-clean
 
+-include $(INCLUDE_MAKEFILE)
+
 ##############################################################################
 # Default targets
 ##############################################################################
@@ -377,6 +553,9 @@ $(INSTALL_TARGET): $(INSTALL_TARGETS)
 .PHONY: install
 install: $(INSTALL_TARGET)
 	@touch $(INSTALL_TARGET)
+
+.PHONY: run
+run: $(RUN_TARGET)
 
 .PHONY: deploy
 deploy: $(DEPLOY_TARGETS)
@@ -399,3 +578,11 @@ runtime-clean:
 	@find . -name '*~' -exec rm -f {} +
 	@find . -name '__pycache__' -exec rm -fr {} +
 
+.PHONY: check
+check: $(CHECK_TARGETS)
+
+.PHONY: typecheck
+typecheck: $(TYPECHECK_TARGETS)
+
+.PHONY: format
+format: $(FORMAT_TARGETS)

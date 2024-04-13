@@ -33,8 +33,4 @@ jobs:
 
       - name: Run Lint
         run: |
-          make lint
-
-      - name: Run tests
-        run: |
-          make test-ignore-warnings
+          make check
