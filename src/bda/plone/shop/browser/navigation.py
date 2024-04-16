@@ -100,7 +100,7 @@ class NavigationItemLookupMixin(object):
 
         def unsorted_items():
             to_adapt = self.context, self.request
-            for _, link in getAdapters(to_adapt, interface):
+            for _, link in getAdapters(to_adapt, interface):  # noqa
                 yield link
 
         cache[cache_key] = sorted(unsorted_items(), key=attrgetter("order"))
@@ -148,9 +148,7 @@ class ShopNavigationLink(object):
         catalog = api.portal.get_tool("portal_catalog")
         path = "/".join(context.getPhysicalPath())
         brains = catalog(path=path, object_provides=IBuyable.__identifier__)
-        for _ in brains:
-            return True
-        return False
+        return len(brains) > 0
 
     def context_is_default_page(self, context):
         """Return flag whether given context is default page in it's container."""
