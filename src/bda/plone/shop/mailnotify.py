@@ -142,7 +142,7 @@ class RegistryPaymentText(object):
     def payment_text(self, payment):
         settings = get_shop_payment_settings()
         lang = api.portal.get_current_language()
-        for entry in settings.payment_text:
+        for entry in (settings.payment_text or []):
             if entry["lang"] == lang and entry["payment"] == payment:
                 return entry["text"]
         return ""
