@@ -3,11 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "grunt": "latest",
-    "grunt-contrib-copy": "latest",
-    "grunt-contrib-less": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-sed": "latest",
-    "request": "latest"
+    "clean-css-cli": "^5.4.0",
+    "nodemon": "^2.0.14",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.43.3"
+  },
+  "scripts": {
+    "watch": "nodemon --watch resources/scss/ --ext scss --exec \"npm run css-main\"",
+    "build": "npm run css-main",
+    "css-main": "npm-run-all css-compile-main css-minify-main",
+    "css-compile-main": "sass --load-path=node_modules --style expanded --no-error-css resources/scss/shop.scss:src/bda/plone/shop/browser/static/shop.css",
+    "css-minify-main": "cleancss -O1 --format breakWith=lf --with-rebase --output src/bda/plone/shop/browser/static/shop.min.css src/bda/plone/shop/browser/static/shop.css"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
   }
 }
+

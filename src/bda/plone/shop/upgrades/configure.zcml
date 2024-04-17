@@ -123,4 +123,12 @@
 
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeDepends
+    title="Update registry"
+    source="11"
+    destination="2000"
+    profile="bda.plone.shop:default"
+    import_steps="plone.app.registry"
+    run_deps="False" />
+
 </configure>

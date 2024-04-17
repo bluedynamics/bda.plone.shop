@@ -1,23 +1,20 @@
-// Plone 5 Styles
-
-// get Plone variables
-@import url("https://raw.githubusercontent.com/plone/Products.CMFPlone/master/Products/CMFPlone/static/patterns/toolbar/src/css/variables.less");
-@import url("https://raw.githubusercontent.com/plone/plonetheme.barceloneta/master/plonetheme/barceloneta/theme/less/variables.plone.less");
-
 .buyable.viewlet {
     clear: both;
     margin: 1em 0 2em 0;
 
     dl.details {
         display: inline-block;
+
         dt,
         dd {
             display: inline-block;
             vertical-align: middle;
         }
+
         dt {
             margin-right: 0.25em;
         }
+
         dd {
             margin-right: 1em;
         }
@@ -25,65 +22,74 @@
 
     div.availability {
         // display: inline-block;
-        position:relative;
+        position: relative;
         vertical-align: middle;
     }
+
     div.availability_details {
         z-index: 1000;
         position: absolute;
         top: 2em;
         margin-left: -0.5em;
-        background-color: @plone-input-bg;
-        border-radius: @plone-border-radius-base;
-        border: @plone-portlet-border;
-        box-shadow: 0 1px 2px rgba(0,0,0,.25);
+        background-color: var(--bs-body-bg);
+        border-radius: var(--bs-border-radius);
+        border: var(--bs-border-style) var(--bs-border-width) var(--bs-border-color);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
         padding: 1em;
         min-width: 14em;
         display: none;
+
         p {
             margin-bottom: 0;
         }
     }
+
     div.signal {
         vertical-align: sub;
         border: #ccc 1px solid;
-        border-radius: @plone-border-radius-base;
+        border-radius: var(--bs-border-radius);
         width: 1em;
         height: 1em;
         display: inline-block;
     }
+
     div.signal.red {
         background-color: red;
     }
+
     div.signal.orange {
         background-color: orange;
     }
+
     div.signal.yellow {
         background-color: yellow;
     }
+
     div.signal.green {
         background-color: green;
     }
+
     dd.price.original {
-        color:#ae0000;
-        text-decoration:line-through;
-        padding-right:0.2em;
+        color: #ae0000;
+        text-decoration: line-through;
+        padding-right: 0.2em;
     }
 }
 
 .portletShopAdmin {
-  .portletContent {
-    ul {
-      padding-top: 0.5em!important;
-      padding-bottom: 1em!important;
-      li {
-        a {
-          padding: 0.5em 1em 0em 2em!important;
-          border: 0!important;
+    .portletContent {
+        ul {
+            padding-top: 0.5em !important;
+            padding-bottom: 1em !important;
+
+            li {
+                a {
+                    padding: 0.5em 1em 0em 2em !important;
+                    border: 0 !important;
+                }
+            }
         }
-      }
     }
-  }
 }
 
 #formfield-form-widgets-IBuyablePeriodBehavior-buyable_effective select,
@@ -98,7 +104,7 @@
     border-top: 1px solid rgba(255, 255, 255, 0.17);
 }
 
-#shop_toolbar_menu .actionSeparator > span {
+#shop_toolbar_menu .actionSeparator>span {
     color: #ccc;
     font-weight: 400;
 }
@@ -107,22 +113,27 @@
 #form-widgets-IPaymentTextSettings-available_payment_methods {
     width: 100%;
 }
+
 #form-widgets-IPaymentTextSettings-available_payment_methods td:nth-child(1),
 #form-widgets-IPaymentTextSettings-available_payment_methods td:nth-child(3) {
     width: 40%;
 }
+
 #form-widgets-IPaymentTextSettings-available_payment_methods-from,
 #form-widgets-IPaymentTextSettings-available_payment_methods-to {
     width: 100%;
 }
+
 #form-widgets-IPaymentTextSettings-payment_method {
     width: 100%;
 }
+
 #form-widgets-IPaymentTextSettings-payment_text td.cell-1,
 #form-widgets-IPaymentTextSettings-payment_text td.cell-2,
 #form-widgets-IPaymentTextSettings-payment_text td.cell-3 {
     width: 30%;
 }
+
 #form-widgets-IPaymentTextSettings-payment_text select {
     width: 30%;
 }
@@ -131,10 +142,12 @@
 #form-widgets-IShopShippingSettings-available_shipping_methods {
     width: 100%;
 }
+
 #form-widgets-IShopShippingSettings-available_shipping_methods td:nth-child(1),
 #form-widgets-IShopShippingSettings-available_shipping_methods td:nth-child(3) {
     width: 40%;
 }
+
 #form-widgets-IShopShippingSettings-available_shipping_methods-from,
 #form-widgets-IShopShippingSettings-available_shipping_methods-to {
     width: 100%;
