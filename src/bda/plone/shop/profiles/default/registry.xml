@@ -13,7 +13,7 @@
   <!-- register settings from interfaces.
        Default values are set in the schema in order to keep
        customized settings after an upgrade step -->
-  <records interface="bda.plone.shop.interfaces.IShopSettings" prefix="plone.shop" />
+  <records interface="bda.plone.shop.interfaces.IShopSettings" />
 
   <records interface="bda.plone.shop.interfaces.IShopCartSettings" />
 
