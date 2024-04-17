@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0b1 (unreleased)
+2.0b1 (2024-04-17)
 ------------------
 
 - Introduce ``bda.plone.shop.cartdata.CHECKOUT_INTERMEDIATE_VIEW``.
