@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<layers>
+  <layer
+    name="bda.plone.shop"
+    interface="bda.plone.shop.interfaces.IShopExtensionLayer"
+    remove="true" />
+</layers>

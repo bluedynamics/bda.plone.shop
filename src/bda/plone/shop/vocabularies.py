@@ -44,7 +44,7 @@ def QuantityUnitVocabulary(context):
     if not settings:
         return
     terms = []
-    for quantity_unit in settings.quantity_units:
+    for quantity_unit in (settings.quantity_units or []):
         terms.append(
             SimpleTerm(
                 value=quantity_unit,
@@ -157,7 +157,7 @@ def AvailableShippingMethodsVocabulary(context):
 def ShippingMethodsVocabulary(context):
     try:
         items = Shippings(context).vocab
-    except KeyError:
+    except (KeyError, TypeError):
         # happens GS profile application if registry entries not present yet
         return AvailableShippingMethodsVocabulary(context)
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
@@ -166,7 +166,10 @@ def ShippingMethodsVocabulary(context):
 @provider(IVocabularyFactory)
 def AvailablePaymentMethodsVocabulary(context):
     payments = Payments(context).payments
-    items = [(payment.pid, payment.label) for payment in payments]
+    try:
+        items = [(payment.pid, payment.label) for payment in payments]
+    except KeyError:
+        return SimpleVocabulary([])
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 
@@ -174,7 +177,7 @@ def AvailablePaymentMethodsVocabulary(context):
 def PaymentMethodsVocabulary(context):
     try:
         items = Payments(context).vocab
-    except KeyError:
+    except (KeyError, TypeError):
         # happens GS profile application if registry entries not present yet
         return AvailablePaymentMethodsVocabulary(context)
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])

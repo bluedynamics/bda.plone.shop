@@ -12,8 +12,16 @@
     description="bda.plone.shop"
     provides="Products.GenericSetup.interfaces.EXTENSION" />
 
-  <!-- Hide profiles/products from Quick Installer -->
+  <genericsetup:registerProfile
+    name="uninstall"
+    title="bda.plone.shop (uninstall)"
+    description="Uninstalls the bda.plone.shop add-on."
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    directory="profiles/uninstall"
+    post_handler=".setuphandlers.uninstall"
+    />
+
+  <!-- Hide profiles/products from addon manager -->
   <utility factory=".setuphandlers.HiddenProfiles" name="bda.plone.shop" />
-  <utility factory=".setuphandlers.HiddenProducts" name="bda.plone.shop" />
 
 </configure>

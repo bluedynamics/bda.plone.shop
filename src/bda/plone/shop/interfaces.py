@@ -209,7 +209,6 @@ class IShopArticleSettings(model.Schema):
         ),
         description=_("help_default_quantity_unit", default="default measurement"),
         vocabulary="bda.plone.shop.vocabularies.QuantityUnitVocabulary",
-        default="quantity",
     )
 
     default_item_net = schema.Decimal(

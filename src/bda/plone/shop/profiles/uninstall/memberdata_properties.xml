@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<object name="portal_memberdata" meta_type="Plone Memberdata Tool">
+
+ <!-- 5.2 complains that it shouldn't be remove -->
+ <!-- <property name="fullname" remove="True"></property> -->
+ <!-- <property name="location" remove="True"></property> -->
+
+ <property name="gender" type="string" remove="true"></property>
+ <property name="firstname" type="string" remove="true"></property>
+ <property name="lastname" type="string" remove="true"></property>
+ <property name="phone" type="string" remove="true"></property>
+ <property name="company" type="string" remove="true"></property>
+
+ <property name="street" type="string" remove="true"></property>
+ <property name="zip" type="string" remove="true"></property>
+ <property name="city" type="string" remove="true"></property>
+ <property name="country" type="string" remove="true"></property>
+
+ <property name="delivery_alternative_delivery" type="boolean" remove="true"></property>
+ <property name="delivery_firstname" type="string" remove="true"></property>
+ <property name="delivery_lastname" type="string" remove="true"></property>
+ <property name="delivery_company" type="string" remove="true"></property>
+ <property name="delivery_street" type="string" remove="true"></property>
+ <property name="delivery_zip" type="string" remove="true"></property>
+ <property name="delivery_city" type="string" remove="true"></property>
+ <property name="delivery_country" type="string" remove="true"></property>
+
+</object>
