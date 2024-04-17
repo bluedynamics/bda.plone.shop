@@ -190,7 +190,7 @@
     class=".toolbar.ShopMenu" />
 
   <adapter
-    for="* *"
+    for="* ..interfaces.IShopExtensionLayer"
     name="shop_toolbar_menu_item"
     factory=".toolbar.ShopSubMenuItem"
     provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
