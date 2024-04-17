@@ -4,8 +4,8 @@ from bda.plone.shop.user.properties import UserPropertiesPASPlugin
 from plone import api
 from plone.base.interfaces import INonInstallable
 from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
-from zope.interface import implementer
 from zope.globalrequest import getRequest
+from zope.interface import implementer
 
 import logging
 
