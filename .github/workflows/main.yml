@@ -36,3 +36,7 @@ jobs:
       - name: Run Lint
         run: |
           make check
+
+      - name: Run Tests
+        run: |
+          make test
