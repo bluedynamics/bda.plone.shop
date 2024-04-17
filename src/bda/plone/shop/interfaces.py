@@ -197,6 +197,7 @@ class IShopArticleSettings(model.Schema):
             default="Quantity units (what the buyable items are measured in)",
         ),
         required=False,
+        default=["quantity"],
         missing_value=set(["quantity"]),
         value_type=schema.Choice(
             vocabulary="bda.plone.shop.vocabularies.AvailableQuantityUnitVocabulary"
@@ -209,6 +210,7 @@ class IShopArticleSettings(model.Schema):
         ),
         description=_("help_default_quantity_unit", default="default measurement"),
         vocabulary="bda.plone.shop.vocabularies.QuantityUnitVocabulary",
+        default="quantity",
     )
 
     default_item_net = schema.Decimal(
@@ -307,6 +309,7 @@ class IShopShippingSettings(model.Schema):
             default="Available shipping methods in checkout",
         ),
         required=True,
+        default=["default_shipping", ],
         min_length=1,
         value_type=schema.Choice(
             vocabulary="bda.plone.shop.vocabularies."
@@ -394,7 +397,7 @@ class IShopTaxSettings(model.Schema):
         title=_("label_vat", default="VAT in %"),
         description=_("help_vat", default="Specify all allowed vat settings"),
         required=False,
-        missing_value=set([0]),
+        default=["0", "20"],
         value_type=schema.Choice(
             vocabulary="bda.plone.shop.vocabularies.AvailableVatVocabulary"
         ),
@@ -646,6 +649,7 @@ class IPaymentTextSettings(model.Schema):
             default="Available payment methods in checkout",
         ),
         required=True,
+        default=["invoice", ],
         min_length=1,
         value_type=schema.Choice(
             vocabulary="bda.plone.shop.vocabularies."

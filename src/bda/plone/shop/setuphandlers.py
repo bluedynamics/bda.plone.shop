@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 from bda.plone.shop.user.properties import PAS_ID
 from bda.plone.shop.user.properties import UserPropertiesPASPlugin
+from bda.plone.shop.vocabularies import AVAILABLE_VAT_VALUES
 from plone import api
 from plone.base.interfaces import INonInstallable
 from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
@@ -68,6 +69,20 @@ def install(context):
     """
     pas = api.portal.get_tool(name="acl_users")
     logger.info(add_plugin(pas))
+
+    # add sane defaults on installation
+    api.portal.set_registry_record(
+        "bda.plone.shop.interfaces.IShopTaxSettings.vat",
+        AVAILABLE_VAT_VALUES.keys(),
+    )
+    api.portal.set_registry_record(
+        "bda.plone.shop.interfaces.IShopSettings.admin_email",
+        api.portal.get_registry_record("plone.email_from_address", default="")
+    )
+    api.portal.set_registry_record(
+        "bda.plone.shop.interfaces.IShopSettings.admin_name",
+        api.portal.get_registry_record("plone.email_from_name", default="")
+    )
 
 
 def uninstall(context):

@@ -176,7 +176,8 @@
     name="shop_controlpanel"
     for="zope.component.interfaces.ISite"
     class=".controlpanel.ShopSettingsControlPanel"
-    permission="cmf.ManagePortal" />
+    permission="cmf.ManagePortal"
+    layer="..interfaces.IShopExtensionLayer" />
 
   <!-- generic resources -->
   <browser:resourceDirectory
