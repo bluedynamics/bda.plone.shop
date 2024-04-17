@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.0.dev0 (unreleased)
----------------------
+2.0b1 (unreleased)
+------------------
 
 - Introduce ``bda.plone.shop.cartdata.CHECKOUT_INTERMEDIATE_VIEW``.
   [rnix]
