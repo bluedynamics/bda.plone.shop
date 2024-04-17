@@ -105,4 +105,11 @@ class HiddenProfiles(object):
 
     def getNonInstallableProducts(self):
         """Hide the upgrades package from site-creation and quickinstaller."""
-        return ["bda.plone.shop.upgrades"]
+        return [
+            "bda.plone.cart",
+            "bda.plone.checkout",
+            "bda.plone.discount",
+            "bda.plone.orders",
+            "bda.plone.payment",
+            "bda.plone.shop.upgrades",
+        ]
