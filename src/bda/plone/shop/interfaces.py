@@ -79,18 +79,21 @@ class IShopSettings(model.Schema):
     default_item_display_gross = schema.Bool(
         title=_("label_default_item_display_gross", default="Display Gross by default"),
         required=False,
+        default=False,
     )
 
     currency = schema.Choice(
         title=_("label_currency", default="Currency"),
         description=_("help_currency", default="Choose the default currency"),
         vocabulary="bda.plone.shop.vocabularies.AvailableCurrenciesVocabulary",
+        default="EUR",
     )
 
     show_currency = schema.Choice(
         title=_("label_show_currency", default="Show the currency for items"),
         description=_("help_show_currency", default=""),
         vocabulary="bda.plone.shop.vocabularies.CurrencyDisplayOptionsVocabulary",
+        default="symbol",
     )
 
 
@@ -128,6 +131,7 @@ class IShopCartSettings(model.Schema):
             "article flag set",
         ),
         required=False,
+        default=5,
     )
 
     disable_max_article = schema.Bool(
@@ -205,11 +209,13 @@ class IShopArticleSettings(model.Schema):
         ),
         description=_("help_default_quantity_unit", default="default measurement"),
         vocabulary="bda.plone.shop.vocabularies.QuantityUnitVocabulary",
+        default="quantity",
     )
 
     default_item_net = schema.Decimal(
         title=_("label_default_item_net", default="Default Item net price"),
         required=False,
+        default=Decimal("10.0"),
     )
 
     default_item_comment_enabled = schema.Bool(
@@ -217,6 +223,7 @@ class IShopArticleSettings(model.Schema):
             "label_default_item_comment_enabled", default="Comment enabled by default"
         ),
         required=False,
+        default=True,
     )
 
     default_item_comment_required = schema.Bool(
@@ -225,6 +232,7 @@ class IShopArticleSettings(model.Schema):
             default="Comment required by default",
         ),
         required=False,
+        default=False,
     )
 
     default_item_quantity_unit_float = schema.Bool(
@@ -233,6 +241,7 @@ class IShopArticleSettings(model.Schema):
             default="Quantity as float as default",
         ),
         required=False,
+        default=False,
     )
 
     default_item_cart_count_limit = schema.Decimal(
@@ -287,6 +296,7 @@ class IShopShippingSettings(model.Schema):
             "i.e. downloads are not",
         ),
         required=False,
+        default=True,
     )
 
     available_shipping_methods = schema.List(
@@ -311,6 +321,7 @@ class IShopShippingSettings(model.Schema):
             "help_shipping_method", default="Default shipping method in checkout"
         ),
         vocabulary="bda.plone.shop.vocabularies.ShippingMethodsVocabulary",
+        default="default_shipping",
     )
 
     shipping_vat = schema.Choice(
@@ -319,6 +330,7 @@ class IShopShippingSettings(model.Schema):
             "help_shipping_vat", default="VAT used to calculate shipping costs"
         ),
         vocabulary="bda.plone.shop.vocabularies.VatVocabulary",
+        default="20",
     )
 
     # default shipping related settings
@@ -348,6 +360,7 @@ class IShopShippingSettings(model.Schema):
             "calculated from net price instead of gross.",
         ),
         required=False,
+        default=True,
     )
 
     flat_shipping_cost = schema.Decimal(
@@ -392,6 +405,7 @@ class IShopTaxSettings(model.Schema):
         title=_("label_default_vat", default="Default Value added tax name"),
         description=_("help_default_vat", default="Specify default vat name"),
         vocabulary="bda.plone.shop.vocabularies.VatVocabulary",
+        default="20",
     )
 
 
@@ -551,6 +565,7 @@ class IInvoiceSettings(model.Schema):
         description=_("help_invoice_country", default="Country of invoice sender"),
         required=False,
         vocabulary="bda.plone.shop.vocabularies.CountryVocabulary",
+        default="040",
     )
 
     default_invoice_phone = schema.TextLine(
@@ -645,6 +660,7 @@ class IPaymentTextSettings(model.Schema):
             "help_payment_method", default="Default payment method in checkout"
         ),
         vocabulary="bda.plone.shop.vocabularies.PaymentMethodsVocabulary",
+        default="invoice",
     )
 
     skip_payment_if_order_contains_reservations = schema.Bool(
@@ -670,4 +686,5 @@ class IPaymentTextSettings(model.Schema):
             "label_cash_on_delivery_costs", default="Cash on delivery costs in gross"
         ),
         required=False,
+        default=Decimal("9.9"),
     )
