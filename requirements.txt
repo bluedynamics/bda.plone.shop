@@ -1,0 +1,5 @@
+-r https://dist.plone.org/release/6.0-latest/requirements.txt
+-c constraints.txt
+
+# WSGI: A system for configuration of WSGI web components in declarative .ini format.
+Paste

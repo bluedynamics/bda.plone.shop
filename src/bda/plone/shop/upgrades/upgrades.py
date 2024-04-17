@@ -6,7 +6,9 @@ from plone.api import env
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
+
 import logging
+
 
 HAS_PLONE5 = parse_version(env.plone_version()) >= parse_version("5.0b2")
 logger = logging.getLogger("bda.plone.shop UPGRADE")
@@ -31,7 +33,7 @@ def install_userproperties_pas_plugin(context):
 
 
 def remove_old_resources(context):
-    """ Remove old resources for Plone 5"""
+    """Remove old resources for Plone 5"""
 
     portal_css = getToolByName(context, "portal_css", None)
     if portal_css:

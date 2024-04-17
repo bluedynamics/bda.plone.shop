@@ -46,8 +46,8 @@ class ContextProxy(object):
 
 class ShopSettingsEditForm(controlpanel.RegistryEditForm):
     schema = IShopSettings
-    label = _(u"Shop settings")
-    description = _(u"")
+    label = _("Shop settings")
+    description = _("")
 
     def getContent(self):
         interfaces = [self.schema]

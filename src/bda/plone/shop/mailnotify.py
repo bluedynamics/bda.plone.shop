@@ -25,16 +25,16 @@ class NotificationSettings(object):
 
     @property
     def admin_email(self):
-        props = api.portal.get_tool("portal_properties")
-        return get_shop_settings().admin_email or getattr(
-            props.site_properties, "email_from_address", ""
+        return (
+            get_shop_settings().admin_email
+            or api.portal.get_registry_record("plone.email_from_address")
         )
 
     @property
     def admin_name(self):
-        props = api.portal.get_tool("portal_properties")
-        return get_shop_settings().admin_name or getattr(
-            props.site_properties, "email_from_name", ""
+        return (
+            get_shop_settings().admin_name
+            or api.portal.get_registry_record("plone.email_from_name")
         )
 
 
@@ -86,9 +86,10 @@ class SiteRegistryNotificationText(object):
 
     def _lookup_text(self, field):
         settings = get_shop_notification_settings()
-        enum = getattr(settings, field)
-        portal_state = self.context.restrictedTraverse("@@plone_portal_state")
-        lang = portal_state.language()
+        enum = getattr(settings, field, None)
+        if enum is None:
+            return
+        lang = api.portal.get_current_language()
         for entry in enum:
             if entry["lang"] == lang:
                 return entry["text"]
@@ -140,9 +141,8 @@ class RegistryPaymentText(object):
 
     def payment_text(self, payment):
         settings = get_shop_payment_settings()
-        portal_state = self.context.restrictedTraverse("@@plone_portal_state")
-        lang = portal_state.language()
-        for entry in settings.payment_text:
+        lang = api.portal.get_current_language()
+        for entry in (settings.payment_text or []):
             if entry["lang"] == lang and entry["payment"] == payment:
                 return entry["text"]
-        return u""
+        return ""

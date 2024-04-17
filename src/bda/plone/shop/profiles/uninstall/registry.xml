@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<registry>
+
+  <records prefix="plone.bundles/bda-plone-shop" interface='Products.CMFPlone.interfaces.IBundleRegistry' remove="true" />
+  <records interface="bda.plone.shop.interfaces.IShopSettings" prefix="plone.shop" remove="true" />
+  <records interface="bda.plone.shop.interfaces.IShopCartSettings" remove="true" />
+  <records interface="bda.plone.shop.interfaces.IShopArticleSettings" remove="true" />
+  <records interface="bda.plone.shop.interfaces.IShopShippingSettings" remove="true" />
+  <records interface="bda.plone.shop.interfaces.IShopTaxSettings" remove="true" />
+  <records interface="bda.plone.shop.interfaces.INotificationTextSettings" remove="true" />
+  <records interface="bda.plone.shop.interfaces.IInvoiceSettings" remove="true" />
+  <records interface="bda.plone.shop.interfaces.IPaymentTextSettings" remove="true" />
+
+</registry>

@@ -176,40 +176,13 @@
     name="shop_controlpanel"
     for="zope.component.interfaces.ISite"
     class=".controlpanel.ShopSettingsControlPanel"
-    permission="cmf.ManagePortal" />
+    permission="cmf.ManagePortal"
+    layer="..interfaces.IShopExtensionLayer" />
 
   <!-- generic resources -->
-  <browser:resource
-    name="bda.plone.shop.js"
-    file="shop.js"
-    layer="..interfaces.IShopExtensionLayer" />
-
-  <browser:resource
-    name="shop_icon.png"
-    file="shop_icon.png"
-    layer="..interfaces.IShopExtensionLayer" />
-
-  <!-- plone 4 resources -->
-  <browser:resource
-    zcml:condition="not-have plone-5"
-    name="bda.plone.shop.css"
-    file="shop_p4.css"
-    layer="..interfaces.IShopExtensionLayer" />
-
-  <!-- plone 5 resources -->
-  <browser:resource
-    name="bda.plone.shop.less"
-    file="shop.less"
-    layer="..interfaces.IShopExtensionLayer" />
-
-  <browser:resource
-    name="bda.plone.shop.css"
-    file="shop.css"
-    layer="..interfaces.IShopExtensionLayer" />
-
-  <browser:resource
-    name="bda.plone.shop.css.map"
-    file="shop.css.map"
+  <browser:resourceDirectory
+    name="bda.plone.shop"
+    directory="static"
     layer="..interfaces.IShopExtensionLayer" />
 
   <browser:menu
@@ -218,7 +191,7 @@
     class=".toolbar.ShopMenu" />
 
   <adapter
-    for="* *"
+    for="* ..interfaces.IShopExtensionLayer"
     name="shop_toolbar_menu_item"
     factory=".toolbar.ShopSubMenuItem"
     provides="plone.app.contentmenu.interfaces.IContentMenuItem" />

@@ -1,10 +1,11 @@
 # -*- coding:utf-8 -*-
 from bda.plone.shop.user.properties import PAS_ID
 from bda.plone.shop.user.properties import UserPropertiesPASPlugin
+from bda.plone.shop.vocabularies import AVAILABLE_VAT_VALUES
 from plone import api
-from Products.CMFPlone import interfaces as Plone
-from Products.CMFQuickInstallerTool import interfaces as QuickInstaller
+from plone.base.interfaces import INonInstallable
 from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
+from zope.globalrequest import getRequest
 from zope.interface import implementer
 
 import logging
@@ -69,26 +70,54 @@ def install(context):
     pas = api.portal.get_tool(name="acl_users")
     logger.info(add_plugin(pas))
 
+    # add sane defaults on installation
+    api.portal.set_registry_record(
+        "bda.plone.shop.interfaces.IShopTaxSettings.vat",
+        AVAILABLE_VAT_VALUES.keys(),
+    )
+    api.portal.set_registry_record(
+        "bda.plone.shop.interfaces.IShopSettings.admin_email",
+        api.portal.get_registry_record("plone.email_from_address", default="")
+    )
+    api.portal.set_registry_record(
+        "bda.plone.shop.interfaces.IShopSettings.admin_name",
+        api.portal.get_registry_record("plone.email_from_name", default="")
+    )
+
 
 def uninstall(context):
     """
-    Remove the PAS plugin.
+    Remove dependencies
     """
+    installer = api.content.get_view(
+        name="installer",
+        context=api.portal.get(),
+        request=getRequest(),
+    )
+
+    for dep in [
+        "bda.plone.ajax",
+        "bda.plone.cart",
+        "bda.plone.checkout",
+        "bda.plone.discount",
+        "bda.plone.orders",
+        "bda.plone.payment",
+        "collective.js.datatables",
+        "souper.plone",
+        "yafowil.plone",
+    ]:
+        installer.uninstall_product(dep)
+
     pas = api.portal.get_tool(name="acl_users")
     logger.info(remove_plugin(pas))
 
 
-@implementer(Plone.INonInstallable)
+@implementer(INonInstallable)
 class HiddenProfiles(object):
     def getNonInstallableProfiles(self):
-        """Do not show on Plone's list of installable profiles.
-        """
-        return []
+        """Hide uninstall profile from site-creation and quickinstaller."""
+        return ["bda.plone.shop:uninstall"]
 
-
-@implementer(QuickInstaller.INonInstallable)
-class HiddenProducts(object):
     def getNonInstallableProducts(self):
-        """Do not show on QuickInstaller's list of installable products.
-        """
-        return []
+        """Hide the upgrades package from site-creation and quickinstaller."""
+        return ["bda.plone.shop.upgrades"]

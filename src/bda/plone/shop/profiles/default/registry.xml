@@ -5,110 +5,28 @@
            interface='Products.CMFPlone.interfaces.IBundleRegistry'>
     <value key="enabled">True</value>
     <value key="compile">False</value>
-    <value key="jscompilation">++resource++bda.plone.shop.js</value>
-    <value key="csscompilation">++resource++bda.plone.shop.css</value>
+    <value key="jscompilation">++resource++bda.plone.shop/shop.js</value>
+    <value key="csscompilation">++resource++bda.plone.shop/shop.min.css</value>
     <value key="depends">bdajax</value>
   </records>
 
-  <records interface="bda.plone.shop.interfaces.IShopSettings">
-    <value key="admin_email" purge="false"></value>
-    <value key="admin_name" purge="false"></value>
-    <value key="add_customer_role_to_new_users" purge="false">True</value>
-    <value key="currency" purge="false">EUR</value>
-    <value key="show_currency" purge="false">symbol</value>
-    <value key="default_item_display_gross" purge="false">False</value>
-  </records>
+  <!-- register settings from interfaces.
+       Default values are set in the schema in order to keep
+       customized settings after an upgrade step -->
+  <records interface="bda.plone.shop.interfaces.IShopSettings" />
 
-  <records interface="bda.plone.shop.interfaces.IShopCartSettings">
-    <value key="hide_cart_if_empty" purge="false">False</value>
-    <value key="max_artice_count" purge="false">5</value>
-    <value key="disable_max_article" purge="false">True</value>
-    <value key="summary_total_only" purge="false">False</value>
-    <value key="show_checkout" purge="false">False</value>
-    <value key="show_to_cart" purge="false">True</value>
-  </records>
+  <records interface="bda.plone.shop.interfaces.IShopCartSettings" />
 
-  <records interface="bda.plone.shop.interfaces.IShopArticleSettings">
-    <value key="quantity_units" purge="false">
-      <element>quantity</element>
-      <element>meter</element>
-      <element>kilo</element>
-      <element>liter</element>
-    </value>
-    <value key="default_item_quantity_unit" purge="false">quantity</value>
-    <value key="default_item_net" purge="false">10</value>
-    <value key="default_item_comment_enabled" purge="false">True</value>
-    <value key="default_item_comment_required" purge="false">False</value>
-    <value key="default_item_quantity_unit_float" purge="false">False</value>
-    <value key="default_item_cart_count_limit" purge="false"></value>
-    <value key="default_item_stock_warning_threshold" purge="false"></value>
-  </records>
+  <records interface="bda.plone.shop.interfaces.IShopArticleSettings" />
 
-  <records interface="bda.plone.shop.interfaces.IShopShippingSettings">
-    <value key="default_shipping_item_shippable" purge="false">True</value>
-    <value key="available_shipping_methods" purge="false">
-      <element>default_shipping</element>
-      <element>cash_and_carry</element>
-    </value>
-    <value key="shipping_method" purge="false">default_shipping</value>
-    <value key="shipping_vat" purge="false">20</value>
-    <value key="shipping_limit_from_gross" purge="false">True</value>
-    <value key="free_shipping_limit" purge="false">200.0</value>
-    <value key="flat_shipping_cost" purge="false">10.0</value>
-    <value key="item_shipping_cost" purge="false">0.0</value>
-  </records>
+  <records interface="bda.plone.shop.interfaces.IShopShippingSettings" />
 
-  <records interface="bda.plone.shop.interfaces.IShopTaxSettings">
-    <value key="vat" purge="false">
-      <element>0</element>
-      <element>2.5</element>
-      <element>3.8</element>
-      <element>8</element>
-      <element>7.7</element>
-      <element>10</element>
-      <element>15</element>
-      <element>20</element>
-      <element>25</element>
-    </value>
-    <value key="default_item_vat" purge="false">20</value>
-  </records>
+  <records interface="bda.plone.shop.interfaces.IShopTaxSettings" />
 
-  <records interface="bda.plone.shop.interfaces.INotificationTextSettings">
-    <value key="global_order_text" purge="false"></value>
-    <value key="global_overbook_text" purge="false"></value>
-    <value key="order_text" purge="false"></value>
-    <value key="overbook_text" purge="false"></value>
-  </records>
+  <records interface="bda.plone.shop.interfaces.INotificationTextSettings" />
 
-  <records interface="bda.plone.shop.interfaces.IInvoiceSettings">
-    <value key="default_invoice_company" purge="false"></value>
-    <value key="default_invoice_companyadd" purge="false"></value>
-    <value key="default_invoice_firstname" purge="false"></value>
-    <value key="default_invoice_lastname" purge="false"></value>
-    <value key="default_invoice_street" purge="false"></value>
-    <value key="default_invoice_zip" purge="false"></value>
-    <value key="default_invoice_city" purge="false"></value>
-    <value key="default_invoice_country" purge="false"></value>
-    <value key="default_invoice_phone" purge="false"></value>
-    <value key="default_invoice_email" purge="false"></value>
-    <value key="default_invoice_web" purge="false"></value>
-    <value key="default_invoice_iban" purge="false"></value>
-    <value key="default_invoice_bic" purge="false"></value>
-  </records>
+  <records interface="bda.plone.shop.interfaces.IInvoiceSettings" />
 
-  <records interface="bda.plone.shop.interfaces.IPaymentTextSettings">
-    <value key="available_payment_methods" purge="false">
-      <element>cash</element>
-      <element>cash_in_advance</element>
-      <element>cash_on_delivery</element>
-      <element>debit_order</element>
-      <element>invoice</element>
-      <element>six_payment</element>
-    </value>
-    <value key="payment_method" purge="false">invoice</value>
-    <value key="skip_payment_if_order_contains_reservations" purge="false">False</value>
-    <value key="payment_text" purge="false"></value>
-    <value key="cash_on_delivery_costs" purge="false">9.9</value>
-  </records>
+  <records interface="bda.plone.shop.interfaces.IPaymentTextSettings" />
 
 </registry>

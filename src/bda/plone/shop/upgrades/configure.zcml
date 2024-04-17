@@ -92,10 +92,43 @@
     profile="bda.plone.shop:default">
 
     <genericsetup:upgradeDepends
-      title="GS Profile: Add invoice settings"
+      title="GS Profile: Update invoice settings"
       import_profile="bda.plone.shop.upgrades:8_to_9"
       run_deps="False" />
 
   </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
+    source="9"
+    destination="10"
+    profile="bda.plone.shop:default">
+
+    <genericsetup:upgradeDepends
+      title="GS Profile: Update shipping and item defaults from float to decimal. Warning: Related settings will be reset!"
+      import_profile="bda.plone.shop.upgrades:9_to_10"
+      run_deps="False" />
+
+  </genericsetup:upgradeSteps>
+
+
+  <genericsetup:upgradeSteps
+    source="10"
+    destination="11"
+    profile="bda.plone.shop:default">
+
+    <genericsetup:upgradeDepends
+      title="GS Profile: Use BooleanIndex for item_buyable and add metadata"
+      import_profile="bda.plone.shop.upgrades:10_to_11"
+      run_deps="False" />
+
+  </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeDepends
+    title="Update registry"
+    source="11"
+    destination="2000"
+    profile="bda.plone.shop:default"
+    import_steps="plone.app.registry"
+    run_deps="False" />
 
 </configure>

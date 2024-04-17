@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+from bda.plone.cart.shipping import Shippings
 from bda.plone.checkout.vocabularies import country_vocabulary
 from bda.plone.checkout.vocabularies import gender_vocabulary
 from bda.plone.payment import Payments
-from bda.plone.cart.shipping import Shippings
 from bda.plone.shop import message_factory as _
 from bda.plone.shop.utils import get_shop_article_settings
 from bda.plone.shop.utils import get_shop_tax_settings
@@ -44,11 +44,11 @@ def QuantityUnitVocabulary(context):
     if not settings:
         return
     terms = []
-    for quantity_unit in settings.quantity_units:
+    for quantity_unit in (settings.quantity_units or []):
         terms.append(
             SimpleTerm(
                 value=quantity_unit,
-                title=AVAILABLE_QUANTITY_UNITS.get(quantity_unit, quantity_unit)
+                title=AVAILABLE_QUANTITY_UNITS.get(quantity_unit, quantity_unit),
             )
         )
     return SimpleVocabulary(terms)
@@ -58,16 +58,16 @@ def QuantityUnitVocabulary(context):
 # control panel. If you need to provide more vat values add it here or
 # patch this vocab
 AVAILABLE_VAT_VALUES = {
-    "0": "0%",
-    "2.5": "2,5%",
-    "3.8": "3,8%",
-    "7.7": "7.7%",
-    "8": "8%",
-    "10": "10%",
-    "13": "13%",
-    "15": "15%",
-    "20": "20%",
-    "25": "25%",
+    "0": "0 %",
+    "2.5": "2,5 %",
+    "3.8": "3,8 %",
+    "7.7": "7.7 %",
+    "8": "8 %",
+    "10": "10 %",
+    "13": "13 %",
+    "15": "15 %",
+    "20": "20 %",
+    "25": "25 %",
 }
 
 
@@ -75,7 +75,7 @@ AVAILABLE_VAT_VALUES = {
 def AvailableVatVocabulary(context):
     # vocab is used in shop settings control panel
     items = list(AVAILABLE_VAT_VALUES.items())
-    items = sorted(items, key=lambda x: x[0])
+    items.sort(key=lambda x: x[0])
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 
@@ -140,8 +140,7 @@ def GenderVocabulary(context):
 
 @provider(IVocabularyFactory)
 def CountryVocabulary(context):
-    """VocabularyFactory for countries from ISO3166 source.
-    """
+    """VocabularyFactory for countries from ISO3166 source."""
     return SimpleVocabulary(
         [SimpleTerm(value=k, title=v) for k, v in country_vocabulary()]
     )
@@ -158,7 +157,7 @@ def AvailableShippingMethodsVocabulary(context):
 def ShippingMethodsVocabulary(context):
     try:
         items = Shippings(context).vocab
-    except KeyError:
+    except (KeyError, TypeError):
         # happens GS profile application if registry entries not present yet
         return AvailableShippingMethodsVocabulary(context)
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
@@ -167,7 +166,10 @@ def ShippingMethodsVocabulary(context):
 @provider(IVocabularyFactory)
 def AvailablePaymentMethodsVocabulary(context):
     payments = Payments(context).payments
-    items = [(payment.pid, payment.label) for payment in payments]
+    try:
+        items = [(payment.pid, payment.label) for payment in payments]
+    except KeyError:
+        return SimpleVocabulary([])
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
 
 
@@ -175,7 +177,7 @@ def AvailablePaymentMethodsVocabulary(context):
 def PaymentMethodsVocabulary(context):
     try:
         items = Payments(context).vocab
-    except KeyError:
+    except (KeyError, TypeError):
         # happens GS profile application if registry entries not present yet
         return AvailablePaymentMethodsVocabulary(context)
     return SimpleVocabulary([SimpleTerm(value=k, title=v) for k, v in items])
