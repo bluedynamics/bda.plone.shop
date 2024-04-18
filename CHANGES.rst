@@ -1,5 +1,5 @@
-Changelog
-=========
+Changes
+=======
 
 2.0b2 (unreleased)
 ------------------
@@ -72,8 +72,8 @@ Changelog
   [petschki]
 
 
-1.0a1 (unreleased)
-------------------
+1.0a1
+-----
 
 - Replace unittest2 with unittest
   [llisa123]

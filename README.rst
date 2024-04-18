@@ -1,4 +1,3 @@
-==============
 bda.plone.shop
 ==============
 
@@ -12,14 +11,14 @@ E-commerce solution for `Plone <http://plone.com>`_
 
 
 Installation
-============
+------------
 
 Depend your instance to ``bda.plone.shop`` and install it as addon in plone
 control panel.
 
 
 Development and testing
-=======================
+-----------------------
 
 Checkout ``bda.plone.shop`` from
 ``git://github.com/bluedynamics/bda.plone.shop.git`` and run::
@@ -31,7 +30,7 @@ running tests.
 
 
 Running tests
--------------
+~~~~~~~~~~~~~
 
 If you have run the buildout, you can run all tests like so::
 
@@ -59,7 +58,7 @@ https://docs.plone.org/external/plone.app.robotframework/docs/source/happy.html
 
 
 Enable Content to be buyable
-============================
+----------------------------
 
 Content which represent buyable items must implement
 ``bda.plone.orders.interfaces.IBuyable``.
@@ -81,8 +80,8 @@ For Plone 5 'Summary View' is overriden for folders and collections to show your
 buyables with controls to add them into the cart.
 
 
-Dexterity
----------
+Dexterity Behaviors
+~~~~~~~~~~~~~~~~~~~
 
 The Dexterity related implementation consists of Behaviors for each interface.
 These are (shortname in brackets):
@@ -110,7 +109,7 @@ reached.
 
 
 Cart item preview images
-========================
+------------------------
 
 The cart can render preview images for the cart items in case when the context
 has a field named ``image``
@@ -140,7 +139,7 @@ Register your adapter via ZCML::
 
 
 Permissions
-===========
+-----------
 
 In general, custom shop deployments are likely to configure the permission and
 role settings according to their use cases.
@@ -157,7 +156,7 @@ usually makes no sense to give a customer settings like a preferred editor.
 
 
 bda.plone.shop.ViewBuyableInfo
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This permission controls whether a user can view basic buyable information.
 These are item availability and item price. By default, this permission is set
@@ -180,7 +179,7 @@ integration package.
 
 
 bda.plone.shop.ModifyCart
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This permission controls whether a user can actually add or update this item to
 shopping cart. By default, this permission is set for roles:
@@ -196,7 +195,7 @@ features like viewing own orders are bound to ``Customer`` role.
 
 
 Customizing the shop
-====================
+--------------------
 
 We know that every web-shop has different needs. This is why ``bda.plone.shop``
 has been designed with maximum flexibility in mind.
@@ -239,7 +238,7 @@ respectively.
 
 
 Troubleshooting
-===============
+---------------
 
 If you're missing widgets in the ``@@item_discount`` form (eg. the Autocomplete
 for users or groups), you might want to reinstall (or re-run the GS import
@@ -257,7 +256,7 @@ recent versions of ``yafowil`` >= 2.1 and yafowil related packages.
 
 
 Create translations
-===================
+-------------------
 
 ::
 
@@ -266,10 +265,10 @@ Create translations
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 1.0a1
------
+~~~~~
 
 * ``bda.plone.shop: Buy Items`` permission has been renamed to
   ``bda.plone.shop: Modify Cart``. If you have custom ``rolemap.xml`` in your
@@ -278,7 +277,7 @@ Backward incompatible changes
 
 
 Upgrade to Plone 5
-==================
+------------------
 
 If you upgrade to Plone 5, you have to run the upgrade step
 ``Remove old JS and CSS resources for Plone 5`` manually to remove the old
@@ -286,13 +285,14 @@ registration of resources.
 
 
 Contributors
-============
+------------
 
 We'd be happy to see forks and pull-requests to improve this program.
 Professional support is offered by the maintainers and some of the authors.
 
+
 Maintainers
------------
+~~~~~~~~~~~
 
 - Robert Niederreiter
 - Peter Holzer
@@ -302,9 +302,9 @@ Contact: `dev@bluedynamics.com <mailto:dev@bluedynamics.com>`_
 
 
 Authors
--------
+~~~~~~~
 
-- Robert Niederreiter (initial Author)
+- Robert Niederreiter (Author)
 - Peter Holzer
 - Peter Mathis
 - Harald Frießnegger
@@ -313,4 +313,3 @@ Authors
 - Jure Cerjak
 - Benjamin Stefaner
 - Jens Klein
-
