@@ -1,3 +1,1 @@
--c https://dist.plone.org/release/6.0-latest/constraints.txt
-
-yafowil.plone==5.0.0a2
+-c https://dist.plone.org/release/6.1-latest/constraints.txt

@@ -4,6 +4,7 @@
 .DS_Store
 .mxmake/
 /*-mxdev.txt
+/.mxdev_cache/
 /.project
 /.pydevproject
 /.settings/

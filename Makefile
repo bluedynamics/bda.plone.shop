@@ -41,30 +41,41 @@ INCLUDE_MAKEFILE?=include.mk
 # No default value.
 EXTRA_PATH?=
 
+# Path to Python project relative to Makefile (repository root).
+# Leave empty if Python project is in the same directory as Makefile.
+# For monorepo setups, set to subdirectory name (e.g., `backend`).
+# Future-proofed for multi-language monorepos (e.g., PROJECT_PATH_NODEJS).
+# No default value.
+PROJECT_PATH_PYTHON?=
+
 ## core.mxenv
 
 # Primary Python interpreter to use. It is used to create the
 # virtual environment if `VENV_ENABLED` and `VENV_CREATE` are set to `true`.
+# If global `uv` is used, this value is passed as `--python VALUE` to the venv creation.
+# uv then downloads the Python interpreter if it is not available.
+# for more on this feature read the [uv python documentation](https://docs.astral.sh/uv/concepts/python-versions/)
 # Default: python3
 PRIMARY_PYTHON?=python3
 
 # Minimum required Python version.
-# Default: 3.7
+# Default: 3.10
 PYTHON_MIN_VERSION?=3.9
 
 # Install packages using the given package installer method.
-# Supported are `pip` and `uv`. If uv is used, its global availability is
-# checked. Otherwise, it is installed, either in the virtual environment or
-# using the `PRIMARY_PYTHON`, dependent on the `VENV_ENABLED` setting. If
-# `VENV_ENABLED` and uv is selected, uv is used to create the virtual
-# environment.
+# Supported are `pip` and `uv`. When `uv` is selected, a global installation
+# is auto-detected and used if available. Otherwise, uv is installed in the
+# virtual environment or using `PRIMARY_PYTHON`, depending on the
+# `VENV_ENABLED` setting.
 # Default: pip
 PYTHON_PACKAGE_INSTALLER?=uv
 
-# Flag whether to use a global installed 'uv' or install
-# it in the virtual environment.
-# Default: false
-MXENV_UV_GLOBAL?=false
+# Python version for UV to install/use when creating virtual
+# environments with global UV. Passed to `uv venv -p VALUE`. Supports version
+# specs like `3.11`, `3.14`, `cpython@3.14`. Defaults to PRIMARY_PYTHON value
+# for backward compatibility.
+# Default: $(PRIMARY_PYTHON)
+UV_PYTHON?=$(PRIMARY_PYTHON)
 
 # Flag whether to use virtual environment. If `false`, the
 # interpreter according to `PRIMARY_PYTHON` found in `PATH` is used.
@@ -156,6 +167,14 @@ ZOPE_BASE_FOLDER?=.
 # Default: No Default
 ZOPE_SCRIPTNAME?=No Default
 
+# user name to create
+# Default: No Default
+ZOPE_USER_NAME?=No Default
+
+# user name to create
+# Default: No Default
+ZOPE_USER_PASSWORD?=No Default
+
 ##############################################################################
 # END SETTINGS - DO NOT EDIT BELOW THIS LINE
 ##############################################################################
@@ -169,6 +188,9 @@ TYPECHECK_TARGETS?=
 FORMAT_TARGETS?=
 
 export PATH:=$(if $(EXTRA_PATH),$(EXTRA_PATH):,)$(PATH)
+
+# Helper variable: adds trailing slash to PROJECT_PATH_PYTHON only if non-empty
+PYTHON_PROJECT_PREFIX=$(if $(PROJECT_PATH_PYTHON),$(PROJECT_PATH_PYTHON)/,)
 
 # Defensive settings for make: https://tech.davis-hansson.com/p/make/
 SHELL:=bash
@@ -186,7 +208,7 @@ MXMAKE_FOLDER?=.mxmake
 # Sentinel files
 SENTINEL_FOLDER?=$(MXMAKE_FOLDER)/sentinels
 SENTINEL?=$(SENTINEL_FOLDER)/about.txt
-$(SENTINEL):
+$(SENTINEL): $(firstword $(MAKEFILE_LIST))
 	@mkdir -p $(SENTINEL_FOLDER)
 	@echo "Sentinels for the Makefile process." > $(SENTINEL)
 
@@ -194,26 +216,7 @@ $(SENTINEL):
 # mxenv
 ##############################################################################
 
-# Check if given Python is installed
-ifeq (,$(shell which $(PRIMARY_PYTHON)))
-$(error "PYTHON=$(PRIMARY_PYTHON) not found in $(PATH)")
-endif
-
-# Check if given Python version is ok
-PYTHON_VERSION_OK=$(shell $(PRIMARY_PYTHON) -c "import sys; print((int(sys.version_info[0]), int(sys.version_info[1])) >= tuple(map(int, '$(PYTHON_MIN_VERSION)'.split('.'))))")
-ifeq ($(PYTHON_VERSION_OK),0)
-$(error "Need Python >= $(PYTHON_MIN_VERSION)")
-endif
-
-# Check if venv folder is configured if venv is enabled
-ifeq ($(shell [[ "$(VENV_ENABLED)" == "true" && "$(VENV_FOLDER)" == "" ]] && echo "true"),"true")
-$(error "VENV_FOLDER must be configured if VENV_ENABLED is true")
-endif
-
-# Check if global python is used with uv (this is not supported by uv)
-ifeq ("$(VENV_ENABLED)$(PYTHON_PACKAGE_INSTALLER)","falseuv")
-$(error "Package installer uv does not work with a global Python interpreter.")
-endif
+OS?=
 
 # Determine the executable path
 ifeq ("$(VENV_ENABLED)", "true")
@@ -229,20 +232,61 @@ else
 MXENV_PYTHON=$(PRIMARY_PYTHON)
 endif
 
-# Determine the package installer
+# Determine the package installer with non-interactive flags
 ifeq ("$(PYTHON_PACKAGE_INSTALLER)","uv")
-PYTHON_PACKAGE_COMMAND=uv pip
+PYTHON_PACKAGE_COMMAND=uv pip --no-progress
 else
 PYTHON_PACKAGE_COMMAND=$(MXENV_PYTHON) -m pip
 endif
 
+# Auto-detect global uv availability (simple existence check)
+ifeq ("$(PYTHON_PACKAGE_INSTALLER)","uv")
+UV_AVAILABLE:=$(shell command -v uv >/dev/null 2>&1 && echo "true" || echo "false")
+else
+UV_AVAILABLE:=false
+endif
+
+# Determine installation strategy
+# depending on the PYTHON_PACKAGE_INSTALLER and UV_AVAILABLE
+# - both vars can be false or
+# - one of them can be true,
+# - but never boths.
+USE_GLOBAL_UV:=$(shell [[ "$(PYTHON_PACKAGE_INSTALLER)" == "uv" && "$(UV_AVAILABLE)" == "true" ]] && echo "true" || echo "false")
+USE_LOCAL_UV:=$(shell [[ "$(PYTHON_PACKAGE_INSTALLER)" == "uv" && "$(UV_AVAILABLE)" == "false" ]] && echo "true" || echo "false")
+
+# Check if global UV is outdated (non-blocking warning)
+ifeq ("$(USE_GLOBAL_UV)","true")
+UV_OUTDATED:=$(shell uv self update --dry-run 2>&1 | grep -q "Would update" && echo "true" || echo "false")
+else
+UV_OUTDATED:=false
+endif
+
 MXENV_TARGET:=$(SENTINEL_FOLDER)/mxenv.sentinel
 $(MXENV_TARGET): $(SENTINEL)
+	# Validation: Check Python version if not using global uv
+ifneq ("$(USE_GLOBAL_UV)","true")
+	@$(PRIMARY_PYTHON) -c "import sys; vi = sys.version_info; sys.exit(1 if (int(vi[0]), int(vi[1])) >= tuple(map(int, '$(PYTHON_MIN_VERSION)'.split('.'))) else 0)" \
+		&& echo "Need Python >= $(PYTHON_MIN_VERSION)" && exit 1 || :
+else
+	@echo "Using global uv for Python $(UV_PYTHON)"
+endif
+	# Validation: Check VENV_FOLDER is set if venv enabled
+	@[[ "$(VENV_ENABLED)" == "true" && "$(VENV_FOLDER)" == "" ]] \
+		&& echo "VENV_FOLDER must be configured if VENV_ENABLED is true" && exit 1 || :
+	# Validation: Check uv not used with system Python
+	@[[ "$(VENV_ENABLED)" == "false" && "$(PYTHON_PACKAGE_INSTALLER)" == "uv" ]] \
+		&& echo "Package installer uv does not work with a global Python interpreter." && exit 1 || :
+	# Warning: Notify if global UV is outdated
+ifeq ("$(UV_OUTDATED)","true")
+	@echo "WARNING: A newer version of uv is available. Run 'uv self update' to upgrade."
+endif
+
+	# Create virtual environment
 ifeq ("$(VENV_ENABLED)", "true")
 ifeq ("$(VENV_CREATE)", "true")
-ifeq ("$(PYTHON_PACKAGE_INSTALLER)$(MXENV_UV_GLOBAL)","uvtrue")
-	@echo "Setup Python Virtual Environment using package 'uv' at '$(VENV_FOLDER)'"
-	@uv venv -p $(PRIMARY_PYTHON) --seed $(VENV_FOLDER)
+ifeq ("$(USE_GLOBAL_UV)","true")
+	@echo "Setup Python Virtual Environment using global uv at '$(VENV_FOLDER)'"
+	@uv venv --allow-existing --no-progress -p $(UV_PYTHON) --seed $(VENV_FOLDER)
 else
 	@echo "Setup Python Virtual Environment using module 'venv' at '$(VENV_FOLDER)'"
 	@$(PRIMARY_PYTHON) -m venv $(VENV_FOLDER)
@@ -252,10 +296,14 @@ endif
 else
 	@echo "Using system Python interpreter"
 endif
-ifeq ("$(PYTHON_PACKAGE_INSTALLER)$(MXENV_UV_GLOBAL)","uvfalse")
-	@echo "Install uv"
+
+	# Install uv locally if needed
+ifeq ("$(USE_LOCAL_UV)","true")
+	@echo "Install uv in virtual environment"
 	@$(MXENV_PYTHON) -m pip install uv
 endif
+
+	# Install/upgrade core packages
 	@$(PYTHON_PACKAGE_COMMAND) install -U pip setuptools wheel
 	@echo "Install/Update MXStack Python packages"
 	@$(PYTHON_PACKAGE_COMMAND) install -U $(MXDEV) $(MXMAKE)
@@ -286,6 +334,11 @@ CLEAN_TARGETS+=mxenv-clean
 ##############################################################################
 # ruff
 ##############################################################################
+
+# Adjust RUFF_SRC to respect PROJECT_PATH_PYTHON if still at default
+ifeq ($(RUFF_SRC),src)
+RUFF_SRC:=$(PYTHON_PROJECT_PREFIX)src
+endif
 
 RUFF_TARGET:=$(SENTINEL_FOLDER)/ruff.sentinel
 $(RUFF_TARGET): $(MXENV_TARGET)
@@ -321,6 +374,11 @@ CLEAN_TARGETS+=ruff-clean
 ##############################################################################
 # isort
 ##############################################################################
+
+# Adjust ISORT_SRC to respect PROJECT_PATH_PYTHON if still at default
+ifeq ($(ISORT_SRC),src)
+ISORT_SRC:=$(PYTHON_PROJECT_PREFIX)src
+endif
 
 ISORT_TARGET:=$(SENTINEL_FOLDER)/isort.sentinel
 $(ISORT_TARGET): $(MXENV_TARGET)
@@ -359,7 +417,7 @@ CLEAN_TARGETS+=isort-clean
 SOURCES_TARGET:=$(SENTINEL_FOLDER)/sources.sentinel
 $(SOURCES_TARGET): $(PROJECT_CONFIG) $(MXENV_TARGET)
 	@echo "Checkout project sources"
-	@mxdev -o -c $(PROJECT_CONFIG)
+	@mxdev -f -c $(PROJECT_CONFIG)
 	@touch $(SOURCES_TARGET)
 
 .PHONY: sources
@@ -404,7 +462,7 @@ else
 	@echo "[settings]" > $(PROJECT_CONFIG)
 endif
 
-LOCAL_PACKAGE_FILES:=$(wildcard pyproject.toml setup.cfg setup.py requirements.txt constraints.txt)
+LOCAL_PACKAGE_FILES:=$(wildcard $(PYTHON_PROJECT_PREFIX)pyproject.toml $(PYTHON_PROJECT_PREFIX)setup.cfg $(PYTHON_PROJECT_PREFIX)setup.py $(PYTHON_PROJECT_PREFIX)requirements.txt $(PYTHON_PROJECT_PREFIX)constraints.txt)
 
 FILES_TARGET:=requirements-mxdev.txt
 $(FILES_TARGET): $(PROJECT_CONFIG) $(MXENV_TARGET) $(SOURCES_TARGET) $(LOCAL_PACKAGE_FILES)
@@ -537,6 +595,7 @@ CLEAN_TARGETS+=cookiecutter-clean
 
 ZOPE_INSTANCE_FOLDER:=$(ZOPE_BASE_FOLDER)/instance
 ZOPE_INSTANCE_TARGET:=$(ZOPE_INSTANCE_FOLDER)/etc/zope.ini $(ZOPE_INSTANCE_FOLDER)/etc/zope.conf $(ZOPE_INSTANCE_FOLDER)/etc/site.zcml
+ZOPE_RUN_TARGET:=$(ZOPE_INSTANCE_TARGET) $(PACKAGES_TARGET)
 
 ifeq (,$(ZOPE_TEMPLATE_CHECKOUT))
 	ZOPE_COOKIECUTTER_TEMPLATE_OPTIONS=
@@ -552,22 +611,27 @@ $(ZOPE_INSTANCE_TARGET): $(COOKIECUTTER_TARGET) $(ZOPE_CONFIGURATION_FILE)
 	@cookiecutter -f --no-input ${ZOPE_COOKIECUTTER_TEMPLATE_OPTIONS} --config-file $(ZOPE_CONFIGURATION_FILE) --output-dir $(ZOPE_BASE_FOLDER) $(ZOPE_TEMPLATE)
 
 .PHONY: zope-instance
-zope-instance: $(ZOPE_INSTANCE_TARGET) $(SOURCES)
+zope-instance: $(ZOPE_INSTANCE_TARGET) $(SOURCES_TARGET)
 
 .PHONY: zope-start
-zope-start: $(ZOPE_INSTANCE_TARGET) $(PACKAGES_TARGET)
+zope-start: $(ZOPE_RUN_TARGET)
 	@echo "Start Zope/Plone with configuration in $(ZOPE_INSTANCE_FOLDER)"
 	@runwsgi -v "$(ZOPE_INSTANCE_FOLDER)/etc/zope.ini"
 
 .PHONY: zope-debug
-zope-debug: $(ZOPE_INSTANCE_TARGET) $(PACKAGES_TARGET)
+zope-debug: $(ZOPE_RUN_TARGET)
 	@echo "Start Zope/Plone with configuration in $(ZOPE_INSTANCE_FOLDER)"
-	@zconsole debug "$(ZOPE_INSTANCE_FOLDER)/etc/zope.ini"
+	@zconsole debug "$(ZOPE_INSTANCE_FOLDER)/etc/zope.conf"
 
 .PHONY: zope-runscript
-zope-runscript: $(ZOPE_INSTANCE_TARGET) $(PACKAGES_TARGET)
+zope-runscript: $(ZOPE_RUN_TARGET)
 	@echo "Run Zope/Plone Console Script $(ZOPE_SCRIPTNAME) in $(ZOPE_INSTANCE_FOLDER)"
-	@zconsole run "$(ZOPE_INSTANCE_FOLDER)/etc/zope.ini" $(ZOPE_SCRIPTNAME)
+	@zconsole run "$(ZOPE_INSTANCE_FOLDER)/etc/zope.conf" $(ZOPE_SCRIPTNAME)
+
+.PHONY: zope-adduser
+zope-adduser: $(ZOPE_RUN_TARGET)
+	@echo "Run Zope addzopeuser to create an emergency user '$(ZOPE_USER_NAME)' with role 'Manager'"
+	@addzopeuser -c "$(ZOPE_INSTANCE_FOLDER)/etc/zope.conf" $(ZOPE_USER_NAME) $(ZOPE_USER_PASSWORD)
 
 .PHONY: zope-dirty
 zope-dirty:
@@ -585,6 +649,11 @@ zope-purge: zope-dirty
 INSTALL_TARGETS+=zope-instance
 DIRTY_TARGETS+=zope-dirty
 CLEAN_TARGETS+=zope-clean
+PURGE_TARGETS+=zope-purge
+
+##############################################################################
+# Custom includes
+##############################################################################
 
 -include $(INCLUDE_MAKEFILE)
 
